@@ -5846,7 +5846,7 @@ button.close {
     margin: .5rem;
     pointer-events: none
 }
-.sortbyModal-disalog {
+.sortbyModal-dialog {
     position: relative;
     width: auto;
     /* margin: .5rem; */
