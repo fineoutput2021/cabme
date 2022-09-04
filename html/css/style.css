@@ -170,7 +170,10 @@ ul{
 	background-color: red;
 	color: #fff;
 }
-
+.mobilelinks > li > a 
+{
+	font-size: 20px;
+}
 .float_left{
 	float:left;
 	width:100%;

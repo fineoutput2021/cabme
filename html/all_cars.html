@@ -157,23 +157,46 @@
 	<!--====================== Header Start ======================-->
 
 	<div class="hs_navigation_header_wrapper">
-		<div class="container-fluid mb-2" style="border-bottom: 1px solid rgb(219, 219, 219);">
+		<div class="container">
 			<div class="row">
-				<div class=" col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12 mb-3 d-none d-sm-none d-xs-none d-md-block">
+				<div class=" col-xl-3 col-lg-3 col-md-3 col-sm-12 col-12 mb-3 d-none d-sm-none d-xs-none d-md-block">
 					<div class="hs_logo_wrapper ">
 						<a href="index.html">
 							<img src="images/cabme_logo.png" alt="">
 						</a>
 					</div>
 				</div>
-				<div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
+				<div class="col-xl-9 col-lg-9 col-md-9 col-sm-12 col-12">
+					<div class="hs_navi_cart_wrapper  d-none d-sm-none d-xs-none d-md-block d-lg-block d-xl-block">
+						<div class="dropdown-wrapper menu-button menu_button_end"> <a class="menu-button" href="#"> <i class="fa fa-user"></i></a>
+							<div class="drop-menu">
+								<div class="cc_cart_wrapper1">
+									<div class="cc_cart_img_wrapper">
+										<i class="fa fa-user"></i> &nbsp;
+										<a href="my_profile.html#profile">My Profile</a>
+									</div>
+									
+								</div>
+								<div class="cc_cart_wrapper1 cc_cart_wrapper2">
+									<div class="cc_cart_img_wrapper mt-3">
+										<i class="fa fa-car"></i> &nbsp;
+										<a href="my_profile.html#booking">My Booking</a>
+									</div>
+								</div>
+								<div class="cc_cart_wrapper1">
+									<div class="cc_cart_img_wrapper mt-3">
+										<i class="fa fa-power-off"></i> &nbsp;
+										<a href="#">Logout</a>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
 					<button class="btn headerloginbtn" data-toggle="modal" data-target="#signupModal"><i
 							class="fa fa-power-off"></i> &nbsp;Sign Up </button>
 					<button class="btn headerloginbtn mr-3" data-toggle="modal" data-target="#loginModal"><i
 							class="fa fa-power-off"></i> &nbsp;Login </button>
-
-
-					</li>
+					
 					<!--====================== Mobile Navigation Start ======================-->
 					<header class="mobail_menu d-none d-block d-xs-block d-sm-block d-md-none d-lg-none d-xl-none">
 						<div class="container-fluid">
@@ -191,14 +214,25 @@
 										<a class="house_toggle" href="#0">
 											<i class="fa fa-bars" id="Capa_1" style="font-size:25px;color :red;"></i>
 										</a>
+										
 										<!-- .cd-dropdown -->
 									</div>
 									<nav class="cd-dropdown">
-										<h2><a href="index.html">Cabme</a></h2>
-										<a href="#0" class="cd-close">Close</a>
-										<ul class="cd-dropdown-content mt-3">
+                                              <div class="row mb-5">
+												<div class="col-10">
+													<h2><a href="index.html">Cabme</a></h2>
+													<p class="ml-4">demo@gmail.com</p>
+												</div>
+											<div class="col-2">
+												<a href="#0" class="cd-close">Close</a>
+											</div>
+												
+											  </div>
+										
 
-											<li class="mb-3">
+										<ul class="cd-dropdown-content mobilelinks mt-3">
+
+											<li class="mb-3 mt-5">
 												<button class="btn ml-5" data-toggle="modal"
 													data-target="#loginModal"><i class="fa fa-power-off"></i>
 													&nbsp;Login </button>
@@ -206,11 +240,30 @@
 													data-target="#signupModal"><i class="fa fa-user"></i> &nbsp;Sign Up
 												</button>
 											</li>
-
+											<li>
+												<a href="#">Car Rental</a></li>
+											</li>
+											<li>
+												<a href="#">My Booking</a></li>
+											</li>
+											<li>
+												<a href="#">FAQ's</a></li>
+											</li>
+											<li>
+												<a href="#">Policy</a></li>
+											</li>
+											<li>
+												<a href="#">Contact Us</a></li>
+											</li>
+											<li>
+												<a href="#">Log Out</a></li>
+											</li>
 
 										</ul>
 										<!-- .cd-dropdown-content -->
+										
 									</nav>
+									
 								</div>
 							</div>
 						</div>
@@ -279,9 +332,7 @@
 			</div>
 		</div>
 	</div>
-
-	<!-- ================================== Heaqder End =======================================-->
-
+	<!-- HeaqderEnd -->
 
 	<!-- x car book sidebar section Wrapper Start -->
 	<div class="x_car_book_sider_main_Wrapper float_left mt-3 ">
@@ -420,13 +471,13 @@
 									</div>
 									<hr>
 									<!-- Seating Capacity End -->
-									<div
+									<!-- <div
 										class="x_slider_checout_right x_slider_checout_right_carbooking x_slider_checout_right_carbooking_fiter">
 										<ul>
 											<li><a href="#">filter <i class="fa fa-arrow-right"></i></a>
 											</li>
 										</ul>
-									</div>
+									</div> -->
 								</div>
 							</div>
 						</div>

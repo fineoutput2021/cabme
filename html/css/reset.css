@@ -124,12 +124,12 @@ Main Components
 
 .cd-dropdown {
   position: fixed;
-  z-index: 1000;
+  z-index: 99999999;
   top: 0;
   left: 0;
   width: 300PX;
   height: 100%;
-  background-color: red;
+  background-color: #fff;
   color: #000000;
   visibility: hidden;
   /* Force Hardware Acceleration */
@@ -155,7 +155,7 @@ Main Components
   position:relative;
 }
 .cd-dropdown h2 a{
-	color:#ffffff;
+	color:#000;
 }
 .cd-dropdown h2:after{
 	    content: '';
@@ -197,7 +197,7 @@ Main Components
   transform: translateX(-50%) translateY(-50%);
   height: 17px;
   width: 3px;
-  background-color: #ffffff;
+  background-color: #000;
 }
 .cd-dropdown .cd-close::after {
   -webkit-transform: translateX(-50%) translateY(-50%) rotate(45deg);
@@ -291,7 +291,7 @@ Main Components
 }
 .cd-dropdown-content a, .cd-dropdown-content ul a {
   display: block;
-  color: #ffffff;
+  color: #000;
   /* truncate text with ellipsis if too long */
   overflow: hidden;
   text-overflow: ellipsis;

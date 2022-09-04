@@ -227,6 +227,10 @@
 	
 }
 @media (max-width: 767px){
+	.desktopmainslider
+	{
+		display: none;
+	}
 	.language, .usd{
 		display:none;
 	}
