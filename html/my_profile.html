@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+
+<html lang="zxx">
+
+<head>
+	<meta charset="utf-8" />
+	<title>Cabme</title>
+	<meta content="width=device-width, initial-scale=1.0" name="viewport" />
+	<meta name="description" content="Xpedia" />
+	<meta name="keywords" content="Xpedia" />
+	<meta name="author" content="" />
+	<meta name="MobileOptimized" content="320" />
+	<!--Template style -->
+	<link rel="stylesheet" type="text/css" href="css/cabme.css" />
+	<!--favicon-->
+	<link rel="shortcut icon" type="image/png" href="images/cabme_logo.png" />
+</head>
+
+<body>
+
+
+	<!--======proof Modal ======-->
+
+	<div class="modal fade" id="proofModal" role="dialog">
+		<div class="modal-dialog proofModal">
+
+			<!-- Modal content-->
+			<div class="modal-content loginModal-content">
+				<div class="modal-header">
+					<div class="col-md-11 text-center">
+						<h4 class="modal-title">Eligibilt & ID</h4>
+					</div>
+
+					<div class="col-md-1"> <button type="button" class="close" data-dismiss="modal">&times;</button>
+					</div>
+
+				</div>
+				<div class="modal-body">
+					<div class="formsix-pos">
+						<div class="form-sec-header proofdateofbirth mb-5">
+							<label class="cal-icon">
+								<input type="text" placeholder="Date Of Birth" class="form-control datepicker">
+							</label>
+						</div>
+						<div class="row mb-4">
+							<select class="proofselect">
+								<option value="aadhar">Aadhar Card</option>
+								<option value="passport">Passport</option>
+							</select>
+						</div>
+						<div class="form-group mb-4">
+							<input type="text" class="form-control modalinput" required="" placeholder="Aadhar Number*">
+						</div>
+						<div class="form-group mb-4">
+							<input type="text" class="form-control modalinput" required="" placeholder="Passport*">
+						</div>
+					</div>
+					<div class="row justify-content-center mt-2">
+						<div class="x_slider_checkbox x_slider_checkbox_bottom_filter_use">
+							<input type="checkbox" id="agree" name="cb">
+							<label for="agree">Lorem ipsum dolor sit amet consectetur adipisicing elit.</label>
+						</div>
+					</div>
+					<div class="row justify-content-center mt-2"><button class="btn loginbtn">Login</button></div>
+
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!--====== proof Modal End ======-->
+
+
+	<!--======login Modal ======-->
+
+	<div class="modal fade" id="loginModal" role="dialog">
+		<div class="modal-dialog">
+
+			<!-- Modal content-->
+			<div class="modal-content loginModal-content">
+				<div class="modal-header">
+					<div class="col-md-11 text-center">
+						<h4 class="modal-title">Login</h4>
+					</div>
+					<div class="col-md-1"> <button type="button" class="close" data-dismiss="modal">&times;</button>
+					</div>
+
+				</div>
+				<div class="modal-body">
+					<div class="formsix-pos">
+						<div class="form-group mb-4">
+							<input type="text" class="form-control modalinput" required=""
+								placeholder="Enter Mobile Number *">
+						</div>
+						<div class="form-group">
+							<input type="text" class="form-control modalinput" required="" placeholder="Enter OTP *">
+						</div>
+					</div>
+					<div class="row justify-content-center"><button class="btn loginbtn">Login</button></div>
+					<div class="row justify-content-center mt-2">
+						<span> Dont't have account yet? &nbsp; <a href="#" class="getlink" data-toggle="modal"
+								data-target="#signupModal" data-dismiss="modal">Sign Up</a> </span>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!--======login Modal End ======-->
+
+	<!--======Sign Up Modal ======-->
+
+
+
+	<div class="modal fade" id="signupModal" role="dialog">
+		<div class="modal-dialog">
+
+			<!-- Modal content-->
+			<div class="modal-content loginModal-content">
+				<div class="modal-header">
+					<div class="col-md-11 text-center">
+						<h4 class="modal-title">Sign Up</h4>
+					</div>
+					<div class="col-md-1"> <button type="button" class="close" data-dismiss="modal">&times;</button>
+					</div>
+
+				</div>
+				<div class="modal-body">
+					<div class="formsix-pos">
+						<div class="row">
+							<div class="form-group mb-4 col-md-6 col-12">
+								<input type="text" class="form-control modalinput" required=""
+									placeholder="First Name *">
+							</div>
+							<div class="form-group col-md-6 col-12">
+								<input type="text" class="form-control modalinput" required="" placeholder="Last Name*">
+							</div>
+							<div class="form-group mb-4 col-md-6 col-12">
+								<input type="text" class="form-control modalinput" required=""
+									placeholder="Enter mobile Number*">
+							</div>
+							<div class="form-group col-md-6 col-12">
+								<input type="text" class="form-control modalinput" required="" placeholder="Enter OTP*">
+							</div>
+						</div>
+					</div>
+					<div class="row justify-content-center"><button class="btn loginbtn">Sign Up</button></div>
+					<div class="row justify-content-center mt-2">
+						<span> Already have an account? &nbsp; <a href="#" class="getlink" data-toggle="modal"
+								data-target="#loginModal" data-dismiss="modal">Login</a> </span>
+					</div>
+
+				</div>
+				<div class="modal-footer">
+
+				</div>
+			</div>
+
+		</div>
+	</div>
+
+	<!--======Sign Up Modal End ======-->
+
+
+
+
+	<!--====================== Header Start ======================-->
+
+	<div class="hs_navigation_header_wrapper">
+		<div class="container">
+			<div class="row">
+				<div class=" col-xl-3 col-lg-3 col-md-3 col-sm-12 col-12 mb-3 d-none d-sm-none d-xs-none d-md-block">
+					<div class="hs_logo_wrapper ">
+						<a href="index.html">
+							<img src="images/cabme_logo.png" alt="">
+						</a>
+					</div>
+				</div>
+				<div class="col-xl-9 col-lg-9 col-md-9 col-sm-12 col-12">
+					<button class="btn headerloginbtn" data-toggle="modal" data-target="#signupModal"><i
+							class="fa fa-power-off"></i> &nbsp;Sign Up </button>
+					<button class="btn headerloginbtn mr-3" data-toggle="modal" data-target="#loginModal"><i
+							class="fa fa-power-off"></i> &nbsp;Login </button>
+
+
+					</li>
+					<!--====================== Mobile Navigation Start ======================-->
+					<header class="mobail_menu d-none d-block d-xs-block d-sm-block d-md-none d-lg-none d-xl-none">
+						<div class="container-fluid">
+							<div class="row">
+								<div class="col-xs-6 col-sm-6 col-6">
+									<div class="hs_logo">
+										<a href="index.html">
+											<h4>Cabme</h4>
+											<!-- <img src="images/logo.png" alt="Logo" title="Logo"> -->
+										</a>
+									</div>
+								</div>
+								<div class="col-xs-6 col-sm-6 col-6">
+									<div class="cd-dropdown-wrapper">
+										<a class="house_toggle" href="#0">
+											<i class="fa fa-bars" id="Capa_1" style="font-size:25px;color :red;"></i>
+										</a>
+										<!-- .cd-dropdown -->
+									</div>
+									<nav class="cd-dropdown">
+										<h2><a href="index.html">Cabme</a></h2>
+										<a href="#0" class="cd-close">Close</a>
+										<ul class="cd-dropdown-content mt-3">
+
+											<li class="mb-3">
+												<button class="btn ml-5" data-toggle="modal"
+													data-target="#loginModal"><i class="fa fa-power-off"></i>
+													&nbsp;Login </button>
+												<button class="btn ml-5" data-toggle="modal"
+													data-target="#signupModal"><i class="fa fa-user"></i> &nbsp;Sign Up
+												</button>
+											</li>
+
+
+										</ul>
+										<!-- .cd-dropdown-content -->
+									</nav>
+								</div>
+							</div>
+						</div>
+						<!-- .cd-dropdown-wrapper -->
+					</header>
+					<!--====================== mobile Navigation End ======================-->
+				</div>
+			</div>
+		</div>
+	</div>
+	<!--==================================== Heaqder End =============================-->
+
+
+	<!--==================================== Content =============================-->
+
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col-md-3">
+				<div class="content_tabs mt-4 mb-4">
+					<div class="row">
+						<div class="x_offer_tabs_wrapper profiletab"
+							style="background-color: #fff;border-radius: 15px;width: 93%;margin-left: 17px;">
+							<ul class="nav nav-tabs">
+								<li class="nav-item mb-3 pt-3">
+									<h4>User Name</h4>
+								</li>
+								<li class="nav-item"> <a class="nav-link active" data-toggle="tab" href="#profile">
+										<i class="fa fa-user"></i> &nbsp; My profile </a>
+								</li>
+								<li class="nav-item"> <a class="nav-link " data-toggle="tab" href="#booking">
+										<i class="fa fa-car"></i> My Booking
+									</a>
+								</li>
+								<li class="nav-item"> <a class="nav-link" data-toggle="tab" href="#">
+										<i class="fa fa-power-off"></i> &nbsp; Log Out
+									</a>
+								</li>
+							</ul>
+						</div>
+
+					</div>
+				</div>
+			</div>
+			<div class="col-md-9">
+				<div class="tab-content mt-3 mb-3">
+					<!-- first Form Tab -->
+	
+	<div id="profile" class="tab-pane active" style="border: 1px solid rgb(204, 201, 201);padding: 10px;border-radius: 10px;background-color: #fff;box-shadow: 0px 0 8px rgb(0 0 0 / 10%);">
+                      <form class="profileform">
+						<div class="row">
+							<div class="col-md-6 mt-2 mb-2">
+								<div class="form-group mb-4">
+									<label>Name</label>
+									<input type="text" class="form-control modalinput" required=""
+										placeholder="Name *">
+								</div>
+							</div>
+							<div class="col-md-6 mt-2 mb-2">
+								<label>Email Id</label>
+								<div class="form-group">
+									<input type="text" class="form-control modalinput" required="" placeholder="Email Id *">
+								</div>
+							</div>
+							<div class="col-md-6 mt-2 mb-2">
+								<label>Phone Number</label>
+								<div class="form-group">
+									<input type="text" class="form-control modalinput" required="" placeholder="Phone Number *">
+								</div>
+							</div>
+							<div class="col-md-6 mt-2 mb-2">
+								<div class="form-sec-header">
+									<p>Date of birth</p>
+									<label class="cal-icon">
+										<input type="text" placeholder="Tue 16 Jan 2018"
+											class="form-control datepicker">
+									</label>
+								</div>
+							</div>
+							<div class="col-md-6 mt-2 mb-2">
+								<label>Aadhar Card</label>
+								<div class="form-group">
+									<input type="text" class="form-control modalinput" required="" placeholder="Aadhar Card *">
+								</div>
+							</div>
+							<div class="col-md-6 mt-2 mb-2">
+								<label>Driving Licence Number</label>
+								<div class="form-group">
+									<input type="text" class="form-control modalinput" required="" placeholder="Driving Licence Number *">
+								</div>
+							</div>
+						</div>
+							
+							
+					  </form>
+					</div>
+					<div id="booking" class="tab-pane">
+
+                    <table class="profiletable">
+						<thead>
+							<tr>
+							<th>Car Model</th>
+							<th>Booking ID</th>
+							<th>Begin Date</th>
+							<th>Delivery Location</th>
+							<th>Pickup Location</th>
+							<th>Status</th>
+						</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td>Modal</td>
+								<td>123456</td>
+								<td>12.03.2021</td>
+								<td>jaipur</td>
+								<td>Delhi</td>
+								<td><span class="activespan bg-success">Active</span></td>
+							</tr>
+							<tr>
+								<td>Modal</td>
+								<td>123456</td>
+								<td>12.03.2021</td>
+								<td>jaipur</td>
+								<td>Delhi</td>
+								<td><span class="pendingspan bg-warning">Pending</span></td>
+							</tr>
+							<tr>
+								<td>Modal</td>
+								<td>123456</td>
+								<td>12.03.2021</td>
+								<td>jaipur</td>
+								<td>Delhi</td>
+								<td><span class="completedspan bg-danger">Completed</span></td>
+							</tr>
+						</tbody>
+					</table>
+
+					</div>
+				</div>
+
+			</div>
+		</div>
+	</div>
+
+
+
+
+	<!--==================================== Content End=============================-->
+
+
+
+
+	<!--===========================  Footer Wrapper Start ===========================-->
+
+	<div class="x_footer_bottom_main_wrapper float_left">
+		<div class="container">
+			<div class="row">
+				<div class="col-xl-4 col-lg-4 col-md-4 col-sm-12 col-12">
+					<div class="x_footer_bottom_box_wrapper float_left">
+						<img src="images/cabme_logo.png" alt="">
+						<p>© 2022 Primemover Mobility Technologies Pvt Ltd. All rights reserved</p>
+
+					</div>
+				</div>
+				<div class="col-xl-4 col-lg-4 col-md-4 col-sm-12 col-12">
+					<div class="x_footer_bottom_box_wrapper_second float_left">
+						<h3>Information</h3>
+						<ul>
+							<li><a href="#"><i class="fa fa-long-arrow-right"></i> &nbsp; Home</a>
+							</li>
+							<li><a href="#"><i class="fa fa-long-arrow-right"></i> &nbsp; FAQ's</a>
+							</li>
+							<li><a href="#"><i class="fa fa-long-arrow-right"></i> &nbsp; Policy</a>
+							</li>
+							<li><a href="#"><i class="fa fa-long-arrow-right"></i> &nbsp; Blog</a>
+							</li>
+						</ul>
+					</div>
+				</div>
+				<div class="col-xl-4 col-lg-4 col-md-4 col-sm-12 col-12">
+					<div class="x_footer_bottom_box_wrapper_second float_left mb-5">
+						<h3>Social</h3>
+					</div>
+					<div class="row fsocialicons">
+						<a href="#"><i class="fa fa-facebook" style="font-size: 25px;"></i></a>
+						<a href="#"><i class="fa fa-twitter" style="font-size: 25px;"></i></a>
+						<a href="#"><i class="fa fa-instagram" style="font-size: 25px;"></i></a>
+						<a href="#"><i class="fa fa-youtube" style="font-size: 25px;"></i></a>
+						<a href="#"><i class="fa fa-linkedin" style="font-size: 25px;"></i></a>
+					</div>
+				</div>
+
+			</div>
+		</div>
+	</div>
+
+	<!--===========================  Footer Wrapper End ===========================-->
+
+	<script src="js/jquery-3.3.1.min.js"></script>
+	<script src="js/bootstrap.min.js"></script>
+	<script src="js/modernizr.js"></script>
+	<script src="js/select2.min.js"></script>
+	<script src="js/jquery.menu-aim.js"></script>
+	<script src="js/jquery-ui.js"></script>
+	<script src="js/jquery.nice-select.min.js"></script>
+	<script src="js/owl.carousel.js"></script>
+	<script src="js/own-menu.js"></script>
+	<script src="js/jquery.bxslider.min.js"></script>
+	<script src="js/jquery.magnific-popup.js"></script>
+	<script src="js/xpedia.js"></script>
+	<!-- custom js-->
+</body>
+
+
+</html>
