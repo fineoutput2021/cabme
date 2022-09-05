@@ -1552,7 +1552,7 @@ width:100%;
     top: 26px;
     content: "\f073";
     color: red;
-    z-index: 1;
+    z-index: 0;
     font-size: 14px;
     font-family: 'FontAwesome';
 }

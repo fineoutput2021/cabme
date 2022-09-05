@@ -24,7 +24,7 @@
 		<div class="modal-dialog">
 
 			<!-- Modal content-->
-			<div class=" sortbyModal-content ">
+			<div class=" sortbyModal-content modal-content">
 				<div class="modal-header p-1">
 					<div class="col-md-11 col-11 text-center">
 						<h6 class="modal-title">Sort By</h6>
@@ -168,14 +168,15 @@
 				</div>
 				<div class="col-xl-9 col-lg-9 col-md-9 col-sm-12 col-12">
 					<div class="hs_navi_cart_wrapper  d-none d-sm-none d-xs-none d-md-block d-lg-block d-xl-block">
-						<div class="dropdown-wrapper menu-button menu_button_end"> <a class="menu-button" href="#"> <i class="fa fa-user"></i></a>
+						<div class="dropdown-wrapper menu-button menu_button_end"> <a class="menu-button" href="#"> <i
+									class="fa fa-user"></i></a>
 							<div class="drop-menu">
 								<div class="cc_cart_wrapper1">
 									<div class="cc_cart_img_wrapper">
 										<i class="fa fa-user"></i> &nbsp;
 										<a href="my_profile.html#profile">My Profile</a>
 									</div>
-									
+
 								</div>
 								<div class="cc_cart_wrapper1 cc_cart_wrapper2">
 									<div class="cc_cart_img_wrapper mt-3">
@@ -196,7 +197,7 @@
 							class="fa fa-power-off"></i> &nbsp;Sign Up </button>
 					<button class="btn headerloginbtn mr-3" data-toggle="modal" data-target="#loginModal"><i
 							class="fa fa-power-off"></i> &nbsp;Login </button>
-					
+
 					<!--====================== Mobile Navigation Start ======================-->
 					<header class="mobail_menu d-none d-block d-xs-block d-sm-block d-md-none d-lg-none d-xl-none">
 						<div class="container-fluid">
@@ -214,21 +215,21 @@
 										<a class="house_toggle" href="#0">
 											<i class="fa fa-bars" id="Capa_1" style="font-size:25px;color :red;"></i>
 										</a>
-										
+
 										<!-- .cd-dropdown -->
 									</div>
 									<nav class="cd-dropdown">
-                                              <div class="row mb-5">
-												<div class="col-10">
-													<h2><a href="index.html">Cabme</a></h2>
-													<p class="ml-4">demo@gmail.com</p>
-												</div>
+										<div class="row mb-5">
+											<div class="col-10">
+												<h2><a href="index.html">Cabme</a></h2>
+												<p class="ml-4">demo@gmail.com</p>
+											</div>
 											<div class="col-2">
 												<a href="#0" class="cd-close">Close</a>
 											</div>
-												
-											  </div>
-										
+
+										</div>
+
 
 										<ul class="cd-dropdown-content mobilelinks mt-3">
 
@@ -261,9 +262,9 @@
 
 										</ul>
 										<!-- .cd-dropdown-content -->
-										
+
 									</nav>
-									
+
 								</div>
 							</div>
 						</div>
@@ -913,7 +914,24 @@
 			</div>
 
 		</div>
+		<!--===========================  Footer Wrapper End ===========================-->
 
+		<div class="container-fluid" style="position: fixed;bottom: 0; background-color: #fff;z-index: 999;">
+			<div class="row text-center mobiledown">
+				<div class="col-6 p-3">
+					<a href="#" data-toggle="modal" data-target="#sortbyModal" data-dismiss="filterbyModal"> <img
+							src="images/sortbyimg.png" alt="sortbyimg"> Sort By</a>
+				</div>
+				<div class="col-6  p-3">
+					<a href="#" data-toggle="modal" data-target="#filterbyModal" data-dismiss="sortbyModal"> <img
+							src="images/filterimg.png" alt=""> Filters</a>
+				</div>
+			</div>
+		</div>
+
+
+
+		<!-- ======================================  Mobile Sort by & Filters End   ====================================== -->
 
 	</div>
 	<!-- x car book sidebar section Wrapper End -->
@@ -964,154 +982,103 @@
 
 	<!--===========================  Footer Wrapper End ===========================-->
 
-	<!-- ======================================  Mobile Sort by & Filters Start ====================================== -->
-
-
-	<div class="row text-center mobiledown">
-		<div class="col-6 p-3">
-			<a href="#" data-toggle="modal" data-target="#sortbyModal" data-dismiss="filterbyModal"> <img
-					src="images/sortbyimg.png" alt="sortbyimg"> Sort By</a>
-		</div>
-		<div class="col-6  p-3">
-			<a href="#" data-toggle="modal" data-target="#filterbyModal" data-dismiss="sortbyModal"> <img
-					src="images/filterimg.png" alt=""> Filters</a>
-		</div>
-	</div>
-
-
-	<!-- ======================================  Mobile Sort by & Filters End   ====================================== -->
 
 	<!--====== Sort By Modal ======-->
 
 	<div class="filterbyModal fade" id="filterbyModal" role="dialog">
-		<div class="modal-dialog">
+		<div class="filterbyModal-dialog modal-dialog">
 
 			<!-- Modal content-->
-			<div class="sortbyModal-content ">
+			<div class="sortbyModal-content modal-content">
 				<div class="modal-header p-1">
 					<div class="col-md-11 col-11 text-center">
-						<h6 class="modal-title">Sory By</h6>
+						<h6 class="modal-title">Filters</h6>
 					</div>
 					<div class="col-md-1 col-1"> <button type="button" class="close"
 							data-dismiss="modal">&times;</button>
 					</div>
-
 				</div>
-				<div class="modal-body p-0">
+				<!-- Segment -->
+				<div class="modal-body">
 					<!-- Segment -->
-					<div class="panel panel-default">
-						<h5 class="mb-2" style="font-weight: bold;">Segment</h5>
-						<div id="collapseOne" class="collapse show">
-							<div class="panel-body doflex">
-								<div class="x_slider_checkbox x_slider_checkbox_bottom_filter_use">
-									<input type="checkbox" id="seg1" name="cb">
-									<label for="seg1">Hatchback</label>
-								</div> &nbsp; &nbsp;
-								<div class="x_slider_checkbox x_slider_checkbox_bottom_filter_use">
-									<input type="checkbox" id="seg2" name="cb">
-									<label for="seg2">Sedan</label>
-								</div> &nbsp; &nbsp;
-								<div class="x_slider_checkbox x_slider_checkbox_bottom_filter_use">
-									<input type="checkbox" id="seg3" name="cb">
-									<label for="seg3">SUV</label>
-								</div>
-
-							</div>
+					<h5 class="mb-2" style="font-weight: bold;">Segment</h5>
+					<div class="doflex">
+						<div class="x_slider_checkbox x_slider_checkbox_bottom_filter_use">
+							<input type="checkbox" id="seg1" name="cb">
+							<label for="seg1">Hatchback</label>
+						</div> &nbsp; &nbsp;
+						<div class="x_slider_checkbox x_slider_checkbox_bottom_filter_use">
+							<input type="checkbox" id="Sed1" name="cb">
+							<label for="Sed1">Sedan</label>
+						</div> &nbsp; &nbsp;
+						<div class="x_slider_checkbox x_slider_checkbox_bottom_filter_use">
+							<input type="checkbox" id="SUV1" name="cb">
+							<label for="SUV1">SUV</label>
 						</div>
 					</div>
-					<hr>
-					<!-- Segment End -->
-					<!-- Brand -->
-					<div class="panel panel-default">
-						<h5 class="mb-2" style="font-weight: bold;">Brand</h5>
-						<div id="collapseTwo" class="collapse show">
-							<div class="panel-body doflex">
-								<div class="x_slider_checkbox x_slider_checkbox_bottom_filter_use">
-									<input type="checkbox" id="brand_1" name="cb">
-									<label for="brand_1">Hyundai</label>
-								</div> &nbsp; &nbsp;
-								<div class="x_slider_checkbox x_slider_checkbox_bottom_filter_use">
-									<input type="checkbox" id="brand_2" name="cb">
-									<label for="brand_2">Maruti</label>
-								</div> &nbsp; &nbsp;
-								<div class="x_slider_checkbox x_slider_checkbox_bottom_filter_use">
-									<input type="checkbox" id="brand_3" name="cb">
-									<label for="brand_3">Mahindra</label>
-								</div>
-								<div class="x_slider_checkbox x_slider_checkbox_bottom_filter_use">
-									<input type="checkbox" id="brand_3" name="cb">
-									<label for="brand_3">Tata</label>
-								</div> &nbsp; &nbsp;
-								<div class="x_slider_checkbox x_slider_checkbox_bottom_filter_use">
-									<input type="checkbox" id="brand_3" name="cb">
-									<label for="brand_3">Audi</label>
-								</div>
-							</div>
-
-
+                      <!-- Brand -->
+					<h5 class="mb-2" style="font-weight: bold;">Brand</h5>
+					<div class="doflex">
+						<div class="x_slider_checkbox x_slider_checkbox_bottom_filter_use">
+							<input type="checkbox" id="Hyu1" name="cb">
+							<label for="Hyu1">Hyundai</label>
+						</div> &nbsp; &nbsp;
+						<div class="x_slider_checkbox x_slider_checkbox_bottom_filter_use">
+							<input type="checkbox" id="Mar" name="cb">
+							<label for="Mar">Maruti</label>
+						</div> &nbsp; &nbsp;
+						<div class="x_slider_checkbox x_slider_checkbox_bottom_filter_use">
+							<input type="checkbox" id="Mahi" name="cb">
+							<label for="Mahi">Mahindra</label>
 						</div>
 					</div>
-				</div>
-				<hr>
-				<!-- Brand End -->
-				<!-- Fuel Type -->
-				<div class="panel panel-default">
+
+                      <!-- Fuel Type -->
 					<h5 class="mb-2" style="font-weight: bold;">Fuel Type</h5>
-					<div id="collapseThree" class="collapse show">
-						<div class="panel-body doflex">
-							<div class="x_slider_checkbox x_slider_checkbox_bottom_filter_use">
-								<input type="checkbox" id="c10" name="cb">
-								<label for="c10">Diesel</label>
-							</div> &nbsp; &nbsp;
-							<div class="x_slider_checkbox x_slider_checkbox_bottom_filter_use">
-								<input type="checkbox" id="c11" name="cb">
-								<label for="c11">Petrol</label>
-							</div>
-						</div>
+					<div class="doflex">
+						<div class="x_slider_checkbox x_slider_checkbox_bottom_filter_use">
+							<input type="checkbox" id="Diesel" name="cb">
+							<label for="Diesel">Diesel</label>
+						</div> &nbsp; &nbsp;
+						<div class="x_slider_checkbox x_slider_checkbox_bottom_filter_use">
+							<input type="checkbox" id="Petrol" name="cb">
+							<label for="Petrol">Petrol</label>
+						</div> &nbsp; &nbsp;
 					</div>
-				</div>
-				<hr>
-				<!-- Fuel Type End -->
-				<!-- Transmission Type -->
-				<div class="panel panel-default">
-					<h5 class="mb-2" style="font-weight: bold;">Transmission Type</h5>
-					<div id="collapseFour" class="collapse show">
-						<div class="panel-body doflex">
-							<div class="x_slider_checkbox x_slider_checkbox_bottom_filter_use">
-								<input type="checkbox" id="Automatic" name="cb">
-								<label for="Automatic">Automatic</label>
-							</div> &nbsp; &nbsp;
-							<div class="x_slider_checkbox x_slider_checkbox_bottom_filter_use">
-								<input type="checkbox" id="Manual" name="cb">
-								<label for="Manual">Manual</label>
-							</div>
-						</div>
-					</div>
-				</div>
-				<hr>
-				<!-- Transmission Type End -->
-				<!-- Seating Capacity -->
-				<div class="panel panel-default">
-					<h5 class="mb-2" style="font-weight: bold;">Seating Capacity</h5>
-					<div id="collapseFive" class="collapse show">
-						<div class="panel-body doflex">
-							<div class="x_slider_checkbox x_slider_checkbox_bottom_filter_use">
-								<input type="checkbox" id="5_Seats" name="cb">
-								<label for="5_Seats">5 Seats</label>
-							</div> &nbsp; &nbsp;
-							<div class="x_slider_checkbox x_slider_checkbox_bottom_filter_use">
-								<input type="checkbox" id="7_Seats" name="cb">
-								<label for="7_Seats">7 Seats</label>
-							</div>
-						</div>
-					</div>
-				</div>
-				<hr>
-				<!-- Seating Capacity End -->
 
+                      <!-- Transmission Type -->
+					<h5 class="mb-2" style="font-weight: bold;">Transmission Type</h5>
+					<div class="doflex">
+						<div class="x_slider_checkbox x_slider_checkbox_bottom_filter_use">
+							<input type="checkbox" id="Automatic" name="cb">
+							<label for="Automatic">Automatic</label>
+						</div> &nbsp; &nbsp;
+						<div class="x_slider_checkbox x_slider_checkbox_bottom_filter_use">
+							<input type="checkbox" id="Manual" name="cb">
+							<label for="Manual">Manual</label>
+						</div> &nbsp; &nbsp;
+					</div>
+
+                      <!-- Seating Capacity -->
+					<h5 class="mb-2" style="font-weight: bold;">Seating Capacity</h5>
+					<div class="doflex">
+						<div class="x_slider_checkbox x_slider_checkbox_bottom_filter_use">
+							<input type="checkbox" id="5-Seats" name="cb">
+							<label for="5-Seats"> 5 Seats </label>
+						</div> &nbsp; &nbsp;
+						<div class="x_slider_checkbox x_slider_checkbox_bottom_filter_use">
+							<input type="checkbox" id="7-Seats" name="cb">
+							<label for="7-Seats">7 Seats </label>
+						</div> &nbsp; &nbsp;
+					</div>
+					
+
+
+
+				</div>
+				<!-- Segment End -->
 			</div>
 		</div>
-	</div>
 	</div>
 
 	<!--======Sort By Modal End ======-->
