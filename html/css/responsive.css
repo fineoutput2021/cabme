@@ -226,7 +226,34 @@
 	}
 	
 }
+@media (min-width: 767px)
+{
+	.mobilefaq
+	{
+		display: none;
+	}
+}
 @media (max-width: 767px){
+	
+	.x_ln_car_heading_wrapper h3 
+	{
+		font-size: 16px;
+	}
+	.imagewidth p 
+{
+	font-size: 12px;
+}
+	.x_slider_form_main_wrapper {
+		padding: 10px;
+	}
+	.desktopfaq
+	{
+		display: none;
+	}
+	.owl-nav
+	{
+		display: none !important;
+	}
 	.desktopmainslider
 	{
 		display: none;
@@ -240,7 +267,7 @@
 	}
 	.imagewidth img 
 	{
-		width: 50% !important;
+		width: 30% !important;
 	}
 	.mobileimageicon
 	{

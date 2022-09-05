@@ -29,18 +29,18 @@ jQuery(document).ready(function($) {
   });
 
   // Menu js for Position fixed
-  $(window).scroll(function() {
-    var window_top = $(window).scrollTop() + 1;
-    if (window_top > 160) {
-      $('.hs_navigation_header_wrapper').addClass(
-        'menu_fixed animated fadeInDown'
-      );
-    } else {
-      $('.hs_navigation_header_wrapper').removeClass(
-        'menu_fixed animated fadeInDown'
-      );
-    }
-  });
+  // $(window).scroll(function() {
+  //   var window_top = $(window).scrollTop() + 1;
+  //   if (window_top > 160) {
+  //     $('.hs_navigation_header_wrapper').addClass(
+  //       'menu_fixed animated fadeInDown'
+  //     );
+  //   } else {
+  //     $('.hs_navigation_header_wrapper').removeClass(
+  //       'menu_fixed animated fadeInDown'
+  //     );
+  //   }
+  // });
 
   // ===== Scroll to Top ====
   $(window).scroll(function() {
@@ -112,7 +112,7 @@ jQuery(document).ready(function($) {
       margin: 10,
       autoplay: true,
       responsiveClass: true,
-      smartSpeed: 1200,
+      smartSpeed: 1300,
       navText: [
         '<i class="flaticon-left-arrow" aria-hidden="true"></i>',
         '<i class="flaticon-right-arrow" aria-hidden="true"></i>',
@@ -140,9 +140,39 @@ jQuery(document).ready(function($) {
     $('.btc_ln_slider_wrapper .owl-carousel').owlCarousel({
       loop: true,
       margin: 10,
-      autoplay: false,
+      autoplay: true,
       responsiveClass: true,
-      smartSpeed: 1200,
+      smartSpeed: 1250,
+      navText: [
+        '<i class="flaticon-left-arrow" aria-hidden="true"></i>',
+        '<i class="flaticon-right-arrow" aria-hidden="true"></i>',
+      ],
+      responsive: {
+        0: {
+          items: 1,
+          nav: true,
+        },
+        600: {
+          items: 2,
+          nav: true,
+        },
+        1000: {
+          items: 3,
+          nav: true,
+          loop: true,
+          margin: 20,
+        },
+      },
+    });
+  });
+
+  $(document).ready(function() {
+    $('.btc_ln_slider_wrapper_2 .owl-carousel').owlCarousel({
+      loop: true,
+      margin: 10,
+      autoplay: true,
+      responsiveClass: true,
+      smartSpeed: 1400,
       navText: [
         '<i class="flaticon-left-arrow" aria-hidden="true"></i>',
         '<i class="flaticon-right-arrow" aria-hidden="true"></i>',
@@ -289,7 +319,7 @@ jQuery(document).ready(function($) {
       center: true,
       loop: true,
       nav: false,
-      autoplay: false,
+      autoplay: true,
       autoplayTimeout: 2000,
       margin: 0,
       responsive: {
@@ -318,7 +348,7 @@ jQuery(document).ready(function($) {
       margin: 10,
       autoplay: true,
       responsiveClass: true,
-      smartSpeed: 1200,
+      smartSpeed: 1000,
       navText: [
         '<i class="flaticon-left-arrow"></i>',
         '<i class="flaticon-right-arrow"></i>',

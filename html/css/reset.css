@@ -969,8 +969,8 @@ Main Components
     transition: all 0.5s;
 }
 .cd-dropdown-content li a:hover{
-	background:#3b45b1;
-	color:#ffffff;
+	/* background:#3b45b1; */
+	/* color:#ffffff; */
 	    -webkit-transition: all 0.5s;
     -o-transition: all 0.5s;
     -ms-transition: all 0.5s;

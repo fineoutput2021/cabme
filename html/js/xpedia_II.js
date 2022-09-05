@@ -101,7 +101,7 @@ $(document).ready(function() {
   })(jQuery);
 
   /*----------------------------------------------------------------------------------*/
-  /* 		Date and Tiem Picker
+  /* 		Date and Time Picker
 /*-----------------------------------------------------------------------------------*/
   $('.datepicker').datepicker({ dateFormat: 'D dd M yy' });
   $('.horizontal-datepicker').datepicker({ dateFormat: 'dd M yy' });
@@ -140,7 +140,7 @@ $(document).ready(function() {
     $('.btc_ln_slider_wrapper .owl-carousel').owlCarousel({
       loop: true,
       margin: 10,
-      autoplay: false,
+      autoplay: true,
       responsiveClass: true,
       smartSpeed: 1200,
       navText: [
@@ -266,7 +266,7 @@ $(document).ready(function() {
       center: true,
       loop: true,
       nav: false,
-      autoplay: false,
+      autoplay: true,
       autoplayTimeout: 2000,
       margin: 0,
       responsive: {

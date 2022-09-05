@@ -30,6 +30,7 @@ body, html {
     -ms-transition: all 0.5s;
     -moz-transition: all 0.5s;
     transition: all 0.5s;
+	background-color:#F1F4F7;
 }
 a {
 	color: #797979;
@@ -1324,7 +1325,7 @@ width:100%;
 }
 .x_slider_form_heading_wrapper{
 	background: red;
-    width: 320px;
+    width: auto;
     position: absolute;
     top: 20px;
     height: 50px;
@@ -1388,7 +1389,50 @@ width:100%;
 	
 }
 
-
+.selectcity
+{
+	border: 1px solid rgb(223, 220, 220);
+	padding: 10px 30px;
+	border-radius: 5px;
+	cursor: pointer;
+	display: flex;
+}
+.selectcity h5 
+{
+	text-align: center;
+	font-weight: bold;
+}
+.selectcity .fa-map-marker
+{
+	color: #000;
+	font-size: 20px;
+	margin-right: 10px;
+}
+.citieslist
+{
+	padding: 15px 17px;
+	font-weight: bold;
+}
+.citieslist2
+{
+	padding: 12px 17px;
+}
+.citieslist2:hover 
+{
+	background-color: rgb(224, 44, 44);
+	transition: all 450ms cubic-bezier(0.23, 1, 0.32, 1) 0ms;
+	color: #fff;
+	cursor: pointer;
+	border-radius: 5px;
+}
+.citieslist:hover 
+{
+	background-color: rgb(224, 44, 44);
+	transition: all 450ms cubic-bezier(0.23, 1, 0.32, 1) 0ms;
+	color: #fff;
+	cursor: pointer;
+	border-radius: 5px;
+}
 
 /* loginmodal  End */
 /* Modal Css */
@@ -1443,7 +1487,24 @@ width:100%;
 	padding: 20px;
 	border-radius: 20px;
 }
-
+.imagewidth h5
+{
+  font-weight: bold;
+}
+.invoicebtn:hover 
+{
+	color: #fff;
+}
+.invoicebtn
+{
+	background-color: red;
+	color: #fff;
+	border: none;
+	padding: 10px;
+	text-transform: uppercase;
+	border-radius: 5px;
+	cursor: pointer;
+}
 /* Modal Css End */
 .x_slider_form_main_wrapper{
 	padding:30px;
@@ -1458,6 +1519,7 @@ width:100%;
 }
 .x_slider_form_heading_wrapper h3{
 	font-size:18px;
+	margin-left: 10px;
 	font-weight:600;
 	color:#ffffff;
 	text-transform:uppercase;
@@ -1629,6 +1691,19 @@ width:100%;
 	z-index: 99;
 }
 
+/* scrollbr */
+::-webkit-scrollbar
+{
+	background-color: #fff;
+	width: 5px;
+}
+::-webkit-scrollbar-thumb
+{
+	background-color: #a30105;
+	
+}
+
+
 /* profile */
 /* .profiletable
 {
@@ -1639,8 +1714,13 @@ width:100%;
 	width: 100%;
 	box-shadow: 0px 0 8px rgb(0 0 0 / 10%);
 	background-color: #fff;
+	padding: 20px;
+	border-radius: 10px;
 }
-
+.profiletable .tr1
+{
+	border-bottom: 1px solid rgb(235, 231, 231);
+}
 .profiletable tbody tr td 
 {
 	padding: 10px;
@@ -2107,7 +2187,7 @@ width:100%;
     color: #ffffff;
     background-color: red;
 	border-color:transparent;
-	font-size:14px;
+	font-size:13px;
 	font-weight:700;
 	text-transform:uppercase;
 	font-family: 'Raleway', sans-serif;
@@ -2269,6 +2349,7 @@ width:100%;
 	border: none;
 	border-radius: 5px;
 	cursor: pointer;
+	box-shadow: 0px 1px 10px rgb(209 209 209);
 }
 .x_car_offer_heading li a{
 	float:left;
@@ -3847,6 +3928,18 @@ width:100%;
 	right: 0px;
 	font-size: 12px;
 }
+
+.mobileaccordion .panel-default > .panel-heading .panel-title a:before {
+	content: "\f0d7";
+	font-family: 'FontAwesome';
+	color: #FFF;
+	padding: 0px;
+	color: #666666;
+	float: right;
+	position: absolute;
+	right: -16px;
+	font-size: 12px;
+}
 .accordion .panel-default > .panel-heading .panel-title a.collapsed:before {
 	content: "\f0d7";
 }
@@ -3865,6 +3958,16 @@ width:100%;
 	width: 100%;
 	background: none;
 	font-weight: 700;
+	line-height: 20px;
+	display: inline-block;
+	color: #1e232b;
+}
+.mobileaccordion .panel-default > .panel-heading a {
+	text-decoration: none;
+	font-size: 23px;
+	width: 100%;
+	background: none;
+	font-weight: 400;
 	line-height: 20px;
 	display: inline-block;
 	color: #1e232b;
@@ -4222,7 +4325,7 @@ width:100%;
 	padding-bottom: 20px;
 }
 .x_car_acc_filter_bottom_total{
-	background:#f2f2f2;
+	/* background:#f2f2f2; */
 	padding:30px 20px;
 	    -webkit-border-bottom-left-radius: 10px;
     -moz-border-bottom-left-radius: 10px;
@@ -4804,7 +4907,7 @@ input[type=number] {
 	display: inline-block;
 	margin-bottom: 5px;
 	padding-bottom: 8px;
-	color:##111111;
+	color:#111111;
 }
 .progressOne .progress {
 	height: 5px;

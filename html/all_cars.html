@@ -17,6 +17,41 @@
 </head>
 
 <body>
+	
+	<!--====== Select City Modal ======-->
+	<div class="modal fade " id="selectcity" role="dialog">
+		<div class="modal-dialog " style="width: 410px;">
+
+			<!-- Modal content-->
+			<div class="modal-content ">
+				<div class="modal-header">
+					<h4 class="modal-title">Select City</h4>
+					<button type="button" class="close" data-dismiss="modal">&times;</button>
+				</div>
+				<div class="modal-body" style="border-bottom: 1px solid rgb(184, 183, 183);">
+					<p style="font-size:18px;">Top Cities</p>
+					<h5 class="citieslist"> <img src="images/jaipur.webp" alt="jaipur" width="10%" style="margin-top: -13px;"> Jaipur</h5>
+					<h5 class="citieslist">Banglore</h5>
+					<h5 class="citieslist">Mumbai</h5>
+					<h5 class="citieslist">Chennai</h5>
+					<h5 class="citieslist">Pune</h5>
+
+					<p style="font-size: 16px;">Other Cities</p>
+					<h5 class="citieslist2">Kolkata</h5>
+					<h5 class="citieslist2">Ahemdabad</h5>
+					<h5 class="citieslist2">Kochi</h5>
+					<h5 class="citieslist2">Nagpur</h5>
+					<h5 class="citieslist2">Surat</h5>
+					<h5 class="citieslist2">Triputi</h5>
+				</div>
+			
+			</div>
+
+		</div>
+	</div>
+
+	<!--====== Select City Modal End ======-->
+	
 
 	<!--====== Sort By Modal ======-->
 
@@ -279,14 +314,12 @@
 				<div class="row">
 
 					<div class="col-md-3">
-
-						<div class="x_slider_select x_slider_select_2 mt-0">
-							<select class="myselect">
-								<option>Select Car</option>
-								<option>BMW</option>
-								<option>Audi</option>
-								<option>Maruti</option>
-							</select> <i class="fa fa-map-marker"></i>
+						<div class="col-md-12"  data-toggle="modal"
+						data-target="#selectcity" data-dismiss="modal" id="ss">
+							<div class="selectcity">
+								<i class="fa fa-map-marker"></i>
+								<h5>Select City</h5>
+							</div>
 						</div>
 					</div>
 
@@ -986,7 +1019,7 @@
 	<!--====== Sort By Modal ======-->
 
 	<div class="filterbyModal fade" id="filterbyModal" role="dialog">
-		<div class="filterbyModal-dialog modal-dialog">
+		<div class="sortbyModal-dialog modal-dialog">
 
 			<!-- Modal content-->
 			<div class="sortbyModal-content modal-content">
