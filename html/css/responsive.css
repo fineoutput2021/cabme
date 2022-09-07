@@ -234,7 +234,10 @@
 	}
 }
 @media (max-width: 767px){
-	
+	.carmanuals img 
+	{
+		width: 10% !important;
+	}
 	.x_ln_car_heading_wrapper h3 
 	{
 		font-size: 16px;

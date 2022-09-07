@@ -1618,6 +1618,11 @@ width:100%;
     font-size: 14px;
     font-family: 'FontAwesome';
 }
+
+.datepickerr label 
+{
+	width: 100%;
+}
 .ui-datepicker-current-day .ui-state-default {
 	background: #e8e8e8;
 }
@@ -1852,6 +1857,14 @@ width:100%;
 		padding-bottom: 15px;
 }
 .form-sec-header input{
+	 border: 1px solid #eeeeee;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    border-radius: 10px;
+	height:50px;
+	width:100%;
+}
+.datepickerr input{
 	 border: 1px solid #eeeeee;
     -webkit-border-radius: 10px;
     -moz-border-radius: 10px;
@@ -3171,9 +3184,9 @@ width:100%;
     left: 0;
 	top:0;
 	color:#111111;
-	width:90px;
-	height:50px;
-	line-height:50px;
+	width:60px;
+	height:40px;
+	line-height:40px;
 	box-shadow:0px 0 8px rgba(0, 0, 0, 0.1);
 	-webkit-border-radius: 5px;
     -moz-border-radius: 5px;
@@ -3200,9 +3213,9 @@ width:100%;
     position: absolute;
 	box-shadow:0px 0 8px rgba(0, 0, 0, 0.1);
 	color:#111111;
-	width:90px;
-	height:50px;
-	line-height:50px;
+	width:60px;
+	height:40px;
+	line-height:40px;
 	-webkit-border-radius: 5px;
     -moz-border-radius: 5px;
     border-radius: 5px;
@@ -3918,7 +3931,7 @@ width:100%;
 	letter-spacing: 1px;
 }
 .accordion .panel-default > .panel-heading .panel-title a:before {
-	content: "\f0d7";
+	content: "-";
 	font-family: 'FontAwesome';
 	color: #FFF;
 	padding: 0px;
@@ -3926,22 +3939,10 @@ width:100%;
 	float: right;
 	position: absolute;
 	right: 0px;
-	font-size: 12px;
-}
-
-.mobileaccordion .panel-default > .panel-heading .panel-title a:before {
-	content: "\f0d7";
-	font-family: 'FontAwesome';
-	color: #FFF;
-	padding: 0px;
-	color: #666666;
-	float: right;
-	position: absolute;
-	right: -16px;
-	font-size: 12px;
+	font-size: 20px;
 }
 .accordion .panel-default > .panel-heading .panel-title a.collapsed:before {
-	content: "\f0d7";
+	content: "+";
 }
 .accordion .panel-default > .panel-heading {
 	background-color: none;
