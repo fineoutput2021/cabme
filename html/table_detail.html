@@ -14,10 +14,61 @@
 	<link rel="stylesheet" type="text/css" href="css/cabme.css" />
 	<!--favicon-->
 	<link rel="shortcut icon" type="image/png" href="images/cabme_logo.png" />
-
 </head>
 
 <body>
+
+
+	<!--======proof Modal ======-->
+
+	<div class="modal fade" id="proofModal" role="dialog">
+		<div class="modal-dialog proofModal">
+
+			<!-- Modal content-->
+			<div class="modal-content loginModal-content">
+				<div class="modal-header">
+					<div class="col-md-11 text-center">
+						<h4 class="modal-title">Eligibilt & ID</h4>
+					</div>
+
+					<div class="col-md-1"> <button type="button" class="close" data-dismiss="modal">&times;</button>
+					</div>
+
+				</div>
+				<div class="modal-body">
+					<div class="formsix-pos">
+						<div class="form-sec-header proofdateofbirth mb-5">
+							<label class="cal-icon">
+								<input type="text" placeholder="Date Of Birth" class="form-control datepicker">
+							</label>
+						</div>
+						<div class="row mb-4">
+							<select class="proofselect">
+								<option value="aadhar">Aadhar Card</option>
+								<option value="passport">Passport</option>
+							</select>
+						</div>
+						<div class="form-group mb-4">
+							<input type="text" class="form-control modalinput" required="" placeholder="Aadhar Number*">
+						</div>
+						<div class="form-group mb-4">
+							<input type="text" class="form-control modalinput" required="" placeholder="Passport*">
+						</div>
+					</div>
+					<div class="row justify-content-center mt-2">
+						<div class="x_slider_checkbox x_slider_checkbox_bottom_filter_use">
+							<input type="checkbox" id="agree" name="cb">
+							<label for="agree">Lorem ipsum dolor sit amet consectetur adipisicing elit.</label>
+						</div>
+					</div>
+					<div class="row justify-content-center mt-2"><button class="btn loginbtn">Login</button></div>
+
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!--====== proof Modal End ======-->
 
 	<!--======login Modal ======-->
 
@@ -162,7 +213,8 @@
 							<div class="row">
 								<div class="col-xs-6 col-sm-6 col-6">
 									<div class="hs_logo">
-										<img src="images/cabme_logo.png" alt="Logo" title="Logo" width="90%">
+										<a href="index.html">
+											<img src="images/cabme_logo.png" alt="Logo" title="Logo" width="90%">
 										</a>
 									</div>
 								</div>
@@ -232,148 +284,126 @@
 		</div>
 	</div>
 	<!-- HeaqderEnd -->
+	<!--==================================== Content =============================-->
 
-	<!--=================================== FAQ's Start ===================================-->
+<style>
+	.profiletable th 
+	{
+		text-align: left !important;
+	}
+	@media(min-width: 768px)
+	{
+		.mobiletable
+		{
+			display: none;
+		}
+	}
+</style>
 
-
-
-
-		<div class="x_about_seg_main_wrapper float_left padding_tb_100">
-			<div class="container">
-				<div class="row">
-					<h4>About Cabme</h4>
-				</div>
-				<div class="row">
-					<div class="col-md-12 mt-3">
-						<div class="car-filter accordion x_inner_car_acc_accor mt-2">
-							<div class="panel panel-default x_car_inner_acc_acordion_padding">
-								<div class="panel-heading">
-									<h5 class="panel-title"> <a data-toggle="collapse" href="#collapseOne"
-											class=" panel-collapse collapse"> What Is Cabme?</a> </h5>
-								</div>
-								<div id="collapseOne" class="collapse show">
-									<div class="panel-body">
-										<div class="x_car_acc_filter_date">
-											<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ullam
-												consectetur a nisi ex numquam ipsam amet sit, consequuntur non quae
-												provident ut facere placeat nostrum voluptates molestias quidem. Sint,
-												omnis!</p>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-
-						<div class="car-filter accordion x_inner_car_acc_accor mt-2">
-							<div class="panel panel-default x_car_inner_acc_acordion_padding">
-								<div class="panel-heading">
-									<h5 class="panel-title"> <a data-toggle="collapse" href="#collapseTwo"
-											class="collapse">Am I eligible to use Cabme's services?</a> </h5>
-								</div>
-								<div id="collapseTwo" class="collapse show">
-									<div class="panel-body">
-										<div class="x_car_acc_filter_date">
-											<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ullam
-												consectetur a nisi ex numquam ipsam amet sit, consequuntur non quae
-												provident ut facere placeat nostrum voluptates molestias quidem. Sint,
-												omnis!</p>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-
-						<div class="car-filter accordion x_inner_car_acc_accor mt-2">
-							<div class="panel panel-default x_car_inner_acc_acordion_padding">
-								<div class="panel-heading">
-									<h5 class="panel-title"> <a data-toggle="collapse" href="#collapseThree"
-											class="collapse">Which are the areas where I can avail Cabme's services?</a>
-									</h5>
-								</div>
-								<div id="collapseThree" class="collapse show">
-									<div class="panel-body">
-										<div class="x_car_acc_filter_date">
-											<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ullam
-												consectetur a nisi ex numquam ipsam amet sit, consequuntur non quae
-												provident ut facere placeat nostrum voluptates molestias quidem. Sint,
-												omnis!</p>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
+	<div class="container-fluid mobiletable" style="margin-top:100px; margin-bottom: 40px;">
+		<div class="row">
+			<div class="col-md-12">
+				<table class="profiletable p-2">
+					<thead>
+                        <tr>
+							<th>Car Model</th>
+							<td>Modal</td>
+						</tr>
+						<tr>
+							<th>Booking ID</th>
+							<td>123456</td>
+						</tr>
+						<tr>
+							<th>Begin Date</th>
+							<td>12.03.2021</td>
+						</tr>
+						<tr>
+							<th>Pickup Location</th>
+							<td>jaipur</td>
+						</tr>
+						<tr>
+							<th>Delivery Location</th>
+							<td>Delhi</td>
+						</tr>
+						<tr>
+							<th>Status</th>
+							<td>Completed</td>
+						</tr>
+						<tr>
+							<th>Invoice</th>
+							<td> <a href="#" style="color: red;">Download</a> </td>
+						</tr>
+					</thead>
+				</table>
 			</div>
 		</div>
+	</div>
 
-		<!--=================================== FAQ's End ===================================-->
+	<!--==================================== Content End=============================-->
 
-		<!--===========================  Footer Wrapper Start ===========================-->
 
-		<div class="x_footer_bottom_main_wrapper float_left mt-3">
-			<div class="container">
-				<div class="row">
-					<div class="col-xl-4 col-lg-4 col-md-4 col-sm-12 col-12">
-						<div class="x_footer_bottom_box_wrapper float_left">
-							<img src="images/cabme_logo.png" alt="">
-							<p>© 2022 Primemover Mobility Technologies Pvt Ltd. All rights reserved</p>
 
-						</div>
+
+	<!--===========================  Footer Wrapper Start ===========================-->
+
+	<div class="x_footer_bottom_main_wrapper float_left">
+		<div class="container">
+			<div class="row">
+				<div class="col-xl-4 col-lg-4 col-md-4 col-sm-12 col-12">
+					<div class="x_footer_bottom_box_wrapper float_left">
+						<img src="images/cabme_logo.png" alt="">
+						<p>© 2022 Primemover Mobility Technologies Pvt Ltd. All rights reserved</p>
+
 					</div>
-					<div class="col-xl-4 col-lg-4 col-md-4 col-sm-12 col-12">
-						<div class="x_footer_bottom_box_wrapper_second float_left">
-							<h3>Information</h3>
-							<ul>
-								<li><a href="#"><i class="fa fa-long-arrow-right"></i> &nbsp; Home</a>
-								</li>
-								<li><a href="about.html"><i class="fa fa-long-arrow-right"></i> &nbsp; About Us</a>
-								</li>
-								<li><a href="#"><i class="fa fa-long-arrow-right"></i> &nbsp; FAQ's</a>
-								</li>
-								<li><a href="#"><i class="fa fa-long-arrow-right"></i> &nbsp; Policy</a>
-								</li>
-								<li><a href="#"><i class="fa fa-long-arrow-right"></i> &nbsp; Blog</a>
-								</li>
-							</ul>
-						</div>
-					</div>
-					<div class="col-xl-4 col-lg-4 col-md-4 col-sm-12 col-12">
-						<div class="x_footer_bottom_box_wrapper_second float_left mb-5">
-							<h3>Social</h3>
-						</div>
-						<div class="row fsocialicons">
-							<a href="#"><i class="fa fa-facebook" style="font-size: 25px;"></i></a>
-							<a href="#"><i class="fa fa-twitter" style="font-size: 25px;"></i></a>
-							<a href="#"><i class="fa fa-instagram" style="font-size: 25px;"></i></a>
-							<a href="#"><i class="fa fa-youtube" style="font-size: 25px;"></i></a>
-							<a href="#"><i class="fa fa-linkedin" style="font-size: 25px;"></i></a>
-						</div>
-					</div>
-
 				</div>
+				<div class="col-xl-4 col-lg-4 col-md-4 col-sm-12 col-12">
+					<div class="x_footer_bottom_box_wrapper_second float_left">
+						<h3>Information</h3>
+						<ul>
+							<li><a href="#"><i class="fa fa-long-arrow-right"></i> &nbsp; Home</a>
+							</li>
+							<li><a href="#"><i class="fa fa-long-arrow-right"></i> &nbsp; FAQ's</a>
+							</li>
+							<li><a href="#"><i class="fa fa-long-arrow-right"></i> &nbsp; Policy</a>
+							</li>
+							<li><a href="#"><i class="fa fa-long-arrow-right"></i> &nbsp; Blog</a>
+							</li>
+						</ul>
+					</div>
+				</div>
+				<div class="col-xl-4 col-lg-4 col-md-4 col-sm-12 col-12">
+					<div class="x_footer_bottom_box_wrapper_second float_left mb-5">
+						<h3>Social</h3>
+					</div>
+					<div class="row fsocialicons">
+						<a href="#"><i class="fa fa-facebook" style="font-size: 25px;"></i></a>
+						<a href="#"><i class="fa fa-twitter" style="font-size: 25px;"></i></a>
+						<a href="#"><i class="fa fa-instagram" style="font-size: 25px;"></i></a>
+						<a href="#"><i class="fa fa-youtube" style="font-size: 25px;"></i></a>
+						<a href="#"><i class="fa fa-linkedin" style="font-size: 25px;"></i></a>
+					</div>
+				</div>
+
 			</div>
 		</div>
+	</div>
 
-		<!--===========================  Footer Wrapper End ===========================-->
+	<!--===========================  Footer Wrapper End ===========================-->
 
-		<script src="js/jquery-3.3.1.min.js"></script>
-		<script src="js/bootstrap.min.js"></script>
-		<script src="js/modernizr.js"></script>
-		<script src="js/select2.min.js"></script>
-		<script src="js/jquery.menu-aim.js"></script>
-		<script src="js/jquery-ui.js"></script>
-		<script src="js/jquery.nice-select.min.js"></script>
-		<script src="js/owl.carousel.js"></script>
-		<script src="js/own-menu.js"></script>
-		<script src="js/jquery.countTo.js"></script>
-		<script src="js/jquery.inview.min.js"></script>
-		<script src="js/jquery.bxslider.min.js"></script>
-		<script src="js/jquery.magnific-popup.js"></script>
-		<script src="js/xpedia.js"></script>
-		<!-- custom js-->
+	<script src="js/jquery-3.3.1.min.js"></script>
+	<script src="js/bootstrap.min.js"></script>
+	<script src="js/modernizr.js"></script>
+	<script src="js/select2.min.js"></script>
+	<script src="js/jquery.menu-aim.js"></script>
+	<script src="js/jquery-ui.js"></script>
+	<script src="js/jquery.nice-select.min.js"></script>
+	<script src="js/owl.carousel.js"></script>
+	<script src="js/own-menu.js"></script>
+	<script src="js/jquery.bxslider.min.js"></script>
+	<script src="js/jquery.magnific-popup.js"></script>
+	<script src="js/xpedia.js"></script>
+	<!-- custom js-->
 </body>
-
 
 
 </html>

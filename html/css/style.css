@@ -1780,6 +1780,72 @@ width:100%;
 	padding-bottom:5px;
 	border-radius: 20px;
 }
+.profiletable_2
+{
+	width: 100%;
+	box-shadow: 0px 0 8px rgb(0 0 0 / 10%);
+	background-color: #fff;
+	padding: 20px;
+	border-radius: 10px;
+}
+.profiletable_2 .tr1
+{
+	border-bottom: 1px solid rgb(235, 231, 231);
+}
+.profiletable_2 tbody tr td 
+{
+	padding: 10px;
+	border-right: 1px solid rgb(235, 231, 231);
+	text-align: center;
+}
+.profiletable_2 thead tr th 
+{
+	padding: 10px;
+	border-right: 1px solid rgb(235, 231, 231);
+	text-align: center;
+}
+.profiletable_2  tbody .activespan
+{
+	/* background-color: green; */
+	color: #fff;
+	padding: 2px 10px;
+	padding-bottom:5px;
+	border-radius: 20px;
+}
+.profiletable_2  tbody .pendingspan
+{
+	/* background-color: yellow; */
+	color: #fff;
+	padding: 2px 10px;
+	padding-bottom:5px;
+	border-radius: 20px;
+}
+.doflex
+{
+	display: flex;
+	flex-wrap: wrap;
+}
+.mobiledown
+{
+	background-color: #fff;
+	position: sticky !important;
+	bottom: 0 !important;
+	z-index: 1051;
+}
+.sortul li
+{
+	text-align: center;
+	padding: 10px;
+	border-bottom: 1px solid rgb(202, 200, 200);
+}
+.profiletable_2  tbody .completedspan
+{
+	/* background-color: red; */
+	color: #fff;
+	padding: 2px 10px;
+	padding-bottom:5px;
+	border-radius: 20px;
+}
 /* profile */
 .lightgry-bg.bottom-symble:after {
 	border-color: #f3f3f3 transparent transparent transparent;
@@ -2089,6 +2155,196 @@ width:100%;
     -moz-transition: all 0.5s;
     transition: all 0.5s;
 }
+
+/* modal btns */
+@media (max-width: 767px)
+{
+	.rupeebox
+	{
+		padding:auto !important;
+	}
+	.rupeebox_2
+	{
+		padding:auto!important;
+	}
+	#rupeebox_3
+	{
+		padding: 10px 2px;
+	}
+	.booking_1
+	{
+		display: none;
+	}
+	
+}
+@media (min-width: 768px)
+{
+	.booking_2
+	{
+		display: none;
+	}
+}
+.rupeebox
+	{
+		border: 1px solid black;
+		padding:10px 20px;
+		color: #fff;
+		border-radius: 10px;
+	}
+	.rupeebox_2
+	{
+		border: 1px solid black;
+		padding:10px 20px;
+		color: #000;
+		border-radius: 10px;
+	}
+	.rupeebox.active
+	{
+		background-color: black;
+	}
+	.rupeebox:hover 
+	{
+		color: #fff;
+	}
+
+/* left right lines */
+
+.bookingline {
+	/* font-family: sans-serif; */
+	text-align: center;
+	font-size: 30px;
+	max-width: 600px;
+	position: relative;
+  }
+  .bookingline:before {
+	content: "";
+	display: block;
+	width: 25%;
+	height: 1px;
+	background: #191970;
+	left: 0;
+	top: 50%;
+	position: absolute;
+  }
+  .bookingline:after {
+	content: "";
+	display: block;
+	width: 25%;
+	height: 1px;
+	background: #191970;
+	right: 0;
+	top: 50%;
+	position: absolute;
+  }
+.tolines {
+	/* font-family: sans-serif; */
+	text-align: center;
+	/* font-size: 30px; */
+	max-width: 600px;
+	position: relative;
+  }
+  .tolines:before {
+	content: "";
+	display: block;
+	width: 25%;
+	height: 1px;
+	background: #191970;
+	left: 0;
+	top: 50%;
+	position: absolute;
+  }
+  .tolines:after {
+	content: "";
+	display: block;
+	width: 25%;
+	height: 1px;
+	background: #191970;
+	right: -1px;
+	top: 50%;
+	position: absolute;
+  }
+.implines {
+	/* font-family: sans-serif; */
+	text-align: center;
+	/* font-size: 30px; */
+	max-width: 600px;
+	position: relative;
+  }
+  .implines:before {
+	content: "";
+	display: block;
+	width: 25%;
+	height: 1px;
+	background: #191970;
+	left: 0;
+	top: 25%;
+	position: absolute;
+  }
+  .implines:after {
+	content: "";
+	display: block;
+	width: 25%;
+	height: 1px;
+	background: #191970;
+	right: -1px;
+	top: 25%;
+	position: absolute;
+  }
+.farelines {
+	/* font-family: sans-serif; */
+	text-align: center;
+	/* font-size: 30px; */
+	max-width: 600px;
+	position: relative;
+  }
+  .farelines:before {
+	content: "";
+	display: block;
+	width: 25%;
+	height: 1px;
+	background: #191970;
+	left: 0;
+	top: 25%;
+	position: absolute;
+  }
+  .farelines:after {
+	content: "";
+	display: block;
+	width: 25%;
+	height: 1px;
+	background: #191970;
+	right: -1px;
+	top: 25%;
+	position: absolute;
+  }
+.totallines {
+	/* font-family: sans-serif; */
+	text-align: center;
+	/* font-size: 30px; */
+	max-width: 600px;
+	position: relative;
+  }
+  .totallines:before {
+	content: "";
+	display: block;
+	width: 25%;
+	height: 1px;
+	background: #191970;
+	left: 0;
+	top: 25%;
+	position: absolute;
+  }
+  .totallines:after {
+	content: "";
+	display: block;
+	width: 25%;
+	height: 1px;
+	background: #191970;
+	right: -1px;
+	top: 25%;
+	position: absolute;
+  }
+
 /*-- xs Slider bottom title End --*/
 /*-- xs offer car tabs Start --*/
 .x_offer_car_main_wrapper{
@@ -2216,7 +2472,7 @@ width:100%;
 	font-size:14px;
 	font-weight:700;
 	text-transform:uppercase;
-	    padding: 12px 18px;
+	    padding: 12px 0px;
 	font-family: 'Raleway', sans-serif;
 }
 .x_car_offer_main_boxes_wrapper{
@@ -3992,6 +4248,11 @@ width:100%;
     position: relative;
     padding-left: 5px
 }
+.carmanuals>img 
+{
+	width: 5% !important;
+}
+
 
 .radio label::before {
     content: "";
@@ -6069,7 +6330,7 @@ input[type=number] {
 	margin-top: 20px;
 }
 .order-done ul li h6 {
-	border-bottom: 1px solid #d9d9d9;
+	/* border-bottom: 1px solid #d9d9d9; */
 	padding-bottom: 10px;
 	margin-bottom: 10px;
 	font-size: 16px;
