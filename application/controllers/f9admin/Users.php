@@ -13,6 +13,7 @@ class Users extends CI_finecontrol
         $this->load->model("admin/base_model");
         $this->load->library('user_agent');
     }
+    //======================================== VIEW  USERS ==========================================
     public function view_users()
     {
         if (!empty($this->session->userdata('admin_data'))) {
@@ -22,9 +23,6 @@ class Users extends CI_finecontrol
             $this->db->order_by('id', 'desc');
             //$this->db->where('id',$usr);
             $data['users_data']= $this->db->get();
-
-
-
             $this->load->view('admin/common/header_view', $data);
             $this->load->view('admin/users/view_users');
             $this->load->view('admin/common/footer_view');
@@ -32,14 +30,12 @@ class Users extends CI_finecontrol
             redirect("login/admin_login", "refresh");
         }
     }
+    //======================================== DELETE  USERS ==========================================
     public function delete_users($idd)
     {
         if (!empty($this->session->userdata('admin_data'))) {
             $data['user_name']=$this->load->get_var('user_name');
-
-
             $id=base64_decode($idd);
-
             if ($this->load->get_var('position')=="Super Admin") {
                 $zapak=$this->db->delete('tbl_users', array('id' => $id));
                 $zapak=$this->db->delete('tbl_cart', array('user_id' => $id));
@@ -62,24 +58,19 @@ class Users extends CI_finecontrol
             $this->load->view('admin/login/index');
         }
     }
+    //======================================== STATUS  USERS ==========================================
     public function updateusersStatus($idd, $t)
     {
         if (!empty($this->session->userdata('admin_data'))) {
             $data['user_name']=$this->load->get_var('user_name');
-
-
             $id=base64_decode($idd);
-
             if ($t=="active") {
                 $data_update = array(
                        'is_active'=>1
-
                        );
-
                 $this->db->where('id', $id);
                 $zapak=$this->db->update('tbl_users', $data_update);
                 $this->session->set_flashdata('smessage', 'Data updated successfully');
-
                 if ($zapak!=0) {
                     redirect("dcadmin/users/view_users", "refresh");
                 } else {
@@ -90,13 +81,10 @@ class Users extends CI_finecontrol
             if ($t=="inactive") {
                 $data_update = array(
                         'is_active'=>0
-
                         );
-
                 $this->db->where('id', $id);
                 $zapak=$this->db->update('tbl_users', $data_update);
                 $this->session->set_flashdata('smessage', 'Data updated successfully');
-
                 if ($zapak!=0) {
                     redirect("dcadmin/users/view_users", "refresh");
                 } else {
@@ -109,4 +97,5 @@ class Users extends CI_finecontrol
             $this->load->view('admin/login/index');
         }
     }
+    //======================================== END USERS ==========================================
 }

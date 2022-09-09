@@ -3,8 +3,8 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 18, 2022 at 03:47 PM
--- Server version: 10.4.24-MariaDB
+-- Generation Time: Sep 09, 2022 at 02:33 PM
+-- Server version: 10.4.22-MariaDB
 -- PHP Version: 7.4.28
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
@@ -18,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `a_tiara`
+-- Database: `a_cabme`
 --
 
 -- --------------------------------------------------------
@@ -109,7 +109,8 @@ INSERT INTO `tbl_admin_sidebar` (`id`, `name`, `url`, `sequence`) VALUES
 (17, 'Percentage_Off', 'Percentage_Off/view_percentage_off', 16),
 (18, 'Pop-up Enquiry', 'Popup/view_popup', 0),
 (19, 'Blog', 'Blog/view_blog', 0),
-(20, 'Pop-up Image', 'Popup_Image/view_popup_image', 0);
+(20, 'Pop-up Image', 'Popup_Image/view_popup_image', 0),
+(21, 'Cities', 'cities/view_cities', 0);
 
 -- --------------------------------------------------------
 
@@ -145,10 +146,8 @@ INSERT INTO `tbl_admin_sidebar2` (`id`, `main_id`, `name`, `url`) VALUES
 
 CREATE TABLE `tbl_banner` (
   `id` int(11) NOT NULL,
-  `image` varchar(100) NOT NULL,
-  `image2` varchar(255) DEFAULT NULL,
-  `link2` varchar(255) DEFAULT NULL,
-  `link` varchar(100) NOT NULL,
+  `photo1` text NOT NULL,
+  `photo2` text NOT NULL,
   `ip` varchar(100) NOT NULL,
   `added_by` int(100) NOT NULL,
   `is_active` int(100) NOT NULL,
@@ -159,10 +158,9 @@ CREATE TABLE `tbl_banner` (
 -- Dumping data for table `tbl_banner`
 --
 
-INSERT INTO `tbl_banner` (`id`, `image`, `image2`, `link2`, `link`, `ip`, `added_by`, `is_active`, `date`) VALUES
-(2, 'assets/uploads/banner/banner20220718110712.jpg', NULL, NULL, 'HTTP:/MCKNSCNSC', '::1', 19, 1, '2022-06-06 16:53:14'),
-(3, 'assets/uploads/banner/banner20220718110702.jpeg', NULL, NULL, 'http:/localhost/sdd', '::1', 19, 1, '2022-06-09 14:51:59'),
-(4, 'assets/uploads/banner/banner20220718110718.jpg', NULL, NULL, '', '::1', 19, 1, '2022-07-18 11:52:18');
+INSERT INTO `tbl_banner` (`id`, `photo1`, `photo2`, `ip`, `added_by`, `is_active`, `date`) VALUES
+(16, 'assets/uploads/banner/banner20220909050951.jpeg', 'assets/uploads/banner/banner220220909050951.jpeg', '', 0, 1, ''),
+(17, 'assets/uploads/banner/banner20220909050932.jpg', 'assets/uploads/banner/banner220220909050932.jpg', '', 0, 1, '');
 
 -- --------------------------------------------------------
 
@@ -244,6 +242,30 @@ INSERT INTO `tbl_category` (`id`, `name`, `image`, `image2`, `ip`, `added_by`, `
 (6, 'Off the Shoulder', 'assets/uploads/category/category_image20220718120751.jpg', 'assets/uploads/category/category_image220220718020756.jpg', '::1', 19, 1, '2022-06-07 10:01:10'),
 (7, 'Bodycon Dress', 'assets/uploads/category/category_image20220718120754.jpg', 'assets/uploads/category/category_image220220718020705.jpg', '::1', 19, 1, '2022-06-07 10:01:31'),
 (15, 'A-Line Dress', 'assets/uploads/category/category_image20220718120757.jpg', 'assets/uploads/category/category_image220220718020714.jpeg', '49.204.165.255', 19, 1, '2022-07-05 15:48:25');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tbl_cities`
+--
+
+CREATE TABLE `tbl_cities` (
+  `id` int(11) NOT NULL,
+  `name` varchar(200) NOT NULL,
+  `city_type` varchar(200) DEFAULT NULL,
+  `photo` text NOT NULL,
+  `status` tinyint(4) NOT NULL,
+  `is_active` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `tbl_cities`
+--
+
+INSERT INTO `tbl_cities` (`id`, `name`, `city_type`, `photo`, `status`, `is_active`) VALUES
+(5, 'tseste', '1', 'assets/uploads/cities/category20220909050913.jpg', 0, 1),
+(6, 'ramesh', '1', 'assets/uploads/cities/category20220909050952.jpeg', 0, 1),
+(7, 'yhyh', '2', 'assets/uploads/cities/category20220909050913.jpeg', 0, 1);
 
 -- --------------------------------------------------------
 
@@ -698,7 +720,11 @@ INSERT INTO `tbl_product` (`id`, `category_id`, `subcategory_id`, `name`, `image
 CREATE TABLE `tbl_promocode` (
   `id` int(11) NOT NULL,
   `promocode` varchar(255) NOT NULL,
+  `percentage` int(11) NOT NULL,
   `ptype` varchar(255) DEFAULT NULL,
+  `start_date` text NOT NULL,
+  `end_date` text NOT NULL,
+  `mindays` varchar(200) NOT NULL,
   `giftpercent` varchar(255) NOT NULL,
   `expiry` varchar(100) NOT NULL,
   `minorder` varchar(255) NOT NULL,
@@ -713,10 +739,11 @@ CREATE TABLE `tbl_promocode` (
 -- Dumping data for table `tbl_promocode`
 --
 
-INSERT INTO `tbl_promocode` (`id`, `promocode`, `ptype`, `giftpercent`, `expiry`, `minorder`, `max`, `ip`, `added_by`, `is_active`, `date`) VALUES
-(5, 'NEWUSER', '1', '8', '2022-10-14', '500', '50', '49.204.164.251', '19', '1', '2022-06-10 15:32:00'),
-(6, 'ONETEST', '2', '16', '2022-11-19', '100', '150', '49.204.165.255', '19', '1', '2022-07-02 16:53:55'),
-(7, 'NEW', '2', '17', '2022-10-25', '50', '60', '49.204.165.255', '19', '1', '2022-07-04 13:08:16');
+INSERT INTO `tbl_promocode` (`id`, `promocode`, `percentage`, `ptype`, `start_date`, `end_date`, `mindays`, `giftpercent`, `expiry`, `minorder`, `max`, `ip`, `added_by`, `is_active`, `date`) VALUES
+(5, 'NEWUSER', 0, '1', '', '', '', '8', '2022-10-14', '500', '50', '49.204.164.251', '19', '1', '2022-06-10 15:32:00'),
+(6, 'ONETEST', 0, '2', '', '', '', '16', '2022-11-19', '100', '150', '49.204.165.255', '19', '1', '2022-07-02 16:53:55'),
+(8, 'rtvrt', 10, '1', '2022-09-23', '2022-10-02', '10', '', '', '', '20', '127.0.0.1', '19', '1', '2022-09-09 12:33:26'),
+(9, 'sonu', 50, '2', '2022-09-21', '2022-09-30', '12', '', '', '', '10', '127.0.0.1', '19', '1', '2022-09-09 15:30:31');
 
 -- --------------------------------------------------------
 
@@ -1058,6 +1085,12 @@ ALTER TABLE `tbl_category`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `tbl_cities`
+--
+ALTER TABLE `tbl_cities`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `tbl_colour`
 --
 ALTER TABLE `tbl_colour`
@@ -1197,7 +1230,7 @@ ALTER TABLE `all_states`
 -- AUTO_INCREMENT for table `tbl_admin_sidebar`
 --
 ALTER TABLE `tbl_admin_sidebar`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 
 --
 -- AUTO_INCREMENT for table `tbl_admin_sidebar2`
@@ -1209,7 +1242,7 @@ ALTER TABLE `tbl_admin_sidebar2`
 -- AUTO_INCREMENT for table `tbl_banner`
 --
 ALTER TABLE `tbl_banner`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
 -- AUTO_INCREMENT for table `tbl_blog`
@@ -1228,6 +1261,12 @@ ALTER TABLE `tbl_cart`
 --
 ALTER TABLE `tbl_category`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+
+--
+-- AUTO_INCREMENT for table `tbl_cities`
+--
+ALTER TABLE `tbl_cities`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `tbl_colour`
@@ -1293,7 +1332,7 @@ ALTER TABLE `tbl_product`
 -- AUTO_INCREMENT for table `tbl_promocode`
 --
 ALTER TABLE `tbl_promocode`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `tbl_size`

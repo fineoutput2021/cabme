@@ -12,13 +12,12 @@
   <section class="content">
     <div class="row">
       <div class="col-lg-12">
-        <!-- <a class="btn custom_btn" href="<?php echo base_url() ?>dcadmin/banner/add_banner" role="button" style="margin-bottom:12px;"> Add banner</a> -->
+        <a class="btn custom_btn" href="<?php echo base_url() ?>dcadmin/banner/add_banner" role="button" style="margin-bottom:12px;"> Add banner</a>
         <div class="panel panel-default">
           <div class="panel-heading">
             <h3 class="panel-title"><i class="fa fa-money fa-fw"></i>View Banner</h3>
           </div>
           <div class="panel panel-default">
-
             <?php if (!empty($this->session->flashdata('smessage'))) { ?>
             <div class="alert alert-success alert-dismissible">
               <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
@@ -33,22 +32,20 @@
               <?php echo $this->session->flashdata('emessage'); ?>
             </div>
             <?php } ?>
-
-
             <div class="panel-body">
               <div class="box-body table-responsive no-padding">
                 <table class="table table-bordered table-hover table-striped" id="userTable">
                   <thead>
                     <tr>
                       <th>#</th>
+                      <th>Web Image</th>
                       <th>Image</th>
-                      <!-- <th>Image2</th> -->
-                      <th>Link</th>
+                      <!-- <th>Link</th> -->
                       <!-- <th>Link-2</th> -->
                       <th>Status</th>
-                      <?if($this->session->userdata('position')!='Manager'){?>
-                    <th>Action</th>
-                    <?}?>
+                      <?if ($this->session->userdata('position')!='Manager') {?>
+                      <th>Action</th>
+                      <?}?>
                     </tr>
                   </thead>
                   <tbody>
@@ -56,81 +53,65 @@
                     <tr>
                       <td><?php echo $i ?> </td>
                       <td>
-                        <?php if ($data->image!="") {  ?>
-                        <img id="slide_img_path" height=50 width=100 src="<?php echo base_url().$data->image ?>">
+                        <?php if ($data->photo1!="") {  ?>
+                        <img id="slide_img_path" height=50 width=100 src="<?php echo base_url().$data->photo1 ?>">
                         <?php } else {  ?>
                         Sorry No image Found
                         <?php } ?>
                       </td>
-                      <!-- <td>
-                        <?php if ($data->image2!="") {  ?>
-                        <img id="slide_img_path2" height=50 width=100 src="<?php echo base_url().$data->image2 ?>">
+                      <td>
+                        <?php if ($data->photo2!="") {  ?>
+                        <img id="slide_img_path" height=50 width=100 src="<?php echo base_url().$data->photo2 ?>">
                         <?php } else {  ?>
                         Sorry No image Found
                         <?php } ?>
-                      </td> -->
-                      <td><?php echo $data->link ?> </td>
+                      </td>
+
+                      <!-- <td><?php echo $data->link ?> </td> -->
                       <!-- <td><?php echo $data->link2 ?> </td> -->
-
-
                       <td><?php if ($data->is_active==1) { ?>
                         <p class="label bg-green">Active</p>
-
                         <?php } else { ?>
                         <p class="label bg-yellow">Inactive</p>
-
-
                         <?php		}   ?>
                       </td>
-                        <?  if($this->session->userdata('position')!='Manager'){?>
+                      <?php  if ($this->session->userdata('position')!='Manager') {?>
                       <td>
                         <div class="btn-group" id="btns<?php echo $i ?>">
                           <div class="btn-group">
                             <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false"> Action <span class="caret"></span></button>
                             <ul class="dropdown-menu" role="menu">
-
                               <?php if ($data->is_active==1) { ?>
                               <li><a href="<?php echo base_url() ?>dcadmin/Banner/updatebannerStatus/<?php echo base64_encode($data->id) ?>/inactive">Inactive</a></li>
                               <?php } else { ?>
                               <li><a href="<?php echo base_url() ?>dcadmin/Banner/updatebannerStatus/<?php echo base64_encode($data->id) ?>/active">Active</a></li>
                               <?php		}   ?>
                               <li><a href="<?php echo base_url() ?>dcadmin/Banner/update_banner/<?php echo base64_encode($data->id) ?>">Edit</a></li>
-                                    <?if($this->session->userdata('position')=='Super Admin'){?>
-                              <!-- <li><a href="javascript:;" class="dCnf" mydata="<?php echo $i ?>">Delete</a></li> -->
-                                <?}?>
+                              <?if ($this->session->userdata('position')=='Super Admin') {?>
+                              <li><a href="javascript:;" class="dCnf" mydata="<?php echo $i ?>">Delete</a></li>
+                              <?}?>
                             </ul>
                           </div>
                         </div>
-
                         <div style="display:none" id="cnfbox<?php echo $i ?>">
-                          <!-- <p> Are you sure delete this </p>
+                          <p> Are you sure delete this </p>
                           <a href="<?php echo base_url() ?>dcadmin/banner/delete_banner/<?php echo base64_encode($data->id); ?>" class="btn btn-danger">Yes</a>
-                          <a href="javasript:;" class="cans btn btn-default" mydatas="<?php echo $i ?>">No</a> -->
+                          <a href="javasript:;" class="cans btn btn-default" mydatas="<?php echo $i ?>">No</a>
                         </div>
                       </td>
-                        <?}?>
+                      <?}?>
                     </tr>
                     <?php $i++; } ?>
                   </tbody>
                 </table>
-
-
-
-
-
-
               </div>
             </div>
           </div>
-
         </div>
-
       </div>
     </div>
   </section>
 </div>
-
-
 <style>
   label {
     margin: 5px;
@@ -140,25 +121,18 @@
 <script src="<?php echo base_url() ?>assets/admin/plugins/datatables/dataTables.bootstrap.js"></script>
 <script type="text/javascript">
   $(document).ready(function() {
-
-
     $(document.body).on('click', '.dCnf', function() {
       var i = $(this).attr("mydata");
       console.log(i);
-
       $("#btns" + i).hide();
       $("#cnfbox" + i).show();
-
     });
-
     $(document.body).on('click', '.cans', function() {
       var i = $(this).attr("mydatas");
       console.log(i);
-
       $("#btns" + i).show();
       $("#cnfbox" + i).hide();
     })
-
   });
 </script>
 <!-- <script type="text/javascript" src="<?php echo base_url() ?>assets/banner/ajaxupload.3.5.js"></script>
