@@ -3,7 +3,7 @@ if (! defined('BASEPATH')) {
     exit('No direct script access allowed');
 }
 require_once(APPPATH . 'core/CI_finecontrol.php');
-class Cities extends CI_finecontrol
+class City extends CI_finecontrol
 {
     public function __construct()
     {
@@ -20,7 +20,7 @@ class Cities extends CI_finecontrol
             $this->db->select('*');
             $this->db->from('tbl_cities');
             //$this->db->where('id',$usr);
-            $data['cities_data']= $this->db->get();
+            $data['City_data']= $this->db->get();
             $this->load->view('admin/common/header_view', $data);
             $this->load->view('admin/cities/view_cities');
             $this->load->view('admin/common/footer_view');
@@ -36,7 +36,7 @@ class Cities extends CI_finecontrol
             $this->db->select('*');
             $this->db->from('tbl_cities');
             $this->db->where('is_active', 1);
-            $data['cities']= $this->db->get();
+            $data['City']= $this->db->get();
             $this->load->view('admin/common/header_view', $data);
             $this->load->view('admin/cities/add_cities');
             $this->load->view('admin/common/footer_view');
@@ -130,7 +130,7 @@ class Cities extends CI_finecontrol
                     }
                     if ($last_id!=0) {
                         $this->session->set_flashdata('smessage', 'Data inserted successfully');
-                        redirect("dcadmin/cities/view_cities", "refresh");
+                        redirect("dcadmin/City/view_cities", "refresh");
                     } else {
                         $this->session->set_flashdata('emessage', 'Sorry error occured');
                         redirect($_SERVER['HTTP_REFERER']);
@@ -162,7 +162,7 @@ class Cities extends CI_finecontrol
             $this->db->from('tbl_cities');
             $this->db->where('id', $id);
             $dsa= $this->db->get();
-            $data['cities']=$dsa->row();
+            $data['City']=$dsa->row();
             $this->load->view('admin/common/header_view', $data);
             $this->load->view('admin/cities/update_cities');
             $this->load->view('admin/common/footer_view');
@@ -183,7 +183,7 @@ class Cities extends CI_finecontrol
             if ($this->load->get_var('position')=="Super Admin") {
                 $zapak=$this->db->delete('tbl_cities', array('id' => $id));
                 if ($zapak!=0) {
-                    redirect("dcadmin/cities/view_cities", "refresh");
+                    redirect("dcadmin/City/view_cities", "refresh");
                 } else {
                     echo "Error";
                     exit;
@@ -214,7 +214,7 @@ class Cities extends CI_finecontrol
                 $this->db->where('id', $id);
                 $zapak=$this->db->update('tbl_cities', $data_update);
                 if ($zapak!=0) {
-                    redirect("dcadmin/cities/view_cities", "refresh");
+                    redirect("dcadmin/City/view_cities", "refresh");
                 } else {
                     echo "Error";
                     exit;
@@ -227,7 +227,7 @@ class Cities extends CI_finecontrol
                 $this->db->where('id', $id);
                 $zapak=$this->db->update('tbl_cities', $data_update);
                 if ($zapak!=0) {
-                    redirect("dcadmin/cities/view_cities", "refresh");
+                    redirect("dcadmin/City/view_cities", "refresh");
                 } else {
                     $data['e']="Error Occured";
                     // exit;

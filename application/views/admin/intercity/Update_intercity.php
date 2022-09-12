@@ -1,11 +1,11 @@
 <div class="content-wrapper">
   <section class="content-header">
     <h1>
-      Update City
+      Update Intercity
     </h1>
     <ol class="breadcrumb">
       <li><a href="<?php echo base_url() ?>dcadmin/Home"><i class="fa fa-dashboard"></i> Dashboard</a></li>
-      <li><a href="<?php echo base_url() ?>dcadmin/City/view_cities"><i class="fa fa-undo" aria-hidden="true"></i> View City </a></li>
+      <li><a href="<?php echo base_url() ?>dcadmin/Intercity/View_intercity"><i class="fa fa-undo" aria-hidden="true"></i> View Intercity </a></li>
     </ol>
   </section>
   <section class="content">
@@ -13,7 +13,7 @@
       <div class="col-lg-12">
         <div class="panel panel-default">
           <div class="panel-heading">
-            <h3 class="panel-title"><i class="fa fa-money fa-fw"></i> Update City</h3>
+            <h3 class="panel-title"><i class="fa fa-money fa-fw"></i> Update Intercity</h3>
           </div>
           <?php if (!empty($this->session->flashdata('smessage'))) { ?>
           <div class="alert alert-success alert-dismissible">
@@ -31,38 +31,52 @@ if (!empty($this->session->flashdata('emessage'))) { ?>
           <?php } ?>
           <div class="panel-body">
             <div class="col-lg-10">
-              <form action="<?php echo base_url() ?>dcadmin/City/add_cities_data/<?php echo base64_encode(2); ?>/<?=$id?>" method="POST" id="slide_frm" enctype="multipart/form-data">
+              <form action="<?php echo base_url() ?>dcadmin/Intercity/add_intercity_data/<?php echo base64_encode(2); ?>/<?=$id?>" method="POST" id="slide_frm" enctype="multipart/form-data">
                 <div class="table-responsive">
                   <table class="table table-hover">
                     <tr>
-                      <td> <strong>Name</strong> <span style="color:red;"></span></strong> </td>
+                      <td> <strong>Cab Type</strong> <span style="color:red;"></span></strong> </td>
                       <td>
-                        <input type="text" name="name" class="form-control" placeholder="name" required value="<?=$City->name?>" />
+                        <select name="cab_type" class="form-control" required>
+                          <option value="">Cab Type</option>
+                          <option value="1" <?if($intercity->cab_type==1){echo 'selected' ;}?>>HATCHBACK</option>
+                          <option value="2" <?if($intercity->cab_type==2){echo 'selected' ;}?>>SEDAN</option>
+                          <option value="3" <?if($intercity->cab_type==3){echo 'selected' ;}?>>SUV</option>
+                        </select>
                       </td>
                     </tr>
                     <tr>
-                      <td> <strong>Image</strong> <span style="color:red;"><br />Big: 2220px X 1000px<br />Small: 540px X 812px</span></strong> </td>
+                      <td> <strong>Price</strong> <span style="color:red;"></span></strong> </td>
                       <td>
-                        <input type="file" name="photo" class="form-control" placeholder="" value="<?=$City->photo?>" />
-                        <?php if ($City->photo!="") {  ?>
-                        <img id="slide_img_path" height=75 width=150 src="<?php echo base_url().$City->photo ?>">
-                        <?php } else {  ?>
-                        Sorry No image Found
-                        <?php } ?>
+                        <input type="text" name="price" class="form-control" placeholder="car_name" required value="<?=$intercity->price?>" />
                       </td>
                     </tr>
                     <tr>
-                      <!-- <td> <strong></strong> <span style="color:red;"><br />Big: 2220px X 1000px<br />Small: 540px X 812px</span></strong> </td> -->
-                      <tr>
-                        <td> <strong>City Type</strong> <span style="color:red;">*</span></strong> </td>
-                        <td>
-                          <input type="radio" id="with_fair" name="city_type" value="1" <?if($City->city_type==1){echo 'checked';}?>>
-                          <label for="with_fair">With Return Fair</label>
-                          <input type="radio" id="without_fair" name="city_type" value="2" <?if($City->city_type==2){echo 'checked';}?>>
-                          <label for="without_fair">Without Return Fair</label>
-                        </td>
-                      </tr>
+                      <td> <strong>Kilometer Cap</strong> <span style="color:red;"></span></strong> </td>
+                      <td>
+                        <input type="text" name="Kilomitere_cab" class="form-control" placeholder="name" required value="<?=$intercity->Kilomitere_cab?>" />
+                      </td>
                     </tr>
+                    <tr>
+                      <td> <strong>Minimum Amount</strong> <span style="color:red;"></span></strong> </td>
+                      <td>
+                        <input type="text" name="min_amount" class="form-control" placeholder="name" required value="<?=$intercity->min_amount?>" />
+                      </td>
+                    </tr>
+                    <!-- <tr>
+  <td> <strong></strong> <span style="color:red;"><br />Big: 2220px X 1000px<br />Small: 540px X 812px</span></strong> </td>
+  <tr>
+    <td> <strong>Cities Rediolution</strong> <span style="color:red;">*</span></strong> </td>
+    <td>
+      <input type="radio" name="Cities_rediodution" value=" with Return Fair" <?php if ($cities == 'with Return Fair') {
+    echo 'checked="checked"';
+} ?>" /> with Return Fair<br />
+      <input type="radio" name="Cities_rediodution" value="without Return Fair" <?php if ($cities == 'without  Return Fair') {
+    echo 'checked="checked"';
+} ?>" /> without  Return Fair<br />
+    </td>
+  </tr>
+</tr> -->
                     <tr>
                       <td colspan="2">
                         <input type="submit" class="btn btn-success primary" value="save">

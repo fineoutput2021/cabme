@@ -35,13 +35,13 @@
                 <div class="table-responsive">
                   <table class="table table-hover">
                     <tr>
-                      <td> <strong>Image</strong> <span style="color:red;">*</span></strong> </td>
+                      <td> <strong>Web Image</strong> <span style="color:red;">*</span></strong> </td>
                       <td>
                         <input type="file" name="photo1" class="form-control" placeholder="" required value="" />
                       </td>
                     </tr>
                     <tr>
-                      <td> <strong>Image2</strong> <span style="color:red;">*</span></strong> </td>
+                      <td> <strong>Image</strong> <span style="color:red;">*</span></strong> </td>
                       <td>
                         <input type="file" name="photo2" class="form-control" placeholder="" required value="" />
                       </td>
