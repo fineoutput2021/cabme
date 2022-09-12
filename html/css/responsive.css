@@ -230,6 +230,7 @@
 
 @media (min-width: 767px)
 {
+
 	.mobilefaq
 	{
 		display: none;
@@ -240,6 +241,43 @@
 	}
 }
 @media (max-width: 767px){
+	.mobilenav-tabs .nav-item .nav-link 
+	{
+		font-size: 10px;
+		border-radius: 20px;
+	}
+	
+	.mobilenav-tabs
+	{
+		justify-content: space-between;
+	}
+	.datepicker, .timepicker
+	{
+		font-size: 12px;
+	}
+	#mobilefont h5 
+	{
+		font-size: 16px;
+	}
+	.mobilehidesearch
+	{
+		display: none;
+	}
+	.mobileradius
+	{
+		border-radius: 20px;
+		height: 45px !important;
+		max-width: 49% !important;
+		margin-right: 3px;
+	}
+	.mobileradius input 
+	{
+		background-color: transparent !important;
+	}
+	#selectcity .modal-dialog 
+	{
+		width: auto !important;
+	}
 	#reversedivs
 	{
 		flex-direction: column-reverse !important;
