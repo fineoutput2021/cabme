@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 09, 2022 at 02:33 PM
+-- Generation Time: Sep 12, 2022 at 12:55 PM
 -- Server version: 10.4.22-MariaDB
 -- PHP Version: 7.4.28
 
@@ -20,58 +20,6 @@ SET time_zone = "+00:00";
 --
 -- Database: `a_cabme`
 --
-
--- --------------------------------------------------------
-
---
--- Table structure for table `all_states`
---
-
-CREATE TABLE `all_states` (
-  `id` int(11) NOT NULL,
-  `state_name` varchar(255) NOT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `all_states`
---
-
-INSERT INTO `all_states` (`id`, `state_name`) VALUES
-(1, 'Andaman & Nicobar [AN]'),
-(2, 'Andhra Pradesh [AP]'),
-(3, 'Arunachal Pradesh [AR]'),
-(4, 'Assam [AS]'),
-(5, 'Bihar [BH]'),
-(6, 'Chandigarh [CH]'),
-(7, 'Chhattisgarh [CG]'),
-(8, 'Dadra & Nagar Haveli [DN]'),
-(9, 'Daman & Diu [DD]'),
-(10, 'Delhi [DL]'),
-(11, 'Goa [GO]'),
-(12, 'Gujarat [GU]'),
-(13, 'Haryana [HR]'),
-(14, 'Himachal Pradesh [HP]'),
-(15, 'Jammu & Kashmir [JK]'),
-(16, 'Jharkhand [JH]'),
-(17, 'Karnataka [KR]'),
-(18, 'Kerala [KL]'),
-(19, 'Lakshadweep [LD]'),
-(20, 'Madhya Pradesh [MP]'),
-(21, 'Maharashtra [MH]'),
-(22, 'Manipur [MN]'),
-(23, 'Meghalaya [ML]'),
-(24, 'Mizoram [MM]'),
-(25, 'Nagaland [NL]'),
-(26, 'Orissa [OR]'),
-(27, 'Pondicherry [PC]'),
-(28, 'Punjab [PJ]'),
-(29, 'Rajasthan [RJ]'),
-(30, 'Sikkim [SK]'),
-(31, 'Tamil Nadu [TN]'),
-(32, 'Tripura [TR]'),
-(33, 'Uttar Pradesh [UP]'),
-(34, 'Uttaranchal [UT]'),
-(35, 'West Bengal [WB]');
 
 -- --------------------------------------------------------
 
@@ -93,24 +41,14 @@ CREATE TABLE `tbl_admin_sidebar` (
 INSERT INTO `tbl_admin_sidebar` (`id`, `name`, `url`, `sequence`) VALUES
 (1, 'Dashboard', 'home', 1),
 (2, 'Team', '#', 2),
-(4, 'Slider', 'Slider/view_slider', 3),
 (5, 'Banner', 'Banner/view_banner', 4),
 (6, 'Users', 'Users/view_users', 9),
-(7, 'Category', 'Category/view_category', 5),
-(8, 'Subcategory', 'Subcategory/view_subcategory', 6),
-(9, 'Product', 'Product/view_category', 7),
 (10, 'Order', '#', 8),
 (11, 'Promocode', 'Promocode/view_promocode', 10),
-(12, 'Testimonials', 'Testimonials/view_testimonials', 11),
-(13, 'Contact Us Enquiry', 'Contact_us/view_contact_us', 12),
-(14, 'Newsletter Subscriptions', 'Subscribe/view_subscribe', 13),
-(15, 'Size', 'Size/view_size', 14),
-(16, 'Colour', 'Colour/view_colour', 15),
-(17, 'Percentage_Off', 'Percentage_Off/view_percentage_off', 16),
-(18, 'Pop-up Enquiry', 'Popup/view_popup', 0),
-(19, 'Blog', 'Blog/view_blog', 0),
-(20, 'Pop-up Image', 'Popup_Image/view_popup_image', 0),
-(21, 'Cities', 'cities/view_cities', 0);
+(21, 'City', 'City/view_cities', 0),
+(22, 'Self_drive', 'Self_drive/view_selfdrive', 0),
+(23, 'Outstation', 'Outstation/View_outstation', 0),
+(24, 'Intercity', 'Intercity/View_intercity', 0);
 
 -- --------------------------------------------------------
 
@@ -160,88 +98,7 @@ CREATE TABLE `tbl_banner` (
 
 INSERT INTO `tbl_banner` (`id`, `photo1`, `photo2`, `ip`, `added_by`, `is_active`, `date`) VALUES
 (16, 'assets/uploads/banner/banner20220909050951.jpeg', 'assets/uploads/banner/banner220220909050951.jpeg', '', 0, 1, ''),
-(17, 'assets/uploads/banner/banner20220909050932.jpg', 'assets/uploads/banner/banner220220909050932.jpg', '', 0, 1, '');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `tbl_blog`
---
-
-CREATE TABLE `tbl_blog` (
-  `id` int(11) NOT NULL,
-  `heading` varchar(255) DEFAULT NULL,
-  `description` mediumtext DEFAULT NULL,
-  `full_description` mediumtext DEFAULT NULL,
-  `image` varchar(100) DEFAULT NULL,
-  `ip` varchar(255) DEFAULT NULL,
-  `date` varchar(255) DEFAULT NULL,
-  `added_by` int(11) DEFAULT NULL,
-  `is_active` int(11) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data for table `tbl_blog`
---
-
-INSERT INTO `tbl_blog` (`id`, `heading`, `description`, `full_description`, `image`, `ip`, `date`, `added_by`, `is_active`) VALUES
-(7, 'Bodycon Dress', 'The bodycon is a tight-fitting dress that hugs your figure and accentuates your assets..', '<p>he scandal broke loose in 1965 when model Jean Shrimpton wore a mini shift dress to the Melbourne Cup, showcasing her bare legs and hat-free head to the world. Nowadays, mini dresses are far more mini and far less scandalous, and they&rsquo;re a great way to capture attention and showcase your pins! This dress is ideal for anyone who wants to put emphasis on their legs and make the world stop and turn! If you&rsquo;ve got it, flaunt it!</p>\r\n', 'assets/uploads/blog/blog20220718060737.jpeg', '::1', '2022-07-18 18:00:37', 19, 1);
-
--- --------------------------------------------------------
-
---
--- Table structure for table `tbl_cart`
---
-
-CREATE TABLE `tbl_cart` (
-  `id` int(11) NOT NULL,
-  `user_id` int(11) NOT NULL,
-  `product_id` int(11) DEFAULT NULL,
-  `type_id` int(11) DEFAULT NULL,
-  `quantity` varchar(255) DEFAULT NULL,
-  `ip` varchar(255) DEFAULT NULL,
-  `date` varchar(255) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data for table `tbl_cart`
---
-
-INSERT INTO `tbl_cart` (`id`, `user_id`, `product_id`, `type_id`, `quantity`, `ip`, `date`) VALUES
-(87, 3, 7, 14, '2', '49.204.165.255', '2022-07-02 15:28:07'),
-(88, 4, 4, 2, '1', '49.204.165.255', '2022-07-02 15:40:25'),
-(108, 8, 7, 14, '7', '49.204.165.255', '2022-07-05 10:33:58'),
-(109, 8, 1, 3, '4', '49.204.165.255', '2022-07-05 10:34:29'),
-(111, 11, 1, 3, '1', '49.204.165.255', '2022-07-05 11:57:38'),
-(134, 12, 12, 20, '6', '49.204.165.255', '2022-07-05 17:16:26');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `tbl_category`
---
-
-CREATE TABLE `tbl_category` (
-  `id` int(11) NOT NULL,
-  `name` varchar(100) DEFAULT NULL,
-  `image` varchar(100) DEFAULT NULL,
-  `image2` varchar(255) DEFAULT NULL,
-  `ip` varchar(100) DEFAULT NULL,
-  `added_by` int(100) DEFAULT NULL,
-  `is_active` int(100) DEFAULT NULL,
-  `date` varchar(100) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data for table `tbl_category`
---
-
-INSERT INTO `tbl_category` (`id`, `name`, `image`, `image2`, `ip`, `added_by`, `is_active`, `date`) VALUES
-(4, 'Midi Dress', 'assets/uploads/category/category_image20220718020756.jpg', 'assets/uploads/category/category_image20220718020743.jpg', '::1', 19, 1, '2022-06-07 10:00:01'),
-(5, 'shift-dress-pattern', 'assets/uploads/category/category_image20220718120741.jpg', 'assets/uploads/category/category_image220220718020746.jpg', '::1', 19, 1, '2022-06-07 10:00:52'),
-(6, 'Off the Shoulder', 'assets/uploads/category/category_image20220718120751.jpg', 'assets/uploads/category/category_image220220718020756.jpg', '::1', 19, 1, '2022-06-07 10:01:10'),
-(7, 'Bodycon Dress', 'assets/uploads/category/category_image20220718120754.jpg', 'assets/uploads/category/category_image220220718020705.jpg', '::1', 19, 1, '2022-06-07 10:01:31'),
-(15, 'A-Line Dress', 'assets/uploads/category/category_image20220718120757.jpg', 'assets/uploads/category/category_image220220718020714.jpeg', '49.204.165.255', 19, 1, '2022-07-05 15:48:25');
+(17, 'assets/uploads/banner/banner20220912030948.jpg', 'assets/uploads/banner/banner220220909050932.jpg', '', 0, 1, '');
 
 -- --------------------------------------------------------
 
@@ -265,106 +122,32 @@ CREATE TABLE `tbl_cities` (
 INSERT INTO `tbl_cities` (`id`, `name`, `city_type`, `photo`, `status`, `is_active`) VALUES
 (5, 'tseste', '1', 'assets/uploads/cities/category20220909050913.jpg', 0, 1),
 (6, 'ramesh', '1', 'assets/uploads/cities/category20220909050952.jpeg', 0, 1),
-(7, 'yhyh', '2', 'assets/uploads/cities/category20220909050913.jpeg', 0, 1);
+(8, 'sonu singh', '2', 'assets/uploads/cities/category20220912030900.jpg', 0, 1);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tbl_colour`
+-- Table structure for table `tbl_intercity`
 --
 
-CREATE TABLE `tbl_colour` (
+CREATE TABLE `tbl_intercity` (
   `id` int(11) NOT NULL,
-  `colour` varchar(255) DEFAULT NULL,
-  `ip` varchar(255) DEFAULT NULL,
-  `added_by` varchar(255) DEFAULT NULL,
-  `is_active` int(255) DEFAULT NULL,
-  `date` varchar(255) DEFAULT NULL
+  `cab_type` varchar(500) NOT NULL,
+  `price` int(11) NOT NULL,
+  `Kilomitere_cab` int(11) NOT NULL,
+  `min_amount` int(11) NOT NULL,
+  `is_active` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `tbl_colour`
+-- Dumping data for table `tbl_intercity`
 --
 
-INSERT INTO `tbl_colour` (`id`, `colour`, `ip`, `added_by`, `is_active`, `date`) VALUES
-(1, '#0ccbe4', '::1', '19', 1, '2022-07-18 15:41:29'),
-(2, '#850a0a', '::1', '19', 1, '2022-07-18 15:44:45');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `tbl_contact_us`
---
-
-CREATE TABLE `tbl_contact_us` (
-  `id` int(100) NOT NULL,
-  `name` varchar(100) DEFAULT NULL,
-  `email` varchar(100) DEFAULT NULL,
-  `message` varchar(1000) DEFAULT NULL,
-  `ip` varchar(100) DEFAULT NULL,
-  `added_by` int(100) DEFAULT NULL,
-  `is_active` int(100) DEFAULT NULL,
-  `date` varchar(100) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data for table `tbl_contact_us`
---
-
-INSERT INTO `tbl_contact_us` (`id`, `name`, `email`, `message`, `ip`, `added_by`, `is_active`, `date`) VALUES
-(1, 'sdf fds', 'aa@sdafg.dfdg', '3453343434533', '49.204.165.255', NULL, NULL, '2022-07-03 13:17:45'),
-(2, 'www eee', 'wwee@gdf.com', 'rss', '49.204.165.255', NULL, NULL, '2022-07-04 12:26:41'),
-(3, 'nnn bb', 'nn@ghg.com', 'dfsgff', '49.204.165.255', NULL, NULL, '2022-07-04 13:03:01'),
-(4, 'Ambati Rayudu', 'rayudu@gmail.com', 'When you left me out from Indian team.', '49.204.165.255', NULL, NULL, '2022-07-05 16:45:56');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `tbl_forgot_pass`
---
-
-CREATE TABLE `tbl_forgot_pass` (
-  `id` int(11) NOT NULL,
-  `user_id` int(11) NOT NULL,
-  `txn_id` varchar(255) NOT NULL,
-  `status` int(11) NOT NULL,
-  `ip` varchar(255) NOT NULL,
-  `date` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data for table `tbl_forgot_pass`
---
-
-INSERT INTO `tbl_forgot_pass` (`id`, `user_id`, `txn_id`, `status`, `ip`, `date`) VALUES
-(1, 4, 'AiY60y', 1, '49.204.164.211', '2022-05-12 09:10:25'),
-(2, 4, '3pJ5hv', 1, '49.204.164.211', '2022-05-12 09:10:26'),
-(3, 4, 'sNuFdi', 1, '49.204.164.211', '2022-05-12 09:10:35'),
-(4, 4, 'QCt64p', 1, '49.204.164.211', '2022-05-12 09:11:01'),
-(5, 4, 'ghKeKX', 1, '49.204.164.211', '2022-05-12 09:11:29'),
-(6, 4, '6La2a6', 1, '49.204.164.211', '2022-05-12 09:50:59'),
-(7, 2, 'm4IZJr', 1, '49.204.164.211', '2022-05-12 09:54:23'),
-(8, 2, 'mdg9MA', 1, '49.204.164.211', '2022-05-12 09:55:07'),
-(9, 2, 'x3cdlG', 1, '49.204.164.211', '2022-05-12 09:55:12'),
-(10, 3, 'jgNK5h', 1, '49.204.164.211', '2022-05-12 09:55:46'),
-(11, 9, 'AhOrwW', 1, '1.39.219.93', '2022-05-21 06:36:51'),
-(12, 2, 'fD5WN1', 1, '::1', '2022-07-15 13:03:16'),
-(13, 2, 'EvzchM', 1, '::1', '2022-07-15 13:06:37'),
-(14, 2, 'epgnZG', 1, '::1', '2022-07-15 13:06:42'),
-(15, 2, 'cURPFp', 1, '::1', '2022-07-15 13:06:49'),
-(16, 2, 'XOyvuq', 1, '::1', '2022-07-15 13:08:42'),
-(17, 2, 'LZD743', 1, '::1', '2022-07-15 13:13:13'),
-(18, 1, 'C2PlC7', 1, '::1', '2022-07-15 13:15:54'),
-(19, 1, 'vOgCmn', 1, '::1', '2022-07-15 13:21:33'),
-(20, 1, 'nIwJvY', 1, '::1', '2022-07-15 13:21:34'),
-(21, 1, 'pk8lVc', 1, '::1', '2022-07-15 13:29:01'),
-(22, 1, 'AbmfKX', 1, '::1', '2022-07-15 13:30:38'),
-(23, 1, 'PgNzQ4', 1, '::1', '2022-07-15 13:32:42'),
-(24, 1, 'e8lD1K', 1, '::1', '2022-07-15 13:49:02'),
-(25, 1, 'ZXNzdQ', 1, '::1', '2022-07-15 13:53:50'),
-(26, 1, 'txPFuf', 1, '::1', '2022-07-15 13:59:04'),
-(27, 1, '40n1Fo', 1, '::1', '2022-07-15 14:04:32'),
-(28, 1, 'AFSpvz', 1, '::1', '2022-07-15 14:05:56');
+INSERT INTO `tbl_intercity` (`id`, `cab_type`, `price`, `Kilomitere_cab`, `min_amount`, `is_active`) VALUES
+(11, '1', 20000, 10, 1500, 1),
+(12, '2', 20000, 50, 1500, 1),
+(13, '3', 20000, 20, 1500, 1),
+(14, '1', 20000, 20, 1500, 1);
 
 -- --------------------------------------------------------
 
@@ -615,6 +398,33 @@ INSERT INTO `tbl_otp` (`id`, `phone`, `otp`, `status`, `temp_id`, `ip`, `date`) 
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `tbl_outstation`
+--
+
+CREATE TABLE `tbl_outstation` (
+  `id` int(11) NOT NULL,
+  `brand_name` varchar(200) NOT NULL,
+  `car_name` varchar(200) NOT NULL,
+  `seatting` varchar(200) NOT NULL,
+  `photo` varchar(200) NOT NULL,
+  `per_kilometre` int(11) NOT NULL,
+  `location` varchar(20) NOT NULL,
+  `city_id` int(11) NOT NULL,
+  `is_active` tinyint(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `tbl_outstation`
+--
+
+INSERT INTO `tbl_outstation` (`id`, `brand_name`, `car_name`, `seatting`, `photo`, `per_kilometre`, `location`, `city_id`, `is_active`) VALUES
+(10, 'sonu', 'thar', '69', 'assets/uploads/outstation/category20220912010946.jpg', 0, '20', 5, 1),
+(11, 'f', 'thar', '69', 'assets/uploads/outstation/category20220912010955.jpg', 10, '20', 6, 1),
+(15, 'sonu', 'thar', '69', 'assets/uploads/outstation/category20220912030926.jpg', 10, '20', 8, 0);
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `tbl_percentage`
 --
 
@@ -633,83 +443,6 @@ CREATE TABLE `tbl_percentage` (
 
 INSERT INTO `tbl_percentage` (`id`, `percentage`, `ip`, `added_by`, `is_active`, `date`) VALUES
 (1, 16, '::1', '19', 1, '2022-07-18 16:41:37');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `tbl_popup`
---
-
-CREATE TABLE `tbl_popup` (
-  `id` int(11) NOT NULL,
-  `name` varchar(255) DEFAULT NULL,
-  `phone` varchar(255) DEFAULT NULL,
-  `email` varchar(255) DEFAULT NULL,
-  `ip` varchar(255) DEFAULT NULL,
-  `added_by` varchar(255) DEFAULT NULL,
-  `is_active` int(255) DEFAULT NULL,
-  `date` varchar(255) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data for table `tbl_popup`
---
-
-INSERT INTO `tbl_popup` (`id`, `name`, `phone`, `email`, `ip`, `added_by`, `is_active`, `date`) VALUES
-(1, 'Manthan', '7073810988', 'manthan@gmail.com', NULL, NULL, NULL, NULL);
-
--- --------------------------------------------------------
-
---
--- Table structure for table `tbl_popup_image`
---
-
-CREATE TABLE `tbl_popup_image` (
-  `id` int(11) NOT NULL,
-  `image` varchar(255) DEFAULT NULL,
-  `text` varchar(255) DEFAULT NULL,
-  `ip` varchar(255) NOT NULL,
-  `added_by` varchar(255) NOT NULL,
-  `is_active` int(255) NOT NULL,
-  `date` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data for table `tbl_popup_image`
---
-
-INSERT INTO `tbl_popup_image` (`id`, `image`, `text`, `ip`, `added_by`, `is_active`, `date`) VALUES
-(3, 'assets/uploads/popup_image/image20220718060748.jpg', 'aasas', '::1', '19', 1, '2022-07-18 18:39:48');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `tbl_product`
---
-
-CREATE TABLE `tbl_product` (
-  `id` int(100) NOT NULL,
-  `category_id` varchar(100) DEFAULT NULL,
-  `subcategory_id` varchar(100) DEFAULT NULL,
-  `name` varchar(100) DEFAULT NULL,
-  `image1` varchar(255) NOT NULL,
-  `sku` varchar(255) DEFAULT NULL,
-  `vendor_code` varchar(255) DEFAULT NULL,
-  `description` text DEFAULT NULL,
-  `exclusive` varchar(255) DEFAULT NULL,
-  `tags` varchar(255) DEFAULT NULL,
-  `ip` varchar(100) DEFAULT NULL,
-  `added_by` int(100) DEFAULT NULL,
-  `is_active` int(100) DEFAULT NULL,
-  `date` varchar(100) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data for table `tbl_product`
---
-
-INSERT INTO `tbl_product` (`id`, `category_id`, `subcategory_id`, `name`, `image1`, `sku`, `vendor_code`, `description`, `exclusive`, `tags`, `ip`, `added_by`, `is_active`, `date`) VALUES
-(24, '4', '1', 'Stunner Dress', 'assets/uploads/product/product20220718010711.jpg', '122', '10', '<p>gdgddgd</p>', NULL, 'jj', NULL, 19, 1, '2022-07-18 13:37:11');
 
 -- --------------------------------------------------------
 
@@ -748,48 +481,36 @@ INSERT INTO `tbl_promocode` (`id`, `promocode`, `percentage`, `ptype`, `start_da
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tbl_size`
+-- Table structure for table `tbl_selfdrive`
 --
 
-CREATE TABLE `tbl_size` (
+CREATE TABLE `tbl_selfdrive` (
   `id` int(11) NOT NULL,
-  `name` varchar(255) DEFAULT NULL,
-  `ip` varchar(255) DEFAULT NULL,
-  `added_by` int(255) DEFAULT NULL,
-  `is_active` int(255) DEFAULT NULL,
-  `date` varchar(255) DEFAULT NULL
+  `city_id` varchar(100) NOT NULL,
+  `brand_name` varchar(200) NOT NULL,
+  `car_name` varchar(200) NOT NULL,
+  `photo` text NOT NULL,
+  `fule_type` varchar(20) NOT NULL,
+  `transmission` varchar(200) NOT NULL,
+  `seatting` varchar(200) NOT NULL,
+  `kilometer1` int(11) NOT NULL,
+  `price1` int(11) NOT NULL,
+  `kilometer2` int(11) NOT NULL,
+  `price2` int(11) NOT NULL,
+  `kilometer3` int(11) NOT NULL,
+  `price3` int(11) NOT NULL,
+  `extra_kilo` int(11) NOT NULL,
+  `rsda` int(11) NOT NULL,
+  `is_active` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `tbl_size`
+-- Dumping data for table `tbl_selfdrive`
 --
 
-INSERT INTO `tbl_size` (`id`, `name`, `ip`, `added_by`, `is_active`, `date`) VALUES
-(2, 'Neck size', '::1', 19, 1, '2022-07-18 15:25:57'),
-(3, 'shoulder size', '::1', 19, 1, '2022-07-18 15:26:10');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `tbl_slider`
---
-
-CREATE TABLE `tbl_slider` (
-  `id` int(11) NOT NULL,
-  `image` varchar(100) NOT NULL,
-  `link` varchar(100) NOT NULL,
-  `ip` varchar(100) NOT NULL,
-  `added_by` int(100) NOT NULL,
-  `is_active` int(100) NOT NULL,
-  `date` varchar(100) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data for table `tbl_slider`
---
-
-INSERT INTO `tbl_slider` (`id`, `image`, `link`, `ip`, `added_by`, `is_active`, `date`) VALUES
-(12, 'assets/uploads/slider/slider20220718110707.jpg', 'http://www.anokhitrends.com/kurtis/', '::1', 19, 1, '2022-07-18 11:31:38');
+INSERT INTO `tbl_selfdrive` (`id`, `city_id`, `brand_name`, `car_name`, `photo`, `fule_type`, `transmission`, `seatting`, `kilometer1`, `price1`, `kilometer2`, `price2`, `kilometer3`, `price3`, `extra_kilo`, `rsda`, `is_active`) VALUES
+(15, '5', 'sonu', 'thar', 'assets/uploads/self_drive/category20220912040950.jpg', '2', '1', 'rht', 0, 0, 0, 0, 0, 0, 0, 0, 1),
+(16, '6', 'sonu', 'odddi', 'assets/uploads/self_drive/category20220912040902.jpg', '1', '2', 'frfr', 0, 0, 0, 0, 0, 4, 0, 0, 1);
 
 -- --------------------------------------------------------
 
@@ -819,39 +540,6 @@ INSERT INTO `tbl_subcategory` (`id`, `category_id`, `name`, `ip`, `added_by`, `i
 (8, '7', 'midi dress bodycon', '::1', 19, 1, '2022-06-07 10:25:47'),
 (14, '15', 'a-line spring', '49.204.165.255', 19, 1, '2022-07-05 15:54:50'),
 (15, '15', 'a_line summer', '49.204.165.255', 19, 1, '2022-07-05 15:55:01');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `tbl_subscribe`
---
-
-CREATE TABLE `tbl_subscribe` (
-  `id` int(11) NOT NULL,
-  `email` varchar(100) DEFAULT NULL,
-  `ip` varchar(100) DEFAULT NULL,
-  `added_by` int(100) DEFAULT NULL,
-  `is_active` int(100) DEFAULT NULL,
-  `date` varchar(100) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data for table `tbl_subscribe`
---
-
-INSERT INTO `tbl_subscribe` (`id`, `email`, `ip`, `added_by`, `is_active`, `date`) VALUES
-(1, 'demo@gmail.com', '::1', NULL, 1, '2022-06-29 12:28:13'),
-(2, 'demo@gmail.com', '::1', NULL, 1, '2022-06-29 12:59:39'),
-(3, 'manthan321.mc@gmail.com', '::1', NULL, 1, '2022-06-29 13:00:25'),
-(4, 'Bitcoin@gmail.com', '::1', NULL, 1, '2022-06-29 13:07:17'),
-(5, 'manthan321.mc@gmail.com', '49.204.165.255', NULL, 1, '2022-06-29 18:46:41'),
-(6, 'jatnarendra@gmail.com', '49.204.165.255', NULL, 1, '2022-07-02 15:40:35'),
-(7, 'jhdfkjdsh@gdskjfj.com', '49.204.165.255', NULL, 1, '2022-07-02 17:12:57'),
-(8, '03July@gmail.com', '49.204.165.255', NULL, 1, '2022-07-03 12:31:32'),
-(9, '03July@gmail.com', '49.204.165.255', NULL, 1, '2022-07-03 12:32:18'),
-(10, 'ttt@dfsfgfd.com', '49.204.165.255', NULL, 1, '2022-07-04 12:25:36'),
-(11, 'hjsdfhjsd@gf.com', '49.204.165.255', NULL, 1, '2022-07-04 14:46:43'),
-(12, 'vegeta@gmail.com', '49.204.165.255', NULL, 1, '2022-07-05 16:47:49');
 
 -- --------------------------------------------------------
 
@@ -888,84 +576,6 @@ INSERT INTO `tbl_team` (`id`, `name`, `email`, `password`, `phone`, `address`, `
 (32, 'karan', 'karan@gmail.com', 'e10adc3949ba59abbe56e057f20f883e', '9649230623', 'dfgfdg', '', 2, '[\"1\",\"4\"]', '49.204.164.251', '2022-06-10 18:09:23', 19, 1),
 (33, 'narendra', 'narendra@gmail.com', 'bfd925fa86084bd0300fde7fd05ddd97', '9649230623', 'mhghjg', 'team20220613100622.jpg', 2, '[\"4\",\"5\"]', '49.204.164.251', '2022-06-13 16:07:22', 19, 1),
 (35, 'manthan', 'dhsdj@gmail.com', 'd41d8cd98f00b204e9800998ecf8427e', '7070707070', 'knhsfjkdhfhj', 'assets/uploads/team/team20220715060749.jpg', 3, '[\"5\",\"6\"]', '::1', '2022-07-15 18:10:56', 19, 1);
-
--- --------------------------------------------------------
-
---
--- Table structure for table `tbl_testimonials`
---
-
-CREATE TABLE `tbl_testimonials` (
-  `id` int(100) NOT NULL,
-  `name` varchar(100) DEFAULT NULL,
-  `text` text DEFAULT NULL,
-  `image` varchar(255) DEFAULT NULL,
-  `ip` varchar(100) DEFAULT NULL,
-  `added_by` int(100) DEFAULT NULL,
-  `is_active` int(100) DEFAULT NULL,
-  `date` varchar(100) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data for table `tbl_testimonials`
---
-
-INSERT INTO `tbl_testimonials` (`id`, `name`, `text`, `image`, `ip`, `added_by`, `is_active`, `date`) VALUES
-(1, 'Manthan chauhan', 'To compete with modernized retail store, Kirana stores have to compete on the factors identified in the analysis. They need to keep exotic and specialty items and offer discounts on bulk purchase. But it becomes impossible for a single kirana stores to procure bulk quantity at low price and offer discounts.', NULL, '::1', 19, 1, '2022-06-09 10:48:47'),
-(4, 'narendra', 'good', NULL, '49.204.164.251', 19, 1, '2022-06-13 16:29:01'),
-(5, 'Rahul', 'best ttt', 'assets/uploads/testimonials/testimonials_image20220702050751.png', '49.204.165.255', 19, 1, '2022-07-02 17:08:51'),
-(6, 'Kartik', 'Good quality products and very happy with the service', 'assets/uploads/testimonials/testimonials_image20220705040750.jpg', '49.204.165.255', 19, 1, '2022-07-05 16:44:50');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `tbl_type`
---
-
-CREATE TABLE `tbl_type` (
-  `id` int(100) NOT NULL,
-  `product_id` varchar(100) NOT NULL,
-  `name` varchar(100) NOT NULL,
-  `mrp` varchar(100) NOT NULL,
-  `sp` varchar(100) NOT NULL,
-  `gst` varchar(100) NOT NULL,
-  `spgst` varchar(100) NOT NULL,
-  `ip` varchar(100) NOT NULL,
-  `is_active` int(100) NOT NULL,
-  `added_by` int(100) NOT NULL,
-  `date` int(100) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data for table `tbl_type`
---
-
-INSERT INTO `tbl_type` (`id`, `product_id`, `name`, `mrp`, `sp`, `gst`, `spgst`, `ip`, `is_active`, `added_by`, `date`) VALUES
-(1, '3', 'coffeee', '100', '90', '5', '94.5', '::1', 1, 19, 2022),
-(2, '4', 'asli butter', '100', '90', '4', '93.6', '::1', 1, 19, 2022),
-(3, '1', 'soap', '100', '90', '10', '99', '::1', 1, 19, 2022),
-(4, '5', 'surfexcel', '200', '300', '8', '324', '::1', 1, 19, 2022),
-(5, '5', 'arielsurf', '100', '88', '10', '96.8', '::1', 1, 19, 2022),
-(6, '5', 'surfexeefef', '100', '90', '10', '99', '::1', 1, 19, 2022),
-(7, '5', 'surfexeefeff', '100', '90', '1', '90.9', '::1', 1, 19, 2022),
-(8, '6', 'soap', '50', '51', '50', '100', '::1', 1, 19, 2022),
-(10, '3', '1', '12', '12', '12', '13.44', '::1', 1, 19, 2022),
-(11, '1', 'Dove', '12', '12', '12', '13.44', '::1', 1, 19, 2022),
-(12, '5', 'ioil', '200', '120', '6', '127.2', '49.204.164.251', 1, 19, 2022),
-(13, '1', 'kmh', '100', '60', '2', '61.2', '49.204.164.251', 1, 19, 2022),
-(14, '7', 'not  mmmm', '200', '100', '11', '111', '49.204.165.255', 1, 19, 2022),
-(15, '7', 'typ 2', '300', '150', '10', '165', '49.204.165.255', 1, 19, 2022),
-(16, '9', 'lll', '200', '120', '3', '123.6', '49.204.165.255', 1, 19, 2022),
-(17, '10', '75 gm', '40', '29', '5', '30.45', '49.204.165.255', 1, 19, 2022),
-(18, '10', '100gm', '60', '48', '5', '50.4', '49.204.165.255', 1, 19, 2022),
-(19, '11', '300gm', '85', '52', '5', '54.6', '49.204.165.255', 1, 19, 2022),
-(20, '12', '300gm', '90', '55', '5', '57.75', '49.204.165.255', 1, 19, 2022),
-(21, '13', '150gm', '40', '28', '5', '29.4', '49.204.165.255', 1, 19, 2022),
-(22, '14', '150gm', '35', '23', '5', '24.15', '49.204.165.255', 1, 19, 2022),
-(23, '15', '200gm', '35', '23', '5', '24.15', '49.204.165.255', 1, 19, 2022),
-(24, '16', '300gm', '45', '40', '5', '42', '49.204.165.255', 1, 19, 2022),
-(25, '17', '300g', '45', '40', '5', '42', '49.204.165.255', 1, 19, 2022),
-(26, '18', '340ml', '350', '240', '5', '252', '49.204.165.255', 1, 19, 2022);
 
 -- --------------------------------------------------------
 
@@ -1013,40 +623,9 @@ INSERT INTO `tbl_user_temp` (`id`, `name`, `phone`, `image`, `ip`, `date`) VALUE
 (1, ']New test', '00000', '', '::1', '2022-04-19 16:31:32'),
 (2, 'Test', '000000', 'assets/uploads/users/users20220422030425.jpg', '::1', '2022-04-22 15:45:25');
 
--- --------------------------------------------------------
-
---
--- Table structure for table `tbl_wishlist`
---
-
-CREATE TABLE `tbl_wishlist` (
-  `id` int(11) NOT NULL,
-  `user_id` int(11) DEFAULT NULL,
-  `product_id` int(11) DEFAULT NULL,
-  `type_id` int(11) DEFAULT NULL,
-  `ip` varchar(255) DEFAULT NULL,
-  `date` varchar(255) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data for table `tbl_wishlist`
---
-
-INSERT INTO `tbl_wishlist` (`id`, `user_id`, `product_id`, `type_id`, `ip`, `date`) VALUES
-(17, 8, 7, 14, '49.204.165.255', '2022-07-04 13:55:40'),
-(26, 8, 1, 3, '49.204.165.255', '2022-07-05 10:35:20'),
-(32, 12, 14, 22, '49.204.165.255', '2022-07-05 17:15:24'),
-(34, 12, 12, 20, '49.204.165.255', '2022-07-05 17:16:04');
-
 --
 -- Indexes for dumped tables
 --
-
---
--- Indexes for table `all_states`
---
-ALTER TABLE `all_states`
-  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `tbl_admin_sidebar`
@@ -1067,45 +646,15 @@ ALTER TABLE `tbl_banner`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `tbl_blog`
---
-ALTER TABLE `tbl_blog`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `tbl_cart`
---
-ALTER TABLE `tbl_cart`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `tbl_category`
---
-ALTER TABLE `tbl_category`
-  ADD PRIMARY KEY (`id`);
-
---
 -- Indexes for table `tbl_cities`
 --
 ALTER TABLE `tbl_cities`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `tbl_colour`
+-- Indexes for table `tbl_intercity`
 --
-ALTER TABLE `tbl_colour`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `tbl_contact_us`
---
-ALTER TABLE `tbl_contact_us`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `tbl_forgot_pass`
---
-ALTER TABLE `tbl_forgot_pass`
+ALTER TABLE `tbl_intercity`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -1127,27 +676,15 @@ ALTER TABLE `tbl_otp`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `tbl_outstation`
+--
+ALTER TABLE `tbl_outstation`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `tbl_percentage`
 --
 ALTER TABLE `tbl_percentage`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `tbl_popup`
---
-ALTER TABLE `tbl_popup`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `tbl_popup_image`
---
-ALTER TABLE `tbl_popup_image`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `tbl_product`
---
-ALTER TABLE `tbl_product`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -1157,15 +694,9 @@ ALTER TABLE `tbl_promocode`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `tbl_size`
+-- Indexes for table `tbl_selfdrive`
 --
-ALTER TABLE `tbl_size`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `tbl_slider`
---
-ALTER TABLE `tbl_slider`
+ALTER TABLE `tbl_selfdrive`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -1175,27 +706,9 @@ ALTER TABLE `tbl_subcategory`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `tbl_subscribe`
---
-ALTER TABLE `tbl_subscribe`
-  ADD PRIMARY KEY (`id`);
-
---
 -- Indexes for table `tbl_team`
 --
 ALTER TABLE `tbl_team`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `tbl_testimonials`
---
-ALTER TABLE `tbl_testimonials`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `tbl_type`
---
-ALTER TABLE `tbl_type`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -1211,26 +724,14 @@ ALTER TABLE `tbl_user_temp`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `tbl_wishlist`
---
-ALTER TABLE `tbl_wishlist`
-  ADD PRIMARY KEY (`id`);
-
---
 -- AUTO_INCREMENT for dumped tables
 --
-
---
--- AUTO_INCREMENT for table `all_states`
---
-ALTER TABLE `all_states`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;
 
 --
 -- AUTO_INCREMENT for table `tbl_admin_sidebar`
 --
 ALTER TABLE `tbl_admin_sidebar`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
 
 --
 -- AUTO_INCREMENT for table `tbl_admin_sidebar2`
@@ -1245,46 +746,16 @@ ALTER TABLE `tbl_banner`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
--- AUTO_INCREMENT for table `tbl_blog`
---
-ALTER TABLE `tbl_blog`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
-
---
--- AUTO_INCREMENT for table `tbl_cart`
---
-ALTER TABLE `tbl_cart`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=164;
-
---
--- AUTO_INCREMENT for table `tbl_category`
---
-ALTER TABLE `tbl_category`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
-
---
 -- AUTO_INCREMENT for table `tbl_cities`
 --
 ALTER TABLE `tbl_cities`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
--- AUTO_INCREMENT for table `tbl_colour`
+-- AUTO_INCREMENT for table `tbl_intercity`
 --
-ALTER TABLE `tbl_colour`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
-
---
--- AUTO_INCREMENT for table `tbl_contact_us`
---
-ALTER TABLE `tbl_contact_us`
-  MODIFY `id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
-
---
--- AUTO_INCREMENT for table `tbl_forgot_pass`
---
-ALTER TABLE `tbl_forgot_pass`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
+ALTER TABLE `tbl_intercity`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT for table `tbl_order1`
@@ -1305,28 +776,16 @@ ALTER TABLE `tbl_otp`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
+-- AUTO_INCREMENT for table `tbl_outstation`
+--
+ALTER TABLE `tbl_outstation`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+
+--
 -- AUTO_INCREMENT for table `tbl_percentage`
 --
 ALTER TABLE `tbl_percentage`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
-
---
--- AUTO_INCREMENT for table `tbl_popup`
---
-ALTER TABLE `tbl_popup`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
-
---
--- AUTO_INCREMENT for table `tbl_popup_image`
---
-ALTER TABLE `tbl_popup_image`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
-
---
--- AUTO_INCREMENT for table `tbl_product`
---
-ALTER TABLE `tbl_product`
-  MODIFY `id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
 
 --
 -- AUTO_INCREMENT for table `tbl_promocode`
@@ -1335,16 +794,10 @@ ALTER TABLE `tbl_promocode`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
--- AUTO_INCREMENT for table `tbl_size`
+-- AUTO_INCREMENT for table `tbl_selfdrive`
 --
-ALTER TABLE `tbl_size`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
-
---
--- AUTO_INCREMENT for table `tbl_slider`
---
-ALTER TABLE `tbl_slider`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+ALTER TABLE `tbl_selfdrive`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- AUTO_INCREMENT for table `tbl_subcategory`
@@ -1353,28 +806,10 @@ ALTER TABLE `tbl_subcategory`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
--- AUTO_INCREMENT for table `tbl_subscribe`
---
-ALTER TABLE `tbl_subscribe`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
-
---
 -- AUTO_INCREMENT for table `tbl_team`
 --
 ALTER TABLE `tbl_team`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
-
---
--- AUTO_INCREMENT for table `tbl_testimonials`
---
-ALTER TABLE `tbl_testimonials`
-  MODIFY `id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
-
---
--- AUTO_INCREMENT for table `tbl_type`
---
-ALTER TABLE `tbl_type`
-  MODIFY `id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
 
 --
 -- AUTO_INCREMENT for table `tbl_users`
@@ -1387,12 +822,6 @@ ALTER TABLE `tbl_users`
 --
 ALTER TABLE `tbl_user_temp`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
-
---
--- AUTO_INCREMENT for table `tbl_wishlist`
---
-ALTER TABLE `tbl_wishlist`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
