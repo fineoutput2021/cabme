@@ -1493,14 +1493,14 @@ width:100%;
 }
 .invoicebtn:hover 
 {
-	color: #fff;
+	color: red;
 }
 .invoicebtn
 {
-	background-color: red;
-	color: #fff;
-	border: none;
-	padding: 10px;
+	/* background-color: red; */
+	color: red;
+	border: 1px solid red;
+	padding: 8px;
 	text-transform: uppercase;
 	border-radius: 5px;
 	cursor: pointer;
@@ -1775,6 +1775,13 @@ width:100%;
 .profiletable  tbody .completedspan
 {
 	/* background-color: red; */
+	color: #fff;
+	padding: 2px 10px;
+	padding-bottom:5px;
+	border-radius: 20px;
+}
+.profiletable  thead .completedspan
+{
 	color: #fff;
 	padding: 2px 10px;
 	padding-bottom:5px;
@@ -2159,6 +2166,14 @@ width:100%;
 /* modal btns */
 @media (max-width: 767px)
 {
+	.desktoplist
+	{
+		display: none;
+	}
+	#booking
+	{
+		display: none;
+	}
 	.rupeebox
 	{
 		padding:auto !important;
@@ -2179,7 +2194,11 @@ width:100%;
 }
 @media (min-width: 768px)
 {
-	.booking_2
+	.mobilelist
+	{
+		display: none;
+	}
+	#booking_2
 	{
 		display: none;
 	}
