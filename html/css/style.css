@@ -7545,6 +7545,10 @@ input[type=number] {
 	padding:20px;
 	margin-top:77px;
 }
+.btc_tittle_right_cont_wrapper ul 
+{
+	padding: 0px !important;
+}
 .margintop_zero{
 	margin-top:0;
 }
