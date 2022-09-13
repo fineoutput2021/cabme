@@ -98,7 +98,7 @@
 
 	<!--======login Modal ======-->
 
-	<div class="modal fade" id="loginModal" role="dialog">
+	<div class="modal fade" id="loginModal" role="dialog" style="z-index: 999999;">
 		<div class="modal-dialog">
 
 			<!-- Modal content-->
@@ -121,7 +121,7 @@
 							<input type="text" class="form-control modalinput" required="" placeholder="Enter OTP *">
 						</div>
 					</div>
-					<div class="row justify-content-center"><button class="btn loginbtn">Login</button></div>
+					<div class="row justify-content-center"><button class="btn col-md-4 loginbtn"> <i class="fa fa-power-off"></i> &nbsp; Login</button></div>
 					<div class="row justify-content-center mt-2">
 						<span> Dont't have account yet? &nbsp; <a href="#" class="getlink" data-toggle="modal"
 								data-target="#signupModal" data-dismiss="modal">Sign Up</a> </span>
@@ -136,8 +136,7 @@
 	<!--======Sign Up Modal ======-->
 
 
-
-	<div class="modal fade" id="signupModal" role="dialog">
+	<div class="modal fade" id="signupModal" role="dialog" style="z-index: 999999;">
 		<div class="modal-dialog">
 
 			<!-- Modal content-->
@@ -160,16 +159,19 @@
 							<div class="form-group col-md-6 col-12">
 								<input type="text" class="form-control modalinput" required="" placeholder="Last Name*">
 							</div>
+							<div class="form-group col-md-6 col-12">
+								<input type="text" class="form-control modalinput" required="" placeholder="E-mail*">
+							</div>
 							<div class="form-group mb-4 col-md-6 col-12">
 								<input type="text" class="form-control modalinput" required=""
 									placeholder="Enter mobile Number*">
 							</div>
-							<div class="form-group col-md-6 col-12">
+							<div class="form-group col-md-12 col-12">
 								<input type="text" class="form-control modalinput" required="" placeholder="Enter OTP*">
 							</div>
 						</div>
 					</div>
-					<div class="row justify-content-center"><button class="btn loginbtn">Sign Up</button></div>
+					<div class="row justify-content-center"><button class="btn col-md-4 loginbtn"> <i class="fa fa-user"></i> &nbsp; Sign Up</button></div>
 					<div class="row justify-content-center mt-2">
 						<span> Already have an account? &nbsp; <a href="#" class="getlink" data-toggle="modal"
 								data-target="#loginModal" data-dismiss="modal">Login</a> </span>
@@ -191,7 +193,8 @@
 
 	<!--====================== Header Start ======================-->
 
-	<div class="hs_navigation_header_wrapper">
+	<div class="hs_navigation_header_wrapper"
+		style="position: fixed;top: 0;z-index: 11111;box-shadow: 0px 1px 10px rgb(209 209 209);">
 		<div class="container">
 			<div class="row">
 				<div class=" col-xl-3 col-lg-3 col-md-3 col-sm-12 col-12 mb-3 d-none d-sm-none d-xs-none d-md-block">
@@ -228,8 +231,7 @@
 							</div>
 						</div>
 					</div>
-					<button class="btn headerloginbtn" data-toggle="modal" data-target="#signupModal"><i
-							class="fa fa-power-off"></i> &nbsp;Sign Up </button>
+					<button class="btn headerloginbtn" data-toggle="modal" data-target="#signupModal"><i class="fa fa-user"></i> &nbsp;Sign Up </button>
 					<button class="btn headerloginbtn mr-3" data-toggle="modal" data-target="#loginModal"><i
 							class="fa fa-power-off"></i> &nbsp;Login </button>
 
@@ -238,10 +240,10 @@
 						<div class="container-fluid">
 							<div class="row">
 								<div class="col-xs-6 col-sm-6 col-6">
-									<div class="hs_logo">
+									<div class="hs_logo mb-3">
 										<a href="index.html">
-											<h4>Cabme</h4>
-											<!-- <img src="images/logo.png" alt="Logo" title="Logo"> -->
+											<!-- <h4>Cabme</h4> -->
+											<img src="images/cabme_logo.png" alt="Logo" title="Logo" width="90%">
 										</a>
 									</div>
 								</div>
@@ -250,51 +252,57 @@
 										<a class="house_toggle" href="#0">
 											<i class="fa fa-bars" id="Capa_1" style="font-size:25px;color :red;"></i>
 										</a>
+
 										<!-- .cd-dropdown -->
 									</div>
 									<nav class="cd-dropdown">
 										<div class="row mb-5">
 											<div class="col-10">
-												<h2><a href="index.html">Cabme</a></h2>
-												<p class="ml-4">demo@gmail.com</p>
+												<h2><a href="index.html"><img src="images/cabme_logo.png"
+															alt="cabme_logo" width="50%"></a></h2>
+												<p class="ml-4" style="margin-top: -10px;">demo@gmail.com</p>
 											</div>
 											<div class="col-2">
-												<a href="#0" class="cd-close">Close</a>
+												<a href="#0" class="cd-close" style="margin-right: 25px;">Close</a>
 											</div>
+											<ul class="cd-dropdown-content mobilelinks mt-3">
 
+												<li class="mb-3 mt-5">
+													<button class="btn ml-5" data-toggle="modal"
+														data-target="#loginModal" style="background-color:red;color: #fff;"><i class="fa fa-power-off"></i>
+														&nbsp;Login </button>
+													<button class="btn ml-5" data-toggle="modal"
+														data-target="#signupModal"  style="background-color:red;color: #fff;"><i class="fa fa-user"></i> &nbsp;Sign
+														Up
+													</button>
+												</li>
+												<li>
+													<a href="summary.html">Summary</a></li>
+												</li>
+												<li>
+													<a href="my_profile.html">My Profile</a></li>
+												</li>
+												<li>
+													<a href="faq.html">FAQ's</a></li>
+												</li>
+												<li>
+													<a href="car_checkout.html">Checkout</a></li>
+												</li>
+												<li>
+													<a href="#">Policy</a></li>
+												</li>
+												<li>
+													<a href="#">Contact Us</a></li>
+												</li>
+												<li>
+													<a href="#">Log Out</a></li>
+												</li>
+
+											</ul>
 										</div>
 
 
-										<ul class="cd-dropdown-content mobilelinks mt-3">
 
-											<li class="mb-3 mt-5">
-												<button class="btn ml-5" data-toggle="modal"
-													data-target="#loginModal"><i class="fa fa-power-off"></i>
-													&nbsp;Login </button>
-												<button class="btn ml-5" data-toggle="modal"
-													data-target="#signupModal"><i class="fa fa-user"></i> &nbsp;Sign Up
-												</button>
-											</li>
-											<li>
-												<a href="#">Car Rental</a></li>
-											</li>
-											<li>
-												<a href="#">My Booking</a></li>
-											</li>
-											<li>
-												<a href="#">FAQ's</a></li>
-											</li>
-											<li>
-												<a href="#">Policy</a></li>
-											</li>
-											<li>
-												<a href="#">Contact Us</a></li>
-											</li>
-											<li>
-												<a href="#">Log Out</a></li>
-											</li>
-
-										</ul>
 										<!-- .cd-dropdown-content -->
 
 									</nav>
@@ -308,55 +316,9 @@
 				</div>
 			</div>
 		</div>
-		<div class="container-fluid" style="border-bottom: 1px solid rgb(219, 219, 219);">
-			<div class="container-fluid mb-2">
-				<div class="row">
-
-					<div class="col-md-3 p-0">
-						<div class="col-md-12 p-0"  data-toggle="modal"
-						data-target="#selectcity" data-dismiss="modal" style="height: 60px;">
-							<div class="selectcitycars">
-								<i class="fa fa-map-marker"></i>
-								<h5>Select City</h5>
-							</div>
-						</div>
-					</div>
-
-					<div class="col-md-3 col-6 mobileradius" id="mobileradius-1" style="z-index: 0;display: flex;height: 55px;border: 1px solid rgb(237 230 230);padding: 0px;">
-						<div class="form-sec-header" style="height: 50px;">
-							<label class="cal-icon" style="top:11px;left: 10px;"> Start Date
-								<input type="text" placeholder="Thu 15 Sep 2022"
-									class="form-control datepicker" style="border: none;padding-right: 0px;padding-left: 1px;margin-top: -9px;">
-							</label>
-						
-						</div>
-						<div class="timepicker_div" style="height: 50px;margin-top: 2px;width: 80px;margin-left: 12px;"> 
-							<input type="text"  class="form-control timepicker" placeholder="2:30PM" style="padding: 23px 0px;background-color: transparent;border: none;margin-left: 5px; margin-top: 2px; width: 84%;">
-						</div>
-					</div>
-				
-					<div class="col-md-3 col-6 mobileradius"  id="mobileradius-2" style="z-index: 0;display: flex;height: 55px;border: 1px solid rgb(237 230 230);padding: 0px;">
-						<div class="form-sec-header" style="height: 50px;">
-							<label class="cal-icon" style="top:11px;left: 10px;"> End Date
-								<input type="text" placeholder="Sun 15 Sep 2022"
-									class="form-control datepicker" style="border: none;padding-right: 0px;padding-left: 1px;margin-top: -9px;">
-							</label>
-						
-						</div>
-						<div class="timepicker_div" style="height: 50px;margin-top: 2px;width: 80px;margin-left: 12px;"> 
-							<input type="text"  class="form-control timepicker" placeholder="5:00AM" style="padding: 23px 0px;background-color: transparent;border: none;margin-left: 5px; margin-top: 2px; width: 84%;">
-						</div>
-					</div>
-
-					<div class="col-md-3 mobilehidesearch">
-						<button class="searchbtn_2">Search</button>
-					</div>
-
-
-				</div>
-			</div>
-		</div>
 	</div>
+	<!-- HeaqderEnd -->
+
 	<!-- HeaqderEnd -->
 
 	<!-- btc tittle Wrapper Start -->
@@ -934,7 +896,7 @@
 			</div>
 
 		</div>
-		<!--===========================  Footer Wrapper End ===========================-->
+	
 
 		<!-- ======================================  Mobile Sort by & Filters Start   ====================================== -->
 
@@ -958,15 +920,42 @@
 	</div>
 	<!-- x car book sidebar section Wrapper End -->
 
+	
+	<!--====== Content ======-->
+	<div class="container">
+		<div class="row p-3">
+			<h4 class="mt-5">Self-Drive Car Rentals in Delhi NCR</h4>
+			<p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Totam amet nihil, voluptatem incidunt tempore
+				praesentium. Explicabo, minus quaerat in illo obcaecati impedit repellat quae esse, dolore incidunt modi
+				pariatur sed?</p>
+		</div>
+		<div class="row p-3">
+			<h4 class="mt-5">Places to Go</h4>
+			<p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Totam amet nihil, voluptatem incidunt tempore
+				praesentium. Explicabo, minus quaerat in illo obcaecati impedit repellat quae esse, dolore incidunt modi
+				pariatur sed?</p>
+		</div>
+		<div class="row p-3">
+			<h4 class="mt-5">Selecting a Car</h4>
+			<p class="mb-4">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Totam amet nihil, voluptatem
+				incidunt tempore praesentium. Explicabo, minus quaerat in illo obcaecati impedit repellat quae esse,
+				dolore incidunt modi pariatur sed?</p>
+		</div>
+	</div>
+	<!--====== Content End ======-->
+
+
+
+
 	<!--===========================  Footer Wrapper Start ===========================-->
 
-	<div class="x_footer_bottom_main_wrapper float_left">
+	<div class="x_footer_bottom_main_wrapper float_left" style="box-shadow: 0px 1px 10px rgb(209 209 209);">
 		<div class="container">
 			<div class="row">
 				<div class="col-xl-4 col-lg-4 col-md-4 col-sm-12 col-12">
 					<div class="x_footer_bottom_box_wrapper float_left">
 						<img src="images/cabme_logo.png" alt="">
-						<p>© 2022 Primemover Mobility Technologies Pvt Ltd. All rights reserved</p>
+						<p>© 2022 Fineoutput Technology Pvt Ltd. All rights reserved</p>
 
 					</div>
 				</div>
@@ -974,14 +963,19 @@
 					<div class="x_footer_bottom_box_wrapper_second float_left">
 						<h3>Information</h3>
 						<ul>
-							<li><a href="#"><i class="fa fa-long-arrow-right"></i> &nbsp; Home</a>
+							<li><a href="index.html"><i class="fa fa-long-arrow-right"></i> &nbsp; Home</a>
 							</li>
-							<li><a href="#"><i class="fa fa-long-arrow-right"></i> &nbsp; FAQ's</a>
+							<!-- <li><a href="car_checkout.html"><i class="fa fa-long-arrow-right"></i> &nbsp; Checkout</a>
+							</li> -->
+							<li><a href="about.html"><i class="fa fa-long-arrow-right"></i> &nbsp; About</a>
 							</li>
-							<li><a href="#"><i class="fa fa-long-arrow-right"></i> &nbsp; Policy</a>
+							<li><a href="summary.html"><i class="fa fa-long-arrow-right"></i> &nbsp; Summary</a>
 							</li>
-							<li><a href="#"><i class="fa fa-long-arrow-right"></i> &nbsp; Blog</a>
+							<!-- <li><a href="self_cars.html"><i class="fa fa-long-arrow-right"></i> &nbsp; All-Cars</a>
+							</li> -->
+							<li><a href="faq.html"><i class="fa fa-long-arrow-right"></i> &nbsp; FAQ's</a>
 							</li>
+
 						</ul>
 					</div>
 				</div>
@@ -989,7 +983,7 @@
 					<div class="x_footer_bottom_box_wrapper_second float_left mb-5">
 						<h3>Social</h3>
 					</div>
-					<div class="row fsocialicons">
+					<div class="row fsocialicons ml-1">
 						<a href="#"><i class="fa fa-facebook" style="font-size: 25px;"></i></a>
 						<a href="#"><i class="fa fa-twitter" style="font-size: 25px;"></i></a>
 						<a href="#"><i class="fa fa-instagram" style="font-size: 25px;"></i></a>
@@ -1001,6 +995,8 @@
 			</div>
 		</div>
 	</div>
+
+
 
 	<!--===========================  Footer Wrapper End ===========================-->
 
