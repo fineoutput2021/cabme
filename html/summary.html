@@ -149,13 +149,23 @@
 							<input type="text" class="form-control modalinput" required="" placeholder="Driving Licence*">
 						</div>
 					</div>
-					<div class="row justify-content-center mt-2">
-						<div class="x_slider_checkbox x_slider_checkbox_bottom_filter_use">
-							<input type="checkbox" id="agree" name="cb">
-							<label for="agree">Lorem ipsum dolor sit amet consectetur adipisicing elit.</label>
+					<div class="row">
+						<div class="col-md-12">
+							<p class="mt-1">Upload Aadhar photo</p>
+							<input type="file">
+						</div>
+						<div class="col-md-12">
+							<p class="mt-1">Upload Driving Licence photo</p>
+							<input type="file" >
 						</div>
 					</div>
-					<div class="row justify-content-center mt-2"><button class="btn loginbtn">Login</button></div>
+					<div class="row  mt-2">
+						<div class="x_slider_checkbox x_slider_checkbox_bottom_filter_use">
+							<input type="checkbox" id="agree" name="cb">
+							<label for="agree">Terms & Conditions</label>
+						</div>
+					</div>
+					<div class="row justify-content-center mt-2"> <a href="success.html"><button class="btn loginbtn">Proceed To Pay</button></a> </div>
 
 				</div>
 			</div>
@@ -380,6 +390,28 @@
 	</div>
 	<!-- HeaqderEnd -->
 
+	<!-- btc tittle Wrapper Start -->
+	<div class="btc_tittle_main_wrapper" style="margin-top: 100px;">
+		<div class="container-fluid">
+			<div class="row">
+				<div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12 full_width">
+					<div class="btc_tittle_right_heading">
+						<div class="btc_tittle_right_cont_wrapper">
+							<ul>
+								<li><a href="index.html">Home</a>  <i class="fa fa-angle-right"></i>
+								</li>
+								<li><a href="self_cars.html">self_cars</a>  <i class="fa fa-angle-right"></i>
+								</li>
+								<li>Summary</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- btc tittle Wrapper End -->
+
 	<!--============================== Mobile Car Detail =======================================-->
 
 	<div class="coontainer-fluid" id="mobilecardetail" style="background-color: #fff;margin-top: 70px;padding: 20px;">
@@ -412,6 +444,12 @@
 				<h6>48 : 00 Hours</h6>
 			</div>
 		</div>
+		<div class="row  text-center">
+			<div class="col-md-12" style="margin-top: 10px;">
+				<p>Jaipur <span style="margin-left: 30px;"> <a href="#" style="color: red;" data-toggle="modal"
+							data-target="#selectcity" data-dismiss="modal">Change City</a> </span> </p>
+			</div>
+		</div>
 		<div class="row text-center" style="flex-wrap: nowrap;margin-top: 10px;">
 			<div class="col-md-12 col-xs-12">
 				<p>Pricing Plan: Includes 1344 kms, excludes fuel <span style="margin-left: 30px;"> <a href="#"
@@ -427,7 +465,7 @@
 
 	<!--============================== Desktop Car Detail =======================================-->
 
-	<div class="container-fluid desktopcardetail" style="background-color: #fff;margin-top: 100px;padding: 20px;">
+	<div class="container-fluid desktopcardetail" style="background-color: #fff;margin-top: 10px;padding: 20px;">
 		<div class="row" style="text-align: center;">
 			<div class="col-md-6">
 				<img src="images/c1.png" alt="c1">
@@ -477,14 +515,14 @@
 		<div class="row" id="reversedivs">
 			<div class="col-md-8">
 				<div class="x_car_donr_main_box_wrapper float_left mt-3">
-					<div class="x_car_donr_main_box_wrapper_inner">
+					<div class="x_car_donr_main_box_wrapper_inner">	
 						<div class="order-done">
 							<ul class="row list-unstyled">
 
 								<li class="col-md-12">
 									<h6 class="implines">IMPORTANT POINTS TO REMEMBER</h6>
 									<div class="row">
-										<div class="col-md-6">CHANGE IN PRICING PLAN:</div>
+										<div class="col-md-6" style="color: #000;">CHANGE IN PRICING PLAN:</div>
 										<div class="col-md-6"> The pricing plan (7 kms/hr, without fuel) cannot be
 											changed after
 											the booking is made
@@ -492,7 +530,7 @@
 									</div>
 
 									<div class="row mt-2">
-										<div class="col-md-6">FUEL:</div>
+										<div class="col-md-6" style="color: #000;">FUEL:</div>
 										<div class="col-md-6"> In case you are returning the car at a lower fuel level
 											than what
 											was received, we will charge a flat Rs 500 refuelling service charge +
@@ -502,7 +540,7 @@
 									</div>
 
 									<div class="row mt-2">
-										<div class="col-md-6">TOLLS, PARKING, INTER-STATE TAXES:</div>
+										<div class="col-md-6" style="color: #000;">TOLLS, PARKING, INTER-STATE TAXES:</div>
 										<div class="col-md-6"> To be paid by you.</div>
 									</div>
 
@@ -531,7 +569,7 @@
 									<div class="row mt-2">
 										<div class="x_slider_form_input_wrapper col-md-8 col-6">
 											<input type="text" placeholder="Promo Code"
-												style="border: none;border-bottom: 1px solid #eeeeee;">
+												style="border: none;border-bottom: 1px solid grey;border-radius: 0px;">
 										</div>
 										<div class="col-md-4 col-6">
 											<button class="bookbtn float-right">Apply</button>
@@ -546,13 +584,13 @@
 									<p>Extra kms charge <span>₹ 9/km</span></p>
 									<p>Tolls, Parking & Inter-state taxes <span>To be paid by you</span></p>
 									<div class="x_slider_form_input_wrapper mt-2">
-										<input type="text" placeholder="Delivery Location"
-											style="border: none;border-bottom: 1px solid #eeeeee;">
+										<input type="text" placeholder="Pick-Up Location"
+											style="border: none;border-bottom: 1px solid grey;border-radius: 0px;">
 									</div>
 
 								</li>
 							</ul>
-							<button class="bookbtn"  data-toggle="modal"
+							<button class="bookbtn col-md-4"  data-toggle="modal"
 							data-target="#proofModal" data-dismiss="modal">Pay</button>
 						</div>
 					</div>

@@ -14,7 +14,18 @@
 	<link rel="stylesheet" type="text/css" href="css/cabme.css" />
 	<!--favicon-->
 	<link rel="shortcut icon" type="image/png" href="images/cabme_logo.png" />
-
+	<style>
+		.mobilenav-tabs
+		{
+			border: .5px solid rgb(194, 192, 192);
+		}
+		.mobilenav-tabs .nav-item .nav-link 
+		{
+			border-left: .5px solid rgb(194, 193, 193);
+			padding-left: 3px;
+	
+		}
+	</style>
 </head>
 
 <body>
@@ -29,7 +40,7 @@
 					<h4 class="modal-title">Information</h4>
 					<button type="button" class="close" data-dismiss="modal">&times;</button>
 				</div>
-				<div class="modal-body" id="mobilefont" style="border-bottom: 1px solid rgb(184, 183, 183);">
+				<div class="modal-body" id="mobilefont">
 					<div class="row mb-2">
 						<div class="col-md-6 col-6">
 							<h5>City :</h5>
@@ -242,7 +253,7 @@
 							<input type="text" class="form-control modalinput" required="" placeholder="Enter OTP *">
 						</div>
 					</div>
-					<div class="row justify-content-center"><button class="btn loginbtn">Login</button></div>
+					<div class="row justify-content-center"><button class="btn col-md-4 loginbtn"> <i class="fa fa-power-off"></i> &nbsp; Login</button></div>
 					<div class="row justify-content-center mt-2">
 						<span> Dont't have account yet? &nbsp; <a href="#" class="getlink" data-toggle="modal"
 								data-target="#signupModal" data-dismiss="modal">Sign Up</a> </span>
@@ -292,7 +303,7 @@
 							</div>
 						</div>
 					</div>
-					<div class="row justify-content-center"><button class="btn loginbtn">Sign Up</button></div>
+					<div class="row justify-content-center"><button class="btn col-md-4 loginbtn"> <i class="fa fa-user"></i> &nbsp; Sign Up</button></div>
 					<div class="row justify-content-center mt-2">
 						<span> Already have an account? &nbsp; <a href="#" class="getlink" data-toggle="modal"
 								data-target="#loginModal" data-dismiss="modal">Login</a> </span>
@@ -352,8 +363,7 @@
 							</div>
 						</div>
 					</div>
-					<button class="btn headerloginbtn" data-toggle="modal" data-target="#signupModal"><i
-							class="fa fa-power-off"></i> &nbsp;Sign Up </button>
+					<button class="btn headerloginbtn" data-toggle="modal" data-target="#signupModal"><i class="fa fa-user"></i> &nbsp;Sign Up </button>
 					<button class="btn headerloginbtn mr-3" data-toggle="modal" data-target="#loginModal"><i
 							class="fa fa-power-off"></i> &nbsp;Login </button>
 
@@ -391,10 +401,10 @@
 
 												<li class="mb-3 mt-5">
 													<button class="btn ml-5" data-toggle="modal"
-														data-target="#loginModal"><i class="fa fa-power-off"></i>
+														data-target="#loginModal" style="background-color:red;color: #fff;"><i class="fa fa-power-off"></i>
 														&nbsp;Login </button>
 													<button class="btn ml-5" data-toggle="modal"
-														data-target="#signupModal"><i class="fa fa-user"></i> &nbsp;Sign
+														data-target="#signupModal"  style="background-color:red;color: #fff;"><i class="fa fa-user"></i> &nbsp;Sign
 														Up
 													</button>
 												</li>
@@ -485,7 +495,7 @@
 												data-dismiss="modal" id="ss">
 												<div class="selectcity">
 													<i class="fa fa-map-marker"></i>
-													<h5>Select City</h5>
+													<h5 style="margin-top: 3px;">Select City</h5>
 												</div>
 											</div>
 											<div class="col-md-6 "
@@ -526,9 +536,11 @@
 												</div>
 											</div>
 										</div>
-										<div class="col-md-12" style="margin-top:20px;">
+										<div class="col-md-12">
 											<div class="row mt-2 justify-content-center">
-												<button class="btn col-md-10 searchbtn">Search</button>
+												<a href="self_cars.html" class=" col-md-10 text-center">
+													<button class="btn col-md-10 searchbtn">Search</button>
+												</a>
 											</div>
 										</div>
 									</div>
@@ -563,7 +575,7 @@
 											data-dismiss="modal" id="ss">
 											<div class="selectcity">
 												<i class="fa fa-map-marker"></i>
-												<h5>Select City</h5>
+												<h5 style="margin-top: 3px;">Select City</h5>
 											</div>
 										</div>
 										<div class="col-md-6 "
@@ -644,19 +656,15 @@
 											</div>
 										</div>
 										<div class="col-md-6">
-											<div class="x_slider_select x_slider_select_2">
-												<select class="myselect">
-													<option>Destination Location</option>
-													<option>Aagra</option>
-													<option>Punjab</option>
-													<option>Dholpur</option>
-												</select> <i class="fa fa-map-marker"></i>
+											<div class="x_slider_form_input_wrapper mt-4" style="border: 1px solid #eeeeee;border-radius: 10px;">
+												<input type="text" placeholder="Location"
+													style="border: none;border-bottom: 1px solid #eeeeee;height: 45px;">
 											</div>
 										</div>
 										<div class="col-md-6 mt-2">
 											<div class="radio">
-												<input type="radio" name="ratio" id="Single" value="option1" checked="checked">
-												<label for="Single">Single Trip</label>
+												<input type="radio" name="ratio" id="Single" value="option1" checked>
+												<label for="Single" checked>Single Trip</label>
 											</div>
 										</div>
 										<div class="col-md-6 mt-2">
@@ -672,7 +680,7 @@
 												data-dismiss="modal" id="ss">
 												<div class="selectcity">
 													<i class="fa fa-map-marker"></i>
-													<h5>Select City</h5>
+													<h5 style="margin-top: 3px;">Select City</h5>
 												</div>
 											</div>
 											<div class="col-md-6 "
@@ -716,7 +724,7 @@
 
 										<div class="col-md-12">
 											<div class="row mt-2 justify-content-center">
-												<a href="#" class=" col-md-10 text-center">
+												<a href="outstation_car.html" class=" col-md-10 text-center">
 													<button class="btn col-md-10 searchbtn">Search</button>
 												</a>
 											</div>
@@ -797,7 +805,7 @@
 								<div class="row mt-5">
 
 									<div class="row"
-										style="border: 1px solid rgb(226, 225, 225);margin-top: 33px;border-radius: 10px;">
+										style="border: 1px solid rgb(226, 225, 225);margin-top: 35px;border-radius: 10px;">
 										<div class="col-md-12 p-0" data-toggle="modal" data-target="#selectcity"
 											data-dismiss="modal">
 											<div class="selectcity">
@@ -842,7 +850,7 @@
 
 									<div class="col-md-12">
 										<div class="row mt-2 justify-content-center">
-											<a href="#" class=" col-md-10 text-center">
+											<a href="self_cars.html" class=" col-md-10 text-center">
 												<button class="btn col-md-10 searchbtn">Search</button>
 											</a>
 										</div>
@@ -860,7 +868,7 @@
 								</div>
 								<div class="row mt-5">
 
-									<div class="col-md-12">
+									<div class="col-md-12 p-0">
 										<div class="x_slider_select x_slider_select_2" style="width: 122%;">
 											<select class="myselect">
 												<option> Select Car </option>
@@ -871,7 +879,7 @@
 										</div>
 									</div>
 									<div class="row"
-										style="border: 1px solid rgb(226, 225, 225);margin-top: 33px;border-radius: 10px;">
+										style="border: 1px solid rgb(226, 225, 225);margin-top: 35px;border-radius: 10px;">
 										<div class="col-md-12 p-0" data-toggle="modal" data-target="#selectcity"
 											data-dismiss="modal">
 											<div class="selectcity">
@@ -943,21 +951,17 @@
 										</div>
 									</div>
 									<div class="col-md-6 col-6 p-0 mt-3">
-										<div class="x_slider_select x_slider_select_2" style="margin-left: 16px;">
-											<select class="myselect">
-												<option>Destination Location</option>
-												<option>Aagra</option>
-												<option>Punjab</option>
-												<option>Dholpur</option>
-											</select> <i class="fa fa-map-marker"></i>
+										<div class="x_slider_form_input_wrapper mt-4" style="border: 1px solid #eeeeee;border-radius: 10px;">
+											<input type="text" placeholder="Location"
+												style="border: none;border-bottom: 1px solid #eeeeee;height: 45px;">
 										</div>
 									</div>
 									<div class="row" style="flex-wrap: nowrap;width: 100%;">
 										<div class="col-md-6 col-xs-6 mt-2">
 											<div class="radio">
 												<input type="radio" name="ratio" id="Single1" value="option1"
-													checked="checked">
-												<label for="Single1">Single Trip</label>
+													checked>
+												<label for="Single1" checked>Single Trip</label>
 											</div>
 										</div>
 										<div class="col-md-6  col-xs-6 mt-2">
@@ -968,7 +972,7 @@
 										</div>
 									</div>
 									<div class="row"
-										style="border: 1px solid rgb(226, 225, 225);margin-top: 33px;border-radius: 10px;">
+										style="border: 1px solid rgb(226, 225, 225);margin-top: 35px;border-radius: 10px;">
 										<div class="col-md-12 p-0" data-toggle="modal" data-target="#selectcity"
 											data-dismiss="modal">
 											<div class="selectcity">
@@ -1012,7 +1016,7 @@
 									</div>
 									<div class="col-md-12">
 										<div class="row mt-2 justify-content-center">
-											<a href="#" class=" col-md-10 text-center">
+											<a href="outstation_car.html" class=" col-md-10 text-center">
 												<button class="btn col-md-10 searchbtn">Search</button>
 											</a>
 										</div>
@@ -1564,14 +1568,14 @@
 						<ul>
 							<li><a href="index.html"><i class="fa fa-long-arrow-right"></i> &nbsp; Home</a>
 							</li>
-							<li><a href="car_checkout.html"><i class="fa fa-long-arrow-right"></i> &nbsp; Checkout</a>
-							</li>
+							<!-- <li><a href="car_checkout.html"><i class="fa fa-long-arrow-right"></i> &nbsp; Checkout</a>
+							</li> -->
 							<li><a href="about.html"><i class="fa fa-long-arrow-right"></i> &nbsp; About</a>
 							</li>
 							<li><a href="summary.html"><i class="fa fa-long-arrow-right"></i> &nbsp; Summary</a>
 							</li>
-							<li><a href="all_cars.html"><i class="fa fa-long-arrow-right"></i> &nbsp; All-Cars</a>
-							</li>
+							<!-- <li><a href="self_cars.html"><i class="fa fa-long-arrow-right"></i> &nbsp; All-Cars</a>
+							</li> -->
 							<li><a href="faq.html"><i class="fa fa-long-arrow-right"></i> &nbsp; FAQ's</a>
 							</li>
 
