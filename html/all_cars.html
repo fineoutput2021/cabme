@@ -312,17 +312,17 @@
 			<div class="container-fluid mb-2">
 				<div class="row">
 
-					<div class="col-md-3">
-						<div class="col-md-12"  data-toggle="modal"
+					<div class="col-md-3 p-0">
+						<div class="col-md-12 p-0"  data-toggle="modal"
 						data-target="#selectcity" data-dismiss="modal" style="height: 60px;">
-							<div class="selectcity">
+							<div class="selectcitycars">
 								<i class="fa fa-map-marker"></i>
 								<h5>Select City</h5>
 							</div>
 						</div>
 					</div>
 
-					<div class="col-md-3 col-6 mobileradius" style="z-index: 0;display: flex;height: 55px;border: 1px solid rgb(237 230 230);padding: 0px;">
+					<div class="col-md-3 col-6 mobileradius" id="mobileradius-1" style="z-index: 0;display: flex;height: 55px;border: 1px solid rgb(237 230 230);padding: 0px;">
 						<div class="form-sec-header" style="height: 50px;">
 							<label class="cal-icon" style="top:11px;left: 10px;"> Start Date
 								<input type="text" placeholder="Thu 15 Sep 2022"
@@ -330,12 +330,12 @@
 							</label>
 						
 						</div>
-						<div class="timepicker_div" style="height: 50px;margin-top: 2px;width: 90px;margin-left: 12px;"> 
+						<div class="timepicker_div" style="height: 50px;margin-top: 2px;width: 80px;margin-left: 12px;"> 
 							<input type="text"  class="form-control timepicker" placeholder="2:30PM" style="padding: 23px 0px;background-color: transparent;border: none;margin-left: 5px; margin-top: 2px; width: 84%;">
 						</div>
 					</div>
 				
-					<div class="col-md-3 col-6 mobileradius" style="z-index: 0;display: flex;height: 55px;border: 1px solid rgb(237 230 230);padding: 0px;">
+					<div class="col-md-3 col-6 mobileradius"  id="mobileradius-2" style="z-index: 0;display: flex;height: 55px;border: 1px solid rgb(237 230 230);padding: 0px;">
 						<div class="form-sec-header" style="height: 50px;">
 							<label class="cal-icon" style="top:11px;left: 10px;"> End Date
 								<input type="text" placeholder="Sun 15 Sep 2022"
@@ -343,7 +343,7 @@
 							</label>
 						
 						</div>
-						<div class="timepicker_div" style="height: 50px;margin-top: 2px;width: 90px;margin-left: 12px;"> 
+						<div class="timepicker_div" style="height: 50px;margin-top: 2px;width: 80px;margin-left: 12px;"> 
 							<input type="text"  class="form-control timepicker" placeholder="5:00AM" style="padding: 23px 0px;background-color: transparent;border: none;margin-left: 5px; margin-top: 2px; width: 84%;">
 						</div>
 					</div>
@@ -561,16 +561,12 @@
 
 												<div class="x_car_offer_heading float_left">
 													<ul class=" car_menual_lists">
-														<li> <img src="images/car_gear.png" alt="car_gear"
-																style="width: 20%;"> <span>Manual</span>
+														<li> <span>⚙️</span> <span>Manual</span>
 														</li>
-														<li> <img src="images/petrol.png" alt="car_gear"
-																style="width: 20%;"> <span>Petrol</span>
+														<li> <span>⛽</span> <span>Petrol</span>
 														</li>
-														<li> <img src="images/seats.png" alt="car_gear"
-																style="width: 20%;"> <span>Seats</span>
+														<li> <span>💺</span> <span>5 Seats</span>
 														</li>
-
 													</ul>
 												</div>
 												<div class="x_offer_tabs_wrapper">
@@ -598,7 +594,7 @@
 															</div>
 															<div class="col-md-4 col-4 p-0">
 																<a href="summary.html"><button
-																		class="bookbtn">Book</button></a>
+																		class="bookbtn">Book &nbsp; <i class="fa fa-angle-double-right"></i></button></a>
 															</div>
 														</div>
 
@@ -620,16 +616,12 @@
 
 												<div class="x_car_offer_heading float_left">
 													<ul class=" car_menual_lists">
-														<li> <img src="images/car_gear.png" alt="car_gear"
-																style="width: 20%;"> <span>Manual</span>
+														<li> <span>⚙️</span> <span>Manual</span>
 														</li>
-														<li> <img src="images/petrol.png" alt="car_gear"
-																style="width: 20%;"> <span>Petrol</span>
+														<li> <span>⛽</span> <span>Petrol</span>
 														</li>
-														<li> <img src="images/seats.png" alt="car_gear"
-																style="width: 20%;"> <span>Seats</span>
+														<li> <span>💺</span> <span>7 Seats</span>
 														</li>
-
 													</ul>
 												</div>
 												<div class="x_offer_tabs_wrapper">
@@ -657,7 +649,7 @@
 															</div>
 															<div class="col-md-4 col-4 p-0">
 																<a href="summary.html"><button
-																		class="bookbtn">Book</button></a>
+																		class="bookbtn">Book &nbsp; <i class="fa fa-angle-double-right"></i> </button></a>
 															</div>
 														</div>
 
@@ -679,16 +671,12 @@
 
 												<div class="x_car_offer_heading float_left">
 													<ul class=" car_menual_lists">
-														<li> <img src="images/car_gear.png" alt="car_gear"
-																style="width: 20%;"> <span>Manual</span>
+														<li> <span>⚙️</span> <span>Manual</span>
 														</li>
-														<li> <img src="images/petrol.png" alt="car_gear"
-																style="width: 20%;"> <span>Petrol</span>
+														<li> <span>⛽</span> <span>Petrol</span>
 														</li>
-														<li> <img src="images/seats.png" alt="car_gear"
-																style="width: 20%;"> <span>Seats</span>
+														<li> <span>💺</span> <span>5 Seats</span>
 														</li>
-
 													</ul>
 												</div>
 												<div class="x_offer_tabs_wrapper">
@@ -716,7 +704,7 @@
 															</div>
 															<div class="col-md-4 col-4 p-0">
 																<a href="summary.html"><button
-																		class="bookbtn">Book</button></a>
+																		class="bookbtn">Book &nbsp; <i class="fa fa-angle-double-right"></i> </button></a>
 															</div>
 														</div>
 
@@ -738,16 +726,12 @@
 
 												<div class="x_car_offer_heading float_left">
 													<ul class=" car_menual_lists">
-														<li> <img src="images/car_gear.png" alt="car_gear"
-																style="width: 20%;"> <span>Manual</span>
+														<li> <span>⚙️</span> <span>Manual</span>
 														</li>
-														<li> <img src="images/petrol.png" alt="car_gear"
-																style="width: 20%;"> <span>Petrol</span>
+														<li> <span>⛽</span> <span>Petrol</span>
 														</li>
-														<li> <img src="images/seats.png" alt="car_gear"
-																style="width: 20%;"> <span>Seats</span>
+														<li> <span>💺</span> <span>7 Seats</span>
 														</li>
-
 													</ul>
 												</div>
 												<div class="x_offer_tabs_wrapper">
@@ -775,7 +759,7 @@
 															</div>
 															<div class="col-md-4 col-4 p-0">
 																<a href="summary.html"><button
-																		class="bookbtn">Book</button></a>
+																		class="bookbtn">Book &nbsp; <i class="fa fa-angle-double-right"></i> </button></a>
 															</div>
 														</div>
 
@@ -797,16 +781,12 @@
 
 												<div class="x_car_offer_heading float_left">
 													<ul class=" car_menual_lists">
-														<li> <img src="images/car_gear.png" alt="car_gear"
-																style="width: 20%;"> <span>Manual</span>
+														<li> <span>⚙️</span> <span>Manual</span>
 														</li>
-														<li> <img src="images/petrol.png" alt="car_gear"
-																style="width: 20%;"> <span>Petrol</span>
+														<li> <span>⛽</span> <span>Petrol</span>
 														</li>
-														<li> <img src="images/seats.png" alt="car_gear"
-																style="width: 20%;"> <span>Seats</span>
+														<li> <span>💺</span> <span>5 Seats</span>
 														</li>
-
 													</ul>
 												</div>
 												<div class="x_offer_tabs_wrapper">
@@ -834,7 +814,7 @@
 															</div>
 															<div class="col-md-4 col-4 p-0">
 																<a href="summary.html"><button
-																		class="bookbtn">Book</button></a>
+																		class="bookbtn">Book &nbsp; <i class="fa fa-angle-double-right"></i> </button></a>
 															</div>
 														</div>
 
@@ -856,16 +836,12 @@
 
 												<div class="x_car_offer_heading float_left">
 													<ul class=" car_menual_lists">
-														<li> <img src="images/car_gear.png" alt="car_gear"
-																style="width: 20%;"> <span>Manual</span>
+														<li> <span>⚙️</span> <span>Manual</span>
 														</li>
-														<li> <img src="images/petrol.png" alt="car_gear"
-																style="width: 20%;"> <span>Petrol</span>
+														<li> <span>⛽</span> <span>Petrol</span>
 														</li>
-														<li> <img src="images/seats.png" alt="car_gear"
-																style="width: 20%;"> <span>Seats</span>
+														<li> <span>💺</span> <span>7 Seats</span>
 														</li>
-
 													</ul>
 												</div>
 												<div class="x_offer_tabs_wrapper">
@@ -893,7 +869,7 @@
 															</div>
 															<div class="col-md-4 col-4 p-0">
 																<a href="summary.html"><button
-																		class="bookbtn">Book</button></a>
+																		class="bookbtn">Book &nbsp; <i class="fa fa-angle-double-right"></i> </button></a>
 															</div>
 														</div>
 
@@ -940,14 +916,16 @@
 		</div>
 		<!--===========================  Footer Wrapper End ===========================-->
 
+		<!-- ======================================  Mobile Sort by & Filters Start   ====================================== -->
+
 		<div class="container-fluid" style="position: fixed;bottom: 0; background-color: #fff;z-index: 110000;">
 			<div class="row text-center mobiledown">
 				<div class="col-6 p-3">
-					<a href="#" data-toggle="modal" data-target="#sortbyModal" data-dismiss="filterbyModal"> <img
+					<a href="#" data-toggle="modal" data-target="#sortbyModal" id="sbymodal"> <img
 							src="images/sortbyimg.png" alt="sortbyimg"> Sort By</a>
 				</div>
 				<div class="col-6  p-3">
-					<a href="#" data-toggle="modal" data-target="#filterbyModal" data-dismiss="sortbyModal"> <img
+					<a href="#" data-toggle="modal" data-target="#filterbyModal" id="fbymodal"> <img
 							src="images/filterimg.png" alt=""> Filters</a>
 				</div>
 			</div>
@@ -1122,7 +1100,14 @@
 	<script src="js/jquery.magnific-popup.js"></script>
 	<script src="js/xpedia.js"></script>
 	<!-- custom js-->
-
+<script>
+	$("#sbymodal").click(function(){
+       $("#filterbyModal").hide();
+	});
+	$("#fbymodal").click(function(){
+       $("#sortbyModal").hide();
+	});
+</script>
 	<script>
 		/* -- DO NOT REMOVE --
 		 * jQuery MDTimePicker v1.0 plugin
