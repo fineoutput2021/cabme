@@ -44,6 +44,7 @@ class City extends CI_finecontrol
             redirect("login/admin_login", "refresh");
         }
     }
+
     //==================================ADD CITIES DATA======================================
     public function add_cities_data($t, $iw="")
     {

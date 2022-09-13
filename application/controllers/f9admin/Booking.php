@@ -4,7 +4,7 @@ if (! defined('BASEPATH')) {
     exit('No direct script access allowed');
 }
 require_once(APPPATH . 'core/CI_finecontrol.php');
-class Order extends CI_finecontrol
+class Booking extends CI_finecontrol
 {
     public function __construct()
     {
@@ -13,47 +13,43 @@ class Order extends CI_finecontrol
         $this->load->model("admin/base_model");
         $this->load->library('user_agent');
     }
-    //==============================view_orders=========================\\
-    public function view_order()
+    //============================== VIEW SELF DRIVE BOOKING =========================\\
+    public function view_self_booking()
     {
         if (!empty($this->session->userdata('admin_data'))) {
-            $data['user_name']=$this->load->get_var('user_name');
             $this->db->select('*');
-            $this->db->from('tbl_order1');
-            $this->db->where('payment_status', 1);
+            $this->db->from('tbl_booking');
+            // $this->db->where('payment_status', 1);
             $this->db->order_by('id', 'desc');
-            $this->db->where('order_status', 1);//new orders
-            $data['order1_data']= $this->db->get();
-            $data['heading'] = "New";
-            $data['order_type'] = 1;
+            $this->db->where('booking_type', 1);//new orders
+            $data['booking_data']= $this->db->get();
+            $data['heading'] = "Self Drive";
+            $data['booking_type'] = 1;
 
             $this->load->view('admin/common/header_view', $data);
-            $this->load->view('admin/order/view_order');
+            $this->load->view('admin/booking/view_booking');
             $this->load->view('admin/common/footer_view');
         } else {
             redirect("login/admin_login", "refresh");
         }
     }
-    //===========================placed_orders===========================\\
-    public function placed_order()
+    //=========================== VIEW INTERCITY BOOKINGS ===========================\\
+    public function view_intercity_booking()
     {
         if (!empty($this->session->userdata('admin_data'))) {
             $data['user_name']=$this->load->get_var('user_name');
-            $this->db->select('*');
-            $this->db->from('tbl_order1');
-            $this->db->where('payment_status', 1);
+            $this->db->from('tbl_booking');
+
             $this->db->order_by('id', 'desc');
-            $this->db->where('order_status', 1);//new orders
-            $data['order1_data']= $this->db->get();
-            $data['heading'] = "New";
-            $data['order_type'] = 1;
-
-
+            $this->db->where('booking_type', 2);//new orders
+            $data['booking_data']= $this->db->get();
+            $data['heading'] = "Intercity";
+            $data['booking_type'] = 2;
 
 
 
             $this->load->view('admin/common/header_view', $data);
-            $this->load->view('admin/order/view_order');
+            $this->load->view('admin/booking/view_booking');
             $this->load->view('admin/common/footer_view');
         } else {
             redirect("login/admin_login", "refresh");
@@ -61,22 +57,23 @@ class Order extends CI_finecontrol
     }
 
     //================================confirmed_orders=======================\\
-    public function accepted_order()
+    public function view_outstation_booking()
     {
         if (!empty($this->session->userdata('admin_data'))) {
             $data['user_name']=$this->load->get_var('user_name');
             $this->db->select('*');
-            $this->db->from('tbl_order1');
+            $this->db->from('tbl_booking');
             $this->db->where('payment_status', 1);
+
             $this->db->order_by('id', 'desc');
-            $this->db->where('order_status', 2);//new orders
-            $data['order1_data']= $this->db->get();
-            $data['heading'] = "Accepted";
-            $data['order_type'] = 1;
+            $this->db->where('booking_type', 3);//new orders
+            $data['booking_data']= $this->db->get();
+            $data['heading'] = "Outstation";
+            $data['booking_type'] = 3;
 
 
             $this->load->view('admin/common/header_view', $data);
-            $this->load->view('admin/order/view_order');
+            $this->load->view('admin/booking/view_booking');
             $this->load->view('admin/common/footer_view');
         } else {
             redirect("login/admin_login", "refresh");

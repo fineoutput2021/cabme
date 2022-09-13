@@ -27,13 +27,13 @@
   /* ==============================Custom theme=========================================== */
   .custom_btn{
     color: white;
-    background-color: red !important;
+    background-color: #d93636  !important;
   }
-  
+
 
   .custom_header{
     color: white;
-    background-color: red !important;
+    background-color: #d93636  !important;
   }
   .custom_sidebar{
     color: white;
@@ -51,7 +51,7 @@
   }
   .active>a{
     color: #fff;
-    background: red !important;
+    background: #d93636  !important;
     border-color:  #f9cdcc !important;
   }
 .skin-blue .sidebar-menu>li>.treeview-menu{
@@ -66,7 +66,7 @@
   }
   .skin-blue .sidebar-menu>li>a:hover{
     color: white;
-    background: red !important;
+    background: #d93636  !important;
     border-left-color: black;
   }
   .skin-blue .sidebar a{
@@ -99,7 +99,7 @@
 
 }
 .navbar-nav>.user-menu>.dropdown-menu>.user-footer .btn-default{
-  background-color:red;
+  background-color:#d93636 ;
       color: white !important;
 }
 
