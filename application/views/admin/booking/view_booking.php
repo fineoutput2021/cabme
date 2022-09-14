@@ -23,7 +23,7 @@
               <?php echo $this->session->flashdata('smessage'); ?>
             </div>
             <?php }
-                          if (!empty($this->session->flashdata('emessage'))) { ?>
+                      if (!empty($this->session->flashdata('emessage'))) { ?>
             <div class="alert alert-danger alert-dismissible">
               <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
               <h4><i class="icon fa fa-ban"></i> Alert!</h4>
@@ -45,13 +45,15 @@
                       <th>Payment Type</th>
                       <th>City </th>
                       <th>Car </th>
+                      <th>Start Date</th>
+                      <th>End Date</th>
                       <th>Start Time</th>
                       <th>End Time</th>
-                      <?if($booking_type==2){?>
-                        <th>Car Type</th>
+                      <?if ($booking_type==2) {?>
+                      <th>Car Type</th>
                       <?}?>
-                      <?if($booking_type==1){?>
-                        <th>Car Type</th>
+                      <?if ($booking_type==3) {?>
+                      <th>Car Type</th>
                       <?}?>
                       <th>Pick Location</th>
                       <th>Drop Location</th>
@@ -61,6 +63,10 @@
                       <th>Lname</th>
                       <th>Email</th>
                       <th>Phone</th>
+                      <?if ($booking_type==1) {?>
+                      <th>Aadhar Image</th>
+                      <th>Lience Image</th>
+                      <?}?>
                       <th>Date</th>
                       <th>Order Status</th>
                       <th>Action</th>
@@ -68,45 +74,59 @@
                   </thead>
                   <tbody>
                     <?php $i=1;
- foreach ($booking_data->result() as $data) {
-     $user_data = $this->db->get_where('tbl_users', array('is_active'=> 1,'id'=> $data->user_id))->result();
-     $promo_data = $this->db->get_where('tbl_promocode', array('is_active'=> 1,'id'=> $data->promocode))->result();
-     // $Self_drive_data = $this->db->get_where('tbl_selfdrive', array('is_active'=> 1,'id'=> $data->car_id))->result();?>
+foreach ($booking_data->result() as $data) {
+    $user_data = $this->db->get_where('tbl_users', array('is_active'=> 1,'id'=> $data->user_id))->result();
+    $promo_data = $this->db->get_where('tbl_promocode', array('is_active'=> 1,'id'=> $data->promocode))->result();
+    // $Self_drive_data = $this->db->get_where('tbl_selfdrive', array('is_active'=> 1,'id'=> $data->car_id))->result();?>
                     <tr>
                       <td><?=$i?></td>
-                        <td>
-                          <?php if ($data->booking_type== 1) {
-         echo "self-drive";
-     } elseif ($data->booking_type== 2) {
-         echo "intercity";
-     } elseif ($data->booking_type== 3) {
-         echo "outstation";
-     } ?></td>
-                              </td>
-                          <td><?php echo $user_data[0]->f_name." ".$user_data[0]->l_name ?></td>
-                            <td>₹<?php echo $data->total_amount ?></td>
+                      <td>
+                        <?php if ($data->booking_type== 1) {
+        echo "self-drive";
+    } elseif ($data->booking_type== 2) {
+        echo "intercity";
+    } elseif ($data->booking_type== 3) {
+        echo "outstation";
+    } ?></td>
+                      </td>
+                      <td><?php echo $user_data[0]->f_name." ".$user_data[0]->l_name ?></td>
+                      <td>₹<?php echo $data->total_amount ?></td>
                       <td><?php echo $promo_data[0]->promocode ?></td>
                       <td>₹<?php echo $promo_data[0]->max ?></td>
-                        <td>₹<?php echo $data->final_amount ?></td>
-                          <td> <?php if ($data->payment_type== 1) {
-         echo "COD";
-     } else {
-         echo "online payment";
-     } ?></td>
-  <td><?php echo $data->city ?></td>
-<td><?php echo $data->car_id ?></td>
+                      <td>₹<?php echo $data->final_amount ?></td>
+                      <td> <?php if ($data->payment_type== 1) {
+        echo "COD";
+    } else {
+        echo "online payment";
+    } ?></td>
+                      <td><?php echo $data->city ?></td>
+                      <td><?php echo $data->car_id ?></td>
+                      <td><?php echo $data->start_date ?></td>
+                      <td><?php echo $data->end_date ?></td>
                       <td><?php echo $data->start_time ?></td>
                       <td><?php echo $data->end_time ?></td>
-                      <?if($booking_type==2){?>
+                      <?if ($booking_type==2) {?>
                       <td>
                         <?php if ($data->cab_type== 1) {
-                           echo "HATCHBACK";
-                       } elseif ($data->cab_type== 2) {
-                           echo " 	SEDAN ";
-                       } elseif ($data->cab_type== 3) {
-                           echo "SUV";
-                       } ?></td>
-                       <?}?>
+        echo "HATCHBACK";
+    } elseif ($data->cab_type== 2) {
+        echo " 	SEDAN ";
+    } elseif ($data->cab_type== 3) {
+        echo "SUV";
+    } ?>
+                      </td>
+                      <?} ?>
+                      <?if ($booking_type==3) {?>
+                      <td>
+                        <?php if ($data->cab_type== 1) {
+        echo "HATCHBACK";
+    } elseif ($data->cab_type== 2) {
+        echo " 	SEDAN ";
+    } elseif ($data->cab_type== 3) {
+        echo "SUV";
+    } ?>
+                      </td>
+                      <?} ?>
                       <td><?php echo $data->pick_location ?></td>
                       <td><?php echo $data->drop_location ?></td>
                       <td><?php echo $data->start_kilometer ?></td>
@@ -115,25 +135,30 @@
                       <td><?php echo $data->lname ?></td>
                       <td><?php echo $data->email ?></td>
                       <td><?php echo $data->phone?></td>
-                        <td><?php echo $data->date?></td>
-                        <td><?php if ($data->order_status==1) {?>
-                          <p class="label bg-yellow">Pending</p>
-                          <?} elseif ($data->order_status==2) {?>
-                          <p class="label bg-green">Accepted</p>
-                          <?} elseif ($data->order_status==3) {?>
-                          <p class="label bg-red">Cancelled</p>
-                            <?} else {
-         echo("rejected");
-     } ?></td>
+                      <?if ($booking_type==1) {?>
+                      <td><?php echo $user_data[0]->aadhar_image ?></td>
+                      <td><?php echo $user_data[0]->lience_image?></td>
+                      <?} ?>
+                      <td><?php echo $data->date?></td>
+                      <td><?php if ($data->order_status==1) {?>
+                        <p class="label bg-yellow">Pending</p>
+                        <?} elseif ($data->order_status==2) {?>
+                        <p class="label bg-green">Accepted</p>
+                        <?} elseif ($data->order_status==3) {?>
+                        <p class="label bg-red">Cancelled</p>
+                        <?} else {
+        echo("rejected");
+    } ?>
+                      </td>
                       <td>
                         <div class="btn-group" id="btns<?php echo $i ?>">
                           <div class="btn-group">
                             <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false"> Action <span class="caret"></span></button>
                             <ul class="dropdown-menu" role="menu">
                               <?php
-  if ($data->booking_type==1) {
-      if ($data->order_status==1) { ?>
-                              <li><a href="<?php echo base_url() ?>dcadmin/order/updateorderStatus/<?php echo base64_encode($data->id) ?>/accepted">Accepted</a></li>
+if ($data->booking_type==1) {
+        if ($data->order_status==1) { ?>
+                              <li><a href="<?php echo base_url() ?>dcadmin/booking/accepted_outsation_booking/<?php echo base64_encode($data->id) ?>/accepted">Accepted</a></li>
                               <li><a href="<?php echo base_url() ?>dcadmin/order/updateorderStatus/<?php echo base64_encode($data->id) ?>/reject">Reject</a></li>
                               <?php } elseif ($data->order_status==2) {?>
                               <li><a href="<?php echo base_url() ?>dcadmin/order/updateorderStatus/<?php echo base64_encode($data->id) ?>/dispatched">Dispatched</a></li>
@@ -147,17 +172,20 @@
                               <li><a href="<?php echo base_url() ?>dcadmin/Order/view_bill/<?php echo base64_encode($data->id) ?>">view bill</a></li>
                               <?php } elseif ($data->order_status==4) {?>
                               <!-- <li><a href="<?php echo base_url() ?>dcadmin/Order/updateorderStatus/<?php echo base64_encode($data->id) ?>/delievered">Accepted</a></li>
-    <li><a href="<?php echo base_url() ?>dcadmin/Order/updateorderStatus/<?php echo base64_encode($data->id) ?>/reject">Rejected</a></li> -->
+<li><a href="<?php echo base_url() ?>dcadmin/Order/updateorderStatus/<?php echo base64_encode($data->id) ?>/reject">Rejected</a></li> -->
                               <li><a href="<?php echo base_url() ?>dcadmin/Order/order_detail/<?php echo base64_encode($data->id) ?>">order detail</a></li>
                               <li><a href="<?php echo base_url() ?>dcadmin/Order/view_bill/<?php echo base64_encode($data->id) ?>">order bill</a></li>
                               <?php } elseif ($data->order_status==5) {?>
                               <li><a href="<?php echo base_url() ?>dcadmin/Order/order_detail/<?php echo base64_encode($data->id) ?>">order detail</a></li>
                               <li><a href="<?php echo base_url() ?>dcadmin/Order/view_bill/<?php echo base64_encode($data->id) ?>">view bill</a></li>
                               <?}
-  } else {?>
+    } else {?>
+                              <li><a href="<?php echo base_url() ?>dcadmin/booking/start_outstation_booking/<?php echo base64_encode($data->id)?>">Accepted</a></li>
+                              <li><a href="<?php echo base_url() ?>dcadmin/booking/end_outstation_booking/<?php echo base64_encode($data->id)?>">Complete</a></li>
+                              }?>">Complete</a></li>
                               <li><a href="<?php echo base_url() ?>dcadmin/order/order_detail/<?php echo base64_encode($data->id) ?><?if ($booking_type=2) {
-      echo " /".base64_encode($data->id);
-  }?>">order detail</a></li>
+        echo " /".base64_encode($data->id);
+                                  }?>">order detail</a></li>
                               <li><a href="<?php echo base_url() ?>dcadmin/order/view_bill/<?php echo base64_encode($data->id) ?>">view bill</a></li>
                               <?} ?>
                             </ul </div>
@@ -165,7 +193,7 @@
                       </td>
                     </tr>
                     <?php $i++;
- } ?>
+} ?>
                   </tbody>
                 </table>
               </div>

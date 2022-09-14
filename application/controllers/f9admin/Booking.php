@@ -25,7 +25,6 @@ class Booking extends CI_finecontrol
             $data['booking_data']= $this->db->get();
             $data['heading'] = "Self Drive";
             $data['booking_type'] = 1;
-
             $this->load->view('admin/common/header_view', $data);
             $this->load->view('admin/booking/view_booking');
             $this->load->view('admin/common/footer_view');
@@ -39,15 +38,11 @@ class Booking extends CI_finecontrol
         if (!empty($this->session->userdata('admin_data'))) {
             $data['user_name']=$this->load->get_var('user_name');
             $this->db->from('tbl_booking');
-
             $this->db->order_by('id', 'desc');
             $this->db->where('booking_type', 2);//new orders
             $data['booking_data']= $this->db->get();
             $data['heading'] = "Intercity";
             $data['booking_type'] = 2;
-
-
-
             $this->load->view('admin/common/header_view', $data);
             $this->load->view('admin/booking/view_booking');
             $this->load->view('admin/common/footer_view');
@@ -55,8 +50,7 @@ class Booking extends CI_finecontrol
             redirect("login/admin_login", "refresh");
         }
     }
-
-    //================================confirmed_orders=======================\\
+    //================================VIEW OUTSTATION BOOKING=======================\\
     public function view_outstation_booking()
     {
         if (!empty($this->session->userdata('admin_data'))) {
@@ -64,17 +58,125 @@ class Booking extends CI_finecontrol
             $this->db->select('*');
             $this->db->from('tbl_booking');
             $this->db->where('payment_status', 1);
-
             $this->db->order_by('id', 'desc');
             $this->db->where('booking_type', 3);//new orders
             $data['booking_data']= $this->db->get();
             $data['heading'] = "Outstation";
             $data['booking_type'] = 3;
-
-
             $this->load->view('admin/common/header_view', $data);
             $this->load->view('admin/booking/view_booking');
             $this->load->view('admin/common/footer_view');
+        } else {
+            redirect("login/admin_login", "refresh");
+        }
+    }
+    //============================START OUTSTATION BOOKING=======================\\
+    public function start_outstation_booking($id)
+    {
+        if (!empty($this->session->userdata('admin_data'))) {
+            $data['id'] = $id;
+            $this->load->view('admin/common/header_view', $data);
+            $this->load->view('admin/booking/start_outstation_booking');
+            $this->load->view('admin/common/footer_view');
+        } else {
+            redirect("login/admin_login", "refresh");
+        }
+    }
+    //================================END OUTSTATION BOOKING=======================\\
+    public function end_outstation_booking($id)
+    {
+        if (!empty($this->session->userdata('admin_data'))) {
+            $data['id'] = $id;
+            $this->load->view('admin/common/header_view', $data);
+            $this->load->view('admin/booking/end_outstation_booking');
+            $this->load->view('admin/common/footer_view');
+        } else {
+            redirect("login/admin_login", "refresh");
+        }
+    }
+    //===============================ACCEPTED OUTSTATION BOOKING=======================\\
+    public function accepted_outsation_booking()
+    {
+        if (!empty($this->session->userdata('admin_data'))) {
+            $this->load->helper(array('form', 'url'));
+            $this->load->library('form_validation');
+            $this->load->helper('security');
+            if ($this->input->post()) {
+                $this->form_validation->set_rules('id', 'id', 'required|xss_clean|trim');
+                $this->form_validation->set_rules('start_kilometer', 'start_kilometer', 'required|xss_clean|trim');
+                if ($this->form_validation->run()== true) {
+                    $id=$this->input->post('id');
+                    $start_kilometer=$this->input->post('start_kilometer');
+                    $data_insert = array(
+                        'start_kilometer'=>$start_kilometer,
+                        'order_status'=>2,
+                        );
+                    $this->db->where('id', $id);
+                    $last_id=$this->db->update('tbl_booking', $data_insert);
+                    if ($last_id!=0) {
+                        $this->session->set_flashdata('smessage', 'Data updates successfully');
+                        redirect("dcadmin/Booking/view_outstation_booking", "refresh");
+                    } else {
+                        $this->session->set_flashdata('emessage', 'Sorry error occured');
+                        redirect($_SERVER['HTTP_REFERER']);
+                    }
+                } else {
+                    $this->session->set_flashdata('emessage', validation_errors());
+                    redirect($_SERVER['HTTP_REFERER']);
+                }
+            } else {
+                $this->session->set_flashdata('emessage', 'Please insert some data, No data available');
+                redirect($_SERVER['HTTP_REFERER']);
+            }
+        } else {
+            redirect("login/admin_login", "refresh");
+        }
+    }
+    //================================CONFIRMED OUTSTATION BOOKING=======================\\
+    public function complete_outsation_booking()
+    {
+        if (!empty($this->session->userdata('admin_data'))) {
+            $this->load->helper(array('form', 'url'));
+            $this->load->library('form_validation');
+            $this->load->helper('security');
+            if ($this->input->post()) {
+                $this->form_validation->set_rules('id', 'id', 'required|xss_clean|trim');
+                $this->form_validation->set_rules('location', 'location', 'required|xss_clean|trim');
+                $this->form_validation->set_rules('end_kilometer', 'end_kilometer', 'required|xss_clean|trim');
+                if ($this->form_validation->run()== true) {
+                    $id=$this->input->post('id');
+                    $location=$this->input->post('location');
+                    $end_kilometer=$this->input->post('end_kilometer');
+                    $this->db->select('*');
+                    $this->db->from('tbl_booking');
+                    $this->db->where('id', $id);//new orders
+                    $booking_data= $this->db->get()->row();
+                    $data_insert1 = array(
+                        'location'=>$location,
+                        );
+                    $this->db->where('id', $booking_data->car_id);
+                    $last_id=$this->db->update('tbl_outstation', $data_insert1);
+                    $data_insert = array(
+                        'end_kilometer'=>$end_kilometer,
+                        'order_status'=>3,
+                        );
+                    $this->db->where('id', $id);
+                    $last_id=$this->db->update('tbl_booking', $data_insert);
+                    if ($last_id!=0) {
+                        $this->session->set_flashdata('smessage', 'Data updates successfully');
+                        redirect("dcadmin/Booking/view_outstation_booking", "refresh");
+                    } else {
+                        $this->session->set_flashdata('emessage', 'Sorry error occured');
+                        redirect($_SERVER['HTTP_REFERER']);
+                    }
+                } else {
+                    $this->session->set_flashdata('emessage', validation_errors());
+                    redirect($_SERVER['HTTP_REFERER']);
+                }
+            } else {
+                $this->session->set_flashdata('emessage', 'Please insert some data, No data available');
+                redirect($_SERVER['HTTP_REFERER']);
+            }
         } else {
             redirect("login/admin_login", "refresh");
         }
@@ -92,11 +194,6 @@ class Booking extends CI_finecontrol
             $data['order1_data']= $this->db->get();
             $data['heading'] = "Dispatched";
             $data['order_type'] = 1;
-
-
-
-
-
             $this->load->view('admin/common/header_view', $data);
             $this->load->view('admin/order/view_order');
             $this->load->view('admin/common/footer_view');
@@ -117,11 +214,6 @@ class Booking extends CI_finecontrol
             $data['order1_data']= $this->db->get();
             $data['heading'] = "Completed";
             $data['order_type'] = 1;
-
-
-
-
-
             $this->load->view('admin/common/header_view', $data);
             $this->load->view('admin/order/view_order');
             $this->load->view('admin/common/footer_view');
@@ -141,10 +233,6 @@ class Booking extends CI_finecontrol
             $data['order1_data']= $this->db->get();
             $data['heading'] = "Offline";
             $data['order_type'] = 2;
-
-
-
-
             $this->load->view('admin/common/header_view', $data);
             $this->load->view('admin/order/view_order');
             $this->load->view('admin/common/footer_view');
@@ -152,7 +240,6 @@ class Booking extends CI_finecontrol
             redirect("login/admin_login", "refresh");
         }
     }
-
     //=============================cancelled_order==========================\\
     public function cancelled_order()
     {
@@ -166,7 +253,6 @@ class Booking extends CI_finecontrol
             $data['order1_data']= $this->db->get();
             $data['heading'] = "Rejected/Cancelled";
             $data['order_type'] = 1;
-
             $this->load->view('admin/common/header_view', $data);
             $this->load->view('admin/order/view_order');
             $this->load->view('admin/common/footer_view');
@@ -186,8 +272,6 @@ class Booking extends CI_finecontrol
             $data['order1_data']= $this->db->get();
             $data['heading'] = "Rejected";
             $data['order_type'] = 1;
-
-
             $this->load->view('admin/common/header_view', $data);
             $this->load->view('admin/order/view_order');
             $this->load->view('admin/common/footer_view');
@@ -195,25 +279,18 @@ class Booking extends CI_finecontrol
             redirect("login/admin_login", "refresh");
         }
     }
-
     //==============================update_order_status========================\\
     public function updateorderStatus($idd, $t)
     {
         if (!empty($this->session->userdata('admin_data'))) {
             $data['user_name']=$this->load->get_var('user_name');
-
-
             $id=base64_decode($idd);
-
             if ($t=="confirmed") {
                 $data_update = array(
                                            'order_status'=>2
-
                                            );
-
                 $this->db->where('id', $id);
                 $zapak=$this->db->update('tbl_order1', $data_update);
-
                 if ($zapak!=0) {
                     $this->session->set_flashdata('smessage', 'Status updated successfully');
                     redirect($_SERVER['HTTP_REFERER']);
@@ -225,12 +302,9 @@ class Booking extends CI_finecontrol
             if ($t=="dispatched") {
                 $data_update = array(
                                            'order_status'=>3
-
                                            );
-
                 $this->db->where('id', $id);
                 $zapak=$this->db->update('tbl_order1', $data_update);
-
                 if ($zapak!=0) {
                     $this->session->set_flashdata('smessage', 'Status updated successfully');
                     redirect($_SERVER['HTTP_REFERER']);
@@ -242,12 +316,9 @@ class Booking extends CI_finecontrol
             if ($t=="delievered") {
                 $data_update = array(
                                            'order_status'=>4
-
                                            );
-
                 $this->db->where('id', $id);
                 $zapak=$this->db->update('tbl_order1', $data_update);
-
                 if ($zapak!=0) {
                     $this->session->set_flashdata('smessage', 'Status updated successfully');
                     redirect($_SERVER['HTTP_REFERER']);
@@ -260,13 +331,11 @@ class Booking extends CI_finecontrol
                 $data_update = array('order_status'=>5);
                 $this->db->where('id', $id);
                 $zapak=$this->db->update('tbl_order1', $data_update);
-
                 //-------update inventory-------
                 $this->db->select('*');
                 $this->db->from('tbl_order2');
                 $this->db->where('main_id', $id);
                 $data_order2= $this->db->get();
-
                 foreach ($data_order2->result() as $data) {
                     $this->db->select('*');
                     $this->db->from('tbl_type');
@@ -279,7 +348,6 @@ class Booking extends CI_finecontrol
                         $zapak2=$this->db->update('tbl_type', $data_update);
                     }
                 }
-
                 if ($zapak!=0) {
                     $this->session->set_flashdata('smessage', 'Status updated successfully');
                     redirect($_SERVER['HTTP_REFERER']);
@@ -314,8 +382,6 @@ class Booking extends CI_finecontrol
             $this->db->where('id', $id);
             $order1_data= $this->db->get()->row();
             $data['status']= $order1_data->order_status;
-
-
             $this->load->view('admin/common/header_view', $data);
             $this->load->view('admin/order/order_details');
             $this->load->view('admin/common/footer_view');
@@ -328,7 +394,6 @@ class Booking extends CI_finecontrol
     {
         if (!empty($this->session->userdata('admin_data'))) {
             $data['user_name']=$this->load->get_var('user_name');
-
             $data['user_name']=$this->load->get_var('user_name');
             $id=base64_decode($idd);
             $data['id']=$idd;
@@ -340,8 +405,6 @@ class Booking extends CI_finecontrol
             $this->db->from('tbl_order2');
             $this->db->where('main_id', $id);
             $data['order2_data']= $this->db->get();
-
-
             $this->load->view('admin/order/view_bill', $data);
         } else {
             redirect("login/admin_login", "refresh");
