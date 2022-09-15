@@ -44,7 +44,6 @@
               redirect("login/admin_login", "refresh");
           }
       }
-
       //==================================ADD CITIES DATA======================================
       public function add_cities_data($t, $iw="")
       {
@@ -83,8 +82,8 @@
                           $this->upload->initialize($this->upload_config);
                           if (!$this->upload->do_upload($img1)) {
                               $upload_error = $this->upload->display_errors();
-                              // echo json_encode($upload_error);
-                              echo $upload_error;
+                              $this->session->set_flashdata('emessage', $upload_error);
+                              redirect($_SERVER['HTTP_REFERER']);
                           } else {
                               $file_info = $this->upload->data();
                               $image = "assets/uploads/cities/".$new_file_name.$file_info['file_ext'];
@@ -110,17 +109,17 @@
                           if (empty($image)) {
                               $image=$damm->photo;
                           }
-  //    foreach($damm->result() as $da) {
-  //      $uid=$da->id;
+                          //    foreach($damm->result() as $da) {
+                          //      $uid=$da->id;
                           // if($uid==$idw)
                           // {
-  //
+                          //
                           //  }
                           // else{
-  //    echo "Multiple Entry of Same Name";
-  //       exit;
+                          //    echo "Multiple Entry of Same Name";
+                          //       exit;
                           //  }
-  //     }
+                          //     }
                           $data_insert = array(
   'name'=>$name,
   'photo'=>$image,
@@ -176,10 +175,6 @@
       {
           if (!empty($this->session->userdata('admin_data'))) {
               $data['user_name']=$this->load->get_var('user_name');
-              // echo SITE_NAME;
-              // echo $this->session->userdata('image');
-              // echo $this->session->userdata('position');
-              // exit;
               $id=base64_decode($idd);
               if ($this->load->get_var('position')=="Super Admin") {
                   $zapak=$this->db->delete('tbl_cities', array('id' => $id));

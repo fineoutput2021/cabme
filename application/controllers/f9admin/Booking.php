@@ -19,7 +19,7 @@ class Booking extends CI_finecontrol
         if (!empty($this->session->userdata('admin_data'))) {
             $this->db->select('*');
             $this->db->from('tbl_booking');
-            // $this->db->where('payment_status', 1);
+            $this->db->where('payment_status', 1);
             $this->db->order_by('id', 'desc');
             $this->db->where('booking_type', 1);//new orders
             $data['booking_data']= $this->db->get();
@@ -38,6 +38,7 @@ class Booking extends CI_finecontrol
         if (!empty($this->session->userdata('admin_data'))) {
             $data['user_name']=$this->load->get_var('user_name');
             $this->db->from('tbl_booking');
+            $this->db->where('payment_status', 1);
             $this->db->order_by('id', 'desc');
             $this->db->where('booking_type', 2);//new orders
             $data['booking_data']= $this->db->get();
@@ -285,12 +286,12 @@ class Booking extends CI_finecontrol
         if (!empty($this->session->userdata('admin_data'))) {
             $data['user_name']=$this->load->get_var('user_name');
             $id=base64_decode($idd);
-            if ($t=="confirmed") {
+            if ($t=="accepted") {
                 $data_update = array(
                                            'order_status'=>2
                                            );
                 $this->db->where('id', $id);
-                $zapak=$this->db->update('tbl_order1', $data_update);
+                $zapak=$this->db->update('tbl_booking', $data_update);
                 if ($zapak!=0) {
                     $this->session->set_flashdata('smessage', 'Status updated successfully');
                     redirect($_SERVER['HTTP_REFERER']);
@@ -299,26 +300,12 @@ class Booking extends CI_finecontrol
                     exit;
                 }
             }
-            if ($t=="dispatched") {
+            if ($t=="completed") {
                 $data_update = array(
                                            'order_status'=>3
                                            );
                 $this->db->where('id', $id);
-                $zapak=$this->db->update('tbl_order1', $data_update);
-                if ($zapak!=0) {
-                    $this->session->set_flashdata('smessage', 'Status updated successfully');
-                    redirect($_SERVER['HTTP_REFERER']);
-                } else {
-                    $this->session->set_flashdata('emessage', $upload_error);
-                    exit;
-                }
-            }
-            if ($t=="delievered") {
-                $data_update = array(
-                                           'order_status'=>4
-                                           );
-                $this->db->where('id', $id);
-                $zapak=$this->db->update('tbl_order1', $data_update);
+                $zapak=$this->db->update('tbl_booking', $data_update);
                 if ($zapak!=0) {
                     $this->session->set_flashdata('smessage', 'Status updated successfully');
                     redirect($_SERVER['HTTP_REFERER']);
@@ -328,33 +315,17 @@ class Booking extends CI_finecontrol
                 }
             }
             if ($t=="reject") {
-                $data_update = array('order_status'=>5);
+                $data_update = array(
+                                           'order_status'=>4
+                                           );
                 $this->db->where('id', $id);
-                $zapak=$this->db->update('tbl_order1', $data_update);
-                //-------update inventory-------
-                $this->db->select('*');
-                $this->db->from('tbl_order2');
-                $this->db->where('main_id', $id);
-                $data_order2= $this->db->get();
-                foreach ($data_order2->result() as $data) {
-                    $this->db->select('*');
-                    $this->db->from('tbl_type');
-                    $this->db->where('id', $data->type_id);
-                    $pro_data= $this->db->get()->row();
-                    if (!empty($pro_data)) {
-                        $update_inv = $pro_data->inventory + $data->quantity;
-                        $data_update = array('inventory'=>$update_inv);
-                        $this->db->where('id', $pro_data->id);
-                        $zapak2=$this->db->update('tbl_type', $data_update);
-                    }
-                }
+                $zapak=$this->db->update('tbl_booking', $data_update);
                 if ($zapak!=0) {
                     $this->session->set_flashdata('smessage', 'Status updated successfully');
                     redirect($_SERVER['HTTP_REFERER']);
                 } else {
-                    $data['e']="Error occurred";
-                    // exit;
-                    $this->load->view('errors/error500admin', $data);
+                    $this->session->set_flashdata('emessage', $upload_error);
+                    exit;
                 }
             }
         } else {

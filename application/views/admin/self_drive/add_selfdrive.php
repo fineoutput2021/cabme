@@ -67,10 +67,9 @@
                       <td> <strong>Fuel-type</strong> <span style="color:red;">*</span></strong> </td>
                       <td>
                         <select name="fule_type" class="form-control" required>
-                          <option value="">--Fuel-type--</option>
+                          <option value="">Fuel Type</option>
                           <option value="1">Petrol</option>
                           <option value="2">Diesel</option>
-
                         </select>
                       </td>
                     </tr>
@@ -85,57 +84,62 @@
                       </td>
                     </tr>
                     <tr>
-                      <td> <strong>Seatting</strong> <span style="color:red;">*</span></strong> </td>
+                      <td> <strong>Seating Capacity</strong> <span style="color:red;">*</span></strong> </td>
                       <td>
-                        <input type="text" name="seatting" class="form-control" placeholder="" required value="" />
+                        <select name="seatting" class="form-control" required>
+                          <option value="">Seating</option>
+                          <option value="1">4 Seater</option>
+                          <option value="2">5 Seater</option>
+                          <option value="3">7 Seater</option>
+                        </select>
                       </td>
                     </tr>
                     <tr>
                       <td> <strong>Kilometer1</strong> <span style="color:red;">*</span></strong> </td>
                       <td>
-                        <input type="text" name="kilometer1" class="form-control" placeholder="" required value="" />
+                        <input type="text" name="kilometer1" onkeypress="return isNumberKey(event)" class="form-control" placeholder="" required value="" />
                       </td>
                     </tr>
                     <tr>
                       <td> <strong>Price1</strong> <span style="color:red;">*</span></strong> </td>
                       <td>
-                        <input type="text" name="price1" class="form-control" placeholder="" required value="" />
+                        <input type="text" name="price1" onkeypress="return isNumberKey(event)" class="form-control" placeholder="" required value="" />
                       </td>
                     </tr>
                     <tr>
                       <td> <strong>Kilometer2</strong> <span style="color:red;">*</span></strong> </td>
                       <td>
-                        <input type="text" name="kilometer2" class="form-control" placeholder="" required value="" />
+                        <input type="text" name="kilometer2" onkeypress="return isNumberKey(event)" class="form-control" placeholder="" required value="" />
                       </td>
                     </tr>
                     <tr>
                       <td> <strong>Price2</strong> <span style="color:red;">*</span></strong> </td>
                       <td>
-                        <input type="text" name="price2" class="form-control" placeholder="" required value="" />
+                        <input type="text" name="price2"  onkeypress="return isNumberKey(event)" class="form-control" placeholder="" required value="" />
                       </td>
                     </tr>
                     <tr>
                       <td> <strong>Kilometre3</strong> <span style="color:red;">*</span></strong> </td>
                       <td>
-                        <input type="text" name="kilometer3" class="form-control" placeholder="" required value="" />
+                        <input type="text" name="kilometer3" onkeypress="return isNumberKey(event)" class="form-control" placeholder="" required value="" />
                       </td>
                     </tr>
                     <tr>
                       <td> <strong>Price3</strong> <span style="color:red;">*</span></strong> </td>
                       <td>
-                        <input type="text" name="price3" class="form-control" placeholder="" required value="" />
+                        <input type="text" name="price3"  onkeypress="return isNumberKey(event)" class="form-control" placeholder="" required value="" />
                       </td>
                     </tr>
                     <tr>
                       <td> <strong>Extra_kilomerter</strong> <span style="color:red;">*</span></strong> </td>
                       <td>
-                        <input type="text" name="extra_kilo" class="form-control" placeholder="" required value="" />
+                        <input type="text" name="extra_kilo"  onkeypress="return isNumberKey(event)" class="form-control" placeholder="" required value="" />
                       </td>
                     </tr>
                     <tr>
                       <td> <strong>Refundable Security Deposit Amount</strong> <span style="color:red;">*</span></strong> </td>
                       <td>
-                        <input type="text" name="rsda" class="form-control" placeholder="" required value="" />
+                        <input type="text" name="rsda" onkeypress="return isNumberKey(event)" class="form-control" placeholder="" required value="" />
                       </td>
                     </tr>
                     <tr>
@@ -166,3 +170,12 @@
 </div>
 <script type="text/javascript" src="<?php echo base_url() ?>assets/size/ajaxupload.3.5.js"></script>
 <link href="<?php echo base_url() ?>assets/cowadmin/css/jqvmap.css" rel='stylesheet' type='text/css' />
+
+<script>
+function isNumberKey(evt){
+    var charCode = (evt.which) ? evt.which : evt.keyCode
+    if (charCode > 31 && (charCode < 48 || charCode > 57))
+        return false;
+    return true;
+}
+</script>

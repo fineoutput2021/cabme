@@ -53,7 +53,7 @@
                   </div><!-- /.info-box-content -->
                 </div>
               </a><!-- /.info-box -->
-            </div><!-- /.col --> -->
+            </div><!-- /.col -->
             <!-- <div class="col-md-3 col-sm-6 col-xs-12">
               <a href="<?=base_url()?>dcadmin/Products/view_products">
                 <div class="info-box">
@@ -66,7 +66,7 @@
                   </div><!-- /.info-box-content -->
                 </div>
               </a><!-- /.info-box -->
-            </div><!-- /.col --> -->
+            </div><!-- /.col --> 
           </div><!-- /.row -->
         </section><!-- /.content -->
       </div><!-- /.content-wrapper -->

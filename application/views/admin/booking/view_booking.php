@@ -143,12 +143,12 @@ foreach ($booking_data->result() as $data) {
                       <td><?php if ($data->order_status==1) {?>
                         <p class="label bg-yellow">Pending</p>
                         <?} elseif ($data->order_status==2) {?>
-                        <p class="label bg-green">Accepted</p>
+                        <p class="label bg-blue">Accepted</p>
                         <?} elseif ($data->order_status==3) {?>
-                        <p class="label bg-red">Cancelled</p>
-                        <?} else {
-        echo("rejected");
-    } ?>
+                        <p class="label bg-green">Compeleted</p>
+                        <?} elseif ($data->order_status==4) {?>
+                        <p class="label bg-red">Rejected</p>
+                        <?} ?>
                       </td>
                       <td>
                         <div class="btn-group" id="btns<?php echo $i ?>">
@@ -156,38 +156,27 @@ foreach ($booking_data->result() as $data) {
                             <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false"> Action <span class="caret"></span></button>
                             <ul class="dropdown-menu" role="menu">
                               <?php
-if ($data->booking_type==1) {
-        if ($data->order_status==1) { ?>
-                              <li><a href="<?php echo base_url() ?>dcadmin/booking/accepted_outsation_booking/<?php echo base64_encode($data->id) ?>/accepted">Accepted</a></li>
-                              <li><a href="<?php echo base_url() ?>dcadmin/order/updateorderStatus/<?php echo base64_encode($data->id) ?>/reject">Reject</a></li>
+                        if ($data->booking_type==1 || $data->booking_type==2) {
+                            if ($data->order_status==1) { ?>
+                              <li><a href="<?php echo base_url() ?>dcadmin/booking/updateorderStatus/<?php echo base64_encode($data->id) ?>/accepted">Accepted</a></li>
+                              <li><a href="<?php echo base_url() ?>dcadmin/booking/updateorderStatus/<?php echo base64_encode($data->id) ?>/reject">Reject</a></li>
                               <?php } elseif ($data->order_status==2) {?>
-                              <li><a href="<?php echo base_url() ?>dcadmin/order/updateorderStatus/<?php echo base64_encode($data->id) ?>/dispatched">Dispatched</a></li>
-                              <li><a href="<?php echo base_url() ?>dcadmin/order/updateorderStatus/<?php echo base64_encode($data->id) ?>/reject">Reject</a></li>
-                              <li><a href="<?php echo base_url() ?>dcadmin/order/order_detail/<?php echo base64_encode($data->id) ?>">order detail</a></li>
-                              <li><a href="<?php echo base_url() ?>dcadmin/order/view_bill/<?php echo base64_encode($data->id) ?>">view bill</a></li>
-                              <?php } elseif ($data->order_status==3) {?>
-                              <li><a href="<?php echo base_url() ?>dcadmin/Order/updateorderStatus/<?php echo base64_encode($data->id) ?>/completed">Completed</a></li>
-                              <!-- <li><a href="<?php echo base_url() ?>dcadmin/Order/updateorderStatus/<?php echo base64_encode($data->id) ?>/reject">Reject</a></li> -->
-                              <li><a href="<?php echo base_url() ?>dcadmin/Order/order_detail/<?php echo base64_encode($data->id) ?>">order detail</a></li>
-                              <li><a href="<?php echo base_url() ?>dcadmin/Order/view_bill/<?php echo base64_encode($data->id) ?>">view bill</a></li>
-                              <?php } elseif ($data->order_status==4) {?>
-                              <!-- <li><a href="<?php echo base_url() ?>dcadmin/Order/updateorderStatus/<?php echo base64_encode($data->id) ?>/delievered">Accepted</a></li>
-<li><a href="<?php echo base_url() ?>dcadmin/Order/updateorderStatus/<?php echo base64_encode($data->id) ?>/reject">Rejected</a></li> -->
-                              <li><a href="<?php echo base_url() ?>dcadmin/Order/order_detail/<?php echo base64_encode($data->id) ?>">order detail</a></li>
-                              <li><a href="<?php echo base_url() ?>dcadmin/Order/view_bill/<?php echo base64_encode($data->id) ?>">order bill</a></li>
-                              <?php } elseif ($data->order_status==5) {?>
-                              <li><a href="<?php echo base_url() ?>dcadmin/Order/order_detail/<?php echo base64_encode($data->id) ?>">order detail</a></li>
-                              <li><a href="<?php echo base_url() ?>dcadmin/Order/view_bill/<?php echo base64_encode($data->id) ?>">view bill</a></li>
+                                <li><a href="<?php echo base_url() ?>dcadmin/booking/updateorderStatus/<?php echo base64_encode($data->id) ?>/completed">Completed</a></li>
+                              <li><a href="<?php echo base_url() ?>dcadmin/booking/view_bill/<?php echo base64_encode($data->id) ?>">view bill</a></li>
+                              <?} else {?>
+    <li><a href="<?php echo base_url() ?>dcadmin/booking/view_bill/<?php echo base64_encode($data->id) ?>">view bill</a></li>
                               <?}
-    } else {?>
+                        } else {
+                            if ($data->order_status==1) { ?>
                               <li><a href="<?php echo base_url() ?>dcadmin/booking/start_outstation_booking/<?php echo base64_encode($data->id)?>">Accepted</a></li>
+                              <li><a href="<?php echo base_url() ?>dcadmin/booking/updateorderStatus/<?php echo base64_encode($data->id) ?>/reject">Reject</a></li>
+                                <?php } elseif ($data->order_status==2) {?>
                               <li><a href="<?php echo base_url() ?>dcadmin/booking/end_outstation_booking/<?php echo base64_encode($data->id)?>">Complete</a></li>
-                              }?>">Complete</a></li>
-                              <li><a href="<?php echo base_url() ?>dcadmin/order/order_detail/<?php echo base64_encode($data->id) ?><?if ($booking_type=2) {
-        echo " /".base64_encode($data->id);
-                                  }?>">order detail</a></li>
-                              <li><a href="<?php echo base_url() ?>dcadmin/order/view_bill/<?php echo base64_encode($data->id) ?>">view bill</a></li>
-                              <?} ?>
+                              <?} else {?>
+                                  <li><a href="<?php echo base_url() ?>dcadmin/booking/view_bill/<?php echo base64_encode($data->id) ?>">view bill</a></li>
+                                <?} ?>
+                              <?
+                        } ?>
                             </ul </div>
                           </div>
                       </td>

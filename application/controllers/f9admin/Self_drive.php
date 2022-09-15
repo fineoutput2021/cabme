@@ -37,10 +37,6 @@ class Self_drive extends CI_finecontrol
             $this->db->from('tbl_cities');
             $this->db->where('is_active', 1);
             $data['cities_data']= $this->db->get();
-            $this->db->select('*');
-            $this->db->from('tbl_selfdrive');
-            $this->db->where('is_active', 1);
-            $data['Self_drive']= $this->db->get();
             $this->load->view('admin/common/header_view', $data);
             $this->load->view('admin/self_drive/add_selfdrive');
             $this->load->view('admin/common/footer_view');
@@ -57,8 +53,6 @@ class Self_drive extends CI_finecontrol
             $this->load->library('upload');
             $this->load->helper('security');
             if ($this->input->post()) {
-                // print_r($this->input->post());
-                // exit;
                 $this->form_validation->set_rules('city_id', 'city_id', 'required|xss_clean|trim');
                 $this->form_validation->set_rules('brand_name', 'brand_name', 'required|xss_clean|trim');
                 $this->form_validation->set_rules('car_name', 'car_name', 'required|xss_clean|trim');
@@ -110,8 +104,8 @@ class Self_drive extends CI_finecontrol
                         $this->upload->initialize($this->upload_config);
                         if (!$this->upload->do_upload($img1)) {
                             $upload_error = $this->upload->display_errors();
-                            // echo json_encode($upload_error);
-                            echo $upload_error;
+                            $this->session->set_flashdata('emessage', $upload_error);
+                            redirect($_SERVER['HTTP_REFERER']);
                         } else {
                             $file_info = $this->upload->data();
                             $image = "assets/uploads/self_drive/".$new_file_name.$file_info['file_ext'];
