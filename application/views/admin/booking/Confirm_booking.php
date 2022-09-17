@@ -1,7 +1,7 @@
 <div class="content-wrapper">
   <section class="content-header">
     <h1>
-      End Outstation Booking
+      Complete <?=$heading?> Booking
     </h1>
     <ol class="breadcrumb">
       <li><a href="<?php echo base_url() ?>dcadmin/Home"><i class="fa fa-dashboard"></i> Dashboard</a></li>
@@ -13,7 +13,7 @@
       <div class="col-lg-12">
         <div class="panel panel-default">
           <div class="panel-heading">
-            <h3 class="panel-title"><i class="fa fa-money fa-fw"></i> End Booking</h3>
+            <h3 class="panel-title"><i class="fa fa-money fa-fw"></i> Complete <?=$heading?> Booking</h3>
           </div>
           <?php if (!empty($this->session->flashdata('smessage'))) { ?>
           <div class="alert alert-success alert-dismissible">
@@ -31,24 +31,13 @@
           <?php } ?>
           <div class="panel-body">
             <div class="col-lg-10">
-              <form action="<?php echo base_url() ?>dcadmin/booking/complete_outsation_booking/<?php echo base64_encode(1); ?>" method="POST" id="slide_frm" enctype="multipart/form-data">
+              <form action="<?php echo base_url() ?>dcadmin/booking/complete_booking/<?php echo base64_encode(1); ?>" method="POST" id="slide_frm" enctype="multipart/form-data">
                 <input type="hidden" name="id" class="form-control" placeholder="" required value="<?=base64_decode($id)?>" />
                 <div class="table-responsive">
                   <table class="table table-hover">
+                    <input type="hidden" name="heading" value="<?=$heading?>">
                     <tr>
-                      <td> <strong>End Kilometer</strong> <span style="color:red;">*</span></strong> </td>
-                      <td>
-                        <input type="text" onkeypress="return isNumberKey(event)" name="end_kilometer" class="form-control" placeholder="" required value="" />
-                      </td>
-                    </tr>
-                    <tr>
-                      <td> <strong>Location</strong> <span style="color:red;">*</span></strong> </td>
-                      <td>
-                        <input type="text" name="location" class="form-control" placeholder="" required value="" />
-                      </td>
-                    </tr>
-                    <tr>
-                      <td> <strong>Invoice Image</strong> <span style="color:red;">*</span></strong> </td>
+                      <td> <strong>Image</strong> <span style="color:red;">*</span></strong> </td>
                       <td>
                         <input type="file" name="invoice_image" class="form-control" placeholder="" required value="" />
                       </td>
@@ -72,7 +61,7 @@
                 background-color: red;
                 border-color: red;
               }
-            </style>
+            </style>0
           </div>
         </div>
       </div>
@@ -81,11 +70,3 @@
 </div>
 <script type="text/javascript" src="<?php echo base_url() ?>assets/size/ajaxupload.3.5.js"></script>
 <link href="<?php echo base_url() ?>assets/cowadmin/css/jqvmap.css" rel='stylesheet' type='text/css' />
-<script>
-  function isNumberKey(evt) {
-    var charCode = (evt.which) ? evt.which : evt.keyCode
-    if (charCode > 31 && (charCode < 48 || charCode > 57))
-      return false;
-    return true;
-  }
-</script>

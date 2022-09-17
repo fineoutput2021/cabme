@@ -12,6 +12,7 @@ class Booking extends CI_finecontrol
         $this->load->model("login_model");
         $this->load->model("admin/base_model");
         $this->load->library('user_agent');
+          $this->load->library('upload');
     }
     //============================== VIEW SELF DRIVE BOOKING =========================\\
     public function view_self_booking()
@@ -95,6 +96,19 @@ class Booking extends CI_finecontrol
             redirect("login/admin_login", "refresh");
         }
     }
+    public function Confirm_booking($id,$heading)
+    {
+        if (!empty($this->session->userdata('admin_data'))) {
+            $data['id'] = $id;
+            $heading= str_replace("%20"," ",$heading);
+            $data['heading'] = $heading;
+            $this->load->view('admin/common/header_view', $data);
+            $this->load->view('admin/booking/Confirm_booking');
+            $this->load->view('admin/common/footer_view');
+        } else {
+            redirect("login/admin_login", "refresh");
+        }
+    }
     //===============================ACCEPTED OUTSTATION BOOKING=======================\\
     public function accepted_outsation_booking()
     {
@@ -108,9 +122,13 @@ class Booking extends CI_finecontrol
                 if ($this->form_validation->run()== true) {
                     $id=$this->input->post('id');
                     $start_kilometer=$this->input->post('start_kilometer');
+                    $ip = $this->input->ip_address();
+                    date_default_timezone_set("Asia/Calcutta");
+                    $cur_date=date("Y-m-d H:i:s");
                     $data_insert = array(
                         'start_kilometer'=>$start_kilometer,
                         'order_status'=>2,
+
                         );
                     $this->db->where('id', $id);
                     $last_id=$this->db->update('tbl_booking', $data_insert);
@@ -148,6 +166,31 @@ class Booking extends CI_finecontrol
                     $id=$this->input->post('id');
                     $location=$this->input->post('location');
                     $end_kilometer=$this->input->post('end_kilometer');
+                    $image="";
+                    $img1='invoice_image';
+                    $file_check=($_FILES['invoice_image']['error']);
+                    if ($file_check!=4) {
+                        $image_upload_folder = FCPATH . "assets/uploads/booking/";
+                        if (!file_exists($image_upload_folder)) {
+                            mkdir($image_upload_folder, DIR_WRITE_MODE, true);
+                        }
+                        $new_file_name="category".date("Ymdhms");
+                        $this->upload_config = array(
+                                  'upload_path'   => $image_upload_folder,
+                                  'file_name' => $new_file_name,
+                                  'allowed_types' =>'jpg|jpeg|png',
+                                  'max_size'      => 25000
+                          );
+                        $this->upload->initialize($this->upload_config);
+                        if (!$this->upload->do_upload($img1)) {
+                            $upload_error = $this->upload->display_errors();
+                            $this->session->set_flashdata('emessage', $upload_error);
+                            redirect($_SERVER['HTTP_REFERER']);
+                        } else {
+                            $file_info = $this->upload->data();
+                            $image = "assets/uploads/booking/".$new_file_name.$file_info['file_ext'];
+                        }
+                    }
                     $this->db->select('*');
                     $this->db->from('tbl_booking');
                     $this->db->where('id', $id);//new orders
@@ -159,13 +202,82 @@ class Booking extends CI_finecontrol
                     $last_id=$this->db->update('tbl_outstation', $data_insert1);
                     $data_insert = array(
                         'end_kilometer'=>$end_kilometer,
+                        'invoice_image'=>$image,
                         'order_status'=>3,
+                          'date'=>$cur_date
                         );
                     $this->db->where('id', $id);
                     $last_id=$this->db->update('tbl_booking', $data_insert);
                     if ($last_id!=0) {
                         $this->session->set_flashdata('smessage', 'Data updates successfully');
                         redirect("dcadmin/Booking/view_outstation_booking", "refresh");
+                    } else {
+                        $this->session->set_flashdata('emessage', 'Sorry error occured');
+                        redirect($_SERVER['HTTP_REFERER']);
+                    }
+                } else {
+                    $this->session->set_flashdata('emessage', validation_errors());
+                    redirect($_SERVER['HTTP_REFERER']);
+                }
+            } else {
+                $this->session->set_flashdata('emessage', 'Please insert some data, No data available');
+                redirect($_SERVER['HTTP_REFERER']);
+            }
+        } else {
+            redirect("login/admin_login", "refresh");
+        }
+    }
+    //================================Complete  BOOKING=======================\\
+    public function complete_booking()
+    {
+        if (!empty($this->session->userdata('admin_data'))) {
+            $this->load->helper(array('form', 'url'));
+            $this->load->library('form_validation');
+            $this->load->helper('security');
+            if ($this->input->post()) {
+                $this->form_validation->set_rules('heading', 'heading', 'required|xss_clean|trim');
+                $this->form_validation->set_rules('id', 'id', 'required|xss_clean|trim');
+                if ($this->form_validation->run()== true) {
+                    $heading=$this->input->post('heading');
+                    $id=$this->input->post('id');
+                    $image="";
+                    $img1='invoice_image';
+                    $file_check=($_FILES['invoice_image']['error']);
+                    if ($file_check!=4) {
+                        $image_upload_folder = FCPATH . "assets/uploads/booking/";
+                        if (!file_exists($image_upload_folder)) {
+                            mkdir($image_upload_folder, DIR_WRITE_MODE, true);
+                        }
+                        $new_file_name="category".date("Ymdhms");
+                        $this->upload_config = array(
+                                  'upload_path'   => $image_upload_folder,
+                                  'file_name' => $new_file_name,
+                                  'allowed_types' =>'jpg|jpeg|png',
+                                  'max_size'      => 25000
+                          );
+                        $this->upload->initialize($this->upload_config);
+                        if (!$this->upload->do_upload($img1)) {
+                            $upload_error = $this->upload->display_errors();
+                            $this->session->set_flashdata('emessage', $upload_error);
+                            redirect($_SERVER['HTTP_REFERER']);
+                        } else {
+                            $file_info = $this->upload->data();
+                            $image = "assets/uploads/booking/".$new_file_name.$file_info['file_ext'];
+                        }
+                    }
+                    $data_insert = array(
+                        'invoice_image'=>$image,
+                        'order_status'=>3,
+                        );
+                    $this->db->where('id', $id);
+                    $last_id=$this->db->update('tbl_booking', $data_insert);
+                    if ($last_id!=0) {
+                        $this->session->set_flashdata('smessage', 'Data updates successfully');
+                        if($heading =="Self Drive"){
+                        redirect("dcadmin/Booking/view_self_booking", "refresh");
+                      }else{
+                        redirect("dcadmin/Booking/view_intercity_booking", "refresh");
+                      }
                     } else {
                         $this->session->set_flashdata('emessage', 'Sorry error occured');
                         redirect($_SERVER['HTTP_REFERER']);

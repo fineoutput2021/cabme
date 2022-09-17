@@ -47,6 +47,7 @@ if (!empty($this->session->flashdata('emessage'))) { ?>
                       <th>Location</th>
                       <th>City</th>
                       <th>Minimum Booking Amount</th>
+                      <th>Date</th>
                       <th>Status</th>
                       <?if ($this->session->userdata('position')!='Manager') {?>
                       <th>Action</th>
@@ -80,6 +81,7 @@ echo '7 Seater';
                       echo $city_data[0]->name; ?>
                       </td>
                       <td>₹<?php echo $data->min_booking_amt ?> </td>
+                      <td><?php echo $data->date ?> </td>
                       <td><?php if ($data->is_active==1) { ?>
                         <p class="label bg-green">Active</p>
                         <?php } else { ?>

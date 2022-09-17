@@ -40,7 +40,7 @@
                       <th>#</th>
                       <th>Web Image</th>
                       <th>Image</th>
-                      <!-- <th>Link</th> -->
+                      <th>Date</th>
                       <!-- <th>Link-2</th> -->
                       <th>Status</th>
                       <?if ($this->session->userdata('position')!='Manager') {?>
@@ -67,7 +67,7 @@
                         <?php } ?>
                       </td>
 
-                      <!-- <td><?php echo $data->link ?> </td> -->
+                      <td><?php echo $data->date ?> </td>
                       <!-- <td><?php echo $data->link2 ?> </td> -->
                       <td><?php if ($data->is_active==1) { ?>
                         <p class="label bg-green">Active</p>

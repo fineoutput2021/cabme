@@ -55,6 +55,7 @@ if (!empty($this->session->flashdata('emessage'))) { ?>
                       <th>Price-3</th>
                       <th>Extra-Kilometer</th>
                       <th>Refundable Security Deposit Amount</th>
+                      <th>Date</th>
                       <th>Status</th>
                       <?if ($this->session->userdata('position')!='Manager') {?>
                       <th>Action</th>
@@ -103,6 +104,8 @@ echo '7 Seater';
                       <td>₹<?php echo $data->price3 ?> </td>
                       <td><?php echo $data->extra_kilo?> </td>
                       <td>₹<?php echo $data->rsda ?> </td>
+                      <td><?php echo $data->date ?> </td>
+
                       <!-- <td><?php
 $this->db->select('*');
     $this->db->from('tbl_cities');
