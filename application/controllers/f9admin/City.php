@@ -1,6 +1,4 @@
-  <?php
-  ob_start();
-  if (! defined('BASEPATH')) {
+  <?php ob_start();if (! defined('BASEPATH')) {
       exit('No direct script access allowed');
   }
   require_once(APPPATH . 'core/CI_finecontrol.php');
