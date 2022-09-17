@@ -2,6 +2,7 @@
   if (! defined('BASEPATH')) {
       exit('No direct script access allowed');
   }
+  ob_start();
   require_once(APPPATH . 'core/CI_finecontrol.php');
   class City extends CI_finecontrol
   {
