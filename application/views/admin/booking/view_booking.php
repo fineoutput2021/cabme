@@ -160,6 +160,7 @@ foreach ($booking_data->result() as $data) {
                         <p class="label bg-red">Rejected</p>
                         <?} ?>
                       <td>
+                        <?if($data->order_status!=3 && $data->order_status!=4){?>
                         <div class="btn-group" id="btns<?php echo $i ?>">
                           <div class="btn-group">
                             <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false"> Action <span class="caret"></span></button>
@@ -184,6 +185,7 @@ foreach ($booking_data->result() as $data) {
                       </ul>
                           </div>
                           </div>
+                          <?}echo "NA";?>
                       </td>
                     </tr>
                     <?php $i++;
