@@ -171,6 +171,15 @@ ul{
 	background-color: red;
 	color: #fff;
 }
+.headerbtn
+{
+	background-color: #d5282a;
+	color: #fff;
+	border: none;
+	padding: 0px 130px;
+	border-radius: 20px;
+	font-size: ;
+}
 .mobilelinks > li > a 
 {
 	font-size: 20px;
@@ -1406,7 +1415,7 @@ width:100%;
 }
 .selectcity
 {
-	border-bottom: 1px solid rgb(223, 220, 220);
+	/* border-bottom: 1px solid rgb(223, 220, 220); */
 	padding: 20px 30px;
 	border-radius: 5px;
 	cursor: pointer;
@@ -2958,6 +2967,10 @@ width:100%;
 		color: #000;
 		border-radius: 10px;
 	}
+	.rupeebox_2.focus
+	{
+		background-color: #000;
+	}
 	.rupeebox.active
 	{
 		background-color: black;
@@ -3214,13 +3227,13 @@ width:100%;
 }
 
 .x_offer_tabs_wrapper .nav-tabs .nav-item.show .nav-link, .x_offer_tabs_wrapper .nav-tabs .nav-link.active {
-    color: #ffffff;
-    background-color: red;
+     color: #d5282a;
 	border-color:transparent;
-	font-size:12px;
+	font-size:11px;
 	font-weight:700;
 	text-transform:uppercase;
 	font-family: 'Raleway', sans-serif;
+	border-bottom: 2px solid red;
 }
 .x_offer_tabs_wrapper  .All_Car_tabs .nav-link.active
 {

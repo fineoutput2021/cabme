@@ -90,6 +90,11 @@
 }
 
 @media (max-width: 991px){
+	.mobileform
+	{
+		display: flex !important;
+		flex-wrap: wrap !important;
+	}
 	.btc_team_left_wrapper{
 		width:100%;
 		text-align:center;
@@ -337,7 +342,7 @@
 	}
 	.mobileimageicon
 	{
-       width: 50%;
+       width: 30%;
 	}
 	.modal-content
 {
