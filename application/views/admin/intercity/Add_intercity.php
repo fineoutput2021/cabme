@@ -53,8 +53,6 @@ if (!empty($this->session->flashdata('emessage'))) { ?>
                           <option value="1">HATCHBACK</option>
                           <option value="2">SEDAN</option>
                           <option value="3">SUV</option>
-
-                          
                         </select>
                       </td>
                     </tr>
@@ -67,13 +65,13 @@ if (!empty($this->session->flashdata('emessage'))) { ?>
                     <tr>
                       <td> <strong>Kilomitere</strong> <span style="color:red;">*</span></strong> </td>
                       <td>
-                        <input type="text" id="" name="Kilomitere_cab" class="form-control" placeholder="" required value="" />
+                        <input type="text" id="" name="Kilomitere_cab" onkeypress="return isNumberKey(event)" class="form-control" placeholder="" required value="" />
                       </td>
                     </tr>
                     <tr>
-                      <td> <strong>Mini_Amout_Booking</strong> <span style="color:red;">*</span></strong> </td>
+                      <td> <strong>Minimum Booking Amount</strong> <span style="color:red;">*</span></strong> </td>
                       <td>
-                        <input type="text" id="" name="min_amount" class="form-control" placeholder="" required value="" />
+                        <input type="text" id="" name="min_amount" onkeypress="return isNumberKey(event)" class="form-control" placeholder="" required value="" />
                       </td>
                     </tr>
                     <tr>
@@ -91,33 +89,6 @@ if (!empty($this->session->flashdata('emessage'))) { ?>
     </div>
   </section>
 </div>
-<script>
-  function change(x) {
-    if (x == 1) {
-      $('#change').html('<td><strong>Percentage</strong><span style="color:red;">*</span></strong></td><td><input type="text" name="percentage_amount" class="form-control" placeholder="" required value="" /></td>');
-      $('#change2').html('<td><strong>Maximum discount</strong> <span style="color:red;">*</span></strong> </td><td><input type="text" name="max" class="form-control" placeholder="" required value="" onkeypress="return isNumberKey(event)"/></td>');
-    } else {
-      $('#change').html('<td><strong>Amount</strong><span style="color:red;">*</span></strong></td><td><input type="text" name="percentage_amount" class="form-control" placeholder=""   value="" /></td>');
-      $('#change2').html('');
-    }
-  }
-</script>
-<script>
-  $(function() {
-    var dtToday = new Date();
-    var month = dtToday.getMonth() + 1;
-    var day = dtToday.getDate();
-    var year = dtToday.getFullYear();
-    if (month < 10)
-      month = '0' + month.toString();
-    if (day < 10)
-      day = '0' + day.toString();
-    var maxDate = year + '-' + month + '-' + day;
-    // alert(maxDate);
-    $('#startdate').attr('min', maxDate);
-    $('#enddate').attr('min', maxDate);
-  });
-</script>
 <script>
   function isNumberKey(evt) {
     var charCode = (evt.which) ? evt.which : evt.keyCode

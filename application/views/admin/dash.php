@@ -22,51 +22,51 @@
                     <span class="info-box-number">
                     45
                     </span>
-                  </div><!-- /.info-box-content -->
+                  </div>
                 </div>
-              </a><!-- /.info-box -->
-            </div><!-- /.col -->
-            <!-- <div class="col-md-3 col-sm-6 col-xs-12">
+              </a>
+            </div>
+            <div class="col-md-3 col-sm-6 col-xs-12">
               <a href="<?=base_url()?>dcadmin/Farmer_details/view_details">
                 <div class="info-box">
                   <span class="info-box-icon bg-aqua"><i class="ion ion-ios-people-outline"></i></span>
                   <div class="info-box-content">
-                    <span class="info-box-text">Total Farmers</span>
+                    <span class="info-box-text">Total Self Drive</span>
                     <span class="info-box-number">
                     45
                     </span>
-                  </div><!-- /.info-box-content -->
+                  </div>
                 </div>
-              </a><!-- /.info-box -->
-            </div><!-- /.col --> -->
+              </a>
+            </div>
             <!-- fix for small devices only -->
             <div class="clearfix visible-sm-block"></div>
-            <!-- <div class="col-md-3 col-sm-6 col-xs-12">
+            <div class="col-md-3 col-sm-6 col-xs-12">
               <a href="<?=base_url()?>dcadmin/Orders/view_orders">
                 <div class="info-box">
                   <span class="info-box-icon bg-green"><i class="ion ion-ios-cart-outline"></i></span>
                   <div class="info-box-content">
-                    <span class="info-box-text">New Orders</span>
+                    <span class="info-box-text">Total INTERCITY</span>
                     <span class="info-box-number">
                     45
                     </span>
-                  </div><!-- /.info-box-content -->
+                  </div>
                 </div>
-              </a><!-- /.info-box -->
-            </div><!-- /.col --> -->
-            <!-- <div class="col-md-3 col-sm-6 col-xs-12">
+              </a>
+            </div>
+            <div class="col-md-3 col-sm-6 col-xs-12">
               <a href="<?=base_url()?>dcadmin/Products/view_products">
                 <div class="info-box">
                   <span class="info-box-icon bg-red"><i class="ion ion-ios-pricetags-outline"></i></span>
                   <div class="info-box-content">
-                    <span class="info-box-text">Total products</span>
+                    <span class="info-box-text">Total Outstation</span>
                     <span class="info-box-number">
                       12
                     </span>
                   </div><!-- /.info-box-content -->
                 </div>
               </a><!-- /.info-box -->
-            </div><!-- /.col --> -->
+            </div><!-- /.col -->
           </div><!-- /.row -->
         </section><!-- /.content -->
       </div><!-- /.content-wrapper -->

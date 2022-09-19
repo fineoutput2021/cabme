@@ -43,6 +43,7 @@ if (!empty($this->session->flashdata('emessage'))) { ?>
                       <th>Name</th>
                       <th>City Type</th>
                       <th>Image</th>
+                      <th>Date</th>
                       <th>Status</th>
                       <?if($this->session->userdata('position')!='Manager'){?>
                       <th>Action</th>
@@ -68,6 +69,7 @@ if (!empty($this->session->flashdata('emessage'))) { ?>
                         Sorry No image Found
                         <?php } ?>
                       </td>
+                      <td><?php echo $data->date ?> </td>
                       <td><?php if ($data->is_active==1) { ?>
                         <p class="label bg-green">Active</p>
                         <?php } else { ?>

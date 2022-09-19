@@ -19,7 +19,6 @@ class Banner extends CI_finecontrol
             $data['user_name']=$this->load->get_var('user_name');
             $this->db->select('*');
             $this->db->from('tbl_banner');
-            //$this->db->where('id',$usr);
             $data['banner_data']= $this->db->get();
             $this->load->view('admin/common/header_view', $data);
             $this->load->view('admin/banner/view_banner');
@@ -73,8 +72,8 @@ class Banner extends CI_finecontrol
           if (!$this->upload->do_upload($image1))
           {
             $upload_error = $this->upload->display_errors();
-            // echo json_encode($upload_error);
-            echo $upload_error;
+            $this->session->set_flashdata('emessage', $upload_error);
+            redirect($_SERVER['HTTP_REFERER']);
           }
           else
           {
@@ -99,11 +98,8 @@ class Banner extends CI_finecontrol
         $this->upload->initialize($this->upload_config);
         if (!$this->upload->do_upload($image2)) {
         $upload_error = $this->upload->display_errors();
-        // echo json_encode($upload_error);
-        // if($typ == 1){
-        //            $this->session->set_flashdata('emessage',$upload_error);
-        //              redirect($_SERVER['HTTP_REFERER']);
-        //            }
+        $this->session->set_flashdata('emessage', $upload_error);
+        redirect($_SERVER['HTTP_REFERER']);
         } else {
         $file_info = $this->upload->data();
         $videoNAmePath = "assets/uploads/banner/".$new_file_name.$file_info['file_ext'];
@@ -154,7 +150,6 @@ class Banner extends CI_finecontrol
         redirect($_SERVER['HTTP_REFERER']);
         }
         }
-
         else{
         redirect("login/admin_login","refresh");
         }
@@ -183,13 +178,8 @@ class Banner extends CI_finecontrol
     {
         if (!empty($this->session->userdata('admin_data'))) {
             $data['user_name']=$this->load->get_var('user_name');
-            echo SITE_NAME;
-            // echo $this->session->userdata('image');
-            // echo $this->session->userdata('position');
-            // exit;
             $id=base64_decode($idd);
             if ($this->load->get_var('position')=="Super Admin") {
-                // $this->db->select('image');
                 $this->db->from('tbl_banner');
                 $this->db->where('id', $id);
                 $dsa= $this->db->get();

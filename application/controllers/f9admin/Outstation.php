@@ -33,10 +33,6 @@ class Outstation extends CI_finecontrol
     {
         if (!empty($this->session->userdata('admin_data'))) {
             $this->db->select('*');
-            $this->db->from('tbl_outstation');
-            $this->db->where('is_active', 1);
-            $data['station']= $this->db->get();
-            $this->db->select('*');
             $this->db->from('tbl_cities');
             $this->db->where('is_active', 1);
             $this->db->where('city_type', 2);
@@ -63,6 +59,7 @@ class Outstation extends CI_finecontrol
                 $this->form_validation->set_rules('per_kilometre', 'per_kilometre', 'required|xss_clean|trim');
                 $this->form_validation->set_rules('location', 'location', 'required|xss_clean|trim');
                 $this->form_validation->set_rules('city_id', 'city_id', 'required|xss_clean|trim');
+                $this->form_validation->set_rules('min_amount', 'min_amount', 'required|xss_clean|trim');
                 if ($this->form_validation->run()== true) {
                     $brand_name=$this->input->post('brand_name');
                     $car_name=$this->input->post('car_name');
@@ -70,6 +67,7 @@ class Outstation extends CI_finecontrol
                     $per_kilometre=$this->input->post('per_kilometre');
                     $location=$this->input->post('location');
                     $city_id=$this->input->post('city_id');
+                    $min_amount=$this->input->post('min_amount');
                     $ip = $this->input->ip_address();
                     date_default_timezone_set("Asia/Calcutta");
                     $cur_date=date("Y-m-d H:i:s");
@@ -92,8 +90,8 @@ class Outstation extends CI_finecontrol
                         $this->upload->initialize($this->upload_config);
                         if (!$this->upload->do_upload($img1)) {
                             $upload_error = $this->upload->display_errors();
-                            // echo json_encode($upload_error);
-                            echo $upload_error;
+                            $this->session->set_flashdata('emessage', $upload_error);
+                            redirect($_SERVER['HTTP_REFERER']);
                         } else {
                             $file_info = $this->upload->data();
                             $image = "assets/uploads/outstation/".$new_file_name.$file_info['file_ext'];
@@ -108,9 +106,10 @@ class Outstation extends CI_finecontrol
 'photo'=>$image,
 'per_kilometre'=>$per_kilometre,
 'location'=>$location,
+'min_booking_amt'=>$min_amount,
 'city_id'=>$city_id,
 'is_active' =>1,
-// 'date'=>$cur_date
+'date'=>$cur_date
 );
                         $last_id=$this->base_model->insert_table("tbl_outstation", $data_insert, 1) ;
                         if ($last_id!=0) {
@@ -130,23 +129,13 @@ class Outstation extends CI_finecontrol
                         if (empty($image)) {
                             $image=$damm->photo;
                         }
-//    foreach($damm->result() as $da) {
-//      $uid=$da->id;
-                        // if($uid==$idw)
-                        // {
-//
-                        //  }
-                        // else{
-//    echo "Multiple Entry of Same Name";
-//       exit;
-                        //  }
-//     }
                         $data_insert = array(
   'brand_name'=>$brand_name,
   'car_name'=>$car_name,
   'seatting'=>$seatting,
   'photo'=>$image,
   'per_kilometre'=>$per_kilometre,
+  'min_booking_amt'=>$min_amount,
   'location'=>$location,
   'city_id'=>$city_id,
 );

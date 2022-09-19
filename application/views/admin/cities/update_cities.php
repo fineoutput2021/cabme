@@ -35,7 +35,7 @@ if (!empty($this->session->flashdata('emessage'))) { ?>
                 <div class="table-responsive">
                   <table class="table table-hover">
                     <tr>
-                      <td> <strong>Name</strong> <span style="color:red;"></span></strong> </td>
+                      <td> <strong>Name</strong> <span style="color:red;">*</span></strong> </td>
                       <td>
                         <input type="text" name="name" class="form-control" placeholder="name" required value="<?=$City->name?>" />
                       </td>

@@ -35,7 +35,7 @@ if (!empty($this->session->flashdata('emessage'))) { ?>
                 <div class="table-responsive">
                   <table class="table table-hover">
                     <tr>
-                      <td> <strong>City</strong> <span style="color:red;"></span></strong> </td>
+                      <td> <strong>City</strong> <span style="color:red;">*</span></strong> </td>
                       <td>
                         <select name="city_id" class="form-control" required>
                           <option value="">--- Select City -----</option>
@@ -49,33 +49,54 @@ if (!empty($this->session->flashdata('emessage'))) { ?>
                       </td>
                     </tr>
                     <tr>
-                      <td> <strong>Brand-Name</strong> <span style="color:red;"></span></strong> </td>
+                      <td> <strong>Brand Name</strong> <span style="color:red;">*</span></strong> </td>
                       <td>
                         <input type="text" name="brand_name" class="form-control" placeholder="brand_name" required value="<?=$station->brand_name?>" />
                       </td>
                     </tr>
                     <tr>
-                      <td> <strong>Car-Name</strong> <span style="color:red;"></span></strong> </td>
+                      <td> <strong>Car Name</strong> <span style="color:red;">*</span></strong> </td>
                       <td>
                         <input type="text" name="car_name" class="form-control" placeholder="car_name" required value="<?=$station->car_name?>" />
                       </td>
                     </tr>
                     <tr>
-                      <td> <strong>Seatting</strong> <span style="color:red;"></span></strong> </td>
+                      <td> <strong>Seating Capacity</strong> <span style="color:red;">*</span></strong> </td>
                       <td>
-                        <input type="text" name="seatting" class="form-control" placeholder="name" required value="<?=$station->seatting?>" />
+                        <select name="seatting" class="form-control" required>
+                          <option value="1" <?if($station->seatting==1){echo 'selected' ;}?>>4 Seater</option>
+                          <option value="2" <?if($station->seatting==2){echo 'selected' ;}?>>5 Seater</option>
+                          <option value="2" <?if($station->seatting==3){echo 'selected' ;}?>>7 Seater</option>
+                        </select>
                       </td>
                     </tr>
                     <tr>
-                      <td> <strong>Rate Per Kilometre</strong> <span style="color:red;"></span></strong> </td>
+                      <tr>
+                        <td> <strong>Image</strong> <span style="color:red;"><br />Big: 2220px X 1000px<br />Small: 540px X 812px</span></strong> </td>
+                        <td>
+                          <input type="file" name="photo" class="form-control" placeholder="" value="<?=$station->photo?>" />
+                          <?php if ($station->photo!="") {  ?>
+                          <img id="slide_img_path" height=75 width=150 src="<?php echo base_url().$station->photo ?>">
+                          <?php } else {  ?>
+                          Sorry No image Found
+                          <?php } ?>
+                        </td>
+                      </tr>
+                      <td> <strong>Rate Per Kilometre</strong> <span style="color:red;">*</span></strong> </td>
                       <td>
-                        <input type="text" name="per_kilometre" class="form-control" placeholder="name" required value="<?=$station->per_kilometre?>" />
+                        <input type="text" name="per_kilometre" onkeypress="return isNumberKey(event)" class="form-control" placeholder="name" required value="<?=$station->per_kilometre?>" />
                       </td>
                     </tr>
                     <tr>
-                      <td> <strong>Location</strong> <span style="color:red;"></span></strong> </td>
+                      <td> <strong>Location</strong> <span style="color:red;">*</span></strong> </td>
                       <td>
                         <input type="text" name="location" class="form-control" placeholder="name" required value="<?=$station->location?>" />
+                      </td>
+                    </tr>
+                    <tr>
+                      <td> <strong>Minimum Booking Amount</strong> <span style="color:red;">*</span></strong> </td>
+                      <td>
+                        <input type="text" name="min_amount" onkeypress="return isNumberKey(event)"  class="form-control" placeholder="name" required value="<?=$station->min_booking_amt?>" />
                       </td>
                     </tr>
                     <tr>
@@ -102,36 +123,6 @@ if (!empty($this->session->flashdata('emessage'))) { ?>
     </div>
   </section>
 </div>
-<script>
-  function change(x) {
-    if (x == 1) {
-      $('#change').html('<td><strong>name</strong><span style="color:red;">*</span></strong></td><td><input type="text" name="percentage_amount" class="form-control" placeholder="" required value="<?=$cities->name?>" /></td>');
-      $('#change2').html(
-        '<td><strong>Maximum discount</strong> <span style="color:red;">*</span></strong> </td><td><input type="text" name="max" class="form-control" placeholder="" required value="<?=$promocode->max?>" onkeypress="return isNumberKey(event)"/></td>'
-      );
-    } else {
-      $('#change').html('<td><strong>Amount</strong><span style="color:red;">*</span></strong></td><td><input type="text" name="percentage_amount" class="form-control" placeholder=""   value="<?=$cities->p?>" /></td>');
-      $('#change2').html('');
-    }
-  }
-</script>
-<script>
-  $(function() {
-    var dtToday = new Date();
-    var month = dtToday.getMonth() + 1;
-    var day = dtToday.getDate();
-    var year = dtToday.getFullYear();
-    if (month < 10)
-      month = '0' + month.toString();
-    if (day < 10)
-      day = '0' + day.toString();
-    var maxDate = year + '-' + month + '-' + day;
-    // alert(maxDate);
-    $('#startdate').attr('min', maxDate);
-    $('#enddate').attr('min', maxDate);
-  });
-</script>
-</script>
 <script>
   function isNumberKey(evt) {
     var charCode = (evt.which) ? evt.which : evt.keyCode

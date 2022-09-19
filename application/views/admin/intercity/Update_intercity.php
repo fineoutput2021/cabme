@@ -35,7 +35,7 @@ if (!empty($this->session->flashdata('emessage'))) { ?>
                 <div class="table-responsive">
                   <table class="table table-hover">
                     <tr>
-                      <td> <strong>Cab Type</strong> <span style="color:red;"></span></strong> </td>
+                      <td> <strong>Cab Type</strong> <span style="color:red;">*</span></strong> </td>
                       <td>
                         <select name="cab_type" class="form-control" required>
                           <option value="">Cab Type</option>
@@ -46,37 +46,23 @@ if (!empty($this->session->flashdata('emessage'))) { ?>
                       </td>
                     </tr>
                     <tr>
-                      <td> <strong>Price</strong> <span style="color:red;"></span></strong> </td>
+                      <td> <strong>Price</strong> <span style="color:red;">*</span></strong> </td>
                       <td>
-                        <input type="text" name="price" class="form-control" placeholder="car_name" required value="<?=$intercity->price?>" />
+                        <input type="text" name="price" class="form-control" onkeypress="return isNumberKey(event)"  placeholder="car_name" required value="<?=$intercity->price?>" />
                       </td>
                     </tr>
                     <tr>
-                      <td> <strong>Kilometer Cap</strong> <span style="color:red;"></span></strong> </td>
+                      <td> <strong>Kilometer Cap</strong> <span style="color:red;">*</span></strong> </td>
                       <td>
-                        <input type="text" name="Kilomitere_cab" class="form-control" placeholder="name" required value="<?=$intercity->Kilomitere_cab?>" />
+                        <input type="text" name="Kilomitere_cab" onkeypress="return isNumberKey(event)"  class="form-control" placeholder="name" required value="<?=$intercity->Kilomitere_cab?>" />
                       </td>
                     </tr>
                     <tr>
-                      <td> <strong>Minimum Amount</strong> <span style="color:red;"></span></strong> </td>
+                      <td> <strong>Minimum Booking Amount</strong> <span style="color:red;">*</span></strong> </td>
                       <td>
-                        <input type="text" name="min_amount" class="form-control" placeholder="name" required value="<?=$intercity->min_amount?>" />
+                        <input type="text" name="min_amount" onkeypress="return isNumberKey(event)"  class="form-control" placeholder="name" required value="<?=$intercity->min_amount?>" />
                       </td>
                     </tr>
-                    <!-- <tr>
-  <td> <strong></strong> <span style="color:red;"><br />Big: 2220px X 1000px<br />Small: 540px X 812px</span></strong> </td>
-  <tr>
-    <td> <strong>Cities Rediolution</strong> <span style="color:red;">*</span></strong> </td>
-    <td>
-      <input type="radio" name="Cities_rediodution" value=" with Return Fair" <?php if ($cities == 'with Return Fair') {
-    echo 'checked="checked"';
-} ?>" /> with Return Fair<br />
-      <input type="radio" name="Cities_rediodution" value="without Return Fair" <?php if ($cities == 'without  Return Fair') {
-    echo 'checked="checked"';
-} ?>" /> without  Return Fair<br />
-    </td>
-  </tr>
-</tr> -->
                     <tr>
                       <td colspan="2">
                         <input type="submit" class="btn btn-success primary" value="save">
@@ -101,36 +87,7 @@ if (!empty($this->session->flashdata('emessage'))) { ?>
     </div>
   </section>
 </div>
-<script>
-  function change(x) {
-    if (x == 1) {
-      $('#change').html('<td><strong>name</strong><span style="color:red;">*</span></strong></td><td><input type="text" name="percentage_amount" class="form-control" placeholder="" required value="<?=$cities->name?>" /></td>');
-      $('#change2').html(
-        '<td><strong>Maximum discount</strong> <span style="color:red;">*</span></strong> </td><td><input type="text" name="max" class="form-control" placeholder="" required value="<?=$promocode->max?>" onkeypress="return isNumberKey(event)"/></td>'
-      );
-    } else {
-      $('#change').html('<td><strong>Amount</strong><span style="color:red;">*</span></strong></td><td><input type="text" name="percentage_amount" class="form-control" placeholder=""   value="<?=$cities->p?>" /></td>');
-      $('#change2').html('');
-    }
-  }
-</script>
-<script>
-  $(function() {
-    var dtToday = new Date();
-    var month = dtToday.getMonth() + 1;
-    var day = dtToday.getDate();
-    var year = dtToday.getFullYear();
-    if (month < 10)
-      month = '0' + month.toString();
-    if (day < 10)
-      day = '0' + day.toString();
-    var maxDate = year + '-' + month + '-' + day;
-    // alert(maxDate);
-    $('#startdate').attr('min', maxDate);
-    $('#enddate').attr('min', maxDate);
-  });
-</script>
-</script>
+
 <script>
   function isNumberKey(evt) {
     var charCode = (evt.which) ? evt.which : evt.keyCode

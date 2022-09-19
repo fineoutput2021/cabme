@@ -1,5 +1,4 @@
 <?php
-
 if (! defined('BASEPATH')) {
     exit('No direct script access allowed');
 }
@@ -38,11 +37,7 @@ class Users extends CI_finecontrol
             $id=base64_decode($idd);
             if ($this->load->get_var('position')=="Super Admin") {
                 $zapak=$this->db->delete('tbl_users', array('id' => $id));
-                $zapak=$this->db->delete('tbl_cart', array('user_id' => $id));
-                $zapak=$this->db->delete('tbl_wishlist', array('user_id' => $id));
                 if ($zapak!=0) {
-                    // $path = FCPATH . "assets/public/users/".$img;
-                    // unlink($path);
                     $this->session->set_flashdata('smessage', 'Data deleted successfully');
                     redirect("dcadmin/users/view_users", "refresh");
                 } else {

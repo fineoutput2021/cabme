@@ -47,6 +47,7 @@
                         <th>Driving Licence</th>
                         <th>Aadhar Image</th>
                         <th>Licence Image</th>
+                        <th>Date</th>
                       <th>Status</th>
                       <?if ($this->session->userdata('position')!='Manager') {?>
                       <th>Action</th>
@@ -65,7 +66,7 @@
                       <td><?php echo $data->driving_lience?></td>
                       <td><?php echo $data->aadhar_image ?></td>
                       <td><?php echo $data->lience_image?></td>
-
+                      <td><?php echo $data->date?></td>
 
                       <td><?php if ($data->is_active==1) { ?>
                         <p class="label bg-green">Active</p>

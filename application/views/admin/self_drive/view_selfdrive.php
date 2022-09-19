@@ -42,12 +42,11 @@ if (!empty($this->session->flashdata('emessage'))) { ?>
                       <th>#</th>
                       <th>City-name</th>
                       <th>Brand Name</th>
-                      <!-- <th>Image2</th> -->
                       <th>Car Name</th>
                       <th>Image</th>
                       <th>Fuel-type</th>
                       <th>Transmission</th>
-                      <th>Seating</th>
+                      <th>Seating Capacity</th>
                       <th>Kilometer-1</th>
                       <th>price-1</th>
                       <th>Kilometer-2</th>
@@ -56,6 +55,7 @@ if (!empty($this->session->flashdata('emessage'))) { ?>
                       <th>Price-3</th>
                       <th>Extra-Kilometer</th>
                       <th>Refundable Security Deposit Amount</th>
+                      <th>Date</th>
                       <th>Status</th>
                       <?if ($this->session->userdata('position')!='Manager') {?>
                       <th>Action</th>
@@ -65,8 +65,7 @@ if (!empty($this->session->flashdata('emessage'))) { ?>
                   <tbody>
                     <?php $i=1; foreach ($Self_drive_data->result() as $data) {
     $cities_data = $this->db->get_where('tbl_cities', array('id'=> $data->city_id))->result();
-// $i=1; foreach ($Self_drive_data->result() as $data)
-     ?>
+    // $i=1; foreach ($Self_drive_data->result() as $data)?>
                     <tr>
                       <td><?php echo $i ?> </td>
                       <td><?php echo $cities_data[0]->name?> </td>
@@ -79,32 +78,34 @@ if (!empty($this->session->flashdata('emessage'))) { ?>
                         Sorry No image Found
                         <?php } ?>
                       </td>
-
                         <td><?php if ($data->fule_type==1) {
-                              echo 'Petrol';
-                          } else {
-                              echo 'Diesel';
-                          }  ?></td>
-
-
-
+        echo 'Petrol';
+    } else {
+        echo 'Diesel';
+    } ?></td>
                         </td>
-
                           <td><?php if ($data->transmission==1) {
-                                echo 'Manual';
-                            } else {
-                                echo 'Automatic';
-                            }  ?></td>
-
-                      <td><?php echo $data->seatting ?> </td>
+        echo 'Manual';
+    } else {
+        echo 'Automatic';
+    } ?></td>
+                      <td><?php if ($data->seatting==1) {
+    echo '4 Seater';
+} else if($data->seatting==2){
+    echo '5 Seater';
+}else if($data->seatting==3){
+echo '7 Seater';
+} ?></td>
                       <td><?php echo $data->kilometer1?> </td>
-                      <td><?php echo $data->price1 ?> </td>
+                      <td>₹<?php echo $data->price1 ?> </td>
                       <td><?php echo $data->kilometer2?> </td>
-                      <td><?php echo $data->price2 ?> </td>
+                      <td>₹<?php echo $data->price2 ?> </td>
                       <td><?php echo $data->kilometer3?> </td>
-                      <td><?php echo $data->price3 ?> </td>
+                      <td>₹<?php echo $data->price3 ?> </td>
                       <td><?php echo $data->extra_kilo?> </td>
-                      <td><?php echo $data->rsda ?> </td>
+                      <td>₹<?php echo $data->rsda ?> </td>
+                      <td><?php echo $data->date ?> </td>
+
                       <!-- <td><?php
 $this->db->select('*');
     $this->db->from('tbl_cities');

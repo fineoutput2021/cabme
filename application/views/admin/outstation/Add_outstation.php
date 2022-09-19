@@ -5,7 +5,7 @@
     </h1>
     <ol class="breadcrumb">
       <li><a href="<?php echo base_url() ?>dcadmin/Home"><i class="fa fa-dashboard"></i> Dashboard</a></li>
-      <li><a href="<?php echo base_url() ?>dcadmin/Outstation/View_station"><i class="fa fa-undo" aria-hidden="true"></i></i> View Outstation </a></li>
+      <li><a href="<?php echo base_url() ?>dcadmin/Outstation/View_outstation"><i class="fa fa-undo" aria-hidden="true"></i></i> View Outstation </a></li>
     </ol>
   </section>
   <section class="content">
@@ -58,9 +58,14 @@
                       </td>
                     </tr>
                     <tr>
-                      <td> <strong>Seatting</strong> <span style="color:red;">*</span></strong> </td>
+                      <td> <strong>Seating Capacity</strong> <span style="color:red;">*</span></strong> </td>
                       <td>
-                        <input type="text" name="seatting" class="form-control" placeholder="" required value="" />
+                        <select name="seatting" class="form-control" required>
+                          <option value="">Seating</option>
+                          <option value="1">4 Seater</option>
+                          <option value="2">5 Seater</option>
+                          <option value="3">7 Seater</option>
+                        </select>
                       </td>
                     </tr>
                     </tr>
@@ -71,15 +76,21 @@
                       </td>
                     </tr>
                     <tr>
-                      <td> <strong>Rate Per Kilometre</strong> <span style="color:red;">*</span></strong> </td>
+                      <td> <strong>Rate Per Kilometer</strong> <span style="color:red;">*</span></strong> </td>
                       <td>
-                        <input type="text" name="per_kilometre" class="form-control" placeholder="" required value="" />
+                        <input type="text" name="per_kilometre" onkeypress="return isNumberKey(event)" class="form-control" placeholder="" required value="" />
                       </td>
                     </tr>
                     <tr>
                       <td> <strong>Location</strong> <span style="color:red;">*</span></strong> </td>
                       <td>
                         <input type="text" name="location" class="form-control" placeholder="" required value="" />
+                      </td>
+                    </tr>
+                    <tr>
+                      <td> <strong>Minimum Booking Amount</strong> <span style="color:red;">*</span></strong> </td>
+                      <td>
+                        <input type="text" id="" name="min_amount" onkeypress="return isNumberKey(event)" class="form-control" placeholder="" required value="" />
                       </td>
                     </tr>
                     <tr>
@@ -96,7 +107,6 @@
                 background-color: red;
                 border-color: red;
               }
-
               .btn-success:hover {
                 background-color: red;
                 border-color: red;
@@ -110,3 +120,11 @@
 </div>
 <script type="text/javascript" src="<?php echo base_url() ?>assets/size/ajaxupload.3.5.js"></script>
 <link href="<?php echo base_url() ?>assets/cowadmin/css/jqvmap.css" rel='stylesheet' type='text/css' />
+<script>
+  function isNumberKey(evt) {
+    var charCode = (evt.which) ? evt.which : evt.keyCode
+    if (charCode > 31 && (charCode < 48 || charCode > 57))
+      return false;
+    return true;
+  }
+</script>

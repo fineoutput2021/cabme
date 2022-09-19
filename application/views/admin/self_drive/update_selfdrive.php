@@ -48,13 +48,13 @@ if (!empty($this->session->flashdata('emessage'))) { ?>
                       </td>
                     </tr>
                     <tr>
-                      <td> <strong>Brand-name</strong> <span style="color:red;"></span></strong> </td>
+                      <td> <strong>Brand-name</strong> <span style="color:red;">*</span></strong> </td>
                       <td>
                         <input type="text" name="brand_name" class="form-control" placeholder="brand_name" required value="<?=$Self_drive->brand_name?>" />
                       </td>
                     </tr>
                     <tr>
-                      <td> <strong>Car-name</strong> <span style="color:red;"></span></strong> </td>
+                      <td> <strong>Car-name</strong> <span style="color:red;">*</span></strong> </td>
                       <td>
                         <input type="text" name="car_name" class="form-control" placeholder="car_name" required value="<?=$Self_drive->car_name?>" />
                       </td>
@@ -71,94 +71,82 @@ if (!empty($this->session->flashdata('emessage'))) { ?>
                       </td>
                     </tr>
                     <tr>
-                      <td> <strong>Fuel-Type</strong> <span style="color:red;"></span></strong> </td>
+                      <td> <strong>Fuel-Type</strong> <span style="color:red;">*</span></strong> </td>
                       <td>
                         <select name="fule_type" class="form-control" required>
 
                           <option value="1" <?if($Self_drive->fule_type==1){echo 'selected' ;}?>>Petrol</option>
                           <option value="2" <?if($Self_drive->fule_type==2){echo 'selected' ;}?>>Diesel</option>
-                          <option value="3" <?if($Self_drive->fule_type==3){echo 'selected' ;}?>>Electric</option>
                         </select>
                       </td>
                     </tr>
                     <tr>
-                      <td> <strong>Transmission</strong> <span style="color:red;"></span></strong> </td>
+                      <td> <strong>Transmission</strong> <span style="color:red;">*</span></strong> </td>
                       <td>
                         <select name="transmission" class="form-control" required>
-                          <option value="1" <?if($Self_drive->transmission==1){echo 'selected' ;}?>>Petrol</option>
-                          <option value="2" <?if($Self_drive->transmission==2){echo 'selected' ;}?>>Diesel</option>
-
+                          <option value="1" <?if($Self_drive->transmission==1){echo 'selected' ;}?>>Manual</option>
+                          <option value="2" <?if($Self_drive->transmission==2){echo 'selected' ;}?>>Automatic</option>
                         </select>
                       </td>
                     </tr>
                     <tr>
-                      <td> <strong>Seatting</strong> <span style="color:red;"></span></strong> </td>
+                      <td> <strong>Seating Capacity</strong> <span style="color:red;">*</span></strong> </td>
                       <td>
-                        <input type="text" name="seatting" class="form-control" placeholder="name" required value="<?=$Self_drive->seatting?>" />
+                        <select name="seatting" class="form-control" required>
+                          <option value="1" <?if($Self_drive->seatting==1){echo 'selected' ;}?>>4 Seater</option>
+                          <option value="2" <?if($Self_drive->seatting==2){echo 'selected' ;}?>>5 Seater</option>
+                          <option value="2" <?if($Self_drive->seatting==3){echo 'selected' ;}?>>7 Seater</option>
+                        </select>
                       </td>
                     </tr>
                     <tr>
-                      <td> <strong>kilometer1</strong> <span style="color:red;"></span></strong> </td>
+                      <td> <strong>kilometer1</strong> <span style="color:red;">*</span></strong> </td>
                       <td>
-                        <input type="text" name="kilometer1" class="form-control" placeholder="name" required value="<?=$Self_drive->kilometer1?>" />
+                        <input type="text" name="kilometer1" onkeypress="return isNumberKey(event)" class="form-control" placeholder="name" required value="<?=$Self_drive->kilometer1?>" />
                       </td>
                     </tr>
                     <tr>
-                      <td> <strong>Price1</strong> <span style="color:red;"></span></strong> </td>
+                      <td> <strong>Price1</strong> <span style="color:red;">*</span></strong> </td>
                       <td>
-                        <input type="text" name="price1" class="form-control" placeholder="name" required value="<?=$Self_drive->price1?>" />
+                        <input type="text" name="price1" onkeypress="return isNumberKey(event)" class="form-control" placeholder="name" required value="<?=$Self_drive->price1?>" />
                       </td>
                     </tr>
                     <tr>
-                      <td> <strong>Kilometer2</strong> <span style="color:red;"></span></strong> </td>
+                      <td> <strong>Kilometer2</strong> <span style="color:red;">*</span></strong> </td>
                       <td>
-                        <input type="text" name="kilometer2" class="form-control" placeholder="name" required value="<?=$Self_drive->kilometer2?>" />
+                        <input type="text" name="kilometer2" onkeypress="return isNumberKey(event)" class="form-control" placeholder="name" required value="<?=$Self_drive->kilometer2?>" />
                       </td>
                     </tr>
                     <tr>
-                      <td> <strong>price2</strong> <span style="color:red;"></span></strong> </td>
+                      <td> <strong>price2</strong> <span style="color:red;">*</span></strong> </td>
                       <td>
-                        <input type="text" name="price2" class="form-control" placeholder="name" required value="<?=$Self_drive->price2?>" />
+                        <input type="text" name="price2" onkeypress="return isNumberKey(event)" class="form-control" placeholder="name" required value="<?=$Self_drive->price2?>" />
                       </td>
                     </tr>
                     <tr>
-                      <td> <strong>Kilometre3</strong> <span style="color:red;"></span></strong> </td>
+                      <td> <strong>Kilometre3</strong> <span style="color:red;">*</span></strong> </td>
                       <td>
-                        <input type="text" name="kilometer3" class="form-control" placeholder="name" required value="<?=$Self_drive->kilometer3?>" />
+                        <input type="text" name="kilometer3" onkeypress="return isNumberKey(event)" class="form-control" placeholder="name" required value="<?=$Self_drive->kilometer3?>" />
                       </td>
                     </tr>
                     <tr>
-                      <td> <strong>price3</strong> <span style="color:red;"></span></strong> </td>
+                      <td> <strong>price3</strong> <span style="color:red;">*</span></strong> </td>
                       <td>
-                        <input type="text" name="price3" class="form-control" placeholder="name" required value="<?=$Self_drive->price3?>" />
+                        <input type="text" name="price3" onkeypress="return isNumberKey(event)" class="form-control" placeholder="name" required value="<?=$Self_drive->price3?>" />
                       </td>
                     </tr>
                     <tr>
-                      <td> <strong>Extra-kilomerter</strong> <span style="color:red;"></span></strong> </td>
+                      <td> <strong>Extra-kilomerter</strong> <span style="color:red;">*</span></strong> </td>
                       <td>
-                        <input type="text" name="extra_kilo" class="form-control" placeholder="name" required value="<?=$Self_drive->extra_kilo?>" />
+                        <input type="text" name="extra_kilo" onkeypress="return isNumberKey(event)" class="form-control" placeholder="name" required value="<?=$Self_drive->extra_kilo?>" />
                       </td>
                     </tr>
                     <tr>
-                      <td> <strong>Refundable Security Deposit Amount</strong> <span style="color:red;"></span></strong> </td>
+                      <td> <strong>Refundable Security Deposit Amount</strong>*<span style="color:red;"></span></strong> </td>
                       <td>
-                        <input type="text" name="rsda" class="form-control" placeholder="name" required value="<?=$Self_drive->rsda?>" />
+                        <input type="text" name="rsda" onkeypress="return isNumberKey(event)" class="form-control" placeholder="name" required value="<?=$Self_drive->rsda?>" />
                       </td>
                     </tr>
-                    <!-- <tr>
-  <td> <strong></strong> <span style="color:red;"><br />Big: 2220px X 1000px<br />Small: 540px X 812px</span></strong> </td>
-  <tr>
-    <td> <strong>Cities Rediolution</strong> <span style="color:red;">*</span></strong> </td>
-    <td>
-      <input type="radio" name="Cities_rediodution" value=" with Return Fair" <?php if ($cities == 'with Return Fair') {
-    echo 'checked="checked"';
-} ?>" /> with Return Fair<br />
-      <input type="radio" name="Cities_rediodution" value="without Return Fair" <?php if ($cities == 'without  Return Fair') {
-    echo 'checked="checked"';
-} ?>" /> without  Return Fair<br />
-    </td>
-  </tr>
-</tr> -->
                     <tr>
                       <td colspan="2">
                         <input type="submit" class="btn btn-success primary" value="save">
@@ -183,36 +171,6 @@ if (!empty($this->session->flashdata('emessage'))) { ?>
     </div>
   </section>
 </div>
-<script>
-  function change(x) {
-    if (x == 1) {
-      $('#change').html('<td><strong>name</strong><span style="color:red;">*</span></strong></td><td><input type="text" name="percentage_amount" class="form-control" placeholder="" required value="<?=$cities->name?>" /></td>');
-      $('#change2').html(
-        '<td><strong>Maximum discount</strong> <span style="color:red;">*</span></strong> </td><td><input type="text" name="max" class="form-control" placeholder="" required value="<?=$promocode->max?>" onkeypress="return isNumberKey(event)"/></td>'
-      );
-    } else {
-      $('#change').html('<td><strong>Amount</strong><span style="color:red;">*</span></strong></td><td><input type="text" name="percentage_amount" class="form-control" placeholder=""   value="<?=$cities->p?>" /></td>');
-      $('#change2').html('');
-    }
-  }
-</script>
-<script>
-  $(function() {
-    var dtToday = new Date();
-    var month = dtToday.getMonth() + 1;
-    var day = dtToday.getDate();
-    var year = dtToday.getFullYear();
-    if (month < 10)
-      month = '0' + month.toString();
-    if (day < 10)
-      day = '0' + day.toString();
-    var maxDate = year + '-' + month + '-' + day;
-    // alert(maxDate);
-    $('#startdate').attr('min', maxDate);
-    $('#enddate').attr('min', maxDate);
-  });
-</script>
-</script>
 <script>
   function isNumberKey(evt) {
     var charCode = (evt.which) ? evt.which : evt.keyCode

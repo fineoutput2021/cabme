@@ -52,7 +52,7 @@ if (!empty($this->session->flashdata('emessage'))) { ?>
                       </td>
                     </tr>
                     <tr id="change">
-                      <td> <strong>Percentage</strong> <span style="color:red;">*</span></strong> </td>
+                      <td> <strong>Percentage Off</strong> <span style="color:red;">*</span></strong> </td>
                       <td>
                         <input type="text" name="percentage" class="form-control" placeholder="" required value="" onkeypress="return isNumberKey(event)" />
                       </td>
@@ -106,17 +106,6 @@ if (!empty($this->session->flashdata('emessage'))) { ?>
     </div>
   </section>
 </div>
-<script>
-  function change(x) {
-    if (x == 1) {
-      $('#change').html('<td><strong>Percentage</strong><span style="color:red;">*</span></strong></td><td><input type="text" name="percentage_amount" class="form-control" placeholder="" required value="" /></td>');
-      $('#change2').html('<td><strong>Maximum discount</strong> <span style="color:red;">*</span></strong> </td><td><input type="text" name="max" class="form-control" placeholder="" required value="" onkeypress="return isNumberKey(event)"/></td>');
-    } else {
-      $('#change').html('<td><strong>Amount</strong><span style="color:red;">*</span></strong></td><td><input type="text" name="percentage_amount" class="form-control" placeholder=""   value="" /></td>');
-      $('#change2').html('');
-    }
-  }
-</script>
 <script>
   $(function() {
     var dtToday = new Date();

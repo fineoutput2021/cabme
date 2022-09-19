@@ -34,10 +34,11 @@
 	<!-- web-fonts -->
 	<link href="//fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i" rel="stylesheet">
 	<!-- //web-fonts -->
+
 </head>
 
 <body>
-	<div class="video-w3l" data-vide-bg="<? echo base_url() ?>assets/admin/login/images/tiara.jpg">
+	<div class="video-w3l" data-vide-bg="<? echo base_url() ?>assets/admin/login/images/cabme2.jpg">
 		<!--header-->
 		<div class="header-w3l">
 			<h1>
