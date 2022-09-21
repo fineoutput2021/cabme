@@ -24,9 +24,29 @@ function __construct()
 				// $this->db->where('student_shift',$cvf);
 				$data['sidebar_data']= $this->db->get();
 
-				// echo $this->session->userdata('image');
-				// echo $this->session->userdata('position');
-			// exit;
+			      			$this->db->select('*');
+			$this->db->from('tbl_booking');
+			$this->db->where('payment_status',1);
+			$data['total_booking']= $this->db->count_all_results();
+
+			$this->db->select('*');
+$this->db->from('tbl_booking');
+$this->db->where('payment_status',1);
+$this->db->where('booking_type',1);
+$data['total_self_drive']= $this->db->count_all_results();
+
+$this->db->select('*');
+$this->db->from('tbl_booking');
+$this->db->where('payment_status',1);
+$this->db->where('booking_type',2);
+$data['total_intercity']= $this->db->count_all_results();
+
+$this->db->select('*');
+$this->db->from('tbl_booking');
+$this->db->where('payment_status',1);
+$this->db->where('booking_type',3);
+$data['total_outstation']= $this->db->count_all_results();
+
 			$this->load->view('admin/common/header_view',$data);
 				$this->load->view('admin/dash');
 				$this->load->view('admin/common/footer_view');

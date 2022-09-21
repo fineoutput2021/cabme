@@ -20,7 +20,7 @@
                   <div class="info-box-content">
                     <span class="info-box-text">Total Booking</span>
                     <span class="info-box-number">
-                    45
+                    <?=$total_booking?>
                     </span>
                   </div>
                 </div>
@@ -33,7 +33,7 @@
                   <div class="info-box-content">
                     <span class="info-box-text">Total Self Drive</span>
                     <span class="info-box-number">
-                    45
+                  <?=$total_self_drive?>
                     </span>
                   </div>
                 </div>
@@ -48,7 +48,7 @@
                   <div class="info-box-content">
                     <span class="info-box-text">Total INTERCITY</span>
                     <span class="info-box-number">
-                    45
+                      <?=$total_intercity?>
                     </span>
                   </div>
                 </div>
@@ -61,7 +61,7 @@
                   <div class="info-box-content">
                     <span class="info-box-text">Total Outstation</span>
                     <span class="info-box-number">
-                      12
+              <?=$total_outstation?>
                     </span>
                   </div><!-- /.info-box-content -->
                 </div>
