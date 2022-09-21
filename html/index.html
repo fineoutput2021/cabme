@@ -21,7 +21,8 @@
 
 		.mobilenav-tabs .nav-item .nav-link {
 			border-left: .5px solid rgb(194, 193, 193);
-			padding-left: 5px;
+			padding-left: 16px;
+			padding-right: 16px;
 
 		}
 	</style>
@@ -156,6 +157,7 @@
 
 	<!--====== Select City Modal End ======-->
 
+
 	<!--====== Select City2 Modal ======-->
 	<div class="modal fade " id="selectcity2" role="dialog">
 		<div class="modal-dialog " style="width: auto;">
@@ -206,9 +208,9 @@
 					<p>Use code Demo4 and get flat 5% off</p>
 					<div class="row">
 						<div class="promopath">
-							<span class="span_1">Demo4</span>
+							<span class="span_1" id="textcopy">Demo4</span>
 							<span class="span_2 float-right">
-								<i class="fa fa-copy"></i> &nbsp; Copy
+								<i class="fa fa-copy" onclick="myFunction(id)" style="cursor: pointer;"></i>
 							</span>
 						</div>
 					</div>
@@ -670,13 +672,13 @@
 										</div>
 										<div class="col-md-6 mt-2">
 											<div class="radio">
-												<input type="radio" name="ratio" id="Single" value="option1" checked>
-												<label for="Single" checked>Single Trip</label>
+												<input type="radio" name="ratio" id="Si" value="option1" checked>
+												<label for="Si">Single Trip</label>
 											</div>
 										</div>
 										<div class="col-md-6 mt-2">
 											<div class="radio">
-												<input type="radio" name="ratio" id="Round" value="option1">
+												<input type="radio" name="ratio" id="Round" value="option">
 												<label for="Round">Round Trip</label>
 											</div>
 										</div>
@@ -786,16 +788,17 @@
 						<div class="x_offer_tabs_wrapper"
 							style="background-color: #fff;border-radius: 15px;width: 97%;margin-left: 5px;">
 							<ul class="nav nav-tabs mobilenav-tabs"
-								style="display: flex; flex-wrap: nowrap;    justify-content: flex-start;">
-								<li class="nav-item"> <a class="nav-link active" data-toggle="tab" href="#firsttt">
-										Self-Drive Cars</a>
+								style="display: flex; flex-wrap: nowrap;box-shadow: 0px 1px 20px #a29f9f;">
+								<li class="nav-item"> <a class="nav-link molink active" data-toggle="tab"
+										href="#firsttt">
+										Self-Drive</a>
 								</li>
-
-								<li class="nav-item "> <a class="nav-link" data-toggle="tab" href="#thirddd">Outstation
-										Booking</a>
+								<li class="nav-item"> <a class="nav-link molink" data-toggle="tab"
+										href="#thirddd">Outstation</a>
 								</li>
-								<li class="nav-item"> <a class="nav-link " data-toggle="tab" href="#seconddd">Intercity
-										Travel</a>
+								<li class="nav-item"> <a class="nav-link molink" data-toggle="tab"
+										href="#seconddd">Intercity
+									</a>
 								</li>
 							</ul>
 						</div>
@@ -815,7 +818,7 @@
 									<div class="row"
 										style="border: 1px solid rgb(226, 225, 225);margin-top: 35px;border-radius: 10px;">
 										<div class="col-md-12 p-0" data-toggle="modal" data-target="#selectcity"
-											data-dismiss="modal">
+											data-dismiss="modal" style="border-bottom:1px solid rgb(226, 225, 225);">
 											<div class="selectcity">
 												<i class="fa fa-map-marker"></i>
 												<h5>Select City</h5>
@@ -889,7 +892,7 @@
 									<div class="row"
 										style="border: 1px solid rgb(226, 225, 225);margin-top: 35px;border-radius: 10px;">
 										<div class="col-md-12 p-0" data-toggle="modal" data-target="#selectcity"
-											data-dismiss="modal">
+											data-dismiss="modal" style="border-bottom:1px solid rgb(226, 225, 225);">
 											<div class="selectcity">
 												<i class="fa fa-map-marker"></i>
 												<h5>Select City</h5>
@@ -969,7 +972,7 @@
 										<div class="col-md-6 col-xs-6 mt-2">
 											<div class="radio">
 												<input type="radio" name="ratio" id="Single1" value="option1" checked>
-												<label for="Single1" checked>Single Trip</label>
+												<label for="Single1">Single Trip</label>
 											</div>
 										</div>
 										<div class="col-md-6  col-xs-6 mt-2">
@@ -982,7 +985,7 @@
 									<div class="row"
 										style="border: 1px solid rgb(226, 225, 225);margin-top: 35px;border-radius: 10px;">
 										<div class="col-md-12 p-0" data-toggle="modal" data-target="#selectcity"
-											data-dismiss="modal">
+											data-dismiss="modal" style="border-bottom:1px solid rgb(226, 225, 225);">
 											<div class="selectcity">
 												<i class="fa fa-map-marker"></i>
 												<h5>Select City</h5>
@@ -1634,11 +1637,6 @@
 	<script>
 		/* -- DO NOT REMOVE --
 		 * jQuery MDTimePicker v1.0 plugin
-		 * 
-		 * Author: Dionlee Uy
-		 * Email: dionleeuy@gmail.com
-		 *
-		 * Date: Tuesday, August 28 2017
 		 *
 		 * @requires jQuery
 		 * -- DO NOT REMOVE -- */
@@ -1946,6 +1944,21 @@
 			$('.timepicker').mdtimepicker();
 		});
 
+
+		function myFunction(id) {
+			/* Get the text field */
+			var copyText = document.getElementById(id);
+
+			/* Select the text field */
+			copyText.select();
+			copyText.setSelectionRange(0, 99999); /* For mobile devices */
+
+			/* Copy the text inside the text field */
+			navigator.clipboard.writeText(copyText.value);
+
+			/* Alert the copied text */
+			notifyInfo("Copied")
+		}
 	</script>
 
 </body>

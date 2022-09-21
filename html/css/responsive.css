@@ -248,7 +248,7 @@
 @media (max-width: 767px){
 	.mobilenav-tabs .nav-item .nav-link 
 	{
-		font-size: 10px;
+		font-size: 11px;
 		/* border-radius: 20px; */
 	}
 	
@@ -396,9 +396,9 @@
 	.x_title_inner_num_wrapper {
 		display:none;
 	}
-	.x_car_book_left_siderbar_wrapper {
+	/* .x_car_book_left_siderbar_wrapper {
 		padding-top:70px;
-	}
+	} */
 	.x_carbook_right_tabs_box_wrapper p{
 		display:none;
 	}

@@ -3227,14 +3227,17 @@ width:100%;
 }
 
 .x_offer_tabs_wrapper .nav-tabs .nav-item.show .nav-link, .x_offer_tabs_wrapper .nav-tabs .nav-link.active {
-     color: #d5282a;
+     color: #fff;
+	 background-color: red;
 	border-color:transparent;
 	font-size:11px;
 	font-weight:700;
 	text-transform:uppercase;
-	font-family: 'Raleway', sans-serif;
-	border-bottom: 2px solid red;
+	/* font-family: 'Raleway', sans-serif; */
+
 }
+
+/* 
 
 .x_offer_tabs_wrapper .nav-tabs .nav-item.show .dnav, .x_offer_tabs_wrapper .nav-tabs .dnav.active {
      color: #fff;
@@ -3244,7 +3247,7 @@ width:100%;
 	font-weight:700;
 	text-transform:uppercase;
 	font-family: 'Raleway', sans-serif;
-}
+} */
 .x_offer_tabs_wrapper  .All_Car_tabs .nav-link.active
 {
 	background-color: #e8f0f9 !important;
@@ -3257,7 +3260,7 @@ width:100%;
 	font-weight:700;
 	text-transform:uppercase;
 	    padding: 12px 0px;
-	font-family: 'Raleway', sans-serif;
+	/* font-family: 'Raleway', sans-serif; */
 }
 .x_car_offer_main_boxes_wrapper{
 	background:#ffffff;
