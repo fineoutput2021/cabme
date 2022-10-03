@@ -3237,8 +3237,19 @@ width:100%;
 
 }
 .x_offer_tabs_wrapper .nav-tabs .nav-item.show .mo-link, .x_offer_tabs_wrapper .nav-tabs .molink.active {
-     color: red;
-	 background-color: #FFF;
+     color: #fff;
+	 background-color: red;
+	 /* border-bottom: 2px solid red !important; */
+	border-color:transparent;
+	font-size:11px;
+	font-weight:700;
+	text-transform:uppercase;
+	/* font-family: 'Raleway', sans-serif; */
+
+}
+.x_offer_tabs_wrapper .nav-tabs .nav-item.show .mo-link, .x_offer_tabs_wrapper .nav-tabs .roundtabb.active {
+     color: #fff;
+	 background-color: red;
 	 /* border-bottom: 2px solid red !important; */
 	border-color:transparent;
 	font-size:11px;
@@ -3266,7 +3277,7 @@ width:100%;
 }
 .x_offer_tabs_wrapper .nav-tabs .nav-link{
 	border-radius:0;
-	color:#111111;
+	color:#545151;
 	font-size:13px;
 	font-weight:700;
 	text-transform:uppercase;
@@ -3534,6 +3545,10 @@ width:100%;
     -webkit-border-bottom-left-radius: 5px;
     -moz-border-bottom-left-radius: 5px;
     border-bottom-left-radius: 5px;
+}
+.mobilenav-tabs .nav-item
+{
+	border: 1px solid red;
 }
 .x_car_offer_bottom_btn li:first-child a:hover{
 	background:#232121;

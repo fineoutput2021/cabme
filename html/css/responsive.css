@@ -251,11 +251,16 @@
 		font-size: 11px;
 		/* border-radius: 20px; */
 	}
+	.roundtab .nav-item a.active
+	{
+		background-color: red;
+		color: #fff;
+	}
 	
-	.mobilenav-tabs
+	/* .mobilenav-tabs
 	{
 		justify-content: space-between;
-	}
+	} */
 	.datepicker, .timepicker
 	{
 		font-size: 12px;
