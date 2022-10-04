@@ -253,8 +253,8 @@
 	}
 	.roundtab .nav-item a.active
 	{
-		background-color: red;
-		color: #fff;
+		background-color: red !important;
+		color: #fff !important;
 	}
 	
 	/* .mobilenav-tabs
