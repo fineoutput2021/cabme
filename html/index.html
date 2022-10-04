@@ -791,15 +791,15 @@
 							style="background-color: #fff;border-radius: 15px;width: 97%;margin-left: 5px;">
 							<ul class="nav nav-tabs mobilenav-tabs justify-content-center"
 								style="display: flex; flex-wrap: nowrap;box-shadow: 0px 1px 20px #fff;padding: 5px;border-radius: 10px;">
-								<li class="nav-item" style="width: 120px;"> <a class="nav-link molink active"
-										data-toggle="tab" href="#firsttt">
+								<li class="nav-item" style="width: 120px;border-radius: 8px 0px 0px 8px;"> <a class="nav-link molink active"
+										data-toggle="tab" href="#firsttt" style="border-radius: 8px 0px 0px 8px;">
 										Self-Drive </a>
 								</li>
 								<li class="nav-item" style="width: 147px;"> <a class="nav-link molink" data-toggle="tab"
 										href="#thirddd">Outstation </a>
 								</li>
-								<li class="nav-item" style="width: 147px;"> <a class="nav-link molink" data-toggle="tab"
-										href="#seconddd">Intercity
+								<li class="nav-item" style="width: 147px;border-radius: 0px 8px 8px 0px;"> <a class="nav-link molink" data-toggle="tab"
+										href="#seconddd" style="border-radius: 0px 8px 8px 0px;">Intercity
 									</a>
 								</li>
 							</ul>
@@ -893,7 +893,7 @@
 									</div>
 									<div class="row mt-1"
 										style="border: 1px solid rgb(226, 225, 225);border-radius: 10px;">
-										<div class="col-md-12 p-0" data-toggle="modal" data-target="#selectcity"
+										<div class="col-md-12 p-0 selectcity" data-toggle="modal" data-target="#selectcity"
 											data-dismiss="modal" style="border-bottom:1px solid rgb(226, 225, 225);">
 											<div class="selectcity">
 												<i class="fa fa-map-marker"></i>
@@ -949,9 +949,21 @@
 					<div id="thirddd" class="tab-pane">
 						<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
 							<div class="x_slider_form_main_wrapper float_left">
-								<!-- <div class="x_slider_form_heading_wrapper float_left">
-									<h3>Let’s find your perfect car</h3>
-								</div> -->
+								
+								<div class="row justify-content-center"
+								style="flex-wrap: nowrap;width: 100%;margin-top: 15px;">
+								
+								<ul class="nav nav-tabs roundtab mobilenav-tabs justify-content-center"
+									style="display: flex; flex-wrap: nowrap;">
+									<li class="nav-item" style="border-radius: 8px 0px 0px 8px;"> <a class="nav-link roundtab active" data-toggle="tab"
+											href="#firstt" style="font-size: 13px;border-radius: 6px 0px 0px 6px;">
+											Single-Trip </a>
+									</li>
+									<li class="nav-item" style="border-radius: 0px 8px 8px 0px;"> <a class="nav-link roundtab" data-toggle="tab"
+											href="#thirdd" style="font-size: 13px;border-radius: 0px 8px 8px 0px;">Round-Trip </a>
+									</li>
+								</ul>
+							</div>
 								<div class="row">
 									<div class="col-md-6 col-6 p-0">
 										<div class="x_slider_select x_slider_select_2" style="margin-left: -16px;">
@@ -970,33 +982,8 @@
 												style="border: none;border-bottom: 1px solid #eeeeee;height: 45px;">
 										</div>
 									</div>
-									<div class="row justify-content-center"
-										style="flex-wrap: nowrap;width: 100%;margin-top: 15px;">
-										<!-- <div class="col-md-6 col-xs-6 mt-2">
-											<div class="radio">
-												<input type="radio" name="ratio" id="Single1" value="option1" checked>
-												<label for="Single1">Single Trip</label>
-											</div>
-										</div>
-										<div class="col-md-6  col-xs-6 mt-2">
-											<div class="radio">
-												<input type="radio" name="ratio" id="Round1" value="option1">
-												<label for="Round1">Round Trip</label>
-											</div>
-										</div> -->
-										<ul class="nav nav-tabs roundtab mobilenav-tabs justify-content-center"
-											style="display: flex; flex-wrap: nowrap;">
-											<li class="nav-item"> <a class="nav-link roundtab active" data-toggle="tab"
-													href="#firstt" style="font-size: 13px;">
-													Single-Trip </a>
-											</li>
-											<li class="nav-item"> <a class="nav-link roundtab" data-toggle="tab"
-													href="#thirdd" style="font-size: 13px;">Round-Trip </a>
-											</li>
-										</ul>
-									</div>
 									<div class="row"
-										style="border: 1px solid rgb(226, 225, 225);margin-top: 5px;border-radius: 10px;">
+										style="border: 1px solid rgb(226, 225, 225);margin-top: 10px;border-radius: 10px;">
 										<div class="col-md-12 p-0" data-toggle="modal" data-target="#selectcity"
 											data-dismiss="modal" style="border-bottom:1px solid rgb(226, 225, 225);">
 											<div class="selectcity">
