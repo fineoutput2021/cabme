@@ -245,6 +245,14 @@
 		display: none;
 	}
 }
+@media(min-width:768px)
+{
+	.roundtab .nav-item a.active
+	{
+		background-color: red !important;
+		color: #fff !important;
+	}
+}
 @media (max-width: 767px){
 	.mobilenav-tabs .nav-item .nav-link 
 	{
@@ -277,7 +285,7 @@
 	{
 		/* border-radius: 20px; */
 		height: 45px !important;
-		max-width: 49% !important;
+		max-width: 100% !important;
 		/* margin-right: 3px; */
 		border-collapse: collapse;
 	}
