@@ -15,10 +15,8 @@
 	<!--favicon-->
 	<link rel="shortcut icon" type="image/png" href="images/cabme_logo.png" />
 	<style>
-		@media(max-width: 767px)
-		{
-			.desktopbtn
-			{
+		@media(max-width: 767px) {
+			.desktopbtn {
 				display: none;
 			}
 		}
@@ -303,7 +301,7 @@
 													<a href="faq.html">FAQ's</a></li>
 												</li>
 												<li>
-													<a href="car_checkout.html">Checkout</a></li>
+													<a href="#">Checkout</a></li>
 												</li>
 												<li>
 													<a href="#">Policy</a></li>
@@ -333,10 +331,9 @@
 				</div>
 			</div>
 
-			<div class="row mobileform"
-				style="border-radius: 10px;display: flex;flex-wrap: nowrap;">
+			<div class="row mobileform" style="border-radius: 10px;display: flex;flex-wrap: nowrap;">
 				<div class="col-md-3 col-12 p-0" data-toggle="modal" data-target="#selectcity" data-dismiss="modal">
-					<div class="selectcity" style="border: 1px solid rgb(226, 225, 225);">
+					<div class="selectcity" style="border: 1px solid rgb(226, 225, 225);height: 55px;">
 						<i class="fa fa-map-marker"></i>
 						<h5>Select City</h5>
 					</div>
@@ -350,13 +347,15 @@
 						</label>
 
 					</div>
-					<div class="timepicker_div" style="height: 50px;margin-top: 2px;width: 80px;margin-left: 12px;">
-						<input type="text" class="form-control timepicker" placeholder="2:30PM"
-							style="padding: 23px 0px;background-color: transparent;border: none;margin-left: 5px; margin-top: 2px; width: 84%;">
+					<div class="timepicker_div form-sec-header" style="height: 50px;width: 80px;margin-left: 12px;">
+						<label class="cal-icon" style="top:11px;left: 10px;">TIME
+							<input type="text" class="form-control timepicker" placeholder="2:30PM"
+								style="background-color: transparent;border: none;margin-left: -13px; margin-top: -9px; width: 122%;">
 					</div>
 				</div>
 
-				<div class="col-md-3 col-6 mobileradius" style="z-index: 0;display: flex;height: 55px;padding: 0px;border: 1px solid rgb(226, 225, 225);">
+				<div class="col-md-3 col-6 mobileradius"
+					style="z-index: 0;display: flex;height: 55px;padding: 0px;border: 1px solid rgb(226, 225, 225);">
 					<div class="form-sec-header" style="height: 50px;">
 						<label class="cal-icon" style="top:11px;left: 10px;"> End Date
 							<input type="text" placeholder="Sun 15 Sep 2022" class="form-control datepicker"
@@ -364,12 +363,14 @@
 						</label>
 
 					</div>
-					<div class="timepicker_div" style="height: 50px;margin-top: 2px;width: 80px;margin-left: 12px;">
-						<input type="text" class="form-control timepicker" placeholder="5:00AM"
-							style="padding: 23px 0px;background-color: transparent;border: none;margin-left: 5px; margin-top: 2px; width: 84%;">
+					<div class="timepicker_div form-sec-header" style="height: 50px;width: 80px;margin-left: 12px;">
+						<label class="cal-icon" style="top:11px;left: 10px;">TIME
+							<input type="text" class="form-control timepicker" placeholder="5:13AM"
+								style="background-color: transparent;border: none;margin-left: -13px; margin-top: -9px; width: 122%;">
 					</div>
 				</div>
-				<button class="headerbtn mt-2 desktopbtn" style="height: 45px;">Search</button>
+				<button class="headerbtn mt-2 desktopbtn"
+					style="height: 45px;font-weight: bold;letter-spacing: 1px;">Search</button>
 			</div>
 
 		</div>
@@ -414,7 +415,8 @@
 											<h3 style="margin-top: 5px;">Filters</h3>
 										</div>
 										<div class="col-md-6">
-											<a href="#" style="color: red;float: right;">Reset All</a>
+											<a href="#" style="color: red;float: right;" onclick="resetfunction()">Reset
+												All</a>
 										</div>
 
 									</div>
@@ -429,7 +431,7 @@
 										<div id="collapseOne" class="collapse show">
 											<div class="panel-body">
 												<div class="x_slider_checkbox x_slider_checkbox_bottom_filter_use">
-													<input type="checkbox" id="c3" name="cb">
+													<input type="checkbox" id="c3" name="cb" class="clearcheckbox">
 													<label for="c3">Hatchback</label>
 												</div>
 												<div class="x_slider_checkbox x_slider_checkbox_bottom_filter_use">
@@ -555,9 +557,10 @@
 									<h5>Car Rental In: &nbsp; <span
 											style="font-size: 20px;color: black;margin-top: -5px;">Jaipur</span></h5>
 								</div>
-								<div class="x_carbook_right_select_box_wrapper float-right desktopsortbydiv">
+								<div class="x_carbook_right_select_box_wrapper float-right desktopsortbydiv"> <span
+										style="font-size: 17px;color: #494848;font-weight: bold;">Sort By: &nbsp;</span>
 									<select class="myselect">
-										<option>Sort by: Popularity</option>
+										<option>Popularity</option>
 										<option>Price: Low To High</option>
 										<option>Price: High To Low</option>
 										<!-- <option>Extra km Charges: Low To High</option>
@@ -1161,8 +1164,6 @@
 
 	<!--======Sort By Modal End ======-->
 
-
-
 	<script src="js/jquery-3.3.1.min.js"></script>
 	<script src="js/bootstrap.min.js"></script>
 	<script src="js/modernizr.js"></script>
@@ -1183,16 +1184,17 @@
 		$("#fbymodal").click(function () {
 			$("#sortbyModal").hide();
 		});
+
+		// filter remove
+		function resetfunction() {
+			$('.clearcheckbox').prop("checked", false)
+		}
+
+
 	</script>
 	<script>
 		/* -- DO NOT REMOVE --
 		 * jQuery MDTimePicker v1.0 plugin
-		 * 
-		 * Author: Dionlee Uy
-		 * Email: dionleeuy@gmail.com
-		 *
-		 * Date: Tuesday, August 28 2017
-		 *
 		 * @requires jQuery
 		 * -- DO NOT REMOVE -- */
 		if ("undefined" == typeof jQuery) throw new Error("MDTimePicker: This plugin requires jQuery"); + function (e) {
