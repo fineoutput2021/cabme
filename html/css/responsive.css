@@ -254,6 +254,10 @@
 	}
 }
 @media (max-width: 767px){
+	.x_slider_select_2
+	{
+		width: 107% !important;
+	}
 	.mobilenav-tabs .nav-item .nav-link 
 	{
 		font-size: 11px;

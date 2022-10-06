@@ -142,7 +142,7 @@ jQuery(document).ready(function($) {
       margin: 10,
       autoplay: true,
       responsiveClass: true,
-      smartSpeed: 1250,
+      smartSpeed: 1450,
       navText: [
         '<i class="flaticon-left-arrow" aria-hidden="true"></i>',
         '<i class="flaticon-right-arrow" aria-hidden="true"></i>',
@@ -172,7 +172,7 @@ jQuery(document).ready(function($) {
       margin: 10,
       autoplay: true,
       responsiveClass: true,
-      smartSpeed: 1400,
+      smartSpeed: 1100,
       navText: [
         '<i class="flaticon-left-arrow" aria-hidden="true"></i>',
         '<i class="flaticon-right-arrow" aria-hidden="true"></i>',
