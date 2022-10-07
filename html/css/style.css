@@ -1402,8 +1402,8 @@ width:100%;
 }
 .searchbtn
 {
-	background-color: red;
-	/* background-image: linear-gradient(to right, #f91419, #df607f); */
+	/* background-color: red; */
+	background-image: linear-gradient(to right, #f91419, #fd3336);
 	color: #fff;
 	border-radius: 20px;
 }
