@@ -190,7 +190,6 @@
 
 
 
-
 	<!--====================== Header Start ======================-->
 
 	<div class="hs_navigation_header_wrapper"
@@ -200,15 +199,21 @@
 				<div class=" col-xl-3 col-lg-3 col-md-3 col-sm-12 col-12 mb-3 d-none d-sm-none d-xs-none d-md-block">
 					<div class="hs_logo_wrapper ">
 						<a href="index.html">
-							<img src="images/cabme_logo.png" alt="">
+							<img src="images/cabmenewlogo.png" alt="" width="80%">
 						</a>
 					</div>
 				</div>
 				<div class="col-xl-9 col-lg-9 col-md-9 col-sm-12 col-12">
-					<div class="hs_navi_cart_wrapper  d-none d-sm-none d-xs-none d-md-block d-lg-block d-xl-block">
-						<div class="dropdown-wrapper menu-button menu_button_end"> <a class="menu-button" href="#"> <i
-									class="fa fa-user"></i></a>
-							<div class="drop-menu">
+
+					<div class="row justify-content-end mobileheaderbtn" style="margin-top: 30px;">
+						<button class="btn bg-b mr-3" data-toggle="modal" data-target="#signupModal"> <span
+								style="color: #fff;"> <i class="fa fa-user"></i> &nbsp;Sign Up </span></button>
+						<button class="btn bg-b mr-3" data-toggle="modal" data-target="#loginModal"> <span
+								style="color: #fff;"> <i class="fa fa-power-off"></i> &nbsp;Login </span></button>
+
+						<div class="dropdown-wrapper menu-button menu_button_end ml-2"> <a class="menu-button" href="#">
+								<i class="fa fa-user" style="color: #fff;font-size: 20px;margin-top: 10px;"></i></a>
+							<div class="drop-menu" style="top: 90%;right: -100px;">
 								<div class="cc_cart_wrapper1">
 									<div class="cc_cart_img_wrapper">
 										<i class="fa fa-user"></i> &nbsp;
@@ -231,24 +236,15 @@
 							</div>
 						</div>
 					</div>
-					<button class="btn headerloginbtn" data-toggle="modal" data-target="#signupModal"><i class="fa fa-user"></i> &nbsp;Sign Up </button>
-					<button class="btn headerloginbtn mr-3" data-toggle="modal" data-target="#loginModal"><i
-							class="fa fa-power-off"></i> &nbsp;Login </button>
+
 
 					<!--====================== Mobile Navigation Start ======================-->
 					<header class="mobail_menu d-none d-block d-xs-block d-sm-block d-md-none d-lg-none d-xl-none">
 						<div class="container-fluid">
 							<div class="row">
-								<div class="col-xs-6 col-sm-6 col-6">
-									<div class="hs_logo mb-3">
-										<a href="index.html">
-											<!-- <h4>Cabme</h4> -->
-											<img src="images/cabme_logo.png" alt="Logo" title="Logo" width="90%">
-										</a>
-									</div>
-								</div>
-								<div class="col-xs-6 col-sm-6 col-6">
-									<div class="cd-dropdown-wrapper">
+
+								<div class="col-xs-6 col-sm-6 col-4">
+									<div class="cd-dropdown-wrapper" style="float: left;">
 										<a class="house_toggle" href="#0">
 											<i class="fa fa-bars" id="Capa_1" style="font-size:25px;color :red;"></i>
 										</a>
@@ -258,21 +254,23 @@
 									<nav class="cd-dropdown">
 										<div class="row mb-5">
 											<div class="col-10">
-												<h2><a href="index.html"><img src="images/cabme_logo.png"
-															alt="cabme_logo" width="50%"></a></h2>
-												<p class="ml-4" style="margin-top: -10px;">demo@gmail.com</p>
+												<p class="ml-4 mt-3">demo@gmail.com</p>
 											</div>
 											<div class="col-2">
 												<a href="#0" class="cd-close" style="margin-right: 25px;">Close</a>
 											</div>
 											<ul class="cd-dropdown-content mobilelinks mt-3">
 
-												<li class="mb-3 mt-5">
+												<li class="mb-3 mt-2">
 													<button class="btn ml-5" data-toggle="modal"
-														data-target="#loginModal" style="background-color:red;color: #fff;"><i class="fa fa-power-off"></i>
+														data-target="#loginModal"
+														style="background-color:red;color: #fff;"><i
+															class="fa fa-power-off"></i>
 														&nbsp;Login </button>
 													<button class="btn ml-5" data-toggle="modal"
-														data-target="#signupModal"  style="background-color:red;color: #fff;"><i class="fa fa-user"></i> &nbsp;Sign
+														data-target="#signupModal"
+														style="background-color:red;color: #fff;"><i
+															class="fa fa-user"></i> &nbsp;Sign
 														Up
 													</button>
 												</li>
@@ -286,7 +284,7 @@
 													<a href="faq.html">FAQ's</a></li>
 												</li>
 												<li>
-													<a href="car_checkout.html">Checkout</a></li>
+													<a href="#">Checkout</a></li>
 												</li>
 												<li>
 													<a href="#">Policy</a></li>
@@ -297,8 +295,10 @@
 												<li>
 													<a href="#">Log Out</a></li>
 												</li>
-
+												<h2><a href="index.html"><img src="images/cabme_logo.png"
+															alt="cabme_logo" width="50%"></a></h2>
 											</ul>
+
 										</div>
 
 
@@ -307,6 +307,13 @@
 
 									</nav>
 
+								</div>
+								<div class="col-xs-6 col-sm-6 col-8">
+									<div class="hs_logo mb-3">
+										<a href="index.html">
+											<img src="images/cabmenewlogo.png" alt="Logo" title="Logo" width="60%" style="margin-left:-15px;">
+										</a>
+									</div>
 								</div>
 							</div>
 						</div>
@@ -318,7 +325,6 @@
 		</div>
 	</div>
 	<!-- HeaqderEnd -->
-
 
 	<!-- btc tittle Wrapper Start -->
 	<div class="btc_tittle_main_wrapper" style="margin-top: 100px;">
@@ -411,9 +417,10 @@
 									</div>
 
 								</div> -->
-								<div class="x_carbook_right_select_box_wrapper float-right desktopsortbydiv">
+								<div class="x_carbook_right_select_box_wrapper float-right desktopsortbydiv"> <span
+									style="font-size: 17px;color: #494848;font-weight: bold;">Sort By: &nbsp;</span>
 									<select class="myselect">
-										<option>Sort by: Popularity</option>
+										<option>Popularity</option>
 										<option>Price: Low To High</option>
 										<option>Price: High To Low</option>
 										<!-- <option>Extra km Charges: Low To High</option>
@@ -458,7 +465,10 @@
 													<ul class=" car_menual_lists text-center" style="border: none;">
 														<li style="width: 50%;"> Current Location :
 														</li>
-														<li style="width: 50%;border-left: none;"> Jaipur
+														<li style="width: 50%;border-left: none;"> Jaipur</li>
+														<li style="width: 50%;"> Rate Per KM :
+														</li>
+														<li style="width: 50%;border-left: none;"> ₹ 2000</li>
 													</ul>
 												</div>
 											
@@ -467,7 +477,7 @@
 														<div class="row  justify-content-center">
 															<div class="col-md-4 col-4 p-0">
 																<a href="summary.html"><button
-																		class="bookbtn">Book &nbsp; <i class="fa fa-angle-double-right"></i></button></a>
+																		class="bookbtn shadowbtn">Book &nbsp; <i class="fa fa-angle-double-right"></i></button></a>
 															</div>
 														</div>
 
@@ -494,7 +504,10 @@
 													<ul class=" car_menual_lists text-center" style="border: none;">
 														<li style="width: 50%;"> Current Location :
 														</li>
-														<li style="width: 50%;border-left: none;"> Jaipur
+														<li style="width: 50%;border-left: none;"> Jaipur</li>
+														<li style="width: 50%;"> Rate Per KM :
+														</li>
+														<li style="width: 50%;border-left: none;"> ₹ 2000</li>
 													</ul>
 												</div>
 											
@@ -503,7 +516,7 @@
 														<div class="row  justify-content-center">
 															<div class="col-md-4 col-4 p-0">
 																<a href="summary.html"><button
-																		class="bookbtn">Book &nbsp; <i class="fa fa-angle-double-right"></i></button></a>
+																		class="bookbtn shadowbtn">Book &nbsp; <i class="fa fa-angle-double-right"></i></button></a>
 															</div>
 														</div>
 
@@ -530,7 +543,10 @@
 													<ul class=" car_menual_lists text-center" style="border: none;">
 														<li style="width: 50%;"> Current Location :
 														</li>
-														<li style="width: 50%;border-left: none;"> Jaipur
+														<li style="width: 50%;border-left: none;"> Jaipur</li>
+														<li style="width: 50%;"> Rate Per KM :
+														</li>
+														<li style="width: 50%;border-left: none;"> ₹ 2000</li>
 													</ul>
 												</div>
 											
@@ -539,7 +555,7 @@
 														<div class="row  justify-content-center">
 															<div class="col-md-4 col-4 p-0">
 																<a href="summary.html"><button
-																		class="bookbtn">Book &nbsp; <i class="fa fa-angle-double-right"></i></button></a>
+																		class="bookbtn shadowbtn">Book &nbsp; <i class="fa fa-angle-double-right"></i></button></a>
 															</div>
 														</div>
 
@@ -565,7 +581,10 @@
 													<ul class=" car_menual_lists text-center" style="border: none;">
 														<li style="width: 50%;"> Current Location :
 														</li>
-														<li style="width: 50%;border-left: none;"> Jaipur
+														<li style="width: 50%;border-left: none;"> Jaipur</li>
+														<li style="width: 50%;"> Rate Per KM :
+														</li>
+														<li style="width: 50%;border-left: none;"> ₹ 2000</li>
 													</ul>
 												</div>
 											
@@ -574,7 +593,7 @@
 														<div class="row  justify-content-center">
 															<div class="col-md-4 col-4 p-0">
 																<a href="summary.html"><button
-																		class="bookbtn">Book &nbsp; <i class="fa fa-angle-double-right"></i></button></a>
+																		class="bookbtn shadowbtn">Book &nbsp; <i class="fa fa-angle-double-right"></i></button></a>
 															</div>
 														</div>
 
@@ -601,7 +620,10 @@
 													<ul class=" car_menual_lists text-center" style="border: none;">
 														<li style="width: 50%;"> Current Location :
 														</li>
-														<li style="width: 50%;border-left: none;"> Jaipur
+														<li style="width: 50%;border-left: none;"> Jaipur</li>
+														<li style="width: 50%;"> Rate Per KM :
+														</li>
+														<li style="width: 50%;border-left: none;"> ₹ 2000</li>
 													</ul>
 												</div>
 											
@@ -610,7 +632,7 @@
 														<div class="row  justify-content-center">
 															<div class="col-md-4 col-4 p-0">
 																<a href="summary.html"><button
-																		class="bookbtn">Book &nbsp; <i class="fa fa-angle-double-right"></i></button></a>
+																		class="bookbtn shadowbtn">Book &nbsp; <i class="fa fa-angle-double-right"></i></button></a>
 															</div>
 														</div>
 
@@ -637,7 +659,10 @@
 													<ul class=" car_menual_lists text-center" style="border: none;">
 														<li style="width: 50%;"> Current Location :
 														</li>
-														<li style="width: 50%;border-left: none;"> Jaipur
+														<li style="width: 50%;border-left: none;"> Jaipur</li>
+														<li style="width: 50%;"> Rate Per KM :
+														</li>
+														<li style="width: 50%;border-left: none;"> ₹ 2000</li>
 													</ul>
 												</div>
 											
@@ -646,7 +671,7 @@
 														<div class="row  justify-content-center">
 															<div class="col-md-4 col-4 p-0">
 																<a href="summary.html"><button
-																		class="bookbtn">Book &nbsp; <i class="fa fa-angle-double-right"></i></button></a>
+																		class="bookbtn shadowbtn">Book &nbsp; <i class="fa fa-angle-double-right"></i></button></a>
 															</div>
 														</div>
 
@@ -741,7 +766,6 @@
 
 
 
-
 	<!--===========================  Footer Wrapper Start ===========================-->
 
 	<div class="x_footer_bottom_main_wrapper float_left" style="box-shadow: 0px 1px 10px rgb(209 209 209);">
@@ -749,15 +773,15 @@
 			<div class="row">
 				<div class="col-xl-4 col-lg-4 col-md-4 col-sm-12 col-12">
 					<div class="x_footer_bottom_box_wrapper float_left">
-						<img src="images/cabme_logo.png" alt="">
-						<p>© 2022 Fineoutput Technology Pvt Ltd. All rights reserved</p>
+						<img src="images/cabmenewlogo.png" alt="" width="70%">
+						<p style="color: #797979;">© 2022 Fineoutput Technology Pvt Ltd. All rights reserved</p>
 
 					</div>
 				</div>
 				<div class="col-xl-4 col-lg-4 col-md-4 col-sm-12 col-12">
 					<div class="x_footer_bottom_box_wrapper_second float_left">
-						<h3>Information</h3>
-						<ul>
+						<h3 style="color: #797979;">Information</h3>
+						<ul class="footerlinks">
 							<li><a href="index.html"><i class="fa fa-long-arrow-right"></i> &nbsp; Home</a>
 							</li>
 							<!-- <li><a href="car_checkout.html"><i class="fa fa-long-arrow-right"></i> &nbsp; Checkout</a>
@@ -776,7 +800,7 @@
 				</div>
 				<div class="col-xl-4 col-lg-4 col-md-4 col-sm-12 col-12">
 					<div class="x_footer_bottom_box_wrapper_second float_left mb-5">
-						<h3>Social</h3>
+						<h3 style="color: #797979;">Social</h3>
 					</div>
 					<div class="row fsocialicons ml-1">
 						<a href="#"><i class="fa fa-facebook" style="font-size: 25px;"></i></a>
@@ -790,11 +814,7 @@
 			</div>
 		</div>
 	</div>
-
-
-
 	<!--===========================  Footer Wrapper End ===========================-->
-
 
 	<!--====== Sort By Modal ======-->
 

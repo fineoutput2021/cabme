@@ -111,26 +111,34 @@
 
 	<!--====================== Header Start ======================-->
 
-	<div class="hs_navigation_header_wrapper">
+	<div class="hs_navigation_header_wrapper"
+		style="position: fixed;top: 0;z-index: 11111;box-shadow: 0px 1px 10px rgb(209 209 209);">
 		<div class="container">
 			<div class="row">
 				<div class=" col-xl-3 col-lg-3 col-md-3 col-sm-12 col-12 mb-3 d-none d-sm-none d-xs-none d-md-block">
 					<div class="hs_logo_wrapper ">
 						<a href="index.html">
-							<img src="images/cabme_logo.png" alt="">
+							<img src="images/cabmenewlogo.png" alt="" width="80%">
 						</a>
 					</div>
 				</div>
 				<div class="col-xl-9 col-lg-9 col-md-9 col-sm-12 col-12">
-					<div class="hs_navi_cart_wrapper  d-none d-sm-none d-xs-none d-md-block d-lg-block d-xl-block">
-						<div class="dropdown-wrapper menu-button menu_button_end"> <a class="menu-button" href="#"> <i class="fa fa-user"></i></a>
-							<div class="drop-menu">
+
+					<div class="row justify-content-end mobileheaderbtn" style="margin-top: 30px;">
+						<button class="btn bg-b mr-3" data-toggle="modal" data-target="#signupModal"> <span
+								style="color: #fff;"> <i class="fa fa-user"></i> &nbsp;Sign Up </span></button>
+						<button class="btn bg-b mr-3" data-toggle="modal" data-target="#loginModal"> <span
+								style="color: #fff;"> <i class="fa fa-power-off"></i> &nbsp;Login </span></button>
+
+						<div class="dropdown-wrapper menu-button menu_button_end ml-2"> <a class="menu-button" href="#">
+								<i class="fa fa-user" style="color: #fff;font-size: 20px;margin-top: 10px;"></i></a>
+							<div class="drop-menu" style="top: 90%;right: -100px;">
 								<div class="cc_cart_wrapper1">
 									<div class="cc_cart_img_wrapper">
 										<i class="fa fa-user"></i> &nbsp;
 										<a href="my_profile.html#profile">My Profile</a>
 									</div>
-									
+
 								</div>
 								<div class="cc_cart_wrapper1 cc_cart_wrapper2">
 									<div class="cc_cart_img_wrapper mt-3">
@@ -147,77 +155,84 @@
 							</div>
 						</div>
 					</div>
-					<button class="btn headerloginbtn" data-toggle="modal" data-target="#signupModal"><i
-							class="fa fa-power-off"></i> &nbsp;Sign Up </button>
-					<button class="btn headerloginbtn mr-3" data-toggle="modal" data-target="#loginModal"><i
-							class="fa fa-power-off"></i> &nbsp;Login </button>
-					
+
+
 					<!--====================== Mobile Navigation Start ======================-->
 					<header class="mobail_menu d-none d-block d-xs-block d-sm-block d-md-none d-lg-none d-xl-none">
 						<div class="container-fluid">
 							<div class="row">
-								<div class="col-xs-6 col-sm-6 col-6">
-									<div class="hs_logo">
-										<a href="index.html">
-											<img src="images/cabme_logo.png" alt="Logo" title="Logo" style="width: 80%;">
-										</a>
-									</div>
-								</div>
-								<div class="col-xs-6 col-sm-6 col-6">
-									<div class="cd-dropdown-wrapper">
+
+								<div class="col-xs-6 col-sm-6 col-4">
+									<div class="cd-dropdown-wrapper" style="float: left;">
 										<a class="house_toggle" href="#0">
 											<i class="fa fa-bars" id="Capa_1" style="font-size:25px;color :red;"></i>
 										</a>
-										
+
 										<!-- .cd-dropdown -->
 									</div>
 									<nav class="cd-dropdown">
-                                              <div class="row mb-5">
-												<div class="col-10">
-													<h2><a href="index.html">Cabme</a></h2>
-													<p class="ml-4">demo@gmail.com</p>
-												</div>
-											<div class="col-2">
-												<a href="#0" class="cd-close">Close</a>
+										<div class="row mb-5">
+											<div class="col-10">
+												<p class="ml-4 mt-3">demo@gmail.com</p>
 											</div>
-												
-											  </div>
-										
+											<div class="col-2">
+												<a href="#0" class="cd-close" style="margin-right: 25px;">Close</a>
+											</div>
+											<ul class="cd-dropdown-content mobilelinks mt-3">
 
-										<ul class="cd-dropdown-content mobilelinks mt-3">
+												<li class="mb-3 mt-2">
+													<button class="btn ml-5" data-toggle="modal"
+														data-target="#loginModal"
+														style="background-color:red;color: #fff;"><i
+															class="fa fa-power-off"></i>
+														&nbsp;Login </button>
+													<button class="btn ml-5" data-toggle="modal"
+														data-target="#signupModal"
+														style="background-color:red;color: #fff;"><i
+															class="fa fa-user"></i> &nbsp;Sign
+														Up
+													</button>
+												</li>
+												<li>
+													<a href="summary.html">Summary</a></li>
+												</li>
+												<li>
+													<a href="my_profile.html">My Profile</a></li>
+												</li>
+												<li>
+													<a href="faq.html">FAQ's</a></li>
+												</li>
+												<li>
+													<a href="#">Checkout</a></li>
+												</li>
+												<li>
+													<a href="#">Policy</a></li>
+												</li>
+												<li>
+													<a href="#">Contact Us</a></li>
+												</li>
+												<li>
+													<a href="#">Log Out</a></li>
+												</li>
+												<h2><a href="index.html"><img src="images/cabme_logo.png"
+															alt="cabme_logo" width="50%"></a></h2>
+											</ul>
 
-											<li class="mb-3 mt-5">
-												<button class="btn ml-5" data-toggle="modal"
-													data-target="#loginModal"><i class="fa fa-power-off"></i>
-													&nbsp;Login </button>
-												<button class="btn ml-5" data-toggle="modal"
-													data-target="#signupModal"><i class="fa fa-user"></i> &nbsp;Sign Up
-												</button>
-											</li>
-											<li>
-												<a href="#">Car Rental</a></li>
-											</li>
-											<li>
-												<a href="my_profile.html">My Booking</a></li>
-											</li>
-											<li>
-												<a href="faq.html">FAQ's</a></li>
-											</li>
-											<li>
-												<a href="#">Policy</a></li>
-											</li>
-											<li>
-												<a href="#">Contact Us</a></li>
-											</li>
-											<li>
-												<a href="#">Log Out</a></li>
-											</li>
+										</div>
 
-										</ul>
+
+
 										<!-- .cd-dropdown-content -->
-										
+
 									</nav>
-									
+
+								</div>
+								<div class="col-xs-6 col-sm-6 col-8">
+									<div class="hs_logo mb-3">
+										<a href="index.html">
+											<img src="images/cabmenewlogo.png" alt="Logo" title="Logo" width="60%" style="margin-left:-15px;">
+										</a>
+									</div>
 								</div>
 							</div>
 						</div>
@@ -228,8 +243,7 @@
 			</div>
 		</div>
 	</div>
-
-	<!--============================ Header End ======================================-->
+	<!-- HeaqderEnd -->
 
 	<!-- Breadcrumb Start -->
 	<div class="btc_tittle_main_wrapper" style="margin-top: 100px;">
@@ -293,7 +307,6 @@
 
 
 
-
 	<!--===========================  Footer Wrapper Start ===========================-->
 
 	<div class="x_footer_bottom_main_wrapper float_left" style="box-shadow: 0px 1px 10px rgb(209 209 209);">
@@ -301,15 +314,15 @@
 			<div class="row">
 				<div class="col-xl-4 col-lg-4 col-md-4 col-sm-12 col-12">
 					<div class="x_footer_bottom_box_wrapper float_left">
-						<img src="images/cabme_logo.png" alt="">
-						<p>© 2022 Fineoutput Technology Pvt Ltd. All rights reserved</p>
+						<img src="images/cabmenewlogo.png" alt="" width="70%">
+						<p style="color: #797979;">© 2022 Fineoutput Technology Pvt Ltd. All rights reserved</p>
 
 					</div>
 				</div>
 				<div class="col-xl-4 col-lg-4 col-md-4 col-sm-12 col-12">
 					<div class="x_footer_bottom_box_wrapper_second float_left">
-						<h3>Information</h3>
-						<ul>
+						<h3 style="color: #797979;">Information</h3>
+						<ul class="footerlinks">
 							<li><a href="index.html"><i class="fa fa-long-arrow-right"></i> &nbsp; Home</a>
 							</li>
 							<!-- <li><a href="car_checkout.html"><i class="fa fa-long-arrow-right"></i> &nbsp; Checkout</a>
@@ -328,7 +341,7 @@
 				</div>
 				<div class="col-xl-4 col-lg-4 col-md-4 col-sm-12 col-12">
 					<div class="x_footer_bottom_box_wrapper_second float_left mb-5">
-						<h3>Social</h3>
+						<h3 style="color: #797979;">Social</h3>
 					</div>
 					<div class="row fsocialicons ml-1">
 						<a href="#"><i class="fa fa-facebook" style="font-size: 25px;"></i></a>
@@ -342,10 +355,8 @@
 			</div>
 		</div>
 	</div>
-
-
-
 	<!--===========================  Footer Wrapper End ===========================-->
+
 	<script src="js/jquery-3.3.1.min.js"></script>
 	<script src="js/bootstrap.min.js"></script>
 	<script src="js/modernizr.js"></script>

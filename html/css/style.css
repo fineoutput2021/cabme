@@ -171,14 +171,41 @@ ul{
 	background-color: red;
 	color: #fff;
 }
+
+.shadowbtn
+{
+	box-shadow: 0px 0px 20px rgb(233, 231, 231);
+
+}
+
+/* button animation */
+.bg-b {
+
+     background-image: linear-gradient(to right, #e61414 0, #d42907 36%, #d43007 65%, #e61414 100%);
+	 box-shadow: 0px 0px 20px rgb(24, 24, 24);
+	-webkit-animation: hue 30s infinite linear; 
+}
+
+
+@keyframes hue {
+    from {
+        background-position: 0 0
+    }
+
+    to {
+        background-position: 2000px 0
+    }
+} 
+/* button animation */
+
 .headerbtn
 {
-	background-color: #d5282a;
+	background-color: red;
 	color: #fff;
 	border: none;
-	padding: 0px 130px;
-	border-radius: 20px;
-	font-size: ;
+	padding: 0px 80px;
+	border-radius: 10px;
+	
 }
 .mobilelinks > li > a 
 {
@@ -445,7 +472,7 @@ ul{
 	float:left;
 	width:100%;
 	position:relative;
-	background:#ffffff;
+	background:#000;
 	z-index:1;
 }
 .hs_main_menu li{
@@ -1376,6 +1403,7 @@ width:100%;
 .searchbtn
 {
 	background-color: red;
+	/* background-image: linear-gradient(to right, #f91419, #df607f); */
 	color: #fff;
 	border-radius: 20px;
 }
@@ -1594,7 +1622,7 @@ width:100%;
 }
 .ui-widget-header {
 	border: none;
-	background: red;
+	background: #b43838;
 	color: #fff;
 	font-weight: bold;
 	font-size: 14px;
@@ -2916,6 +2944,10 @@ width:100%;
 /* modal btns */
 @media (max-width: 767px)
 {
+	.mobileheaderbtn
+	{
+		display: none;
+	}
 	.desktoplist
 	{
 		display: none;
@@ -3272,8 +3304,9 @@ width:100%;
 } */
 .x_offer_tabs_wrapper  .All_Car_tabs .nav-link.active
 {
-	background-color: #e8f0f9 !important;
-	color: #000;
+	background-color: rgb(20, 20, 20) !important;
+	color: #e8f0f9;
+	border-radius: 7px !important;
 }
 .x_offer_tabs_wrapper .nav-tabs .nav-link{
 	border-radius:0;
@@ -4573,7 +4606,11 @@ width:100%;
 }
 .x_footer_bottom_main_wrapper{
 	padding-bottom:60px;
-	background:#fff;
+	background:#000;
+}
+.footerlinks li a 
+{
+	color: #797979 !important;
 }
 .x_footer_bottom_box_wrapper{
 	margin-top:60px;

@@ -205,12 +205,12 @@
 
 	<div class="hs_navigation_header_wrapper"
 		style="position: fixed;top: 0;z-index: 11111;box-shadow: 0px 1px 10px rgb(209 209 209);">
-		<div class="container">
+		<div class="container-fluid">
 			<div class="row">
 				<div class=" col-xl-3 col-lg-3 col-md-3 col-sm-12 col-12 mb-3 d-none d-sm-none d-xs-none d-md-block">
 					<div class="hs_logo_wrapper ">
 						<a href="index.html">
-							<img src="images/cabme_logo.png" alt="">
+							<img src="images/cabmenewlogo.png" alt="" width="60%">
 						</a>
 					</div>
 				</div>
@@ -254,7 +254,7 @@
 									<div class="hs_logo mb-3">
 										<a href="index.html">
 											<!-- <h4>Cabme</h4> -->
-											<img src="images/cabme_logo.png" alt="Logo" title="Logo" width="90%">
+											<img src="images/cabmenewlogo.png" alt="Logo" title="Logo" width="90%">
 										</a>
 									</div>
 								</div>
@@ -330,50 +330,53 @@
 					<!--====================== mobile Navigation End ======================-->
 				</div>
 			</div>
-
-			<div class="row mobileform" style="border-radius: 10px;display: flex;flex-wrap: nowrap;">
-				<div class="col-md-3 col-12 p-0" data-toggle="modal" data-target="#selectcity" data-dismiss="modal">
-					<div class="selectcity" style="border: 1px solid rgb(226, 225, 225);height: 55px;">
-						<i class="fa fa-map-marker"></i>
-						<h5>Select City</h5>
-					</div>
-				</div>
-				<div class="col-md-3 col-6 mobileradius"
-					style="z-index: 0;display: flex;height: 55px;padding: 0px;border: 1px solid rgb(226, 225, 225);">
-					<div class="form-sec-header" style="height: 50px;">
-						<label class="cal-icon" style="top:11px;left: 10px;"> Start Date
-							<input type="text" placeholder="Thu 15 Sep 2022" class="form-control datepicker"
-								style="border: none;padding-right: 0px;padding-left: 1px;margin-top: -9px;">
-						</label>
-
-					</div>
-					<div class="timepicker_div form-sec-header" style="height: 50px;width: 80px;margin-left: 12px;">
-						<label class="cal-icon" style="top:11px;left: 10px;">TIME
-							<input type="text" class="form-control timepicker" placeholder="2:30PM"
-								style="background-color: transparent;border: none;margin-left: -13px; margin-top: -9px; width: 122%;">
-					</div>
-				</div>
-
-				<div class="col-md-3 col-6 mobileradius"
-					style="z-index: 0;display: flex;height: 55px;padding: 0px;border: 1px solid rgb(226, 225, 225);">
-					<div class="form-sec-header" style="height: 50px;">
-						<label class="cal-icon" style="top:11px;left: 10px;"> End Date
-							<input type="text" placeholder="Sun 15 Sep 2022" class="form-control datepicker"
-								style="border: none;padding-right: 0px;padding-left: 1px;margin-top: -9px;">
-						</label>
-
-					</div>
-					<div class="timepicker_div form-sec-header" style="height: 50px;width: 80px;margin-left: 12px;">
-						<label class="cal-icon" style="top:11px;left: 10px;">TIME
-							<input type="text" class="form-control timepicker" placeholder="5:13AM"
-								style="background-color: transparent;border: none;margin-left: -13px; margin-top: -9px; width: 122%;">
-					</div>
-				</div>
-				<button class="headerbtn mt-2 desktopbtn"
-					style="height: 45px;font-weight: bold;letter-spacing: 1px;">Search</button>
 			</div>
+			<div class="container-fluid p-2" style="background-color: #fff;">
+				<div class="container">
+				<div class="row mobileform" style="border-radius: 10px;display: flex;flex-wrap: nowrap;">
+					<div class="col-md-3 col-12 p-0" data-toggle="modal" data-target="#selectcity" data-dismiss="modal">
+						<div class="selectcity" style="border: 1px solid rgb(226, 225, 225);height: 55px;">
+							<i class="fa fa-map-marker"></i>
+							<h5>Select City</h5>
+						</div>
+					</div>
+					<div class="col-md-3 col-6 mobileradius"
+						style="z-index: 0;display: flex;height: 54px;padding: 0px;border: 1px solid rgb(226, 225, 225);margin-top: 1px;">
+						<div class="form-sec-header" style="height: 50px;">
+							<label class="cal-icon" style="top:11px;left: 10px;"> Start Date
+								<input type="text" placeholder="Thu 15 Sep 2022" class="form-control datepicker"
+									style="border: none;padding-right: 0px;padding-left: 1px;margin-top: -9px;">
+							</label>
 
-		</div>
+						</div>
+						<div class="timepicker_div form-sec-header" style="height: 50px;width: 80px;margin-left: 12px;">
+							<label class="cal-icon" style="top:11px;left: 10px;">TIME
+								<input type="text" class="form-control timepicker" placeholder="2:30PM"
+									style="background-color: transparent;border: none;margin-left: -13px; margin-top: -9px; width: 122%;">
+						</div>
+					</div>
+
+					<div class="col-md-3 col-6 mobileradius"
+						style="z-index: 0;display: flex;height: 54px;padding: 0px;border: 1px solid rgb(226, 225, 225);margin-top: 1px;">
+						<div class="form-sec-header" style="height: 50px;">
+							<label class="cal-icon" style="top:11px;left: 10px;"> End Date
+								<input type="text" placeholder="Sun 15 Sep 2022" class="form-control datepicker"
+									style="border: none;padding-right: 0px;padding-left: 1px;margin-top: -9px;">
+							</label>
+
+						</div>
+						<div class="timepicker_div form-sec-header" style="height: 50px;width: 80px;margin-left: 12px;">
+							<label class="cal-icon" style="top:11px;left: 10px;">TIME
+								<input type="text" class="form-control timepicker" placeholder="5:13AM"
+									style="background-color: transparent;border: none;margin-left: -13px; margin-top: -9px; width: 122%;">
+						</div>
+					</div>
+					<button class="headerbtn mt-2 desktopbtn shadowbtn"
+						style="height: 45px;font-weight: bold;letter-spacing: 1px;">Search</button>
+				</div>
+			</div>
+			</div>
+		
 	</div>
 	<!-- HeaqderEnd -->
 
@@ -489,6 +492,10 @@
 												<div class="x_slider_checkbox x_slider_checkbox_bottom_filter_use">
 													<input type="checkbox" id="c11" name="cb">
 													<label for="c11">Petrol</label>
+												</div>
+												<div class="x_slider_checkbox x_slider_checkbox_bottom_filter_use">
+													<input type="checkbox" id="CNG" name="cb">
+													<label for="CNG">CNG</label>
 												</div>
 											</div>
 										</div>
@@ -632,7 +639,7 @@
 																Extra charge @ 10/Kms
 															</div>
 															<div class="col-md-4 col-4 p-0">
-																<a href="summary.html"><button class="bookbtn">Book
+																<a href="summary.html"><button class="bookbtn shadowbtn">Book
 																		&nbsp; <i
 																			class="fa fa-angle-double-right"></i></button></a>
 															</div>
@@ -688,7 +695,7 @@
 																Extra charge @ 10/Kms
 															</div>
 															<div class="col-md-4 col-4 p-0">
-																<a href="summary.html"><button class="bookbtn">Book
+																<a href="summary.html"><button class="bookbtn shadowbtn">Book
 																		&nbsp; <i class="fa fa-angle-double-right"></i>
 																	</button></a>
 															</div>
@@ -744,7 +751,7 @@
 																Extra charge @ 10/Kms
 															</div>
 															<div class="col-md-4 col-4 p-0">
-																<a href="summary.html"><button class="bookbtn">Book
+																<a href="summary.html"><button class="bookbtn shadowbtn">Book
 																		&nbsp; <i class="fa fa-angle-double-right"></i>
 																	</button></a>
 															</div>
@@ -800,7 +807,7 @@
 																Extra charge @ 10/Kms
 															</div>
 															<div class="col-md-4 col-4 p-0">
-																<a href="summary.html"><button class="bookbtn">Book
+																<a href="summary.html"><button class="bookbtn shadowbtn">Book
 																		&nbsp; <i class="fa fa-angle-double-right"></i>
 																	</button></a>
 															</div>
@@ -856,7 +863,7 @@
 																Extra charge @ 10/Kms
 															</div>
 															<div class="col-md-4 col-4 p-0">
-																<a href="summary.html"><button class="bookbtn">Book
+																<a href="summary.html"><button class="bookbtn shadowbtn">Book
 																		&nbsp; <i class="fa fa-angle-double-right"></i>
 																	</button></a>
 															</div>
@@ -912,7 +919,7 @@
 																Extra charge @ 10/Kms
 															</div>
 															<div class="col-md-4 col-4 p-0">
-																<a href="summary.html"><button class="bookbtn">Book
+																<a href="summary.html"><button class="bookbtn shadowbtn">Book
 																		&nbsp; <i class="fa fa-angle-double-right"></i>
 																	</button></a>
 															</div>
@@ -1017,15 +1024,15 @@
 			<div class="row">
 				<div class="col-xl-4 col-lg-4 col-md-4 col-sm-12 col-12">
 					<div class="x_footer_bottom_box_wrapper float_left">
-						<img src="images/cabme_logo.png" alt="">
-						<p>© 2022 Fineoutput Technology Pvt Ltd. All rights reserved</p>
+						<img src="images/cabmenewlogo.png" alt="" width="70%">
+						<p style="color: #797979;">© 2022 Fineoutput Technology Pvt Ltd. All rights reserved</p>
 
 					</div>
 				</div>
 				<div class="col-xl-4 col-lg-4 col-md-4 col-sm-12 col-12">
 					<div class="x_footer_bottom_box_wrapper_second float_left">
-						<h3>Information</h3>
-						<ul>
+						<h3 style="color: #797979;">Information</h3>
+						<ul class="footerlinks">
 							<li><a href="index.html"><i class="fa fa-long-arrow-right"></i> &nbsp; Home</a>
 							</li>
 							<!-- <li><a href="car_checkout.html"><i class="fa fa-long-arrow-right"></i> &nbsp; Checkout</a>
@@ -1044,7 +1051,7 @@
 				</div>
 				<div class="col-xl-4 col-lg-4 col-md-4 col-sm-12 col-12">
 					<div class="x_footer_bottom_box_wrapper_second float_left mb-5">
-						<h3>Social</h3>
+						<h3 style="color: #797979;">Social</h3>
 					</div>
 					<div class="row fsocialicons ml-1">
 						<a href="#"><i class="fa fa-facebook" style="font-size: 25px;"></i></a>
@@ -1058,9 +1065,6 @@
 			</div>
 		</div>
 	</div>
-
-
-
 	<!--===========================  Footer Wrapper End ===========================-->
 
 
@@ -1124,6 +1128,10 @@
 						<div class="x_slider_checkbox x_slider_checkbox_bottom_filter_use">
 							<input type="checkbox" id="Petrol" name="cb">
 							<label for="Petrol">Petrol</label>
+						</div> &nbsp; &nbsp;
+						<div class="x_slider_checkbox x_slider_checkbox_bottom_filter_use">
+							<input type="checkbox" id="CNG2" name="cb">
+							<label for="CNG2">CNG</label>
 						</div> &nbsp; &nbsp;
 					</div>
 
@@ -1189,8 +1197,6 @@
 		function resetfunction() {
 			$('.clearcheckbox').prop("checked", false)
 		}
-
-
 	</script>
 	<script>
 		/* -- DO NOT REMOVE --
