@@ -20,6 +20,21 @@
 				display: none;
 			}
 		}
+		.fa-user
+		{
+			color: #fff !important;
+		}
+		@media(min-width:767px)
+		{
+			.selectcity
+			{
+				border-top-left-radius: 20px;border-bottom-left-radius: 20px;
+			}
+			.brright
+			{
+				border-top-right-radius: 20px;border-bottom-right-radius: 20px;
+			}
+		}
 	</style>
 </head>
 
@@ -210,19 +225,19 @@
 				<div class=" col-xl-3 col-lg-3 col-md-3 col-sm-12 col-12 mb-3 d-none d-sm-none d-xs-none d-md-block">
 					<div class="hs_logo_wrapper ">
 						<a href="index.html">
-							<img src="images/cabmenewlogo.png" alt="" width="60%">
+							<img src="images/cabmenewlogo.png" alt="" width="60%" style="margin-left: 50px;">
 						</a>
 					</div>
 				</div>
 				<div class="col-xl-9 col-lg-9 col-md-9 col-sm-12 col-12">
-					<div class="hs_navi_cart_wrapper  d-none d-sm-none d-xs-none d-md-block d-lg-block d-xl-block">
+					<div class="hs_navi_cart_wrapper  d-none d-sm-none d-xs-none d-md-block d-lg-block d-xl-block mr-5">
 						<div class="dropdown-wrapper menu-button menu_button_end"> <a class="menu-button" href="#"> <i
-									class="fa fa-user"></i></a>
+									class="fa fa-user"  style="font-size: 20px;"></i></a>
 							<div class="drop-menu">
 								<div class="cc_cart_wrapper1">
 									<div class="cc_cart_img_wrapper">
 										<i class="fa fa-user"></i> &nbsp;
-										<a href="my_profile.html#profile">My Profile</a>
+										<a href="my_profile.html">My Profile</a>
 									</div>
 
 								</div>
@@ -356,7 +371,7 @@
 						</div>
 					</div>
 
-					<div class="col-md-3 col-6 mobileradius"
+					<div class="col-md-3 col-6 mobileradius brright"
 						style="z-index: 0;display: flex;height: 54px;padding: 0px;border: 1px solid rgb(226, 225, 225);margin-top: 1px;">
 						<div class="form-sec-header" style="height: 50px;">
 							<label class="cal-icon" style="top:11px;left: 10px;"> End Date
@@ -371,8 +386,8 @@
 									style="background-color: transparent;border: none;margin-left: -13px; margin-top: -5px; width: 122%;">
 						</div>
 					</div>
-					<button class="headerbtn mt-2 desktopbtn shadowbtn"
-						style="height: 45px;font-weight: bold;letter-spacing: 1px;">Search</button>
+					<button class="headerbtn mt-2 desktopbtn shadowbtn pdbtn"
+						style="height: 45px;font-weight: bold;letter-spacing: 1px;margin-left: 20px;">Search</button>
 				</div>
 			</div>
 			</div>
@@ -407,12 +422,33 @@
 		<div class="container-fluid">
 			<div class="row">
 				<div class="col-xl-3 col-lg-4 col-md-12 col-sm-12 col-12 desktopfilterdiv">
+					
+	<!-- btc tittle Wrapper Start -->
+	<div class="btc_tittle_main_wrapper" style="margin-top: 10px;">
+		<div class="container-fluid">
+			<div class="row">
+				<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 full_width">
+					<div class="btc_tittle_right_heading">
+						<div class="btc_tittle_right_cont_wrapper">
+							<ul>
+								<li><a href="index.html">Home</a> <i class="fa fa-angle-right"></i>
+								</li>
+								<li>Self_cars</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- btc tittle Wrapper End -->
+
 					<div class="x_car_book_left_siderbar_wrapper float_left">
 						<div class="row">
 
 							<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
 								<!-- Filter Results -->
-								<div class="car-filter accordion car_booking_onliy_side">
+								<div class="car-filter accordion car_booking_onliy_side" style="margin-top: 46px;">
 									<div class="row">
 										<div class="col-md-6">
 											<h3 style="margin-top: 5px;">Filters</h3>
@@ -564,7 +600,7 @@
 					<div class="x_carbooking_right_section_wrapper float_left">
 						<div class="row">
 							<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
-								<div class="float-left mt-4 col-md-6 col-12 mobilejustify">
+								<div class="float-left mt-3 col-md-6 col-12 mobilejustify">
 									<h5>Car Rental In: &nbsp; <span
 											style="font-size: 20px;color: black;margin-top: -5px;">Jaipur</span></h5>
 								</div>
