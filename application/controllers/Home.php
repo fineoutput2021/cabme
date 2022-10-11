@@ -10,77 +10,17 @@ class Home extends CI_Controller
         parent::__construct();
         $this->load->model("admin/login_model");
         $this->load->model("admin/base_model");
-        $this->load->library('custom/Products');
-        $this->load->library('custom/Cart');
-        $this->load->library('custom/Wishlist');
-        $this->load->library('custom/Login');
-        $this->load->library('custom/Forms');
     }
     //=============================================== Index ==============================================================
     public function index()
     {
-        if (!empty($this->session->userdata('user_type'))) {
-            if ($this->session->userdata('user_type')==2) {
-                $user_type = 1;
-            } else {
-                $user_type = 2;
-            }
-        } else {
-            $user_type = 0;
-        }
-        $this->db->select('*');
-        $this->db->from('tbl_slider');
-        $this->db->order_by('id', 'desc');
-        $this->db->where('is_active', 1);
-        $data['slider_data']= $this->db->get();
-
-        $this->db->select('*');
-        $this->db->from('tbl_category');
-        $this->db->where('is_active', 1);
-        $data['category_data']= $this->db->get();
-
-        $this->db->select('*');
-        $this->db->from('tbl_shop_by_category');
-        $this->db->where('is_active', 1);
-        $data['shop_by_category_data']= $this->db->get();
 
         $this->db->select('*');
         $this->db->from('tbl_banner');
+        $this->db->order_by('id', 'desc');
         $this->db->where('is_active', 1);
         $data['banner_data']= $this->db->get();
 
-        $this->db->select('*');
-        $this->db->from('tbl_product');
-        $this->db->where('is_active', 1);
-        $this->db->where('product_type !=', 2);
-        $this->db->where('product_view !=', $user_type);
-        $this->db->where('trending', 1);
-        $data['trending_data']= $this->db->get();
-
-        $this->db->select('*');
-        $this->db->from('tbl_testimonials');
-        $this->db->where('is_active', 1);
-        $data['testimonials_data']= $this->db->get();
-
-        $this->db->select('*');
-        $this->db->from('tbl_blog');
-        $this->db->where('is_active', 1);
-        $this->db->limit(4);
-        $data['blog_data']= $this->db->get();
-
-        $this->db->select('*');
-        $this->db->from('tbl_product');
-        $this->db->where('is_active', 1);
-        $this->db->where('product_type !=', 2);
-        $this->db->where('product_view !=', $user_type);
-        $this->db->order_by('rand()');
-        $this->db->limit(15);
-        $data['whats_data']= $this->db->get();
-        if (!empty($this->session->userdata('user_data'))) {
-            $data['cart_data'] = $this->cart->ViewCartOnline();
-        } else {
-            $data['cart_data'] = $this->cart->ViewCartOffline();
-        }
 
         $this->load->view('frontend/common/header', $data);
         $this->load->view('frontend/index');

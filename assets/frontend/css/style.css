@@ -1,13 +1,13 @@
 /*-------------------------------------
-
-	Author: Xpedia
+    
+	Author: Xpedia 
 	Copyright © 2019
-
+	
 ---------------------------------------
-
+    
     CSS INDEX
     ===================
-
+	
     1. BODY
 	2. CUSTOM CSS / A
 	3. PRELOADER
@@ -168,52 +168,19 @@ ul{
 {
 	float: right;
 	margin-top: 25px;
- background-image: linear-gradient(to right, #DB0F07 0, #d42907 36%, #EF1700 65%, #D62A05 100%);
-	text-decoration: none;
+	background-color: red;
 	color: #fff;
 }
-
-.shadowbtn
-{
-	box-shadow: 0px 0px 20px rgb(233, 231, 231);
-
-}
-.pdbtn
-{
-	padding: 0px 50px !important;
-}
-
-/* button animation */
-.bg-b {
-
-     background-image: linear-gradient(to right, #DB0F07 0, #d42907 36%, #EF1700 65%, #D62A05 100%);
-	 box-shadow: 0px 0px 20px rgb(24, 24, 24);
-	-webkit-animation: hue 30s infinite linear;
-}
-
-
-@keyframes hue {
-    from {
-        background-position: 0 0
-    }
-
-    to {
-        background-position: 2000px 0
-    }
-}
-/* button animation */
-
 .headerbtn
 {
- background-image: linear-gradient(to right, #DB0F07 0, #d42907 36%, #EF1700 65%, #D62A05 100%);
-	text-decoration: none;
+	background-color: #d5282a;
 	color: #fff;
 	border: none;
-	padding: 0px 80px;
-	border-radius: 10px;
-
+	padding: 0px 130px;
+	border-radius: 20px;
+	font-size: ;
 }
-.mobilelinks > li > a
+.mobilelinks > li > a 
 {
 	font-size: 20px;
 }
@@ -291,7 +258,7 @@ ul{
 	width:auto;
 }
 .x_top_header_all_select_box_wrapper ul{
-
+	
 }
 .x_top_header_all_select_box_wrapper li{
 	float:left;
@@ -478,7 +445,7 @@ ul{
 	float:left;
 	width:100%;
 	position:relative;
-	background:#000;
+	background:#ffffff;
 	z-index:1;
 }
 .hs_main_menu li{
@@ -621,7 +588,7 @@ ul{
   background: #ffffff;
       float: left;
     width: 100%;
-text-transform:capitalize;
+text-transform:capitalize;	
 	-webkit-transition: all 0.5s;
     -o-transition: all 0.5s;
     -ms-transition: all 0.5s;
@@ -647,7 +614,7 @@ text-transform:capitalize;
 	width:225px;
 }
 .dropdown-wrapper:hover .drop-menu{
-  max-height: 500px;
+  max-height: 500px;  
   opacity: 1;
   z-index: 1000;
       background: #fff;
@@ -657,7 +624,7 @@ text-transform:capitalize;
 	border-bottom:1px solid #eeeeee !important;
 }
 .dropdown-wrapper:hover > .drop-menu .menu-button {
-  transform: translateY(0%);
+  transform: translateY(0%); 
 }
 /*-- hs Navigation right Start --*/
 .hs_navi_searchbar_wrapper{
@@ -688,7 +655,7 @@ text-transform:capitalize;
     color: #666666;
 }
 
-.hs_navi_searchbar_wrapper input:-ms-input-placeholder {
+.hs_navi_searchbar_wrapper input:-ms-input-placeholder { 
     color: #666666;
 }
 
@@ -722,7 +689,7 @@ text-transform:capitalize;
     /* width: 273px; */
 }
 .hs_navi_cart_wrapper a i:before{
-	/* color:#111111; */
+	color:#111111;
 	margin-left:0;
 	font-size:22px;
 }
@@ -1187,7 +1154,7 @@ width:100%;
 	position:absolute;
 	top:50%;
 	float:left;
-	width:100%;
+	width:100%;	
 }
 .carousel-nevigation > .prev{
 	left:-138px;
@@ -1403,18 +1370,13 @@ width:100%;
 }
 .loginbtn
 {
-	 background-image: linear-gradient(to right, #DB0F07 0, #d42907 36%, #EF1700 65%, #D62A05 100%);
-		text-decoration: none;
+	background-color: red;
 	color: #fff;
-	-webkit-animation: hue 30s infinite linear;
 }
 .searchbtn
 {
-	/* background-color: red; */
-  background-image: linear-gradient(to right, #DB0F07 0, #d42907 36%, #EF1700 65%, #D62A05 100%);
-	text-decoration: none;
+	background-color: red;
 	color: #fff;
-	-webkit-animation: hue 30s infinite linear;
 	border-radius: 20px;
 }
 .searchbtn_2
@@ -1433,12 +1395,12 @@ width:100%;
 .loginModal-content
 {
 	background-color: #fff !important;
-
+	
 }
 
 .selectcitycars
 {
-
+	
 	border: 1px solid rgb(223, 220, 220);
 	padding: 15px 30px;
 	border-radius: 5px;
@@ -1459,7 +1421,7 @@ width:100%;
 	cursor: pointer;
 	display: flex;
 }
-.selectcity h5
+.selectcity h5 
 {
 	text-align: center;
 	font-weight: bold;
@@ -1479,7 +1441,7 @@ width:100%;
 {
 	padding: 12px 17px;
 }
-.citieslist2:hover
+.citieslist2:hover 
 {
 	background-color: rgb(224, 44, 44);
 	transition: all 450ms cubic-bezier(0.23, 1, 0.32, 1) 0ms;
@@ -1487,7 +1449,7 @@ width:100%;
 	cursor: pointer;
 	border-radius: 5px;
 }
-.citieslist:hover
+.citieslist:hover 
 {
 	background-color: rgb(224, 44, 44);
 	transition: all 450ms cubic-bezier(0.23, 1, 0.32, 1) 0ms;
@@ -1529,7 +1491,7 @@ width:100%;
 	list-style-type: circle !important;
 	line-height: 30px;
 }
-.modal-footer p
+.modal-footer p 
 {
 	font-size: 20px;
 }
@@ -1553,7 +1515,7 @@ width:100%;
 {
   font-weight: bold;
 }
-.invoicebtn:hover
+.invoicebtn:hover 
 {
 	color: red;
 }
@@ -1632,7 +1594,7 @@ width:100%;
 }
 .ui-widget-header {
 	border: none;
-	background: #b43838;
+	background: red;
 	color: #fff;
 	font-weight: bold;
 	font-size: 14px;
@@ -1693,7 +1655,7 @@ width:100%;
 } */
 /* time picker */
 
-
+ 
 .mdtimepicker {
 	position: fixed;
 	top: 0;
@@ -1865,7 +1827,7 @@ width:100%;
   .mdtp__wrapper[data-theme="blue"] .mdtp__button {
 	color: red;
   }
-  .timepicker:focus
+  .timepicker:focus 
   {
 	  border: none !important;
   }
@@ -2407,7 +2369,7 @@ width:100%;
   }
 
 /* time picker End*/
-.datepickerr label
+.datepickerr label 
 {
 	width: 100%;
 }
@@ -2492,8 +2454,8 @@ width:100%;
 }
 ::-webkit-scrollbar-thumb
 {
-	background-image: linear-gradient(to right, #990000 0%, #D60808  51%, #F20909  100%);
-
+	background-color: #a30105;
+	
 }
 
 
@@ -2514,13 +2476,13 @@ width:100%;
 {
 	border-bottom: 1px solid rgb(235, 231, 231);
 }
-.profiletable tbody tr td
+.profiletable tbody tr td 
 {
 	padding: 10px;
 	border-right: 1px solid rgb(235, 231, 231);
 	text-align: center;
 }
-.profiletable thead tr th
+.profiletable thead tr th 
 {
 	padding: 10px;
 	border-right: 1px solid rgb(235, 231, 231);
@@ -2587,13 +2549,13 @@ width:100%;
 {
 	border-bottom: 1px solid rgb(235, 231, 231);
 }
-.profiletable_2 tbody tr td
+.profiletable_2 tbody tr td 
 {
 	padding: 10px;
 	border-right: 1px solid rgb(235, 231, 231);
 	text-align: center;
 }
-.profiletable_2 thead tr th
+.profiletable_2 thead tr th 
 {
 	padding: 10px;
 	border-right: 1px solid rgb(235, 231, 231);
@@ -2707,7 +2669,7 @@ width:100%;
 	    padding: 8px;
 }
 .ui-datepicker-prev span, .ui-datepicker-next span{
-	display:none !important;
+	display:none !important;   
 }
 .form-sec-header h3{
 	font-size:14px;
@@ -2805,7 +2767,7 @@ width:100%;
 }
 .x_slider_checkbox input[type="checkbox"] {
   display: none;
-
+  
 }
 .x_slider_checkbox label {
   cursor: pointer;
@@ -2954,10 +2916,6 @@ width:100%;
 /* modal btns */
 @media (max-width: 767px)
 {
-	.mobileheaderbtn
-	{
-		display: none;
-	}
 	.desktoplist
 	{
 		display: none;
@@ -2982,7 +2940,7 @@ width:100%;
 	{
 		display: none;
 	}
-
+	
 }
 @media (min-width: 768px)
 {
@@ -3017,7 +2975,7 @@ width:100%;
 	{
 		background-color: black;
 	}
-	.rupeebox:hover
+	.rupeebox:hover 
 	{
 		color: #fff;
 	}
@@ -3186,7 +3144,7 @@ width:100%;
 	content:'';
 	position:absolute;
 	width:30px;
-	border:2px solid red;
+	border:2px solid red; 
 	-webkit-border-radius: 2px;
     -moz-border-radius: 2px;
     border-radius: 2px;
@@ -3270,8 +3228,7 @@ width:100%;
 
 .x_offer_tabs_wrapper .nav-tabs .nav-item.show .nav-link, .x_offer_tabs_wrapper .nav-tabs .nav-link.active {
      color: #fff;
-		 background-image: linear-gradient(to right, #DB0F07 0, #d42907 36%, #EF1700 65%, #D62A05 100%);
-	 	text-decoration: none;
+	 background-color: red;
 	border-color:transparent;
 	font-size:13px;
 	font-weight:700;
@@ -3302,7 +3259,7 @@ width:100%;
 
 }
 
-/*
+/* 
 
 .x_offer_tabs_wrapper .nav-tabs .nav-item.show .dnav, .x_offer_tabs_wrapper .nav-tabs .dnav.active {
      color: #fff;
@@ -3315,25 +3272,8 @@ width:100%;
 } */
 .x_offer_tabs_wrapper  .All_Car_tabs .nav-link.active
 {
-	background-color: rgb(20, 20, 20) !important;
-	color: #e8f0f9;
-	border-radius: 7px ;
-}
-.x_offer_tabs_wrapper  .plantabs
-{
-	border: 1px solid red;
-	border-radius: 7px;
-}
-.x_offer_tabs_wrapper  .plantabs .borderright
-{
-border-left: 1px solid red;
-border-right: 1px solid red;
-}
-.x_offer_tabs_wrapper  .plantabs .nav-link.active
-{
- background-image: linear-gradient(to right, #DB0F07 0, #d42907 36%, #EF1700 65%, #D62A05 100%) !important;
-	color: #e8f0f9;
-	border-radius: none !important;
+	background-color: #e8f0f9 !important;
+	color: #000;
 }
 .x_offer_tabs_wrapper .nav-tabs .nav-link{
 	border-radius:0;
@@ -3462,34 +3402,32 @@ border-right: 1px solid red;
 	float:left;
 	width:33%;
 	border-left:1px solid #eeeeee;
-
+	
 }
-.car_menual_lists > li
+.car_menual_lists > li 
 {
 	padding: 10px 0px;
 }
 .All_Car_tabs > li
 {
 	width: 33%;
-
+	
 }
-.All_Car_tabs > li > a
+.All_Car_tabs > li > a 
 {
 	padding: 10px !important;
 	  border-radius: 0px !important;
-
+	
 }
 .bookbtn
 {
 	padding: 10px 15px;
-  background-image: linear-gradient(to right, #DB0F07 0, #d42907 36%, #EF1700 65%, #D62A05 100%);
-	text-decoration: none;
+	background-color: red;
 	color: #fff;
 	border: none;
 	border-radius: 5px;
 	cursor: pointer;
 	box-shadow: 0px 1px 10px rgb(209 209 209);
-	-webkit-animation: hue 30s infinite linear;
 }
 
 
@@ -3498,7 +3436,7 @@ border-right: 1px solid red;
 	width:100%;
 	padding-top:10px;
 	padding-bottom:10px;
-
+	
 }
 .x_car_offer_heading li:first-child{
 	border-left:0;
@@ -3902,10 +3840,10 @@ border-right: 1px solid red;
 	position:absolute;
 	top: 16px;
     left: -210px;
-	-moz-transform:rotate(-38deg);
-  -webkit-transform:rotate(-38deg);
-  -o-transform:rotate(-38deg);
-  -ms-transform:rotate(-38deg);
+	-moz-transform:rotate(-38deg);  
+  -webkit-transform:rotate(-38deg);  
+  -o-transform:rotate(-38deg);  
+  -ms-transform:rotate(-38deg);  
   transform:rotate(-38deg);
   opacity:0;
   -webkit-transition: all 0.5s;
@@ -3969,7 +3907,7 @@ border-right: 1px solid red;
 	content:'';
 	position:absolute;
 	width:30px;
-	border:2px solid red;
+	border:2px solid red; 
 	-webkit-border-radius: 2px;
     -moz-border-radius: 2px;
     border-radius: 2px;
@@ -4274,7 +4212,7 @@ border-right: 1px solid red;
 	content:'';
 	position:absolute;
 	width:30px;
-	border:2px solid red;
+	border:2px solid red; 
 	-webkit-border-radius: 2px;
     -moz-border-radius: 2px;
     border-radius: 2px;
@@ -4285,7 +4223,7 @@ border-right: 1px solid red;
 	content:'';
 	position:absolute;
 	width:30px;
-	border:2px solid red;
+	border:2px solid red; 
 	-webkit-border-radius: 2px;
     -moz-border-radius: 2px;
     border-radius: 2px;
@@ -4554,10 +4492,10 @@ border-right: 1px solid red;
 .x_news_contact_search_wrapper input::-moz-placeholder {
   color: rgba(255, 255, 255, 0.5);
 }
-.x_news_contact_search_wrapper input:-ms-input-placeholder {
+.x_news_contact_search_wrapper input:-ms-input-placeholder { 
   color: rgba(255, 255, 255, 0.5);
 }
-.x_news_contact_search_wrapper input:-moz-placeholder {
+.x_news_contact_search_wrapper input:-moz-placeholder { 
   color: rgba(255, 255, 255, 0.5);
 }
 .x_news_contact_search_wrapper button {
@@ -4635,11 +4573,7 @@ border-right: 1px solid red;
 }
 .x_footer_bottom_main_wrapper{
 	padding-bottom:60px;
-	background:#000;
-}
-.footerlinks li a
-{
-	color: #797979 !important;
+	background:#fff;
 }
 .x_footer_bottom_box_wrapper{
 	margin-top:60px;
@@ -4717,8 +4651,8 @@ border-right: 1px solid red;
 }
 .x_footer_bottom_box_wrapper_second h3:after{
 	content:'';
-	width:30px;
 	border:2px solid red;
+	width:30px;
 	position:absolute;
 	left:0;
     bottom: -14px;
@@ -5062,7 +4996,7 @@ border-right: 1px solid red;
 .accordion.gray-bg {
 	background: #f3f3f3;
 }
-.panel-title a
+.panel-title a 
 {
 	text-transform: capitalize !important;
 	letter-spacing: 1px;
@@ -5129,7 +5063,7 @@ border-right: 1px solid red;
     position: relative;
     padding-left: 5px
 }
-.carmanuals>img
+.carmanuals>img 
 {
 	width: 5% !important;
 }
@@ -5382,7 +5316,7 @@ border-right: 1px solid red;
 }
 .pagination > li a i:before{
 	margin-left:0;
-}
+} 
 .pagination > li:last-child > a{
 	width:90px;
 	height:50px;
@@ -5394,7 +5328,7 @@ border-right: 1px solid red;
 	margin-left:10px;
 	background:#ffffff;
 	color:#111111;
-}
+}	
 .pagination > li > a:hover, .pagination > li > span:hover, .pagination > li > a:focus, .pagination > li > span:focus {
     z-index: 2;
     color: #fff;
@@ -5909,7 +5843,7 @@ input[type=number] {
 .wrap-album-slider{
 	margin-top:60px;
 }
-.fsocialicons a
+.fsocialicons a 
 {
 	margin-right: 15px;
 }
@@ -5921,7 +5855,7 @@ input[type=number] {
 	float:left;
 	width:100%;
 	position:relative;
-
+	
 }
 .btc_team_bot_cont_main_wrapper{
 	box-shadow:0px 0 8px rgba(0, 0, 0, 0.1);
@@ -6065,7 +5999,7 @@ input[type=number] {
 .progressOne .progress-percent {
 	font-size: 10px;
 	background-color: #2ecc71;
-	position: absolute;
+	position: absolute;  
 	top: 5px;
 	padding: 0 8px;
 	border-radius: 3px;
@@ -6566,12 +6500,12 @@ input[type=number] {
 	padding-bottom:20px;
 	padding-left:20px;
 	border-bottom:1px solid #eeeeee;
-	-webkit-border-top-left-radius: 10px;
-  -moz-border-top-left-radius: 10px;
-   border-top-left-radius: 10px;
-   -webkit-border-top-right-radius: 10px;
-  -moz-border-top-right-radius: 10px;
-   border-top-right-radius: 10px;
+	-webkit-border-top-left-radius: 10px; 
+  -moz-border-top-left-radius: 10px; 
+   border-top-left-radius: 10px; 
+   -webkit-border-top-right-radius: 10px; 
+  -moz-border-top-right-radius: 10px; 
+   border-top-right-radius: 10px; 
 }
 .jp_rightside_job_categories_heading h4{
 	font-size:16px;
@@ -7185,7 +7119,7 @@ input[type=number] {
 	border: none;
 	border-bottom: 1px solid #e7dede !important;
 }
-.proofselect ul
+.proofselect ul 
 {
 	width: 100%;
 
@@ -7492,7 +7426,7 @@ input[type=number] {
 }
 .car_checkout_chekbox input[type="checkbox"] {
   display: none;
-
+  
 }
 .car_checkout_chekbox label {
   cursor: pointer;
@@ -7663,7 +7597,7 @@ input[type=number] {
 	padding:20px;
 	margin-top:77px;
 }
-.btc_tittle_right_cont_wrapper ul
+.btc_tittle_right_cont_wrapper ul 
 {
 	padding: 0px !important;
 }
@@ -7794,7 +7728,7 @@ input[type=number] {
 .login_wrapper .form-control:focus {
 	color: #999;
 	background-color: fafafa;
-	border: 1px solid red !important;
+	border: 1px solid red !important;	
 }
 .login_wrapper  .formsix-pos,.formsix-e{
 	position: relative;
