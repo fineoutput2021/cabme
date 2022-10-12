@@ -1,5 +1,4 @@
 <?php
-
 if (! defined('BASEPATH')) {
     exit('No direct script access allowed');
 }
@@ -12,76 +11,96 @@ class Apicontroller extends CI_Controller
         $this->load->model("admin/base_model");
         $this->load->library('pagination');
     }
-    public function scan_product()
+    //=================================== GET TESTIMONIALS ============================//
+    public function get_testimonials()
+    {
+        $testimonial_data = $this->db->get_where('tbl_testimonials', array('is_active'=> 1))->result();
+        $data=[];
+        foreach ($testimonial_data as $testimonials) {
+            $data[]=array('name'=>$testimonials->name,
+                       'content'=>$testimonials->content,
+                     );
+        }
+        $res=array(
+                    'message'=>"success",
+                    'status'=>200,
+                    'data'=>$data
+                    );
+        echo json_encode($res);
+    }
+    //================================= GET CITY =================================//
+    public function get_city()
+    {
+        $City_data = $this->db->get_where('tbl_cities', array('is_active'=> 1))->result();
+        $data=[];
+        foreach ($City_data as $cities) {
+            if (!empty($cities->image)) {
+                $image=base_url().$cities->image;
+            } else {
+                $image='';
+            }
+            $data[]=array('name'=>$cities->name,
+                       'image'=>$image,
+                     );
+        }
+        $res=array(
+                    'message'=>"success",
+                    'status'=>200,
+                    'data'=>$data
+                    );
+        echo json_encode($res);
+    }
+    //==============================SELF DRIVE CARS========================\\
+    public function self_drive_cars()
     {
         $this->load->helper(array('form', 'url'));
         $this->load->library('form_validation');
         $this->load->helper('security');
         if ($this->input->post()) {
-            $this->form_validation->set_rules('barcode', 'barcode', 'required|xss_clean|trim');
-            $this->form_validation->set_rules('auth', 'auth', 'required|xss_clean|trim');
-
+            $this->form_validation->set_rules('city_id', 'city_id', 'required|xss_clean|trim');
+            $this->form_validation->set_rules('start_date', 'start_date', 'required|xss_clean|trim');
+              $this->form_validation->set_rules('start_time', 'start_time','required|xss_clean|trim');
+                $this->form_validation->set_rules('end_date', 'end_date', 'required|xss_clean|trim');
+                    $this->form_validation->set_rules('end_time', 'end_time', 'required|xss_clean|trim');
             if ($this->form_validation->run()== true) {
-                $barcode=$this->input->post('barcode');
-                $auth=$this->input->post('auth');
-                $emp_check = $this->db->get_where('tbl_employee', array('is_active'=> 1,'authentication'=> $auth))->result();
-                if (!empty($emp_check)) {
-                    $this->db->select('*');
-                    $this->db->from('tbl_type');
-                    $this->db->where('barcode', $barcode);
-                    $type_data= $this->db->get()->row();
+                $city_id=$this->input->post('city_id');
+                $start_date=$this->input->post('start_date');
+                $start_time=$this->input->post('start_time');
+                $end_date=$this->input->post('end_date');
+                $end_time=$this->input->post('end_time');
+                $self_drive_data = $this->db->get_where('tbl_selfdrive', array('is_active'=> 1,'city_id'=>$city_id,'is_available'=>1))->result();
+                $data=[];
+foreach ($self_drive_data as $self_drive) {
+                    $data[]=array('city_id'=>$self_drive->city_id,
+                               'brand_name'=>$self_drive->brand_name,
+                               'car_name'=>$self_drive->car_name,
+                               'photo'=>$self_drive->photo,
+                               'fule_type'=>$self_drive->fule_type,
+                               'transmission'=>$self_drive->transmission,
 
-                    $this->db->select('*');
-                    $this->db->from('tbl_product');
-                    $this->db->where('id', $type_data->product_id);
-                    $pro_data= $this->db->get()->row();
+                               'seatting'=>$self_drive->seatting,
+                               'kilometer1'=>$self_drive->kilometer1,
+                               'price1'=>$self_drive->price1,
+                               'kilometer2'=>$self_drive->kilometer2,
 
-
-                    $this->db->select('*');
-                    $this->db->from('tbl_colour');
-                    $this->db->where('id', $type_data->colour_id);
-                    $colour_data= $this->db->get()->row();
-
-
-                    $this->db->select('*');
-                    $this->db->from('tbl_size');
-                    $this->db->where('id', $type_data->size_id);
-                    $size_data= $this->db->get()->row();
-
-
-                    $data_product=array('type_id'=>$type_data->id,
-                               'product_id'=>$pro_data->id,
-                               'product_name'=>$pro_data->name,
-                                                            'size_name'=>$size_data->name,
-                                                            'colour_name'=>$colour_data->colour_name,
-                              'image'=>base_url().$type_data->image,
-                               'mrp'=>$type_data->retailer_mrp,
-                                                             'sp'=>$type_data->retailer_spgst,
-
-                               // 'image2'=>base_url().$pro_data->imagetwo,
-                               // 'image3'=>base_url().$pro_data->imagethree,
-                               // 'image4'=>base_url().$pro_data->imagefour,
-
+                               'price2'=>$self_drive->price2,
+                               'kilometer3'=>$self_drive->kilometer3,
+                               'price3'=>$self_drive->price3,
+                               'extra_kilo'=>$self_drive->extra_kilo,
+                               'rsda'=>$self_drive->rsda
                              );
+                             }
                     $res=array(
-                                                            'message'=>"success",
-                                                            'status'=>200,
-                                                            'data'=>$data_product
-                                                        );
+                                'message'=>"success",
+                                'status'=>200,
+                                'data'=>$data
+                                );
                     echo json_encode($res);
-                } else {
-                    $res=array(
-                                                         'message'=>'Permission Denied!',
-                                                         'status'=>201
 
-                                                        );
-                    echo json_encode($res);
-                }
             } else {
                 $res=array(
                  'message'=>validation_errors(),
                  'status'=>201
-
                );
                 echo json_encode($res);
             }
@@ -89,339 +108,131 @@ class Apicontroller extends CI_Controller
             $res=array(
                'message'=>'please insert data',
                'status'=>201
-
              );
             echo json_encode($res);
         }
     }
 
-
-
-    public function add_to_cart()
-    {
-
-			$this->load->helper(array('form', 'url'));
-			$this->load->library('form_validation');
-			$this->load->helper('security');
-			if ($this->input->post()) {
-					$this->form_validation->set_rules('auth', 'auth', 'required|xss_clean|trim');
-					$this->form_validation->set_rules('product_id', 'product_id', 'required|xss_clean|trim');
-					$this->form_validation->set_rules('type_id', 'type_id', 'required|xss_clean|trim');
-					$this->form_validation->set_rules('quantity', 'quantity', 'required|xss_clean|trim');
-
-					if ($this->form_validation->run()== true) {
-							$auth=$this->input->post('auth');
-							$product_id=$this->input->post('product_id');
-							$type_id=$this->input->post('type_id');
-							$quantity=$this->input->post('quantity');
-							$emp_data = $this->db->get_where('tbl_employee', array('is_active'=> 1,'authentication'=> $auth))->result();
-
-							if (!empty($emp_data)) {
-								$cart_data = $this->db->get_where('tbl_cart2', array('employee_id'=> $emp_data[0]->id,'product_id'=>$product_id,'type_id'=>$type_id))->result();
-								if(empty($cart_data)){
-									$type_data = $this->db->get_where('tbl_type', array('id'=> $type_id))->result();
-									if($type_data[0]->inventory >= $quantity){
-										date_default_timezone_set("Asia/Calcutta");
-										$cur_date=date("Y-m-d H:i:s");
-										$data_insert = array('employee_id'=>$emp_data[0]->id,
-															'product_id'=>$product_id,
-															'type_id'=>$type_id,
-															'quantity'=>$quantity,
-															'date'=>$cur_date
-
-															);
-										$last_id=$this->base_model->insert_table("tbl_cart2",$data_insert,1) ;
-										if(!empty($last_id)){
-											$res = array('message'=>"Success!",
-											'status'=>200
-											);
-
-											echo json_encode($res);
-										}else{
-											$res = array('message'=>"Some error occurred!",
-							'status'=>201
-							);
-
-											echo json_encode($res);
-										}
-
-
-									}else{
-										$res = array('message'=>"Product is out of stock!",
-						'status'=>201
-						);
-
-										echo json_encode($res);
-									}
-
-
-								}else{
-									$res = array('message'=>"Product is already in your cart!",
-					'status'=>201
-					);
-
-									echo json_encode($res);
-								}
-
-
-							}else{
-								$res = array('message'=>"Permission Denied!",
-				'status'=>201
-				);
-
-								echo json_encode($res);
-							}
-							} else {
-
-									$res = array('message'=>validation_errors(),
-			'status'=>201
-			);
-
-									echo json_encode($res);
-							}
-					} else {
-							$res = array('message'=>"Please insert some data, No data available",
-			'status'=>201
-			);
-
-							echo json_encode($res);
-					}
-
-
-}
-
-
-    public function employee_login()
+    public function outstation_cars()
     {
         $this->load->helper(array('form', 'url'));
         $this->load->library('form_validation');
         $this->load->helper('security');
         if ($this->input->post()) {
-            $this->form_validation->set_rules('email', 'email', 'required|xss_clean|trim');
-            $this->form_validation->set_rules('password', 'password', 'required|xss_clean|trim');
-
+            $this->form_validation->set_rules('city_id', 'city_id', 'required|xss_clean|trim');
+            $this->form_validation->set_rules('pickup_location', 'pickup_location', 'required|xss_clean|trim');
+              $this->form_validation->set_rules('drop_location', 'drop_location','required|xss_clean|trim');
+                $this->form_validation->set_rules('trip_status', 'trip_status', 'required|xss_clean|trim');
+                    $this->form_validation->set_rules('start_date', 'start_date', 'required|xss_clean|trim');
+                          $this->form_validation->set_rules('start_time', 'start_time', 'required|xss_clean|trim');
+                            $this->form_validation->set_rules('end_date', 'end_date', 'required|xss_clean|trim');
+                              $this->form_validation->set_rules('end_time', 'end_date', 'required|xss_clean|trim');
             if ($this->form_validation->run()== true) {
-                $email=$this->input->post('email');
-                $password=$this->input->post('password');
-                $emp_data = $this->db->get_where('tbl_employee', array('is_active'=> 1,'email'=> $email))->result();
+              $city_id=$this->input->post('city_id');
+              $pickup_location=$this->input->post('pickup_location');
+              $drop_location=$this->input->post('drop_location');
+              $trip_status=$this->input->post('trip_status');
 
-                if (!empty($emp_data)) {
-                    // echo $emp_data->pass; die();
-                    if ($emp_data[0]->pass==md5($password)) {
-                        $auth =bin2hex(random_bytes(15));// create auth
-                        $data_update = array('authentication'=>$auth,
-                );
-                        $this->db->where('id', $emp_data[0]->id);
-                        $zapak=$this->db->update('tbl_employee', $data_update);
+                $start_date=$this->input->post('start_date');
+                $start_time=$this->input->post('start_time');
+                $end_date=$this->input->post('end_date');
+                $end_time=$this->input->post('end_time');
+                $outstation_data = $this->db->get_where('tbl_outstation', array('is_active'=> 1,'city_id'=>$city_id,'is_available'=>1))->result();
+                $data=[];
+foreach ($outstation_data as $outstation) {
+                    $data[]=array(   'city_id'=>$outstation->city_id,
+                      'brand_name'=>$outstation->brand_name,
+                               'car_name'=>$outstation->car_name,
+                               'seatting'=>$outstation->seatting,
+                               'photo'=>$outstation->photo,
+                               'per_kilometre'=>$outstation->per_kilometre,
+                               'location'=>$outstation->location
 
 
 
-                        $res = array('message'=>"success",
-    'status'=>200,
-    'data'=>$auth
-    );
-
-                        echo json_encode($res);
-                    } else {
-                        $res = array('message'=>"Wrong Password",
-    'status'=>201
-    );
-
-                        echo json_encode($res);
-                    }
-                } else {
-                    $res = array('message'=>"Employee is not registered",
-    'status'=>201
-    );
-
+                             );
+                             }
+                    $res=array(
+                                'message'=>"success",
+                                'status'=>200,
+                                'data'=>$data
+                                );
                     echo json_encode($res);
-                }
+
             } else {
-
-    //header('Access-Control-Allow-Origin: *');
-                $res = array('message'=>validation_errors(),
-    'status'=>201
-    );
-
+                $res=array(
+                 'message'=>validation_errors(),
+                 'status'=>201
+               );
                 echo json_encode($res);
             }
         } else {
-            $res = array('message'=>"Please insert some data, No data available",
-    'status'=>201
-    );
-
+            $res=array(
+               'message'=>'please insert data',
+               'status'=>201
+             );
             echo json_encode($res);
         }
     }
+    public function intercity_booking()
+    {
+        $this->load->helper(array('form', 'url'));
+        $this->load->library('form_validation');
+        $this->load->helper('security');
+        if ($this->input->post()) {
+            $this->form_validation->set_rules('city_id', 'city_id', 'required|xss_clean|trim');
+            $this->form_validation->set_rules('pickup_location', 'pickup_location', 'required|xss_clean|trim');
+              $this->form_validation->set_rules('drop_location', 'drop_location','required|xss_clean|trim');
+                $this->form_validation->set_rules('trip_status', 'trip_status', 'required|xss_clean|trim');
+                    $this->form_validation->set_rules('start_date', 'start_date', 'required|xss_clean|trim');
+                          $this->form_validation->set_rules('start_time', 'start_time', 'required|xss_clean|trim');
+                            $this->form_validation->set_rules('end_date', 'end_date', 'required|xss_clean|trim');
+                              $this->form_validation->set_rules('end_time', 'end_date', 'required|xss_clean|trim');
+            if ($this->form_validation->run()== true) {
+              $city_id=$this->input->post('city_id');
+              $pickup_location=$this->input->post('pickup_location');
+              $drop_location=$this->input->post('drop_location');
+              $trip_status=$this->input->post('trip_status');
+
+                $start_date=$this->input->post('start_date');
+                $start_time=$this->input->post('start_time');
+                $end_date=$this->input->post('end_date');
+                $end_time=$this->input->post('end_time');
+                $outstation_data = $this->db->get_where('tbl_outstation', array('is_active'=> 1,'city_id'=>$city_id,'is_available'=>1))->result();
+                $data=[];
+foreach ($outstation_data as $outstation) {
+                    $data[]=array(   'city_id'=>$outstation->city_id,
+                      'brand_name'=>$outstation->brand_name,
+                               'car_name'=>$outstation->car_name,
+                               'seatting'=>$outstation->seatting,
+                               'photo'=>$outstation->photo,
+                               'per_kilometre'=>$outstation->per_kilometre,
+                               'location'=>$outstation->location
 
 
-		public function view_cart()
-		{
 
-			$this->load->helper(array('form', 'url'));
-			$this->load->library('form_validation');
-			$this->load->helper('security');
+                             );
+                             }
+                    $res=array(
+                                'message'=>"success",
+                                'status'=>200,
+                                'data'=>$data
+                                );
+                    echo json_encode($res);
 
-
-
-
-				if ($this->input->post()) {
-						$this->form_validation->set_rules('auth', 'auth', 'required|xss_clean|trim');
-if ($this->form_validation->run()== true) {
-
-						$auth=$this->input->post('auth');
-
-
-
-						$emp_data = $this->db->get_where('tbl_employee', array('is_active'=> 1,'authentication'=> $auth))->result();
-
-
-  if (!empty($emp_data)) {
-			$cart_data = $this->db->get_where('tbl_cart2', array('employee_id'=> $emp_data[0]->id));
-			$data_product=[];
-			$subtotal = 0;
- $i=1; foreach($cart_data->result() as $cart) {
-	 $total = 0;
-	 $this->db->select('*');
-	 $this->db->from('tbl_product');
-	 $this->db->where('id', $cart->product_id);
-	 $pro_data= $this->db->get()->row();
-	 // echo $cart->product_id;
-	 // print_r($pro_data);die();
-
-	 $this->db->select('*');
-	 $this->db->from('tbl_type');
-	 $this->db->where('id', $cart->type_id);
-	 $type_data= $this->db->get()->row();
-
-
-	 $this->db->select('*');
-	 $this->db->from('tbl_colour');
-	 $this->db->where('id', $type_data->colour_id);
-	 $colour_data= $this->db->get()->row();
-
-
-	 $this->db->select('*');
-	 $this->db->from('tbl_size');
-	 $this->db->where('id', $type_data->size_id);
-	 $size_data= $this->db->get()->row();
-
-$total=$type_data->retailer_spgst * $cart->quantity;
-	 $data_product[]=array('type_id'=>$cart->type_id,
-							'product_id'=>$cart->product_id,
-							'product_name'=>$pro_data->name,
-																					 'size_name'=>$size_data->name,
-																					 'colour_name'=>$colour_data->colour_name,
-						 'image'=>base_url().$type_data->image,
-							'mrp'=>$type_data->retailer_mrp,
-							'sp'=>$type_data->retailer_spgst,
-							'qty'=>$cart->quantity,
-							'total'=>$total,
-						);
-
-						$subtotal = $subtotal + $total;
-
+            } else {
+                $res=array(
+                 'message'=>validation_errors(),
+                 'status'=>201
+               );
+                echo json_encode($res);
+            }
+        } else {
+            $res=array(
+               'message'=>'please insert data',
+               'status'=>201
+             );
+            echo json_encode($res);
+        }
+    }
 }
-$res=array(
-																				'message'=>"success",
-																				'status'=>200,
-																				'data'=>$data_product,
-																				'subtotal'=>$subtotal,
-																		);
-echo json_encode($res);
-
-
-}else{
-	$res = array('message'=>"Permission Denied!",
-'status'=>201
-);
-
-	echo json_encode($res);
-}
-}
- else {
-
-//header('Access-Control-Allow-Origin: *');
-$res = array('message'=>validation_errors(),
-'status'=>201
-);
-
-echo json_encode($res);
-}
-	}
-	else {
-			$res = array('message'=>"Please insert some data, No data available",
-'status'=>201
-);
-
-			echo json_encode($res);
-	}
-}
-
-
-public function percentage()
-{
-
-  $this->load->helper(array('form', 'url'));
-  $this->load->library('form_validation');
-  $this->load->helper('security');
-
-
-
-
-    if ($this->input->post()) {
-        $this->form_validation->set_rules('auth', 'auth', 'required|xss_clean|trim');
-if ($this->form_validation->run()== true) {
-
-        $auth=$this->input->post('auth');
-$percentage=$this->input->post('percentage');
-
-
-        $emp_data = $this->db->get_where('tbl_employee', array('is_active'=> 1,'authentication'=> $auth))->result();
-if (!empty($emp_data)) {
-			$percentage_data = $this->db->get_where('tbl_percentage')->result();
-	$data_insert=[];
-  $i=1; foreach($percentage_data as $percentage) {
-          $data_insert[]=array('id'=>$percentage->id,
-                'percentage'=>$percentage->percentage,
-           );
-
-}
-$res=array(
-  'message'=>"success",
-  'status'=>200,
-  'data'=>$data_insert,
-
-);
-echo json_encode($res);
-           }else{
-           	$res = array('message'=>"Permission Denied!",
-           'status'=>201
-           );
-
-           	echo json_encode($res);
-           }
-           }
-            else {
-
-           //header('Access-Control-Allow-Origin: *');
-           $res = array('message'=>validation_errors(),
-           'status'=>201
-           );
-
-           echo json_encode($res);
-           }
-
-           	}
-           	else {
-           			$res = array('message'=>"Please insert some data, No data available",
-           'status'=>201
-           );
-
-           			echo json_encode($res);
-           	}
-           }
-
-
-
-   }

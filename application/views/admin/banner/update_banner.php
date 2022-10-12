@@ -1,7 +1,7 @@
 <div class="content-wrapper">
   <section class="content-header">
     <h1>
-      Update banner
+      Update Banner
     </h1>
     <ol class="breadcrumb">
       <li><a href="<?php echo base_url() ?>dcadmin/Home"><i class="fa fa-dashboard"></i> Dashboard</a></li>
@@ -35,7 +35,7 @@
                 <div class="table-responsive">
                   <table class="table table-hover">
                     <tr>
-                      <td> <strong>Image</strong> <span style="color:red;"><br />Big: 2220px X 1000px<br />Small: 540px X 812px</span></strong> </td>
+                      <td> <strong>Image</strong> <span style="color:red;"><br />Big: 1920px X 800px<br />Small: 1920px X 800px</span></strong> </td>
                       <td>
                         <input type="file" name="photo1" class="form-control" placeholder="" value="<?=$banner->photo1?>" />
                         <?php if ($banner->photo1!="") {  ?>

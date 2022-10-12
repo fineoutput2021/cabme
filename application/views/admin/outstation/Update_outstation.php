@@ -72,7 +72,7 @@ if (!empty($this->session->flashdata('emessage'))) { ?>
                     </tr>
                     <tr>
                       <tr>
-                        <td> <strong>Image</strong> <span style="color:red;"><br />Big: 2220px X 1000px<br />Small: 540px X 812px</span></strong> </td>
+                        <td> <strong>Image</strong> <span style="color:red;"><br />Big: 190px X 73px<br />Small: 190px X 73px</span></strong> </td>
                         <td>
                           <input type="file" name="photo" class="form-control" placeholder="" value="<?=$station->photo?>" />
                           <?php if ($station->photo!="") {  ?>

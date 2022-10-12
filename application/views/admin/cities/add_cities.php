@@ -47,6 +47,17 @@
                       </td>
                     </tr>
                     <tr>
+                      <td> <strong>Top </strong> <span style="color:red;">*</span></strong> </td>
+                      <td>
+                        <select name="top" class="form-control" required>
+                          <option value="">---Select -----</option>
+                          <option value="yes">Yes</option>
+                          <option value="no">NO</option>
+
+                        </select>
+                      </td>
+                    </tr>
+                    <tr>
                       <td> <strong>City Type</strong> <span style="color:red;">*</span></strong> </td>
                       <td>
                         <input type="radio" id="with_fair" name="city_type" value="1" checked>
@@ -56,6 +67,8 @@
                       </td>
                     </tr>
                     <tr>
+
+                      <tr>
                       <td colspan="2">
                         <input type="submit" class="btn btn-success" value="save">
                       </td>

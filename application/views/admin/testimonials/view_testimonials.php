@@ -1,23 +1,23 @@
 <div class="content-wrapper">
   <section class="content-header">
     <h1>
-      City
+      Testimonials
     </h1>
     <ol class="breadcrumb">
       <li><a href="<?php echo base_url() ?>dcadmin/Home"><i class="fa fa-dashboard"></i> Dashboard</a></li>
-      <li><a href="<?php echo base_url() ?>dcadmin/City/view_cities"><i class="fa fa-dashboard"></i> view City </a></li>
+      <li><a href="<?php echo base_url() ?>dcadmin/Testimonials/view_testimonials"><i class="fa fa-undo" aria-hidden="true"></i> View Testimonials </a></li>
       <!-- <li class="active"></li> -->
     </ol>
   </section>
   <section class="content">
     <div class="row">
       <div class="col-lg-12">
-        <?if($this->session->userdata('position')!='Manager'){?>
-        <a class="btn custom_btn" href="<?php echo base_url() ?>dcadmin/City/add_cities" role="button" style="margin-bottom:12px;"> Add City</a>
+        <?if ($this->session->userdata('position')!='Manager') {?>
+        <a class="btn custom_btn" href="<?php echo base_url() ?>dcadmin/Testimonials/add_testimonials" role="button" style="margin-bottom:12px;"> Add Testimonials</a>
         <?}?>
         <div class="panel panel-default">
           <div class="panel-heading">
-            <h3 class="panel-title"><i class="fa fa-money fa-fw"></i>View City</h3>
+            <h3 class="panel-title"><i class="fa fa-money fa-fw"></i>View Testimonials</h3>
           </div>
           <div class="panel panel-default">
             <?php if (!empty($this->session->flashdata('smessage'))) { ?>
@@ -27,7 +27,7 @@
               <?php echo $this->session->flashdata('smessage'); ?>
             </div>
             <?php }
-if (!empty($this->session->flashdata('emessage'))) { ?>
+                        if (!empty($this->session->flashdata('emessage'))) { ?>
             <div class="alert alert-danger alert-dismissible">
               <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
               <h4><i class="icon fa fa-ban"></i> Alert!</h4>
@@ -41,56 +41,42 @@ if (!empty($this->session->flashdata('emessage'))) { ?>
                     <tr>
                       <th>#</th>
                       <th>Name</th>
-                      <th>City Type</th>
-                        <th>Top</th>
-                      <th>Image</th>
-                      <th>Date</th>
+                      <th> content</th>
+
                       <th>Status</th>
-                      <?if($this->session->userdata('position')!='Manager'){?>
+                      <?if ($this->session->userdata('position')!='Manager') {?>
                       <th>Action</th>
                       <?}?>
                     </tr>
                   </thead>
                   <tbody>
-                    <?php $i=1; foreach ($City_data->result() as $data) { ?>
+                    <?php $i=1; foreach ($testimonials_data->result() as $data) { ?>
                     <tr>
                       <td><?php echo $i ?> </td>
-                      <td><?php echo $data->name ?> </td>
-                      <td><?php
-                      if($data->city_type==1){
-                      echo 'With Return Fair';
-                    }else{
-                      echo 'Without Return Fair';
+                      <td><?php echo $data->name ?></td>
 
-                    }?> </td>
-                      <td><?php echo $data->top ?> </td>
-                      <td>
-                        <?php if ($data->photo!="") {  ?>
-                        <img id="slide_img_path" height=50 width=100 src="<?php echo base_url().$data->photo ?>">
-                        <?php } else {  ?>
-                        Sorry No image Found
-                        <?php } ?>
-                      </td>
-                      <td><?php echo $data->date ?> </td>
+
+                      <td><?php echo $data->content ?>%</td>
+
                       <td><?php if ($data->is_active==1) { ?>
                         <p class="label bg-green">Active</p>
                         <?php } else { ?>
                         <p class="label bg-yellow">Inactive</p>
                         <?php		}   ?>
                       </td>
-                      <?if($this->session->userdata('position')!='Manager'){?>
+                      <?if ($this->session->userdata('position')!='Manager') {?>
                       <td>
                         <div class="btn-group" id="btns<?php echo $i ?>">
                           <div class="btn-group">
                             <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false"> Action <span class="caret"></span></button>
                             <ul class="dropdown-menu" role="menu">
                               <?php if ($data->is_active==1) { ?>
-                              <li><a href="<?php echo base_url() ?>dcadmin/City/updatecitiesStatus/<?php echo base64_encode($data->id) ?>/inactive">Inactive</a></li>
+                              <li><a href="<?php echo base_url() ?>dcadmin/Testimonials/updatetestimonialsStatus/<?php echo base64_encode($data->id) ?>/inactive">Inactive</a></li>
                               <?php } else { ?>
-                              <li><a href="<?php echo base_url() ?>dcadmin/City/updatecitiesStatus/<?php echo base64_encode($data->id) ?>/active">Active</a></li>
+                              <li><a href="<?php echo base_url() ?>dcadmin/Testimonials/updatetestimonialsStatus/<?php echo base64_encode($data->id) ?>/active">Active</a></li>
                               <?php		}   ?>
-                              <li><a href="<?php echo base_url() ?>dcadmin/City/update_cities/<?php echo base64_encode($data->id) ?>">Edit</a></li>
-                              <?if($this->session->userdata('position')=='Super Admin'){?>
+                              <li><a href="<?php echo base_url() ?>dcadmin/Testimonials/update_testimonials/<?php echo base64_encode($data->id) ?>">Edit</a></li>
+                              <?if ($this->session->userdata('position')=='Super Admin') {?>
                               <li><a href="javascript:;" class="dCnf" mydata="<?php echo $i ?>">Delete</a></li>
                               <?}?>
                             </ul>
@@ -98,7 +84,7 @@ if (!empty($this->session->flashdata('emessage'))) { ?>
                         </div>
                         <div style="display:none" id="cnfbox<?php echo $i ?>">
                           <p> Are you sure delete this </p>
-                          <a href="<?php echo base_url() ?>dcadmin/City/delete_cities/<?php echo base64_encode($data->id); ?>" class="btn btn-danger">Yes</a>
+                          <a href="<?php echo base_url() ?>dcadmin/Testimonials/delete_testimonials/<?php echo base64_encode($data->id); ?>" class="btn btn-danger">Yes</a>
                           <a href="javasript:;" class="cans btn btn-default" mydatas="<?php echo $i ?>">No</a>
                         </div>
                       </td>
@@ -138,5 +124,5 @@ if (!empty($this->session->flashdata('emessage'))) { ?>
     })
   });
 </script>
-<!-- <script type="text/javascript" src="<?php echo base_url() ?>assets/size/ajaxupload.3.5.js"></script>
-<script type="text/javascript" src="<?php echo base_url() ?>assets/size/rs.js"></script>	  -->
+<!-- <script type="text/javascript" src="<?php echo base_url() ?>assets/slider/ajaxupload.3.5.js"></script>
+<script type="text/javascript" src="<?php echo base_url() ?>assets/slider/rs.js"></script>	  -->

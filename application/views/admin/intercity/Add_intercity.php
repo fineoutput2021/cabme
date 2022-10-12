@@ -46,6 +46,17 @@ if (!empty($this->session->flashdata('emessage'))) { ?>
                 <div class="table-responsive">
                   <table class="table table-hover">
                     <tr>
+                      <td> <strong>City</strong> <span style="color:red;">*</span></strong> </td>
+                      <td>
+                        <select name="city_id" class="form-control" required>
+                          <option value="">-----select city-----</option>
+                          <?php $i=1; foreach ($cities_data->result() as $cat) { ?>
+                          <option value="<?=$cat->id?>"><?=$cat->name?></option>
+                          <?php } ?>
+                        </select>
+                      </td>
+                    </tr>
+                    <tr>
                       <td> <strong>Cab Type</strong> <span style="color:red;">*</span></strong> </td>
                       <td>
                         <select name="cab_type" class="form-control" required>

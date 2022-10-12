@@ -40,6 +40,7 @@
                   <thead>
                     <tr>
                       <th>#</th>
+                      <th>City Name</th>
                       <th>Cab Type</th>
                       <th>Price</th>
                       <th>Kilometer Cap</th>
@@ -51,9 +52,11 @@
                     </tr>
                   </thead>
                   <tbody>
-    <?php $i=1; foreach ($intercity_data->result() as $data) { ?>
+    <?php $i=1; foreach ($intercity_data->result() as $data) {
+        $city_data = $this->db->get_where('tbl_cities', array('id'=> $data->city_id))->result(); ?>
                     <tr>
                       <td><?php echo $i ?> </td>
+                          <td><?php echo $city_data[0]->name ?></td>
                       <td>
                         <?php if ($data->cab_type==1) {
                             echo 'HATCHBACK ';

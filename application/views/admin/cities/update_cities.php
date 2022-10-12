@@ -41,7 +41,7 @@ if (!empty($this->session->flashdata('emessage'))) { ?>
                       </td>
                     </tr>
                     <tr>
-                      <td> <strong>Image</strong> <span style="color:red;"><br />Big: 2220px X 1000px<br />Small: 540px X 812px</span></strong> </td>
+                      <td> <strong>Image</strong> <span style="color:red;"><br />Big: 266px X 256px<br />Small: 266px X 256px</span></strong> </td>
                       <td>
                         <input type="file" name="photo" class="form-control" placeholder="" value="<?=$City->photo?>" />
                         <?php if ($City->photo!="") {  ?>
@@ -52,6 +52,12 @@ if (!empty($this->session->flashdata('emessage'))) { ?>
                       </td>
                     </tr>
                     <tr>
+                      <tr>
+                        <td> <strong>Top</strong> <span style="color:red;">*</span></strong> </td>
+                        <td>
+                          <input type="text" name="top" class="form-control" placeholder="" required value="<?=$City->top?>" />
+                        </td>
+                      </tr>
                       <!-- <td> <strong></strong> <span style="color:red;"><br />Big: 2220px X 1000px<br />Small: 540px X 812px</span></strong> </td> -->
                       <tr>
                         <td> <strong>City Type</strong> <span style="color:red;">*</span></strong> </td>
