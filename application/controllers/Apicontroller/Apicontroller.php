@@ -71,10 +71,15 @@ class Apicontroller extends CI_Controller
                 $self_drive_data = $this->db->get_where('tbl_selfdrive', array('is_active'=> 1,'city_id'=>$city_id,'is_available'=>1))->result();
                 $data=[];
 foreach ($self_drive_data as $self_drive) {
+  if (!empty($self_drive->photo)) {
+      $photo=base_url().$self_drive->photo;
+  } else {
+      $photo='';
+  }
                     $data[]=array('city_id'=>$self_drive->city_id,
                                'brand_name'=>$self_drive->brand_name,
                                'car_name'=>$self_drive->car_name,
-                               'photo'=>$self_drive->photo,
+                               'photo'=>$photo,
                                'fule_type'=>$self_drive->fule_type,
                                'transmission'=>$self_drive->transmission,
 
@@ -140,11 +145,16 @@ foreach ($self_drive_data as $self_drive) {
                 $outstation_data = $this->db->get_where('tbl_outstation', array('is_active'=> 1,'city_id'=>$city_id,'is_available'=>1))->result();
                 $data=[];
 foreach ($outstation_data as $outstation) {
+  if (!empty($outstation->photo)) {
+      $photo=base_url().$outstation->photo;
+  } else {
+      $photo='';
+  }
                     $data[]=array(   'city_id'=>$outstation->city_id,
                       'brand_name'=>$outstation->brand_name,
                                'car_name'=>$outstation->car_name,
                                'seatting'=>$outstation->seatting,
-                               'photo'=>$outstation->photo,
+                           'photo'=>$photo,
                                'per_kilometre'=>$outstation->per_kilometre,
                                'location'=>$outstation->location
 
