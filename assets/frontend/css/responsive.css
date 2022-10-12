@@ -11,7 +11,7 @@
 	.hs_main_menu a{
 		    padding: 35px 17px 36px;
 	}
-	
+
 }
 @media (max-width: 1700px){
 	.x_why_left_main_wrapper{
@@ -230,7 +230,7 @@
 	.x_car_offer_starts_list_img_cont{
 		padding-top:22px;
 	}
-	
+
 }
 
 @media (min-width: 767px)
@@ -249,16 +249,17 @@
 {
 	.roundtab .nav-item a.active
 	{
-		background-color: red !important;
+	 background-image: linear-gradient(to right, #DB0F07 0, #d42907 36%, #EF1700 65%, #D62A05 100%) !important;
+		text-decoration: none;
 		color: #fff !important;
 	}
 }
 @media (max-width: 767px){
 	.x_slider_select_2
 	{
-		width: 107% !important;
+		width: 109% !important;
 	}
-	.mobilenav-tabs .nav-item .nav-link 
+	.mobilenav-tabs .nav-item .nav-link
 	{
 		font-size: 11px;
 		/* border-radius: 20px; */
@@ -268,7 +269,7 @@
 		background-color: red !important;
 		color: #fff !important;
 	}
-	
+
 	/* .mobilenav-tabs
 	{
 		justify-content: space-between;
@@ -277,7 +278,7 @@
 	{
 		font-size: 12px;
 	}
-	#mobilefont h5 
+	#mobilefont h5
 	{
 		font-size: 16px;
 	}
@@ -288,10 +289,11 @@
 	.mobileradius
 	{
 		/* border-radius: 20px; */
-		height: 45px !important;
+		height: 67px !important;
 		max-width: 100% !important;
 		/* margin-right: 3px; */
 		border-collapse: collapse;
+		 padding: 12px 0px !important;
 	}
 	#mobileradius-1
 	{
@@ -303,11 +305,11 @@
 		border-top-right-radius: 10px;
 		border-bottom-right-radius: 10px;
 	}
-	.mobileradius input 
+	.mobileradius input
 	{
 		background-color: transparent !important;
 	}
-	#selectcity .modal-dialog 
+	#selectcity .modal-dialog
 	{
 		width: auto !important;
 	}
@@ -319,15 +321,15 @@
 	{
 		display: none;
 	}
-	.carmanuals img 
+	.carmanuals img
 	{
 		width: 10% !important;
 	}
-	.x_ln_car_heading_wrapper h3 
+	.x_ln_car_heading_wrapper h3
 	{
 		font-size: 16px;
 	}
-	.imagewidth p 
+	.imagewidth p
 {
 	font-size: 12px;
 }
@@ -353,7 +355,7 @@
 	{
 		display: none;
 	}
-	.imagewidth img 
+	.imagewidth img
 	{
 		width: 30% !important;
 	}
@@ -540,11 +542,11 @@
 		top: 25%;
 		position: absolute;
 	  }
-	.All_Car_tabs > li > a 
+	.All_Car_tabs > li > a
 {
 	font-size: 13px !important;
 }
-	
+
 	.x_slider_bottom_box_wrapper{
 		width:100%;
 		border-left:0;
@@ -640,8 +642,8 @@
 	}
 }
 @media (max-width: 380px){
-	
+
 }
 @media (max-width: 320px){
-	
+
 }

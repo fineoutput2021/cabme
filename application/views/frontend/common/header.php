@@ -12,13 +12,9 @@
 	<!--Template style -->
 	<link rel="stylesheet" type="text/css" href="<?=base_url()?>assets/frontend/css/cabme.css" />
 	<!--favicon-->
-	<link rel="shortcut icon" type="image/png" href="<?=base_url()?>assets/frontend/images/cabme_logo.png" />
+	<link rel="shortcut icon" type="image/png" href="<?=base_url()?>assets/frontend/images/cabmenewlogo.png" />
 	<style>
-		/* .mobilenav-tabs {
-			border: .5px solid rgb(194, 192, 192);
-		} */
 		.mobilenav-tabs .nav-item .nav-link {
-			/* border-left: .5px solid rgb(194, 193, 193); */
 			padding-left: 16px;
 			padding: 3px 10px !important;
 			padding-right: 16px;
@@ -95,7 +91,7 @@
 					</div>
 					<div class="row justify-content-center">
 						<a href="summary.html" class="col-md-12 text-center">
-							<button class="btn col-md-10  searchbtn">Book</button>
+							<button class="btn col-md-10  searchbtn shadowbtn">Book</button>
 						</a>
 					</div>
 				</div>
@@ -104,6 +100,10 @@
 	</div>
 	<!--====== Info Modal End ======-->
 	<!--====== Select City Modal ======-->
+	<?
+	$top_data = $this->db->order_by('id', 'desc')->get_where('tbl_cities', array('is_active'=> 1,'top'=> 1))->result();
+	$other_data = $this->db->order_by('id', 'desc')->get_where('tbl_cities', array('is_active'=> 1,'top'=> 0))->result();
+	?>
 	<div class="modal fade " id="selectcity" role="dialog">
 		<div class="modal-dialog " style="width: auto;">
 			<!-- Modal content-->
@@ -113,11 +113,14 @@
 					<button type="button" class="close" data-dismiss="modal">&times;</button>
 				</div>
 				<div class="modal-body">
-					<?$tbl_cities = $this->db->get_where('tbl_cities', array('is_active'=> 1))->result();
-					foreach ($tbl_cities as $city) {
-					?>
-					<h5 class="citieslist"> <img src="<?=base_url().$city->photo?>" alt="<?=$city->name?>" width="10%" style="margin-top: -13px;"> <?=$city->name?></h5>
-					<?}?>
+					<p style="font-size:18px;">Top Cities</p>
+					<?php $i=1; foreach($top_data as $data) {?>
+					<h5 class="citieslist" onclick="set_city(this)" city_id="<?=$data->id?>" name="<?=$data->name?>" id="wc_<?=$data->id?>"> <img src="<?=base_url().$data->photo?>" alt="<?=$data->name?>" width="10%" style="margin-top: -13px;"><?=$data->name?></h5>
+					<?php $i++; } ?>
+					<p style="font-size: 16px;">Other Cities</p>
+					<?php $i=1; foreach($other_data as $data) { ?>
+					<h5 class="citieslist" onclick="set_city(this)" city_id="<?=$data->id?>" name="<?=$data->name?>" id="wc_<?=$data->id?>"> <img src="<?=base_url().$data->photo?>" alt="<?=$data->name?>" width="10%" style="margin-top: -13px;"> <?=$data->name?></h5>
+					<?php $i++; } ?>
 				</div>
 			</div>
 		</div>
@@ -129,23 +132,18 @@
 			<!-- Modal content-->
 			<div class="modal-content ">
 				<div class="modal-header">
-					<h4 class="modal-title">Select City5</h4>
+					<h4 class="modal-title">Select City</h4>
 					<button type="button" class="close" data-dismiss="modal">&times;</button>
 				</div>
 				<div class="modal-body">
 					<p style="font-size:18px;">Top Cities</p>
-					<h5 class="citieslist"> <img src="<?=base_url()?>assets/frontend/images/jaipur.webp" alt="jaipur" width="10%" style="margin-top: -13px;"> Jaipur</h5>
-					<h5 class="citieslist">Banglore</h5>
-					<h5 class="citieslist">Mumbai</h5>
-					<h5 class="citieslist">Chennai</h5>
-					<h5 class="citieslist">Pune</h5>
+					<?php $i=1; foreach($top_data as $data) { ?>
+					<h5 class="citieslist"  onclick="set_city(this)" city_id="<?=$data->id?>" name="<?=$data->name?>"id="mc_<?=$data->id?>"> <img src="<?=base_url().$data->photo?>" alt="<?=$data->name?>" width="10%" style="margin-top: -13px;"> <?=$data->name?></h5>
+					<?php $i++; } ?>
 					<p style="font-size: 16px;">Other Cities</p>
-					<h5 class="citieslist2">Kolkata</h5>
-					<h5 class="citieslist2">Ahemdabad</h5>
-					<h5 class="citieslist2">Kochi</h5>
-					<h5 class="citieslist2">Nagpur</h5>
-					<h5 class="citieslist2">Surat</h5>
-					<h5 class="citieslist2">Triputi</h5>
+					<?php $i=1; foreach($other_data as $data) { ?>
+					<h5 class="citieslist"  onclick="set_city(this)" city_id="<?=$data->id?>" name="<?=$data->name?>" id="mc_<?=$data->id?>"> <img src="<?=base_url().$data->photo?>" alt="<?=$data->name?>" width="10%" style="margin-top: -13px;"> <?=$data->name?></h5>
+					<?php $i++; } ?>
 				</div>
 			</div>
 		</div>
@@ -186,6 +184,7 @@
 	<div class="modal fade" id="loginModal" role="dialog" style="z-index: 999999;">
 		<div class="modal-dialog">
 			<!-- Modal content-->
+			<form method="post" enctype="multipart/form-data" action="<?=base_url()?>User/self_drive_cars">
 			<div class="modal-content loginModal-content">
 				<div class="modal-header">
 					<div class="col-md-11 text-center">
@@ -209,6 +208,7 @@
 					</div>
 				</div>
 			</div>
+			</form>
 		</div>
 	</div>
 	<!--======login Modal End ======-->
@@ -225,26 +225,28 @@
 					</div>
 				</div>
 				<div class="modal-body">
+						<form method="post" enctype="multipart/form-data" action="<?=base_url()?>User/register_process">
 					<div class="formsix-pos">
 						<div class="row">
 							<div class="form-group mb-4 col-md-6 col-12">
-								<input type="text" class="form-control modalinput" required="" placeholder="First Name *">
+								<input type="text" name="fname" class="form-control modalinput" required="" placeholder="First Name *">
 							</div>
 							<div class="form-group col-md-6 col-12">
-								<input type="text" class="form-control modalinput" required="" placeholder="Last Name*">
+								<input type="text" name="lname" class="form-control modalinput" required="" placeholder="Last Name*">
 							</div>
 							<div class="form-group col-md-6 col-12">
-								<input type="text" class="form-control modalinput" required="" placeholder="E-mail*">
+								<input type="text" name="email" class="form-control modalinput" required="" placeholder="E-mail*">
 							</div>
 							<div class="form-group mb-4 col-md-6 col-12">
-								<input type="text" class="form-control modalinput" required="" placeholder="Enter mobile Number*">
+								<input type="text" name="phone" class="form-control modalinput" required="" placeholder="Enter mobile Number*">
 							</div>
-							<div class="form-group col-md-12 col-12">
+							<!-- <div class="form-group col-md-12 col-12">
 								<input type="text" class="form-control modalinput" required="" placeholder="Enter OTP*">
-							</div>
+							</div> -->
 						</div>
 					</div>
 					<div class="row justify-content-center"><button class="btn col-md-4 loginbtn"> <i class="fa fa-user"></i> &nbsp; Sign Up</button></div>
+				</form>
 					<div class="row justify-content-center mt-2">
 						<span> Already have an account? &nbsp; <a href="#" class="getlink" data-toggle="modal" data-target="#loginModal" data-dismiss="modal">Login</a> </span>
 					</div>
@@ -262,18 +264,21 @@
 				<div class=" col-xl-3 col-lg-3 col-md-3 col-sm-12 col-12 mb-3 d-none d-sm-none d-xs-none d-md-block">
 					<div class="hs_logo_wrapper ">
 						<a href="<?=base_url()?>">
-							<img src="<?=base_url()?>assets/frontend/images/cabme_logo.png" alt="">
+							<img src="<?=base_url()?>assets/frontend/images/cabmenewlogo.png" alt="" width="80%">
 						</a>
 					</div>
 				</div>
 				<div class="col-xl-9 col-lg-9 col-md-9 col-sm-12 col-12">
-					<div class="hs_navi_cart_wrapper  d-none d-sm-none d-xs-none d-md-block d-lg-block d-xl-block">
-						<div class="dropdown-wrapper menu-button menu_button_end"> <a class="menu-button" href="#"> <i class="fa fa-user"></i></a>
-							<div class="drop-menu">
+					<div class="row justify-content-end mobileheaderbtn" style="margin-top: 30px;">
+						<button class="btn bg-b mr-3" data-toggle="modal" data-target="#signupModal"> <span style="color: #fff;"> <i class="fa fa-user"></i> &nbsp;Sign Up </span></button>
+						<button class="btn bg-b mr-3" data-toggle="modal" data-target="#loginModal"> <span style="color: #fff;"> <i class="fa fa-power-off"></i> &nbsp;Login </span></button>
+						<div class="dropdown-wrapper menu-button menu_button_end ml-2"> <a class="menu-button" href="#">
+								<i class="fa fa-user" style="color: #fff;font-size: 20px;margin-top: 10px;"></i></a>
+							<div class="drop-menu" style="top: 90%;right: -100px;">
 								<div class="cc_cart_wrapper1">
 									<div class="cc_cart_img_wrapper">
 										<i class="fa fa-user"></i> &nbsp;
-										<a href="my_profile.html#profile">My Profile</a>
+										<a href="my_profile.html">My Profile</a>
 									</div>
 								</div>
 								<div class="cc_cart_wrapper1 cc_cart_wrapper2">
@@ -291,21 +296,12 @@
 							</div>
 						</div>
 					</div>
-					<button class="btn headerloginbtn" data-toggle="modal" data-target="#signupModal"><i class="fa fa-user"></i> &nbsp;Sign Up </button>
-					<button class="btn headerloginbtn mr-3" data-toggle="modal" data-target="#loginModal"><i class="fa fa-power-off"></i> &nbsp;Login </button>
 					<!--====================== Mobile Navigation Start ======================-->
 					<header class="mobail_menu d-none d-block d-xs-block d-sm-block d-md-none d-lg-none d-xl-none">
 						<div class="container-fluid">
 							<div class="row">
-								<div class="col-xs-6 col-sm-6 col-6">
-									<div class="hs_logo mb-3">
-										<a href="<?=base_url()?>">
-											<img src="images/cabme_logo.png" alt="Logo" title="Logo" width="90%">
-										</a>
-									</div>
-								</div>
-								<div class="col-xs-6 col-sm-6 col-6">
-									<div class="cd-dropdown-wrapper">
+								<div class="col-xs-6 col-sm-6 col-4">
+									<div class="cd-dropdown-wrapper" style="float: left;">
 										<a class="house_toggle" href="#0">
 											<i class="fa fa-bars" id="Capa_1" style="font-size:25px;color :red;"></i>
 										</a>
@@ -314,14 +310,13 @@
 									<nav class="cd-dropdown">
 										<div class="row mb-5">
 											<div class="col-10">
-												<h2><a href="<?=base_url()?>"><img src="<?=base_url()?>assets/frontend/images/cabme_logo.png" alt="cabme_logo" width="50%"></a></h2>
-												<p class="ml-4" style="margin-top: -10px;">demo@gmail.com</p>
+												<p class="ml-4 mt-3">demo@gmail.com</p>
 											</div>
 											<div class="col-2">
 												<a href="#0" class="cd-close" style="margin-right: 25px;">Close</a>
 											</div>
 											<ul class="cd-dropdown-content mobilelinks mt-3">
-												<li class="mb-3 mt-5">
+												<li class="mb-3 mt-2">
 													<button class="btn ml-5" data-toggle="modal" data-target="#loginModal" style="background-color:red;color: #fff;"><i class="fa fa-power-off"></i>
 														&nbsp;Login </button>
 													<button class="btn ml-5" data-toggle="modal" data-target="#signupModal" style="background-color:red;color: #fff;"><i class="fa fa-user"></i> &nbsp;Sign
@@ -356,10 +351,18 @@
 													<a href="#">Log Out</a>
 												</li>
 												</li>
+												<h2><a href="index.html"><img src="images/cabme_logo.png" alt="cabme_logo" width="50%"></a></h2>
 											</ul>
 										</div>
 										<!-- .cd-dropdown-content -->
 									</nav>
+								</div>
+								<div class="col-xs-6 col-sm-6 col-8">
+									<div class="hs_logo mb-3">
+										<a href="<?=base_url()?>">
+											<img src="<?=base_url()?>assets/frontend/images/cabmenewlogo.png" alt="Logo" title="Logo" width="60%" style="margin-left:-15px;">
+										</a>
+									</div>
 								</div>
 							</div>
 						</div>

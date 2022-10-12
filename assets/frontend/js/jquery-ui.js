@@ -4757,7 +4757,7 @@
     }
 
     function Datepicker() {
-        this._curInst = null; 
+        this._curInst = null;
         this._keyEvent = false;
         this._disabledInputs = [];
         this._datepickerShowing = false;

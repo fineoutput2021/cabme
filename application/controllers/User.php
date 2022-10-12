@@ -167,10 +167,10 @@ class User extends CI_Controller
              $zapak2 = $this->db->update('tbl_users', $update);
              if($zapak2==1){
              $this->session->set_flashdata('smessage', 'Profile updated successfully!');
-             redirect('Home/my_profile', 'refresh');
+             redirect('Home/my_profile/account', 'refresh');
            }else{
              $this->session->set_flashdata('emessage', 'Some unknown error occurred');
-             redirect('Home/my_profile', 'refresh');
+             redirect('Home/my_profile/account', 'refresh');
            }
           } else {
               $this->session->set_flashdata('emessage', validation_errors());

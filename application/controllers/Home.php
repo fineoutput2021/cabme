@@ -15,18 +15,44 @@ class Home extends CI_Controller
     public function index()
     {
 
-        $this->db->select('*');
-        $this->db->from('tbl_banner');
-        $this->db->order_by('id', 'desc');
-        $this->db->where('is_active', 1);
-        $data['banner_data']= $this->db->get();
-
+        $data['banner_data'] = $this->db->order_by('id', 'desc')->get_where('tbl_banner', array('is_active'=> 1))->result();
+        $data['testimonials_data'] = $this->db->order_by('id', 'desc')->get_where('tbl_testimonials', array('is_active'=> 1))->result();
 
         $this->load->view('frontend/common/header', $data);
         $this->load->view('frontend/index');
         $this->load->view('frontend/common/footer');
     }
-
+    //================================================= SELF DRIVE CARS ======================================
+    public function self_drive_cars()
+    {
+      $this->load->helper(array('form', 'url'));
+      $this->load->library('form_validation');
+      $this->load->helper('security');
+      if ($this->input->post()) {
+          $this->form_validation->set_rules('city_id', 'city_id', 'required|xss_clean|trim');
+          $this->form_validation->set_rules('start_date', 'start_date', 'required|xss_clean|trim');
+          $this->form_validation->set_rules('start_time', 'start_time', 'required|xss_clean|trim');
+          $this->form_validation->set_rules('end_date', 'end_date', 'required|xss_clean|trim');
+          $this->form_validation->set_rules('end_time', 'end_time', 'required|xss_clean|trim');
+          if ($this->form_validation->run()== true) {
+              $city_id=$this->input->post('city_id');
+              $start_date=$this->input->post('start_date');
+              $start_time=$this->input->post('start_time');
+              $end_date=$this->input->post('end_date');
+              $end_time=$this->input->post('end_time');
+            echo $end_time;die();
+              $this->load->view('frontend/common/header2', $data);
+              $this->load->view('frontend/filter_products');
+              $this->load->view('frontend/common/footer2');
+          } else {
+              $this->session->set_flashdata('emessage', validation_errors());
+              redirect($_SERVER['HTTP_REFERER']);
+          }
+      } else {
+          $this->session->set_flashdata('emessage', 'Please insert some data, No data available');
+          redirect($_SERVER['HTTP_REFERER']);
+      }
+    }
     //================================================= ALL PRODUCTS ======================================
     public function all_products($url, $sort="", $page_index="")
     {
