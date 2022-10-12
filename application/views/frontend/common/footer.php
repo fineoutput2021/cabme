@@ -69,7 +69,12 @@ $('#mc_'+id+'').addClass("city_active");
 $('.city_id').val(id);
 $('.city_title').html(name);
 }
-$( "#datepicker" ).datepicker({ minDate: 0});
+
+var diffMs = (Christmas - today); // milliseconds between now & Christmas
+var diffDays = Math.floor(diffMs / 86400000); // days
+var diffHrs = Math.floor((diffMs % 86400000) / 3600000); // hours
+var diffMins = Math.round(((diffMs % 86400000) % 3600000) / 60000); // minutes
+alert(diffDays + " days, " + diffHrs + " hours, " + diffMins + " minutes until Christmas =)");
 });
 //------ set city on click -------
 function set_city(obj){

@@ -104,6 +104,7 @@ jQuery(document).ready(function($) {
   /* 		Date and Tiem Picker
 /*-----------------------------------------------------------------------------------*/
   $('.datepicker').datepicker({ dateFormat: 'D dd M yy' });
+    $( ".datepicker" ).datepicker({ minDate: 0});
   $('.horizontal-datepicker').datepicker({ dateFormat: 'dd M yy' });
 
   $(document).ready(function() {
