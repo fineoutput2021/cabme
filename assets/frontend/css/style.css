@@ -1632,6 +1632,9 @@ width:100%;
 	position: relative;
 	padding: 10px 0;
 }
+.ui-state-disabled{
+	opacity:30%;
+}
 .ui-datepicker td span, .ui-datepicker td a {
 	text-align: center;
 }

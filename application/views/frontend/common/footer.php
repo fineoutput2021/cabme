@@ -100,7 +100,67 @@ function loadSuccessNotify(succ_message){
     function loadErrorNotify(message){
        notifyError(message);
     }
+//------ onchange on time and date -------
+$("#sdsd, #sded").change(function(){
+	var sdsd=$('#sdsd').val();
+	var sdst=$('#sdst').attr('data-time');
+	var sded=$('#sded').val();
+	var sdet=$('#sdet').attr('data-time');
+	// start date covert ------
+	var sd    = new Date(sdsd),
+		sdyr      = sd.getFullYear(),
+		sdmonth   = sd.getMonth() < 10 ? '0' + sd.getMonth() : sd.getMonth(),
+		sdday     = sd.getDate()  < 10 ? '0' + sd.getDate()  : sd.getDate(),
+		sdDate = sdyr + '-' + sdmonth + '-' + sdday;
+		// end date date covert ------
+		var ed    = new Date(sded),
+			edyr      = ed.getFullYear(),
+			edmonth   = ed.getMonth() < 10 ? '0' + ed.getMonth() : ed.getMonth(),
+			edday     = ed.getDate()  < 10 ? '0' + ed.getDate()  : ed.getDate(),
+			edDate = edyr + '-' + edmonth + '-' + edday;
+			//----- calculate diffrence --------
+			console.log('startdate= '+sdDate);
+			console.log('starttime= '+sdst);
+			console.log('enddate= '+edDate);
+			console.log('endtime= '+sdet);
 
+	if(sdDate !=''&& sdst !='undefined'&& edDate !=''&& sded !='undefined'){
+		var	diff  = new Date(edDate - sdDate);
+		 var days  = diff/1000/60/60/24;
+		alert(days)
+}
+});
+function time_change(){
+	var sdsd=$('#sdsd').val();
+	var sdst=$('#sdst').attr('data-time');
+	var sded=$('#sded').val();
+	var sdet=$('#sdet').attr('data-time');
+	// start date covert ------
+	var sd    = new Date(sdsd),
+    sdyr      = sd.getFullYear(),
+    sdmonth   = sd.getMonth() < 10 ? '0' + sd.getMonth() : sd.getMonth(),
+    sdday     = sd.getDate()  < 10 ? '0' + sd.getDate()  : sd.getDate(),
+    sdDate = sdyr + '-' + sdmonth + '-' + sdday;
+		// end date date covert ------
+		var ed    = new Date(sded),
+			edyr      = ed.getFullYear(),
+			edmonth   = ed.getMonth() < 10 ? '0' + ed.getMonth() : ed.getMonth(),
+			edday     = ed.getDate()  < 10 ? '0' + ed.getDate()  : ed.getDate(),
+			edDate = edyr + '-' + edmonth + '-' + edday;
+			//----- calculate diffrence --------
+			console.log('startdate= '+sdDate);
+			console.log('starttime= '+sdst);
+			console.log('enddate= '+edDate);
+			console.log('endtime= '+sdet);
+
+	if(sdDate !=''&& sdst !='undefined'&& edDate !=''&& sded !='undefined'){
+		var start = new Date(sdDate);
+		 var end   = new Date(edDate);
+		var	diff  = new Date(end - start);
+		 var days  = diff/1000/60/60/24;
+		 alert(days)
+}
+}
 //------ set city on load -------
 $(document).ready(function () {
 var id = localStorage.getItem("city_id");
@@ -271,7 +331,9 @@ if ("undefined" == typeof jQuery) throw new Error("MDTimePicker: This plugin req
 					s.input.trigger(e.Event("timechanged", {
 						time: t.time,
 						value: t.value
-					})).trigger("onchange"), s.hide()
+					}
+				)).trigger("onchange"), s.hide()
+				time_change()
 				}), n.clockHolder.buttonsHolder.btnCancel.click(function () {
 					s.hide()
 				}), s.input.on("keydown", function (e) {
@@ -309,7 +371,7 @@ if ("undefined" == typeof jQuery) throw new Error("MDTimePicker: This plugin req
 					o.setHour(s), o.switchView("minutes")
 				}), m.clock.hours.append(f)
 			}
-			for (var l = 0; 60 > l; l++) {
+			for (var l = 0; 60 > l; l+= 30) {
 				var v = 10 > l ? "0" + l : l,
 					h = (s + l * a) % n,
 					k = e('<div class="mdtp__digit rotate-' + h + '" data-minute="' + l + '"></div>');
@@ -480,7 +542,7 @@ if ("undefined" == typeof jQuery) throw new Error("MDTimePicker: This plugin req
 					})
 		})
 	}, e.fn.mdtimepicker.defaults = {
-		timeFormat: "hh:mm:ss.000",
+		timeFormat: "hh:mm:ss",
 		format: "h:mm tt",
 		theme: "blue",
 		readOnly: !0,

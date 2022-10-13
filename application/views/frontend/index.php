@@ -1,7 +1,7 @@
 	<!-- ================================ web Form slider start ======================================================= -->
 	<!-- hs Slider Start -->
 	<div class="slider-area float_left desktopmainslider">
-		<div id="carousel-example-generic" class="carousel slide" data-interval="false" data-ride="carousel">
+		<div id="carousel-example-generic" class="carousel slide" data-interval="5000" data-ride="carousel">
 			<div class="carousel-inner" role="listbox">
 				<div class="col-xl-5 col-lg-6 col-md-12 col-sm-12 col-12 d-none d-sm-none d-md-none  d-lg-block d-xl-block" style="position: absolute;z-index: 99;top: 25%;left: 10%;">
 					<div class="content_tabs">
@@ -38,28 +38,24 @@
 											<div class="col-md-6 " style="z-index: 0;display: flex;height: 70px;border: 1px solid rgb(212, 208, 208);padding: 0px;">
 												<div class="form-sec-header" style="height: 50px;padding: 12px 0px;">
 													<label class="cal-icon" style="margin-top: 10px;margin-left: 10px;">Start Date
-														<input type="text" name="start_date" placeholder="Date" class="form-control datepicker" style="border: none;padding-right: 0px;padding-left: 5px;background-color: transparent;">
+														<input type="text" id="sdsd" name="start_date" placeholder="Date" class="form-control datepicker" style="border: none;padding-right: 0px;padding-left: 5px;background-color: transparent;">
 													</label>
 												</div>
 												<div class="timepicker_div form-sec-headers" style="height: 50px;margin-top: 2px;width: 90px;padding: 12px 0px;">
 													<label class="cal-icon" style="margin-left: 8px;font-size: 11px;color: #000;font-weight: bold;margin-top: -3px;">START TIME
-														<input type="text" name="start_time" class="form-control timepicker" placeholder="Time" style="padding: 23px 0px;background-color: transparent;border: none;width: 90%;
-															margin-top: -10px;
-															margin-left: -5px;">
+														<input type="text" id="sdst" name="start_time" class="form-control timepicker" placeholder="Time" style="padding: 23px 0px;background-color: transparent;border: none;width: 90%;margin-top: -10px;margin-left: -5px;" value="">
 													</label>
 												</div>
 											</div>
 											<div class="col-md-6 " style="z-index: 0;display: flex;height: 70px;border: 1px solid rgb(212, 208, 208);padding: 0px;">
 												<div class="form-sec-header" style="height: 50px;padding: 12px 0px;">
 													<label class="cal-icon" style="margin-top: 10px;margin-left: 10px;">End Date
-														<input type="text" name="end_date" placeholder="Date" class="form-control datepicker" style="border: none;padding-right: 0px;padding-left: 5px;background-color: transparent;">
+														<input type="text" id="sded" name="end_date" placeholder="Date" class="form-control datepicker" style="border: none;padding-right: 0px;padding-left: 5px;background-color: transparent;">
 													</label>
 												</div>
 												<div class="timepicker_div form-sec-headers" style="height: 50px;margin-top: 2px;width: 90px;padding: 12px 0px;">
 													<label class="cal-icon" style="margin-left: 8px;font-size: 11px;color: #000;font-weight: bold;margin-top: -3px;">END TIME
-														<input type="text" name="end_time" class="form-control timepicker" placeholder="Time" style="padding: 23px 0px;background-color: transparent;border: none;width: 90%;
-														margin-top: -10px;
-														margin-left: -5px;">
+														<input type="text" id="sdet" name="end_time" class="form-control timepicker" placeholder="Time" style="padding: 23px 0px;background-color: transparent;border: none;width: 90%;margin-top: -10px;margin-left: -5px;" value="">
 													</label>
 												</div>
 											</div>
