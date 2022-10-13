@@ -13,6 +13,8 @@
 	<link rel="stylesheet" type="text/css" href="<?=base_url()?>assets/frontend/css/cabme.css" />
 	<!--favicon-->
 	<link rel="shortcut icon" type="image/png" href="<?=base_url()?>assets/frontend/images/cabmenewlogo.png" />
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="<?=base_url()?>assets/frontend/js/bootstrap-notify.min.js"></script>
 	<style>
 		.mobilenav-tabs .nav-item .nav-link {
 			padding-left: 16px;
@@ -184,7 +186,6 @@
 	<div class="modal fade" id="loginModal" role="dialog" style="z-index: 999999;">
 		<div class="modal-dialog">
 			<!-- Modal content-->
-			<form method="post" enctype="multipart/form-data" action="<?=base_url()?>User/self_drive_cars">
 			<div class="modal-content loginModal-content">
 				<div class="modal-header">
 					<div class="col-md-11 text-center">
@@ -194,21 +195,24 @@
 					</div>
 				</div>
 				<div class="modal-body">
+				<form method="post" id="loginForm"  enctype="multipart/form-data" action="javascript:void(0)">
 					<div class="formsix-pos">
 						<div class="form-group mb-4">
-							<input type="text" class="form-control modalinput" required="" placeholder="Enter Mobile Number *">
+							<input type="text" class="form-control modalinput" required="" name="phone" id="loginPhone" placeholder="Enter Mobile Number *"  onkeypress="return isNumberKey(event)" maxlength="10" minlength="10" >
 						</div>
-						<div class="form-group">
-							<input type="text" class="form-control modalinput" required="" placeholder="Enter OTP *">
+						<div class="form-group" style="display:none" id="loginotp_div">
+							<input type="text" class="form-control modalinput" name="otp" id="loginOTP" placeholder="Enter OTP *" onkeypress="return isNumberKey(event)" maxlength="6" minlength="6">
 						</div>
 					</div>
-					<div class="row justify-content-center"><button class="btn col-md-4 loginbtn"> <i class="fa fa-power-off"></i> &nbsp; Login</button></div>
+						<input type="hidden" id="loginverify" value="0" name="loginverify" />
+					<div class="row justify-content-center mt-4">
+						<button class="btn col-md-4 loginbtn" type="submit"> <i class="fa fa-power-off"></i> &nbsp; Login</button></div>
+				</form>
 					<div class="row justify-content-center mt-2">
 						<span> Dont't have account yet? &nbsp; <a href="#" class="getlink" data-toggle="modal" data-target="#signupModal" data-dismiss="modal">Sign Up</a> </span>
 					</div>
 				</div>
 			</div>
-			</form>
 		</div>
 	</div>
 	<!--======login Modal End ======-->
@@ -225,27 +229,28 @@
 					</div>
 				</div>
 				<div class="modal-body">
-						<form method="post" enctype="multipart/form-data" action="<?=base_url()?>User/register_process">
+						<form method="post" id="registerForm"  enctype="multipart/form-data" action="javascript:void(0)">
 					<div class="formsix-pos">
 						<div class="row">
 							<div class="form-group mb-4 col-md-6 col-12">
-								<input type="text" name="fname" class="form-control modalinput" required="" placeholder="First Name *">
+								<input type="text" name="fname" id="signupFname" class="form-control modalinput" required="" placeholder="First Name *">
 							</div>
 							<div class="form-group col-md-6 col-12">
-								<input type="text" name="lname" class="form-control modalinput" required="" placeholder="Last Name*">
+								<input type="text" name="lname" id="signupLname" class="form-control modalinput" required="" placeholder="Last Name*">
 							</div>
 							<div class="form-group col-md-6 col-12">
-								<input type="text" name="email" class="form-control modalinput" required="" placeholder="E-mail*">
+								<input type="email" name="email" id="signupEmail" class="form-control modalinput" required="" placeholder="E-mail*">
 							</div>
 							<div class="form-group mb-4 col-md-6 col-12">
-								<input type="text" name="phone" class="form-control modalinput" required="" placeholder="Enter mobile Number*">
+								<input type="text" name="phone" id="signupPhone" class="form-control modalinput" required="" placeholder="Enter mobile Number*" onkeypress="return isNumberKey(event)" maxlength="10" minlength="10">
 							</div>
-							<!-- <div class="form-group col-md-12 col-12">
-								<input type="text" class="form-control modalinput" required="" placeholder="Enter OTP*">
-							</div> -->
+							<input type="hidden" id="signupverify" value="0" name="signupverify" />
+							<div class="form-group col-md-12 col-12" style="display:none" id="otp_div">
+								<input type="text" class="form-control modalinput" id="signupOTP"  name="signupOTP"   placeholder="Enter OTP*" onkeypress="return isNumberKey(event)" maxlength="6" minlength="6">
+							</div>
 						</div>
 					</div>
-					<div class="row justify-content-center"><button class="btn col-md-4 loginbtn"> <i class="fa fa-user"></i> &nbsp; Sign Up</button></div>
+					<div class="row justify-content-center"><button class="btn col-md-4 loginbtn" type="submit"> <i class="fa fa-user"></i> &nbsp; Sign Up</button></div>
 				</form>
 					<div class="row justify-content-center mt-2">
 						<span> Already have an account? &nbsp; <a href="#" class="getlink" data-toggle="modal" data-target="#loginModal" data-dismiss="modal">Login</a> </span>
@@ -270,10 +275,15 @@
 				</div>
 				<div class="col-xl-9 col-lg-9 col-md-9 col-sm-12 col-12">
 					<div class="row justify-content-end mobileheaderbtn" style="margin-top: 30px;">
+					  <?if(empty($this->session->userdata('user_data'))){?>
 						<button class="btn bg-b mr-3" data-toggle="modal" data-target="#signupModal"> <span style="color: #fff;"> <i class="fa fa-user"></i> &nbsp;Sign Up </span></button>
 						<button class="btn bg-b mr-3" data-toggle="modal" data-target="#loginModal"> <span style="color: #fff;"> <i class="fa fa-power-off"></i> &nbsp;Login </span></button>
-						<div class="dropdown-wrapper menu-button menu_button_end ml-2"> <a class="menu-button" href="#">
-								<i class="fa fa-user" style="color: #fff;font-size: 20px;margin-top: 10px;"></i></a>
+						<?}else{?>
+						<div class="dropdown-wrapper menu-button menu_button_end ml-2 text-center">
+							 <a class="menu-button" href="#">
+								<i class="fa fa-user" style="color: #fff;font-size: 20px;margin-top: 10px;"></i><br />
+								<span  style="color: #fff;"><?=$this->session->userdata('name')?></span>
+							</a>
 							<div class="drop-menu" style="top: 90%;right: -100px;">
 								<div class="cc_cart_wrapper1">
 									<div class="cc_cart_img_wrapper">
@@ -290,11 +300,12 @@
 								<div class="cc_cart_wrapper1">
 									<div class="cc_cart_img_wrapper mt-3">
 										<i class="fa fa-power-off"></i> &nbsp;
-										<a href="#">Logout</a>
+										<a href="<?=base_url()?>User/logout">Logout</a>
 									</div>
 								</div>
 							</div>
 						</div>
+						<?}?>
 					</div>
 					<!--====================== Mobile Navigation Start ======================-->
 					<header class="mobail_menu d-none d-block d-xs-block d-sm-block d-md-none d-lg-none d-xl-none">

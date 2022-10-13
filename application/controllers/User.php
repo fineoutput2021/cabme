@@ -23,49 +23,15 @@ class User extends CI_Controller
         if ($this->input->post()) {
             $this->form_validation->set_rules('fname', 'fname', 'required|xss_clean|trim');
             $this->form_validation->set_rules('lname', 'lname', 'required|xss_clean|trim');
+            $this->form_validation->set_rules('email', 'email', 'required|xss_clean|trim');
             $this->form_validation->set_rules('phone', 'phone', 'required|xss_clean|trim');
             if ($this->form_validation->run()== true) {
                 $fname=$this->input->post('fname');
                 $lname=$this->input->post('lname');
-                $phone=$this->input->post('phone');
-                //-------------- register user  with otp ------------
-                $Register = $this->login->RegisterWithOtp($fname, $lname, $phone);
-                echo $Register;
-            } else {
-                $this->session->set_flashdata('emessage', validation_errors());
-                redirect($_SERVER['HTTP_REFERER']);
-            }
-        } else {
-            $this->session->set_flashdata('emessage', 'Please insert some data');
-            redirect($_SERVER['HTTP_REFERER']);
-        }
-    }
-    //=============================================== RESELLER REGISTER =============================================================
-    public function reseller_register_process()
-    {
-        $this->load->helper(array('form', 'url'));
-        $this->load->library('form_validation');
-        $this->load->helper('security');
-        if ($this->input->post()) {
-            $this->form_validation->set_rules('name', 'name', 'required|xss_clean|trim');
-            $this->form_validation->set_rules('email', 'email', 'required|xss_clean|trim');
-            $this->form_validation->set_rules('shopname', 'shopname', 'required|xss_clean|trim');
-            $this->form_validation->set_rules('gstnumber', 'gstnumber', 'xss_clean|trim');
-            $this->form_validation->set_rules('address', 'address', 'required|xss_clean|trim');
-            $this->form_validation->set_rules('city', 'city', 'required|xss_clean|trim');
-            $this->form_validation->set_rules('state', 'state', 'required|xss_clean|trim');
-            $this->form_validation->set_rules('phone', 'phone', 'required|xss_clean|trim');
-            if ($this->form_validation->run()== true) {
-                $name=$this->input->post('name');
                 $email=$this->input->post('email');
-                $shopname=$this->input->post('shopname');
-                $gstnumber=$this->input->post('gstnumber');
-                $address=$this->input->post('address');
-                $city=$this->input->post('city');
-                $state=$this->input->post('state');
                 $phone=$this->input->post('phone');
                 //-------------- register user  with otp ------------
-                $Register = $this->login->ResellerRegisterWithOtp($name, $email, $shopname, $address, $city, $state, $gstnumber, $phone);
+                $Register = $this->login->RegisterWithOtp($fname, $lname, $phone,$email);
                 echo $Register;
             } else {
                 $this->session->set_flashdata('emessage', validation_errors());
@@ -76,6 +42,7 @@ class User extends CI_Controller
             redirect($_SERVER['HTTP_REFERER']);
         }
     }
+
     //=============================================== USER REGISTER OTP VERIFY =============================================================
     public function register_otp_verify()
     {
@@ -223,35 +190,6 @@ class User extends CI_Controller
       }
     }
 
-    //======================================= REDEEM POINTS ==================================================
-    public function redeem_points(){
-        $this->load->helper(array('form', 'url'));
-      	$this->load->library('form_validation');
-      	$this->load->helper('security');
-      	if($this->input->post())
-      	{
-      	$this->form_validation->set_rules('points', 'points', 'required|xss_clean|trim');
-      	$this->form_validation->set_rules('accountnumber', 'accountnumber', 'required|xss_clean|trim');
-      	$this->form_validation->set_rules('ifsccode', 'ifsccode', 'required|xss_clean|trim');
-      	$this->form_validation->set_rules('name', 'name', 'required|xss_clean|trim');
-
-      		if($this->form_validation->run()== TRUE)
-      		{
-             $points=$this->input->post('points');
-             $accountnumber=$this->input->post('accountnumber');
-             $ifsccode=$this->input->post('ifsccode');
-             $name=$this->input->post('name');
-             $submit_request = $this->forms->redeemModelPoints($points, $accountnumber, $ifsccode, $points);
-             redirect('Home/my_profile', 'refresh');
-          } else {
-              $this->session->set_flashdata('emessage', validation_errors());
-              redirect($_SERVER['HTTP_REFERER']);
-          }
-      } else {
-          $this->session->set_flashdata('emessage', 'Please insert some data, No data available');
-          redirect($_SERVER['HTTP_REFERER']);
-      }
-    }
 
     //======================================== USER LOGOUT ========================================================
     public function logout()

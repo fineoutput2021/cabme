@@ -1,86 +1,34 @@
 // =========================================================== REGISTER USER ===========================================================
 $("#registerForm").on('submit',function(e){
   e.preventDefault();
-  var fname = $('#signinFname').val()
-  var lname = $('#signinLname').val()
-  var phone = $('#signinPhone').val()
-  var verify = $('#signinverify').val()
+  var fname = $('#signupFname').val()
+  var lname = $('#signupLname').val()
+  var email = $('#signupEmail').val()
+  var phone = $('#signupPhone').val()
+  var verify = $('#signupverify').val()
   if(verify==0){
     $.ajax({
     type: "POST",
     url: base_url+'User/register_process',
-    data: {phone: phone, fname: fname, lname: lname},
+    data: {phone: phone, fname: fname, lname: lname, email: email},
     dataType: "json",
     success: function(response) {
       if(response.status==true){
         notifySuccess(response.message)
-        $('.hidden-OTP-field').css('display', 'inline')
-        $('#signinFname').attr('readonly', 'readonly')
-        $('#signinLname').attr('readonly', 'readonly')
-        $('#signinPhone').attr('readonly', 'readonly')
-        $('#signinOTP').attr('required', 'required')
-        $('#signinverify').val(1)
+        $('#otp_div').css('display', 'inline')
+        $('#signupFname').attr('readonly', 'readonly')
+        $('#signupLname').attr('readonly', 'readonly')
+        $('#signupEmail').attr('readonly', 'readonly')
+        $('#signupPhone').attr('readonly', 'readonly')
+        $('#signupOTP').attr('required', 'required')
+        $('#signupverify').val(1)
       }else{
         notifyError(response.message)
       }
     }
   });
 }else if(verify==1){
-    var otp = $('#signinOTP').val()
-    $.ajax({
-    type: "POST",
-    url: base_url +'User/register_otp_verify',
-    data: {phone: phone, otp: otp},
-    dataType: "json",
-    success: function(response) {
-      if(response.status==true){
-        notifySuccess(response.message)
-        location.reload()
-      }else{
-        notifyError(response.message)
-        location.reload()
-      }
-    }
-  });
-  }
-});
-
-
-// ========================================= REGISTER RESELLER ===========================================================
-$("#reseller_resgisteration_form").on('submit',function(e){
-  e.preventDefault();
-  var name = $('#rename').val()
-  var email = $('#reemail').val()
-  var shopname = $('#reshopname').val()
-  var gstnumber = $('#regstnumber').val()
-  var city = $('#recity').val()
-  var address = $('#readdress').val()
-  var state = $('#restate').val()
-  var phone = $('#rephonenumber').val()
-  var verify = $('#reverify').val()
-  if(verify==0){
-    $.ajax({
-    type: "POST",
-    url: base_url+'User/reseller_register_process',
-    data: {name: name, email: email, shopname: shopname, gstnumber: gstnumber, city: city, state: state, phone: phone, address: address},
-    dataType: "json",
-    success: function(response) {
-      if(response.status==true){
-        notifySuccess(response.message)
-        $('.hidden-OTP-field').css('display', 'inline')
-        $('#reseller_row').css('display', 'none')
-        document.getElementById("reSendbtn").innerHTML = "Register";
-        $('#reConfirmPhone').val(phone)
-        $('#reConfirmPhone').attr("readonly", "readonly")
-        $('#reOTP').attr("required", "required")
-        $('#reverify').val(1)
-      }else{
-        notifyError(response.message)
-      }
-    }
-  });
-}else if(verify==1){
-    var otp = $('#reOTP').val()
+    var otp = $('#signupOTP').val()
     $.ajax({
     type: "POST",
     url: base_url +'User/register_otp_verify',
@@ -112,7 +60,7 @@ $("#loginForm").on('submit',function(e){
     dataType: "json",
     success: function(response) {
       if(response.status==true){
-        $('.hidden-OTP-field').css('display', 'inline')
+        $('#loginotp_div').css('display', 'inline')
         $('#loginPhone').attr('readonly', 'readonly')
         $('#loginOTP').attr('required', 'required')
         $('#loginverify').val(1)

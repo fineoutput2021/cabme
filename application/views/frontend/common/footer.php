@@ -7,7 +7,6 @@
 				<div class="x_footer_bottom_box_wrapper float_left">
 					<img src="<?=base_url()?>assets/frontend/images/cabmenewlogo.png" alt="" width="50%">
 					<p style="color: #797979;">© 2022 Fineoutput Technology Pvt Ltd. All rights reserved</p>
-
 				</div>
 			</div>
 			<div class="col-xl-4 col-lg-4 col-md-4 col-sm-12 col-12">
@@ -46,6 +45,15 @@
 
 </body>
 <script src="<?=base_url()?>assets/frontend/js/jquery-3.3.1.min.js"></script>
+<script type="text/javascript">
+var base_url = "<?=base_url()?>"
+</script>
+<!-- Alert Notification js -->
+<script src="<?=base_url()?>assets/frontend/customJS/notificationMessage.js"></script>
+<!-- Login Signup js -->
+<script src="<?=base_url()?>assets/frontend/customJS/loginSignup.js"></script>
+<!-- // - mixed js  -->
+<script src="<?=base_url()?>assets/frontend/customJS/mixed.js"></script>
 <script src="<?=base_url()?>assets/frontend/js/bootstrap.min.js"></script>
 <script src="<?=base_url()?>assets/frontend/js/modernizr.js"></script>
 <script src="<?=base_url()?>assets/frontend/js/select2.min.js"></script>
@@ -57,8 +65,42 @@
 <script src="<?=base_url()?>assets/frontend/js/jquery.bxslider.min.js"></script>
 <script src="<?=base_url()?>assets/frontend/js/jquery.magnific-popup.js"></script>
 <script src="<?=base_url()?>assets/frontend/js/xpedia.js"></script>
+<!-- scripts js -->
+<script src="<?=base_url()?>assets/frontend/js/scripts.js"></script>
+<script src="<?=base_url()?>assets/frontend/js/bootstrap-notify.min.js"></script>
+
 <!-- custom js-->
 <script>
+//================================== NOTIFY  ======================================
+$(document).ready(function() {
+<?php if (!empty($this->session->flashdata('emessage'))) { ?>
+ var fail_message = '<?php echo $this->session->flashdata('emessage')?>';
+ loadErrorNotify(fail_message);
+<?php  } ?>
+
+<?php  if (!empty($this->session->flashdata('validationemessage'))) {
+        $valid_errors = $this->session->flashdata('validationemessage');
+        $valid_errors = substr($valid_errors, 0, -1); ?>
+loadErrorNotify("<?=$valid_errors?>");
+<?php
+    } ?>
+
+<?php if (!empty($this->session->flashdata('smessage'))) { ?>
+  var succ_message = '<?php echo $this->session->flashdata('smessage');?>';
+  loadSuccessNotify(succ_message);
+ <?php  } ?>
+
+});
+//================================== SUCCESS NOTIFY  ======================================
+
+function loadSuccessNotify(succ_message){
+  notifySuccess(succ_message);
+}
+//================================== FAIL NOTIFY  ======================================
+    function loadErrorNotify(message){
+       notifyError(message);
+    }
+
 //------ set city on load -------
 $(document).ready(function () {
 var id = localStorage.getItem("city_id");
@@ -70,11 +112,6 @@ $('.city_id').val(id);
 $('.city_title').html(name);
 }
 
-var diffMs = (Christmas - today); // milliseconds between now & Christmas
-var diffDays = Math.floor(diffMs / 86400000); // days
-var diffHrs = Math.floor((diffMs % 86400000) / 3600000); // hours
-var diffMins = Math.round(((diffMs % 86400000) % 3600000) / 60000); // minutes
-alert(diffDays + " days, " + diffHrs + " hours, " + diffMins + " minutes until Christmas =)");
 });
 //------ set city on click -------
 function set_city(obj){

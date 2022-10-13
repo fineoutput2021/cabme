@@ -16,7 +16,13 @@ document.getElementById("referalcode").value = getSavedValue("referalcode");
 //   $('#zip').val(getSavedValue("pincode"))
 // }
 // }
-
+//============= NUMBER VALIDATION =============
+function isNumberKey(evt){
+    var charCode = (evt.which) ? evt.which : evt.keyCode
+    if (charCode > 31 && (charCode < 48 || charCode > 57))
+        return false;
+    return true;
+}
 function getSavedValue(v) {
   if (!localStorage.getItem(v)) {
     return ""; // You can change this to your defualt value.
