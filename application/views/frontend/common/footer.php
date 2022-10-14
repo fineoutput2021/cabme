@@ -124,11 +124,11 @@ $("#sdsd, #sded").change(function(){
 			console.log('enddate= '+edDate);
 			console.log('endtime= '+sdet);
 
-	if(sdDate !=''&& sdst !='undefined'&& edDate !=''&& sded !='undefined'){
-		var	diff  = new Date(edDate - sdDate);
-		 var days  = diff/1000/60/60/24;
-		alert(days)
-}
+// 	if(sdDate !=''&& sdst !='undefined'&& edDate !=''&& sded !='undefined'){
+// 		var	diff  = new Date(edDate - sdDate);
+// 		 var days  = diff/1000/60/60/24;
+// 		alert(days)
+// }
 });
 function time_change(){
 	var sdsd=$('#sdsd').val();
@@ -153,12 +153,18 @@ function time_change(){
 			console.log('enddate= '+edDate);
 			console.log('endtime= '+sdet);
 
-	if(sdDate !=''&& sdst !='undefined'&& edDate !=''&& sded !='undefined'){
+	if((sdDate !='')&& (typeof sdst !== "undefined")&& (edDate !='')&& (typeof sded !== "undefined")){
 		var start = new Date(sdDate);
 		 var end   = new Date(edDate);
-		var	diff  = new Date(end - start);
-		 var days  = diff/1000/60/60/24;
-		 alert(days)
+		  var diff= (( new Date(edDate+" " +sdet) - new Date(sdDate+" " +sdst) ) / 1000 / 60 / 60 );
+			var days =  diff/24;
+			var hours =  diff%24;
+			if(hours!=0){
+				$('#s_duration').html("Duration: "+days+" day, "+hours+" hours")
+			}else{
+					$('#s_duration').html("Duration: "+days+" day")
+			}
+				$('#duration').val(diff);
 }
 }
 //------ set city on load -------

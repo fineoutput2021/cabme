@@ -10,6 +10,7 @@ class Home extends CI_Controller
         parent::__construct();
         $this->load->model("admin/login_model");
         $this->load->model("admin/base_model");
+        $this->load->library("custom/Booking");
     }
     //=============================================== Index ==============================================================
     public function index()
@@ -34,13 +35,16 @@ class Home extends CI_Controller
           $this->form_validation->set_rules('start_time', 'start_time', 'required|xss_clean|trim');
           $this->form_validation->set_rules('end_date', 'end_date', 'required|xss_clean|trim');
           $this->form_validation->set_rules('end_time', 'end_time', 'required|xss_clean|trim');
+          $this->form_validation->set_rules('duration', 'duration', 'required|xss_clean|trim');
           if ($this->form_validation->run()== true) {
               $city_id=$this->input->post('city_id');
               $start_date=$this->input->post('start_date');
               $start_time=$this->input->post('start_time');
               $end_date=$this->input->post('end_date');
               $end_time=$this->input->post('end_time');
-            echo $end_time;die();
+              $duration=$this->input->post('duration');
+              $car_data = $this->Booking->ViewSelfDriveCars($city_id, $start_date, $start_time, $end_date, $end_time, $duration);
+
               $this->load->view('frontend/common/header2', $data);
               $this->load->view('frontend/filter_products');
               $this->load->view('frontend/common/footer2');

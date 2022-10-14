@@ -60,9 +60,10 @@
 												</div>
 											</div>
 											<div class="text-center col-md-12 col-12 p-2">
-												<h6>Duration: 1 day, 2 hours</h6>
+												<h6 id="s_duration"></h6>
 											</div>
 										</div>
+										<input type="hidden" name="duration" value="" id="duration">
 										<div class="col-md-12">
 											<div class="row mt-4 justify-content-center">
 												<a href="self_cars.html" class=" col-md-10 text-center">
