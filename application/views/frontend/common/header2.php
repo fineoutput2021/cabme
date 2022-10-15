@@ -25,6 +25,51 @@
 </head>
 
 <body>
+
+
+	<!--====== Sort By Modal ======-->
+
+	<div class="sortbyModal fade" id="sortbyModal" role="dialog">
+		<div class="modal-dialog">
+
+			<!-- Modal content-->
+			<div class=" sortbyModal-content modal-content" style="z-index: 999999;">
+				<div class="modal-header p-1">
+					<div class="col-md-11 col-11 text-center">
+						<h6 class="modal-title">Sort By</h6>
+					</div>
+					<div class="col-md-1 col-1"> <button type="button" class="close"
+							data-dismiss="modal">&times;</button>
+					</div>
+
+				</div>
+				<div class="modal-body">
+					<ul class="sortul">
+						<li>
+							<a href="#">Popularity</a>
+						</li>
+						<li>
+							<a href="#">Price: &nbsp; Low To High</a>
+
+						</li>
+						<li>
+							<a href="#">Price: &nbsp; High To Low</a>
+						</li>
+						<!-- <li>
+							<a href="#">Extra Km Charges: &nbsp; Low To High</a>
+						</li>
+						<li>
+							<a href="#">Extra Km Charges: &nbsp; High To Low</a>
+						</li> -->
+					</ul>
+
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!--======Sort By Modal End ======-->
+
 	<!--====== Info Modal ======-->
 	<div class="modal fade " id="searchbtn" role="dialog">
 		<div class="modal-dialog " style="width: auto;">
@@ -111,7 +156,7 @@
 			<!-- Modal content-->
 			<div class="modal-content ">
 				<div class="modal-header">
-					<h4 class="modal-title">Select City</h4>
+					<h4 class="modal-title" >Select City</h4>
 					<button type="button" class="close" data-dismiss="modal">&times;</button>
 				</div>
 				<div class="modal-body">
@@ -383,6 +428,53 @@
 				</div>
 			</div>
 		</div>
-		
+    <div class="container-fluid p-2" style="background-color: #fff;">
+    				<div class="container">
+    				<div class="row mobileform" style="border-radius: 10px;display: flex;flex-wrap: nowrap;">
+    					<div class="col-md-3 col-12 p-0" data-toggle="modal" data-target="#selectcity" data-dismiss="modal">
+    						<div class="selectcity" style="border: 1px solid rgb(226, 225, 225);height: 55px;">
+    							<i class="fa fa-map-marker"></i>
+    							<h5 class="city_title">Select City</h5>
+    						</div>
+    					</div>
+    					<div class="col-md-3 col-6 mobileradius"
+    						style="z-index: 0;display: flex;height: 54px;padding: 0px;border: 1px solid rgb(226, 225, 225);margin-top: 1px;">
+    						<div class="form-sec-header" style="height: 50px;">
+    							<label class="cal-icon" style="top:11px;left: 10px;"> Start Date
+    								<input type="text" placeholder="" value="<?=$search[0]->start_date?>" class="form-control datepicker"
+    									style="border: none;padding-right: 0px;padding-left: 1px;margin-top: -5px;background: transparent;">
+    							</label>
+
+    						</div>
+    						<div class="timepicker_div form-sec-header" style="height: 50px;width: 80px;margin-left: 12px;">
+    							<label class="cal-icon" style="top:11px;left: 10px;">TIME
+    								<input type="text" class="form-control timepicker" placeholder="" value="<?=$search[0]->start_time?>"
+    									style="background-color: transparent;border: none;margin-left: -13px; margin-top: -5px; width: 122%;">
+    						</div>
+    					</div>
+
+    					<div class="col-md-3 col-6 mobileradius brright"
+    						style="z-index: 0;display: flex;height: 54px;padding: 0px;border: 1px solid rgb(226, 225, 225);margin-top: 1px;">
+    						<div class="form-sec-header" style="height: 50px;">
+    							<label class="cal-icon" style="top:11px;left: 10px;"> End Date
+    								<input type="text" placeholder="" value="<?=$search[0]->end_date?>" class="form-control datepicker"
+    									style="border: none;padding-right: 0px;padding-left: 1px;margin-top: -5px;background: transparent;">
+    							</label>
+
+    						</div>
+    						<div class="timepicker_div form-sec-header" style="height: 50px;width: 80px;margin-left: 12px;">
+    							<label class="cal-icon" style="top:11px;left: 10px;">TIME
+    								<input type="text" class="form-control timepicker" placeholder="" value="<?=$search[0]->end_time?>"
+    									style="background-color: transparent;border: none;margin-left: -13px; margin-top: -5px; width: 122%;">
+    						</div>
+    					</div>
+    					<button class="headerbtn mt-2 desktopbtn shadowbtn pdbtn"
+    						style="height: 45px;font-weight: bold;letter-spacing: 1px;margin-left: 20px;">Search</button>
+    				</div>
+    				<div class="text-center col-md-12 col-12 pt-2">
+    				<h6>Duration: 1 day, 2 hours</h6>
+    					</div>
+    			</div>
+    			</div>
 	</div>
 	<!-- HeaqderEnd -->

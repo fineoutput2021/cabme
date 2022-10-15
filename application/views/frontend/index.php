@@ -64,6 +64,7 @@
 											</div>
 										</div>
 										<input type="hidden" name="duration" value="" id="duration">
+										<input type="hidden" name="index" value="1" id="index">
 										<div class="col-md-12">
 											<div class="row mt-4 justify-content-center">
 												<a href="self_cars.html" class=" col-md-10 text-center">

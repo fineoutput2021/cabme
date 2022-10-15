@@ -43,11 +43,21 @@ class Home extends CI_Controller
               $end_date=$this->input->post('end_date');
               $end_time=$this->input->post('end_time');
               $duration=$this->input->post('duration');
-              $car_data = $this->Booking->ViewSelfDriveCars($city_id, $start_date, $start_time, $end_date, $end_time, $duration);
+              date_default_timezone_set("Asia/Calcutta");
+              $cur_date=date("Y-m-d H:i:s");
+              $data_insert = array(
+              'city_id'=>$city_id,
+              'start_date'=>$start_date,
+              'start_time'=>$start_time,
+              'end_date'=>$end_date,
+              'end_time'=>$end_time,
+              'duration'=>$duration,
+              'date'=>$cur_date,
+                        );
+              $last_id=$this->base_model->insert_table("tbl_search",$data_insert,1) ;
+              $id = base64_encode($last_id);
+              redirect("Home/show_self_drive_cars/$id");
 
-              $this->load->view('frontend/common/header2', $data);
-              $this->load->view('frontend/filter_products');
-              $this->load->view('frontend/common/footer2');
           } else {
               $this->session->set_flashdata('emessage', validation_errors());
               redirect($_SERVER['HTTP_REFERER']);
@@ -56,6 +66,29 @@ class Home extends CI_Controller
           $this->session->set_flashdata('emessage', 'Please insert some data, No data available');
           redirect($_SERVER['HTTP_REFERER']);
       }
+    }
+    //========================== self drive cars ============================
+    public function show_self_drive_cars($idd){
+       $id=base64_decode($idd);
+      $data['id']=$idd;
+      $search = $this->db->get_where('tbl_search', array('id'=> $id))->result();
+      $send= array(
+        'city_id'=>$search[0]->city_id,
+        'start_date'=>$search[0]->start_date,
+        'start_time'=>$search[0]->start_time,
+        'end_date'=>$search[0]->end_date,
+        'end_time'=>$search[0]->end_time,
+        'duration'=>$search[0]->duration,
+        // 'index'=>$index,
+      );
+      $car_data = $this->booking->ViewSelfDriveCars($send);
+      $data['car_data']= $car_data['car_data'];
+      $data['search']= $search;
+
+      $this->load->view('frontend/common/header2', $data);
+      $this->load->view('frontend/self_drive_cars');
+      $this->load->view('frontend/common/footer');
+
     }
     //================================================= ALL PRODUCTS ======================================
     public function all_products($url, $sort="", $page_index="")

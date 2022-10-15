@@ -130,6 +130,7 @@ class Self_drive extends CI_finecontrol
 'extra_kilo'=>$extra_kilo,
 'rsda'=>$rsda,
 'is_active' =>1,
+'is_availabe' =>1,
 'date'=>$cur_date
 );
                         $last_id=$this->base_model->insert_table("tbl_selfdrive", $data_insert, 1) ;

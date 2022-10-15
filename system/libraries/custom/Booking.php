@@ -1,5 +1,4 @@
 <?php
-
 if (! defined('BASEPATH')) {
     exit('No direct script access allowed');
 }
@@ -12,71 +11,105 @@ class CI_Booking
         $this->CI->load->helper('form');
         $this->CI->load->model("admin/login_model");
         $this->CI->load->model("admin/base_model");
-
+        $this->CI->load->library('pagination');
     }
-
     //======================== VIEW SELF DRIVE CARS ====================
-
-    public function ViewSelfDriveCars($city_id, $start_date, $start_time, $end_date, $end_time, $duration)
+    public function ViewSelfDriveCars($receive)
     {
-            $sub_total=0;
-            $total_weight=0;
-            $price = 0;
-            $cart_info = [];
-            $user_id= $this->CI->session->userdata('user_id');
-            $user_type= $this->CI->session->userdata('user_type');
-            $cart_data = $this->CI->db->get_where('tbl_cart', array('user_id= ' => $user_id, 'user_type'=>$user_type));
-            foreach ($cart_data->result() as $cart) {
-                $total=0;
-                $weight=0;
-                $pro_data = $this->CI->db->get_where('tbl_product', array('id = ' => $cart->product_id,'is_active' => 1))->result();
-                $type_data = $this->CI->db->get_where('tbl_type', array('id = ' => $cart->type_id,'is_active' => 1))->result();
-                $size_data = $this->CI->db->get_where('tbl_size', array('id = ' => $type_data[0]->size_id,'is_active' => 1))->result();
-                $color_data = $this->CI->db->get_where('tbl_colour', array('id = ' => $type_data[0]->colour_id,'is_active' => 1))->result();
-                //---- manage type image-------
-                if (!empty($type_data[0]->image)) {
-                    $image=base_url().$type_data[0]->image;
-                } else {
-                    $image="";
-                }
-                //---- stock status-----
-                if ($type_data[0]->inventory>0) {
-                    $stock=1;
-                } else {
-                    $stock=0;
-                }
-                //------ manage price ------
-                if ($user_type==1) {//------ for retailer ----
-                  $price = $type_data[0]->retailer_spgst;
-                } elseif ($user_type==2) {//---- for reselller -----
-                    $price = $type_data[0]->reseller_spgst;
-                }
-                $cart_info[] = array('type_id'=>$cart->type_id,
-                    'product_id'=>$pro_data[0]->id,
-                    'product_name'=>$pro_data[0]->name,
-                    'product_image'=>base_url().$pro_data[0]->image1,
-                    'size'=>$size_data[0]->name,
-                    'color'=>$color_data[0]->colour_name,
-                    'colorcode'=>$color_data[0]->name,
-                    'image'=>$image,
-                    'price'=>$price,
-                    'quantity'=>$cart->quantity,
-                    'total'=>$price * (int)$cart->quantity,
-                    'stock' => $stock
-                    );
-                $total = $price * (int)$cart->quantity;
-                $sub_total= $sub_total + $total;//--calculate sub total
-                $weight = $pro_data[0]->weight * (int)$cart->quantity;
-                $total_weight= $total_weight + $weight;//--calculate total weight
+      // print_r();die();
+      //   if(!empty($receive['index'])){
+      //     //--------- pagination config ----------------------
+      //   $count = $this->CI->db->get_where('tbl_selfdrive', array('city_id'=> $receive['city_id'],'is_available'=> 1,'is_active'=>1))->num_rows();
+      //         $config['base_url'] = base_url().'Home/self_drive_cars?city_id='.$receive['city_id'].'&start_date='.$receive['start_date'].'&start_time='.$receive['start_time'].'&end_date='.$receive['end_date'].'&end_time='.$receive['end_time'].'&duration='.$receive['duration'].'&index=';
+      //         $per_page = 1;
+      //         $config['total_rows'] = $count;
+      //         $config['per_page'] = $per_page;
+      //         $config['num_links'] = 5;
+      //         $config['full_tag_open'] = '<ul class="pagination">';
+      //         $config['full_tag_close'] = '</ul>';
+      //         $config['use_page_numbers'] = true;
+      //         $config['next_link'] = 'First';
+      //         $config['first_tag_open'] = '<li class="first page">';
+      //         $config['first_tag_close'] = '</li>';
+      //         $config['last_link'] = 'Last';
+      //         $config['last_tag_open'] = '<li class="last page">';
+      //         $config['last_tag_close'] = '</li>';
+      //         $config['next_link'] = 'Next';
+      //         $config['next_tag_open'] = '<li class="page-item nextpage">';
+      //         $config['next_tag_close'] = '</li>';
+      //         $config['prev_link'] = ' Previous';
+      //         $config['prev_tag_open'] = '<li class="page-item prevpage">';
+      //         $config['prev_tag_close'] = '</li>';
+      //         $config['cur_tag_open'] = '<li class="page-item"><a href="">';
+      //         $config['cur_tag_close'] = '</a></li>';
+      //         $config['num_tag_open'] = '<li class="page-item">';
+      //         $config['num_tag_close'] = '</li>';
+      //         $this->CI->pagination->initialize($config);
+      //         if (!empty($receive['index'])) {
+      //             // $i = $per_page * ($page - 1) + 1;
+      //             $start = ($receive['index'] - 1) * $config['per_page'];
+      //         } else {
+      //             $page_index = 0;
+      //             $start = 0;
+      //             // $i=1;
+      //         }
+      //   $self_cars = $this->CI->db->limit($config["per_page"], $start)->get_where('tbl_selfdrive', array('city_id'=> $receive['city_id'],'is_available'=> 1,'is_active'=>1))->result();
+      //     $links = $this->CI->pagination->create_links();
+      //     print_r($links);die();
+      // }else{
+          $self_cars = $this->CI->db->get_where('tbl_selfdrive', array('city_id'=> $receive['city_id'],'is_available'=> 1,'is_active'=>1))->result();
+      //     $links='';
+      // }
+      // print_r($self_cars);die();
+        $car_data=[];
+        foreach ($self_cars as $self) {
+            //------ fuel type ---
+            if ($self->fule_type==1) {
+                $fuel_type = 'Petrol';
+            } elseif ($self->fule_type==2) {
+                $fuel_type = 'Diesel';
+            } else {
+                $fuel_type = 'CNG';
             }
-            $respone['status'] = true;
-            $respone['message'] ="Success";
-            $respone['cart_data'] =$cart_info;
-            $respone['sub_total'] =$sub_total;
-            $respone['total_weight'] =$total_weight;
-            return $respone;
+            //------ Transmission  ---
+            if ($self->transmission==1) {
+                $transmission = 'Manual';
+            } elseif ($self->transmission==2) {
+                $transmission = 'Automatic';
+            }
+            //------ seating  ---
+            if ($self->seatting==1) {
+                $seating = '4 Seates';
+            } elseif ($self->seatting==2) {
+                $seating = '5 Seates';
+            } else {
+                $seating = '7 Seates';
+            }
+            $days =$receive['duration']*24;
+            $car_data[] = array('city_id'=>$self->city_id,
+                    'car_id'=>$self->id,
+                    'brand_name'=>$self->brand_name,
+                    'car_name'=>$self->car_name,
+                    'photo'=>$self->photo,
+                    'fuel_type'=>$fuel_type,
+                    'transmission'=>$transmission,
+                    'seating'=>$seating,
+                    'kilometer1'=>$self->kilometer1*$days,
+                    'price1'=>$self->price1*$days,
+                    'kilometer2'=>$self->kilometer2*$days,
+                    'price2'=>$self->price2*$days,
+                    'kilometer3'=>$self->kilometer3*$days,
+                    'price3'=>$self->price3*$days,
+                    'extra_kilo'=>$self->extra_kilo,
+                    'rsda'=>$self->rsda,
+                    );
+        }
+        $respone['status'] = true;
+        $respone['message'] ="Success";
+        $respone['car_data'] =$car_data;
+        // $respone['links'] =$links;
+        return $respone;
         // return json_encode($respone);
-
     }
     //=========================== END AFTER LOGIN CART ========================================
 }

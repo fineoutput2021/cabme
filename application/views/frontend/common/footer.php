@@ -194,6 +194,11 @@ $('#selectcity2').modal('hide');
 $('.city_title').html(name);
 
 }
+
+//------ planchange -----
+function planChange(x){
+// alert(x);
+}
 function change(x) {
 	if (x == 1) {
 		$('#change').html(
