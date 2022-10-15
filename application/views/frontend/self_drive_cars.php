@@ -203,9 +203,9 @@
         <div class="x_carbooking_right_section_wrapper float_left">
           <div class="row mt-2">
             <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
-              <div class="float-left mt-3 col-md-6 col-12 mobilejustify">
+              <!-- <div class="float-left mt-3 col-md-6 col-12 mobilejustify">
                 <h5>Car Rental In: &nbsp; <span style="font-size: 20px;color: black;margin-top: -5px;" >Jaipur</span></h5>
-              </div>
+              </div> -->
               <div class="x_carbook_right_select_box_wrapper float-right desktopsortbydiv"> <span style="font-size: 17px;color: #494848;font-weight: bold;">Sort By: &nbsp;</span>
                 <select class="myselect">
                   <option>Popularity</option>
@@ -241,12 +241,12 @@
                       </div>
                       <div class="x_offer_tabs_wrapper">
                         <ul class="nav nav-tabs All_Car_tabs w-100 mt-3" style="display: inline-flex; flex-wrap: nowrap;">
-                          <li class="nav-item" onclick="planChange(<?=$i?>)"> <a class="nav-link active" data-toggle="tab" href="#first" id="km1_<?=$i?>"> ₹ <?=$cars['price1']?> <br><span style="font-size:10px"><?=$cars['kilometer1']?> Kms</span></a>
+                          <li class="nav-item" onclick="planChange(<?=$i?>,1)"> <a class="nav-link active" data-toggle="tab" href="#first" id="km1_<?=$i?>"> ₹ <?=$cars['price1']?> <br><span style="font-size:10px"><?=$cars['kilometer1']?> Kms</span></a>
                           </li>
-                          <li class="nav-item" onclick="planChange(<?=$i?>)"> <a class="nav-link " data-toggle="tab" href="#second" id="km2_<?=$i?>"> ₹ <?=$cars['price2']?> <br><span style="font-size:10px"><?=$cars['kilometer2']?> Kms</span>
+                          <li class="nav-item" onclick="planChange(<?=$i?>,2)"> <a class="nav-link " data-toggle="tab" href="#second" id="km2_<?=$i?>"> ₹ <?=$cars['price2']?> <br><span style="font-size:10px"><?=$cars['kilometer2']?> Kms</span>
                             </a>
                           </li>
-                          <li class="nav-item" onclick="planChange(<?=$i?>)"> <a class="nav-link" data-toggle="tab" href="#third" id="km3_<?=$i?>"> ₹ <?=$cars['price3']?> <br> <span style="font-size:10px"><?=$cars['kilometer3']?> Kms</span>
+                          <li class="nav-item" onclick="planChange(<?=$i?>,3)"> <a class="nav-link" data-toggle="tab" href="#third" id="km3_<?=$i?>"> ₹ <?=$cars['price3']?> <br> <span style="font-size:10px"><?=$cars['kilometer3']?> Kms</span>
                             </a>
                           </li>
                         </ul>
@@ -258,6 +258,8 @@
                               Extra charge @ <?=$cars['extra_kilo']?>/Kms
                             </div>
                             <div class="col-md-4 col-4 p-0">
+                              <?if(!empty($this->session->userdata('user_data'))){?>
+                              <form method="post" enctype="multipart/form-data" action="<?=base_url()?>Home/self_drive_calculate">
                               <input type="hidden" name="start_date" value="<?=$search[0]->start_date?>">
                               <input type="hidden" name="start_time" value="<?=$search[0]->start_time?>">
                               <input type="hidden" name="end_date" value="<?=$search[0]->end_date?>">
@@ -266,8 +268,13 @@
                               <input type="hidden" name="city_id" value="<?=$cars['city_id']?>">
                               <input type="hidden" name="car_id" value="<?=$cars['car_id']?>">
                               <input type="hidden" name="type_id" id="ct_<?=$i?>" value="1">
-                              <a href="summary.html"><button class="bookbtn shadowbtn">Book
-                                  &nbsp; <i class="fa fa-angle-double-right"></i></button></a>
+                              <button class="bookbtn shadowbtn">Book
+                              &nbsp; <i class="fa fa-angle-double-right"></i></button>
+                            </form>
+                            <?}else{?>
+                            <button class="bookbtn shadowbtn" data-toggle="modal" data-target="#loginModal">Book
+                            &nbsp; <i class="fa fa-angle-double-right"></i></button>
+                              <?}?>
                             </div>
                           </div>
                         </ul>

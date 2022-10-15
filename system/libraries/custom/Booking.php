@@ -111,5 +111,53 @@ class CI_Booking
         return $respone;
         // return json_encode($respone);
     }
-    //=========================== END AFTER LOGIN CART ========================================
+    //=========================== SELF DRIVE CAR CALCULATE ========================================
+    public function selfDriveCarCalculate($receive){
+      $ip = $this->CI->input->ip_address();
+      date_default_timezone_set("Asia/Calcutta");
+      $cur_date=date("Y-m-d H:i:s");
+      // echo $receive['type_id'];die();
+      //------ get car data --------
+      $car_data = $this->CI->db->get_where('tbl_selfdrive', array('id'=> $receive['car_id']))->result();
+      //----- check kilometer plan ------
+      if($receive['type_id']==1){
+      $kilometer = $car_data[0]->kilometer1;
+      $kilometer_price = $car_data[0]->price1;
+      }else if($receive['type_id']==2){
+        $kilometer = $car_data[0]->kilometer2;
+        $kilometer_price = $car_data[0]->price3;
+      }else{
+        $kilometer = $car_data[0]->kilometer3;
+        $kilometer_price = $car_data[0]->price3;
+      }
+      //---- calculate total amount -------
+      $rsda = $car_data[0]->rsda;
+      $total = $kilometer_price*$receive['duration'];
+      $final_amount = $total + $rsda;
+      $user_id=$this->CI->session->userdata('user_id');
+      //------- insert into booking table --------
+          $data_insert = array('user_id'=>$user_id,
+              'booking_type'=>1,
+              'rsda'=>$rsda,
+              'kilometer'=>$kilometer,
+              'kilometer_price'=>$kilometer_price,
+              'total_amount'=>$total,
+              'final_amount'=>$final_amount,
+              'city_id'=>$receive['city_id'],
+              'start_date'=>$receive['start_date'],
+              'start_time'=>$receive['start_time'],
+              'end_date'=>$receive['end_date'],
+              'end_time'=>$receive['end_time'],
+              'duration'=>$receive['duration'],
+              'city_id'=>$receive['city_id'],
+              'car_id'=>$receive['car_id'],
+              'kilometer_type'=>$receive['type_id'],
+              'order_status'=>0,
+              'payment_status'=>0,
+              'ip'=>$ip,
+              'date'=>$cur_date,
+                  );
+          $last_id=$this->CI->base_model->insert_table("tbl_booking",$data_insert,1) ;
+          return $last_id;
+    }
 }

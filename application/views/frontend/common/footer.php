@@ -195,9 +195,9 @@ $('.city_title').html(name);
 
 }
 
-//------ planchange -----
-function planChange(x){
-// alert(x);
+//------ plan change -----
+function planChange(x,y){
+$('#ct_'+x).val(y);
 }
 function change(x) {
 	if (x == 1) {
