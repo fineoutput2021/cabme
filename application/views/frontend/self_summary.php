@@ -1,3 +1,47 @@
+
+		<!--====== Change Plan Modal ======-->
+		<div class="modal fade " id="changeplan" role="dialog">
+			<div class="modal-dialog " style="width: auto;">
+
+				<!-- Modal content-->
+				<div class="modal-content ">
+					<div class="modal-header">
+						<h4 class="modal-title">Change Pricing Plan</h4>
+						<button type="button" class="close" data-dismiss="modal">&times;</button>
+					</div>
+					<p style="font-size: 18px;margin-top: 15px;">Change Plan</p>
+					<div class="x_offer_tabs_wrapper">
+						<ul class="nav nav-tabs All_Car_tabs plantabs w-100 mt-3"
+							style="display: inline-flex; flex-wrap: nowrap;">
+							<li class="nav-item"> <a class="nav-link <?if($booking_data[0]->kilometer_type==1){echo'active';}?>"
+									data-toggle="tab" href="#first"> ₹ <?=$car_data['price1']?> <br> <?=$car_data['kilometer1']?> Kms</a>
+							</li>
+							<li class="nav-item borderright"> <a class="nav-link <?if($booking_data[0]->kilometer_type==2){echo'active';}?> " data-toggle="tab"
+									href="#second"> ₹ <?=$car_data['price2']?> <br> <?=$car_data['kilometer2']?> Kms
+								</a>
+							</li>
+							<li class="nav-item" style="width: 34%;"> <a class="nav-link <?if($booking_data[0]->kilometer_type==3){echo'active';}?>" data-toggle="tab"
+									href="#third" > ₹ <?=$car_data['price3']?> <br> <?=$car_data['kilometer3']?> Kms
+								</a>
+							</li>
+						</ul>
+					</div>
+					<div class="modal-footer mt-2">
+						Please Note:
+						<ul>
+							<li style="font-size: 13px;">* Pricing plan cannot be changed after the creation of a booking
+								Extra Kms charge: Rs <?=$car_data['extra_kilo']?>/km</li>
+							<li style="font-size: 13px;">* We don not permit taking Cabme vehicles to Let/Ladakh region,
+								Kaza/Nako region and Spiti Valley</li>
+						</ul>
+					</div>
+				</div>
+
+			</div>
+		</div>
+
+		<!--====== Change Plan Modal End ======-->
+
 	<!-- btc tittle Wrapper Start -->
 	<div class="btc_tittle_main_wrapper" style="margin-top: 100px;">
 	  <div class="container-fluid">
@@ -6,11 +50,11 @@
 	        <div class="btc_tittle_right_heading">
 	          <div class="btc_tittle_right_cont_wrapper">
 	            <ul>
-	              <li><a href="index.html">Home</a> <i class="fa fa-angle-right"></i>
+	              <li><a href="<?=base_url()?>">Home</a> <i class="fa fa-angle-right"></i>
 	              </li>
-	              <li><a href="self_cars.html">self_cars</a> <i class="fa fa-angle-right"></i>
+	              <li><a href="<?=base_url()?>Home/show_self_drive_cars/<?=base64_encode($booking_data[0]->search_id)?>">Self Drive Car</a> <i class="fa fa-angle-right"></i>
 	              </li>
-	              <li>Summary</li>
+	              <li>Booking Summary</li>
 	            </ul>
 	          </div>
 	        </div>
@@ -23,24 +67,22 @@
 	<div class="coontainer-fluid" id="mobilecardetail" style="background-color: #fff;margin-top: 20px;padding: 20px;">
 	  <div class="row">
 	    <div class="col-md-12 col-xs-12 text-center">
-	      <img src="<?=base_url().$car_data[0]->photo?>" alt="c1" style="width: 50%;">
-	      <h3 style="margin-top: 10px;"><b><?=$car_data[0]->car_name?></b></h3>
-         <h4 style="margin-top: 3px;"><?=$car_data[0]->brand_name?></h4>
+	      <img src="<?=base_url().$car_data['photo']?>" alt="c1" style="width: 50%;">
+	      <h3 style="margin-top: 10px;"><b><?=$car_data['car_name']?></b></h3>
+         <h4 style="margin-top: 3px;" class="mb-1"><?=$car_data['brand_name']?></h4>
 	    </div>
 	    <div class="col-md-12 col-xs-12 text-center">
-	      <span>⚙️</span> <span>Manual</span>
-	      <span>⛽</span> <span>Petrol</span>
-	      <span>💺</span> <span>5 Seats</span>
+				<span>⚙️</span> <span><?=$car_data['transmission']?></span>
+ 			 <span>⛽</span> <span><?=$car_data['fuel_type']?></span>
+ 			 <span>💺</span> <span><?=$car_data['seating']?></span>
 	    </div>
 	  </div>
 	  <div class="row text-center" style="flex-wrap: nowrap;margin-top: 10px;">
-	    <div class="col-md-6 col-xs-6">
-	      <p>Start Date</p>
-	      <h6>20 Sep 2002</h6>
+	    <div class="col-md-6 col-xs-6 mt-2">
+	      <h6> <?=$booking_data[0]->start_date?> <br> <?=$booking_data[0]->start_time?></h6>
 	    </div> <span style="color: #000;margin-top: 12px;">To</span>
-	    <div class="col-md-6  col-xs-6">
-	      <p>End Date</p>
-	      <h6>22 Sep 2002</h6>
+	    <div class="col-md-6  col-xs-6 mt-2">
+				<h6> <?=$booking_data[0]->end_date?> <br> <?=$booking_data[0]->end_time?></h6>
 	    </div>
 	  </div>
 	  <div class="row text-center" style="flex-wrap: nowrap;margin-top: 10px;">
@@ -51,7 +93,7 @@
 	  </div>
 	  <div class="row  text-center">
 	    <div class="col-md-12" style="margin-top: 10px;">
-	      <p>Jaipur <span style="margin-left: 30px;"> <a href="#" style="color: red;" data-toggle="modal" data-target="#selectcity" data-dismiss="modal">Change City</a> </span> </p>
+	      <p><?=$city_data[0]->name?> <span style="margin-left: 30px;"> <a href="#" style="color: red;" data-toggle="modal" data-target="#selectcity" data-dismiss="modal">Change City</a> </span> </p>
 	    </div>
 	  </div>
 	  <div class="row text-center" style="flex-wrap: nowrap;margin-top: 10px;">
@@ -66,14 +108,14 @@
 	<div class="container-fluid desktopcardetail" style="background-color: #fff;margin-top: 10px;padding: 20px;">
 	  <div class="row" style="text-align: center;">
 	    <div class="col-md-6">
-	      <img src="<?=base_url().$car_data[0]->photo?>" alt="<?=$car_data[0]->car_name?>">
-	      <h4 style="margin-top: 30px;"><b><?=$car_data[0]->car_name?></b></h4>
-	      <h5 style="margin-top: 5px;"><?=$car_data[0]->brand_name?></h5>
+	      <img src="<?=base_url().$car_data['photo']?>" alt="<?=$car_data['car_name']?>">
+	      <h4 style="margin-top: 30px;"><b><?=$car_data['car_name']?></b></h4>
+	      <h5 style="margin-top: 5px;"><?=$car_data['brand_name']?></h5>
 	      <div class="row justify-content-center mt-2">
 	        <div class="col-md-12" class="carmanuals">
-	          <span>⚙️</span> <span><?=$car_data[0]->transmission?></span>
-	          <span>⛽</span> <span><?=$car_data[0]->fule_type?></span>
-	          <span>💺</span> <span><?=$car_data[0]->seatting?></span>
+	          <span>⚙️</span> <span><?=$car_data['transmission']?></span>
+	          <span>⛽</span> <span><?=$car_data['fuel_type']?></span>
+	          <span>💺</span> <span><?=$car_data['seating']?></span>
 	        </div>
 	      </div>
 	    </div>
@@ -96,7 +138,7 @@
 	        <div class="col-md-4" style="margin-top: 10px;">
 	          <p>Jaipur</p>
 	        </div>
-	        <div class="col-md-4" style="margin-top: 10px;"><span style="margin-left: 30px;"> <a href="#" style="color: red;" data-toggle="modal" data-target="#selectcity" data-dismiss="modal">Change City</a> </span></div>
+	        <div class="col-md-4" style="margin-top: 10px;"><span style="margin-left: 30px;"> <a href="<?=base_url()?>Home/show_self_drive_cars/<?=base64_encode($booking_data[0]->search_id)?>" style="color: red;">Change City</a> </span></div>
 	      </div>
 	      <div class="row">
 	        <div class="col-md-4 p-0" style="margin-top: 10px;">
@@ -154,7 +196,7 @@
 	                <h6 class="farelines">FARE DETAILS</h6>
 	                <p>Base fare <span>₹ <?=$booking_data[0]->total_amount?></span></p>
 	                <!-- <p>Doorstep delivery & pickup <span>₹ 200</span></p> -->
-	                <p>Insurance & GST <span>included</span></p>
+	                <p>Insurance & GST <span>Included</span></p>
 	                <p>Refundable Security Deposit <span>₹ <?=$booking_data[0]->rsda?></span></p>
 	                <div class="row mt-2">
 	                  <div class="x_slider_form_input_wrapper col-md-8 col-8 p-0">
@@ -170,7 +212,7 @@
 	                <p>Payment <span>₹ <?=$booking_data[0]->final_amount?></span></p>
 	                <!-- <p>Kms limit <span>131 kms</span></p> -->
 	                <p>Fuel <span>Excluded</span></p>
-	                <p>Extra kms charge <span>₹ <?=$car_data[0]->extra_kilo?>/km</span></p>
+	                <p>Extra kms charge <span>₹ <?=$car_data['extra_kilo']?>/km</span></p>
 	                <div class="x_slider_form_input_wrapper mt-2">
 	                  <input type="text" placeholder="Pick-Up Location" style="border: none;border-bottom: 1px solid grey;border-radius: 0px;">
 	                </div>

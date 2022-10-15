@@ -123,12 +123,22 @@ $("#sdsd, #sded").change(function(){
 			console.log('starttime= '+sdst);
 			console.log('enddate= '+edDate);
 			console.log('endtime= '+sdet);
-
-// 	if(sdDate !=''&& sdst !='undefined'&& edDate !=''&& sded !='undefined'){
-// 		var	diff  = new Date(edDate - sdDate);
-// 		 var days  = diff/1000/60/60/24;
-// 		alert(days)
-// }
+			if((sdDate !='NaN-NaN-NaN')&& (typeof sdst != "undefined")&& (edDate !='NaN-NaN-NaN')&& (typeof sded != "undefined")){
+				var start = new Date(sdDate);
+				 var end   = new Date(edDate);
+				  var diff= (( new Date(edDate+" " +sdet) - new Date(sdDate+" " +sdst) ) / 1000 / 60 / 60 );
+					var days =  parseInt(diff/24);
+					var hours =  diff%24;
+					if(hours>0 && days >0){
+						$('#s_duration').html("Duration: "+days+" day, "+hours+" hours")
+					}else if(hours==0 && days>0){
+							$('#s_duration').html("Duration: "+days+" day")
+					}else{
+							$('#s_duration').html("Duration: "+hours+" hours")
+					}
+						$('#duration').val(diff);
+						$('#self_btn').removeAttr('disabled');
+		}
 });
 function time_change(){
 	var sdsd=$('#sdsd').val();
@@ -153,11 +163,11 @@ function time_change(){
 			console.log('enddate= '+edDate);
 			console.log('endtime= '+sdet);
 
-	if((sdDate !='')&& (typeof sdst !== "undefined")&& (edDate !='')&& (typeof sded !== "undefined")){
+	if((sdDate !='NaN-NaN-NaN')&& (typeof sdst !== "undefined")&& (edDate !='NaN-NaN-NaN')&& (typeof sded !== "undefined")){
 		var start = new Date(sdDate);
 		 var end   = new Date(edDate);
 		  var diff= (( new Date(edDate+" " +sdet) - new Date(sdDate+" " +sdst) ) / 1000 / 60 / 60 );
-			var days =  diff/24;
+			var days =  parseInt(diff/24);
 			var hours =  diff%24;
 			if(hours!=0){
 				$('#s_duration').html("Duration: "+days+" day, "+hours+" hours")

@@ -101,6 +101,7 @@
 		</div>
 	</div>
 	<!--====== Info Modal End ======-->
+
 	<!--====== Select City Modal ======-->
 	<?
 	$top_data = $this->db->order_by('id', 'desc')->get_where('tbl_cities', array('is_active'=> 1,'top'=> 1))->result();
@@ -288,7 +289,7 @@
 								<div class="cc_cart_wrapper1">
 									<div class="cc_cart_img_wrapper">
 										<i class="fa fa-user"></i> &nbsp;
-										<a href="my_profile.html">My Profile</a>
+										<a href="<?=base_url()?>Home/my_profile">My Profile</a>
 									</div>
 								</div>
 								<div class="cc_cart_wrapper1 cc_cart_wrapper2">
@@ -334,20 +335,14 @@
 														Up
 													</button>
 												</li>
-												<li>
-													<a href="summary.html">Summary</a>
-												</li>
 												</li>
 												<li>
-													<a href="my_profile.html">My Profile</a>
+													<a href="<?=base_url()?>Home/my_profile">My Profile</a>
 												</li>
 												</li>
 												<li>
-													<a href="faq.html">FAQ's</a>
+													<a href="#">FAQ's</a>
 												</li>
-												</li>
-												<li>
-													<a href="#">Checkout</a>
 												</li>
 												</li>
 												<li>
@@ -359,10 +354,10 @@
 												</li>
 												</li>
 												<li>
-													<a href="#">Log Out</a>
+													<a href="<?=base_url()?>User/logout">Log Out</a>
 												</li>
 												</li>
-												<h2><a href="index.html"><img src="images/cabme_logo.png" alt="cabme_logo" width="50%"></a></h2>
+												<h2><a href="<?=base_url()?>"><img src="images/cabme_logo.png" alt="cabme_logo" width="50%"></a></h2>
 											</ul>
 										</div>
 										<!-- .cd-dropdown-content -->
@@ -383,6 +378,6 @@
 				</div>
 			</div>
 		</div>
-		
+
 	</div>
 	<!-- HeaqderEnd -->

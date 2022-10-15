@@ -268,6 +268,7 @@
                               <input type="hidden" name="city_id" value="<?=$cars['city_id']?>">
                               <input type="hidden" name="car_id" value="<?=$cars['car_id']?>">
                               <input type="hidden" name="type_id" id="ct_<?=$i?>" value="1">
+                              <input type="hidden" name="search_id" id="search_id" value="<?=$id?>">
                               <button class="bookbtn shadowbtn">Book
                               &nbsp; <i class="fa fa-angle-double-right"></i></button>
                             </form>

@@ -120,19 +120,20 @@ class CI_Booking
       //------ get car data --------
       $car_data = $this->CI->db->get_where('tbl_selfdrive', array('id'=> $receive['car_id']))->result();
       //----- check kilometer plan ------
+      $days =$receive['duration']*24;
       if($receive['type_id']==1){
-      $kilometer = $car_data[0]->kilometer1;
-      $kilometer_price = $car_data[0]->price1;
+      $kilometer = $car_data[0]->kilometer1*$days;
+      $kilometer_price = $car_data[0]->price1*$days;
       }else if($receive['type_id']==2){
-        $kilometer = $car_data[0]->kilometer2;
-        $kilometer_price = $car_data[0]->price3;
+        $kilometer = $car_data[0]->kilometer2*$days;
+        $kilometer_price = $car_data[0]->price2*$days;
       }else{
-        $kilometer = $car_data[0]->kilometer3;
-        $kilometer_price = $car_data[0]->price3;
+        $kilometer = $car_data[0]->kilometer3*$days;
+        $kilometer_price = $car_data[0]->price3*$days;
       }
       //---- calculate total amount -------
       $rsda = $car_data[0]->rsda;
-      $total = $kilometer_price*$receive['duration'];
+      $total = $kilometer_price;
       $final_amount = $total + $rsda;
       $user_id=$this->CI->session->userdata('user_id');
       //------- insert into booking table --------
@@ -152,12 +153,52 @@ class CI_Booking
               'city_id'=>$receive['city_id'],
               'car_id'=>$receive['car_id'],
               'kilometer_type'=>$receive['type_id'],
+              'search_id'=>base64_decode($receive['search_id']),
               'order_status'=>0,
               'payment_status'=>0,
               'ip'=>$ip,
               'date'=>$cur_date,
                   );
           $last_id=$this->CI->base_model->insert_table("tbl_booking",$data_insert,1) ;
-          return $last_id;
+          $self= $this->CI->db->get_where('tbl_selfdrive', array('id'=> $receive['car_id']))->result();
+          //------ fuel type ---
+                      if ($self[0]->fule_type==1) {
+                          $fuel_type = 'Petrol';
+                      } elseif ($self[0]->fule_type==2) {
+                          $fuel_type = 'Diesel';
+                      } else {
+                          $fuel_type = 'CNG';
+                      }
+                      //------ Transmission  ---
+                      if ($self[0]->transmission==1) {
+                          $transmission = 'Manual';
+                      } elseif ($self->transmission==2) {
+                          $transmission = 'Automatic';
+                      }
+                      //------ seating  ---
+                      if ($self[0]->seatting==1) {
+                          $seating = '4 Seates';
+                      } elseif ($self[0]->seatting==2) {
+                          $seating = '5 Seates';
+                      } else {
+                          $seating = '7 Seates';
+                      }
+                      $car_data= array('city_id'=>$self[0]->city_id,
+                              'car_id'=>$self[0]->id,
+                              'brand_name'=>$self[0]->brand_name,
+                              'car_name'=>$self[0]->car_name,
+                              'photo'=>$self[0]->photo,
+                              'fuel_type'=>$fuel_type,
+                              'transmission'=>$transmission,
+                              'seating'=>$seating,
+                              'extra_kilo'=>$self[0]->extra_kilo,
+
+                              );
+                              $respone['status'] = true;
+                              $respone['message'] ="Success";
+                              $respone['car_data'] =$car_data;
+                              $respone['id'] =$last_id;
+                              // $respone['links'] =$links;
+                              return $respone;
     }
 }

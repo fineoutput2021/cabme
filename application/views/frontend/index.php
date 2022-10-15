@@ -38,24 +38,24 @@
 											<div class="col-md-6 " style="z-index: 0;display: flex;height: 70px;border: 1px solid rgb(212, 208, 208);padding: 0px;">
 												<div class="form-sec-header" style="height: 50px;padding: 12px 0px;">
 													<label class="cal-icon" style="margin-top: 10px;margin-left: 10px;">Start Date
-														<input type="text" id="sdsd" name="start_date" placeholder="Date" class="form-control datepicker" style="border: none;padding-right: 0px;padding-left: 5px;background-color: transparent;">
+														<input type="text" id="sdsd" name="start_date" placeholder="Date" required class="form-control datepicker" style="border: none;padding-right: 0px;padding-left: 5px;background-color: transparent;">
 													</label>
 												</div>
 												<div class="timepicker_div form-sec-headers" style="height: 50px;margin-top: 2px;width: 90px;padding: 12px 0px;">
 													<label class="cal-icon" style="margin-left: 8px;font-size: 11px;color: #000;font-weight: bold;margin-top: -3px;">START TIME
-														<input type="text" id="sdst" name="start_time" class="form-control timepicker" placeholder="Time" style="padding: 23px 0px;background-color: transparent;border: none;width: 90%;margin-top: -10px;margin-left: -5px;" value="">
+														<input type="text" id="sdst" name="start_time" class="form-control timepicker" required placeholder="Time" style="padding: 23px 0px;background-color: transparent;border: none;width: 90%;margin-top: -10px;margin-left: -5px;" value="">
 													</label>
 												</div>
 											</div>
 											<div class="col-md-6 " style="z-index: 0;display: flex;height: 70px;border: 1px solid rgb(212, 208, 208);padding: 0px;">
 												<div class="form-sec-header" style="height: 50px;padding: 12px 0px;">
 													<label class="cal-icon" style="margin-top: 10px;margin-left: 10px;">End Date
-														<input type="text" id="sded" name="end_date" placeholder="Date" class="form-control datepicker" style="border: none;padding-right: 0px;padding-left: 5px;background-color: transparent;">
+														<input type="text" id="sded" name="end_date" placeholder="Date" class="form-control datepicker" required style="border: none;padding-right: 0px;padding-left: 5px;background-color: transparent;">
 													</label>
 												</div>
 												<div class="timepicker_div form-sec-headers" style="height: 50px;margin-top: 2px;width: 90px;padding: 12px 0px;">
 													<label class="cal-icon" style="margin-left: 8px;font-size: 11px;color: #000;font-weight: bold;margin-top: -3px;">END TIME
-														<input type="text" id="sdet" name="end_time" class="form-control timepicker" placeholder="Time" style="padding: 23px 0px;background-color: transparent;border: none;width: 90%;margin-top: -10px;margin-left: -5px;" value="">
+														<input type="text" id="sdet" name="end_time" class="form-control timepicker" placeholder="Time" required style="padding: 23px 0px;background-color: transparent;border: none;width: 90%;margin-top: -10px;margin-left: -5px;" value="">
 													</label>
 												</div>
 											</div>
@@ -67,9 +67,11 @@
 										<input type="hidden" name="index" value="1" id="index">
 										<div class="col-md-12">
 											<div class="row mt-4 justify-content-center">
-												<a href="self_cars.html" class=" col-md-10 text-center">
-													<button class="btn col-md-10 searchbtn shadowbtn"> <i class="fa fa-search"></i> &nbsp; Search</button>
-												</a>
+												<?if(!empty($this->session->userdata('user_data'))){?>
+													<button class="btn col-md-10 searchbtn shadowbtn" type="submit" id="self_btn" disabled> <i class="fa fa-search"></i> &nbsp; Search</button>
+												<?}else{?>
+													<button class="btn col-md-10 searchbtn shadowbtn" data-toggle="modal" data-target="#loginModal"> <i class="fa fa-search"></i> &nbsp; Search</button>
+													<?}?>
 											</div>
 										</div>
 									</div>

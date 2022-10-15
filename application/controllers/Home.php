@@ -1,5 +1,4 @@
 <?php
-
 if (! defined('BASEPATH')) {
     exit('No direct script access allowed');
 }
@@ -102,6 +101,7 @@ class Home extends CI_Controller
             $this->form_validation->set_rules('city_id', 'city_id', 'required|xss_clean|trim');
             $this->form_validation->set_rules('car_id', 'car_id', 'required|xss_clean|trim');
             $this->form_validation->set_rules('type_id', 'type_id', 'required|xss_clean|trim');
+            $this->form_validation->set_rules('search_id', 'search_id', 'required|xss_clean|trim');
             if ($this->form_validation->run()== true) {
                 $city_id=$this->input->post('city_id');
                 $start_date=$this->input->post('start_date');
@@ -112,6 +112,7 @@ class Home extends CI_Controller
                 $city_id=$this->input->post('city_id');
                 $car_id=$this->input->post('car_id');
                 $type_id=$this->input->post('type_id');
+                $search_id=$this->input->post('search_id');
                 date_default_timezone_set("Asia/Calcutta");
                 $cur_date=date("Y-m-d H:i:s");
                 $send = array(
@@ -124,9 +125,10 @@ class Home extends CI_Controller
               'city_id'=>$city_id,
               'car_id'=>$car_id,
               'type_id'=>$type_id,
+              'search_id'=>$search_id,
                         );
-                $last_id = $this->booking->selfDriveCarCalculate($send);
-                $id = base64_encode($last_id);
+                $response = $this->booking->selfDriveCarCalculate($send);
+                $id = base64_encode($response['id']);
                 redirect("Home/self_drive_summary/$id");
             } else {
                 $this->session->set_flashdata('emessage', validation_errors());
@@ -141,11 +143,52 @@ public function self_drive_summary($idd){
    $id=base64_decode($idd);
   $data['id']=$idd;
   $data['booking_data'] = $this->db->get_where('tbl_booking', array('id'=> $id))->result();
-  $data['car_data'] = $this->db->get_where('tbl_selfdrive', array('id'=> $data['booking_data'][0]->car_id))->result();
+  $self = $this->db->get_where('tbl_selfdrive', array('id'=> $data['booking_data'][0]->car_id))->result();
+  //----- city data ---
+  $city = $this->db->get_where('tbl_cities', array('id'=> $data['booking_data'][0]->city_id))->result();
+$data['city_data']=$city;
+  //------ fuel type ---
+              if ($self[0]->fule_type==1) {
+                  $fuel_type = 'Petrol';
+              } elseif ($self[0]->fule_type==2) {
+                  $fuel_type = 'Diesel';
+              } else {
+                  $fuel_type = 'CNG';
+              }
+              //------ Transmission  ---
+              if ($self[0]->transmission==1) {
+                  $transmission = 'Manual';
+              } elseif ($self[0]->transmission==2) {
+                  $transmission = 'Automatic';
+              }
+              //------ seating  ---
+              if ($self[0]->seatting==1) {
+                  $seating = '4 Seates';
+              } elseif ($self[0]->seatting==2) {
+                  $seating = '5 Seates';
+              } else {
+                  $seating = '7 Seates';
+              }
+              $days =$data['booking_data'][0]->duration*24;
+              $car_data= array(
+                      'brand_name'=>$self[0]->brand_name,
+                      'car_name'=>$self[0]->car_name,
+                      'photo'=>$self[0]->photo,
+                      'fuel_type'=>$fuel_type,
+                      'transmission'=>$transmission,
+                      'seating'=>$seating,
+                      'kilometer1'=>$self[0]->kilometer1*$days,
+                            'price1'=>$self[0]->price1*$days,
+                            'kilometer2'=>$self[0]->kilometer2*$days,
+                            'price2'=>$self[0]->price2*$days,
+                            'kilometer3'=>$self[0]->kilometer3*$days,
+                            'price3'=>$self[0]->price3*$days,
+                      'extra_kilo'=>$self[0]->extra_kilo,
+                      );
+                        $data['car_data']=$car_data;
   $this->load->view('frontend/common/header', $data);
   $this->load->view('frontend/self_summary');
   $this->load->view('frontend/common/footer');
-
 }
     // ============================================ ABOUT =================================================
     public function about()
@@ -211,21 +254,11 @@ public function self_drive_summary($idd){
     // =========================================== MY PROFILE ===============================================
     public function my_profile()
     {
-        if (!empty($this->session->userdata('user_type'))) {
-            if ($this->session->userdata('user_type')==2) {
-                $data['user_data']= $this->db->get_where('tbl_reseller', array('id = ' => $this->session->userdata('user_id')))->result();
-            } else {
+        if (!empty($this->session->userdata('user_data'))) {
                 $data['user_data']= $this->db->get_where('tbl_users', array('id = ' => $this->session->userdata('user_id')))->result();
-            }
             if (!empty($data['user_data'])) {
                 if ($data['user_data'][0]->is_active==1) {
-                    if ($this->session->userdata('user_type')==2) {
-                        $data['order1_dataa'] = $this->db->order_by('id', 'desc')->get_where('tbl_order1', array('reseller_id = ' => $this->session->userdata('user_id'), 'order_status != '=>0));
-                    } else {
-                        $data['order1_dataa'] = $this->db->order_by('id', 'desc')->get_where('tbl_order1', array('user_id = ' => $this->session->userdata('user_id'), 'order_status != '=>0));
-                    }
-                    $data['model_table'] = $this->db->get_where('tbl_model_products', array('user_id = ' => $this->session->userdata('user_id')));
-                    $data['model_data_exists'] = $data['model_table']->result();
+                  $data['booking_data'] = $this->db->order_by('id', 'desc')->get_where('tbl_booking', array('user_id = ' => $this->session->userdata('user_id'), 'order_status != '=>0));
                     $this->load->view('frontend/common/header', $data);
                     $this->load->view('frontend/my_profile');
                     $this->load->view('frontend/common/footer');
@@ -239,6 +272,8 @@ public function self_drive_summary($idd){
                 $this->session->set_flashdata('emessage', 'User not found');
                 redirect("/", "refresh");
             }
+        }else{
+
         }
     }
     // ============================================ ORDER DETAILS ======================================================
@@ -254,7 +289,6 @@ public function self_drive_summary($idd){
             redirect("/", "refresh");
         }
     }
-
     public function contact_form_submit()
     {
         $this->load->helper(array('form', 'url'));
