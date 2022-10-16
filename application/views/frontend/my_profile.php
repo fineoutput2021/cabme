@@ -130,19 +130,34 @@
 						<table class="profiletable" style="height: auto;">
 							<thead>
 								<tr class="tr1">
-									<th>Car Model</th>
-									<th>Booking ID</th>
-									<th>Pickup Location</th>
-									<th>Action</th>
+                  <th>Booking ID</th>
+                  <th>Booknig Type</th>
+                  <th>Booking Amount</th>
+                  <th>Status</th>
+                  <th>Invoice</th>
 								</tr>
 							</thead>
 							<tbody>
+                <?php $i=1; foreach($booking_data as $booking) {?>
 								<tr>
-									<td>Modal</td>
-									<td>123456</td>
-									<td>jaipur</td>
-									<td><a href="table_detail.html" style="color: red;"> View </a></td>
+									<td>#<?=$booking->id?></td>
+									<td><?if($booking->booking_type==1){echo'Self Drive';}else if($booking->booking_type==2){echo'Outstation';}else{echo'Inertcity';}?></td>
+									<td>₹<?=$booking->final_amount?></td>
+									<td>
+                    <?if($booking->order_status==1){?>
+                    <span class="activespan bg-warning">Placed</span>
+                    <?}else if($booking->order_status==2){?>
+                      <span class="activespan bg-info">Accepted</span>
+                    <?}else if($booking->order_status==3){?>
+                      <span class="activespan bg-primarys">On Going</span>
+                    <?}else if($booking->order_status==4){?>
+                      <span class="activespan bg-success">Completed</span>
+                    <?}else{?>
+                    <span class="activespan bg-danger">Rejected</span>
+                    <?}?>
+                  </td>
 								</tr>
+                <?php $i++; } ?>
 							</tbody>
 						</table>
 					</div>
@@ -151,41 +166,34 @@
 						<table class="profiletable">
 							<thead>
 								<tr class="tr1">
-									<th>Car Model</th>
-									<th>Booking ID</th>
-									<th>Begin Date</th>
-									<th>Delivery Location</th>
-									<th>Pickup Location</th>
+                  <th>Booking ID</th>
+									<th>Booknig Type</th>
+									<th>Booking Amount</th>
 									<th>Status</th>
 									<th>Invoice</th>
 								</tr>
 							</thead>
 							<tbody>
+                <?php $i=1; foreach($booking_data as $booking) {?>
 								<tr>
-									<td>Modal</td>
-									<td>123456</td>
-									<td>12.03.2021</td>
-									<td>jaipur</td>
-									<td>Delhi</td>
-									<td><span class="activespan bg-success">Active</span></td>
+									<td>#<?=$booking->id?></td>
+									<td><?if($booking->booking_type==1){echo'Self Drive';}else if($booking->booking_type==2){echo'Outstation';}else{echo'Inertcity';}?></td>
+									<td>₹<?=$booking->final_amount?></td>
+									<td>
+                    <?if($booking->order_status==1){?>
+                    <span class="activespan bg-warning">Placed</span>
+                    <?}else if($booking->order_status==2){?>
+                      <span class="activespan bg-info">Accepted</span>
+                    <?}else if($booking->order_status==3){?>
+                      <span class="activespan bg-primarys">On Going</span>
+                    <?}else if($booking->order_status==4){?>
+                      <span class="activespan bg-success">Completed</span>
+                    <?}else{?>
+                    <span class="activespan bg-danger">Rejected</span>
+                    <?}?>
+                  </td>
 								</tr>
-								<tr>
-									<td>Modal</td>
-									<td>123456</td>
-									<td>12.03.2021</td>
-									<td>jaipur</td>
-									<td>Delhi</td>
-									<td><span class="pendingspan bg-warning">Pending</span></td>
-								</tr>
-								<tr>
-									<td>Modal</td>
-									<td>123456</td>
-									<td>12.03.2021</td>
-									<td>jaipur</td>
-									<td>Delhi</td>
-									<td><span class="completedspan bg-danger">Completed</span></td>
-									<td> <a href="#" class="invoicebtn">Download <i class="fa fa-download"></i> </a> </td>
-								</tr>
+                <?php $i++; } ?>
 							</tbody>
 						</table>
 

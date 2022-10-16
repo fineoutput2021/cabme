@@ -139,6 +139,7 @@ class Home extends CI_Controller
             redirect($_SERVER['HTTP_REFERER']);
         }
     }
+    //========================== SELF DRIVE SUMMARY =============================
 public function self_drive_summary($idd){
    $id=base64_decode($idd);
   $data['id']=$idd;
@@ -189,6 +190,22 @@ $data['city_data']=$city;
   $this->load->view('frontend/common/header', $data);
   $this->load->view('frontend/self_summary');
   $this->load->view('frontend/common/footer');
+}
+// ============ SELF DRIVE CHECKOUT ==========================
+public function self_checkout($idd){
+   $id=base64_decode($idd);
+  $data['id']=$idd;
+            $data_update = array('order_status'=>1,
+            'payment_status'=>1,
+              );
+              $this->db->where('id', $id);
+              $zapak=$this->db->update('tbl_booking', $data_update);
+    $booking_data = $this->db->get_where('tbl_booking', array('id'=> $id))->result();
+    $data['booking_id']=$booking_data[0]->id;
+    $data['amount']=$booking_data[0]->final_amount;
+    $this->load->view('frontend/common/header', $data);
+    $this->load->view('frontend/booking_success');
+    $this->load->view('frontend/common/footer');
 }
     // ============================================ ABOUT =================================================
     public function about()
@@ -258,7 +275,7 @@ $data['city_data']=$city;
                 $data['user_data']= $this->db->get_where('tbl_users', array('id = ' => $this->session->userdata('user_id')))->result();
             if (!empty($data['user_data'])) {
                 if ($data['user_data'][0]->is_active==1) {
-                  $data['booking_data'] = $this->db->order_by('id', 'desc')->get_where('tbl_booking', array('user_id = ' => $this->session->userdata('user_id'), 'order_status != '=>0));
+                  $data['booking_data'] = $this->db->order_by('id', 'desc')->get_where('tbl_booking', array('user_id = ' => $this->session->userdata('user_id'), 'order_status != '=>0))->result();
                     $this->load->view('frontend/common/header', $data);
                     $this->load->view('frontend/my_profile');
                     $this->load->view('frontend/common/footer');
@@ -273,7 +290,6 @@ $data['city_data']=$city;
                 redirect("/", "refresh");
             }
         }else{
-
         }
     }
     // ============================================ ORDER DETAILS ======================================================

@@ -201,4 +201,8 @@ class CI_Booking
                               // $respone['links'] =$links;
                               return $respone;
     }
+    //========= selfdrive booking checkout========
+    public function self_checkout(){
+      
+    }
 }

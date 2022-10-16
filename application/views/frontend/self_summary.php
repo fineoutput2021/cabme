@@ -218,7 +218,8 @@
 	                </div>
 	              </li>
 	            </ul>
-	            <button class="bookbtn col-md-4" data-toggle="modal" data-target="#proofModal" data-dismiss="modal">Pay</button>
+	            <!-- <button class="bookbtn col-md-4" data-toggle="modal" data-target="#proofModal" data-dismiss="modal">Pay</button> -->
+	            <a href="<?=base_url()?>Home/self_checkout/<?=base64_encode($booking_data[0]->id)?>"><button class="bookbtn col-md-4">Pay</button></a>
 	          </div>
 	        </div>
 	      </div>
