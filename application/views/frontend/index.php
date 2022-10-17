@@ -81,7 +81,7 @@
 						</div>
 						<!-- outstation Form Tab -->
 						<div id="second" class="tab-pane">
-							<form method="post" enctype="multipart/form-data" action="<?=base_url()?>">
+							<form method="post" enctype="multipart/form-data" action="<?=base_url()?>Home/outstaion_cars">
 							<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
 								<div class="x_slider_form_main_wrapper float_left" style="margin-top: -5px;padding-top: 5px;">
 									<div class="row justify-content-center" style="flex-wrap: nowrap;width: 100%;margin-top: 15px;">
@@ -97,12 +97,7 @@
 										<div id="location" style="display: flex;width: 100%;">
 											<div class="col-md-12 mb-3">
 												<div class="x_slider_select x_slider_select_2">
-													<select class="myselect">
-														<option>Pickup Location</option>
-														<option>Jaipur</option>
-														<option>Delhi</option>
-														<option>Mumbai</option>
-													</select> <i class="fa fa-map-marker"></i>
+														<input type="text" placeholder="Pickup Location"  name="pick_location" required class="form-control" style="">
 												</div>
 											</div>
 										</div>
@@ -113,30 +108,33 @@
 													<h5 style="margin-top: 3px;" class="city_title">Select City</h5>
 												</div>
 											</div>
-											<input type="hidden" name="city_id" class="city_id"  value=""/>
 											<div id="change2" style="display: flex;" class="col-md-12 col-12 p-0">
 												<div class="col-md-12 " style="z-index: 0;display: flex;height: 55px;border: 1px solid rgb(212, 208, 208);padding: 0px;justify-content: space-around;">
 													<div class="form-sec-header" style="height: 50px;">
 														<label class="cal-icon" style="margin-top: 10px;margin-left: 10px;">Start Date
-															<input type="text" placeholder="15 Sep 2022" class="form-control datepicker" style="border: none;padding-right: 0px;padding-left: 5px;background-color: transparent;">
+															<input type="text" placeholder="Date" name="start_date"  class="form-control datepicker" style="border: none;padding-right: 0px;padding-left: 5px;background-color: transparent;">
 														</label>
 													</div>
 													<div class="timepicker_div form-sec-headers" style="height: 50px;width: 90px;">
 														<label class="cal-icon" style="margin-left: 10px;font-size: 11px;color: #000;font-weight: bold;">START
 															TIME
-															<input type="text" class="form-control timepicker" placeholder="2:30PM" style="padding: 23px 0px;background-color: transparent;border: none;width: 84%;margin-top: -11px;">
+															<input type="text" name="start_time" class="form-control timepicker" placeholder="Time" style="padding: 23px 0px;background-color: transparent;border: none;width: 84%;margin-top: -11px;">
 														</label>
 													</div>
 												</div>
 											</div>
 										</div>
 										<input type="hidden" name="city_id" class="city_id"  value=""/>
-										<input type="hidden" name="round_type" id="round_type"  value=""/>
+										<input type="hidden" name="round_type" id="round_type"  value="1"/>
+										<input type="hidden" name="duration" value="" id="o_duration">
+
 										<div class="col-md-12 mt-3">
 											<div class="row mt-2 justify-content-center">
-												<a href="outstation_car.html" class=" col-md-10 text-center">
-													<button class="btn col-md-10 searchbtn shadowbtn"> <i class="fa fa-search"></i> &nbsp;Search</button>
-												</a>
+												<?if(!empty($this->session->userdata('user_data'))){?>
+													<button class="btn col-md-10 searchbtn shadowbtn" type="submit" id="outstation_btn"> <i class="fa fa-search"></i> &nbsp;Search</button>
+													<?}else{?>
+														<button class="btn col-md-10 searchbtn shadowbtn" data-toggle="modal" data-target="#loginModal"> <i class="fa fa-search"></i> &nbsp; Search</button>
+														<?}?>
 											</div>
 										</div>
 									</div>

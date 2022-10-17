@@ -71,4 +71,35 @@ class CI_Messages
             //echo $response;
         }
     }
+    public function sendOtpDigitalIndiasms($phone, $msg,$temp_id){
+      $sms_text = urlencode($msg);
+      //-------- Start Curl -----------
+      $curl = curl_init();
+      curl_setopt_array($curl, array(
+        CURLOPT_URL => "http://bulksms.thedigitalindia.in/index.php/smsapi/httpapi/?secret=".SMSAUTH."&sender=CABMEI&tempid=".$temp_id."&receiver=".$phone."&route=TA&msgtype=1&sms=".$sms_text."",
+        CURLOPT_RETURNTRANSFER => true,
+        CURLOPT_ENCODING => "",
+        CURLOPT_MAXREDIRS => 10,
+        CURLOPT_TIMEOUT => 30,
+        CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+        CURLOPT_CUSTOMREQUEST => "GET",
+        CURLOPT_POSTFIELDS => "",
+        CURLOPT_HTTPHEADER => array(
+          "Postman-Token: 29403299-fe01-4795-bf32-437b3bdb487b",
+          "cache-control: no-cache"
+        ),
+      ));
+
+      $response = curl_exec($curl);
+      $err = curl_error($curl);
+
+      curl_close($curl);
+
+      if ($err) {
+          echo "CURL Error #:" . $err;
+      } else {
+          //echo $response;
+      }
+
+    }
 }

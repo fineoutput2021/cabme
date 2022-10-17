@@ -1,5 +1,4 @@
 <?php
-
 if (! defined('BASEPATH')) {
     exit('No direct script access allowed');
 }
@@ -21,7 +20,7 @@ class Home extends CI_Controller
         $this->load->view('frontend/index');
         $this->load->view('frontend/common/footer');
     }
-    //================================================= SELF DRIVE CARS ======================================
+    //================================================= SELF DRIVE Search ======================================
     public function self_drive_cars()
     {
         $this->load->helper(array('form', 'url'));
@@ -86,7 +85,7 @@ class Home extends CI_Controller
         $this->load->view('frontend/self_drive_cars');
         $this->load->view('frontend/common/footer');
     }
-    //========================== self drive cars ============================
+    //========================== self drive calculate ============================
     public function self_drive_calculate()
     {
         $this->load->helper(array('form', 'url'));
@@ -194,24 +193,159 @@ class Home extends CI_Controller
         $this->load->view('frontend/self_summary');
         $this->load->view('frontend/common/footer');
     }
-    // ============ SELF DRIVE CHECKOUT ==========================
-    public function self_checkout($idd)
+    // ====================================== SELF DRIVE CHECKOUT ==========================
+    public function self_checkout()
     {
-        $id=base64_decode($idd);
-        $data['id']=$idd;
-        $data_update = array('order_status'=>1,
-            'payment_status'=>1,
-              );
-        $this->db->where('id', $id);
-        $zapak=$this->db->update('tbl_booking', $data_update);
-        $booking_data = $this->db->get_where('tbl_booking', array('id'=> $id))->result();
-        $data['booking_id']=$booking_data[0]->id;
-        $data['amount']=$booking_data[0]->final_amount;
-        $this->load->view('frontend/common/header', $data);
-        $this->load->view('frontend/booking_success');
-        $this->load->view('frontend/common/footer');
+      $this->load->helper(array('form', 'url'));
+      $this->load->library('form_validation');
+      $this->load->helper('security');
+      if ($this->input->post()) {
+          $this->form_validation->set_rules('id', 'id', 'required|xss_clean|trim');
+          $this->form_validation->set_rules('dob', 'dob', 'required|xss_clean|trim');
+          $this->form_validation->set_rules('aadhar_no', 'aadhar_no', 'required|xss_clean|trim');
+          $this->form_validation->set_rules('driving_lience', 'driving_lience', 'required|xss_clean|trim');
+          $this->form_validation->set_rules('pickup_location', 'pickup_location', 'required|xss_clean|trim');
+          $this->form_validation->set_rules('agree', 'agree', 'required|xss_clean|trim');
+          if ($this->form_validation->run()== true) {
+              $id=base64_decode($this->input->post('id'));
+              $dob=$this->input->post('dob');
+              $aadhar_no=$this->input->post('aadhar_no');
+              $driving_lience=$this->input->post('driving_lience');
+              $pickup_location=$this->input->post('pickup_location');
+              $agree=$this->input->post('agree');
+              date_default_timezone_set("Asia/Calcutta");
+              $cur_date=date("Y-m-d H:i:s");
+              $this->load->library('upload');
+              //----------------aadhar front ----------
+                  $img1='aadhar_front';
+                    $file_check=($_FILES['aadhar_front']['error']);
+                    if($file_check!=4){
+                  	$image_upload_folder = FCPATH . "assets/uploads/documents/";
+                						if (!file_exists($image_upload_folder))
+                						{
+                							mkdir($image_upload_folder, DIR_WRITE_MODE, true);
+                						}
+                						$new_file_name="aadhar_front".date("Ymdhms");
+                						$this->upload_config = array(
+                								'upload_path'   => $image_upload_folder,
+                								'file_name' => $new_file_name,
+                								'allowed_types' =>'jpg|jpeg|png',
+                								'max_size'      => 25000
+                						);
+                						$this->upload->initialize($this->upload_config);
+                						if (!$this->upload->do_upload($img1))
+                						{
+                							$upload_error = $this->upload->display_errors();
+                							// echo json_encode($upload_error);
+                							echo $upload_error;
+                						}
+                						else
+                						{
+                							$file_info = $this->upload->data();
+                							$aadhar_front = "assets/uploads/documents/".$new_file_name.$file_info['file_ext'];
+                						}
+                    }
+                    //----------------aadhar back ----------
+                        $img2='aadhar_back';
+                          $file_check=($_FILES['aadhar_front']['error']);
+                          if($file_check!=4){
+                          $image_upload_folder = FCPATH . "assets/uploads/documents/";
+                                  if (!file_exists($image_upload_folder))
+                                  {
+                                    mkdir($image_upload_folder, DIR_WRITE_MODE, true);
+                                  }
+                                  $new_file_name="aadhar_back".date("Ymdhms");
+                                  $this->upload_config = array(
+                                      'upload_path'   => $image_upload_folder,
+                                      'file_name' => $new_file_name,
+                                      'allowed_types' =>'jpg|jpeg|png',
+                                      'max_size'      => 25000
+                                  );
+                                  $this->upload->initialize($this->upload_config);
+                                  if (!$this->upload->do_upload($img2))
+                                  {
+                                    $upload_error = $this->upload->display_errors();
+                                    // echo json_encode($upload_error);
+                                    echo $upload_error;
+                                  }
+                                  else
+                                  {
+                                    $file_info = $this->upload->data();
+                                    $aadhar_back = "assets/uploads/documents/".$new_file_name.$file_info['file_ext'];
+                                  }
+                          }
+                    //----------------license_front ----------
+                        $img3='license_front';
+                          $file_check=($_FILES['aadhar_front']['error']);
+                          if($file_check!=4){
+                          $image_upload_folder = FCPATH . "assets/uploads/documents/";
+                                  if (!file_exists($image_upload_folder))
+                                  {
+                                    mkdir($image_upload_folder, DIR_WRITE_MODE, true);
+                                  }
+                                  $new_file_name="license_front".date("Ymdhms");
+                                  $this->upload_config = array(
+                                      'upload_path'   => $image_upload_folder,
+                                      'file_name' => $new_file_name,
+                                      'allowed_types' =>'jpg|jpeg|png',
+                                      'max_size'      => 25000
+                                  );
+                                  $this->upload->initialize($this->upload_config);
+                                  if (!$this->upload->do_upload($img3))
+                                  {
+                                    $upload_error = $this->upload->display_errors();
+                                    // echo json_encode($upload_error);
+                                    echo $upload_error;
+                                  }
+                                  else
+                                  {
+                                    $file_info = $this->upload->data();
+                                    $license_front = "assets/uploads/documents/".$new_file_name.$file_info['file_ext'];
+                                  }
+                          }
+                    //----------------license_back ----------
+                        $img4='license_back';
+                          $file_check=($_FILES['aadhar_front']['error']);
+                          if($file_check!=4){
+                          $image_upload_folder = FCPATH . "assets/uploads/documents/";
+                                  if (!file_exists($image_upload_folder))
+                                  {
+                                    mkdir($image_upload_folder, DIR_WRITE_MODE, true);
+                                  }
+                                  $new_file_name="license_back".date("Ymdhms");
+                                  $this->upload_config = array(
+                                      'upload_path'   => $image_upload_folder,
+                                      'file_name' => $new_file_name,
+                                      'allowed_types' =>'jpg|jpeg|png',
+                                      'max_size'      => 25000
+                                  );
+                                  $this->upload->initialize($this->upload_config);
+                                  if (!$this->upload->do_upload($img4))
+                                  {
+                                    $upload_error = $this->upload->display_errors();
+                                    // echo json_encode($upload_error);
+                                    echo $upload_error;
+                                  }
+                                  else
+                                  {
+                                    $file_info = $this->upload->data();
+                                    $license_back = "assets/uploads/documents/".$new_file_name.$file_info['file_ext'];
+                                  }
+                          }
+              $response = $this->booking->selfCheckout($id,$dob,$aadhar_no,$driving_lience,$pickup_location,$aadhar_front,$aadhar_back,$license_front,$license_back);
+            // echo "hi";
+            // die();
+              redirect("Home/self_drive_summary/$id");
+          } else {
+              $this->session->set_flashdata('emessage', validation_errors());
+              redirect($_SERVER['HTTP_REFERER']);
+          }
+      } else {
+          $this->session->set_flashdata('emessage', 'Please insert some data, No data available');
+          redirect($_SERVER['HTTP_REFERER']);
+      }
     }
-    //======== Intercity calculate ===========
+    //====================================== Intercity calculate ======================
     public function intercity_calculate()
     {
         $this->load->helper(array('form', 'url'));
@@ -248,7 +382,7 @@ echo json_encode($response);
             echo json_encode($res);
         }
     }
-    //======== Intercity calculate ===========
+    //====================================== Intercity calculate =====================================
     public function intercity_checkout()
     {
         $this->load->helper(array('form', 'url'));
@@ -276,7 +410,6 @@ echo json_encode($response);
                   $posted['service_provider'] = 'payu_paisa';
                 // Hash Sequence
                 $hashSequence = "key|txnid|amount|productinfo|firstname|email|udf1|udf2|udf3|udf4|udf5|udf6|udf7|udf8|udf9|udf10";
-
                 	$hashVarsSeq = explode('|', $hashSequence);
                     $hash_string = '';
                 	foreach($hashVarsSeq as $hash_var) {
@@ -284,26 +417,197 @@ echo json_encode($response);
                       $hash_string .= '|';
                     }
                     $hash_string .= SALT;
-
-
                     $hash = strtolower(hash('sha512', $hash_string));
                     $action = PAYU_BASE_URL . '/_payment';
-
                     $hash = strtolower(hash('sha512', $hash_string));
-            } else {
-    $res = array('message'=>validation_errors(),
-    'status'=>201
-    );
-                echo json_encode($res);
-            }
-        } else {
-            $res = array('message'=>"Please insert some data, No data available",
-'status'=>201
-);
-            echo json_encode($res);
-        }
+                    $posted['hash'] = $hash;
+                    $ch = curl_init();
+                    curl_setopt($ch, CURLOPT_URL,PAYU_BASE_URL.'/_payment');
+                    curl_setopt($ch, CURLOPT_POST, 1);
+                    curl_setopt($ch, CURLOPT_POSTFIELDS,$posted);
+                    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+                    $server_output = curl_exec($ch);
+                    curl_close ($ch);
+                    print_r($server_output);die();
+                            } else {
+                    $res = array('message'=>validation_errors(),
+                    'status'=>201
+                    );
+                                echo json_encode($res);
+                            }
+                        } else {
+                            $res = array('message'=>"Please insert some data, No data available",
+                'status'=>201
+                );
+                            echo json_encode($res);
+                        }
     }
+public function intercity_succss(){
+  echo 'yes';
+}
+public function intercity_fail(){
+  echo 'no';
+}
+//================================================= OUTSTATION CARS Search ======================================
+public function outstaion_cars()
+{
+    $this->load->helper(array('form', 'url'));
+    $this->load->library('form_validation');
+    $this->load->helper('security');
+    if ($this->input->post()) {
+        $this->form_validation->set_rules('city_id', 'city_id', 'required|xss_clean|trim');
+        $this->form_validation->set_rules('start_date', 'start_date', 'required|xss_clean|trim');
+        $this->form_validation->set_rules('start_time', 'start_time', 'required|xss_clean|trim');
+        $this->form_validation->set_rules('round_type', 'round_type', 'required|xss_clean|trim');
+        $this->form_validation->set_rules('end_date', 'end_date', 'xss_clean|trim');
+        $this->form_validation->set_rules('end_time', 'end_time', 'xss_clean|trim');
+        $this->form_validation->set_rules('duration', 'duration', 'xss_clean|trim');
+        if ($this->form_validation->run()== true) {
+            $city_id=$this->input->post('city_id');
+            $start_date=$this->input->post('start_date');
+            $start_time=$this->input->post('start_time');
+            $round_type=$this->input->post('round_type');
+            $end_date=$this->input->post('end_date');
+            $end_time=$this->input->post('end_time');
+            $duration=$this->input->post('duration');
+            date_default_timezone_set("Asia/Calcutta");
+            $cur_date=date("Y-m-d H:i:s");
+            $data_insert = array(
+          'city_id'=>$city_id,
+          'round_type'=>$round_type,
+          'start_date'=>$start_date,
+          'start_time'=>$start_time,
+          'end_date'=>$end_date,
+          'end_time'=>$end_time,
+          'duration'=>$duration,
+          'date'=>$cur_date,
+                    );
+            $last_id=$this->base_model->insert_table("tbl_search", $data_insert, 1) ;
+            $id = base64_encode($last_id);
+            redirect("Home/show_outstation_cars/$id");
+        } else {
+            $this->session->set_flashdata('emessage', validation_errors());
+            redirect($_SERVER['HTTP_REFERER']);
+        }
+    } else {
+        $this->session->set_flashdata('emessage', 'Please insert some data, No data available');
+        redirect($_SERVER['HTTP_REFERER']);
+    }
+}
 
+//========================== outstation cars ============================
+public function show_outstation_cars($idd)
+{
+    $id=base64_decode($idd);
+    $data['id']=$idd;
+    $search = $this->db->get_where('tbl_search', array('id'=> $id))->result();
+    $send= array(
+    'city_id'=>$search[0]->city_id,
+    'start_date'=>$search[0]->start_date,
+    'start_time'=>$search[0]->start_time,
+    'end_date'=>$search[0]->end_date,
+    'end_time'=>$search[0]->end_time,
+    'duration'=>$search[0]->duration,
+    'round_type'=>$search[0]->round_type,
+    // 'index'=>$index,
+  );
+    $car_data = $this->booking->ViewOutstationCars($send);
+    $data['car_data']= $car_data['car_data'];
+    $data['search']= $search;
+    $this->load->view('frontend/common/header2', $data);
+    $this->load->view('frontend/outstation_cars');
+    $this->load->view('frontend/common/footer');
+}
+//========================== outstation calculate ============================
+public function outstation_calculate()
+{
+    $this->load->helper(array('form', 'url'));
+    $this->load->library('form_validation');
+    $this->load->helper('security');
+    if ($this->input->post()) {
+        $this->form_validation->set_rules('city_id', 'city_id', 'required|xss_clean|trim');
+        $this->form_validation->set_rules('start_date', 'start_date', 'required|xss_clean|trim');
+        $this->form_validation->set_rules('start_time', 'start_time', 'required|xss_clean|trim');
+        $this->form_validation->set_rules('end_date', 'end_date', 'xss_clean|trim');
+        $this->form_validation->set_rules('end_time', 'end_time', 'xss_clean|trim');
+        $this->form_validation->set_rules('duration', 'duration', 'xss_clean|trim');
+        $this->form_validation->set_rules('city_id', 'city_id', 'required|xss_clean|trim');
+        $this->form_validation->set_rules('car_id', 'car_id', 'required|xss_clean|trim');
+        $this->form_validation->set_rules('round_type', 'round_type', 'required|xss_clean|trim');
+        $this->form_validation->set_rules('search_id', 'search_id', 'required|xss_clean|trim');
+        if ($this->form_validation->run()== true) {
+            $city_id=$this->input->post('city_id');
+            $start_date=$this->input->post('start_date');
+            $start_time=$this->input->post('start_time');
+            $end_date=$this->input->post('end_date');
+            $end_time=$this->input->post('end_time');
+            $duration=$this->input->post('duration');
+            $city_id=$this->input->post('city_id');
+            $car_id=$this->input->post('car_id');
+            $round_type=$this->input->post('round_type');
+            $search_id=$this->input->post('search_id');
+            date_default_timezone_set("Asia/Calcutta");
+            $cur_date=date("Y-m-d H:i:s");
+            $send = array(
+          'city_id'=>$city_id,
+          'start_date'=>$start_date,
+          'start_time'=>$start_time,
+          'end_date'=>$end_date,
+          'end_time'=>$end_time,
+          'duration'=>$duration,
+          'city_id'=>$city_id,
+          'car_id'=>$car_id,
+          'round_type'=>$round_type,
+          'search_id'=>$search_id,
+                    );
+            $response = $this->booking->outstationCalculate($send);
+            $id = base64_encode($response['id']);
+            redirect("Home/outstation_summary/$id");
+        } else {
+            $this->session->set_flashdata('emessage', validation_errors());
+            redirect($_SERVER['HTTP_REFERER']);
+        }
+    } else {
+        $this->session->set_flashdata('emessage', 'Please insert some data, No data available');
+        redirect($_SERVER['HTTP_REFERER']);
+    }
+}
+//========================== outstation SUMMARY =============================
+public function outstation_summary($idd)
+{
+    $id=base64_decode($idd);
+    $data['id']=$idd;
+    $data['booking_data'] = $this->db->get_where('tbl_booking', array('id'=> $id))->result();
+    $car = $this->db->get_where('tbl_outstation', array('id'=> $data['booking_data'][0]->car_id))->result();
+    $data['user_data'] = $this->db->get_where('tbl_users', array('id'=> $data['booking_data'][0]->user_id))->result();
+    //-----========= city data =============
+    $city = $this->db->get_where('tbl_cities', array('id'=> $data['booking_data'][0]->city_id))->result();
+    $data['city_data']=$city;
+
+    //------ seating  ---
+    if ($car[0]->seatting==1) {
+        $seating = '4 Seates';
+    } elseif ($car[0]->seatting==2) {
+        $seating = '5 Seates';
+    } else {
+        $seating = '7 Seates';
+    }
+    // $days =$data['booking_data'][0]->duration*24;
+    // $days =$data['booking_data'][0]->duration*24;
+    $car_data= array(
+                  'brand_name'=>$car[0]->brand_name,
+                  'car_name'=>$car[0]->car_name,
+                  'photo'=>$car[0]->photo,
+                  'seating'=>$seating,
+                  'per_kilometer'=>$car[0]->per_kilometre,
+                  'location'=>$car[0]->location,
+                  'min_booking_amt'=>$car[0]->min_booking_amt,
+                  );
+    $data['car_data']=$car_data;
+    $this->load->view('frontend/common/header', $data);
+    $this->load->view('frontend/outstation_summary');
+    $this->load->view('frontend/common/footer');
+}
     // ============================================ ABOUT =================================================
     public function about()
     {
@@ -314,56 +618,6 @@ echo json_encode($response);
         $this->load->view('frontend/common/header', $data);
         $this->load->view('frontend/about');
         $this->load->view('frontend/common/footer');
-    }
-    //================================================= FILTERS ON ALL PRODUCTS ======================================
-    public function filter_check()
-    {
-        $this->load->helper(array('form', 'url'));
-        $this->load->library('form_validation');
-        $this->load->helper('security');
-        if ($this->input->post()) {
-            $this->form_validation->set_rules('size[]', 'size[]', 'xss_clean|trim');
-            $this->form_validation->set_rules('color[]', 'color[]', 'xss_clean|trim');
-            $this->form_validation->set_rules('attribute[]', 'attribute[]', 'xss_clean|trim');
-            $this->form_validation->set_rules('category_name', 'category_name', 'xss_clean|trim');
-            $this->form_validation->set_rules('products', 'products', 'xss_clean|trim');
-            $this->form_validation->set_rules('subcategory_name', 'subcategory_name', 'xss_clean|trim');
-            $this->form_validation->set_rules('minprice', 'minprice', 'xss_clean|trim');
-            $this->form_validation->set_rules('maxprice', 'maxprice', 'xss_clean|trim');
-            if ($this->form_validation->run()== true) {
-                $sized=$this->input->post('size[]');
-                $color=$this->input->post('color[]');
-                $attribute=$this->input->post('attribute[]');
-                $category_name=$this->input->post('category_name');
-                $subcategory_name=$this->input->post('subcategory_name');
-                $minprice=$this->input->post('minprice');
-                $maxprice=$this->input->post('maxprice');
-                $products = json_decode($this->input->post('products'));
-                $filtered = $this->products->filterProducts($sized, $color, $attribute, $products, $minprice, $maxprice);
-                $data['sized'] = $sized;
-                $data['color'] = $color;
-                $data['attribute'] = $attribute;
-                $data['product'] = $filtered;
-                $data['minprice'] = $minprice;
-                $data['maxprice'] = $maxprice;
-                $data['sendProducts'] = $products;
-                $data['category_name'] = $category_name;
-                $data['subcategory_name'] = $subcategory_name;
-                $data['filter_category'] = $this->db->get_where('tbl_category', array('is_active = ' => 1));
-                $data['filter_size'] = $this->db->get_where('tbl_size', array('is_active = ' => 1));
-                $data['filter_color'] = $this->db->get_where('tbl_colour', array('is_active = ' => 1));
-                $data['filter_main'] = $this->db->get_where('tbl_filters', array('is_active = ' => 1));
-                $this->load->view('frontend/common/header2', $data);
-                $this->load->view('frontend/filter_products');
-                $this->load->view('frontend/common/footer2');
-            } else {
-                $this->session->set_flashdata('emessage', validation_errors());
-                redirect($_SERVER['HTTP_REFERER']);
-            }
-        } else {
-            $this->session->set_flashdata('emessage', 'Please insert some data, No data available');
-            redirect($_SERVER['HTTP_REFERER']);
-        }
     }
     // =========================================== MY PROFILE ===============================================
     public function my_profile()

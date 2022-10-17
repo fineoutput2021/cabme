@@ -31,7 +31,7 @@
             <ul>
               <li><a href="<?=base_url()?>">Home</a> <i class="fa fa-angle-right"></i>
               </li>
-              <li>Self Drive Cars</li>
+              <li>Outstatin Cars</li>
             </ul>
           </div>
         </div>
@@ -53,9 +53,9 @@
                 <div class="btc_tittle_right_heading">
                   <div class="btc_tittle_right_cont_wrapper">
                     <ul>
-                      <li><a href="index.html">Home</a> <i class="fa fa-angle-right"></i>
+                      <li><a href="<?=base_url()?>">Home</a> <i class="fa fa-angle-right"></i>
                       </li>
-                      <li>Self_cars</li>
+                      <li>Outstation Cars</li>
                     </ul>
                   </div>
                 </div>
@@ -127,50 +127,6 @@
                 </div>
                 <hr>
                 <!-- Brand End -->
-                <!-- Fuel Type -->
-                <div class="panel panel-default">
-                  <div class="panel-heading">
-                    <h5 class="panel-title"> <a data-toggle="collapse" href="#collapseThree" class="collapse"> Fuel Type</a> </h5>
-                  </div>
-                  <div id="collapseThree" class="collapse ">
-                    <div class="panel-body">
-                      <div class="x_slider_checkbox x_slider_checkbox_bottom_filter_use">
-                        <input type="checkbox" id="c10" name="cb">
-                        <label for="c10">Diesel</label>
-                      </div>
-                      <div class="x_slider_checkbox x_slider_checkbox_bottom_filter_use">
-                        <input type="checkbox" id="c11" name="cb">
-                        <label for="c11">Petrol</label>
-                      </div>
-                      <div class="x_slider_checkbox x_slider_checkbox_bottom_filter_use">
-                        <input type="checkbox" id="CNG" name="cb">
-                        <label for="CNG">CNG</label>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <hr>
-                <!-- Fuel Type End -->
-                <!-- Transmission Type -->
-                <div class="panel panel-default">
-                  <div class="panel-heading">
-                    <h5 class="panel-title"> <a data-toggle="collapse" href="#collapseFour" class="collapse"> Transmission Type</a> </h5>
-                  </div>
-                  <div id="collapseFour" class="collapse ">
-                    <div class="panel-body">
-                      <div class="x_slider_checkbox x_slider_checkbox_bottom_filter_use">
-                        <input type="checkbox" id="Automatic" name="cb">
-                        <label for="Automatic">Automatic</label>
-                      </div>
-                      <div class="x_slider_checkbox x_slider_checkbox_bottom_filter_use">
-                        <input type="checkbox" id="Manual" name="cb">
-                        <label for="Manual">Manual</label>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <hr>
-                <!-- Transmission Type End -->
                 <!-- Seating Capacity -->
                 <div class="panel panel-default">
                   <div class="panel-heading">
@@ -203,9 +159,6 @@
         <div class="x_carbooking_right_section_wrapper float_left">
           <div class="row mt-2">
             <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
-              <!-- <div class="float-left mt-3 col-md-6 col-12 mobilejustify">
-                <h5>Car Rental In: &nbsp; <span style="font-size: 20px;color: black;margin-top: -5px;" >Jaipur</span></h5>
-              </div> -->
               <div class="x_carbook_right_select_box_wrapper float-right desktopsortbydiv"> <span style="font-size: 17px;color: #494848;font-weight: bold;">Sort By: &nbsp;</span>
                 <select class="myselect">
                   <option>Popularity</option>
@@ -231,43 +184,32 @@
                       </div>
                       <div class="x_car_offer_heading float_left">
                         <ul class=" car_menual_lists">
-                          <li> <span>⚙️</span><span><?=$cars['transmission']?></span>
-                          </li>
-                          <li> <span>⛽</span> <span><?=$cars['fuel_type']?></span>
-                          </li>
+                          <li> </li>
                           <li> <span>💺</span> <span><?=$cars['seating']?></span>
                           </li>
+                          <li> </li>
                         </ul>
                       </div>
                       <div class="x_offer_tabs_wrapper">
-                        <ul class="nav nav-tabs All_Car_tabs w-100 mt-3" style="display: inline-flex; flex-wrap: nowrap;">
-                          <li class="nav-item" onclick="planChange(<?=$i?>,1)"> <a class="nav-link active" data-toggle="tab" href="#first" id="km1_<?=$i?>"> ₹ <?=$cars['price1']?> <br><span style="font-size:10px"><?=$cars['kilometer1']?> Kms</span></a>
-                          </li>
-                          <li class="nav-item" onclick="planChange(<?=$i?>,2)"> <a class="nav-link " data-toggle="tab" href="#second" id="km2_<?=$i?>"> ₹ <?=$cars['price2']?> <br><span style="font-size:10px"><?=$cars['kilometer2']?> Kms</span>
-                            </a>
-                          </li>
-                          <li class="nav-item" onclick="planChange(<?=$i?>,3)"> <a class="nav-link" data-toggle="tab" href="#third" id="km3_<?=$i?>"> ₹ <?=$cars['price3']?> <br> <span style="font-size:10px"><?=$cars['kilometer3']?> Kms</span>
-                            </a>
-                          </li>
-                        </ul>
+                        <h5>Rate Per Kilometer @ ₹<?=$cars['per_kilometer']?></h5>
                       </div>
                       <div class="x_car_offer_bottom_btn">
                         <ul>
                           <div class="row">
                             <div class="col-md-8 col-8 p-0 mt-2">
-                              Extra charge @ <?=$cars['extra_kilo']?>/Kms
+                              Current Location:   <b><?=$cars['location']?></b>
                             </div>
                             <div class="col-md-4 col-4 p-0">
                               <?if(!empty($this->session->userdata('user_data'))){?>
-                              <form method="post" enctype="multipart/form-data" action="<?=base_url()?>Home/self_drive_calculate">
+                              <form method="post" enctype="multipart/form-data" action="<?=base_url()?>Home/outstation_calculate">
                               <input type="hidden" name="start_date" value="<?=$search[0]->start_date?>">
                               <input type="hidden" name="start_time" value="<?=$search[0]->start_time?>">
                               <input type="hidden" name="end_date" value="<?=$search[0]->end_date?>">
                               <input type="hidden" name="end_time" value="<?=$search[0]->end_time?>">
                               <input type="hidden" name="duration" value="<?=$search[0]->duration?>">
+                              <input type="hidden" name="round_type" value="<?=$search[0]->round_type?>">
                               <input type="hidden" name="city_id" value="<?=$cars['city_id']?>">
                               <input type="hidden" name="car_id" value="<?=$cars['car_id']?>">
-                              <input type="hidden" name="type_id" id="ct_<?=$i?>" value="1">
                               <input type="hidden" name="search_id" id="search_id" value="<?=$id?>">
                               <button class="bookbtn shadowbtn">Book
                               &nbsp; <i class="fa fa-angle-double-right"></i></button>
@@ -283,34 +225,6 @@
                     </div>
                   </div>
                   <?php $i++; } ?>
-                  <!-- Car-1 End-->
-                  <!-- <div class="col-md-12">
-											<div class="pager_wrapper prs_blog_pagi_wrapper">
-												<ul class="pagination">
-													<li><a href="#"><i class="flaticon-left-arrow"></i></a>
-													</li>
-													<li class="btc_shop_pagi"><a href="#">01</a>
-													</li>
-													<li class="btc_shop_pagi"><a href="#">02</a>
-													</li>
-													<li class="btc_third_pegi btc_shop_pagi"><a href="#">03</a>
-													</li>
-													<li class="btc_four_pegi"><a href="#">...</a>
-													</li>
-													<li><a href="#"><i class="flaticon-right-arrow"></i></a>
-													</li>
-												</ul>
-											</div>
-										</div>
-										<div class="col-md-12">
-											<div class="pager_wrapper prs_blog_pagi_wrapper">
-												<?
-                        // =$links?>
-											</div>
-										</div>
-									</div> -->
-                  <!-- </div>
-									</div> -->
                 </div>
               </div>
               <!--============================== All Cars End ==============================-->

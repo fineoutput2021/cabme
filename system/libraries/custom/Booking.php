@@ -204,8 +204,27 @@ class CI_Booking
         return $respone;
     }
     //========= selfdrive booking checkout========
-    public function self_checkout()
+    public function selfCheckout($id,$dob,$aadhar_no,$driving_lience,$pickup_location,$aadhar_front,$aadhar_back,$license_front,$license_back)
     {
+    $user_id=$this->CI->session->userdata('user_id');
+      //-------- update user data ------
+      $user_update = array('dob'=>$dob,
+                        'aadhar_no'=>$aadhar_no,
+                        'driving_lience'=>$driving_lience,
+                  );
+                  $this->CI->db->where('id', $user_id);
+                  $zapak=$this->CI->db->update('tbl_users', $user_update);
+
+//--------------------- update booking data -------------------
+$booking_update = array('pick_location'=>$pickup_location,
+                  'aadhar_front'=>$aadhar_front,
+                  'aadhar_back'=>$aadhar_back,
+                  'license_front'=>$license_front,
+                  'license_back'=>$license_back,
+            );
+            $this->CI->db->where('id', $id);
+            $zapak=$this->CI->db->update('tbl_booking', $booking_update);
+  return ;
     }
     //========= INTERCITY CALCUALTE ========
     public function intercityCalculate($cab_type, $start_date, $start_time, $end_date, $end_time, $city_id, $duration)
@@ -264,6 +283,108 @@ class CI_Booking
         $respone['status'] = true;
         $respone['message'] ="Success";
         $respone['data'] =$data;
+        return $respone;
+    }
+    //======================== VIEW OUTSTATION CARS ====================
+    public function ViewOutstationCars($receive)
+    {
+
+        $outstation_cars = $this->CI->db->get_where('tbl_outstation', array('city_id'=> $receive['city_id'],'is_available'=> 1,'is_active'=>1))->result();
+
+        $car_data=[];
+        foreach ($outstation_cars as $car) {
+            //------ seating  ---
+            if ($car->seatting==1) {
+                $seating = '4 Seates';
+            } elseif ($car->seatting==2) {
+                $seating = '5 Seates';
+            } else {
+                $seating = '7 Seates';
+            }
+            // $days =$receive['duration']*24;
+            $car_data[] = array('city_id'=>$car->city_id,
+                    'car_id'=>$car->id,
+                    'brand_name'=>$car->brand_name,
+                    'car_name'=>$car->car_name,
+                    'photo'=>$car->photo,
+                    'seating'=>$seating,
+                    'per_kilometer'=>$car->per_kilometre,
+                    'location'=>$car->location,
+                    'min_booking_amt'=>$car->min_booking_amt,
+                    );
+        }
+        $respone['status'] = true;
+        $respone['message'] ="Success";
+        $respone['car_data'] =$car_data;
+        // $respone['links'] =$links;
+        return $respone;
+        // return json_encode($respone);
+    }
+    //=========================== outstation CAR CALCULATE ========================================
+    public function outstationCalculate($receive)
+    {
+        $ip = $this->CI->input->ip_address();
+        date_default_timezone_set("Asia/Calcutta");
+        $cur_date=date("Y-m-d H:i:s");
+        // echo $receive['type_id'];die();
+        //------ get car data --------
+        $car_data = $this->CI->db->get_where('tbl_outstation', array('id'=> $receive['car_id']))->result();
+        //----- check kilometer plan ------
+        // $days =$receive['duration']*24;
+
+        //---- calculate total amount -------
+        $mini_booking = $car_data[0]->min_booking_amt;
+        $total = $car_data[0]->min_booking_amt;
+        $final_amount = $total + $mini_booking;
+        $user_id=$this->CI->session->userdata('user_id');
+        //------- insert into booking table --------
+        $data_insert = array('user_id'=>$user_id,
+              'booking_type'=>1,
+              'mini_booking'=>$mini_booking,
+              'total_amount'=>$total,
+              'final_amount'=>$final_amount,
+              'city_id'=>$receive['city_id'],
+              'start_date'=>$receive['start_date'],
+              'start_time'=>$receive['start_time'],
+              'end_date'=>$receive['end_date'],
+              'end_time'=>$receive['end_time'],
+              'duration'=>$receive['duration'],
+              'round_type'=>$receive['round_type'],
+              'city_id'=>$receive['city_id'],
+              'car_id'=>$receive['car_id'],
+              'search_id'=>base64_decode($receive['search_id']),
+              'order_status'=>0,
+              'payment_status'=>0,
+              'ip'=>$ip,
+              'date'=>$cur_date,
+                  );
+        $last_id=$this->CI->base_model->insert_table("tbl_booking", $data_insert, 1) ;
+        $car= $this->CI->db->get_where('tbl_outstation', array('id'=> $receive['car_id']))->result();
+
+        //------ seating  ---
+        if ($car[0]->seatting==1) {
+            $seating = '4 Seates';
+        } elseif ($car[0]->seatting==2) {
+            $seating = '5 Seates';
+        } else {
+            $seating = '7 Seates';
+        }
+        $car_data= array('city_id'=>$car[0]->city_id,
+                              'car_id'=>$car[0]->id,
+                              'brand_name'=>$car[0]->brand_name,
+                              'car_name'=>$car[0]->car_name,
+                              'photo'=>$car[0]->photo,
+                              'seating'=>$seating,
+                              'per_kilometer'=>$car[0]->per_kilometre,
+                              'location'=>$car[0]->location,
+                              'min_booking_amt'=>$car[0]->min_booking_amt,
+
+                              );
+        $respone['status'] = true;
+        $respone['message'] ="Success";
+        $respone['car_data'] =$car_data;
+        $respone['id'] =$last_id;
+        // $respone['links'] =$links;
         return $respone;
     }
 }

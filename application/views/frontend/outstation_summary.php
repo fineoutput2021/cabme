@@ -1,114 +1,4 @@
 
-<!--======proof Modal ======-->
-
-<div class="modal fade" id="proofModal" role="dialog">
-	<div class="modal-dialog proofModal">
-		<!-- Modal content-->
-		<div class="modal-content loginModal-content">
-			<div class="modal-header">
-				<div class="col-md-11 col-11 text-center">
-					<h4 class="modal-title">Eligibility & ID</h4>
-				</div>
-				<div class="col-md-1 col-1"> <button type="button" class="close"
-						data-dismiss="modal">&times;</button>
-				</div>
-			</div>
-			<div class="modal-body">
-				<form method="post" enctype="multipart/form-data" action="<?=base_url()?>Home/self_checkout" >
-				<div class="formsix-pos">
-					<div class="form-sec-header proofdateofbirth mb-4">
-						<label class="cal-icon">
-							<input type="text" name="dob" placeholder="Date Of Birth" required class="form-control datepicker" value="<?=$user_data[0]->dob?>">
-						</label>
-					</div>
-					<div class="form-group mb-4">
-						<input type="text" name="aadhar_no" class="form-control modalinput" required="" placeholder="Aadhar Number*" value="<?=$user_data[0]->aadhar_no?>">
-					</div>
-					<div class="form-group mb-4">
-						<input type="text" name="driving_lience" class="form-control modalinput" required="" placeholder="Driving License*"  value="<?=$user_data[0]->driving_lience?>">
-					</div>
-					<div class="form-group mb-4">
-						<input type="text" name="pickup_location" class="form-control modalinput"  required="" placeholder="Pickup Location*"  value="<?=$user_data[0]->driving_lience?>">
-					</div>
-				</div>
-				<div class="row">
-					<div class="col-md-12">
-						<p class="mt-1 mb-1">Upload <b>Aadhar Front</b> Image</p>
-						<input type="file" name="aadhar_front" reqiured>
-					</div>
-					<div class="col-md-12">
-						<p class="mt-1  mb-1">Upload <b>Aadhar Back</b> Image</p>
-						<input type="file"  name="aadhar_back" reqiured>
-					</div>
-				</div>
-				<div class="row">
-					<div class="col-md-12">
-						<p class="mt-1 mb-1">Upload <b>License Front</b> Image</p>
-						<input type="file" name="license_front" reqiured>
-					</div>
-					<div class="col-md-12">
-						<p class="mt-1  mb-1">Upload <b>License Back</b> Image</p>
-						<input type="file" name="license_back" reqiured>
-					</div>
-				</div>
-				<div class="row  mt-2">
-					<div class="x_slider_checkbox x_slider_checkbox_bottom_filter_use">
-						<input type="checkbox" id="agree" name="agree" reqiured>
-						<label for="agree">Terms & Conditions</label>
-					</div>
-				</div>
-				<input type="hidden" name="id" value="<?=base64_encode($booking_data[0]->id)?>">
-				<div class="row justify-content-center mt-2"> <button type="submit"
-							class="btn loginbtn">Proceed To Pay</button></div>
-			</div>
-		</form>
-		</div>
-	</div>
-</div>
-
-<!--====== proof Modal End ======-->
-		<!--====== Change Plan Modal ======-->
-		<div class="modal fade " id="changeplan" role="dialog">
-			<div class="modal-dialog " style="width: auto;">
-
-				<!-- Modal content-->
-				<div class="modal-content ">
-					<div class="modal-header">
-						<h4 class="modal-title">Change Pricing Plan</h4>
-						<button type="button" class="close" data-dismiss="modal">&times;</button>
-					</div>
-					<p style="font-size: 18px;margin-top: 15px;">Change Plan</p>
-					<div class="x_offer_tabs_wrapper">
-						<ul class="nav nav-tabs All_Car_tabs plantabs w-100 mt-3"
-							style="display: inline-flex; flex-wrap: nowrap;">
-							<li class="nav-item"> <a class="nav-link <?if($booking_data[0]->kilometer_type==1){echo'active';}?>"
-									data-toggle="tab" href="#first"> ₹ <?=$car_data['price1']?> <br> <?=$car_data['kilometer1']?> Kms</a>
-							</li>
-							<li class="nav-item borderright"> <a class="nav-link <?if($booking_data[0]->kilometer_type==2){echo'active';}?> " data-toggle="tab"
-									href="#second"> ₹ <?=$car_data['price2']?> <br> <?=$car_data['kilometer2']?> Kms
-								</a>
-							</li>
-							<li class="nav-item" style="width: 34%;"> <a class="nav-link <?if($booking_data[0]->kilometer_type==3){echo'active';}?>" data-toggle="tab"
-									href="#third" > ₹ <?=$car_data['price3']?> <br> <?=$car_data['kilometer3']?> Kms
-								</a>
-							</li>
-						</ul>
-					</div>
-					<div class="modal-footer mt-2">
-						Please Note:
-						<ul>
-							<li style="font-size: 13px;">* Pricing plan cannot be changed after the creation of a booking
-								Extra Kms charge: Rs <?=$car_data['extra_kilo']?>/km</li>
-							<li style="font-size: 13px;">* We don not permit taking Cabme vehicles to Let/Ladakh region,
-								Kaza/Nako region and Spiti Valley</li>
-						</ul>
-					</div>
-				</div>
-
-			</div>
-		</div>
-
-		<!--====== Change Plan Modal End ======-->
 
 	<!-- btc tittle Wrapper Start -->
 	<div class="btc_tittle_main_wrapper" style="margin-top: 100px;">
@@ -120,7 +10,7 @@
 	            <ul>
 	              <li><a href="<?=base_url()?>">Home</a> <i class="fa fa-angle-right"></i>
 	              </li>
-	              <li><a href="<?=base_url()?>Home/show_self_drive_cars/<?=base64_encode($booking_data[0]->search_id)?>">Self Drive Car</a> <i class="fa fa-angle-right"></i>
+	              <li><a href="<?=base_url()?>Home/show_outstation_cars/<?=base64_encode($booking_data[0]->search_id)?>">Outstation Car</a> <i class="fa fa-angle-right"></i>
 	              </li>
 	              <li>Booking Summary</li>
 	            </ul>
@@ -140,9 +30,9 @@
          <h4 style="margin-top: 3px;" class="mb-1"><?=$car_data['brand_name']?></h4>
 	    </div>
 	    <div class="col-md-12 col-xs-12 text-center">
-				<span>⚙️</span> <span><?=$car_data['transmission']?></span>
- 			 <span>⛽</span> <span><?=$car_data['fuel_type']?></span>
- 			 <span>💺</span> <span><?=$car_data['seating']?></span>
+        <span></span>
+        <span>💺</span> <span><?=$car_data['seating']?></span>
+        <span></span>
 	    </div>
 	  </div>
 	  <div class="row text-center" style="flex-wrap: nowrap;margin-top: 10px;">
@@ -181,9 +71,9 @@
 	      <h5 style="margin-top: 5px;"><?=$car_data['brand_name']?></h5>
 	      <div class="row justify-content-center mt-2">
 	        <div class="col-md-12" class="carmanuals">
-	          <span>⚙️</span> <span><?=$car_data['transmission']?></span>
-	          <span>⛽</span> <span><?=$car_data['fuel_type']?></span>
-	          <span>💺</span> <span><?=$car_data['seating']?></span>
+	          <span></span>
+            <span>💺</span> <span><?=$car_data['seating']?></span>
+	          <span></span>
 	        </div>
 	      </div>
 	    </div>
@@ -203,16 +93,9 @@
 	      <p style="margin-top: 10px;"><span style="color: #000;">Duration: </span> &nbsp; <span>4 Days : 8
 	          Hours</span> </p>
 	      <div class="row">
-	        <div class="col-md-4" style="margin-top: 10px;">
-	          <p>Jaipur</p>
-	        </div>
-	        <div class="col-md-4" style="margin-top: 10px;"><span style="margin-left: 30px;"> <a href="<?=base_url()?>Home/show_self_drive_cars/<?=base64_encode($booking_data[0]->search_id)?>" style="color: red;">Change City</a> </span></div>
-	      </div>
-	      <div class="row">
 	        <div class="col-md-4 p-0" style="margin-top: 10px;">
-	          <p style="margin-left: 85px;"> Includes <?=$booking_data[0]->kilometer?> kms </p>
+	          <p style="margin-left: 85px;"> Rate Per Kilometer <?=$booking_data[0]->kilometer?> kms </p>
 	        </div>
-	        <div class="col-md-4" style="margin-top: 10px;"><span style="margin-left: 30px;"> <a href="#" style="color: red;" data-toggle="modal" data-target="#changeplan" data-dismiss="modal">Change plan</a> </span></div>
 	      </div>
 	    </div>
 	  </div>
@@ -281,7 +164,6 @@
 	                <!-- <p>Kms limit <span>131 kms</span></p> -->
 	                <p>Fuel <span>Excluded</span></p>
 	                <p>Tolls, Parking, Inter-State Taxes: <span>To be paid by you</span></p>
-	                <p>Extra kms charge <span>₹ <?=$car_data['extra_kilo']?>/km</span></p>
 	                <!-- <div class="x_slider_form_input_wrapper mt-2">
 	                  <input type="text" placeholder="Pick-Up Location" style="border: none;border-bottom: 1px solid grey;border-radius: 0px;">
 	                </div> -->
