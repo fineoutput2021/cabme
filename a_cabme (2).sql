@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.1.1
+-- version 5.2.0
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 15, 2022 at 05:32 PM
--- Server version: 10.4.22-MariaDB
--- PHP Version: 7.4.26
+-- Generation Time: Oct 17, 2022 at 11:31 PM
+-- Server version: 10.4.25-MariaDB
+-- PHP Version: 7.4.30
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -110,6 +110,7 @@ INSERT INTO `tbl_banner` (`id`, `photo1`, `photo2`, `ip`, `added_by`, `is_active
 
 CREATE TABLE `tbl_booking` (
   `id` int(11) NOT NULL,
+  `search_id` int(11) DEFAULT NULL,
   `booking_type` int(11) DEFAULT NULL COMMENT '1 for selfdrive, 2 for intercity, 3 for outstation',
   `user_id` int(11) DEFAULT NULL,
   `total_amount` int(11) DEFAULT NULL,
@@ -131,10 +132,16 @@ CREATE TABLE `tbl_booking` (
   `end_time` varchar(255) DEFAULT NULL,
   `duration` varchar(255) DEFAULT NULL,
   `cab_type` int(11) DEFAULT NULL,
+  `mini_booking` varchar(255) DEFAULT NULL,
   `pick_location` varchar(255) DEFAULT NULL,
   `drop_location` varchar(255) DEFAULT NULL,
   `start_kilometer` varchar(255) DEFAULT NULL,
   `end_kilometer` varchar(255) DEFAULT NULL,
+  `aadhar_front` varchar(255) DEFAULT NULL,
+  `aadhar_back` varchar(255) DEFAULT NULL,
+  `license_front` varchar(255) DEFAULT NULL,
+  `license_back` varchar(255) DEFAULT NULL,
+  `round_type` int(11) DEFAULT NULL,
   `fname` varchar(255) DEFAULT NULL,
   `lname` varchar(255) DEFAULT NULL,
   `email` varchar(255) DEFAULT NULL,
@@ -148,10 +155,30 @@ CREATE TABLE `tbl_booking` (
 -- Dumping data for table `tbl_booking`
 --
 
-INSERT INTO `tbl_booking` (`id`, `booking_type`, `user_id`, `total_amount`, `promocode`, `promo_discount`, `final_amount`, `payment_type`, `payment_status`, `order_status`, `city_id`, `car_id`, `kilometer_type`, `rsda`, `kilometer`, `kilometer_price`, `start_date`, `start_time`, `end_date`, `end_time`, `duration`, `cab_type`, `pick_location`, `drop_location`, `start_kilometer`, `end_kilometer`, `fname`, `lname`, `email`, `phone`, `txnid`, `ip`, `date`) VALUES
-(1, 2, 2, 500, 9, 5, '100000', 1, 1, 1, 1, 2, NULL, NULL, NULL, NULL, NULL, '5.00', NULL, '10.00', NULL, 2, 'sikar', 'jaipur', '10', '50', 'ramesh ', 'singh', 'ram@gmail.com', '9828866639', 'hh', '1.100000.100', '9'),
-(2, 1, 3, 126000, NULL, NULL, '129000', NULL, 0, 0, 6, 16, 2, '3000', '400', '1800', '15 Oct 2022', '7:30 PM', '18 Oct 2022', '5:30 PM', '70', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '::1', '2022-10-15 20:47:45'),
-(3, 1, 3, 420000, NULL, NULL, '423000', NULL, 0, 0, 6, 16, 1, '3000', '200', '6000', '15 Oct 2022', '7:30 PM', '18 Oct 2022', '5:30 PM', '70', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '::1', '2022-10-15 20:48:06');
+INSERT INTO `tbl_booking` (`id`, `search_id`, `booking_type`, `user_id`, `total_amount`, `promocode`, `promo_discount`, `final_amount`, `payment_type`, `payment_status`, `order_status`, `city_id`, `car_id`, `kilometer_type`, `rsda`, `kilometer`, `kilometer_price`, `start_date`, `start_time`, `end_date`, `end_time`, `duration`, `cab_type`, `mini_booking`, `pick_location`, `drop_location`, `start_kilometer`, `end_kilometer`, `aadhar_front`, `aadhar_back`, `license_front`, `license_back`, `round_type`, `fname`, `lname`, `email`, `phone`, `txnid`, `ip`, `date`) VALUES
+(1, NULL, 2, 2, 500, 9, 5, '100000', 1, 1, 1, 1, 2, NULL, NULL, NULL, NULL, NULL, '5.00', NULL, '10.00', NULL, 2, NULL, 'sikar', 'jaipur', '10', '50', NULL, NULL, NULL, NULL, NULL, 'ramesh ', 'singh', 'ram@gmail.com', '9828866639', 'hh', '1.100000.100', '9'),
+(2, NULL, 1, 3, 126000, NULL, NULL, '129000', NULL, 0, 0, 6, 16, 2, '3000', '400', '1800', '15 Oct 2022', '7:30 PM', '18 Oct 2022', '5:30 PM', '70', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '::1', '2022-10-15 20:47:45'),
+(3, NULL, 1, 3, 420000, NULL, NULL, '423000', NULL, 0, 0, 6, 16, 1, '3000', '200', '6000', '15 Oct 2022', '7:30 PM', '18 Oct 2022', '5:30 PM', '70', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '::1', '2022-10-15 20:48:06'),
+(4, NULL, 1, 3, 262800, NULL, NULL, '265800', NULL, 0, 0, 6, 16, 2, '3000', '58400', '262800', '15 Oct 2022', '7:30 PM', '21 Oct 2022', '9:30 PM', '146', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '::1', '2022-10-16 00:37:05'),
+(5, NULL, 1, 3, 6307200, NULL, NULL, '6310200', NULL, 0, 0, 6, 16, 2, '3000', '1401600', '6307200', '15 Oct 2022', '7:30 PM', '21 Oct 2022', '9:30 PM', '146', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '::1', '2022-10-16 00:38:55'),
+(6, NULL, 1, 3, 21024000, NULL, NULL, '21027000', NULL, 0, 0, 6, 16, 1, '3000', '700800', '21024000', '15 Oct 2022', '7:30 PM', '21 Oct 2022', '9:30 PM', '146', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '::1', '2022-10-16 00:40:48'),
+(7, NULL, 1, 3, 6307200, NULL, NULL, '6310200', NULL, 0, 0, 6, 16, 2, '3000', '1401600', '6307200', '15 Oct 2022', '7:30 PM', '21 Oct 2022', '9:30 PM', '146', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '::1', '2022-10-16 00:40:58'),
+(8, NULL, 1, 3, 4204800, NULL, NULL, '4207800', NULL, 0, 0, 6, 16, 2, '3000', '1401600', '4204800', '15 Oct 2022', '7:30 PM', '21 Oct 2022', '9:30 PM', '146', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '::1', '2022-10-16 00:41:41'),
+(9, NULL, 1, 3, 21024000, NULL, NULL, '21027000', NULL, 0, 0, 6, 16, 1, '3000', '700800', '21024000', '15 Oct 2022', '7:30 PM', '21 Oct 2022', '9:30 PM', '146', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '::1', '2022-10-16 00:49:41'),
+(10, NULL, 1, 3, 21024000, NULL, NULL, '21027000', NULL, 0, 0, 6, 16, 1, '3000', '700800', '21024000', '15 Oct 2022', '7:30 PM', '21 Oct 2022', '9:30 PM', '146', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '::1', '2022-10-16 00:50:11'),
+(11, NULL, 1, 3, 21024000, NULL, NULL, '21027000', NULL, 0, 0, 6, 16, 1, '3000', '700800', '21024000', '15 Oct 2022', '7:30 PM', '21 Oct 2022', '9:30 PM', '146', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '::1', '2022-10-16 00:50:47'),
+(12, NULL, 1, 3, 21024000, NULL, NULL, '21027000', NULL, 0, 0, 6, 16, 1, '3000', '700800', '21024000', '15 Oct 2022', '7:30 PM', '21 Oct 2022', '9:30 PM', '146', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '::1', '2022-10-16 00:51:17'),
+(13, 4, 1, 3, 17520000, NULL, NULL, '17522000', NULL, 0, 0, 6, 18, 2, '2000', '1752000', '17520000', '15 Oct 2022', '7:30 PM', '21 Oct 2022', '9:30 PM', '146', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '::1', '2022-10-16 01:05:23'),
+(14, 4, 1, 3, 21024000, NULL, NULL, '21027000', NULL, 0, 0, 6, 16, 1, '3000', '700800', '21024000', '15 Oct 2022', '7:30 PM', '21 Oct 2022', '9:30 PM', '146', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '::1', '2022-10-16 01:27:03'),
+(15, 5, 1, 3, 13680000, NULL, NULL, '13683000', NULL, 1, 1, 6, 16, 1, '3000', '456000', '13680000', '16 Oct 2022', '11:30 AM', '20 Oct 2022', '10:30 AM', '95', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '::1', '2022-10-16 23:15:26'),
+(16, NULL, 2, 3, 594, NULL, NULL, '594', NULL, 0, 0, 6, 15, NULL, NULL, '88', '594', '17 Oct 2022', '9:30 AM', '22 Oct 2022', '10:30 AM', 'NaN', 0, '88', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '::1', '2022-10-17 22:29:52'),
+(17, NULL, 2, 4, 594, NULL, NULL, '594', NULL, 0, 0, 6, 15, NULL, NULL, '88', '594', '17 Oct 2022', '7:30 AM', '30 Oct 2022', '7:30 AM', 'NaN', 0, '88', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '::1', '2022-10-18 00:06:18'),
+(18, 6, 1, 5, 2102400, NULL, NULL, '2105400', NULL, 0, 0, 6, 16, 2, '3000', '700800', '2102400', '18 Oct 2022', '6:30 PM', '21 Oct 2022', '7:30 PM', '73', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '::1', '2022-10-18 00:40:15'),
+(19, 7, 1, 5, 8985600, NULL, NULL, '8988600', NULL, 0, 0, 6, 16, 2, '3000', '2995200', '8985600', '17 Oct 2022', '6:30 PM', '30 Oct 2022', '6:30 PM', '312', NULL, NULL, 'Jaipur', NULL, NULL, NULL, 'assets/uploads/documents/aadhar_front20221018011058.png', 'assets/uploads/documents/aadhar_back20221018011058.png', 'assets/uploads/documents/license_front20221018011058.png', 'assets/uploads/documents/license_back20221018011058.png', NULL, NULL, NULL, NULL, NULL, NULL, '::1', '2022-10-18 01:31:12'),
+(20, 11, 1, 5, 6768000, NULL, NULL, '6771000', NULL, 0, 0, 6, 16, 1, '3000', '225600', '6768000', '23 Oct 2022', '7:30 PM', '25 Oct 2022', '6:30 PM', '47', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '::1', '2022-10-18 02:30:21'),
+(21, 10, 1, 5, 8000, NULL, NULL, '16000', NULL, 0, 0, 8, 11, NULL, NULL, NULL, NULL, '24 Oct 2022', '8:30 PM', '', '', '', NULL, '8000', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, NULL, NULL, NULL, NULL, NULL, '::1', '2022-10-18 02:47:14'),
+(22, 10, 1, 5, 8000, NULL, NULL, '16000', NULL, 0, 0, 8, 11, NULL, NULL, NULL, NULL, '24 Oct 2022', '8:30 PM', '', '', '', NULL, '8000', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, NULL, NULL, NULL, NULL, NULL, '::1', '2022-10-18 02:47:51'),
+(23, 10, 1, 5, 8000, NULL, NULL, '16000', NULL, 0, 0, 8, 11, NULL, NULL, NULL, NULL, '24 Oct 2022', '8:30 PM', '', '', '', NULL, '8000', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, NULL, NULL, NULL, NULL, NULL, '::1', '2022-10-18 02:49:33');
 
 -- --------------------------------------------------------
 
@@ -199,8 +226,8 @@ CREATE TABLE `tbl_intercity` (
 --
 
 INSERT INTO `tbl_intercity` (`id`, `city_id`, `cab_type`, `price`, `Kilomitere_cab`, `min_amount`, `is_active`) VALUES
-(15, 6, '1', 99, 88, 88, 1),
-(16, 8, '3', 44, 744, 44, 1);
+(15, 6, 'Hatchback', 99, 88, 88, 1),
+(16, 8, 'XUV', 44, 744, 44, 1);
 
 -- --------------------------------------------------------
 
@@ -245,7 +272,22 @@ INSERT INTO `tbl_otp` (`id`, `phone`, `otp`, `status`, `temp_id`, `ip`, `date`) 
 (20, '0000000000', '123456', 1, 0, '::1', '2022-10-13 14:47:40'),
 (21, '0000000000', '123456', 1, 0, '::1', '2022-10-13 14:48:23'),
 (22, '0000000000', '123456', 0, 0, '::1', '2022-10-13 16:35:21'),
-(23, '0000000000', '123456', 1, 0, '::1', '2022-10-15 19:15:41');
+(23, '0000000000', '123456', 1, 0, '::1', '2022-10-15 19:15:41'),
+(24, '0000000000', '123456', 1, 0, '::1', '2022-10-16 00:15:13'),
+(25, '0000000000', '123456', 1, 0, '::1', '2022-10-16 23:15:05'),
+(26, '0000000000', '123456', 1, 0, '::1', '2022-10-17 21:50:28'),
+(27, '8387039990', '123456', 0, 98, '::1', '2022-10-17 23:53:16'),
+(28, '8387039990', '123456', 1, 99, '::1', '2022-10-17 23:53:43'),
+(29, '8387039990', '123456', 1, 0, '::1', '2022-10-17 23:55:38'),
+(30, '8387039990', '123456', 0, 0, '::1', '2022-10-18 00:28:34'),
+(31, '8387039990', '123456', 0, 0, '::1', '2022-10-18 00:32:24'),
+(32, '8387039990', '123456', 0, 0, '::1', '2022-10-18 00:32:48'),
+(33, '8387039990', '123456', 0, 0, '::1', '2022-10-18 00:33:56'),
+(34, '8387039990', '123456', 0, 0, '::1', '2022-10-18 00:34:47'),
+(35, '8387039990', '123456', 1, 100, '::1', '2022-10-18 00:36:04'),
+(36, '8387039990', '123456', 0, 0, '::1', '2022-10-18 00:37:34'),
+(37, '8387039990', '123456', 0, 0, '::1', '2022-10-18 00:38:08'),
+(38, '8387039990', '123456', 1, 0, '::1', '2022-10-18 00:38:34');
 
 -- --------------------------------------------------------
 
@@ -273,9 +315,8 @@ CREATE TABLE `tbl_outstation` (
 --
 
 INSERT INTO `tbl_outstation` (`id`, `brand_name`, `car_name`, `seatting`, `photo`, `per_kilometre`, `location`, `min_booking_amt`, `city_id`, `is_active`, `date`, `is_available`) VALUES
-(10, 'sonu', 'thar', '69', 'assets/uploads/outstation/category20220912010946.jpg', 0, '20', '', 5, 1, '', 0),
-(11, 'f', 'thar', '69', 'assets/uploads/outstation/category20220912010955.jpg', 10, '20', '', 6, 1, '', 1),
-(16, 'brand111', 'thar', '1', 'assets/uploads/outstation/category20221012051016.jpg', 70, 'sikar', '200', 8, 1, '2022-10-12 17:10:16', 1);
+(10, 'Tata', 'Tiago', '1', 'assets/uploads/outstation/category20221018021024.png', 60, 'Udaipur', '5000', 8, 1, '', 0),
+(11, 'Mahindra', 'Thar', '2', 'assets/uploads/outstation/category20221018021010.png', 80, 'Lake', '8000', 8, 1, '', 1);
 
 -- --------------------------------------------------------
 
@@ -347,6 +388,7 @@ CREATE TABLE `tbl_search` (
   `end_date` varchar(255) DEFAULT NULL,
   `end_time` varchar(255) DEFAULT NULL,
   `duration` varchar(255) DEFAULT NULL,
+  `round_type` int(11) DEFAULT NULL,
   `date` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -354,9 +396,18 @@ CREATE TABLE `tbl_search` (
 -- Dumping data for table `tbl_search`
 --
 
-INSERT INTO `tbl_search` (`id`, `city_id`, `start_date`, `start_time`, `end_date`, `end_time`, `duration`, `date`) VALUES
-(1, 6, '15 Oct 2022', '7:30 PM', '16 Oct 2022', '7:30 PM', '24', '2022-10-15 16:08:36'),
-(2, 6, '15 Oct 2022', '7:30 PM', '18 Oct 2022', '5:30 PM', '70', '2022-10-15 18:00:12');
+INSERT INTO `tbl_search` (`id`, `city_id`, `start_date`, `start_time`, `end_date`, `end_time`, `duration`, `round_type`, `date`) VALUES
+(1, 6, '15 Oct 2022', '7:30 PM', '16 Oct 2022', '7:30 PM', '24', NULL, '2022-10-15 16:08:36'),
+(2, 6, '15 Oct 2022', '7:30 PM', '18 Oct 2022', '5:30 PM', '70', NULL, '2022-10-15 18:00:12'),
+(3, 5, '15 Oct 2022', '6:30 PM', '22 Oct 2022', '7:30 PM', '169', NULL, '2022-10-16 00:34:27'),
+(4, 6, '15 Oct 2022', '7:30 PM', '21 Oct 2022', '9:30 PM', '146', NULL, '2022-10-16 00:35:00'),
+(5, 6, '16 Oct 2022', '11:30 AM', '20 Oct 2022', '10:30 AM', '95', NULL, '2022-10-16 23:14:54'),
+(6, 6, '18 Oct 2022', '6:30 PM', '21 Oct 2022', '7:30 PM', '73', NULL, '2022-10-18 00:40:11'),
+(7, 6, '17 Oct 2022', '6:30 PM', '30 Oct 2022', '6:30 PM', '312', NULL, '2022-10-18 01:31:08'),
+(8, 6, '17 Oct 2022', '7:30 PM', '24 Oct 2022', '6:30 PM', '167', NULL, '2022-10-18 02:01:47'),
+(9, 8, '31 Oct 2022', '7:30 PM', NULL, NULL, '', 1, '2022-10-18 02:15:40'),
+(10, 8, '24 Oct 2022', '8:30 PM', NULL, NULL, '', 1, '2022-10-18 02:16:50'),
+(11, 6, '23 Oct 2022', '7:30 PM', '25 Oct 2022', '6:30 PM', '47', NULL, '2022-10-18 02:30:19');
 
 -- --------------------------------------------------------
 
@@ -498,7 +549,6 @@ CREATE TABLE `tbl_users` (
   `f_name` varchar(100) DEFAULT NULL,
   `l_name` varchar(255) DEFAULT NULL,
   `aadhar_no` varchar(255) DEFAULT NULL,
-  `passport` varchar(255) DEFAULT NULL,
   `driving_lience` varchar(255) DEFAULT NULL,
   `email` varchar(255) DEFAULT NULL,
   `dob` varchar(255) NOT NULL,
@@ -512,9 +562,10 @@ CREATE TABLE `tbl_users` (
 -- Dumping data for table `tbl_users`
 --
 
-INSERT INTO `tbl_users` (`id`, `f_name`, `l_name`, `aadhar_no`, `passport`, `driving_lience`, `email`, `dob`, `phone`, `ip`, `is_active`, `date`) VALUES
-(2, 'Brain', 'Storm', NULL, NULL, NULL, NULL, '', '6377687630', NULL, 1, NULL),
-(3, 'First', 'User', NULL, NULL, NULL, NULL, '', '0000000000', 0, 1, '2022-10-13 12:59:15');
+INSERT INTO `tbl_users` (`id`, `f_name`, `l_name`, `aadhar_no`, `driving_lience`, `email`, `dob`, `phone`, `ip`, `is_active`, `date`) VALUES
+(2, 'Brain', 'Storm', NULL, NULL, NULL, '', '6377687630', NULL, 1, NULL),
+(3, 'First', 'User', NULL, NULL, NULL, '', '0000000000', 0, 1, '2022-10-13 12:59:15'),
+(5, 'NItesh', 'Shah', '12354699875123654', 'cvadcs122', 'nitesh@gmail.com', '17 Oct 2022', '8387039990', 0, 1, '2022-10-18 00:36:25');
 
 -- --------------------------------------------------------
 
@@ -633,7 +684,10 @@ INSERT INTO `tbl_user_temp` (`id`, `fname`, `lname`, `email`, `phone`, `ip`, `da
 (94, 'nitesh', 'shah', NULL, '000000000', '::1', '2022-10-13 12:57:38'),
 (95, 'nitesh', 'shah', NULL, '000000000', '::1', '2022-10-13 12:57:39'),
 (96, 'nitesh', 'shah', 'nitesh@gmail.com', '0000000000', '::1', '2022-10-13 12:59:10'),
-(97, 'nitesh', 'shaha', 'nitesh@gmail.com', '1111111111', '::1', '2022-10-13 14:46:15');
+(97, 'nitesh', 'shaha', 'nitesh@gmail.com', '1111111111', '::1', '2022-10-13 14:46:15'),
+(98, 'NItesh', 'Shah', 'nitesh@gmail.com', '8387039990', '::1', '2022-10-17 23:53:16'),
+(99, 'NItesh', 'Shah', 'nitesh@gmail.com', '8387039990', '::1', '2022-10-17 23:53:43'),
+(100, 'Nitesh', 'Shah', 'nitesh@gmail.com', '8387039990', '::1', '2022-10-18 00:36:04');
 
 --
 -- Indexes for dumped tables
@@ -767,7 +821,7 @@ ALTER TABLE `tbl_banner`
 -- AUTO_INCREMENT for table `tbl_booking`
 --
 ALTER TABLE `tbl_booking`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
 
 --
 -- AUTO_INCREMENT for table `tbl_cities`
@@ -785,7 +839,7 @@ ALTER TABLE `tbl_intercity`
 -- AUTO_INCREMENT for table `tbl_otp`
 --
 ALTER TABLE `tbl_otp`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=39;
 
 --
 -- AUTO_INCREMENT for table `tbl_outstation`
@@ -809,7 +863,7 @@ ALTER TABLE `tbl_promocode`
 -- AUTO_INCREMENT for table `tbl_search`
 --
 ALTER TABLE `tbl_search`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT for table `tbl_selfdrive`
@@ -839,13 +893,13 @@ ALTER TABLE `tbl_testimonials`
 -- AUTO_INCREMENT for table `tbl_users`
 --
 ALTER TABLE `tbl_users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `tbl_user_temp`
 --
 ALTER TABLE `tbl_user_temp`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=98;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=101;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
