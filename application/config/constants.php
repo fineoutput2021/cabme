@@ -92,14 +92,8 @@ defined('EXIT_DATABASE')       OR define('EXIT_DATABASE', 8); // database error
 defined('EXIT__AUTO_MIN')      OR define('EXIT__AUTO_MIN', 9); // lowest automatically-assigned error code
 defined('EXIT__AUTO_MAX')      OR define('EXIT__AUTO_MAX', 125); // highest automatically-assigned error code
 
-//======================== Shipping ==================================
-defined('SHIPPING')      OR define('SHIPPING', 50);
-define('USER_NAME','info@fineoutput.co.in');
-define('PASSWORD','info@fineoutput2019');
-define('EMAIL','info@fineoutput.co.in');
-define('SMTP_HOST','mail.fineoutput.co.in');
-define('SMTP_PORT','587');
-
-// ========================= RAZORPAY API AND SECRET =============================
-define('API_KEY','rzp_test_nyyE7NA4CoCIbN');
-define('API_SECRET','U0iJVwdeskvEw7qVstJ7mh1c');
+// ========================= PAYU  =============================
+define('MERCHANT_KEY','rO0ypgoR');
+define('SALT','Oi2VYiLZhQ');
+define('PAYU_BASE_URL','https://sandboxsecure.payu.in');// For Sandbox Mode
+// define('PAYU_BASE_URL','https://secure.payu.in');// For Sandbox Mode

@@ -58,17 +58,9 @@
                       <td><?php echo $i ?> </td>
                           <td><?php echo $city_data[0]->name ?></td>
                       <td>
-                        <?php if ($data->cab_type==1) {
-                            echo 'HATCHBACK ';
-                        }  ?>
-
-                        <?php if ($data->cab_type==2) {
-                            echo 'SEDAN ';
-                        }  ?>
-
-                        <?php if ($data->cab_type==3) {
-                            echo 'SUV ';
-                        }  ?>
+                        <?php
+                            echo $data->cab_type;
+                          ?>
 
 
                       </td>

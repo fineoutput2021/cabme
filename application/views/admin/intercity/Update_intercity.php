@@ -53,9 +53,9 @@ if (!empty($this->session->flashdata('emessage'))) { ?>
                       <td>
                         <select name="cab_type" class="form-control" required>
                           <option value="">Cab Type</option>
-                          <option value="1" <?if($intercity->cab_type==1){echo 'selected' ;}?>>HATCHBACK</option>
-                          <option value="2" <?if($intercity->cab_type==2){echo 'selected' ;}?>>SEDAN</option>
-                          <option value="3" <?if($intercity->cab_type==3){echo 'selected' ;}?>>SUV</option>
+                          <option value="1" <?if($intercity->cab_type=='Hatchback'){echo 'selected' ;}?>>HATCHBACK</option>
+                          <option value="2" <?if($intercity->cab_type=='Sedan'){echo 'selected' ;}?>>SEDAN</option>
+                          <option value="3" <?if($intercity->cab_type=='XUV'){echo 'selected' ;}?>>XUV</option>
                         </select>
                       </td>
                     </tr>

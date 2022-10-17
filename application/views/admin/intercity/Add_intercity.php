@@ -61,9 +61,9 @@ if (!empty($this->session->flashdata('emessage'))) { ?>
                       <td>
                         <select name="cab_type" class="form-control" required>
                           <option value="">---Select Cab Type-----</option>
-                          <option value="1">HATCHBACK</option>
-                          <option value="2">SEDAN</option>
-                          <option value="3">SUV</option>
+                          <option value="Hatchback">HATCHBACK</option>
+                          <option value="Sedan">SEDAN</option>
+                          <option value="XUV">XUV</option>
                         </select>
                       </td>
                     </tr>

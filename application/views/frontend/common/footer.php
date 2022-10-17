@@ -100,6 +100,36 @@ function loadSuccessNotify(succ_message){
     function loadErrorNotify(message){
        notifyError(message);
     }
+//======= intercity ==========
+// =========================================================== REGISTER USER ===========================================================
+$("#w_intercity_form").on('submit',function(e){
+  e.preventDefault();
+  var form = $(this);
+    $.ajax({
+    type: "POST",
+    url: base_url+'Home/intercity_calculate',
+    data: form.serialize(),
+    dataType: "json",
+    success: function(response) {
+      if(response.status==true){
+        $('#i_city').html(response.data.city)
+        $('#i_cab').html(response.data.cab_type)
+        $('#i_sd').html(response.data.start_date+' &')
+        $('#i_st').html(response.data.start_time)
+        $('#i_ed').html(response.data.end_date+' &')
+        $('#i_et').html(response.data.end_time)
+        $('#i_cap').html(response.data.kilometer_cap+'Kms')
+        $('#i_prc').html('₹'+response.data.final_amount)
+        $('#i_mini').html('₹'+response.data.mini_booking)
+        $('#ic_id').val(response.data.id)
+        $('#ic_amount').val(response.data.final_amount)
+				$('#searchbtn').modal('show');
+      }else{
+        notifyError(response.message)
+      }
+    }
+  });
+});
 //------ onchange on time and date -------
 $("#sdsd, #sded").change(function(){
 	var sdsd=$('#sdsd').val();
@@ -177,6 +207,87 @@ function time_change(){
 				$('#duration').val(diff);
 }
 }
+//------ onchange on time and date -------
+$("#icsd, #iced").change(function(){
+	var icsd=$('#icsd').val();
+	var icst=$('#icst').attr('data-time');
+	var iced=$('#iced').val();
+	var icet=$('#icet').attr('data-time');
+	// start date covert ------
+	var sd    = new Date(icsd),
+		icyr      = sd.getFullYear(),
+		icmonth   = sd.getMonth() < 10 ? '0' + sd.getMonth() : sd.getMonth(),
+		icday     = sd.getDate()  < 10 ? '0' + sd.getDate()  : sd.getDate(),
+		icDate = icyr + '-' + icmonth + '-' + icday;
+		// end date date covert ------
+		var ed    = new Date(iced),
+			icyr      = ed.getFullYear(),
+			icmonth   = ed.getMonth() < 10 ? '0' + ed.getMonth() : ed.getMonth(),
+			icday     = ed.getDate()  < 10 ? '0' + ed.getDate()  : ed.getDate(),
+			icDate = icyr + '-' + icmonth + '-' + icday;
+			//----- calculate diffrence --------
+			console.log('startdate= '+icDate);
+			console.log('starttime= '+icst);
+			console.log('enddate= '+icDate);
+			console.log('endtime= '+icet);
+			console.log('check= '+$('#icst').val());
+			if((icDate !='NaN-NaN-NaN')&& (typeof icst != "undefined")&& (icDate !='NaN-NaN-NaN')&& (typeof iced != "undefined")){
+				var start = new Date(icDate);
+				 var end   = new Date(icDate);
+					var diff= (( new Date(icDate+" " +icet) - new Date(icDate+" " +icst) ) / 1000 / 60 / 60 );
+					var days =  parseInt(diff/24);
+					var hours =  diff%24;
+					if(hours>0 && days >0){
+						$('#ic_duration').html("Duration: "+days+" day, "+hours+" hours")
+					}else if(hours==0 && days>0){
+							$('#ic_duration').html("Duration: "+days+" day")
+					}else{
+							$('#ic_duration').html("Duration: "+hours+" hours")
+					}
+						$('#i_duration').val(diff);
+						$('#iter_btn').removeAttr('disabled');
+		}
+});
+
+function ic_time_change(){
+	var icsd=$('#icsd').val();
+	var icst=$('#icst').attr('data-time');
+	var iced=$('#iced').val();
+	var icet=$('#icet').attr('data-time');
+	// start date covert ------
+	var sd    = new Date(icsd),
+		icyr      = sd.getFullYear(),
+		icmonth   = sd.getMonth() < 10 ? '0' + sd.getMonth() : sd.getMonth(),
+		icday     = sd.getDate()  < 10 ? '0' + sd.getDate()  : sd.getDate(),
+		icDate = icyr + '-' + icmonth + '-' + icday;
+		// end date date covert ------
+		var ed    = new Date(iced),
+			icyr      = ed.getFullYear(),
+			icmonth   = ed.getMonth() < 10 ? '0' + ed.getMonth() : ed.getMonth(),
+			icday     = ed.getDate()  < 10 ? '0' + ed.getDate()  : ed.getDate(),
+			icDate = icyr + '-' + icmonth + '-' + icday;
+			//----- calculate diffrence --------
+			console.log('startdate= '+icDate);
+			console.log('starttime= '+icst);
+			console.log('enddate= '+icDate);
+			console.log('endtime= '+icet);
+			if((icDate !='NaN-NaN-NaN')&& (typeof icst != "undefined")&& (icDate !='NaN-NaN-NaN')&& (typeof iced != "undefined")){
+				var start = new Date(icDate);
+				 var end   = new Date(icDate);
+				  var diff= (( new Date(icDate+" " +icet) - new Date(icDate+" " +icst) ) / 1000 / 60 / 60 );
+					var days =  parseInt(diff/24);
+					var hours =  diff%24;
+					if(hours>0 && days >0){
+						$('#ic_duration').html("Duration: "+days+" day, "+hours+" hours")
+					}else if(hours==0 && days>0){
+							$('#ic_duration').html("Duration: "+days+" day")
+					}else{
+							$('#ic_duration').html("Duration: "+hours+" hours")
+					}
+						$('#i_duration').val(diff);
+						$('#iter_btn').removeAttr('disabled');
+		}
+}
 //------ set city on load -------
 $(document).ready(function () {
 var id = localStorage.getItem("city_id");
@@ -241,12 +352,13 @@ function change(x) {
 		$('.timepicker').mdtimepicker();
 	}
 	if (x == 3) {
-		$('#location').html(
-			'<div class="col-md-6 mb-3"><div class="x_slider_select x_slider_select_2">	<select class="myselect" style="border-radius: 10px;border: solid 1px #e8e8e8;">	<option>Pickup Location</option>	<option>Jaipur</option><option>Delhi</option><option>Mumbai</option></select> <i class="fa fa-map-marker"></i></div></div><div class="col-md-6  mb-3"><div class="x_slider_select x_slider_select_2" style="margin-left: 12px;">	<select class="myselect" style="border-radius: 10px;border: solid 1px #e8e8e8;">	<option>Drop Location</option>	<option>Bangalore</option>	<option>Chennai</option>	<option>Goa</option></select> <i class="fa fa-map-marker"></i></div></div>'
-			)
-	} if(x == 4) {
 		$("#location").html(
 			'<div class="col-md-12 mb-3"><div class="x_slider_select x_slider_select_2">	<select class="myselect" style="border-radius: 10px;border: solid 1px #e8e8e8;">	<option>Pickup Location</option><option>Jaipur</option>	<option>Delhi</option>	<option>Mumbai</option></select> <i class="fa fa-map-marker"></i></div></div>'
+			)
+
+	} if(x == 4) {
+		$('#location').html(
+			'<div class="col-md-6 mb-3"><div class="x_slider_select x_slider_select_2">	<select class="myselect" style="border-radius: 10px;border: solid 1px #e8e8e8;">	<option>Pickup Location</option>	<option>Jaipur</option><option>Delhi</option><option>Mumbai</option></select> <i class="fa fa-map-marker"></i></div></div><div class="col-md-6  mb-3"><div class="x_slider_select x_slider_select_2" style="margin-left: 12px;">	<select class="myselect" style="border-radius: 10px;border: solid 1px #e8e8e8;">	<option>Drop Location</option>	<option>Bangalore</option>	<option>Chennai</option>	<option>Goa</option></select> <i class="fa fa-map-marker"></i></div></div>'
 			)
 	}
 	if(x == 1)

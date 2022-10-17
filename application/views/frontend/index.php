@@ -34,7 +34,6 @@
 													<h5 style="margin-top: 3px;" class="city_title">Select City</h5>
 												</div>
 											</div>
-											<input type="hidden" name="city_id" class="city_id"  value=""/>
 											<div class="col-md-6 " style="z-index: 0;display: flex;height: 70px;border: 1px solid rgb(212, 208, 208);padding: 0px;">
 												<div class="form-sec-header" style="height: 50px;padding: 12px 0px;">
 													<label class="cal-icon" style="margin-top: 10px;margin-left: 10px;">Start Date
@@ -63,6 +62,7 @@
 												<h6 id="s_duration"></h6>
 											</div>
 										</div>
+										<input type="hidden" name="city_id" class="city_id"  value=""/>
 										<input type="hidden" name="duration" value="" id="duration">
 										<input type="hidden" name="index" value="1" id="index">
 										<div class="col-md-12">
@@ -80,69 +80,6 @@
 							</form>
 						</div>
 						<!-- outstation Form Tab -->
-						<div id="third" class="tab-pane">
-							<form method="post" enctype="multipart/form-data" action="<?=base_url()?>">
-							<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
-								<div class="x_slider_form_main_wrapper float_left" style="margin-top: -5px;">
-									<div class="row">
-										<div class="col-md-12" style="margin-bottom: 10px;">
-											<div class="x_slider_select x_slider_select_2" style="margin-top: 0px;">
-												<select class="myselect">
-													<option> Select Car </option>
-													<option>Hyundai</option>
-													<option>SUV</option>
-													<option>Sedan</option>
-												</select> &nbsp; <i class="fa fa-car"></i>
-											</div>
-										</div>
-										<div class="row" style="border: 1px solid rgb(212, 208, 208);width: 99%;margin-left: 7px;border-radius: 10px;">
-											<div class="col-md-12" data-toggle="modal" data-target="#selectcity" data-dismiss="modal" id="ss">
-												<div class="selectcity">
-													<i class="fa fa-map-marker"></i>
-													<h5 style="margin-top: 3px;" class="city_title">Select City</h5>
-												</div>
-											</div>
-											<input type="hidden" name="city_id" class="city_id"  value=""/>
-											<div class="col-md-6 " style="z-index: 0;display: flex;height: 55px;border: 1px solid rgb(212, 208, 208);padding: 0px;">
-												<div class="form-sec-header" style="height: 50px;">
-													<label class="cal-icon" style="margin-top: 10px;margin-left: 10px;">Start Date
-														<input type="text" placeholder=" 15 Sep 2022" class="form-control datepicker" style="border: none;padding-right: 0px;padding-left: 5px;background-color: transparent;">
-													</label>
-												</div>
-												<div class="timepicker_div form-sec-headers" style="height: 50px;margin-top: 2px;width: 90px;">
-													<label class="cal-icon" style="margin-left: 10px;font-size: 11px;color: #000;font-weight: bold;margin-top: -3px;">TIME
-														<input type="text" class="form-control timepicker" placeholder="5:00AM" style="padding: 23px 0px;background-color: transparent;border: none;width: 90%;
-														margin-top: -10px;
-														margin-left: -5px;">
-													</label>
-												</div>
-											</div>
-											<div class="col-md-6 " style="z-index: 0;display: flex;height: 55px;border: 1px solid rgb(212, 208, 208);padding: 0px;">
-												<div class="form-sec-header" style="height: 50px;">
-													<label class="cal-icon" style="margin-top: 10px;margin-left: 10px;">End Date
-														<input type="text" placeholder=" 15 Sep 2022" class="form-control datepicker" style="border: none;padding-right: 0px;padding-left: 5px;background-color: transparent;">
-													</label>
-												</div>
-												<div class="timepicker_div form-sec-headers" style="height: 50px;margin-top: 2px;width: 90px;">
-													<label class="cal-icon" style="margin-left: 10px;font-size: 11px;color: #000;font-weight: bold;margin-top: -3px;">TIME
-														<input type="text" class="form-control timepicker" placeholder="5:00AM" style="padding: 23px 0px;background-color: transparent;border: none;width: 90%;
-															margin-top: -10px;
-															margin-left: -5px;">
-													</label>
-												</div>
-											</div>
-										</div>
-										<div class="col-md-12 mt-3">
-											<div class="row mt-2 justify-content-center">
-												<button class="btn col-md-10 searchbtn shadowbtn" data-toggle="modal" data-target="#searchbtn" data-dismiss="modal"> <i class="fa fa-search"></i> &nbsp;Search</button>
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
-								</form>
-						</div>
-						<!-- intercity Form Tab -->
 						<div id="second" class="tab-pane">
 							<form method="post" enctype="multipart/form-data" action="<?=base_url()?>">
 							<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
@@ -158,23 +95,13 @@
 									</div>
 									<div class="row">
 										<div id="location" style="display: flex;width: 100%;">
-											<div class="col-md-6 mb-3">
+											<div class="col-md-12 mb-3">
 												<div class="x_slider_select x_slider_select_2">
 													<select class="myselect">
 														<option>Pickup Location</option>
 														<option>Jaipur</option>
 														<option>Delhi</option>
 														<option>Mumbai</option>
-													</select> <i class="fa fa-map-marker"></i>
-												</div>
-											</div>
-											<div class="col-md-6  mb-3">
-												<div class="x_slider_select x_slider_select_2" style="margin-left: 12px;">
-													<select class="myselect">
-														<option>Drop Location</option>
-														<option>Bangalore</option>
-														<option>Chennai</option>
-														<option>Goa</option>
 													</select> <i class="fa fa-map-marker"></i>
 												</div>
 											</div>
@@ -203,6 +130,8 @@
 												</div>
 											</div>
 										</div>
+										<input type="hidden" name="city_id" class="city_id"  value=""/>
+										<input type="hidden" name="round_type" id="round_type"  value=""/>
 										<div class="col-md-12 mt-3">
 											<div class="row mt-2 justify-content-center">
 												<a href="outstation_car.html" class=" col-md-10 text-center">
@@ -215,6 +144,74 @@
 							</div>
 							</form>
 						</div>
+						<!-- intercity Form Tab -->
+						<div id="third" class="tab-pane">
+							<form method="post" enctype="multipart/form-data" action="javascript:void(0)" id="w_intercity_form">
+							<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+								<div class="x_slider_form_main_wrapper float_left" style="margin-top: -5px;">
+									<div class="row">
+										<div class="col-md-12" style="margin-bottom: 10px;">
+											<div class="x_slider_select x_slider_select_2" style="margin-top: 0px;">
+												<select class="myselect" name="cab_type" id=>
+													<option value="Hatchback">Hatchback</option>
+													<option value="XUV">XUV</option>
+													<option value="Sedan">Sedan</option>
+												</select> &nbsp; <i class="fa fa-car"></i>
+											</div>
+										</div>
+										<div class="row" style="border: 1px solid rgb(212, 208, 208);width: 99%;margin-left: 7px;border-radius: 10px;">
+											<div class="col-md-12" data-toggle="modal" data-target="#selectcity" data-dismiss="modal" id="ss">
+												<div class="selectcity">
+													<i class="fa fa-map-marker"></i>
+													<h5 style="margin-top: 3px;" class="city_title">Select City</h5>
+												</div>
+											</div>
+											<div class="col-md-6 " style="z-index: 0;display: flex;height: 55px;border: 1px solid rgb(212, 208, 208);padding: 0px;">
+												<div class="form-sec-header" style="height: 50px;">
+													<label class="cal-icon" style="margin-top: 10px;margin-left: 10px;">Start Date
+														<input type="text" id="icsd" name="start_date" placeholder="Date" required  class="form-control datepicker" style="border: none;padding-right: 0px;padding-left: 5px;background-color: transparent;">
+													</label>
+												</div>
+												<div class="timepicker_div form-sec-headers" style="height: 50px;margin-top: 2px;width: 90px;">
+													<label class="cal-icon" style="margin-left: 10px;font-size: 11px;color: #000;font-weight: bold;margin-top: -3px;">TIME
+														<input type="text" id="icst" name="start_time" placeholder="Time" required  class="form-control timepicker"  style="padding: 23px 0px;background-color: transparent;border: none;width: 90%;margin-top: -10px;margin-left: -5px;">
+													</label>
+												</div>
+											</div>
+											<div class="col-md-6 " style="z-index: 0;display: flex;height: 55px;border: 1px solid rgb(212, 208, 208);padding: 0px;">
+												<div class="form-sec-header" style="height: 50px;">
+													<label class="cal-icon" style="margin-top: 10px;margin-left: 10px;">End Date
+														<input type="text" id="iced" name="end_date" placeholder="Date" required class="form-control datepicker" style="border: none;padding-right: 0px;padding-left: 5px;background-color: transparent;">
+													</label>
+												</div>
+												<div class="timepicker_div form-sec-headers" style="height: 50px;margin-top: 2px;width: 90px;">
+													<label class="cal-icon" style="margin-left: 10px;font-size: 11px;color: #000;font-weight: bold;margin-top: -3px;">TIME
+														<input type="text" id="icet" name="end_time" class="form-control timepicker" required placeholder="Time" style="padding: 23px 0px;background-color: transparent;border: none;width: 90%;margin-top: -10px;margin-left: -5px;">
+													</label>
+												</div>
+											</div>
+											<div class="text-center col-md-12 col-12 p-2">
+												<h6 id="ic_duration"></h6>
+											</div>
+										</div>
+										<input type="hidden" name="city_id" class="city_id"  value=""/>
+										<input type="hidden" name="duration" value="" id="i_duration">
+										<div class="col-md-12 mt-3">
+											<div class="row mt-2 justify-content-center">
+											<?if(!empty($this->session->userdata('user_data'))){?>
+												<button class="btn col-md-10 searchbtn shadowbtn" type="submit" id="iter_btn"> <i class="fa fa-search"></i> &nbsp;Search</button>
+												<?}else{?>
+													<button class="btn col-md-10 searchbtn shadowbtn" data-toggle="modal" data-target="#loginModal"> <i class="fa fa-search"></i> &nbsp; Search</button>
+													<?}?>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+								</form>
+						</div>
+
+
 					</div>
 				</div>
 				<!-- =================== Start Slider ============================ -->
@@ -300,6 +297,7 @@
 									<div class="text-center col-md-12 col-12 p-2">
 										<h6>Duration: 1 day, 2 hours</h6>
 									</div>
+									<input type="hidden" name="city_id" class="city_id"  value=""/>
 									<div class="col-md-12">
 										<div class="row mt-4 justify-content-center">
 											<a href="self_cars.html" class=" col-md-10 text-center">
@@ -318,11 +316,11 @@
 								<div class="row">
 									<div class="col-md-12 p-0">
 										<div class="x_slider_select x_slider_select_2" style="margin-top: 0px;margin-left: -14px;">
-											<select class="myselect">
+											<select class="myselect" name="cab_type">
 												<option> Select Car </option>
-												<option>Hyundai</option>
-												<option>SUV</option>
-												<option>Sedan</option>
+												<option value="Hatchback">Hatchback</option>
+												<option value="XUV">XUV</option>
+												<option value="Sedan">Sedan</option>
 											</select> &nbsp; <i class="fa fa-car"></i>
 										</div>
 									</div>
@@ -356,6 +354,7 @@
 											</div>
 										</div>
 									</div>
+									<input type="hidden" name="city_id" class="city_id"  value=""/>
 									<div class="col-md-12 mt-3">
 										<div class="row mt-2 justify-content-center">
 											<button class="btn col-md-10 searchbtn shadowbtn" data-toggle="modal" data-target="#searchbtn" data-dismiss="modal"> <i class="fa fa-search"></i> &nbsp;Search</button>
@@ -422,6 +421,7 @@
 											</div>
 										</div>
 									</div>
+									<input type="hidden" name="city_id" class="city_id"  value=""/>
 									<div class="col-md-12 mt-3">
 										<div class="row mt-2 justify-content-center">
 											<a href="outstation_car.html" class=" col-md-10 text-center">

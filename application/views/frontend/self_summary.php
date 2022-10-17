@@ -1,4 +1,75 @@
 
+<!--======proof Modal ======-->
+
+<div class="modal fade" id="proofModal" role="dialog">
+	<div class="modal-dialog proofModal">
+		<!-- Modal content-->
+		<div class="modal-content loginModal-content">
+			<div class="modal-header">
+				<div class="col-md-11 col-11 text-center">
+					<h4 class="modal-title">Eligibility & ID</h4>
+				</div>
+				<div class="col-md-1 col-1"> <button type="button" class="close"
+						data-dismiss="modal">&times;</button>
+				</div>
+			</div>
+			<div class="modal-body">
+				<div class="formsix-pos">
+					<div class="form-sec-header proofdateofbirth mb-4">
+						<label class="cal-icon">
+							<input type="text" placeholder="Date Of Birth" class="form-control datepicker" value="<?=$user_data[0]->dob?>">
+						</label>
+					</div>
+					<div class="row mb-4">
+						<select class="proofselect">
+							<option value="aadhar">Aadhar Card</option>
+							<option value="passport">Passport</option>
+						</select>
+					</div>
+					<div class="form-group mb-4">
+						<input type="text" class="form-control modalinput" required="" placeholder="Aadhar Number*" value="<?=$user_data[0]->aadhar_no?>">
+					</div>
+					<div class="form-group mb-4">
+						<input type="text" class="form-control modalinput" required="" placeholder="Passport*" value="<?=$user_data[0]->passport?>">
+					</div>
+					<div class="form-group mb-4">
+						<input type="text" class="form-control modalinput" required="" placeholder="Driving License*"  value="<?=$user_data[0]->driving_lience?>">
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-12">
+						<p class="mt-1 mb-1">Upload Aadhar Front Image</p>
+						<input type="file" reqiured>
+					</div>
+					<div class="col-md-12">
+						<p class="mt-1  mb-1">Upload Aadhar Back Image</p>
+						<input type="file" reqiured>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-12">
+						<p class="mt-1 mb-1">Upload License Front Image</p>
+						<input type="file" reqiured>
+					</div>
+					<div class="col-md-12">
+						<p class="mt-1  mb-1">Upload License Back Image</p>
+						<input type="file" reqiured>
+					</div>
+				</div>
+				<div class="row  mt-2">
+					<div class="x_slider_checkbox x_slider_checkbox_bottom_filter_use">
+						<input type="checkbox" id="agree" name="agree" reqiured>
+						<label for="agree">Terms & Conditions</label>
+					</div>
+				</div>
+				<div class="row justify-content-center mt-2"> <a href="success.html"><button
+							class="btn loginbtn">Proceed To Pay</button></a> </div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<!--====== proof Modal End ======-->
 		<!--====== Change Plan Modal ======-->
 		<div class="modal fade " id="changeplan" role="dialog">
 			<div class="modal-dialog " style="width: auto;">
@@ -218,8 +289,8 @@
 	                </div>
 	              </li>
 	            </ul>
-	            <!-- <button class="bookbtn col-md-4" data-toggle="modal" data-target="#proofModal" data-dismiss="modal">Pay</button> -->
-	            <a href="<?=base_url()?>Home/self_checkout/<?=base64_encode($booking_data[0]->id)?>"><button class="bookbtn col-md-4">Pay</button></a>
+	            <button class="bookbtn col-md-4" data-toggle="modal" data-target="#proofModal" data-dismiss="modal">Pay</button>
+	            <!-- <a href="<?=base_url()?>Home/self_checkout/<?=base64_encode($booking_data[0]->id)?>"><button class="bookbtn col-md-4">Pay</button></a> -->
 	          </div>
 	        </div>
 	      </div>

@@ -26,71 +26,7 @@
 
 <body>
 
-		<!--======proof Modal ======-->
 
-		<div class="modal fade" id="proofModal" role="dialog">
-			<div class="modal-dialog proofModal">
-
-				<!-- Modal content-->
-				<div class="modal-content loginModal-content">
-					<div class="modal-header">
-						<div class="col-md-11 col-11 text-center">
-							<h4 class="modal-title">Eligibility & ID</h4>
-						</div>
-
-						<div class="col-md-1 col-1"> <button type="button" class="close"
-								data-dismiss="modal">&times;</button>
-						</div>
-
-					</div>
-					<div class="modal-body">
-						<div class="formsix-pos">
-							<div class="form-sec-header proofdateofbirth mb-4">
-								<label class="cal-icon">
-									<input type="text" placeholder="Date Of Birth" class="form-control datepicker">
-								</label>
-							</div>
-							<div class="row mb-4">
-								<select class="proofselect">
-									<option value="aadhar">Aadhar Card</option>
-									<option value="passport">Passport</option>
-								</select>
-							</div>
-							<div class="form-group mb-4">
-								<input type="text" class="form-control modalinput" required="" placeholder="Aadhar Number*">
-							</div>
-							<div class="form-group mb-4">
-								<input type="text" class="form-control modalinput" required="" placeholder="Passport*">
-							</div>
-							<div class="form-group mb-4">
-								<input type="text" class="form-control modalinput" required=""
-									placeholder="Driving License*">
-							</div>
-						</div>
-						<div class="row">
-							<div class="col-md-12">
-								<p class="mt-1 mb-1">Upload Aadhar photo</p>
-								<input type="file">
-							</div>
-							<div class="col-md-12">
-								<p class="mt-1  mb-1">Upload Driving License photo</p>
-								<input type="file">
-							</div>
-						</div>
-						<div class="row  mt-2">
-							<div class="x_slider_checkbox x_slider_checkbox_bottom_filter_use">
-								<input type="checkbox" id="agree" name="cb">
-								<label for="agree">Terms & Conditions</label>
-							</div>
-						</div>
-						<div class="row justify-content-center mt-2"> <a href="success.html"><button
-									class="btn loginbtn">Proceed To Pay</button></a> </div>
-					</div>
-				</div>
-			</div>
-		</div>
-
-		<!--====== proof Modal End ======-->
 
 
 	<!--====== Info Modal ======-->
@@ -103,12 +39,13 @@
 					<button type="button" class="close" data-dismiss="modal">&times;</button>
 				</div>
 				<div class="modal-body" id="mobilefont">
+					<form method="post" enctype="multipart/form-data" id="intercity_checkout">
 					<div class="row mb-2">
 						<div class="col-md-6 col-6">
 							<h5>City :</h5>
 						</div>
 						<div class="col-md-6 col-6">
-							<h6>Jaipur</h6>
+							<h6 id="i_city"></h6>
 						</div>
 					</div>
 					<div class="row mb-2">
@@ -116,23 +53,25 @@
 							<h5>Car Type :</h5>
 						</div>
 						<div class="col-md-6 col-6">
-							<h6>Sedan</h6>
+							<h6 id="i_cab"></h6>
 						</div>
 					</div>
 					<div class="row mb-2">
 						<div class="col-md-6 col-6">
 							<h5>Start Date & <span>Time</span> :</h5>
 						</div>
-						<div class="col-md-6 col-6">
-							<h6>12-10-2003 & <span>10:23</span> </h6>
+						<div class="col-md-6 col-6" style="display:flex">
+							<h6 id="i_sd"></h6>
+							 <h6 id="i_st" class="ml-1"></h6>
 						</div>
 					</div>
 					<div class="row mb-2">
 						<div class="col-md-6 col-6">
 							<h5>End Date & <span>Time</span> :</h5>
 						</div>
-						<div class="col-md-6 col-6">
-							<h6>14-10-2003 & <span>12:23</span> </h6>
+						<div class="col-md-6 col-6" style="display:flex">
+							<h6 id="i_ed"></h6>
+							 <h6 id="i_et" class="ml-1"></h6>
 						</div>
 					</div>
 					<div class="row mb-2">
@@ -140,15 +79,15 @@
 							<h5>Price</h5>
 						</div>
 						<div class="col-md-6 col-6">
-							<h6>₹ 2000</h6>
+							<h6 id="i_prc"></h6>
 						</div>
 					</div>
 					<div class="row mb-2">
 						<div class="col-md-6 col-6">
-							<h5>Killometer Cab</h5>
+							<h5>Killometer Cap</h5>
 						</div>
 						<div class="col-md-6 col-6">
-							<h6>100 Kms</h6>
+							<h6 id="i_cap"></h6>
 						</div>
 					</div>
 					<div class="row mb-2">
@@ -156,14 +95,15 @@
 							<h5>Minimum Booking Amt.</h5>
 						</div>
 						<div class="col-md-6 col-6">
-							<h6>₹ 1000</h6>
+							<h6 id="i_mini"></h6>
 						</div>
 					</div>
+					<input type="hidden" id="ic_id" name="id" value=""/>
+					<input type="hidden" id="ic_amount" name="amount" value=""/>
 					<div class="row justify-content-center">
-						<a href="summary.html" class="col-md-12 text-center">
-							<button class="btn col-md-10  searchbtn shadowbtn">Book</button>
-						</a>
+							<button class="btn col-md-10  searchbtn shadowbtn" onclick="book_intercity">Book</button>
 					</div>
+				</form>
 				</div>
 			</div>
 		</div>

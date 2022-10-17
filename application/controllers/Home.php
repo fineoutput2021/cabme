@@ -1,4 +1,5 @@
 <?php
+
 if (! defined('BASEPATH')) {
     exit('No direct script access allowed');
 }
@@ -140,38 +141,40 @@ class Home extends CI_Controller
         }
     }
     //========================== SELF DRIVE SUMMARY =============================
-public function self_drive_summary($idd){
-   $id=base64_decode($idd);
-  $data['id']=$idd;
-  $data['booking_data'] = $this->db->get_where('tbl_booking', array('id'=> $id))->result();
-  $self = $this->db->get_where('tbl_selfdrive', array('id'=> $data['booking_data'][0]->car_id))->result();
-  //----- city data ---
-  $city = $this->db->get_where('tbl_cities', array('id'=> $data['booking_data'][0]->city_id))->result();
-$data['city_data']=$city;
-  //------ fuel type ---
-              if ($self[0]->fule_type==1) {
-                  $fuel_type = 'Petrol';
-              } elseif ($self[0]->fule_type==2) {
-                  $fuel_type = 'Diesel';
-              } else {
-                  $fuel_type = 'CNG';
-              }
-              //------ Transmission  ---
-              if ($self[0]->transmission==1) {
-                  $transmission = 'Manual';
-              } elseif ($self[0]->transmission==2) {
-                  $transmission = 'Automatic';
-              }
-              //------ seating  ---
-              if ($self[0]->seatting==1) {
-                  $seating = '4 Seates';
-              } elseif ($self[0]->seatting==2) {
-                  $seating = '5 Seates';
-              } else {
-                  $seating = '7 Seates';
-              }
-              $days =$data['booking_data'][0]->duration*24;
-              $car_data= array(
+    public function self_drive_summary($idd)
+    {
+        $id=base64_decode($idd);
+        $data['id']=$idd;
+        $data['booking_data'] = $this->db->get_where('tbl_booking', array('id'=> $id))->result();
+        $self = $this->db->get_where('tbl_selfdrive', array('id'=> $data['booking_data'][0]->car_id))->result();
+        $data['user_data'] = $this->db->get_where('tbl_users', array('id'=> $data['booking_data'][0]->user_id))->result();
+        //-----========= city data =============
+        $city = $this->db->get_where('tbl_cities', array('id'=> $data['booking_data'][0]->city_id))->result();
+        $data['city_data']=$city;
+        //------ fuel type ---
+        if ($self[0]->fule_type==1) {
+            $fuel_type = 'Petrol';
+        } elseif ($self[0]->fule_type==2) {
+            $fuel_type = 'Diesel';
+        } else {
+            $fuel_type = 'CNG';
+        }
+        //------ Transmission  ---
+        if ($self[0]->transmission==1) {
+            $transmission = 'Manual';
+        } elseif ($self[0]->transmission==2) {
+            $transmission = 'Automatic';
+        }
+        //------ seating  ---
+        if ($self[0]->seatting==1) {
+            $seating = '4 Seates';
+        } elseif ($self[0]->seatting==2) {
+            $seating = '5 Seates';
+        } else {
+            $seating = '7 Seates';
+        }
+        $days =$data['booking_data'][0]->duration*24;
+        $car_data= array(
                       'brand_name'=>$self[0]->brand_name,
                       'car_name'=>$self[0]->car_name,
                       'photo'=>$self[0]->photo,
@@ -186,27 +189,121 @@ $data['city_data']=$city;
                             'price3'=>$self[0]->price3*$days,
                       'extra_kilo'=>$self[0]->extra_kilo,
                       );
-                        $data['car_data']=$car_data;
-  $this->load->view('frontend/common/header', $data);
-  $this->load->view('frontend/self_summary');
-  $this->load->view('frontend/common/footer');
-}
-// ============ SELF DRIVE CHECKOUT ==========================
-public function self_checkout($idd){
-   $id=base64_decode($idd);
-  $data['id']=$idd;
-            $data_update = array('order_status'=>1,
+        $data['car_data']=$car_data;
+        $this->load->view('frontend/common/header', $data);
+        $this->load->view('frontend/self_summary');
+        $this->load->view('frontend/common/footer');
+    }
+    // ============ SELF DRIVE CHECKOUT ==========================
+    public function self_checkout($idd)
+    {
+        $id=base64_decode($idd);
+        $data['id']=$idd;
+        $data_update = array('order_status'=>1,
             'payment_status'=>1,
               );
-              $this->db->where('id', $id);
-              $zapak=$this->db->update('tbl_booking', $data_update);
-    $booking_data = $this->db->get_where('tbl_booking', array('id'=> $id))->result();
-    $data['booking_id']=$booking_data[0]->id;
-    $data['amount']=$booking_data[0]->final_amount;
-    $this->load->view('frontend/common/header', $data);
-    $this->load->view('frontend/booking_success');
-    $this->load->view('frontend/common/footer');
-}
+        $this->db->where('id', $id);
+        $zapak=$this->db->update('tbl_booking', $data_update);
+        $booking_data = $this->db->get_where('tbl_booking', array('id'=> $id))->result();
+        $data['booking_id']=$booking_data[0]->id;
+        $data['amount']=$booking_data[0]->final_amount;
+        $this->load->view('frontend/common/header', $data);
+        $this->load->view('frontend/booking_success');
+        $this->load->view('frontend/common/footer');
+    }
+    //======== Intercity calculate ===========
+    public function intercity_calculate()
+    {
+        $this->load->helper(array('form', 'url'));
+        $this->load->library('form_validation');
+        $this->load->helper('security');
+        if ($this->input->post()) {
+            $this->form_validation->set_rules('cab_type', 'cab_type', 'required|xss_clean|trim');
+            $this->form_validation->set_rules('start_date', 'start_date', 'required|xss_clean|trim');
+            $this->form_validation->set_rules('start_time', 'start_time', 'required|xss_clean|trim');
+            $this->form_validation->set_rules('end_date', 'end_date', 'required|xss_clean|trim');
+            $this->form_validation->set_rules('end_time', 'end_time', 'required|xss_clean|trim');
+            $this->form_validation->set_rules('city_id', 'city_id', 'required|xss_clean|trim');
+            $this->form_validation->set_rules('duration', 'duration', 'required|xss_clean|trim');
+            if ($this->form_validation->run()== true) {
+                $cab_type=$this->input->post('cab_type');
+                $start_date=$this->input->post('start_date');
+                $start_time=$this->input->post('start_time');
+                $end_date=$this->input->post('end_date');
+                $end_time=$this->input->post('end_time');
+                $city_id=$this->input->post('city_id');
+                $duration=$this->input->post('duration');
+$response = $this->booking->intercityCalculate($cab_type, $start_date, $start_time, $end_date, $end_time, $city_id, $duration);
+echo json_encode($response);
+            } else {
+    $res = array('message'=>validation_errors(),
+    'status'=>201
+    );
+                echo json_encode($res);
+            }
+        } else {
+            $res = array('message'=>"Please insert some data, No data available",
+'status'=>201
+);
+            echo json_encode($res);
+        }
+    }
+    //======== Intercity calculate ===========
+    public function intercity_checkout()
+    {
+        $this->load->helper(array('form', 'url'));
+        $this->load->library('form_validation');
+        $this->load->helper('security');
+        if ($this->input->post()) {
+            $this->form_validation->set_rules('id', 'id', 'required|xss_clean|trim');
+            $this->form_validation->set_rules('amount', 'amount', 'required|xss_clean|trim');
+            if ($this->form_validation->run()== true) {
+                $id=base64_decode($this->input->post('id'));
+                $amount=$this->input->post('amount');
+                  $txnid = substr(hash('sha256', mt_rand() . microtime()), 0, 20);
+                  $name=$this->session->userdata('name');
+                  $email=$this->session->userdata('email');
+                  $phone=$this->session->userdata('phone');
+                  $posted['key'] = MERCHANT_KEY;
+                  $posted['txnid'] = $txnid;
+                  $posted['amount'] = $amount;
+                  $posted['productinfo'] = 'Cabme';
+                  $posted['firstname'] = $name;
+                  $posted['email'] = $email;
+                  $posted['phone'] = $phone;
+                  $posted['surl'] = base_url().'Home/intercity_succss';
+                  $posted['furl'] = $email;
+                  $posted['service_provider'] = 'payu_paisa';
+                // Hash Sequence
+                $hashSequence = "key|txnid|amount|productinfo|firstname|email|udf1|udf2|udf3|udf4|udf5|udf6|udf7|udf8|udf9|udf10";
+
+                	$hashVarsSeq = explode('|', $hashSequence);
+                    $hash_string = '';
+                	foreach($hashVarsSeq as $hash_var) {
+                      $hash_string .= isset($posted[$hash_var]) ? $posted[$hash_var] : '';
+                      $hash_string .= '|';
+                    }
+                    $hash_string .= SALT;
+
+
+                    $hash = strtolower(hash('sha512', $hash_string));
+                    $action = PAYU_BASE_URL . '/_payment';
+
+                    $hash = strtolower(hash('sha512', $hash_string));
+            } else {
+    $res = array('message'=>validation_errors(),
+    'status'=>201
+    );
+                echo json_encode($res);
+            }
+        } else {
+            $res = array('message'=>"Please insert some data, No data available",
+'status'=>201
+);
+            echo json_encode($res);
+        }
+    }
+
     // ============================================ ABOUT =================================================
     public function about()
     {
@@ -272,10 +369,10 @@ public function self_checkout($idd){
     public function my_profile()
     {
         if (!empty($this->session->userdata('user_data'))) {
-                $data['user_data']= $this->db->get_where('tbl_users', array('id = ' => $this->session->userdata('user_id')))->result();
+            $data['user_data']= $this->db->get_where('tbl_users', array('id = ' => $this->session->userdata('user_id')))->result();
             if (!empty($data['user_data'])) {
                 if ($data['user_data'][0]->is_active==1) {
-                  $data['booking_data'] = $this->db->order_by('id', 'desc')->get_where('tbl_booking', array('user_id = ' => $this->session->userdata('user_id'), 'order_status != '=>0))->result();
+                    $data['booking_data'] = $this->db->order_by('id', 'desc')->get_where('tbl_booking', array('user_id = ' => $this->session->userdata('user_id'), 'order_status != '=>0))->result();
                     $this->load->view('frontend/common/header', $data);
                     $this->load->view('frontend/my_profile');
                     $this->load->view('frontend/common/footer');
@@ -289,7 +386,7 @@ public function self_checkout($idd){
                 $this->session->set_flashdata('emessage', 'User not found');
                 redirect("/", "refresh");
             }
-        }else{
+        } else {
         }
     }
     // ============================================ ORDER DETAILS ======================================================
