@@ -43,10 +43,10 @@
 								<li class="nav-item mb-3 pt-3">
 									<h4>Hi, <?=$name?></h4>
 								</li>
-								<li class="nav-item"> <a class="nav-link active" data-toggle="tab" href="#profile">
+								<li class="nav-item"> <a class="nav-link active" data-toggle="tab" href="#profile" id="profile_tab">
 										<i class="fa fa-user"></i> &nbsp; My profile </a>
 								</li>
-								<li class="nav-item desktoplist"> <a class="nav-link " data-toggle="tab" href="#booking">
+								<li class="nav-item desktoplist"> <a class="nav-link " data-toggle="tab" href="#booking" id="booking_tab">
 										<i class="fa fa-car"></i> My Booking
 									</a>
 								</li>
@@ -236,3 +236,14 @@
 		</div>
 	</div>
 	<!--====== Content End ======-->
+  <script type="text/javascript">
+      $(window).on('load',function(){
+        var pageURL = $(location).attr("href");
+        if(pageURL.includes('booking')){
+        $('#profile_tab').removeClass('active');
+        $('#booking_tab').addClass('active');
+        $('#profile').removeClass('active show');
+        $('#booking').addClass('active show');
+      }
+      });
+  </script>

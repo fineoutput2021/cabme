@@ -288,7 +288,7 @@
 						<button class="btn bg-b mr-3" data-toggle="modal" data-target="#signupModal"> <span style="color: #fff;"> <i class="fa fa-user"></i> &nbsp;Sign Up </span></button>
 						<button class="btn bg-b mr-3" data-toggle="modal" data-target="#loginModal"> <span style="color: #fff;"> <i class="fa fa-power-off"></i> &nbsp;Login </span></button>
 						<?}else{?>
-						<div class=" menu_button_end ml-2 text-center row justify-content-">
+						<div class=" menu_button_end ml-2 text-center row ">
 							 <a class="menu-button px-4" href="<?=base_url()?>Home/my_profile">
 								<i class="fa fa-user" style="color: #fff;font-size: 20px;margin-top: 10px;"></i><br />
 								<span  style="color: #fff;">Profile</span>

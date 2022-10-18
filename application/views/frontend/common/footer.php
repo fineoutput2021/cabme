@@ -130,7 +130,7 @@ $("#w_intercity_form").on('submit',function(e){
     }
   });
 });
-//------ onchange on time and date -------
+//------ onchange on time and date wab -------
 $("#sdsd, #sded").change(function(){
 	var sdsd=$('#sdsd').val();
 	var sdst=$('#sdst').attr('data-time');
@@ -205,6 +205,83 @@ function time_change(){
 					$('#s_duration').html("Duration: "+days+" day")
 			}
 				$('#duration').val(diff);
+}
+}
+//------ onchange on time and date mobile -------
+$("#msdsd, #msded").change(function(){
+	var sdsd=$('#msdsd').val();
+	var sdst=$('#msdst').attr('data-time');
+	var sded=$('#msded').val();
+	var sdet=$('#msdet').attr('data-time');
+	// start date covert ------
+	var sd    = new Date(sdsd),
+		sdyr      = sd.getFullYear(),
+		sdmonth   = sd.getMonth() < 10 ? '0' + sd.getMonth() : sd.getMonth(),
+		sdday     = sd.getDate()  < 10 ? '0' + sd.getDate()  : sd.getDate(),
+		sdDate = sdyr + '-' + sdmonth + '-' + sdday;
+		// end date date covert ------
+		var ed    = new Date(sded),
+			edyr      = ed.getFullYear(),
+			edmonth   = ed.getMonth() < 10 ? '0' + ed.getMonth() : ed.getMonth(),
+			edday     = ed.getDate()  < 10 ? '0' + ed.getDate()  : ed.getDate(),
+			edDate = edyr + '-' + edmonth + '-' + edday;
+			//----- calculate diffrence --------
+			console.log('startdate= '+sdDate);
+			console.log('starttime= '+sdst);
+			console.log('enddate= '+edDate);
+			console.log('endtime= '+sdet);
+			if((sdDate !='NaN-NaN-NaN')&& (typeof sdst != "undefined")&& (edDate !='NaN-NaN-NaN')&& (typeof sded != "undefined")){
+				var start = new Date(sdDate);
+				 var end   = new Date(edDate);
+				  var diff= (( new Date(edDate+" " +sdet) - new Date(sdDate+" " +sdst) ) / 1000 / 60 / 60 );
+					var days =  parseInt(diff/24);
+					var hours =  diff%24;
+					if(hours>0 && days >0){
+						$('#ms_duration').html("Duration: "+days+" day, "+hours+" hours")
+					}else if(hours==0 && days>0){
+							$('#ms_duration').html("Duration: "+days+" day")
+					}else{
+							$('#ms_duration').html("Duration: "+hours+" hours")
+					}
+						$('#mduration').val(diff);
+						$('#mself_btn').removeAttr('disabled');
+		}
+});
+function time_change(){
+	var sdsd=$('#msdsd').val();
+	var sdst=$('#msdst').attr('data-time');
+	var sded=$('#msded').val();
+	var sdet=$('#msdet').attr('data-time');
+	// start date covert ------
+	var sd    = new Date(sdsd),
+    sdyr      = sd.getFullYear(),
+    sdmonth   = sd.getMonth() < 10 ? '0' + sd.getMonth() : sd.getMonth(),
+    sdday     = sd.getDate()  < 10 ? '0' + sd.getDate()  : sd.getDate(),
+    sdDate = sdyr + '-' + sdmonth + '-' + sdday;
+		// end date date covert ------
+		var ed    = new Date(sded),
+			edyr      = ed.getFullYear(),
+			edmonth   = ed.getMonth() < 10 ? '0' + ed.getMonth() : ed.getMonth(),
+			edday     = ed.getDate()  < 10 ? '0' + ed.getDate()  : ed.getDate(),
+			edDate = edyr + '-' + edmonth + '-' + edday;
+			//----- calculate diffrence --------
+			console.log('startdate= '+sdDate);
+			console.log('starttime= '+sdst);
+			console.log('enddate= '+edDate);
+			console.log('endtime= '+sdet);
+
+	if((sdDate !='NaN-NaN-NaN')&& (typeof sdst !== "undefined")&& (edDate !='NaN-NaN-NaN')&& (typeof sded !== "undefined")){
+		var start = new Date(sdDate);
+		 var end   = new Date(edDate);
+		  var diff= (( new Date(edDate+" " +sdet) - new Date(sdDate+" " +sdst) ) / 1000 / 60 / 60 );
+			var days =  parseInt(diff/24);
+			var hours =  diff%24;
+			if(hours!=0){
+				$('#ms_duration').html("Duration: "+days+" day, "+hours+" hours")
+			}else{
+					$('#ms_duration').html("Duration: "+days+" day")
+			}
+				$('#mduration').val(diff);
 }
 }
 //------ onchange on time and date -------
@@ -338,7 +415,7 @@ function change(x) {
 	}
 	if (x == 3) {
 		$("#change2").html(
-			'<div class="col-md-12" style="z-index: 0;display: flex;height: 55px;border: 1px solid rgb(212, 208, 208);padding: 0px;justify-content: space-around;"><div class="form-sec-header" style="height: 50px;">	<label class="cal-icon" style="margin-top: 10px;margin-left: 10px;">Start Date <input type="text" placeholder="15 Sep 2022"	class="form-control datepicker" style="border: none;padding-right: 0px;padding-left: 5px;background-color: transparent;"></label></div><div class="timepicker_div form-sec-headers" style="height: 50px;width: 90px;"><label class="cal-icon"	style="margin-left: 10px;color: #000;font-size: 11px;font-weight: bold;">START TIME<input type="text" class="form-control timepicker" placeholder="2:30PM" style="padding: 23px 0px;background-color: transparent;border: none;width: 84%;margin-top: -12px;"></label></div></div>'
+			'<div class="col-md-12" style="z-index: 0;display: flex;height: 55px;border: 1px solid rgb(212, 208, 208);padding: 0px;justify-content: space-around;"><div class="form-sec-header" style="height: 50px;">	<label class="cal-icon" style="margin-top: 10px;margin-left: 10px;">Start Date <input type="text" placeholder="Date" name="start_date"  class="form-control datepicker" style="border: none;padding-right: 0px;padding-left: 5px;background-color: transparent;"></label></div><div class="timepicker_div form-sec-headers" style="height: 50px;width: 90px;"><label class="cal-icon"	style="margin-left: 10px;color: #000;font-size: 11px;font-weight: bold;">START TIME	<input type="text" name="start_time" class="form-control timepicker" placeholder="Time" style="padding: 23px 0px;background-color: transparent;border: none;width: 84%;margin-top: -11px;"></label></div></div>'
 		);
 		$(".datepicker").datepicker();
 		$('.timepicker').mdtimepicker();
@@ -346,19 +423,19 @@ function change(x) {
 	}
 	if (x == 4) {
 		$("#change2").html(
-			'<div class="col-md-6 "	style="z-index: 0;display: flex;height: 55px;border: 1px solid rgb(212, 208, 208);padding: 0px;"><div class="form-sec-header" style="height: 50px;">	<label class="cal-icon"	style="margin-top: 10px;margin-left: 10px;">Start Date	<input type="text" placeholder="15 Sep 2022"	class="form-control datepicker"	style="border: none;padding-right: 0px;padding-left: 5px;background-color: transparent;">	</label></div><div class="timepicker_div form-sec-headers"	style="height: 50px;width: 90px;"><label class="cal-icon"	style="margin-left: 10px;font-size: 11px;color: #000;font-weight: bold;">TIME<input type="text" class="form-control timepicker"	placeholder="2:30PM"	style="padding: 23px 0px;background-color: transparent;border: none;width: 84%;margin-top: -11px;"></label></div></div><div class="col-md-6 "	style="z-index: 0;display: flex;height: 55px;border: 1px solid rgb(212, 208, 208);padding: 0px;">	<div class="form-sec-header" style="height: 50px;"><label class="cal-icon"	style="margin-top: 10px;margin-left: 10px;">End Date	<input type="text" placeholder="15 Sep 2022"	class="form-control datepicker"	style="border: none;padding-right: 0px;padding-left: 5px;background-color: transparent;"></label></div><div class="timepicker_div form-sec-headers" style="height: 50px;width: 90px;"><label class="cal-icon"	style="margin-left: 10px;font-size: 11px;color: #000;font-weight: bold;">TIME<input type="text" class="form-control timepicker"	placeholder="2:30PM"	style="padding: 23px 0px;background-color: transparent;border: none;width: 84%;margin-top: -11px;"></label></div></div>'
+			'<div class="col-md-6 "	style="z-index: 0;display: flex;height: 55px;border: 1px solid rgb(212, 208, 208);padding: 0px;"><div class="form-sec-header" style="height: 50px;">	<label class="cal-icon"	style="margin-top: 10px;margin-left: 10px;">Start Date	<input type="text" placeholder="Date" name="start_date"  class="form-control datepicker" style="border: none;padding-right: 0px;padding-left: 5px;background-color: transparent;">	</label></div><div class="timepicker_div form-sec-headers"	style="height: 50px;width: 90px;"><label class="cal-icon"	style="margin-left: 10px;font-size: 11px;color: #000;font-weight: bold;">TIME	<input type="text" name="start_time" class="form-control timepicker" placeholder="Time" style="padding: 23px 0px;background-color: transparent;border: none;width: 84%;margin-top: -11px;"></label></div></div><div class="col-md-6 "	style="z-index: 0;display: flex;height: 55px;border: 1px solid rgb(212, 208, 208);padding: 0px;">	<div class="form-sec-header" style="height: 50px;"><label class="cal-icon"	style="margin-top: 10px;margin-left: 10px;">End Date	<input type="text" placeholder="Date"	class="form-control datepicker" name="end_date"	style="border: none;padding-right: 0px;padding-left: 5px;background-color: transparent;"></label></div><div class="timepicker_div form-sec-headers" style="height: 50px;width: 90px;"><label class="cal-icon"	style="margin-left: 10px;font-size: 11px;color: #000;font-weight: bold;">TIME<input type="text" class="form-control timepicker" name="end_time"	placeholder="Time"	style="padding: 23px 0px;background-color: transparent;border: none;width: 84%;margin-top: -11px;"></label></div></div>'
 		);
 		$(".datepicker").datepicker();
 		$('.timepicker').mdtimepicker();
 	}
 	if (x == 3) {
 		$("#location").html(
-			'<div class="col-md-12 mb-3"><div class="x_slider_select x_slider_select_2">	<select class="myselect" style="border-radius: 10px;border: solid 1px #e8e8e8;">	<option>Pickup Location</option><option>Jaipur</option>	<option>Delhi</option>	<option>Mumbai</option></select> <i class="fa fa-map-marker"></i></div></div>'
+			'<div class="col-md-12 mb-3"><div class="x_slider_select x_slider_select_2"><input type="text" placeholder="Pickup Location"  name="pick_location" required class="form-control" style=""></div></div>'
 			)
 
 	} if(x == 4) {
 		$('#location').html(
-			'<div class="col-md-6 mb-3"><div class="x_slider_select x_slider_select_2">	<select class="myselect" style="border-radius: 10px;border: solid 1px #e8e8e8;">	<option>Pickup Location</option>	<option>Jaipur</option><option>Delhi</option><option>Mumbai</option></select> <i class="fa fa-map-marker"></i></div></div><div class="col-md-6  mb-3"><div class="x_slider_select x_slider_select_2" style="margin-left: 12px;">	<select class="myselect" style="border-radius: 10px;border: solid 1px #e8e8e8;">	<option>Drop Location</option>	<option>Bangalore</option>	<option>Chennai</option>	<option>Goa</option></select> <i class="fa fa-map-marker"></i></div></div>'
+			'<div class="col-md-6 mb-3"><div class="x_slider_select x_slider_select_2"><input type="text" placeholder="Pickup Location"  name="pick_location" required class="form-control" style=""></div></div><div class="col-md-6  mb-3"><div class="x_slider_select x_slider_select_2" style="margin-left: 12px;"><input type="text" placeholder="Drop Location"  name="drop_location" required class="form-control" style=""></div></div>'
 			)
 	}
 	if(x == 1)

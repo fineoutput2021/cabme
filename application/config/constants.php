@@ -98,7 +98,7 @@ define('SMSID','CABMEI');
 
 
 // ========================= PAYU  =============================
-define('MERCHANT_KEY','rO0ypgoR');
-define('SALT','Oi2VYiLZhQ');
+define('MERCHANT_KEY','Gq9SwU');
+define('SALT','8L0iQaqixiBZ5qg3pP06w0rhFccfxwKr');
 define('PAYU_BASE_URL','https://sandboxsecure.payu.in');// For Sandbox Mode
 // define('PAYU_BASE_URL','https://secure.payu.in');// For Sandbox Mode

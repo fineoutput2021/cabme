@@ -199,7 +199,7 @@
 											<?if(!empty($this->session->userdata('user_data'))){?>
 												<button class="btn col-md-10 searchbtn shadowbtn" type="submit" id="iter_btn"> <i class="fa fa-search"></i> &nbsp;Search</button>
 												<?}else{?>
-													<button class="btn col-md-10 searchbtn shadowbtn" data-toggle="modal" data-target="#loginModal"> <i class="fa fa-search"></i> &nbsp; Search</button>
+													<button type="button" class="btn col-md-10 searchbtn shadowbtn" data-toggle="modal" data-target="#loginModal"> <i class="fa fa-search"></i> &nbsp; Search</button>
 													<?}?>
 											</div>
 										</div>
@@ -261,6 +261,7 @@
 					<div id="firsttt" class="tab-pane active">
 						<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
 							<div class="x_slider_form_main_wrapper float_left">
+							<form method="post" enctype="multipart/form-data" action="<?=base_url()?>Home/self_drive_cars">
 								<div class="row" style="margin-top: 20px;">
 									<div class="row" style="border: 1px solid rgb(226, 225, 225);border-radius: 10px;">
 										<div class="col-md-12 p-0" data-toggle="modal" data-target="#selectcity" data-dismiss="modal" style="border-bottom:1px solid rgb(226, 225, 225);">
@@ -272,38 +273,43 @@
 										<div class="col-md-3 col-6 mobileradius" style="z-index: 0;display: flex;height: 55px;padding: 0px;border-right: 1px solid rgb(226, 225, 225);">
 											<div class="form-sec-header" style="height: 50px;">
 												<label class="cal-icon" style="top:11px;left: 10px;"> Start Date
-													<input type="text" placeholder=" 15 Sep 2022" class="form-control datepicker" style="border: none;padding-right: 0px;padding-left: 1px;margin-top: -9px;">
+													<input type="text" id="msdsd"  name="start_date" placeholder="Date" class="form-control datepicker" style="border: none;padding-right: 0px;padding-left: 1px;margin-top: -9px;">
 												</label>
 											</div>
 											<div class="timepicker_div form-sec-header" style="height: 50px;margin-top: 2px;width: 80px;margin-left: 12px;">
 												<label class="cal-icon" style="top:11px;left: 10px;">TIME
-													<input type="text" class="form-control timepicker" placeholder="2:30PM" style="background-color: transparent;border: none;margin-left: -13px; margin-top: -10px; width: 122%;">
+													<input type="text"  id="msdst" name="start_time" class="form-control timepicker" placeholder="Time" style="background-color: transparent;border: none;margin-left: -13px; margin-top: -10px; width: 122%;">
 											</div>
 										</div>
 										<div class="col-md-3 col-6 mobileradius" style="z-index: 0;display: flex;height: 55px;padding: 0px;">
 											<div class="form-sec-header" style="height: 50px;">
 												<label class="cal-icon" style="top:11px;left: 10px;"> End Date
-													<input type="text" placeholder="15 Sep 2022" class="form-control datepicker" style="border: none;padding-right: 0px;padding-left: 1px;margin-top: -9px;">
+													<input type="text" id="msded" name="end_date" placeholder="Date" class="form-control datepicker" style="border: none;padding-right: 0px;padding-left: 1px;margin-top: -9px;">
 												</label>
 											</div>
 											<div class="timepicker_div form-sec-header" style="height: 50px;margin-top: 2px;width: 80px;margin-left: 12px;">
 												<label class="cal-icon" style="top:11px;left: 10px;">TIME
-													<input type="text" class="form-control timepicker" placeholder="2:30PM" style="background-color: transparent;border: none;margin-left: -13px; margin-top: -10px; width: 122%;">
+													<input type="text"  id="msded" name="end_time" placeholder="Time" class="form-control timepicker" style="background-color: transparent;border: none;margin-left: -13px; margin-top: -10px; width: 122%;">
 											</div>
 										</div>
 									</div>
 									<div class="text-center col-md-12 col-12 p-2">
-										<h6>Duration: 1 day, 2 hours</h6>
+										<h6 id="ms_duration"></h6>
 									</div>
 									<input type="hidden" name="city_id" class="city_id"  value=""/>
+									<input type="hidden" name="duration" value="" id="mduration">
+									<input type="hidden" name="index" value="1" id="mindex">
 									<div class="col-md-12">
 										<div class="row mt-4 justify-content-center">
-											<a href="self_cars.html" class=" col-md-10 text-center">
-												<button class="btn col-md-10 searchbtn shadowbtn"> <i class="fa fa-search"></i> &nbsp;Search</button>
-											</a>
+											<?if(!empty($this->session->userdata('user_data'))){?>
+														<button class="btn col-md-10 searchbtn shadowbtn" type="submit" id="mself_btn" disabled> <i class="fa fa-search"></i> &nbsp; Search</button>
+													<?}else{?>
+														<button class="btn col-md-10 searchbtn shadowbtn" data-toggle="modal" data-target="#loginModal"> <i class="fa fa-search"></i> &nbsp; Search</button>
+														<?}?>
 										</div>
 									</div>
 								</div>
+									</form>
 							</div>
 						</div>
 					</div>

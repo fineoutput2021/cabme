@@ -229,7 +229,7 @@ $booking_update = array('pick_location'=>$pickup_location,
     //========= INTERCITY CALCUALTE ========
     public function intercityCalculate($cab_type, $start_date, $start_time, $end_date, $end_time, $city_id, $duration)
     {
-
+// echo $cab_type;die();
         $inter_data = $this->CI->db->get_where('tbl_intercity', array('is_active'=> 1,'city_id'=> $city_id,'cab_type'=> $cab_type))->result();
         // print_r($inter_data);die();
         $city_data = $this->CI->db->get_where('tbl_cities', array('is_active'=> 1,'id'=> $city_id))->result();
