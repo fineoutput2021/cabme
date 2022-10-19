@@ -42,7 +42,6 @@
                       <th>Promocode</th>
                       <th>Promocode Discount</th>
                       <th>Final Amount</th>
-                      <th>Payment Type</th>
                       <th>City </th>
                       <th>Car </th>
                       <th>Start Date</th>
@@ -59,15 +58,12 @@
                       <th>Drop Location</th>
                       <th>Start Kilometer</th>
                       <th>End Kilometer</th>
-                      <th>Fname</th>
-                      <th>Lname</th>
-                      <th>Email</th>
-                      <th>Phone</th>
-
                       <th>Invoice</th>
                       <?if ($booking_type==1) {?>
-                      <th>Aadhar Image</th>
-                      <th>Lience Image</th>
+                      <th>Aadhar Image Front</th>
+                      <th>Aadhar Image Back</th>
+                      <th>Licence Image Front</th>
+                      <th>License Image Back</th>
                       <?}?>
                       <th>Date</th>
                       <th>Order Status</th>
@@ -79,6 +75,13 @@
 foreach ($booking_data->result() as $data) {
     $user_data = $this->db->get_where('tbl_users', array('is_active'=> 1,'id'=> $data->user_id))->result();
     $promo_data = $this->db->get_where('tbl_promocode', array('is_active'=> 1,'id'=> $data->promocode))->result();
+    if(!empty($promo_data)){
+      $promocode=$promo_data[0]->promocode ;
+      $discount=$data->promo_discount ;
+    }else{
+      $promocode="NA";
+      $discount=0 ;
+    }
     // $Self_drive_data = $this->db->get_where('tbl_selfdrive', array('is_active'=> 1,'id'=> $data->car_id))->result();?>
                     <tr>
                       <td><?=$i?></td>
@@ -93,15 +96,10 @@ foreach ($booking_data->result() as $data) {
                       </td>
                       <td><?php echo $user_data[0]->f_name." ".$user_data[0]->l_name ?></td>
                       <td>₹<?php echo $data->total_amount ?></td>
-                      <td><?php echo $promo_data[0]->promocode ?></td>
-                      <td>₹<?php echo $promo_data[0]->max ?></td>
+                      <td><?php echo $promocode ?></td>
+                      <td>₹<?php echo $discount ?></td>
                       <td>₹<?php echo $data->final_amount ?></td>
-                      <td> <?php if ($data->payment_type== 1) {
-        echo "COD";
-    } else {
-        echo "online payment";
-    } ?></td>
-                      <td><?php echo $data->city ?></td>
+                      <td><?php echo $data->city_id ?></td>
                       <td><?php echo $data->car_id ?></td>
                       <td><?php echo $data->start_date ?></td>
                       <td><?php echo $data->end_date ?></td>
@@ -133,10 +131,6 @@ foreach ($booking_data->result() as $data) {
                       <td><?php echo $data->drop_location ?></td>
                       <td><?php echo $data->start_kilometer ?></td>
                       <td><?php echo $data->end_kilometer?></td>
-                      <td><?php echo $data->fname ?></td>
-                      <td><?php echo $data->lname ?></td>
-                      <td><?php echo $data->email ?></td>
-                      <td><?php echo $data->phone?></td>
                       <td>
                         <?php if ($data->invoice_image!="") {  ?>
                         <img id="slide_img_path" height=50 width=100 src="<?php echo base_url().$data->invoice_image ?>">
@@ -145,8 +139,34 @@ foreach ($booking_data->result() as $data) {
                         <?php } ?>
                       </td>
                       <?if ($booking_type==1) {?>
-                      <td><?php echo $user_data[0]->aadhar_image ?></td>
-                      <td><?php echo $user_data[0]->lience_image?></td>
+                        <td>
+                        <?php if ($data->aadhar_front!="") {  ?>
+                        <img id="slide_img_path" height=50 width=100 src="<?php echo base_url().$data->aadhar_front ?>">
+                        <?php } else {  ?>
+                        Sorry No image Found
+                        <?php } ?>
+                          </td>
+                            <td>
+                        <?php if ($data->aadhar_back!="") {  ?>
+                        <img id="slide_img_path" height=50 width=100 src="<?php echo base_url().$data->aadhar_back ?>">
+                        <?php } else {  ?>
+                        Sorry No image Found
+                        <?php } ?>
+                          </td>
+                            <td>
+                        <?php if ($data->license_front!="") {  ?>
+                        <img id="slide_img_path" height=50 width=100 src="<?php echo base_url().$data->license_front ?>">
+                        <?php } else {  ?>
+                        Sorry No image Found
+                        <?php } ?>
+                          </td>
+                            <td>
+                        <?php if ($data->license_back!="") {  ?>
+                        <img id="slide_img_path" height=50 width=100 src="<?php echo base_url().$data->license_back ?>">
+                        <?php } else {  ?>
+                        Sorry No image Found
+                        <?php } ?>
+                      </td>
                       <?} ?>
                       <td><?php echo $data->date?></td>
 
