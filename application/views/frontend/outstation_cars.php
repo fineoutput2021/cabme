@@ -43,6 +43,7 @@
 <!-- x car book sidebar section Wrapper Start -->
 <div class="x_car_book_sider_main_Wrapper float_left mt-4">
   <div class="container-fluid">
+    <?if(!empty($car_data)){?>
     <div class="row mt-5">
       <div class="col-xl-3 col-lg-4 col-md-12 col-sm-12 col-12 desktopfilterdiv">
         <!-- btc tittle Wrapper Start -->
@@ -244,6 +245,11 @@
         </div>
       </div>
     </div>
+    <?}else{?>
+<div class="container p-3 mt-5 text-center">
+<h4>No Car Available! </h4>
+</div>
+    <?}?>
     <!-- ======================================  Mobile Sort by & Filters End   ====================================== -->
   </div>
   <!-- x car book sidebar section Wrapper End -->
