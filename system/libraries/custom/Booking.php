@@ -234,8 +234,15 @@ $booking_update = array('pick_location'=>$pickup_location,
 // echo $cab_type;die();
         $inter_data = $this->CI->db->get_where('tbl_intercity', array('is_active'=> 1,'city_id'=> $city_id,'cab_type'=> $cab_type))->result();
         // print_r($inter_data);die();
+        if(empty($inter_data)){
+          $respone['status'] = false;
+          $respone['message'] ="Sorry! Currently No Car available for the selected city.";
+          $respone['data'] =$data;
+          return $respone;
+        }
         $city_data = $this->CI->db->get_where('tbl_cities', array('is_active'=> 1,'id'=> $city_id))->result();
         $hours=$duration;
+        // echo $hours;die();
         $user_id=$this->CI->session->userdata('user_id');
         $kilometer = $inter_data[0]->Kilomitere_cab;
         if ($duration<6) {
@@ -243,6 +250,7 @@ $booking_update = array('pick_location'=>$pickup_location,
         } else {
             $kilometer_price = $inter_data[0]->price*$hours;
         }
+        // echo $kilometer_price;die();
         $total = $kilometer_price;
         $final_amount = $kilometer_price;
         $ip = $this->CI->input->ip_address();
