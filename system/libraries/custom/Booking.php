@@ -237,7 +237,6 @@ $booking_update = array('pick_location'=>$pickup_location,
         if(empty($inter_data)){
           $respone['status'] = false;
           $respone['message'] ="Sorry! Currently No Car available for the selected city.";
-          $respone['data'] =$data;
           return $respone;
         }
         $city_data = $this->CI->db->get_where('tbl_cities', array('is_active'=> 1,'id'=> $city_id))->result();
