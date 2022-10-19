@@ -141,11 +141,11 @@
                 <?php $i=1; foreach($booking_data as $booking) {?>
 								<tr>
 									<td>#<?=$booking->id?></td>
-									<td><?if($booking->booking_type==1){echo'Self Drive';}else if($booking->booking_type==2){echo'Inertcity';}else{echo'Outstation';}?></td>
+									<td><?if($booking->booking_type==1){echo'Self Drive';}else if($booking->booking_type==2){echo'Inertcity';}else if($booking->booking_type==3){echo'Outstation';}?></td>
 									<td>₹<?=$booking->final_amount?></td>
 									<td>
                     <?if($booking->order_status==1){?>
-                    <span class="activespan bg-warning">Placed</span>
+                    <span class="activespan bg-warning">Pending</span>
                     <?}else if($booking->order_status==2){?>
                       <span class="activespan bg-info">Accepted</span>
                     <?}else if($booking->order_status==3){?>
@@ -177,11 +177,11 @@
                 <?php $i=1; foreach($booking_data as $booking) {?>
 								<tr>
 									<td>#<?=$booking->id?></td>
-									<td><?if($booking->booking_type==1){echo'Self Drive';}else if($booking->booking_type==2){echo'Outstation';}else{echo'Inertcity';}?></td>
+									<td><?if($booking->booking_type==1){echo'Self Drive';}else if($booking->booking_type==2){echo'Inertcity';}else if($booking->booking_type==3){echo'Outstation';}?></td>
 									<td>₹<?=$booking->final_amount?></td>
 									<td>
                     <?if($booking->order_status==1){?>
-                    <span class="activespan bg-warning">Placed</span>
+                    <span class="activespan bg-warning">Pending</span>
                     <?}else if($booking->order_status==2){?>
                       <span class="activespan bg-info">Accepted</span>
                     <?}else if($booking->order_status==3){?>

@@ -21,6 +21,8 @@
 						</li>
 						<li><a href="<?=base_url()?>Home/term_and_condition"><i class="fa fa-long-arrow-right"></i> &nbsp; Terms & Conditions</a>
 						</li>
+						<li><a href="<?=base_url()?>Home/contact"><i class="fa fa-long-arrow-right"></i> &nbsp; Contact Us</a>
+						</li>
 						<li><a href="#"><i class="fa fa-long-arrow-right"></i> &nbsp; FAQ's</a>
 						</li>
 
@@ -102,8 +104,8 @@ function loadSuccessNotify(succ_message){
     function loadErrorNotify(message){
        notifyError(message);
     }
-//======= intercity ==========
-// =========================================================== REGISTER USER ===========================================================
+
+// =========================================================== intercity ===========================================================
 $("#w_intercity_form,#m_intercity_form").on('submit',function(e){
   e.preventDefault();
   var form = $(this);
@@ -132,7 +134,12 @@ $("#w_intercity_form,#m_intercity_form").on('submit',function(e){
     }
   });
 });
-//------ onchange on time and date wab -------
+//--------- set active tab -------
+function setActive(x){
+	// 1-self,2-out,3-inter
+	$('#active').val(x);
+}
+//------- Web self drive date change --------
 $("#sdsd, #sded").change(function(){
 	var sdsd=$('#sdsd').val();
 	var sdst=$('#sdst').attr('data-time');
@@ -155,7 +162,7 @@ $("#sdsd, #sded").change(function(){
 			console.log('starttime= '+sdst);
 			console.log('enddate= '+edDate);
 			console.log('endtime= '+sdet);
-			if((sdDate !='NaN-NaN-NaN')&& (typeof sdst != "undefined")&& (edDate !='NaN-NaN-NaN')&& (typeof sded != "undefined")){
+			if((sdDate !='NaN-NaN-NaN')&& (typeof sdst != "undefined")&& (edDate !='NaN-NaN-NaN')&& (typeof sdet != "undefined")){
 				var start = new Date(sdDate);
 				 var end   = new Date(edDate);
 				  var diff= (( new Date(edDate+" " +sdet) - new Date(sdDate+" " +sdst) ) / 1000 / 60 / 60 );
@@ -172,7 +179,136 @@ $("#sdsd, #sded").change(function(){
 						$('#self_btn').removeAttr('disabled');
 		}
 });
+//------- Mobile self drive date change --------
+$("#msdsd, #msded").change(function(){
+	var sdsd=$('#msdsd').val();
+	var sdst=$('#msdst').attr('data-time');
+	var sded=$('#msded').val();
+	var sdet=$('#msdet').attr('data-time');
+	// start date covert ------
+	var sd    = new Date(sdsd),
+		sdyr      = sd.getFullYear(),
+		sdmonth   = sd.getMonth() < 10 ? '0' + sd.getMonth() : sd.getMonth(),
+		sdday     = sd.getDate()  < 10 ? '0' + sd.getDate()  : sd.getDate(),
+		sdDate = sdyr + '-' + sdmonth + '-' + sdday;
+		// end date date covert ------
+		var ed    = new Date(sded),
+			edyr      = ed.getFullYear(),
+			edmonth   = ed.getMonth() < 10 ? '0' + ed.getMonth() : ed.getMonth(),
+			edday     = ed.getDate()  < 10 ? '0' + ed.getDate()  : ed.getDate(),
+			edDate = edyr + '-' + edmonth + '-' + edday;
+			//----- calculate diffrence --------
+			console.log('startdate= '+sdDate);
+			console.log('starttime= '+sdst);
+			console.log('enddate= '+edDate);
+			console.log('endtime= '+sdet);
+			if((sdDate !='NaN-NaN-NaN')&& (typeof sdst != "undefined")&& (edDate !='NaN-NaN-NaN')&& (typeof sdet != "undefined")){
+				var start = new Date(sdDate);
+				 var end   = new Date(edDate);
+				  var diff= (( new Date(edDate+" " +sdet) - new Date(sdDate+" " +sdst) ) / 1000 / 60 / 60 );
+					var days =  parseInt(diff/24);
+					var hours =  diff%24;
+					if(hours>0 && days >0){
+						$('#ms_duration').html("Duration: "+days+" day, "+hours+" hours")
+					}else if(hours==0 && days>0){
+							$('#ms_duration').html("Duration: "+days+" day")
+					}else{
+							$('#ms_duration').html("Duration: "+hours+" hours")
+					}
+						$('#mduration').val(diff);
+						$('#mself_btn').removeAttr('disabled');
+		}
+});
+//------ web intercity date change -------
+$("#icsd, #iced").change(function(){
+	var icsd=$('#icsd').val();
+	var icst=$('#icst').attr('data-time');
+	var iced=$('#iced').val();
+	var icet=$('#icet').attr('data-time');
+	// start date covert ------
+	var sd    = new Date(icsd),
+		icyr      = sd.getFullYear(),
+		icmonth   = sd.getMonth() < 10 ? '0' + sd.getMonth() : sd.getMonth(),
+		icday     = sd.getDate()  < 10 ? '0' + sd.getDate()  : sd.getDate(),
+		isDate = icyr + '-' + icmonth + '-' + icday;
+		// alert(sd)
+		// end date date covert ------
+		var ed    = new Date(iced),
+			icyr      = ed.getFullYear(),
+			icmonth   = ed.getMonth() < 10 ? '0' + ed.getMonth() : ed.getMonth(),
+			icday     = ed.getDate()  < 10 ? '0' + ed.getDate()  : ed.getDate(),
+			ieDate = icyr + '-' + icmonth + '-' + icday;
+			//----- calculate diffrence --------
+			console.log('startdate= '+isDate);
+			console.log('starttime= '+icst);
+			console.log('enddate= '+ieDate);
+			console.log('endtime= '+icet);
+			console.log('check= '+$('#icst').val());
+			if((isDate !='NaN-NaN-NaN')&& (typeof icst != "undefined")&& (ieDate !='NaN-NaN-NaN')&& (typeof icet != "undefined")){
+				var start = new Date(isDate);
+				 var end   = new Date(ieDate);
+					var diff= (( new Date(ieDate+" " +icet) - new Date(isDate+" " +icst) ) / 1000 / 60 / 60 );
+					var days =  parseInt(diff/24);
+					var hours =  diff%24;
+					if(hours>0 && days >0){
+						$('#ic_duration').html("Duration: "+days+" day, "+hours+" hours")
+					}else if(hours==0 && days>0){
+							$('#ic_duration').html("Duration: "+days+" day")
+					}else{
+							$('#ic_duration').html("Duration: "+hours+" hours")
+					}
+						$('#i_duration').val(diff);
+						$('#iter_btn').removeAttr('disabled');
+		}
+});
+//------ onchange on time and date -------
+$("#micsd, #miced").change(function(){
+	var icsd=$('#micsd').val();
+	var icst=$('#micst').attr('data-time');
+	var iced=$('#miced').val();
+	var icet=$('#micet').attr('data-time');
+	// start date covert ------
+	var sd    = new Date(icsd),
+		icyr      = sd.getFullYear(),
+		icmonth   = sd.getMonth() < 10 ? '0' + sd.getMonth() : sd.getMonth(),
+		icday     = sd.getDate()  < 10 ? '0' + sd.getDate()  : sd.getDate(),
+		isDate = icyr + '-' + icmonth + '-' + icday;
+		// end date date covert ------
+		var ed    = new Date(iced),
+			icyr      = ed.getFullYear(),
+			icmonth   = ed.getMonth() < 10 ? '0' + ed.getMonth() : ed.getMonth(),
+			icday     = ed.getDate()  < 10 ? '0' + ed.getDate()  : ed.getDate(),
+			ieDate = icyr + '-' + icmonth + '-' + icday;
+			//----- calculate diffrence --------
+			console.log('startdate= '+isDate);
+			console.log('starttime= '+icst);
+			console.log('enddate= '+ieDate);
+			console.log('endtime= '+icet);
+			console.log('check= '+$('#micst').val());
+			if((isDate !='NaN-NaN-NaN')&& (typeof icst != "undefined")&& (ieDate !='NaN-NaN-NaN')&& (typeof icet != "undefined")){
+				var start = new Date(isDate);
+				 var end   = new Date(ieDate);
+					var diff= (( new Date(ieDate+" " +icet) - new Date(isDate+" " +icst) ) / 1000 / 60 / 60 );
+					var days =  parseInt(diff/24);
+					var hours =  diff%24;
+					if(hours>0 && days >0){
+						$('#mic_duration').html("Duration: "+days+" day, "+hours+" hours")
+					}else if(hours==0 && days>0){
+							$('#mic_duration').html("Duration: "+days+" day")
+					}else{
+							$('#mic_duration').html("Duration: "+hours+" hours")
+					}
+						$('#mi_duration').val(diff);
+						$('#miter_btn').removeAttr('disabled');
+		}
+});
+//================== on time change ==============
 function time_change(){
+	// 1-self,2-out,3-inter
+	var active = $('#active').val();
+	var device = $('#device').val();
+//----self drive web change time -----
+	if(active==1 && device==1){
 	var sdsd=$('#sdsd').val();
 	var sdst=$('#sdst').attr('data-time');
 	var sded=$('#sded').val();
@@ -207,49 +343,11 @@ function time_change(){
 					$('#s_duration').html("Duration: "+days+" day")
 			}
 				$('#duration').val(diff);
+				$('#self_btn').removeAttr('disabled');
 }
 }
-//------ onchange on time and date mobile -------
-$("#msdsd, #msded").change(function(){
-	var sdsd=$('#msdsd').val();
-	var sdst=$('#msdst').attr('data-time');
-	var sded=$('#msded').val();
-	var sdet=$('#msdet').attr('data-time');
-	// start date covert ------
-	var sd    = new Date(sdsd),
-		sdyr      = sd.getFullYear(),
-		sdmonth   = sd.getMonth() < 10 ? '0' + sd.getMonth() : sd.getMonth(),
-		sdday     = sd.getDate()  < 10 ? '0' + sd.getDate()  : sd.getDate(),
-		sdDate = sdyr + '-' + sdmonth + '-' + sdday;
-		// end date date covert ------
-		var ed    = new Date(sded),
-			edyr      = ed.getFullYear(),
-			edmonth   = ed.getMonth() < 10 ? '0' + ed.getMonth() : ed.getMonth(),
-			edday     = ed.getDate()  < 10 ? '0' + ed.getDate()  : ed.getDate(),
-			edDate = edyr + '-' + edmonth + '-' + edday;
-			//----- calculate diffrence --------
-			console.log('startdate= '+sdDate);
-			console.log('starttime= '+sdst);
-			console.log('enddate= '+edDate);
-			console.log('endtime= '+sdet);
-			if((sdDate !='NaN-NaN-NaN')&& (typeof sdst != "undefined")&& (edDate !='NaN-NaN-NaN')&& (typeof sded != "undefined")){
-				var start = new Date(sdDate);
-				 var end   = new Date(edDate);
-				  var diff= (( new Date(edDate+" " +sdet) - new Date(sdDate+" " +sdst) ) / 1000 / 60 / 60 );
-					var days =  parseInt(diff/24);
-					var hours =  diff%24;
-					if(hours>0 && days >0){
-						$('#ms_duration').html("Duration: "+days+" day, "+hours+" hours")
-					}else if(hours==0 && days>0){
-							$('#ms_duration').html("Duration: "+days+" day")
-					}else{
-							$('#ms_duration').html("Duration: "+hours+" hours")
-					}
-						$('#mduration').val(diff);
-						$('#mself_btn').removeAttr('disabled');
-		}
-});
-function time_change(){
+//----self drive mobile change time -----
+else if(active==1 && device==2){
 	var sdsd=$('#msdsd').val();
 	var sdst=$('#msdst').attr('data-time');
 	var sded=$('#msded').val();
@@ -284,10 +382,11 @@ function time_change(){
 					$('#ms_duration').html("Duration: "+days+" day")
 			}
 				$('#mduration').val(diff);
+				$('#mself_btn').removeAttr('disabled');
 }
 }
-//------ onchange on time and date -------
-$("#icsd, #iced").change(function(){
+//----intercity web change time -----
+else if(active==3 && device==1){
 	var icsd=$('#icsd').val();
 	var icst=$('#icst').attr('data-time');
 	var iced=$('#iced').val();
@@ -297,63 +396,22 @@ $("#icsd, #iced").change(function(){
 		icyr      = sd.getFullYear(),
 		icmonth   = sd.getMonth() < 10 ? '0' + sd.getMonth() : sd.getMonth(),
 		icday     = sd.getDate()  < 10 ? '0' + sd.getDate()  : sd.getDate(),
-		icDate = icyr + '-' + icmonth + '-' + icday;
+		isDate = icyr + '-' + icmonth + '-' + icday;
 		// end date date covert ------
 		var ed    = new Date(iced),
 			icyr      = ed.getFullYear(),
 			icmonth   = ed.getMonth() < 10 ? '0' + ed.getMonth() : ed.getMonth(),
 			icday     = ed.getDate()  < 10 ? '0' + ed.getDate()  : ed.getDate(),
-			icDate = icyr + '-' + icmonth + '-' + icday;
+			ieDate = icyr + '-' + icmonth + '-' + icday;
 			//----- calculate diffrence --------
-			console.log('startdate= '+icDate);
+			console.log('startdate= '+isDate);
 			console.log('starttime= '+icst);
-			console.log('enddate= '+icDate);
+			console.log('enddate= '+ieDate);
 			console.log('endtime= '+icet);
-			console.log('check= '+$('#icst').val());
-			if((icDate !='NaN-NaN-NaN')&& (typeof icst != "undefined")&& (icDate !='NaN-NaN-NaN')&& (typeof iced != "undefined")){
-				var start = new Date(icDate);
-				 var end   = new Date(icDate);
-					var diff= (( new Date(icDate+" " +icet) - new Date(icDate+" " +icst) ) / 1000 / 60 / 60 );
-					var days =  parseInt(diff/24);
-					var hours =  diff%24;
-					if(hours>0 && days >0){
-						$('#ic_duration').html("Duration: "+days+" day, "+hours+" hours")
-					}else if(hours==0 && days>0){
-							$('#ic_duration').html("Duration: "+days+" day")
-					}else{
-							$('#ic_duration').html("Duration: "+hours+" hours")
-					}
-						$('#i_duration').val(diff);
-						$('#iter_btn').removeAttr('disabled');
-		}
-});
-
-function ic_time_change(){
-	var icsd=$('#icsd').val();
-	var icst=$('#icst').attr('data-time');
-	var iced=$('#iced').val();
-	var icet=$('#icet').attr('data-time');
-	// start date covert ------
-	var sd    = new Date(icsd),
-		icyr      = sd.getFullYear(),
-		icmonth   = sd.getMonth() < 10 ? '0' + sd.getMonth() : sd.getMonth(),
-		icday     = sd.getDate()  < 10 ? '0' + sd.getDate()  : sd.getDate(),
-		icDate = icyr + '-' + icmonth + '-' + icday;
-		// end date date covert ------
-		var ed    = new Date(iced),
-			icyr      = ed.getFullYear(),
-			icmonth   = ed.getMonth() < 10 ? '0' + ed.getMonth() : ed.getMonth(),
-			icday     = ed.getDate()  < 10 ? '0' + ed.getDate()  : ed.getDate(),
-			icDate = icyr + '-' + icmonth + '-' + icday;
-			//----- calculate diffrence --------
-			console.log('startdate= '+icDate);
-			console.log('starttime= '+icst);
-			console.log('enddate= '+icDate);
-			console.log('endtime= '+icet);
-			if((icDate !='NaN-NaN-NaN')&& (typeof icst != "undefined")&& (icDate !='NaN-NaN-NaN')&& (typeof iced != "undefined")){
-				var start = new Date(icDate);
-				 var end   = new Date(icDate);
-				  var diff= (( new Date(icDate+" " +icet) - new Date(icDate+" " +icst) ) / 1000 / 60 / 60 );
+			if((isDate !='NaN-NaN-NaN')&& (typeof icst != "undefined")&& (ieDate !='NaN-NaN-NaN')&& (typeof iced != "undefined")){
+				var start = new Date(isDate);
+				 var end   = new Date(ieDate);
+				  var diff= (( new Date(ieDate+" " +icet) - new Date(isDate+" " +icst) ) / 1000 / 60 / 60 );
 					var days =  parseInt(diff/24);
 					var hours =  diff%24;
 					if(hours>0 && days >0){
@@ -367,8 +425,8 @@ function ic_time_change(){
 						$('#iter_btn').removeAttr('disabled');
 		}
 }
-//------ onchange on time and date -------
-$("#micsd, #miced").change(function(){
+//----intercity mobile change time -----
+else if(active==3 && device==2){
 	var icsd=$('#micsd').val();
 	var icst=$('#micst').attr('data-time');
 	var iced=$('#miced').val();
@@ -378,63 +436,22 @@ $("#micsd, #miced").change(function(){
 		icyr      = sd.getFullYear(),
 		icmonth   = sd.getMonth() < 10 ? '0' + sd.getMonth() : sd.getMonth(),
 		icday     = sd.getDate()  < 10 ? '0' + sd.getDate()  : sd.getDate(),
-		icDate = icyr + '-' + icmonth + '-' + icday;
+		isDate= icyr + '-' + icmonth + '-' + icday;
 		// end date date covert ------
 		var ed    = new Date(iced),
 			icyr      = ed.getFullYear(),
 			icmonth   = ed.getMonth() < 10 ? '0' + ed.getMonth() : ed.getMonth(),
 			icday     = ed.getDate()  < 10 ? '0' + ed.getDate()  : ed.getDate(),
-			icDate = icyr + '-' + icmonth + '-' + icday;
+			ieDate = icyr + '-' + icmonth + '-' + icday;
 			//----- calculate diffrence --------
-			console.log('startdate= '+icDate);
+			console.log('startdate= '+isDate);
 			console.log('starttime= '+icst);
-			console.log('enddate= '+icDate);
+			console.log('enddate= '+ieDate);
 			console.log('endtime= '+icet);
-			console.log('check= '+$('#micst').val());
-			if((icDate !='NaN-NaN-NaN')&& (typeof icst != "undefined")&& (icDate !='NaN-NaN-NaN')&& (typeof iced != "undefined")){
-				var start = new Date(icDate);
-				 var end   = new Date(icDate);
-					var diff= (( new Date(icDate+" " +icet) - new Date(icDate+" " +icst) ) / 1000 / 60 / 60 );
-					var days =  parseInt(diff/24);
-					var hours =  diff%24;
-					if(hours>0 && days >0){
-						$('#mic_duration').html("Duration: "+days+" day, "+hours+" hours")
-					}else if(hours==0 && days>0){
-							$('#mic_duration').html("Duration: "+days+" day")
-					}else{
-							$('#mic_duration').html("Duration: "+hours+" hours")
-					}
-						$('#mi_duration').val(diff);
-						$('#miter_btn').removeAttr('disabled');
-		}
-});
-
-function ic_time_change(){
-	var icsd=$('#micsd').val();
-	var icst=$('#micst').attr('data-time');
-	var iced=$('#miced').val();
-	var icet=$('#micet').attr('data-time');
-	// start date covert ------
-	var sd    = new Date(icsd),
-		icyr      = sd.getFullYear(),
-		icmonth   = sd.getMonth() < 10 ? '0' + sd.getMonth() : sd.getMonth(),
-		icday     = sd.getDate()  < 10 ? '0' + sd.getDate()  : sd.getDate(),
-		icDate = icyr + '-' + icmonth + '-' + icday;
-		// end date date covert ------
-		var ed    = new Date(iced),
-			icyr      = ed.getFullYear(),
-			icmonth   = ed.getMonth() < 10 ? '0' + ed.getMonth() : ed.getMonth(),
-			icday     = ed.getDate()  < 10 ? '0' + ed.getDate()  : ed.getDate(),
-			icDate = icyr + '-' + icmonth + '-' + icday;
-			//----- calculate diffrence --------
-			console.log('startdate= '+icDate);
-			console.log('starttime= '+icst);
-			console.log('enddate= '+icDate);
-			console.log('endtime= '+icet);
-			if((icDate !='NaN-NaN-NaN')&& (typeof icst != "undefined")&& (icDate !='NaN-NaN-NaN')&& (typeof iced != "undefined")){
-				var start = new Date(icDate);
-				 var end   = new Date(icDate);
-				  var diff= (( new Date(icDate+" " +icet) - new Date(icDate+" " +icst) ) / 1000 / 60 / 60 );
+			if((isDate !='NaN-NaN-NaN')&& (typeof icst != "undefined")&& (ieDate !='NaN-NaN-NaN')&& (typeof iced != "undefined")){
+				var start = new Date(isDate);
+				 var end   = new Date(ieDate);
+				  var diff= (( new Date(ieDate+" " +icet) - new Date(isDate+" " +icst) ) / 1000 / 60 / 60 );
 					var days =  parseInt(diff/24);
 					var hours =  diff%24;
 					if(hours>0 && days >0){
@@ -448,8 +465,15 @@ function ic_time_change(){
 						$('#miter_btn').removeAttr('disabled');
 		}
 }
+}
+
 //------ set city on load -------
 $(document).ready(function () {
+	if (window.matchMedia('(max-width: 767px)').matches) {
+		$('#device').val(2);
+     } else {
+      	$('#device').val(1);
+     }
 var id = localStorage.getItem("city_id");
 var name = localStorage.getItem("city_name");
 if(id != null){
@@ -483,14 +507,14 @@ $('#ct_'+x).val(y);
 function change(x) {
 	if (x == 1) {
 		$('#change').html(
-			'<div class="col-md-12 col-12 mobileradius" style="z-index: 0;display: flex;height: 55px;padding: 0px;border-right: 1px solid rgb(226, 225, 225);justify-content: space-around;"><div class="form-sec-header" style="height: 50px;"><label class="cal-icon" style="top:11px;left: 10px;"> Start Date	<input type="text" placeholder="Date" name="start_date" class="form-control  datepicker clickshow" style="border: none;padding-right: 0px;padding-left: 1px;margin-top: -9px;"></label></div>	<div class="timepicker_div" style="height: 50px;margin-top: 2px;width: 80px;margin-left: 12px;"><div class="timepicker_div form-sec-header" style="height: 50px;margin-top: 2px;width: 80px;margin-left: 12px;"><label class="cal-icon" style="top:11px;left: 10px;"> Start Time<input type="text" class="form-control timepicker" name="start_time" placeholder="Time" style="background-color: transparent;border: none;margin-left: 5px; margin-top: -10px; width: 84%;"></div></div></div>'
+			'<div class="col-md-12 col-12 mobileradius" style="z-index: 0;display: flex;height: 55px;padding: 0px;border-right: 1px solid rgb(226, 225, 225);justify-content: space-around;"><div class="form-sec-header" style="height: 50px;"><label class="cal-icon" style="top:11px;left: 10px;"> Start Date	<input type="text" autocomplete="off" placeholder="Date" name="start_date" class="form-control  datepicker clickshow" style="border: none;padding-right: 0px;padding-left: 1px;margin-top: -9px;"></label></div>	<div class="timepicker_div" style="height: 50px;margin-top: 2px;width: 80px;margin-left: 12px;"><div class="timepicker_div form-sec-header" style="height: 50px;margin-top: 2px;width: 80px;margin-left: 12px;"><label class="cal-icon" style="top:11px;left: 10px;"> Start Time<input type="text" autocomplete="off" class="form-control timepicker" name="start_time" placeholder="Time" style="background-color: transparent;border: none;margin-left: 5px; margin-top: -10px; width: 84%;"></div></div></div>'
 		);
 		$(".datepicker").datepicker();
 		$('.timepicker').mdtimepicker();
 	}
 	if (x == 2) {
 		$('#change').html(
-			'<div class="col-md-3 col-6 mobileradius"style="z-index: 0;display: flex;height: 55px;padding: 0px;border-right: 1px solid rgb(226, 225, 225);"><div class="form-sec-header" style="height: 50px;"><label class="cal-icon" style="top:11px;left: 10px;"> Start Date <input type="text" placeholder="Date" name="start_date"  class="form-control datepicker" style="border: none;padding-right: 0px;padding-left: 1px;margin-top: -9px;"></label></div><div class="timepicker_div form-sec-header"	style="height: 50px;margin-top: 2px;width: 80px;margin-left: 12px;"><label class="cal-icon" style="top:11px;left: 10px;">TIME<input type="text" class="form-control timepicker"	name="start_time" placeholder="Time"	style="background-color: transparent;border: none;margin-left: -13px; margin-top: -10px; width: 122%;"></div></div><div class="col-md-3 col-6 mobileradius" style="z-index: 0;display: flex;height: 55px;padding: 0px;"><div class="form-sec-header" style="height: 50px;"><label class="cal-icon" style="top:11px;left: 10px;"> End Date<input type="text" name="end_date" placeholder="Date" class="form-control datepicker" style="border: none;padding-right: 0px;padding-left: 1px;margin-top: -9px;"></label></div><div class="timepicker_div form-sec-header"	style="height: 50px;margin-top: 2px;width: 80px;margin-left: 12px;">	<label class="cal-icon" style="top:11px;left: 10px;">TIME	<input type="text" class="form-control timepicker" name="end_time"	placeholder="Time" style="background-color: transparent;border: none;margin-left: -13px; margin-top: -10px; width: 122%;">	</div></div>'
+			'<div class="col-md-3 col-6 mobileradius"style="z-index: 0;display: flex;height: 55px;padding: 0px;border-right: 1px solid rgb(226, 225, 225);"><div class="form-sec-header" style="height: 50px;"><label class="cal-icon" style="top:11px;left: 10px;"> Start Date <input type="text" placeholder="Date" name="start_date" autocomplete="off"  class="form-control datepicker" style="border: none;padding-right: 0px;padding-left: 1px;margin-top: -9px;"></label></div><div class="timepicker_div form-sec-header"	style="height: 50px;margin-top: 2px;width: 80px;margin-left: 12px;"><label class="cal-icon" style="top:11px;left: 10px;">TIME<input type="text" class="form-control timepicker"	name="start_time" autocomplete="off" placeholder="Time"	style="background-color: transparent;border: none;margin-left: -13px; margin-top: -10px; width: 122%;"></div></div><div class="col-md-3 col-6 mobileradius" style="z-index: 0;display: flex;height: 55px;padding: 0px;"><div class="form-sec-header" style="height: 50px;"><label class="cal-icon" style="top:11px;left: 10px;"> End Date<input type="text" name="end_date" autocomplete="off" placeholder="Date" class="form-control datepicker" style="border: none;padding-right: 0px;padding-left: 1px;margin-top: -9px;"></label></div><div class="timepicker_div form-sec-header"	style="height: 50px;margin-top: 2px;width: 80px;margin-left: 12px;">	<label class="cal-icon" style="top:11px;left: 10px;">TIME	<input type="text" class="form-control timepicker" name="end_time" autocomplete="off"	placeholder="Time" style="background-color: transparent;border: none;margin-left: -13px; margin-top: -10px; width: 122%;">	</div></div>'
 		)
 		$(".datepicker").datepicker();
 		$('.timepicker').mdtimepicker();
@@ -498,7 +522,7 @@ function change(x) {
 	}
 	if (x == 3) {
 		$("#change2").html(
-			'<div class="col-md-12" style="z-index: 0;display: flex;height: 55px;border: 1px solid rgb(212, 208, 208);padding: 0px;justify-content: space-around;"><div class="form-sec-header" style="height: 50px;">	<label class="cal-icon" style="margin-top: 10px;margin-left: 10px;">Start Date <input type="text" placeholder="Date" name="start_date"  class="form-control datepicker" style="border: none;padding-right: 0px;padding-left: 5px;background-color: transparent;"></label></div><div class="timepicker_div form-sec-headers" style="height: 50px;width: 90px;"><label class="cal-icon"	style="margin-left: 10px;color: #000;font-size: 11px;font-weight: bold;">START TIME	<input type="text" name="start_time" class="form-control timepicker" placeholder="Time" style="padding: 23px 0px;background-color: transparent;border: none;width: 84%;margin-top: -11px;"></label></div></div>'
+			'<div class="col-md-12" style="z-index: 0;display: flex;height: 55px;border: 1px solid rgb(212, 208, 208);padding: 0px;justify-content: space-around;"><div class="form-sec-header" style="height: 50px;">	<label class="cal-icon" style="margin-top: 10px;margin-left: 10px;">Start Date <input type="text" placeholder="Date" name="start_date" autocomplete="off"  class="form-control datepicker" style="border: none;padding-right: 0px;padding-left: 5px;background-color: transparent;"></label></div><div class="timepicker_div form-sec-headers" style="height: 50px;width: 90px;"><label class="cal-icon"	style="margin-left: 10px;color: #000;font-size: 11px;font-weight: bold;">START TIME	<input type="text" name="start_time" class="form-control timepicker" placeholder="Time" autocomplete="off" style="padding: 23px 0px;background-color: transparent;border: none;width: 84%;margin-top: -11px;"></label></div></div>'
 		);
 		$(".datepicker").datepicker();
 		$('.timepicker').mdtimepicker();
@@ -506,7 +530,7 @@ function change(x) {
 	}
 	if (x == 4) {
 		$("#change2").html(
-			'<div class="col-md-6 "	style="z-index: 0;display: flex;height: 55px;border: 1px solid rgb(212, 208, 208);padding: 0px;"><div class="form-sec-header" style="height: 50px;">	<label class="cal-icon"	style="margin-top: 10px;margin-left: 10px;">Start Date	<input type="text" placeholder="Date" name="start_date"  class="form-control datepicker" style="border: none;padding-right: 0px;padding-left: 5px;background-color: transparent;">	</label></div><div class="timepicker_div form-sec-headers"	style="height: 50px;width: 90px;"><label class="cal-icon"	style="margin-left: 10px;font-size: 11px;color: #000;font-weight: bold;">TIME	<input type="text" name="start_time" class="form-control timepicker" placeholder="Time" style="padding: 23px 0px;background-color: transparent;border: none;width: 84%;margin-top: -11px;"></label></div></div><div class="col-md-6 "	style="z-index: 0;display: flex;height: 55px;border: 1px solid rgb(212, 208, 208);padding: 0px;">	<div class="form-sec-header" style="height: 50px;"><label class="cal-icon"	style="margin-top: 10px;margin-left: 10px;">End Date	<input type="text" placeholder="Date"	class="form-control datepicker" name="end_date"	style="border: none;padding-right: 0px;padding-left: 5px;background-color: transparent;"></label></div><div class="timepicker_div form-sec-headers" style="height: 50px;width: 90px;"><label class="cal-icon"	style="margin-left: 10px;font-size: 11px;color: #000;font-weight: bold;">TIME<input type="text" class="form-control timepicker" name="end_time"	placeholder="Time"	style="padding: 23px 0px;background-color: transparent;border: none;width: 84%;margin-top: -11px;"></label></div></div>'
+			'<div class="col-md-6 "	style="z-index: 0;display: flex;height: 55px;border: 1px solid rgb(212, 208, 208);padding: 0px;"><div class="form-sec-header" style="height: 50px;">	<label class="cal-icon"	style="margin-top: 10px;margin-left: 10px;">Start Date	<input type="text" placeholder="Date" name="start_date" autocomplete="off"  class="form-control datepicker" style="border: none;padding-right: 0px;padding-left: 5px;background-color: transparent;">	</label></div><div class="timepicker_div form-sec-headers"	style="height: 50px;width: 90px;"><label class="cal-icon"	style="margin-left: 10px;font-size: 11px;color: #000;font-weight: bold;">TIME	<input type="text" autocomplete="off" name="start_time" class="form-control timepicker" placeholder="Time" style="padding: 23px 0px;background-color: transparent;border: none;width: 84%;margin-top: -11px;"></label></div></div><div class="col-md-6 "	style="z-index: 0;display: flex;height: 55px;border: 1px solid rgb(212, 208, 208);padding: 0px;">	<div class="form-sec-header" style="height: 50px;"><label class="cal-icon"	style="margin-top: 10px;margin-left: 10px;">End Date	<input type="text" autocomplete="off" placeholder="Date"	class="form-control datepicker" name="end_date"	style="border: none;padding-right: 0px;padding-left: 5px;background-color: transparent;"></label></div><div class="timepicker_div form-sec-headers" style="height: 50px;width: 90px;"><label class="cal-icon"	style="margin-left: 10px;font-size: 11px;color: #000;font-weight: bold;">TIME<input type="text" autocomplete="off" class="form-control timepicker" name="end_time"	placeholder="Time"	style="padding: 23px 0px;background-color: transparent;border: none;width: 84%;margin-top: -11px;"></label></div></div>'
 		);
 		$(".datepicker").datepicker();
 		$('.timepicker').mdtimepicker();

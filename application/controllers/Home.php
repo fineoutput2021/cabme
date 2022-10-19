@@ -11,6 +11,7 @@ class Home extends CI_Controller
         $this->load->model("admin/login_model");
         $this->load->model("admin/base_model");
         $this->load->library("custom/Booking");
+        $this->load->library("custom/Forms");
     }
     //=============================================== Index ==============================================================
     public function index()

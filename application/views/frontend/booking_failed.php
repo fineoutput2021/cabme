@@ -8,10 +8,10 @@
                       <h1 class="section-title white-color">Failed</h1>
                   </div>
                   <div class="ltn__breadcrumb-list">
-                      <ul>
+                      <!-- <ul>
                           <li><a href="<?=base_url()?>Home">Home</a></li>
                           <li>Order Failed </li>
-                      </ul>
+                      </ul> -->
                   </div>
               </div>
           </div>
@@ -21,14 +21,18 @@
 <!-- BREADCRUMB AREA END -->
 
   <!-- Success area start -->
-  <div class="container-fluid">
-      <div class="row">
-          <div class="col-sm-12 text-center">
-              <img src="<?=base_url()?>assets/frontend/img/others/success.png" alt="Fail" width="100px" class="img-fluid">
-              <h2 style="font-size:35px;">Order Failed</h2>
-              <h4 style="color:grey;">Something must've happened from our end. Please try again.</h4>
-
-      </div>
-      </div>
-  </div>
-  <!-- Success area end -->
+  <div class="container">
+    	<div class="padding_tb_100 py-5">
+    		<div class="container">
+    			<div class="x_car_donr_main_box_wrapper_inner">
+      				<div class="order-done"> <i class="icon-checked"><img src="<?=base_url()?>assets/frontend/images/success.png" alt="Failed" style="width: 15%;"></i>
+                <h2 style="font-size:35px;">Order Failed</h2>
+                <h4 style="color:grey;">Something must've happened from our end. Please try again.</h4>
+              <div class="mt-5">
+              <a href="<?=base_url()?>"><button class="bookbtn col-md-4">Home</button></a>
+            </div>
+    				</div>
+    			</div>
+    		</div>
+    	</div>
+    	</div>

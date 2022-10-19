@@ -1,7 +1,7 @@
 <?php
 // Merchant key here as provided by Payu
-$MERCHANT_KEY = "gtKFFx";
-$SALT = "eCwWELxi";
+$MERCHANT_KEY = "Gq9SwU";
+$SALT = "8L0iQaqixiBZ5qg3pP06w0rhFccfxwKr";
 $txnid="b728690de9f3635d5cscs671cscsc";
 $name="anil";
 $email="webanilsidhu@gmail.com";

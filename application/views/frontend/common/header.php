@@ -27,8 +27,6 @@
 <body>
 
 
-
-
 	<!--====== Info Modal ======-->
 	<div class="modal fade " id="searchbtn" role="dialog">
 		<div class="modal-dialog " style="width: auto;">
@@ -368,6 +366,9 @@
 												</li>
 												<li>
 													<a href="<?=base_url()?>Home/term_and_condition">Terms & Conditions</a>
+												</li>
+												<li>
+													<a href="<?=base_url()?>Home/contact">Contact Us</a>
 												</li>
 												<li>
 													<a href="#">FAQ's</a>
