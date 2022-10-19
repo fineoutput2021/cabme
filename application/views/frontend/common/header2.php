@@ -455,7 +455,7 @@
     									style="background-color: transparent;border: none;margin-left: -13px; margin-top: -5px; width: 122%;">
     						</div>
     					</div>
-
+							<?if(!empty($search[0]->end_date)){?>
     					<div class="col-md-3 col-6 mobileradius brright"
     						style="z-index: 0;display: flex;height: 54px;padding: 0px;border: 1px solid rgb(226, 225, 225);margin-top: 1px;">
     						<div class="form-sec-header" style="height: 50px;">
@@ -463,7 +463,6 @@
     								<input type="text" placeholder="" value="<?=$search[0]->end_date?>" class="form-control datepicker"
     									style="border: none;padding-right: 0px;padding-left: 1px;margin-top: -5px;background: transparent;">
     							</label>
-
     						</div>
     						<div class="timepicker_div form-sec-header" style="height: 50px;width: 80px;margin-left: 12px;">
     							<label class="cal-icon" style="top:11px;left: 10px;">TIME
@@ -471,6 +470,7 @@
     									style="background-color: transparent;border: none;margin-left: -13px; margin-top: -5px; width: 122%;">
     						</div>
     					</div>
+							<?}?>
     					<button class="headerbtn mt-2 desktopbtn shadowbtn pdbtn"
     						style="height: 45px;font-weight: bold;letter-spacing: 1px;margin-left: 20px;">Search</button>
     				</div>

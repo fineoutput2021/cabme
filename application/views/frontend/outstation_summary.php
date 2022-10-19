@@ -36,12 +36,18 @@
 	    </div>
 	  </div>
 	  <div class="row text-center" style="flex-wrap: nowrap;margin-top: 10px;">
+			 <?if(!empty($booking_data[0]->end_date)){?>
 	    <div class="col-md-6 col-xs-6 mt-2">
 	      <h6> <?=$booking_data[0]->start_date?> <br> <?=$booking_data[0]->start_time?></h6>
 	    </div> <span style="color: #000;margin-top: 12px;">To</span>
 	    <div class="col-md-6  col-xs-6 mt-2">
 				<h6> <?=$booking_data[0]->end_date?> <br> <?=$booking_data[0]->end_time?></h6>
 	    </div>
+			<?}else{?>
+				<div class="col-md-12 col-xs-12 mt-2">
+					<h6> <?=$booking_data[0]->start_date?> <br> <?=$booking_data[0]->start_time?></h6>
+				</div>
+				<?}?>
 	  </div>
 	  <div class="row text-center" style="flex-wrap: nowrap;margin-top: 10px;">
 	    <div class="col-md-12 col-xs-12">
@@ -81,6 +87,7 @@
 	      <h2 class="bookingline">Booking Details</h2>
 	      <div class="col-md-12" style="margin-top: 20px;">
 	        <div class="row justify-content-center">
+						 <?if(!empty($booking_data[0]->end_date)){?>
 	          <div class="col-md-5">
 	            <p> <?=$booking_data[0]->start_date?> @ <?=$booking_data[0]->start_time?>
 	          </div>
@@ -88,13 +95,13 @@
 	          <div class="col-md-5">
 	            <p> <?=$booking_data[0]->end_date?> @ <?=$booking_data[0]->end_time?>
 	          </div>
-	        </div>
-	      </div>
-	      <p style="margin-top: 10px;"><span style="color: #000;">Duration: </span> &nbsp; <span>4 Days : 8
-	          Hours</span> </p>
-	      <div class="row">
-	        <div class="col-md-4 p-0" style="margin-top: 10px;">
-	          <p style="margin-left: 85px;"> Rate Per Kilometer <?=$booking_data[0]->kilometer?> kms </p>
+						<p style="margin-top: 10px;"><span style="color: #000;">Duration: </span> &nbsp; <span>4 Days : 8
+							 Hours</span> </p>
+						<?}else{?>
+							<div class="col-md-12">
+								<p><span style="color: #000;">Date & Time: </span> &nbsp; <span><?=$booking_data[0]->start_date?> @ <?=$booking_data[0]->start_time?></span> </p>
+		          </div>
+								<?}?>
 	        </div>
 	      </div>
 	    </div>
@@ -145,22 +152,12 @@
 	            <ul class="row list-unstyled">
 	              <li class="col-md-12">
 	                <h6 class="farelines">FARE DETAILS</h6>
-	                <p>Base fare <span>₹ <?=$booking_data[0]->total_amount?></span></p>
-	                <!-- <p>Doorstep delivery & pickup <span>₹ 200</span></p> -->
+	                <p>Rate Per Kilometer <span>₹ <?=$booking_data[0]->kilometer_price?></span></p>
 	                <p>Insurance & GST <span>Included</span></p>
-	                <p>Refundable Security Deposit <span>₹ <?=$booking_data[0]->rsda?></span></p>
-	                <div class="row mt-2">
-	                  <div class="x_slider_form_input_wrapper col-md-8 col-8 p-0">
-	                    <input type="text" placeholder="Promo Code" style="border: none;border-bottom: 1px solid grey;border-radius: 0px;">
-	                  </div>
-	                  <div class="col-md-4 col-4">
-	                    <button class="bookbtn float-left" style="margin-top: 7px;">Apply</button>
-	                  </div>
-	                </div>
 	              </li>
 	              <li class="col-md-12">
 	                <h6 class="totallines">Total</h6>
-	                <p>Payment <span>₹ <?=$booking_data[0]->final_amount?></span></p>
+	                <p>Min Booking Amount <span>₹ <?=$booking_data[0]->mini_booking?></span></p>
 	                <!-- <p>Kms limit <span>131 kms</span></p> -->
 	                <p>Fuel <span>Excluded</span></p>
 	                <p>Tolls, Parking, Inter-State Taxes: <span>To be paid by you</span></p>
@@ -169,8 +166,7 @@
 	                </div> -->
 	              </li>
 	            </ul>
-	            <button class="bookbtn col-md-4" data-toggle="modal" data-target="#proofModal" data-dismiss="modal">Pay</button>
-	            <!-- <a href="<?=base_url()?>Home/self_checkout/<?=base64_encode($booking_data[0]->id)?>"><button class="bookbtn col-md-4">Pay</button></a> -->
+	            <a href="<?=base_url()?>Home/outstation_checkout/<?=base64_encode($booking_data[0]->id)?>"><button class="bookbtn col-md-4">Pay</button></a>
 	          </div>
 	        </div>
 	      </div>

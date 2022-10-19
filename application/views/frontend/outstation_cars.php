@@ -183,11 +183,11 @@
                         <img src="<?=base_url().$cars['photo']?>" alt="<?=$cars['car_name']?>">
                       </div>
                       <div class="x_car_offer_heading float_left">
-                        <ul class=" car_menual_lists">
-                          <li> </li>
-                          <li> <span>💺</span> <span><?=$cars['seating']?></span>
+                        <ul class=" car_menual_lists" style="border:none;">
+                          <li style="border:none;"> </li>
+                          <li  style="border:none;"> <span>💺</span> <span><?=$cars['seating']?></span>
                           </li>
-                          <li> </li>
+                          <li style="border:none;"> </li>
                         </ul>
                       </div>
                       <div class="x_offer_tabs_wrapper">

@@ -289,7 +289,7 @@
 											</div>
 											<div class="timepicker_div form-sec-header" style="height: 50px;margin-top: 2px;width: 80px;margin-left: 12px;">
 												<label class="cal-icon" style="top:11px;left: 10px;">TIME
-													<input type="text"  id="msded" name="end_time" placeholder="Time" class="form-control timepicker" style="background-color: transparent;border: none;margin-left: -13px; margin-top: -10px; width: 122%;">
+													<input type="text"  id="msdet" name="end_time" placeholder="Time" class="form-control timepicker" style="background-color: transparent;border: none;margin-left: -13px; margin-top: -10px; width: 122%;">
 											</div>
 										</div>
 									</div>
@@ -304,7 +304,7 @@
 											<?if(!empty($this->session->userdata('user_data'))){?>
 														<button class="btn col-md-10 searchbtn shadowbtn" type="submit" id="mself_btn" disabled> <i class="fa fa-search"></i> &nbsp; Search</button>
 													<?}else{?>
-														<button class="btn col-md-10 searchbtn shadowbtn" data-toggle="modal" data-target="#loginModal"> <i class="fa fa-search"></i> &nbsp; Search</button>
+														<button class="btn col-md-10 searchbtn shadowbtn" type="button" data-toggle="modal" data-target="#loginModal"> <i class="fa fa-search"></i> &nbsp; Search</button>
 														<?}?>
 										</div>
 									</div>
@@ -315,6 +315,7 @@
 					</div>
 					<!-- second Form Tab -->
 					<div id="seconddd" class="tab-pane">
+						<form method="post" enctype="multipart/form-data" action="javascript:void(0)" id="m_intercity_form">
 						<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
 							<div class="x_slider_form_main_wrapper float_left">
 								<div class="row">
@@ -332,44 +333,54 @@
 										<div class="col-md-12 p-0 selectcity" data-toggle="modal" data-target="#selectcity" data-dismiss="modal" style="border-bottom:1px solid rgb(226, 225, 225);">
 											<div class="selectcity">
 												<i class="fa fa-map-marker"></i>
-												<h5>Select City</h5>
+												<h5  class="city_title">Select City</h5>
 											</div>
 										</div>
 										<div class="col-md-3 col-6 mobileradius" style="z-index: 0;display: flex;height: 55px;padding: 0px;border-right: 1px solid rgb(226, 225, 225);">
 											<div class="form-sec-header" style="height: 50px;">
 												<label class="cal-icon" style="top:11px;left: 10px;"> Start Date
-													<input type="text" placeholder="15 Sep 2022" class="form-control datepicker" style="border: none;padding-right: 0px;padding-left: 1px;margin-top: -9px;">
+													<input type="text"  id="micsd" name="start_date" placeholder="Date" class="form-control datepicker" style="border: none;padding-right: 0px;padding-left: 1px;margin-top: -9px;">
 												</label>
 											</div>
 											<div class="timepicker_div form-sec-header" style="height: 50px;margin-top: 2px;width: 80px;margin-left: 12px;">
 												<label class="cal-icon" style="top:11px;left: 10px;">Time
-													<input type="text" class="form-control timepicker" placeholder="2:30PM" style="background-color: transparent;border: none;margin-left: -13px; margin-top: -10px; width: 122%;">
+													<input type="text" class="form-control timepicker"id="micst" name="start_time" placeholder="Time" style="background-color: transparent;border: none;margin-left: -13px; margin-top: -10px; width: 122%;">
 											</div>
 										</div>
 										<div class="col-md-3 col-6 mobileradius" style="z-index: 0;display: flex;height: 55px;padding: 0px;">
 											<div class="form-sec-header" style="height: 50px;">
 												<label class="cal-icon" style="top:11px;left: 10px;"> End Date
-													<input type="text" placeholder="15 Sep 2022" class="form-control datepicker" style="border: none;padding-right: 0px;padding-left: 1px;margin-top: -9px;">
+													<input type="text" id="miced" name="end_date" placeholder="Date" class="form-control datepicker" style="border: none;padding-right: 0px;padding-left: 1px;margin-top: -9px;">
 												</label>
 											</div>
 											<div class="timepicker_div form-sec-header" style="height: 50px;margin-top: 2px;width: 80px;margin-left: 12px;">
 												<label class="cal-icon" style="top:11px;left: 10px;">TIME
-													<input type="text" class="form-control timepicker" placeholder="2:30PM" style="background-color: transparent;border: none;margin-left: -13px; margin-top: -10px; width: 122%;">
+													<input type="text" id="micet" name="end_time" class="form-control timepicker" placeholder="Time" style="background-color: transparent;border: none;margin-left: -13px; margin-top: -10px; width: 122%;">
 											</div>
+										</div>
+										<div class="text-center col-md-12 col-12 p-2">
+											<h6 id="mic_duration"></h6>
 										</div>
 									</div>
 									<input type="hidden" name="city_id" class="city_id"  value=""/>
+									<input type="hidden" name="duration" value="" id="mi_duration">
 									<div class="col-md-12 mt-3">
 										<div class="row mt-2 justify-content-center">
-											<button class="btn col-md-10 searchbtn shadowbtn" data-toggle="modal" data-target="#searchbtn" data-dismiss="modal"> <i class="fa fa-search"></i> &nbsp;Search</button>
+											<?if(!empty($this->session->userdata('user_data'))){?>
+												<button class="btn col-md-10 searchbtn shadowbtn" type="submit" id="miter_btn"> <i class="fa fa-search"></i> &nbsp;Search</button>
+												<?}else{?>
+													<button type="button" class="btn col-md-10 searchbtn shadowbtn" data-toggle="modal" data-target="#loginModal"> <i class="fa fa-search"></i> &nbsp; Search</button>
+													<?}?>
 										</div>
 									</div>
 								</div>
 							</div>
 						</div>
+							</form>
 					</div>
 					<!-- Third Form Tab -->
 					<div id="thirddd" class="tab-pane">
+					<form method="post" enctype="multipart/form-data" action="<?=base_url()?>Home/outstaion_cars">
 						<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
 							<div class="x_slider_form_main_wrapper float_left">
 								<div class="row justify-content-center" style="flex-wrap: nowrap;width: 100%;">
@@ -383,24 +394,9 @@
 								</div>
 								<div class="row">
 									<div id="location2" style="display: flex;width: 100%;">
-										<div class="col-md-6 col-6 p-0">
+										<div class="col-md-12 col-12 p-0">
 											<div class="x_slider_select x_slider_select_2" style="margin-left: -14px;">
-												<select class="myselect">
-													<option>Pick-Up Location</option>
-													<option>Bangalore</option>
-													<option>Chennai</option>
-													<option>Goa</option>
-												</select> <i class="fa fa-map-marker"></i>
-											</div>
-										</div>
-										<div class="col-md-6 col-6 p-0">
-											<div class="x_slider_select x_slider_select_2" style="margin-left: 2px;">
-												<select class="myselect">
-													<option>Drop Location</option>
-													<option>Jaipur</option>
-													<option>Delhi</option>
-													<option>Mumbai</option>
-												</select> <i class="fa fa-map-marker"></i>
+											<input type="text" placeholder="Pickup Location"  name="pick_location" required class="form-control" style="">
 											</div>
 										</div>
 									</div>
@@ -408,33 +404,38 @@
 										<div class="col-md-12 p-0" data-toggle="modal" data-target="#selectcity" data-dismiss="modal" style="border-bottom:1px solid rgb(226, 225, 225);">
 											<div class="selectcity">
 												<i class="fa fa-map-marker"></i>
-												<h5>Select City</h5>
+												<h5  class="city_title">Select City</h5>
 											</div>
 										</div>
 										<div id="change" style="display: flex;" class="col-md-12 col-12 p-0">
 											<div class="col-md-12 col-12 mobileradius" style="z-index: 0;display: flex;height: 55px;padding: 0px;border-right: 1px solid rgb(226, 225, 225);justify-content: space-around;">
 												<div class="form-sec-header" style="height: 50px;">
 													<label class="cal-icon" style="top:11px;left: 10px;"> Start Date
-														<input type="text" placeholder=" 15 Sep 2022" class="form-control datepicker" style="border: none;padding-right: 0px;padding-left: 1px;margin-top: -9px;">
+														<input type="text" placeholder="Date" name="start_date"  class="form-control datepicker" style="border: none;padding-right: 0px;padding-left: 1px;margin-top: -9px;">
 													</label>
 												</div>
 												<div class="timepicker_div form-sec-header" style="height: 50px;margin-top: 2px;width: 80px;margin-left: 12px;">
 													<label class="cal-icon" style="top:11px;left: 10px;"> Start Time
-														<input type="text" class="form-control timepicker" placeholder="2:30PM" style="background-color: transparent;border: none;margin-left: 5px; margin-top: -10px; width: 84%;">
+														<input type="text" name="start_time" placeholder="Time" class="form-control timepicker" style="background-color: transparent;border: none;margin-left: 5px; margin-top: -10px; width: 84%;">
 												</div>
 											</div>
 										</div>
 									</div>
 									<input type="hidden" name="city_id" class="city_id"  value=""/>
+									<input type="hidden" name="round_type" id="mround_type"  value="1"/>
+									<input type="hidden" name="duration" value="" id="mo_duration">
 									<div class="col-md-12 mt-3">
 										<div class="row mt-2 justify-content-center">
-											<a href="outstation_car.html" class=" col-md-10 text-center">
-												<button class="btn col-md-10 searchbtn shadowbtn"> <i class="fa fa-search"></i> &nbsp;Search</button>
-											</a>
+											<?if(!empty($this->session->userdata('user_data'))){?>
+												<button class="btn col-md-10 searchbtn shadowbtn" type="submit" id="outstation_btn"> <i class="fa fa-search"></i> &nbsp;Search</button>
+												<?}else{?>
+													<button class="btn col-md-10 searchbtn shadowbtn" data-toggle="modal" data-target="#loginModal"> <i class="fa fa-search"></i> &nbsp; Search</button>
+													<?}?>
 										</div>
 									</div>
 								</div>
 							</div>
+							</form>
 						</div>
 					</div>
 				</div>
@@ -443,7 +444,7 @@
 	</div>
 	<!-- ================================  Mobile Form End =========================================== -->
 	<!--================================= Featured Slider Start ======================================-->
-	<div class="x_ln_car_main_wrapper float_left padding_tb_100">
+	<div class="x_ln_car_main_wrapper float_left ">
 		<div class="container">
 			<div class="row">
 				<div class="col-md-12">
@@ -486,7 +487,7 @@
 	</div>
 	<!--================================= Featured Slider End ======================================-->
 	<!--================================= Safe Slider Start ======================================-->
-	<div class="x_ln_car_main_wrapper float_left padding_tb_100 mb-3 mt-3" style="z-index: 0;">
+	<div class="x_ln_car_main_wrapper float_left  mb-3 mt-3" style="z-index: 0;">
 		<div class="container">
 			<div class="row">
 				<div class="col-md-12">
@@ -526,7 +527,7 @@
 	</div>
 	<!--================================= Safe Slider End ======================================-->
 	<!--================================= Why Cabme slider Start ======================================-->
-	<div class="x_ln_car_main_wrapper float_left padding_tb_100 mb-3" style="z-index: 0;">
+	<div class="x_ln_car_main_wrapper float_left  mb-3" style="z-index: 0;">
 		<div class="container">
 			<div class="row">
 				<div class="col-md-12">
@@ -599,39 +600,28 @@
 		<div class="car-filter accordion ">
 			<div class="panel panel-default">
 				<div class="panel-heading" style="border-bottom: 1px solid rgb(173, 173, 173);">
-					<h4 class="panel-title  mb-2 mt-2"> <a data-toggle="collapse" href="#collapse_1" class="collapse">Is
-							there a speed limit?</a> </h4>
+					<h4 class="panel-title  mb-2 mt-2"> <a data-toggle="collapse" href="#collapse_1" class="collapse">Is there a speed limit?</a> </h4>
 				</div>
 				<div id="collapse_1" class="collapse show mb-3">
 					<div class="panel-body">
-						<p>Cabme allows up to 125 km/hr. However it is 80 km/hr in a few cities where some cars
-							might be
-							equipped with speed governors as per government directives.</p>
+						<p>110 Kms/Hr is the speed limit. Exceeding it willattract a penalty for over-speeding. In some states(e.g., Karnataka, Maharashtra, Delhi-NCR), some carsmight be equipped with speed governors, which willautomatically restrict the speed to 80Kms/Hr. This isas per government directives.</p>
 					</div>
 				</div>
 				<div class="panel-heading" style="border-bottom: 1px solid rgb(173, 173, 173);">
-					<h4 class="panel-title mb-2 mt-2"> <a data-toggle="collapse" href="#collapse_3" class="collapse">Can
-							I
-							extend/ cancel/ modify?</a> </h4>
+					<h4 class="panel-title mb-2 mt-2"> <a data-toggle="collapse" href="#collapse_3" class="collapse">"KILOMETRES LIMIT" TO HOW MUCH I CAN DRIVE?</a> </h4>
 				</div>
 				<div id="collapse_3" class="collapse show mb-3">
 					<div class="panel-body">
-						<p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Repellendus illo
-							repudiandae
-							consectetur fuga non ab mollitia, earum quo quibusdam perspiciatis nulla dicta
-							necessitatibus reiciendis inventore eveniet rerum provident, nemo eos!</p>
+						<p>This depends on the pricing plan that you select. Ifyou go for the “Unlimited kms” pricing plans(available only without fuel, and only for bookingswhose duration is more than 72 hours), there isabsolutely no limit to the kilometres that you candrive, and you have complete flexibility of drivingthe car as much as you want. Revv it up!</p>
 					</div>
 				</div>
 				<div class="panel-heading" style="border-bottom: 1px solid rgb(173, 173, 173);">
-					<h4 class="panel-title mb-2 mt-2"> <a data-toggle="collapse" href="#collapse_2" class="collapse">Demo</a>
+					<h4 class="panel-title mb-2 mt-2"> <a data-toggle="collapse" href="#collapse_2" class="collapse">PRICE IN PEAK SEASON</a>
 					</h4>
 				</div>
 				<div id="collapse_2" class="collapse show mb-3">
 					<div class="panel-body">
-						<p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Repellendus illo
-							repudiandae
-							consectetur fuga non ab mollitia, earum quo quibusdam perspiciatis nulla dicta
-							necessitatibus reiciendis inventore eveniet rerum provident, nemo eos!</p>
+						<p>Peak season refers to festive periods of very highdemand. Our hourly rental tariffs are different forweekdays (Mon-Fri), weekends (Sat-Sun) and thePeak Season. The dates and prices for the PeakSeason are dynamically decided based on thedemand.</p>
 					</div>
 				</div>
 			</div>
@@ -670,7 +660,7 @@
 	</div>
 	<!--================================= Our journey End ======================================-->
 	<!-- =================== Testimonial ================================== -->
-	<div class="x_offer_car_main_wrapper float_left padding_tb_100">
+	<div class="x_offer_car_main_wrapper float_left ">
 		<div class="container">
 			<div class="row">
 				<div class="col-md-12">

@@ -339,42 +339,47 @@
 									<nav class="cd-dropdown">
 										<div class="row mb-5">
 											<div class="col-10">
-												<p class="ml-4 mt-3">demo@gmail.com</p>
+												<?if(!empty($this->session->userdata('user_data'))){?>
+												<h5 class="ml-4 mt-3">Hello,<b><?=$this->session->userdata('name')?></b></h5>
+												<?}?>
 											</div>
 											<div class="col-2">
 												<a href="#0" class="cd-close" style="margin-right: 25px;">Close</a>
 											</div>
 											<ul class="cd-dropdown-content mobilelinks mt-3">
+												<?if(empty($this->session->userdata('user_data'))){?>
 												<li class="mb-3 mt-2">
-													<button class="btn ml-5" data-toggle="modal" data-target="#loginModal" style="background-color:red;color: #fff;"><i class="fa fa-power-off"></i>
+													<button class="btn ml-5 house_toggle" data-toggle="modal"  data-target="#loginModal" style="background-color:red;color: #fff;"><i class="fa fa-power-off"></i>
 														&nbsp;Login </button>
-													<button class="btn ml-5" data-toggle="modal" data-target="#signupModal" style="background-color:red;color: #fff;"><i class="fa fa-user"></i> &nbsp;Sign
+													<button class="btn ml-5 house_toggle" data-toggle="modal"  data-target="#signupModal" style="background-color:red;color: #fff;"><i class="fa fa-user"></i> &nbsp;Sign
 														Up
 													</button>
 												</li>
+												<?}else{?>
+													<li>
+														<a href="<?=base_url()?>Home/my_profile">My Profile</a>
+													</li>
+													<?}?>
+												<li>
+													<a href="<?=base_url()?>Home/about">About Us</a>
 												</li>
 												<li>
-													<a href="<?=base_url()?>Home/my_profile">My Profile</a>
+													<a href="<?=base_url()?>Home/privacy_policy">Privacy Policy</a>
 												</li>
+												<li>
+													<a href="<?=base_url()?>Home/term_and_condition">Terms & Conditions</a>
 												</li>
 												<li>
 													<a href="#">FAQ's</a>
 												</li>
 												</li>
-												</li>
-												<li>
-													<a href="#">Policy</a>
-												</li>
-												</li>
-												<li>
-													<a href="#">Contact Us</a>
-												</li>
-												</li>
+												<?if(!empty($this->session->userdata('user_data'))){?>
 												<li>
 													<a href="<?=base_url()?>User/logout">Log Out</a>
 												</li>
+												<?}?>
 												</li>
-												<h2><a href="<?=base_url()?>"><img src="images/cabme_logo.png" alt="cabme_logo" width="50%"></a></h2>
+												<h2><a href="<?=base_url()?>"><img src="<?=base_url()?>assets/frontend/images/cabme_logo.png" alt="cabme_logo" width="50%"></a></h2>
 											</ul>
 										</div>
 										<!-- .cd-dropdown-content -->

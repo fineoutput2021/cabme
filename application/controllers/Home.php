@@ -173,7 +173,7 @@ class Home extends CI_Controller
         } else {
             $seating = '7 Seates';
         }
-        $days =$data['booking_data'][0]->duration*24;
+        $days =$data['booking_data'][0]->duration/24;
         $car_data= array(
                       'brand_name'=>$self[0]->brand_name,
                       'car_name'=>$self[0]->car_name,
@@ -317,10 +317,9 @@ class Home extends CI_Controller
                         $license_back = "assets/uploads/documents/".$new_file_name.$file_info['file_ext'];
                     }
                 }
-                $response = $this->booking->selfCheckout($id, $dob, $aadhar_no, $driving_lience, $pickup_location, $aadhar_front, $aadhar_back, $license_front, $license_back);
-                // echo "hi";
-                // die();
-                redirect("Home/self_drive_summary/$id");
+                $amount = $this->booking->selfCheckout($id, $dob, $aadhar_no, $driving_lience, $pickup_location, $aadhar_front, $aadhar_back, $license_front, $license_back);
+
+                redirect("Home/self_payment/$id/$amount");
             } else {
                 $this->session->set_flashdata('emessage', validation_errors());
                 redirect($_SERVER['HTTP_REFERER']);
@@ -329,6 +328,52 @@ class Home extends CI_Controller
             $this->session->set_flashdata('emessage', 'Please insert some data, No data available');
             redirect($_SERVER['HTTP_REFERER']);
         }
+    }
+
+    public function self_payment($id,$amount){
+      $txnid = substr(hash('sha256', mt_rand() . microtime()), 0, 20);
+      $customer_name=$this->session->userdata('name');
+      $customer_emial=$this->session->userdata('email');
+      $customer_mobile=$this->session->userdata('phone');
+      $url = PAYU_BASE_URL.'/_payment';
+      $MERCHANT_KEY = "Gq9SwU"; //change  merchant with yours
+          $SALT = "8L0iQaqixiBZ5qg3pP06w0rhFccfxwKr";  //change salt with yours
+          $product_info = "Cabme";  //change salt with yours
+          $customer_address = "Cabme";  //change salt with yours
+          $txnid = substr(hash('sha256', mt_rand() . microtime()), 0, 20);
+      //----- insert txnid ----
+      $data_update = array('txnid'=>$txnid,
+                      );
+      $this->db->where('id', $id);
+      $zapak=$this->db->update('tbl_booking', $data_update);
+      //optional udf values
+      $udf1 = '';
+      $udf2 = '';
+      $udf3 = '';
+      $udf4 = '';
+      $udf5 = '';
+      $hashstring = $MERCHANT_KEY . '|' . $txnid . '|' . $amount . '|' . $product_info . '|' . $customer_name . '|' . $customer_emial . '|' . $udf1 . '|' . $udf2 . '|' . $udf3 . '|' . $udf4 . '|' . $udf5 . '||||||' . $SALT;
+      $hash = strtolower(hash('sha512', $hashstring));
+      $success = base_url() . 'Home/sbooking_succssful';
+      $fail = base_url() . 'Home/booking_fail';
+      $cancel = base_url() . 'Home/booking_fail';
+      $data = array(
+      'mkey' => $MERCHANT_KEY,
+      'tid' => $txnid,
+      'hash' => $hash,
+      'amount' => $amount,
+      'name' => $customer_name,
+      'productinfo' => $product_info,
+      'mailid' => $customer_emial,
+      'phoneno' => $customer_mobile,
+      'address' => $customer_address,
+      'action' => "https://test.payu.in", //for live change action  https://secure.payu.in
+      'sucess' => $success,
+      'failure' => $fail,
+      'cancel' => $cancel
+      );
+      // print_r($data);die();
+      $this->load->view('frontend/confirmation', $data);
     }
     //====================================== Intercity calculate ======================
     public function intercity_calculate()
@@ -367,6 +412,8 @@ class Home extends CI_Controller
             echo json_encode($res);
         }
     }
+
+
     //====================================== Intercity calculate =====================================
     public function intercity_checkout()
     {
@@ -453,6 +500,66 @@ class Home extends CI_Controller
             $bookingdata = $this->db->get_where('tbl_booking', array('txnid'=> $txnid))->result();
             $data['booking_id']=$bookingdata[0]->id;
             $data['amount']=$bookingdata[0]->final_amount;
+            $this->load->view('frontend/common/header', $data);
+            $this->load->view('frontend/booking_success');
+            $this->load->view('frontend/common/footer');
+        } else {
+            redirect("Home/booking_fail", "refresh");
+        }
+    }
+    public function sbooking_succssful()
+    {
+        // $postdata = file_get_contents("php://input");
+        // print_r($postdata);
+        $mihpayid = $_POST['mihpayid'];
+        $status = $_POST['status'];
+        $amount = $_POST['amount'];
+        $txnid = $_POST['txnid'];
+        if ($status=='success') {
+            $data_update = array('mihpayid'=>$mihpayid,
+        'online_paid'=>$amount,
+        'payment_status'=>1,
+        'order_status'=>1,
+            );
+            $this->db->where('txnid', $txnid);
+            $zapak=$this->db->update('tbl_booking', $data_update);
+            $bookingdata = $this->db->get_where('tbl_booking', array('txnid'=> $txnid))->result();
+            //---- car status update ----
+            $data_update2 = array('is_available'=>0,);
+            $this->db->where('id', $bookingdata[0]->car_id);
+            $zapak=$this->db->update('tbl_selfdrive', $data_update2);
+            $data['booking_id']=$bookingdata[0]->id;
+            $data['amount']=$bookingdata[0]->final_amount;
+            $this->load->view('frontend/common/header', $data);
+            $this->load->view('frontend/booking_success');
+            $this->load->view('frontend/common/footer');
+        } else {
+            redirect("Home/booking_fail", "refresh");
+        }
+    }
+    public function obooking_succssful()
+    {
+        // $postdata = file_get_contents("php://input");
+        // print_r($postdata);
+        $mihpayid = $_POST['mihpayid'];
+        $status = $_POST['status'];
+        $amount = $_POST['amount'];
+        $txnid = $_POST['txnid'];
+        if ($status=='success') {
+            $data_update = array('mihpayid'=>$mihpayid,
+        'online_paid'=>$amount,
+        'payment_status'=>1,
+        'order_status'=>1,
+            );
+            $this->db->where('txnid', $txnid);
+            $zapak=$this->db->update('tbl_booking', $data_update);
+            $bookingdata = $this->db->get_where('tbl_booking', array('txnid'=> $txnid))->result();
+            //---- car status update ----
+            $data_update2 = array('is_available'=>0,);
+            $this->db->where('id', $bookingdata[0]->car_id);
+            $zapak=$this->db->update('tbl_outstation', $data_update2);
+            $data['booking_id']=$bookingdata[0]->id;
+            $data['amount']=$bookingdata[0]->mini_booking;
             $this->load->view('frontend/common/header', $data);
             $this->load->view('frontend/booking_success');
             $this->load->view('frontend/common/footer');
@@ -608,7 +715,7 @@ class Home extends CI_Controller
         } else {
             $seating = '7 Seates';
         }
-        // $days =$data['booking_data'][0]->duration*24;
+        // $days =$data['booking_data'][0]->duration/24;
         $car_data= array(
                   'brand_name'=>$car[0]->brand_name,
                   'car_name'=>$car[0]->car_name,
@@ -623,17 +730,56 @@ class Home extends CI_Controller
         $this->load->view('frontend/outstation_summary');
         $this->load->view('frontend/common/footer');
     }
-    // ============================================ ABOUT =================================================
-    public function about()
-    {
-        $this->db->select('*');
-        $this->db->from('tbl_testimonials');
-        $this->db->where('is_active', 1);
-        $data['testimonials_data']= $this->db->get();
-        $this->load->view('frontend/common/header', $data);
-        $this->load->view('frontend/about');
-        $this->load->view('frontend/common/footer');
+    //============================ outstation cehckout =================
+    public function outstation_checkout($idd){
+       $id=base64_decode($idd);
+      $booking = $this->db->get_where('tbl_booking', array('id'=> $id))->result();
+      $amount = $booking[0]->mini_booking;
+      $txnid = substr(hash('sha256', mt_rand() . microtime()), 0, 20);
+      $customer_name=$this->session->userdata('name');
+      $customer_emial=$this->session->userdata('email');
+      $customer_mobile=$this->session->userdata('phone');
+      $url = PAYU_BASE_URL.'/_payment';
+      $MERCHANT_KEY = "Gq9SwU"; //change  merchant with yours
+          $SALT = "8L0iQaqixiBZ5qg3pP06w0rhFccfxwKr";  //change salt with yours
+          $product_info = "Cabme";  //change salt with yours
+          $customer_address = "Cabme";  //change salt with yours
+          $txnid = substr(hash('sha256', mt_rand() . microtime()), 0, 20);
+      //----- insert txnid ----
+      $data_update = array('txnid'=>$txnid,
+                      );
+      $this->db->where('id', $id);
+      $zapak=$this->db->update('tbl_booking', $data_update);
+      //optional udf values
+      $udf1 = '';
+      $udf2 = '';
+      $udf3 = '';
+      $udf4 = '';
+      $udf5 = '';
+      $hashstring = $MERCHANT_KEY . '|' . $txnid . '|' . $amount . '|' . $product_info . '|' . $customer_name . '|' . $customer_emial . '|' . $udf1 . '|' . $udf2 . '|' . $udf3 . '|' . $udf4 . '|' . $udf5 . '||||||' . $SALT;
+      $hash = strtolower(hash('sha512', $hashstring));
+      $success = base_url() . 'Home/obooking_succssful';
+      $fail = base_url() . 'Home/booking_fail';
+      $cancel = base_url() . 'Home/booking_fail';
+      $data = array(
+      'mkey' => $MERCHANT_KEY,
+      'tid' => $txnid,
+      'hash' => $hash,
+      'amount' => $amount,
+      'name' => $customer_name,
+      'productinfo' => $product_info,
+      'mailid' => $customer_emial,
+      'phoneno' => $customer_mobile,
+      'address' => $customer_address,
+      'action' => "https://test.payu.in", //for live change action  https://secure.payu.in
+      'sucess' => $success,
+      'failure' => $fail,
+      'cancel' => $cancel
+      );
+      // print_r($data);die();
+      $this->load->view('frontend/confirmation', $data);
     }
+
     // =========================================== MY PROFILE ===============================================
     public function my_profile()
     {
@@ -705,10 +851,23 @@ class Home extends CI_Controller
         $this->load->view('frontend/contact');
         $this->load->view('frontend/common/footer');
     }
+    // ============================================ ABOUT =================================================
+    public function about()
+    {
+        $this->load->view('frontend/common/header');
+        $this->load->view('frontend/about');
+        $this->load->view('frontend/common/footer');
+    }
+    public function privacy_policy()
+    {
+        $this->load->view('frontend/common/header');
+        $this->load->view('frontend/privacy_policy');
+        $this->load->view('frontend/common/footer');
+    }
     public function term_and_condition()
     {
         $this->load->view('frontend/common/header');
-        $this->load->view('frontend/term_and_condition');
+        $this->load->view('frontend/terms_conditions');
         $this->load->view('frontend/common/footer');
     }
 }

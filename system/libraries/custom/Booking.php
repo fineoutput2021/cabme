@@ -86,7 +86,7 @@ class CI_Booking
             } else {
                 $seating = '7 Seates';
             }
-            $days =$receive['duration']*24;
+            $days =$receive['duration']/24;
             $car_data[] = array('city_id'=>$self->city_id,
                     'car_id'=>$self->id,
                     'brand_name'=>$self->brand_name,
@@ -122,7 +122,7 @@ class CI_Booking
         //------ get car data --------
         $car_data = $this->CI->db->get_where('tbl_selfdrive', array('id'=> $receive['car_id']))->result();
         //----- check kilometer plan ------
-        $days =$receive['duration']*24;
+        $days =$receive['duration']/24;
         if ($receive['type_id']==1) {
             $kilometer = $car_data[0]->kilometer1*$days;
             $kilometer_price = $car_data[0]->price1*$days;
@@ -224,7 +224,9 @@ $booking_update = array('pick_location'=>$pickup_location,
             );
             $this->CI->db->where('id', $id);
             $zapak=$this->CI->db->update('tbl_booking', $booking_update);
-  return ;
+            $data = $this->CI->db->get_where('tbl_booking', array('id'=> $id))->result();
+
+  return $data[0]->final_amount ;
     }
     //========= INTERCITY CALCUALTE ========
     public function intercityCalculate($cab_type, $start_date, $start_time, $end_date, $end_time, $city_id, $duration)
@@ -301,7 +303,7 @@ $booking_update = array('pick_location'=>$pickup_location,
             } else {
                 $seating = '7 Seates';
             }
-            // $days =$receive['duration']*24;
+            // $days =$receive['duration']/24;
             $car_data[] = array('city_id'=>$car->city_id,
                     'car_id'=>$car->id,
                     'brand_name'=>$car->brand_name,
@@ -330,17 +332,19 @@ $booking_update = array('pick_location'=>$pickup_location,
         //------ get car data --------
         $car_data = $this->CI->db->get_where('tbl_outstation', array('id'=> $receive['car_id']))->result();
         //----- check kilometer plan ------
-        // $days =$receive['duration']*24;
+      // $days =$receive['duration']/24;
 
         //---- calculate total amount -------
         $mini_booking = $car_data[0]->min_booking_amt;
+        $kilometer_price = $car_data[0]->per_kilometre;
         $total = $car_data[0]->min_booking_amt;
-        $final_amount = $total + $mini_booking;
+        $final_amount = $mini_booking;
         $user_id=$this->CI->session->userdata('user_id');
         //------- insert into booking table --------
         $data_insert = array('user_id'=>$user_id,
-              'booking_type'=>1,
+              'booking_type'=>3,
               'mini_booking'=>$mini_booking,
+              'kilometer_price'=>$kilometer_price,
               'total_amount'=>$total,
               'final_amount'=>$final_amount,
               'city_id'=>$receive['city_id'],

@@ -221,9 +221,11 @@ ul{
 	float:left;
 	width:100%;
 }
+@media only screen and (min-width: 600px) {
 .padding_tb_100{
-	/* padding-top:100px; */
-	/* padding-bottom:100px; */
+	padding-top:100px;
+	padding-bottom:100px;
+}
 }
 .padding_tb_60{
 	padding-top:100px;

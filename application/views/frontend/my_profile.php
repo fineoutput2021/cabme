@@ -141,7 +141,7 @@
                 <?php $i=1; foreach($booking_data as $booking) {?>
 								<tr>
 									<td>#<?=$booking->id?></td>
-									<td><?if($booking->booking_type==1){echo'Self Drive';}else if($booking->booking_type==2){echo'Outstation';}else{echo'Inertcity';}?></td>
+									<td><?if($booking->booking_type==1){echo'Self Drive';}else if($booking->booking_type==2){echo'Inertcity';}else{echo'Outstation';}?></td>
 									<td>₹<?=$booking->final_amount?></td>
 									<td>
                     <?if($booking->order_status==1){?>

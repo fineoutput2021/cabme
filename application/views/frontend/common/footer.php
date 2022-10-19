@@ -15,11 +15,13 @@
 					<ul class="footerlinks">
 						<li><a href="<?=base_url()?>"><i class="fa fa-long-arrow-right"></i> &nbsp; Home</a>
 						</li>
-						<li><a href="about.html"><i class="fa fa-long-arrow-right"></i> &nbsp; About</a>
+						<li><a href="<?=base_url()?>Home/about"><i class="fa fa-long-arrow-right"></i> &nbsp; About Us</a>
 						</li>
-						<li><a href="summary.html"><i class="fa fa-long-arrow-right"></i> &nbsp; Summary</a>
+						<li><a href="<?=base_url()?>Home/privacy_policy"><i class="fa fa-long-arrow-right"></i> &nbsp; Privacy Policy</a>
 						</li>
-						<li><a href="faq.html"><i class="fa fa-long-arrow-right"></i> &nbsp; FAQ's</a>
+						<li><a href="<?=base_url()?>Home/term_and_condition"><i class="fa fa-long-arrow-right"></i> &nbsp; Terms & Conditions</a>
+						</li>
+						<li><a href="#"><i class="fa fa-long-arrow-right"></i> &nbsp; FAQ's</a>
 						</li>
 
 					</ul>
@@ -102,7 +104,7 @@ function loadSuccessNotify(succ_message){
     }
 //======= intercity ==========
 // =========================================================== REGISTER USER ===========================================================
-$("#w_intercity_form").on('submit',function(e){
+$("#w_intercity_form,#m_intercity_form").on('submit',function(e){
   e.preventDefault();
   var form = $(this);
     $.ajax({
@@ -365,6 +367,87 @@ function ic_time_change(){
 						$('#iter_btn').removeAttr('disabled');
 		}
 }
+//------ onchange on time and date -------
+$("#micsd, #miced").change(function(){
+	var icsd=$('#micsd').val();
+	var icst=$('#micst').attr('data-time');
+	var iced=$('#miced').val();
+	var icet=$('#micet').attr('data-time');
+	// start date covert ------
+	var sd    = new Date(icsd),
+		icyr      = sd.getFullYear(),
+		icmonth   = sd.getMonth() < 10 ? '0' + sd.getMonth() : sd.getMonth(),
+		icday     = sd.getDate()  < 10 ? '0' + sd.getDate()  : sd.getDate(),
+		icDate = icyr + '-' + icmonth + '-' + icday;
+		// end date date covert ------
+		var ed    = new Date(iced),
+			icyr      = ed.getFullYear(),
+			icmonth   = ed.getMonth() < 10 ? '0' + ed.getMonth() : ed.getMonth(),
+			icday     = ed.getDate()  < 10 ? '0' + ed.getDate()  : ed.getDate(),
+			icDate = icyr + '-' + icmonth + '-' + icday;
+			//----- calculate diffrence --------
+			console.log('startdate= '+icDate);
+			console.log('starttime= '+icst);
+			console.log('enddate= '+icDate);
+			console.log('endtime= '+icet);
+			console.log('check= '+$('#micst').val());
+			if((icDate !='NaN-NaN-NaN')&& (typeof icst != "undefined")&& (icDate !='NaN-NaN-NaN')&& (typeof iced != "undefined")){
+				var start = new Date(icDate);
+				 var end   = new Date(icDate);
+					var diff= (( new Date(icDate+" " +icet) - new Date(icDate+" " +icst) ) / 1000 / 60 / 60 );
+					var days =  parseInt(diff/24);
+					var hours =  diff%24;
+					if(hours>0 && days >0){
+						$('#mic_duration').html("Duration: "+days+" day, "+hours+" hours")
+					}else if(hours==0 && days>0){
+							$('#mic_duration').html("Duration: "+days+" day")
+					}else{
+							$('#mic_duration').html("Duration: "+hours+" hours")
+					}
+						$('#mi_duration').val(diff);
+						$('#miter_btn').removeAttr('disabled');
+		}
+});
+
+function ic_time_change(){
+	var icsd=$('#micsd').val();
+	var icst=$('#micst').attr('data-time');
+	var iced=$('#miced').val();
+	var icet=$('#micet').attr('data-time');
+	// start date covert ------
+	var sd    = new Date(icsd),
+		icyr      = sd.getFullYear(),
+		icmonth   = sd.getMonth() < 10 ? '0' + sd.getMonth() : sd.getMonth(),
+		icday     = sd.getDate()  < 10 ? '0' + sd.getDate()  : sd.getDate(),
+		icDate = icyr + '-' + icmonth + '-' + icday;
+		// end date date covert ------
+		var ed    = new Date(iced),
+			icyr      = ed.getFullYear(),
+			icmonth   = ed.getMonth() < 10 ? '0' + ed.getMonth() : ed.getMonth(),
+			icday     = ed.getDate()  < 10 ? '0' + ed.getDate()  : ed.getDate(),
+			icDate = icyr + '-' + icmonth + '-' + icday;
+			//----- calculate diffrence --------
+			console.log('startdate= '+icDate);
+			console.log('starttime= '+icst);
+			console.log('enddate= '+icDate);
+			console.log('endtime= '+icet);
+			if((icDate !='NaN-NaN-NaN')&& (typeof icst != "undefined")&& (icDate !='NaN-NaN-NaN')&& (typeof iced != "undefined")){
+				var start = new Date(icDate);
+				 var end   = new Date(icDate);
+				  var diff= (( new Date(icDate+" " +icet) - new Date(icDate+" " +icst) ) / 1000 / 60 / 60 );
+					var days =  parseInt(diff/24);
+					var hours =  diff%24;
+					if(hours>0 && days >0){
+						$('#mic_duration').html("Duration: "+days+" day, "+hours+" hours")
+					}else if(hours==0 && days>0){
+							$('#mic_duration').html("Duration: "+days+" day")
+					}else{
+							$('#mic_duration').html("Duration: "+hours+" hours")
+					}
+						$('#mi_duration').val(diff);
+						$('#miter_btn').removeAttr('disabled');
+		}
+}
 //------ set city on load -------
 $(document).ready(function () {
 var id = localStorage.getItem("city_id");
@@ -400,14 +483,14 @@ $('#ct_'+x).val(y);
 function change(x) {
 	if (x == 1) {
 		$('#change').html(
-			'<div class="col-md-12 col-12 mobileradius" style="z-index: 0;display: flex;height: 55px;padding: 0px;border-right: 1px solid rgb(226, 225, 225);justify-content: space-around;"><div class="form-sec-header" style="height: 50px;"><label class="cal-icon" style="top:11px;left: 10px;"> Start Date	<input type="text" placeholder=" 15 Sep 2022"class="form-control  datepicker clickshow" style="border: none;padding-right: 0px;padding-left: 1px;margin-top: -9px;"></label></div>	<div class="timepicker_div" style="height: 50px;margin-top: 2px;width: 80px;margin-left: 12px;"><div class="timepicker_div form-sec-header" style="height: 50px;margin-top: 2px;width: 80px;margin-left: 12px;"><label class="cal-icon" style="top:11px;left: 10px;"> Start Time<input type="text" class="form-control timepicker" placeholder="2:30PM" style="background-color: transparent;border: none;margin-left: 5px; margin-top: -10px; width: 84%;"></div></div></div>'
+			'<div class="col-md-12 col-12 mobileradius" style="z-index: 0;display: flex;height: 55px;padding: 0px;border-right: 1px solid rgb(226, 225, 225);justify-content: space-around;"><div class="form-sec-header" style="height: 50px;"><label class="cal-icon" style="top:11px;left: 10px;"> Start Date	<input type="text" placeholder="Date" name="start_date" class="form-control  datepicker clickshow" style="border: none;padding-right: 0px;padding-left: 1px;margin-top: -9px;"></label></div>	<div class="timepicker_div" style="height: 50px;margin-top: 2px;width: 80px;margin-left: 12px;"><div class="timepicker_div form-sec-header" style="height: 50px;margin-top: 2px;width: 80px;margin-left: 12px;"><label class="cal-icon" style="top:11px;left: 10px;"> Start Time<input type="text" class="form-control timepicker" name="start_time" placeholder="Time" style="background-color: transparent;border: none;margin-left: 5px; margin-top: -10px; width: 84%;"></div></div></div>'
 		);
 		$(".datepicker").datepicker();
 		$('.timepicker').mdtimepicker();
 	}
 	if (x == 2) {
 		$('#change').html(
-			'<div class="col-md-3 col-6 mobileradius"style="z-index: 0;display: flex;height: 55px;padding: 0px;border-right: 1px solid rgb(226, 225, 225);"><div class="form-sec-header" style="height: 50px;"><label class="cal-icon" style="top:11px;left: 10px;"> Start Date <input type="text" placeholder=" 15 Sep 2022" class="form-control datepicker" style="border: none;padding-right: 0px;padding-left: 1px;margin-top: -9px;"></label></div><div class="timepicker_div form-sec-header"	style="height: 50px;margin-top: 2px;width: 80px;margin-left: 12px;"><label class="cal-icon" style="top:11px;left: 10px;">TIME<input type="text" class="form-control timepicker"	placeholder="2:30PM"	style="background-color: transparent;border: none;margin-left: -13px; margin-top: -10px; width: 122%;"></div></div><div class="col-md-3 col-6 mobileradius" style="z-index: 0;display: flex;height: 55px;padding: 0px;"><div class="form-sec-header" style="height: 50px;"><label class="cal-icon" style="top:11px;left: 10px;"> End Date<input type="text" placeholder=" 15 Sep 2022" class="form-control datepicker" style="border: none;padding-right: 0px;padding-left: 1px;margin-top: -9px;"></label></div><div class="timepicker_div form-sec-header"	style="height: 50px;margin-top: 2px;width: 80px;margin-left: 12px;">	<label class="cal-icon" style="top:11px;left: 10px;">TIME	<input type="text" class="form-control timepicker"	placeholder="2:30PM"	style="background-color: transparent;border: none;margin-left: -13px; margin-top: -10px; width: 122%;">	</div></div>'
+			'<div class="col-md-3 col-6 mobileradius"style="z-index: 0;display: flex;height: 55px;padding: 0px;border-right: 1px solid rgb(226, 225, 225);"><div class="form-sec-header" style="height: 50px;"><label class="cal-icon" style="top:11px;left: 10px;"> Start Date <input type="text" placeholder="Date" name="start_date"  class="form-control datepicker" style="border: none;padding-right: 0px;padding-left: 1px;margin-top: -9px;"></label></div><div class="timepicker_div form-sec-header"	style="height: 50px;margin-top: 2px;width: 80px;margin-left: 12px;"><label class="cal-icon" style="top:11px;left: 10px;">TIME<input type="text" class="form-control timepicker"	name="start_time" placeholder="Time"	style="background-color: transparent;border: none;margin-left: -13px; margin-top: -10px; width: 122%;"></div></div><div class="col-md-3 col-6 mobileradius" style="z-index: 0;display: flex;height: 55px;padding: 0px;"><div class="form-sec-header" style="height: 50px;"><label class="cal-icon" style="top:11px;left: 10px;"> End Date<input type="text" name="end_date" placeholder="Date" class="form-control datepicker" style="border: none;padding-right: 0px;padding-left: 1px;margin-top: -9px;"></label></div><div class="timepicker_div form-sec-header"	style="height: 50px;margin-top: 2px;width: 80px;margin-left: 12px;">	<label class="cal-icon" style="top:11px;left: 10px;">TIME	<input type="text" class="form-control timepicker" name="end_time"	placeholder="Time" style="background-color: transparent;border: none;margin-left: -13px; margin-top: -10px; width: 122%;">	</div></div>'
 		)
 		$(".datepicker").datepicker();
 		$('.timepicker').mdtimepicker();
@@ -440,10 +523,10 @@ function change(x) {
 	}
 	if(x == 1)
 	{
-		$('#location2').html('<div class="col-md-6 col-6 p-0"><div class="x_slider_select x_slider_select_2" style="margin-left: -14px;">	<select class="myselect" style="border-radius: 10px;border: solid 1px #e8e8e8;">	<option>Pick-Up Location</option><option>Bangalore</option><option>Chennai</option><option>Goa</option></select> <i class="fa fa-map-marker"></i></div></div><div class="col-md-6 col-6 p-0">	<div class="x_slider_select x_slider_select_2" style="margin-left: 2px;">	<select class="myselect" style="border-radius: 10px;border: solid 1px #e8e8e8;">	<option>Drop Location</option>	<option>Jaipur</option>	<option>Delhi</option>	<option>Mumbai</option></select> <i class="fa fa-map-marker"></i></div></div>')
+		$('#location2').html('<div class="col-md-12 col-12 p-0"><div class="x_slider_select x_slider_select_2" style="margin-left: -14px;">	<input type="text" placeholder="Pickup Location"  name="pick_location" required class="form-control" style=""></div></div>')
 	}
 	else {
-		$('#location2').html('<div class="col-md-12 col-12 p-0" style="margin-left:-14px;"><div class="x_slider_select x_slider_select_2">	<select class="myselect" style="border-radius: 10px;border: solid 1px #e8e8e8;">	<option>Pickup Location</option>	<option>Jaipur</option>	<option>Delhi</option>	<option>Mumbai</option>	</select> <i class="fa fa-map-marker"></i></div></div>')
+		$('#location2').html('<div class="col-md-12 col-6 p-0"><div class="x_slider_select x_slider_select_2" style="margin-left: -14px;">	<input type="text" placeholder="Pickup Location"  name="pick_location" required class="form-control" style=""></div></div><div class="col-md-6 col-6 p-0">	<div class="x_slider_select x_slider_select_2" style="margin-left: 2px;"><input type="text" placeholder="Drop Location"  name="drop_location" required class="form-control" style=""></i></div></div>')
 	}
 }
 </script>
