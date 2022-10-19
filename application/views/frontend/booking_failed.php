@@ -25,7 +25,7 @@
     	<div class="padding_tb_100 py-5">
     		<div class="container">
     			<div class="x_car_donr_main_box_wrapper_inner">
-      				<div class="order-done"> <i class="icon-checked"><img src="<?=base_url()?>assets/frontend/images/success.png" alt="Failed" style="width: 15%;"></i>
+      				<div class="order-done"> <i class="icon-checked"><img src="<?=base_url()?>assets/frontend/images/fail.png" alt="Failed" style="width: 15%;"></i>
                 <h2 style="font-size:35px;">Order Failed</h2>
                 <h4 style="color:grey;">Something must've happened from our end. Please try again.</h4>
               <div class="mt-5">
