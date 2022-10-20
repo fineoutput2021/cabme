@@ -1,7 +1,7 @@
 <?php
 // Merchant key here as provided by Payu
-$MERCHANT_KEY = "Gq9SwU";
-$SALT = "8L0iQaqixiBZ5qg3pP06w0rhFccfxwKr";
+$MERCHANT_KEY = MERCHANT_KEY;
+$SALT = SALT;
 $txnid="b728690de9f3635d5cscs671cscsc";
 $name="anil";
 $email="webanilsidhu@gmail.com";
@@ -30,7 +30,7 @@ and open the template in the editor.
 </head>
 <body>
 <h1>PayUMoney Payment Request Form </h1>
-<form action="https://sandboxsecure.payu.in/_payment"  name="payuform" method=POST >
+<form action="https://te.payu.in/_payment"  name="payuform" method=POST >
 <input type="hidden" name="key" value="<?php echo $MERCHANT_KEY;?>" />
 <input type="hidden" name="hash"  value="<?php echo $hash;?>" />
 <input type="hidden" name="txnid" value="<?php echo $txnid;?>"/>

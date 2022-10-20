@@ -99,7 +99,11 @@
 					<input type="hidden" id="ic_id" name="id" value=""/>
 					<input type="hidden" id="ic_amount" name="amount" value=""/>
 					<div class="row justify-content-center">
+							<?if(!empty($this->session->userdata('user_data'))){?>
 							<button class="btn col-md-10  searchbtn shadowbtn" onclick="book_intercity">Book</button>
+							<?}else{?>
+									<button class="btn col-md-10  searchbtn shadowbtn"type="button" data-toggle="modal" data-target="#loginModal">Book</button>
+								<?}?>
 					</div>
 				</form>
 				</div>

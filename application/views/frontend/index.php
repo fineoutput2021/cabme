@@ -68,11 +68,7 @@
 										<input type="hidden" name="index" value="1" id="index">
 										<div class="col-md-12">
 											<div class="row mt-4 justify-content-center">
-												<?if(!empty($this->session->userdata('user_data'))){?>
 													<button class="btn col-md-10 searchbtn shadowbtn" type="submit" id="self_btn" disabled> <i class="fa fa-search"></i> &nbsp; Search</button>
-												<?}else{?>
-													<button class="btn col-md-10 searchbtn shadowbtn" type="button" data-toggle="modal" data-target="#loginModal"> <i class="fa fa-search"></i> &nbsp; Search</button>
-													<?}?>
 											</div>
 										</div>
 									</div>
@@ -131,11 +127,7 @@
 
 										<div class="col-md-12 mt-3">
 											<div class="row mt-2 justify-content-center">
-												<?if(!empty($this->session->userdata('user_data'))){?>
 													<button class="btn col-md-10 searchbtn shadowbtn" type="submit" id="outstation_btn"> <i class="fa fa-search"></i> &nbsp;Search</button>
-													<?}else{?>
-														<button class="btn col-md-10 searchbtn shadowbtn" type="button" data-toggle="modal" data-target="#loginModal"> <i class="fa fa-search"></i> &nbsp; Search</button>
-														<?}?>
 											</div>
 										</div>
 									</div>
@@ -197,11 +189,7 @@
 										<input type="hidden" name="duration" value="" id="i_duration">
 										<div class="col-md-12 mt-3">
 											<div class="row mt-2 justify-content-center">
-											<?if(!empty($this->session->userdata('user_data'))){?>
 												<button class="btn col-md-10 searchbtn shadowbtn" type="submit" id="iter_btn"> <i class="fa fa-search"></i> &nbsp;Search</button>
-												<?}else{?>
-													<button type="button" class="btn col-md-10 searchbtn shadowbtn" data-toggle="modal" data-target="#loginModal"> <i class="fa fa-search"></i> &nbsp; Search</button>
-													<?}?>
 											</div>
 										</div>
 									</div>
@@ -301,11 +289,7 @@
 									<input type="hidden" name="index" value="1" id="mindex">
 									<div class="col-md-12">
 										<div class="row mt-4 justify-content-center">
-											<?if(!empty($this->session->userdata('user_data'))){?>
 														<button class="btn col-md-10 searchbtn shadowbtn" type="submit" id="mself_btn" disabled> <i class="fa fa-search"></i> &nbsp; Search</button>
-													<?}else{?>
-														<button class="btn col-md-10 searchbtn shadowbtn" type="button" data-toggle="modal" data-target="#loginModal"> <i class="fa fa-search"></i> &nbsp; Search</button>
-														<?}?>
 										</div>
 									</div>
 								</div>
@@ -365,11 +349,7 @@
 									<input type="hidden" name="duration" value="" id="mi_duration">
 									<div class="col-md-12 mt-3">
 										<div class="row mt-2 justify-content-center">
-											<?if(!empty($this->session->userdata('user_data'))){?>
 												<button class="btn col-md-10 searchbtn shadowbtn" type="submit" id="miter_btn"> <i class="fa fa-search"></i> &nbsp;Search</button>
-												<?}else{?>
-													<button type="button" class="btn col-md-10 searchbtn shadowbtn" data-toggle="modal" data-target="#loginModal"> <i class="fa fa-search"></i> &nbsp; Search</button>
-													<?}?>
 										</div>
 									</div>
 								</div>
@@ -425,11 +405,7 @@
 									<input type="hidden" name="duration" value="" id="mo_duration">
 									<div class="col-md-12 mt-3">
 										<div class="row mt-2 justify-content-center">
-											<?if(!empty($this->session->userdata('user_data'))){?>
 												<button class="btn col-md-10 searchbtn shadowbtn" type="submit" id="outstation_btn"> <i class="fa fa-search"></i> &nbsp;Search</button>
-												<?}else{?>
-													<button class="btn col-md-10 searchbtn shadowbtn" type="button" data-toggle="modal" data-target="#loginModal"> <i class="fa fa-search"></i> &nbsp; Search</button>
-													<?}?>
 										</div>
 									</div>
 								</div>

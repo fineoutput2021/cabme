@@ -368,7 +368,7 @@ class Home extends CI_Controller
       'mailid' => $customer_emial,
       'phoneno' => $customer_mobile,
       'address' => $customer_address,
-      'action' => "https://test.payu.in", //for live change action  https://secure.payu.in
+      'action' => PAYU_BASE_URL, //for live change action  https://secure.payu.in
       'sucess' => $success,
       'failure' => $fail,
       'cancel' => $cancel
@@ -463,7 +463,7 @@ class Home extends CI_Controller
              'mailid' => $customer_emial,
              'phoneno' => $customer_mobile,
              'address' => $customer_address,
-             'action' => "https://test.payu.in", //for live change action  https://secure.payu.in
+             'action' => PAYU_BASE_URL, //for live change action  https://secure.payu.in
              'sucess' => $success,
              'failure' => $fail,
              'cancel' => $cancel
@@ -772,7 +772,7 @@ class Home extends CI_Controller
       'mailid' => $customer_emial,
       'phoneno' => $customer_mobile,
       'address' => $customer_address,
-      'action' => "https://test.payu.in", //for live change action  https://secure.payu.in
+      'action' => PAYU_BASE_URL, //for live change action  https://secure.payu.in
       'sucess' => $success,
       'failure' => $fail,
       'cancel' => $cancel

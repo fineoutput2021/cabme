@@ -32,7 +32,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
   margin-top: 20%;">
 <div class="loader"></div>
 </div>
-  <form action="<?php echo $action; ?>/_payment" method="post" id="payuForm" name="payuForm">
+  <form action="<?php echo $action; ?>" method="post" id="payuForm" name="payuForm">
     <input type="hidden" name="key" value="<?php echo $mkey; ?>" />
     <input type="hidden" name="hash" value="<?php echo $hash; ?>" />
     <input type="hidden" name="txnid" value="<?php echo $tid; ?>" />
