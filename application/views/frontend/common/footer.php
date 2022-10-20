@@ -6,7 +6,7 @@
 			<div class="col-xl-4 col-lg-4 col-md-4 col-sm-12 col-12">
 				<div class="x_footer_bottom_box_wrapper float_left">
 					<img src="<?=base_url()?>assets/frontend/images/cabmenewlogo.png" alt="" width="50%">
-					<p style="color: #797979;">© 2022 Fineoutput Technology Pvt Ltd. All rights reserved</p>
+					<p style="color: #797979;">© 2022 Cabme India Private Limited. All rights reserved</p>
 				</div>
 			</div>
 			<div class="col-xl-4 col-lg-4 col-md-4 col-sm-12 col-12">
