@@ -243,12 +243,12 @@
                       </div>
                       <div class="x_offer_tabs_wrapper">
                         <ul class="nav nav-tabs All_Car_tabs w-100 mt-3" style="display: inline-flex; flex-wrap: nowrap;">
-                          <li class="nav-item" onclick="planChange(<?=$i?>,1)"> <a class="nav-link active" data-toggle="tab" href="#first" id="km1_<?=$i?>"> ₹ <?=$cars['price1']?> <br><span style="font-size:10px"><?=$cars['kilometer1']?> Kms</span></a>
+                          <li class="nav-item" onclick="planChange(<?=$i?>,1)"> <a class="nav-link active" data-toggle="tab" href="#first" id="km1_<?=$i?>"> ₹ <?=round($cars['price1'])?> <br><span style="font-size:10px"><?=round($cars['kilometer1'])?> Kms</span></a>
                           </li>
-                          <li class="nav-item" onclick="planChange(<?=$i?>,2)"> <a class="nav-link " data-toggle="tab" href="#second" id="km2_<?=$i?>"> ₹ <?=$cars['price2']?> <br><span style="font-size:10px"><?=$cars['kilometer2']?> Kms</span>
+                          <li class="nav-item" onclick="planChange(<?=$i?>,2)"> <a class="nav-link " data-toggle="tab" href="#second" id="km2_<?=$i?>"> ₹ <?=round($cars['price2'])?> <br><span style="font-size:10px"><?=round($cars['kilometer2'])?> Kms</span>
                             </a>
                           </li>
-                          <li class="nav-item" onclick="planChange(<?=$i?>,3)"> <a class="nav-link" data-toggle="tab" href="#third" id="km3_<?=$i?>"> ₹ <?=$cars['price3']?> <br> <span style="font-size:10px"><?=$cars['kilometer3']?> Kms</span>
+                          <li class="nav-item" onclick="planChange(<?=$i?>,3)"> <a class="nav-link" data-toggle="tab" href="#third" id="km3_<?=$i?>"> ₹ <?=round($cars['price3'])?> <br> <span style="font-size:10px"><?=round($cars['kilometer3'])?> Kms</span>
                             </a>
                           </li>
                         </ul>
