@@ -168,6 +168,7 @@ $("#sdsd, #sded").change(function(){
 				  var diff= (( new Date(edDate+" " +sdet) - new Date(sdDate+" " +sdst) ) / 1000 / 60 / 60 );
 					var days =  parseInt(diff/24);
 					var hours =  diff%24;
+					if(diff>0){
 					if(hours>0 && days >0){
 						$('#s_duration').html("Duration: "+days+" day, "+hours+" hours")
 					}else if(hours==0 && days>0){
@@ -177,6 +178,12 @@ $("#sdsd, #sded").change(function(){
 					}
 						$('#duration').val(diff);
 						$('#self_btn').removeAttr('disabled');
+					}else{
+						$('#s_duration').html("<span style='color:red'>Plese Select Correct Date & Time</span>")
+						$('#duration').val(diff);
+						$('#self_btn').attr('disabled');
+					}
+
 		}
 });
 //------- Mobile self drive date change --------
@@ -333,10 +340,14 @@ function time_change(){
 
 	if((sdDate !='NaN-NaN-NaN')&& (typeof sdst !== "undefined")&& (edDate !='NaN-NaN-NaN')&& (typeof sded !== "undefined")){
 		var start = new Date(sdDate);
+		// var st = new Date(sdDate sdst);
 		 var end   = new Date(edDate);
 		  var diff= (( new Date(edDate+" " +sdet) - new Date(sdDate+" " +sdst) ) / 1000 / 60 / 60 );
 			var days =  parseInt(diff/24);
 			var hours =  diff%24;
+			// alert(st)
+			// alert(start.getTime())
+			if(diff>0){
 			if(hours!=0){
 				$('#s_duration').html("Duration: "+days+" day, "+hours+" hours")
 			}else{
@@ -344,6 +355,11 @@ function time_change(){
 			}
 				$('#duration').val(diff);
 				$('#self_btn').removeAttr('disabled');
+			}else{
+				$('#s_duration').html("<span style='color:red'>Plese Select Correct Date & Time</span>")
+				$('#duration').val(diff);
+				$('#self_btn').attr('disabled');
+			}
 }
 }
 //----self drive mobile change time -----
@@ -763,7 +779,14 @@ if ("undefined" == typeof jQuery) throw new Error("MDTimePicker: This plugin req
 		},
 		getSystemTime: function () {
 			var e = new Date;
-			return new c(e.getHours(), e.getMinutes())
+			if(e.getMinutes()<30){
+				var h = e.getHours();
+				var t=30;
+			}else{
+			var h = e.getHours()+1;
+			var t=00;
+			}
+			return new c(h,t)
 		},
 		parseTime: function (e, t) {
 			var i = this,

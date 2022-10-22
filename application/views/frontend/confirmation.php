@@ -46,8 +46,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     <input type="hidden" name="surl" value="<?php echo $sucess; ?>" size="64" type="hidden" />
     <input type="hidden" name="furl" value="<?php echo $failure; ?>" size="64" type="hidden" />
     <!--for test environment comment  service provider   -->
-    <input type="hidden" name="service_provider" value="payu_paisa" size="64" />
-    <input type="hidden" name="curl" value="<?php echo $cancel; ?> " type="hidden" />
+    <input type="hidden" name="service_provider" value="" size="64" />
+    <!-- <input type="hidden" name="curl" value="<?php echo $cancel; ?> " type="hidden" /> -->
   </form>
 </body>
 <script>

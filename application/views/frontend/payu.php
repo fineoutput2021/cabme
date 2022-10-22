@@ -30,7 +30,7 @@ and open the template in the editor.
 </head>
 <body>
 <h1>PayUMoney Payment Request Form </h1>
-<form action="https://te.payu.in/_payment"  name="payuform" method=POST >
+<form action="https://test.payu.in/_payment"  name="payuform" method=POST >
 <input type="hidden" name="key" value="<?php echo $MERCHANT_KEY;?>" />
 <input type="hidden" name="hash"  value="<?php echo $hash;?>" />
 <input type="hidden" name="txnid" value="<?php echo $txnid;?>"/>

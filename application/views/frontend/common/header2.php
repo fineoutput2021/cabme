@@ -25,7 +25,8 @@
 </head>
 
 <body>
-
+	<input type="hidden" id="active" value="1">
+	<input type="hidden" id="device" value="">
 
 	<!--====== Sort By Modal ======-->
 
@@ -440,7 +441,19 @@
 			</div>
 		</div>
     <div class="container-fluid p-2" style="background-color: #fff;">
+			<?
+			$days =  (int)$search[0]->duration/24;
+			$hours =  $search[0]->duration%24;
+			if($hours>0 && $days >0){
+				$s_duration="Duration: ".$days." days, ".$hours." hours";
+			}else if($hours==0 && $days>0){
+				$s_duration="Duration: ".$days." days";
+			}else{
+				$s_duration="Duration: ".$hours." hours";
+			}
+			?>
     				<div class="container">
+						<form method="post" enctype="multipart/form-data" action="<?=base_url()?>Home/self_drive_cars">
     				<div class="row mobileform" style="border-radius: 10px;display: flex;flex-wrap: nowrap;">
     					<div class="col-md-3 col-12 p-0" data-toggle="modal" data-target="#selectcity" data-dismiss="modal">
     						<div class="selectcity" style="border: 1px solid rgb(226, 225, 225);height: 55px;">
@@ -452,14 +465,14 @@
     						style="z-index: 0;display: flex;height: 54px;padding: 0px;border: 1px solid rgb(226, 225, 225);margin-top: 1px;">
     						<div class="form-sec-header" style="height: 50px;">
     							<label class="cal-icon" style="top:11px;left: 10px;"> Start Date
-    								<input type="text" placeholder="" value="<?=$search[0]->start_date?>" class="form-control datepicker"
+    								<input type="text" autocomplete="off" id="sdsd" name="start_date" placeholder="" value="<?=$search[0]->start_date?>" class="form-control datepicker"
     									style="border: none;padding-right: 0px;padding-left: 1px;margin-top: -5px;background: transparent;">
     							</label>
 
     						</div>
     						<div class="timepicker_div form-sec-header" style="height: 50px;width: 80px;margin-left: 12px;">
     							<label class="cal-icon" style="top:11px;left: 10px;">TIME
-    								<input type="text" class="form-control timepicker" placeholder="" value="<?=$search[0]->start_time?>"
+    								<input type="text" autocomplete="off" id="sdst" name="start_time" class="form-control timepicker" placeholder="" value="<?=$search[0]->start_time?>"
     									style="background-color: transparent;border: none;margin-left: -13px; margin-top: -5px; width: 122%;">
     						</div>
     					</div>
@@ -468,22 +481,26 @@
     						style="z-index: 0;display: flex;height: 54px;padding: 0px;border: 1px solid rgb(226, 225, 225);margin-top: 1px;">
     						<div class="form-sec-header" style="height: 50px;">
     							<label class="cal-icon" style="top:11px;left: 10px;"> End Date
-    								<input type="text" placeholder="" value="<?=$search[0]->end_date?>" class="form-control datepicker"
+    								<input type="text" autocomplete="off" id="sded" name="end_date" placeholder="" value="<?=$search[0]->end_date?>" class="form-control datepicker"
     									style="border: none;padding-right: 0px;padding-left: 1px;margin-top: -5px;background: transparent;">
     							</label>
     						</div>
     						<div class="timepicker_div form-sec-header" style="height: 50px;width: 80px;margin-left: 12px;">
     							<label class="cal-icon" style="top:11px;left: 10px;">TIME
-    								<input type="text" class="form-control timepicker" placeholder="" value="<?=$search[0]->end_time?>"
+    								<input type="text" autocomplete="off" id="sdet" name="end_time" class="form-control timepicker" placeholder="" value="<?=$search[0]->end_time?>"
     									style="background-color: transparent;border: none;margin-left: -13px; margin-top: -5px; width: 122%;">
     						</div>
     					</div>
 							<?}?>
+							<input type="hidden" name="city_id" class="city_id"  value=""/>
+							<input type="hidden" name="duration" value="" id="duration">
+							<input type="hidden" name="index" value="1" id="index">
     					<button class="headerbtn mt-2 desktopbtn shadowbtn pdbtn"
-    						style="height: 45px;font-weight: bold;letter-spacing: 1px;margin-left: 20px;">Search</button>
+    						style="height: 45px;font-weight: bold;letter-spacing: 1px;margin-left: 20px;" type="submit" id="self_btn" >Search</button>
     				</div>
+							</form>
     				<div class="text-center col-md-12 col-12 pt-2">
-    				<h6>Duration: 1 day, 2 hours</h6>
+    				<h6 id="s_duration"><?=$s_duration?></h6>
     					</div>
     			</div>
     			</div>

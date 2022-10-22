@@ -337,8 +337,8 @@ class Home extends CI_Controller
       $customer_emial=$this->session->userdata('email');
       $customer_mobile=$this->session->userdata('phone');
       $url = PAYU_BASE_URL.'/_payment';
-      $MERCHANT_KEY = "Gq9SwU"; //change  merchant with yours
-          $SALT = "8L0iQaqixiBZ5qg3pP06w0rhFccfxwKr";  //change salt with yours
+      $MERCHANT_KEY = MERCHANT_KEY; //change  merchant with yours
+                    $SALT = SALT;  //change salt with yours
           $product_info = "Cabme";  //change salt with yours
           $customer_address = "Cabme";  //change salt with yours
           $txnid = substr(hash('sha256', mt_rand() . microtime()), 0, 20);
@@ -432,8 +432,8 @@ class Home extends CI_Controller
                 $customer_emial=$this->session->userdata('email');
                 $customer_mobile=$this->session->userdata('phone');
                 $url = PAYU_BASE_URL.'/_payment';
-                $MERCHANT_KEY = "Gq9SwU"; //change  merchant with yours
-                    $SALT = "8L0iQaqixiBZ5qg3pP06w0rhFccfxwKr";  //change salt with yours
+                $MERCHANT_KEY = MERCHANT_KEY; //change  merchant with yours
+                    $SALT = SALT;  //change salt with yours
                     $product_info = "Cabme";  //change salt with yours
                     $customer_address = "Cabme";  //change salt with yours
                     $txnid = substr(hash('sha256', mt_rand() . microtime()), 0, 20);
@@ -741,8 +741,8 @@ class Home extends CI_Controller
       $customer_emial=$this->session->userdata('email');
       $customer_mobile=$this->session->userdata('phone');
       $url = PAYU_BASE_URL.'/_payment';
-      $MERCHANT_KEY = "Gq9SwU"; //change  merchant with yours
-          $SALT = "8L0iQaqixiBZ5qg3pP06w0rhFccfxwKr";  //change salt with yours
+      $MERCHANT_KEY = MERCHANT_KEY; //change  merchant with yours
+                    $SALT = SALT;  //change salt with yours
           $product_info = "Cabme";  //change salt with yours
           $customer_address = "Cabme";  //change salt with yours
           $txnid = substr(hash('sha256', mt_rand() . microtime()), 0, 20);

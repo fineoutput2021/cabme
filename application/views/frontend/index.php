@@ -2,6 +2,10 @@
 	<!-- hs Slider Start -->
 	<input type="hidden" id="active" value="1">
 	<input type="hidden" id="device" value="">
+	<input type="hidden" id="sd" value="">
+	<input type="hidden" id="st" value="">
+	<input type="hidden" id="ed" value="">
+	<input type="hidden" id="et" value="">
 	<div class="slider-area float_left desktopmainslider">
 		<div id="carousel-example-generic" class="carousel slide" data-interval="5000" data-ride="carousel">
 			<div class="carousel-inner" role="listbox">
