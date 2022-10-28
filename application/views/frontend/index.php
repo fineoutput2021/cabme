@@ -98,7 +98,7 @@
 										<div id="location" style="display: flex;width: 100%;">
 											<div class="col-md-12 mb-3">
 												<div class="x_slider_select x_slider_select_2">
-														<input type="text"  placeholder="Pickup Location"  name="pick_location" required class="form-control" style="">
+														<input type="text"  placeholder="Pickup Location" name="pick_location" required class="form-control" style="">
 												</div>
 											</div>
 										</div>

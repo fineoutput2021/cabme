@@ -442,7 +442,7 @@
 		</div>
     <div class="container-fluid p-2" style="background-color: #fff;">
 			<?
-			$days =  (int)$search[0]->duration/24;
+			$days = (int)$search[0]->duration/24;
 			$hours =  $search[0]->duration%24;
 			if($hours>0 && $days >0){
 				$s_duration="Duration: ".$days." days, ".$hours." hours";

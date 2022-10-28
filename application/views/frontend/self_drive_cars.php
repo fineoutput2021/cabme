@@ -75,8 +75,7 @@
                     <h3 style="margin-top: 5px;">Filters</h3>
                   </div>
                   <div class="col-md-6">
-                    <a href="#" style="color: red;float: right;">Reset
-                      All</a>
+                    <a href="#" style="color: red;float: right;">Apply</a>
                   </div>
                 </div>
                 <hr>
@@ -210,7 +209,6 @@
               </div> -->
               <div class="x_carbook_right_select_box_wrapper float-right desktopsortbydiv"> <span style="font-size: 17px;color: #494848;font-weight: bold;">Sort By: &nbsp;</span>
                 <select class="myselect">
-                  <option>Popularity</option>
                   <option>Price: Low To High</option>
                   <option>Price: High To Low</option>
                 </select>

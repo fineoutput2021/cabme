@@ -131,6 +131,17 @@
 	  </div>
 	</div>
 	<!-- btc tittle Wrapper End -->
+	<?
+	$days =  (int)$booking_data[0]->duration/24;
+	$hours =  $booking_data[0]->duration%24;
+	if($hours>0 && $days >0){
+		$s_duration=$days." days, ".$hours." hours";
+	}else if($hours==0 && $days>0){
+		$s_duration=$days." days";
+	}else{
+		$s_duration=$hours." hours";
+	}
+	?>
 	<!--============================== Mobile Car Detail =======================================-->
 	<div class="coontainer-fluid" id="mobilecardetail" style="background-color: #fff;margin-top: 20px;padding: 20px;">
 	  <div class="row">
@@ -156,17 +167,17 @@
 	  <div class="row text-center" style="flex-wrap: nowrap;margin-top: 10px;">
 	    <div class="col-md-12 col-xs-12">
 	      <p>Duration</p>
-	      <h6>48 : 00 Hours</h6>
+	      <h6><?=$s_duration?></h6>
 	    </div>
 	  </div>
 	  <div class="row  text-center">
 	    <div class="col-md-12" style="margin-top: 10px;">
-	      <p><?=$city_data[0]->name?> <span style="margin-left: 30px;"> <a href="#" style="color: red;" data-toggle="modal" data-target="#selectcity" data-dismiss="modal">Change City</a> </span> </p>
+	      <p><?=$city_data[0]->name?> <span style="margin-left: 30px;"> <a href="<?=base_url()?>Home/show_self_drive_cars/<?=base64_encode($booking_data[0]->search_id)?>"  style="color: red;" >Change City</a> </span> </p>
 	    </div>
 	  </div>
 	  <div class="row text-center" style="flex-wrap: nowrap;margin-top: 10px;">
 	    <div class="col-md-12 col-xs-12">
-	      <p> Includes 1344 kms <span style="margin-left: 30px;"> <a href="#" style="color: red;" data-toggle="modal" data-target="#changeplan" data-dismiss="modal">Change plan</a> </span>
+	      <p> Includes <?=$booking_data[0]->kilometer?> kms <span style="margin-left: 30px;"> <a href="#" style="color: red;" data-toggle="modal" data-target="#changeplan" data-dismiss="modal">Change plan</a> </span>
 	      </p>
 	    </div>
 	  </div>
@@ -200,8 +211,8 @@
 	          </div>
 	        </div>
 	      </div>
-	      <p style="margin-top: 10px;"><span style="color: #000;">Duration: </span> &nbsp; <span>4 Days : 8
-	          Hours</span> </p>
+	      <p style="margin-top: 10px;"><span style="color: #000;">Duration: </span> &nbsp; <span>
+					<?=$s_duration;?></span> </p>
 	      <div class="row">
 	        <div class="col-md-4" style="margin-top: 10px;">
 	          <p>Jaipur</p>
