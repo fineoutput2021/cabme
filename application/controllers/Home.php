@@ -330,6 +330,59 @@ class Home extends CI_Controller
             redirect($_SERVER['HTTP_REFERER']);
         }
     }
+    // ====================================== SELF DRIVE PROMOCODE ==========================
+    public function self_promocode()
+    {
+        $this->load->helper(array('form', 'url'));
+        $this->load->library('form_validation');
+        $this->load->helper('security');
+        if ($this->input->post()) {
+            $this->form_validation->set_rules('id', 'id', 'required|xss_clean|trim');
+            $this->form_validation->set_rules('promocode', 'promocode', 'required|xss_clean|trim');
+            if ($this->form_validation->run()== true) {
+                $id=base64_decode($this->input->post('id'));
+                $promocode=$this->input->post('promocode');
+                date_default_timezone_set("Asia/Calcutta");
+                $cur_date=date("Y-m-d H:i:s");
+                //----check promocode----
+                $promocode_data = $this->db->get_where('tbl_promocode', array('is_active'=> 1,'promocode'=> $promocode))->result();
+                if(!empty($promocode_data)){
+                    if (strtotime($promocode_data[0]->end_date) >= $cur_date && strtotime($promocode_data[0]->start_date) <= $cur_date) {
+                      //---- one time promocode -------
+                      if ($promocode_data[0]->ptype==1) {
+                          $promocodeAlreadyUsed = $this->CI->db->get_where('tbl_booking', array('user_id = ' => $user_id, 'promocode'=>$promocode_data[0]->id, 'payment_status'=>1))->result();
+                          if (empty($promocodeAlreadyUsed)) {
+                              if ($order_data[0]->total_amount > $promocode_data[0]->minorder) { //----checking minorder for promocode
+                              }else{
+
+                              }
+                          }else{
+                            $this->session->set_flashdata('emessage', 'Promocode is already used!');
+                            redirect($_SERVER['HTTP_REFERER']);
+                          }
+                        }
+                        //---- every time promocode -------
+                        else{
+
+                        }
+                    }else{
+                      $this->session->set_flashdata('emessage', 'Invalid Promocode Used!');
+                      redirect($_SERVER['HTTP_REFERER']);
+                    }
+                }else{
+                  $this->session->set_flashdata('emessage', 'Invalid Promocode Used!');
+                  redirect($_SERVER['HTTP_REFERER']);
+                }
+
+            } else {
+                $this->session->set_flashdata('emessage', validation_errors());
+                redirect($_SERVER['HTTP_REFERER']);
+            }
+        } else {
+            $this->session->set_flashdata('emessage', 'Please insert some data, No data available');
+            redirect($_SERVER['HTTP_REFERER']);
+        }
+    }
 
     public function self_payment($id,$amount){
       $txnid = substr(hash('sha256', mt_rand() . microtime()), 0, 20);
