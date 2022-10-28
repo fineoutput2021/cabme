@@ -18,7 +18,13 @@
 				<div class="formsix-pos">
 					<div class="form-sec-header proofdateofbirth mb-4">
 						<label class="cal-icon">
-							<input type="text" name="dob" placeholder="Date Of Birth" required class="form-control datepicker" value="<?=$user_data[0]->dob?>">
+							  <td>
+							<?
+							  $newdate = new DateTime($user_data[0]->dob);
+							  $dob= $newdate->format('Y-m-d');   #d-m-Y  // March 10, 2001, 5:16 pm
+							  ?>
+							</td>
+							<input type="date" name="dob" placeholder="Date Of Birth" required class="form-control " value="<?=$dob?>">
 						</label>
 					</div>
 					<div class="form-group mb-4">
@@ -28,38 +34,39 @@
 						<input type="text" name="driving_lience" class="form-control modalinput" required="" placeholder="Driving License*"  value="<?=$user_data[0]->driving_lience?>">
 					</div>
 					<div class="form-group mb-4">
-						<input type="text" name="pickup_location" class="form-control modalinput"  required="" placeholder="Pickup Location*"  value="<?=$user_data[0]->driving_lience?>">
+						<input type="text" name="pickup_location" class="form-control modalinput"  required="" placeholder="Pickup Location*"  value="">
 					</div>
 				</div>
 				<div class="row">
 					<div class="col-md-12">
 						<p class="mt-1 mb-1">Upload <b>Aadhar Front</b> Image</p>
-						<input type="file" name="aadhar_front" reqiured>
+						<input type="file" name="aadhar_front" reqiured value="">
 					</div>
 					<div class="col-md-12">
 						<p class="mt-1  mb-1">Upload <b>Aadhar Back</b> Image</p>
-						<input type="file"  name="aadhar_back" reqiured>
+						<input type="file"  name="aadhar_back" reqiured value="">
 					</div>
 				</div>
 				<div class="row">
 					<div class="col-md-12">
 						<p class="mt-1 mb-1">Upload <b>License Front</b> Image</p>
-						<input type="file" name="license_front" reqiured>
+						<input type="file" name="license_front" reqiured value="">
 					</div>
 					<div class="col-md-12">
 						<p class="mt-1  mb-1">Upload <b>License Back</b> Image</p>
-						<input type="file" name="license_back" reqiured>
+						<input type="file" name="license_back" reqiured value="">
 					</div>
 				</div>
 				<div class="row  mt-2">
 					<div class="x_slider_checkbox x_slider_checkbox_bottom_filter_use">
 						<input type="checkbox" id="agree" name="agree" reqiured>
-						<label for="agree">Terms & Conditions</label>
+						<label for="agree">I Accept Terms & Conditions</label>
 					</div>
 				</div>
 				<input type="hidden" name="id" value="<?=base64_encode($booking_data[0]->id)?>">
-				<div class="row justify-content-center mt-2"> <button type="submit"
-							class="btn loginbtn">Proceed To Pay</button></div>
+				<div class="row justify-content-center mt-2">
+					<button type="submit" class="btn loginbtn">Proceed To Pay</button>
+				</div>
 			</div>
 		</form>
 		</div>
@@ -278,7 +285,7 @@
 	                <p>Insurance & GST <span>Included</span></p>
 	                <p>Refundable Security Deposit <span>₹ <?=$booking_data[0]->rsda?></span></p>
 	                <div class="row mt-2">
-										<form action="<?=base_url()?>">
+										<form action="<?=base_url()?>" style="display:contents">
 	                  <div class="x_slider_form_input_wrapper col-md-8 col-8 p-0">
 	                    <input type="text" placeholder="Promo Code" style="border: none;border-bottom: 1px solid grey;border-radius: 0px;">
 	                  </div>

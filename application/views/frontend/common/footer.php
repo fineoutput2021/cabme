@@ -139,6 +139,11 @@ function setActive(x){
 	// 1-self,2-out,3-inter
 	$('#active').val(x);
 }
+//----- add zero in system time------
+function addZero(i) {
+  if (i < 10) {i = "0" + i}
+  return i;
+}
 //------- Web self drive date change --------
 $("#sdsd, #sded").change(function(){
 	var sdsd=$('#sdsd').val();
@@ -165,7 +170,7 @@ $("#sdsd, #sded").change(function(){
 					if(diff>0){
 					var today = new Date();
 					var date = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();
-					var time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
+					var time =  addZero(today.getHours()) + ":" +  addZero(today.getMinutes()) + ":" + today.getSeconds();
 					//---if current time is previous time -------
 					if(sdDate==date && sdst<time){
 						$('#s_duration').html("<span style='color:red'>Plese Select Correct Date & Time</span>")
@@ -216,7 +221,7 @@ $("#msdsd, #msded").change(function(){
 					if(diff>0){
 					var today = new Date();
 					var date = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();
-					var time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
+					var time =  addZero(today.getHours()) + ":" +  addZero(today.getMinutes()) + ":" + today.getSeconds();
 					//---if current time is previous time -------
 					if(sdDate==date && sdst<time){
 						$('#ms_duration').html("<span style='color:red'>Plese Select Correct Date & Time</span>")
@@ -267,7 +272,7 @@ $("#icsd, #iced").change(function(){
 					if(diff>0){
 						var today = new Date();
 						var date = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();
-						var time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
+						var time =  addZero(today.getHours()) + ":" +  addZero(today.getMinutes()) + ":" + today.getSeconds();
 						//---if current time is previous time -------
 						if(isDate==date && icst<time){
 							$('#ic_duration').html("<span style='color:red'>Plese Select Correct Date & Time</span>")
@@ -318,7 +323,7 @@ $("#micsd, #miced").change(function(){
 					if(diff>0){
 					var today = new Date();
 					var date = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();
-					var time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
+					var time =  addZero(today.getHours()) + ":" +  addZero(today.getMinutes()) + ":" + today.getSeconds();
 					//---if current time is previous time -------
 					if(isDate==date && icst<time){
 						$('#mic_duration').html("<span style='color:red'>Plese Select Correct Date & Time</span>")
@@ -360,10 +365,10 @@ function time_change(){
 	var ed    = new Date(sded);
 	edDate =  ed.getFullYear()+'-'+(ed.getMonth()+1)+'-'+ed.getDate();
 
-			// console.log('startdate= '+sdDate);
-			// console.log('starttime= '+sdst);
-			// console.log('enddate= '+edDate);
-			// console.log('endtime= '+sdet);
+			console.log('startdate= '+sdDate);
+			console.log('starttime= '+sdst);
+			console.log('enddate= '+edDate);
+			console.log('endtime= '+sdet);
 			//----- calculate diffrence --------
 	if((sdDate !='NaN-NaN-NaN')&& (typeof sdst !== "undefined")&& (edDate !='NaN-NaN-NaN')&& (typeof sded !== "undefined")){
 		var start = new Date(sdDate);
@@ -374,11 +379,11 @@ function time_change(){
 			if(diff>0){
 			var today = new Date();
 			var date = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();
-			var time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
+			var time =  addZero(today.getHours()) + ":" +  addZero(today.getMinutes()) + ":" + today.getSeconds();
 			//---if current time is previous time -------
+			// alert(sdst)
+			// alert(time)
 			if(sdDate==date && sdst<time){
-				// alert(sdst)
-				// alert(time)
 				$('#s_duration').html("<span style='color:red'>Plese Select Correct Date & Time</span>")
 				$('#duration').val(diff);
 				$('#self_btn').prop('disabled', true);
@@ -431,7 +436,7 @@ else if(active==1 && device==2){
 			if(diff>0){
 			var today = new Date();
 			var date = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();
-			var time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
+			var time =  addZero(today.getHours()) + ":" +  addZero(today.getMinutes()) + ":" + today.getSeconds();
 			//---if current time is previous time -------
 			if(sdDate==date && sdst<time){
 				$('#ms_duration').html("<span style='color:red'>Plese Select Correct Date & Time</span>")
@@ -481,7 +486,7 @@ else if(active==3 && device==1){
 					if(diff>0){
 						var today = new Date();
 						var date = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();
-						var time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
+						var time =  addZero(today.getHours()) + ":" +  addZero(today.getMinutes()) + ":" + today.getSeconds();
 						//---if current time is previous time -------
 						if(isDate==date && icst<time){
 							$('#ic_duration').html("<span style='color:red'>Plese Select Correct Date & Time</span>")
@@ -531,7 +536,7 @@ else if(active==3 && device==2){
 					if(diff>0){
 						var today = new Date();
 						var date = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();
-						var time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
+						var time =  addZero(today.getHours()) + ":" +  addZero(today.getMinutes()) + ":" + today.getSeconds();
 						//---if current time is previous time -------
 						if(isDate==date && icst<time){
 							$('#mic_duration').html("<span style='color:red'>Plese Select Correct Date & Time</span>")
