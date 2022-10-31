@@ -633,9 +633,9 @@ color: transparent;
 								<h3 id="txt" class="mt-5 bouncer" contenteditable style="font-family:Goldman;"><b>Your Travel Partner</b></h3>
 							</div>
 							<br />
-							<p>We are India's leading Car Rental Company with aninnovative way of servicing the requirements of theever growing car rental industry in India ascompared to other such service provider</p>
+							<p>We are India's leading Car Rental Company with an innovative way of servicing the requirements of the ever growing car rental industry in India as compared to other such service provider</p>
 							<br />
-							<p>Cabme is the ONLY company that focuses on thisinnovative business model of allowing its customerto take the car on a Short Term & Long Term Lease,Weekend Gateways for SELF DRIVE.</p>
+							<p>Cabme is the ONLY company that focuses on this innovative business model of allowing its customer to take the car on a Short Term & Long Term Lease, Weekend Gateways for SELF DRIVE.</p>
 						</div>
 					</div>
 				</div>
