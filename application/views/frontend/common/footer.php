@@ -70,7 +70,7 @@ var base_url = "<?=base_url()?>"
 <script src="<?=base_url()?>assets/frontend/js/jquery.magnific-popup.js"></script>
 <script src="<?=base_url()?>assets/frontend/js/xpedia.js"></script>
 <!-- scripts js -->
-<script src="<?=base_url()?>assets/frontend/js/scripts.js"></script>
+<!-- <script src="<?=base_url()?>assets/frontend/js/scripts.js"></script> -->
 <script src="<?=base_url()?>assets/frontend/js/bootstrap-notify.min.js"></script>
 
 <!-- custom js-->
