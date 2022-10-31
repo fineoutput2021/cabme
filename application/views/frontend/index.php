@@ -1,5 +1,116 @@
 	<!-- ================================ web Form slider start ======================================================= -->
 	<!-- hs Slider Start -->
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Goldman">
+	<style>
+.testimonial{
+	position: relative;
+		background: url('<?=base_url()?>assets/frontend/images/test_bg.jpg') no-repeat fixed 0 0/cover;
+		z-index: 1;
+		padding-bottom: 50px;
+}
+.text_animation{
+	font-weight: 700;
+color: transparent;
+-webkit-background-clip: text;
+-webkit-text-fill-color: transparent;
+-webkit-animation: hue 6s infinite linear;
+}
+.testimonial:after{
+	position: absolute;
+	content: "";
+	top: 0;
+	right: 0;
+	width: 100%;
+	height: 100%;
+	background: rgba(0, 0, 0, 0.8) none repeat scroll 0 0;
+	z-index: -1;
+}
+	.head:after {
+	    right: 0px;
+	}
+	.head:before {
+	    left: 0px;
+	}
+	.head{
+		padding: 0px 40px;
+	    position: relative;
+	    display: inline-block;
+
+	}
+.head:before, .head:after {
+    top: 50%;
+    width: 20px;
+    height: 8px;
+    content: "";
+    position: absolute;
+    display: inline-block;
+    transform: translateY(-50%);
+    background-color: #EA001E;
+}
+.animateup{
+	visibility: visible;
+    animation-duration: 1s;
+    animation-delay: 0.1s;
+    animation-name: fadeInUp;
+}
+.animatedown{
+	visibility: visible;
+    animation-duration: 1s;
+    animation-delay: 0.1s;
+    animation-name: fadeInDown;
+}
+@keyframes fadeInUp {
+    0% {
+        opacity: 0;
+        -webkit-transform: translate3d(0, 100%, 0);
+        transform: translate3d(0, 100%, 0)
+    }
+
+    100% {
+        opacity: 1;
+        -webkit-transform: none;
+        transform: none
+    }
+}
+
+.fadeInUp {
+    -webkit-animation-name: fadeInUp;
+    animation-name: fadeInUp
+}
+@-webkit-keyframes fadeInDown {
+    0% {
+        opacity: 0;
+        -webkit-transform: translate3d(0, -100%, 0);
+        transform: translate3d(0, -100%, 0)
+    }
+
+    100% {
+        opacity: 1;
+        -webkit-transform: none;
+        transform: none
+    }
+}
+
+@keyframes fadeInDown {
+    0% {
+        opacity: 0;
+        -webkit-transform: translate3d(0, -100%, 0);
+        transform: translate3d(0, -100%, 0)
+    }
+
+    100% {
+        opacity: 1;
+        -webkit-transform: none;
+        transform: none
+    }
+}
+
+.fadeInDown {
+    -webkit-animation-name: fadeInDown;
+    animation-name: fadeInDown
+}
+	</style>
 	<input type="hidden" id="active" value="1">
 	<input type="hidden" id="device" value="">
 	<input type="hidden" id="sd" value="">
@@ -422,157 +533,86 @@
 		</div>
 	</div>
 	<!-- ================================  Mobile Form End =========================================== -->
-	<!--================================= Featured Slider Start ======================================-->
-	<div class="x_ln_car_main_wrapper float_left ">
-		<div class="container">
-			<div class="row">
-				<div class="col-md-12">
-					<div class="x_ln_car_heading_wrapper float_left mt-2">
-						<h3>Featured</h3>
-					</div>
-				</div>
-				<div class="col-md-12" style="z-index: 0;">
-					<div class="btc_ln_slider_wrapper">
-						<div class="owl-carousel owl-theme">
-							<div class="item">
-								<span data-toggle="modal" data-target="#myModal">
-									<div class="btc_team_slider_cont_main_wrapper">
-										<div class="btc_ln_img_wrapper float_left">
-											<img src="<?=base_url()?>assets/frontend/images/promo_2.png" alt="promo_1">
-										</div>
-								</span>
-							</div>
-						</div>
-						<div class="item">
-							<span data-toggle="modal" data-target="#myModal">
-								<div class="btc_team_slider_cont_main_wrapper">
-									<div class="btc_ln_img_wrapper float_left">
-										<img src="<?=base_url()?>assets/frontend/images/promo_3.png" alt="promo_3">
-									</div>
-							</span>
+
+		<!--================================= Why Cabme slider Start ======================================-->
+		<div class="x_ln_car_main_wrapper float_left  mb-5" style="z-index: 0;background-image: linear-gradient(0deg, rgb(12, 12, 15), rgb(41, 45, 69))">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-12">
+						<div class="text-center">
+							<h3 class="head mt-5" style="font-family:Goldman;color:white"><b>Why Cabme</b></h3>
 						</div>
 					</div>
-					<div class="item">
-						<span data-toggle="modal" data-target="#myModal">
-							<div class="btc_team_slider_cont_main_wrapper">
-								<div class="btc_ln_img_wrapper float_left">
-									<img src="<?=base_url()?>assets/frontend/images/promo_2.png" alt="promo_2">
-								</div>
-						</span>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-	<!--================================= Featured Slider End ======================================-->
-	<!--================================= Safe Slider Start ======================================-->
-	<div class="x_ln_car_main_wrapper float_left  mb-3 mt-3" style="z-index: 0;">
-		<div class="container">
-			<div class="row">
-				<div class="col-md-12">
-					<div class="x_ln_car_heading_wrapper float_left">
-						<h3>Safe</h3>
-					</div>
-				</div>
-				<div class="col-md-12">
-					<div class="btc_ln_slider_wrapper btc_ln_slider_wrapper_2">
-						<div class="owl-carousel owl-theme">
-							<div class="item">
-								<div class="btc_team_slider_cont_main_wrapper">
-									<div class="btc_ln_img_wrapper float_left">
-										<img src="<?=base_url()?>assets/frontend/images\safety.jpg" alt="safety">
-									</div>
+					<div class="col-md-12" style="">
+						<div class="btc_ln_slider_wrapper " style="margin-bottom: 80px;" >
+							<div class="row">
+							<div class="col-md-4 my-4 animateup" data-wow-duration="1s" data-wow-delay="0.3s">
+								<div class="text-center">
+									<img  src="<?=base_url()?>assets/frontend/images/shield.png"/>
+									<h3 class="mt-3" style="font-weight: 500;color:white;font-family:Goldman">Secured Payment Guarantee</h3>
 								</div>
 							</div>
-							<div class="item">
-								<div class="btc_team_slider_cont_main_wrapper">
-									<div class="btc_ln_img_wrapper float_left">
-										<img src="<?=base_url()?>assets/frontend/images\sanitisation.jpg" alt="sanitisation">
-									</div>
+							<div class="col-md-4 my-4 animateup" data-wow-duration="1s" data-wow-delay="0.3s">
+								<div class="text-center">
+									<img  src="<?=base_url()?>assets/frontend/images/support.png"/>
+									<h3 class="mt-3" style="font-weight: 500;color:white; font-family:Goldman">Help Center & Support 24/7</h3>
 								</div>
 							</div>
-							<div class="item">
-								<div class="btc_team_slider_cont_main_wrapper">
-									<div class="btc_ln_img_wrapper float_left">
-										<img src="<?=base_url()?>assets/frontend/images\doorstep.jpg" alt="doorstep">
-									</div>
+							<div class="col-md-4 my-4 animateup" data-wow-duration="1s" data-wow-delay="0.3s">
+								<div class="text-center">
+									<img  src="<?=base_url()?>assets/frontend/images/car.png"/>
+									<h3 class="mt-3" style="font-weight: 500;color:white; font-family:Goldman">Booking any Class Vehicles</h3>
 								</div>
 							</div>
+							<div class="col-md-4 my-4 animatedown" data-wow-duration="1s" data-wow-delay="0.3s">
+								<div class="text-center">
+									<img  src="<?=base_url()?>assets/frontend/images/safety.png"/>
+									<h3 class="mt-3" style="font-weight: 500;color:white; font-family:Goldman">Safety & Hygiene Best Practices</h3>
+								</div>
+							</div>
+							<div class="col-md-4 my-4 animatedown" data-wow-duration="1s" data-wow-delay="0.3s">
+								<div class="text-center">
+									<img  src="<?=base_url()?>assets/frontend/images/sprey.png"/>
+									<h3 class="mt-3" style="font-weight: 500;color:white; font-family:Goldman">Internal & External Sanitization</h3>
+								</div>
+							</div>
+							<div class="col-md-4 my-4 animatedown" data-wow-duration="1s" data-wow-delay="0.3s">
+								<div class="text-center">
+									<img  src="<?=base_url()?>assets/frontend/images/deal.png"/>
+									<h3 class="mt-3" style="font-weight: 500;color:white; font-family:Goldman">Contact-less Doorstep Delivery</h3>
+								</div>
+							</div>
+						</div>
 						</div>
 					</div>
 				</div>
 			</div>
 		</div>
-	</div>
-	<!--================================= Safe Slider End ======================================-->
-	<!--================================= Why Cabme slider Start ======================================-->
-	<div class="x_ln_car_main_wrapper float_left  mb-3" style="z-index: 0;">
+		<!--================================= Why Cabme slider End ======================================-->
+		<!--================================= Featured Slider Start ======================================-->
 		<div class="container">
 			<div class="row">
 				<div class="col-md-12">
-					<div class="x_ln_car_heading_wrapper float_left">
-						<h3>Why cabme</h3>
-					</div>
-				</div>
-				<div class="col-md-12">
-					<div class="btc_ln_slider_wrapper">
-						<div class="owl-carousel owl-theme">
-							<div class="item">
-								<div class="btc_team_slider_cont_main_wrapper">
-									<div class="btc_ln_img_wrapper float_left p-3">
-										<div class="row justify-content-center">
-											<div class="col-md-3 mobileimageicon">
-												<img src="<?=base_url()?>assets/frontend/images\homeicon.png" alt="homeicon">
-											</div>
-											<div class="col-md-9 text-center">
-												<h5>Home delivery & return</h5>
-												<p>On time doorstep services</p>
-											</div>
-										</div>
-									</div>
-								</div>
+					<div class="row">
+						<div class="col-md-6">
+							<img src="<?=base_url()?>/assets/frontend/images/scorpio.png" class="img-fluid" />
+						</div>
+						<div class="col-md-6 text-justify">
+							<div>
+								<h3 class="mt-5 text_animation" style="font-family:Goldman;background-image: linear-gradient(to right, #161616 0, #f50303 36%, #d93232 65%, #5e5e5e 100%)"><b>Your Traveling Partner</b></h3>
 							</div>
-							<div class="item">
-								<div class="btc_team_slider_cont_main_wrapper">
-									<div class="btc_ln_img_wrapper float_left p-3">
-										<div class="row justify-content-center">
-											<div class="col-md-3 mobileimageicon">
-												<img src="<?=base_url()?>assets/frontend/images\timericon.png" alt="homeicon">
-											</div>
-											<div class="col-md-9 text-center">
-												<h5>Well Maintained Cars</h5>
-												<p>Regular services & maintenance</p>
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
-							<div class="item">
-								<div class="btc_team_slider_cont_main_wrapper">
-									<div class="btc_ln_img_wrapper float_left p-3">
-										<div class="row justify-content-center">
-											<div class="col-md-3 mobileimageicon">
-												<img src="<?=base_url()?>assets/frontend/images\caricon.png" alt="homeicon">
-											</div>
-											<div class="col-md-9 text-center">
-												<h5>Flexible pricing Plans</h5>
-												<p>Choose unlimited kms or with fuel plans </p>
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
+							<br />
+							<p>We are India's leading Car Rental Company with aninnovative way of servicing the requirements of theever growing car rental industry in India ascompared to other such service provider</p>
+							<br />
+							<p>Cabme is the ONLY company that focuses on thisinnovative business model of allowing its customerto take the car on a Short Term & Long Term Lease,Weekend Gateways for SELF DRIVE.</p>
 						</div>
 					</div>
 				</div>
-			</div>
-		</div>
-	</div>
-	<!--================================= Why Cabme slider End ======================================-->
+
 	<!--================================= Mobile FAQ's ======================================-->
 	<div class="col-md-12">
-		<div class="x_ln_car_heading_wrapper float_left mb-5">
-			<h3>FAQ's</h3>
+		<div class="text-center mb-5">
+			<h3 class="head mt-5" style="font-family:Goldman;"><b>FAQ's</b></h3>
 		</div>
 	</div>
 	<div class="container-fluid p-5" style="background-color: #fff;border-radius: 10px;box-shadow:0px 1px 10px rgb(209, 209, 209);">
@@ -608,53 +648,63 @@
 	</div>
 	<!--================================= Mobile FAQ's End ======================================-->
 	<!--================================= Our journey Start ======================================-->
-	<div class="x_ln_car_heading_wrapper faqunderline mt-3 mb-3 ml-3">
-		<h3>Our journey so far</h3>
+	<div class="col-md-12">
+		<div class="text-center mb-5">
+			<h3 class="head mt-5" style="font-family:Goldman;"><b>Our journey so far</b></h3>
+		</div>
 	</div>
-	<div class="container-fluid p-2">
+	<div class="container-fluid p-2 mb-5">
 		<div class="container-fluid mt-3 p-3" style="background-color: #fff;box-shadow:0px 1px 10px rgb(209, 209, 209);">
 			<div class="row">
 				<div class="col-md-3 col-6 text-center imagewidth p-3">
-					<div class="row justify-content-center"> <img src="<?=base_url()?>assets/frontend/images/mouthicon.png" alt="mouthicon" style="width: 20%;"> </div>
-					<h5 class="mt-2">1 Mn +</h5>
+					<div class="row justify-content-center"> <img src="<?=base_url()?>assets/frontend/images/customers.png" alt="Happy Customers"> </div>
+					<h4 class="mt-2"><span id="number1" style="font-weight: 700;">800</span>+</h4>
 					<p>Happy Customers</p>
 				</div>
 				<div class="col-md-3 col-6 text-center imagewidth p-3">
-					<div class="row justify-content-center"> <img src="<?=base_url()?>assets/frontend/images/locationicon.png" alt="mouthicon" style="width: 20%;"> </div>
-					<h5 class="mt-2">22+ cities</h5>
-					<p>Across India</p>
+					<div class="row justify-content-center"> <img src="<?=base_url()?>assets/frontend/images/cities.png" alt="Across India" > </div>
+					<h4 class="mt-2"><span id="number2" style="font-weight: 700;">25</span>+</h4>
+					<p>Cities Across India</p>
 				</div>
 				<div class="col-md-3 col-6 text-center imagewidth p-3">
-					<div class="row justify-content-center"> <img src="<?=base_url()?>assets/frontend/images/caricon_2.png" alt="mouthicon" style="width: 20%;"> </div>
-					<h5 class="mt-2">50 Mn +</h5>
-					<p>Kms travelled</p>
+					<div class="row justify-content-center"> <img src="<?=base_url()?>assets/frontend/images/travel.png" alt="Travelled"> </div>
+					<h4 class="mt-2"><span id="number3" style="font-weight: 700;">50000</span>+</h4>
+					<p>Km's Travelled</p>
 				</div>
 				<div class="col-md-3 col-6 text-center imagewidth p-3">
-					<div class="row justify-content-center"> <img src="<?=base_url()?>assets/frontend/images/staricon.png" alt="mouthicon" style="width: 20%;"> </div>
-					<h5 class="mt-2">4.8 / 5</h5>
+					<div class="row justify-content-center"> <img src="<?=base_url()?>assets/frontend/images/rating.png" alt="Ratings"> </div>
+					<h4 class="mt-2"><span id="number4" style="font-weight: 700;">4.5</span> / 5</h4>
 					<p>20K+ reviewers</p>
 				</div>
 			</div>
 		</div>
 	</div>
+</div>
+</div>
 	<!--================================= Our journey End ======================================-->
 	<!-- =================== Testimonial ================================== -->
-	<div class="x_offer_car_main_wrapper float_left ">
+	<div class="x_offer_car_main_wrapper float_left testimonial">
 		<div class="container">
 			<div class="row">
 				<div class="col-md-12">
-					<div class="x_ln_car_heading_wrapper mb-5 mt-3">
-						<h3>Reviews</h3>
+					<div class="text-center">
+						<h3 class="head mt-5" style="font-family:Goldman;color:white"><b>Reviews</b></h3>
 					</div>
 				</div>
 				<div class="col-md-12" style="z-index: 0;">
-					<div class="screenshot">
-						<div class="owl-carousel screen nplr screen-loop">
+					<div class="screenshot" >
+						<div class="owl-carousel screen nplr screen-loop" >
 							<?php $i=1; foreach($testimonials_data as $testimonials) { ?>
-							<div>
-								<div class="card  valign-wrapper">
+							<div style="background-color:#ffeeee">
+								<div class="card valign-wrapper" >
+									<div class="text-center w-100">
+										<img src="<?=base_url()?>assets/frontend/images/quote_left.png" style="width:10%;opacity:0.1;">
+									</div>
 										<p>“<?=$testimonials->content?>”</p>
-										<p class="card-title"><?=$testimonials->name?></p>
+										<h4 class="card-title mt-2"><b><?=$testimonials->name?></b></h4>
+										<div class="text-center w-100">
+											<img src="<?=base_url()?>assets/frontend/images/quote_right.png" style="width:10%;opacity:0.1;float:right">
+										</div>
 									</div>
 								</div>
 								<?php $i++; } ?>
@@ -666,6 +716,8 @@
 	</div>
 	<!-- =================== Testimonial End ================================== -->
 	<!--====== Content ======-->
+	<div class="container">
+		<div class="row">
 	<div class="container">
 		<div class="row p-3">
 			<h4 class="mt-5">Self-Drive Car Rentals in Delhi NCR</h4>
@@ -697,3 +749,34 @@
 	<!--====== Content End ======-->
 	</div>
 	</div>
+<script>
+
+$.fn.jQuerySimpleCounter = function( options ) {
+		var settings = $.extend({
+				start:  0,
+				end:    100,
+				easing: 'swing',
+				duration: 400,
+				complete: ''
+		}, options );
+
+		var thisElement = $(this);
+
+		$({count: settings.start}).animate({count: settings.end}, {
+		duration: settings.duration,
+		easing: settings.easing,
+		step: function() {
+			var mathCount = Math.ceil(this.count);
+			thisElement.text(mathCount);
+		},
+		complete: settings.complete
+	});
+};
+
+
+$('#number1').jQuerySimpleCounter({end: 800,duration: 3000});
+$('#number2').jQuerySimpleCounter({end: 25,duration: 3000});
+$('#number3').jQuerySimpleCounter({end: 30000,duration: 2500});
+$('#number4').jQuerySimpleCounter({end: 4,duration: 2500});
+
+</script>

@@ -341,39 +341,68 @@ class Home extends CI_Controller
             $this->form_validation->set_rules('promocode', 'promocode', 'required|xss_clean|trim');
             if ($this->form_validation->run()== true) {
                 $id=base64_decode($this->input->post('id'));
-                $promocode=$this->input->post('promocode');
+                $promocode=strtoupper($this->input->post('promocode'));
                 date_default_timezone_set("Asia/Calcutta");
-                $cur_date=date("Y-m-d H:i:s");
+                  $cur_date=strtotime(date("Y-m-d"));
+                // echo $promocode;die();
                 //----check promocode----
                 $promocode_data = $this->db->get_where('tbl_promocode', array('is_active'=> 1,'promocode'=> $promocode))->result();
-                if(!empty($promocode_data)){
+                if (!empty($promocode_data)) {
                     if (strtotime($promocode_data[0]->end_date) >= $cur_date && strtotime($promocode_data[0]->start_date) <= $cur_date) {
-                      //---- one time promocode -------
-                      if ($promocode_data[0]->ptype==1) {
-                          $promocodeAlreadyUsed = $this->CI->db->get_where('tbl_booking', array('user_id = ' => $user_id, 'promocode'=>$promocode_data[0]->id, 'payment_status'=>1))->result();
-                          if (empty($promocodeAlreadyUsed)) {
-                              if ($order_data[0]->total_amount > $promocode_data[0]->minorder) { //----checking minorder for promocode
-                              }else{
-
-                              }
-                          }else{
-                            $this->session->set_flashdata('emessage', 'Promocode is already used!');
-                            redirect($_SERVER['HTTP_REFERER']);
-                          }
+                        //---- one time promocode -------
+                        if ($promocode_data[0]->ptype==1) {
+                            $promocodeAlreadyUsed = $this->db->get_where('tbl_booking', array('user_id = ' => $user_id, 'promocode'=>$promocode_data[0]->id, 'payment_status'=>1))->result();
+                            if (empty($promocodeAlreadyUsed)) {
+                                if ($order_data[0]->duration > $promocode_data[0]->mindays*24) { //----checking minorder for promocode
+                                    $discount_amt = $order_data[0]->total_amount * $promocode_data[0]->percentage_amount/100;
+                                    if ($discount_amt > $promocode_data[0]->max) {
+                                        // will get max amount
+                                        $discount =  $promocode_data[0]->max;
+                                    } else {
+                                        $discount =  round($discount_amt, 2);
+                                    }
+                                    //---- booking entry update -----
+                                    $data_update = array('promocode'=>$promocode_data[0]->id,
+                                  'promo_discount'=>$discount,
+                                              );
+                                    $this->db->where('id', $id);
+                                    $zapak=$this->db->update('tbl_booking', $data_update);
+                                    $this->session->set_flashdata('smessage', 'Promocode Applied Successfully!');
+                                    redirect($_SERVER['HTTP_REFERER']);
+                                } else {
+                                    $this->session->set_flashdata('emessage', 'Minimum '.$promocode_data[0]->mindays.' days booking required for this promocode!');
+                                    redirect($_SERVER['HTTP_REFERER']);
+                                }
+                            } else {
+                                $this->session->set_flashdata('emessage', 'Promocode is already used!');
+                                redirect($_SERVER['HTTP_REFERER']);
+                            }
                         }
                         //---- every time promocode -------
-                        else{
-
+                        else {
+                            $discount_amt = $order_data[0]->total_amount * $promocode_data[0]->percentage_amount/100;
+                            if ($discount_amt > $promocode_data[0]->max) {
+                                // will get max amount
+                                $discount =  $promocode_data[0]->max;
+                            } else {
+                                $discount =  round($discount_amt, 2);
+                            }
+                            $data_update = array('promocode'=>$promocode_data[0]->id,
+                            'promo_discount'=>$discount,
+                                        );
+                            $this->db->where('id', $id);
+                            $zapak=$this->db->update('tbl_booking', $data_update);
+                            $this->session->set_flashdata('smessage', 'Promocode Applied Successfully!');
+                            redirect($_SERVER['HTTP_REFERER']);
                         }
-                    }else{
-                      $this->session->set_flashdata('emessage', 'Invalid Promocode Used!');
-                      redirect($_SERVER['HTTP_REFERER']);
+                    } else {
+                        $this->session->set_flashdata('emessage', 'Invalid Promocode Used!');
+                        redirect($_SERVER['HTTP_REFERER']);
                     }
-                }else{
-                  $this->session->set_flashdata('emessage', 'Invalid Promocode Used!');
-                  redirect($_SERVER['HTTP_REFERER']);
+                } else {
+                    $this->session->set_flashdata('emessage', 'Invalid Promocode Used!');
+                    redirect($_SERVER['HTTP_REFERER']);
                 }
-
             } else {
                 $this->session->set_flashdata('emessage', validation_errors());
                 redirect($_SERVER['HTTP_REFERER']);
@@ -384,34 +413,35 @@ class Home extends CI_Controller
         }
     }
 
-    public function self_payment($id,$amount){
-      $txnid = substr(hash('sha256', mt_rand() . microtime()), 0, 20);
-      $customer_name=$this->session->userdata('name');
-      $customer_emial=$this->session->userdata('email');
-      $customer_mobile=$this->session->userdata('phone');
-      $url = PAYU_BASE_URL.'/_payment';
-      $MERCHANT_KEY = MERCHANT_KEY; //change  merchant with yours
+    public function self_payment($id, $amount)
+    {
+        $txnid = substr(hash('sha256', mt_rand() . microtime()), 0, 20);
+        $customer_name=$this->session->userdata('name');
+        $customer_emial=$this->session->userdata('email');
+        $customer_mobile=$this->session->userdata('phone');
+        $url = PAYU_BASE_URL.'/_payment';
+        $MERCHANT_KEY = MERCHANT_KEY; //change  merchant with yours
                     $SALT = SALT;  //change salt with yours
           $product_info = "Cabme";  //change salt with yours
           $customer_address = "Cabme";  //change salt with yours
           $txnid = substr(hash('sha256', mt_rand() . microtime()), 0, 20);
-      //----- insert txnid ----
-      $data_update = array('txnid'=>$txnid,
+        //----- insert txnid ----
+        $data_update = array('txnid'=>$txnid,
                       );
-      $this->db->where('id', $id);
-      $zapak=$this->db->update('tbl_booking', $data_update);
-      //optional udf values
-      $udf1 = '';
-      $udf2 = '';
-      $udf3 = '';
-      $udf4 = '';
-      $udf5 = '';
-      $hashstring = $MERCHANT_KEY . '|' . $txnid . '|' . $amount . '|' . $product_info . '|' . $customer_name . '|' . $customer_emial . '|' . $udf1 . '|' . $udf2 . '|' . $udf3 . '|' . $udf4 . '|' . $udf5 . '||||||' . $SALT;
-      $hash = strtolower(hash('sha512', $hashstring));
-      $success = base_url() . 'Home/sbooking_succssful';
-      $fail = base_url() . 'Home/booking_fail';
-      $cancel = base_url() . 'Home/booking_fail';
-      $data = array(
+        $this->db->where('id', $id);
+        $zapak=$this->db->update('tbl_booking', $data_update);
+        //optional udf values
+        $udf1 = '';
+        $udf2 = '';
+        $udf3 = '';
+        $udf4 = '';
+        $udf5 = '';
+        $hashstring = $MERCHANT_KEY . '|' . $txnid . '|' . $amount . '|' . $product_info . '|' . $customer_name . '|' . $customer_emial . '|' . $udf1 . '|' . $udf2 . '|' . $udf3 . '|' . $udf4 . '|' . $udf5 . '||||||' . $SALT;
+        $hash = strtolower(hash('sha512', $hashstring));
+        $success = base_url() . 'Home/sbooking_succssful';
+        $fail = base_url() . 'Home/booking_fail';
+        $cancel = base_url() . 'Home/booking_fail';
+        $data = array(
       'mkey' => $MERCHANT_KEY,
       'tid' => $txnid,
       'hash' => $hash,
@@ -426,8 +456,8 @@ class Home extends CI_Controller
       'failure' => $fail,
       'cancel' => $cancel
       );
-      // print_r($data);die();
-      $this->load->view('frontend/confirmation', $data);
+        // print_r($data);die();
+        $this->load->view('frontend/confirmation', $data);
     }
     //====================================== Intercity calculate ======================
     public function intercity_calculate()
@@ -785,37 +815,38 @@ class Home extends CI_Controller
         $this->load->view('frontend/common/footer');
     }
     //============================ outstation cehckout =================
-    public function outstation_checkout($idd){
-       $id=base64_decode($idd);
-      $booking = $this->db->get_where('tbl_booking', array('id'=> $id))->result();
-      $amount = $booking[0]->mini_booking;
-      $txnid = substr(hash('sha256', mt_rand() . microtime()), 0, 20);
-      $customer_name=$this->session->userdata('name');
-      $customer_emial=$this->session->userdata('email');
-      $customer_mobile=$this->session->userdata('phone');
-      $url = PAYU_BASE_URL.'/_payment';
-      $MERCHANT_KEY = MERCHANT_KEY; //change  merchant with yours
+    public function outstation_checkout($idd)
+    {
+        $id=base64_decode($idd);
+        $booking = $this->db->get_where('tbl_booking', array('id'=> $id))->result();
+        $amount = $booking[0]->mini_booking;
+        $txnid = substr(hash('sha256', mt_rand() . microtime()), 0, 20);
+        $customer_name=$this->session->userdata('name');
+        $customer_emial=$this->session->userdata('email');
+        $customer_mobile=$this->session->userdata('phone');
+        $url = PAYU_BASE_URL.'/_payment';
+        $MERCHANT_KEY = MERCHANT_KEY; //change  merchant with yours
                     $SALT = SALT;  //change salt with yours
           $product_info = "Cabme";  //change salt with yours
           $customer_address = "Cabme";  //change salt with yours
           $txnid = substr(hash('sha256', mt_rand() . microtime()), 0, 20);
-      //----- insert txnid ----
-      $data_update = array('txnid'=>$txnid,
+        //----- insert txnid ----
+        $data_update = array('txnid'=>$txnid,
                       );
-      $this->db->where('id', $id);
-      $zapak=$this->db->update('tbl_booking', $data_update);
-      //optional udf values
-      $udf1 = '';
-      $udf2 = '';
-      $udf3 = '';
-      $udf4 = '';
-      $udf5 = '';
-      $hashstring = $MERCHANT_KEY . '|' . $txnid . '|' . $amount . '|' . $product_info . '|' . $customer_name . '|' . $customer_emial . '|' . $udf1 . '|' . $udf2 . '|' . $udf3 . '|' . $udf4 . '|' . $udf5 . '||||||' . $SALT;
-      $hash = strtolower(hash('sha512', $hashstring));
-      $success = base_url() . 'Home/obooking_succssful';
-      $fail = base_url() . 'Home/booking_fail';
-      $cancel = base_url() . 'Home/booking_fail';
-      $data = array(
+        $this->db->where('id', $id);
+        $zapak=$this->db->update('tbl_booking', $data_update);
+        //optional udf values
+        $udf1 = '';
+        $udf2 = '';
+        $udf3 = '';
+        $udf4 = '';
+        $udf5 = '';
+        $hashstring = $MERCHANT_KEY . '|' . $txnid . '|' . $amount . '|' . $product_info . '|' . $customer_name . '|' . $customer_emial . '|' . $udf1 . '|' . $udf2 . '|' . $udf3 . '|' . $udf4 . '|' . $udf5 . '||||||' . $SALT;
+        $hash = strtolower(hash('sha512', $hashstring));
+        $success = base_url() . 'Home/obooking_succssful';
+        $fail = base_url() . 'Home/booking_fail';
+        $cancel = base_url() . 'Home/booking_fail';
+        $data = array(
       'mkey' => $MERCHANT_KEY,
       'tid' => $txnid,
       'hash' => $hash,
@@ -830,8 +861,8 @@ class Home extends CI_Controller
       'failure' => $fail,
       'cancel' => $cancel
       );
-      // print_r($data);die();
-      $this->load->view('frontend/confirmation', $data);
+        // print_r($data);die();
+        $this->load->view('frontend/confirmation', $data);
     }
 
     // =========================================== MY PROFILE ===============================================

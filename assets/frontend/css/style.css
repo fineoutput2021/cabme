@@ -3354,9 +3354,9 @@ border-right: 1px solid red;
 }
 .x_offer_tabs_wrapper .nav-tabs .nav-link{
 	border-radius:0;
-	color:#545151;
+	color:#000000;
 	font-size:13px;
-	font-weight:700;
+	font-weight:900;
 	text-transform:uppercase;
 	    padding: 12px 0px;
 	/* font-family: 'Raleway', sans-serif; */
@@ -5085,7 +5085,7 @@ border-right: 1px solid red;
 	letter-spacing: 1px;
 }
 .accordion .panel-default > .panel-heading .panel-title a:before {
-	content: "-";
+	content: "\f077";
 	font-family: 'FontAwesome';
 	color: #FFF;
 	padding: 0px;
@@ -5093,10 +5093,10 @@ border-right: 1px solid red;
 	float: right;
 	position: absolute;
 	right: 0px;
-	font-size: 20px;
+	font-size: 15px;
 }
 .accordion .panel-default > .panel-heading .panel-title a.collapsed:before {
-	content: "+";
+	content: "\f078";
 }
 .accordion .panel-default > .panel-heading {
 	background-color: none;
@@ -6201,7 +6201,7 @@ input[type=number] {
 	-webkit-transform: scale(.9);
 	transform: scale(.9);
 	opacity: .5;
-    padding: 60px 45px 50px 45px;
+    padding: 20px 45px 20px 45px;
 	background:#ffffff;
 }
 .screenshot .owl-carousel .owl-item.active.center {

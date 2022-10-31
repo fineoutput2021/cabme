@@ -281,13 +281,19 @@
 	              <li class="col-md-12">
 	                <h6 class="farelines">FARE DETAILS</h6>
 	                <p>Base fare <span>₹ <?=$booking_data[0]->total_amount?></span></p>
-	                <!-- <p>Doorstep delivery & pickup <span>₹ 200</span></p> -->
 	                <p>Insurance & GST <span>Included</span></p>
 	                <p>Refundable Security Deposit <span>₹ <?=$booking_data[0]->rsda?></span></p>
+									<?if(!empty($booking_data[0]->promocode)){?>
+										<div class="mt-3 d-flex">
+									<p style="color:red"><b>hii</b></p>
+										<a href="#" class="ml-5"><button type="button" class="close" >×</button></a>
+								</div>
+									<?}?>
 	                <div class="row mt-2">
-										<form action="<?=base_url()?>" style="display:contents">
+										<form method="post" action="<?=base_url()?>Home/self_promocode" style="display:contents">
+											<input type="hidden" name="id" value="<?=base64_encode($booking_data[0]->id)?>">
 	                  <div class="x_slider_form_input_wrapper col-md-8 col-8 p-0">
-	                    <input type="text" placeholder="Promo Code" style="border: none;border-bottom: 1px solid grey;border-radius: 0px;">
+	                    <input type="text" name="promocode" placeholder="Promo Code" style="border: none;border-bottom: 1px solid grey;border-radius: 0px;">
 	                  </div>
 	                  <div class="col-md-4 col-4">
 	                    <button class="bookbtn float-left" style="margin-top: 7px;" type="submit">Apply</button>
