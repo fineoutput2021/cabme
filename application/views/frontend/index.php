@@ -16,14 +16,14 @@
   transition-timing-function: cubic-bezier(.25,.1,.25,1), cubic-bezier(.25,.1,.25,1);
 }
 
- /* {
+ #txt{
   position: relative;
   margin: 0;
   display: inline-block;
   text-align: center;
   font-size: 40px;
   outline: none;
-} */
+}
 
 .word.lit {
   color: #ff0000;
