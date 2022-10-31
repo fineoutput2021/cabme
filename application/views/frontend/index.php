@@ -599,7 +599,7 @@ color: transparent;
 						</div>
 						<div class="col-md-6 text-justify">
 							<div>
-								<h3 class="mt-5 text_animation" style="font-family:Goldman;background-image: linear-gradient(to right, #161616 0, #f50303 36%, #d93232 65%, #5e5e5e 100%)"><b>Your Traveling Partner</b></h3>
+								<h3 class="mt-5 text_animation" style="font-family:Goldman;background-image: linear-gradient(to right, #161616 0, #f50303 36%, #d93232 65%, #5e5e5e 100%)"><b>Your Travel Partner</b></h3>
 							</div>
 							<br />
 							<p>We are India's leading Car Rental Company with aninnovative way of servicing the requirements of theever growing car rental industry in India ascompared to other such service provider</p>
