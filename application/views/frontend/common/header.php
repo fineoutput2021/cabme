@@ -287,10 +287,25 @@
 				<div class="col-xl-9 col-lg-9 col-md-9 col-sm-12 col-12">
 					<div class="row justify-content-end mobileheaderbtn" style="margin-top: 30px;">
 						<ul style="display: flex;align-items: center">
-							<a href="<?=base_url()?>"><li style="margin: 0 20px 0 20px;color:white;font-weight: 500;">Home</li></a>
+							<a href="<?=base_url()?>"><li style="margin: 0 20px 0 20px;color:white;font-weight: 500;"><span><i class="fa fa-user"></i>Home</span></li></a>
 							<a href="<?=base_url()?>Home/about"><li style="margin: 0 20px 0 20px;color:white;font-weight: 500;">About Us</li></a>
 							<a href="<?=base_url()?>Home/contact"><li style="margin: 0 20px 0 20px;color:white;font-weight: 500;">Contact Us</li></a>
 						</ul>
+						<!-- <div class=" menu_button_end ml-2 text-center row ">
+							 <a class="menu-button px-4" href="<?=base_url()?>">
+								<i class="fa fa-home" style="color: #fff;font-size: 20px;margin-top: 10px;"></i><br />
+								<span  style="color: #fff;">Home</span>
+							</a>
+							</a>
+							 <a class="menu-button px-4" href="<?=base_url()?>Home/about">
+								<i class="fa fa-clock-o" style="color: #fff;font-size: 20px;margin-top: 10px;"></i><br />
+								<span  style="color: #fff;">About Us</span>
+							</a>
+							 <a class="menu-button px-4" href="<?=base_url()?>Home/contact">
+								<i class="fa fa-sign-out" style="color: #fff;font-size: 20px;margin-top: 10px;"></i><br />
+								<span  style="color: #fff;">Contact Us</span>
+							</a>
+						</div> -->
 					  <?if(empty($this->session->userdata('user_data'))){?>
 						<button class="btn bg-b" style="margin: 0 20px 0 20px;"  data-toggle="modal" data-target="#signupModal"> <span style="color: #fff;"> <i class="fa fa-user"></i> &nbsp;Sign Up </span></button>
 						<button class="btn bg-b" style="margin: 0 20px 0 20px;" data-toggle="modal" data-target="#loginModal"> <span style="color: #fff;"> <i class="fa fa-power-off"></i> &nbsp;Login </span></button>
