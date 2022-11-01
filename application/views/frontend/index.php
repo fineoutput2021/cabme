@@ -102,7 +102,7 @@ color: transparent;
 		<div id="carousel-example-generic" class="carousel slide" data-interval="5000" data-ride="carousel">
 			<div class="carousel-inner" role="listbox">
 				<div class="col-xl-5 col-lg-6 col-md-12 col-sm-12 col-12 d-none d-sm-none d-md-none  d-lg-block d-xl-block" style="position: absolute;z-index: 99;top: 25%;left: 10%;background-color: white;
-    padding: 30px 0 30px 0;border-radius: 20px;box-shadow: 0px 0 8px rgb(0 0 0 / 10%);">
+    padding-top: 30px;border-radius: 20px;box-shadow: 0px 0 8px rgb(0 0 0 / 10%);">
 					<div class="content_tabs">
 						<div class="row">
 							<div class="x_offer_tabs_wrapper" style="border-radius: 15px;width: 90%;margin-left: 29px;">
@@ -163,7 +163,8 @@ color: transparent;
 										<input type="hidden" name="city_id" class="city_id"  value=""/>
 										<input type="hidden" name="duration" value="" id="duration">
 										<input type="hidden" name="index" value="1" id="index">
-										<div class="col-md-12">
+
+										<div class="col-md-12 my-3">
 											<div class="row mt-4 justify-content-center">
 													<button class="btn col-md-10 searchbtn shadowbtn" type="submit" id="self_btn" disabled> <i class="fa fa-search"></i> &nbsp; Search</button>
 											</div>
