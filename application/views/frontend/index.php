@@ -1,8 +1,11 @@
 	<!-- ================================ web Form slider start ======================================================= -->
 	<!-- hs Slider Start -->
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Goldman">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Prompt">
 	<style>
+	.btn.disabled, .btn:disabled {
+    opacity: 1 !important;
+}
 	.ball {
   position: absolute;
   top: 0;
@@ -87,68 +90,6 @@ color: transparent;
     display: inline-block;
     transform: translateY(-50%);
     background-color: #EA001E;
-}
-.animateup{
-	visibility: visible;
-    animation-duration: 1s;
-    animation-delay: 0.1s;
-    animation-name: fadeInUp;
-}
-.animatedown{
-	visibility: visible;
-    animation-duration: 1s;
-    animation-delay: 0.1s;
-    animation-name: fadeInDown;
-}
-@keyframes fadeInUp {
-    0% {
-        opacity: 0;
-        -webkit-transform: translate3d(0, 100%, 0);
-        transform: translate3d(0, 100%, 0)
-    }
-
-    100% {
-        opacity: 1;
-        -webkit-transform: none;
-        transform: none
-    }
-}
-
-.fadeInUp {
-    -webkit-animation-name: fadeInUp;
-    animation-name: fadeInUp
-}
-@-webkit-keyframes fadeInDown {
-    0% {
-        opacity: 0;
-        -webkit-transform: translate3d(0, -100%, 0);
-        transform: translate3d(0, -100%, 0)
-    }
-
-    100% {
-        opacity: 1;
-        -webkit-transform: none;
-        transform: none
-    }
-}
-
-@keyframes fadeInDown {
-    0% {
-        opacity: 0;
-        -webkit-transform: translate3d(0, -100%, 0);
-        transform: translate3d(0, -100%, 0)
-    }
-
-    100% {
-        opacity: 1;
-        -webkit-transform: none;
-        transform: none
-    }
-}
-
-.fadeInDown {
-    -webkit-animation-name: fadeInDown;
-    animation-name: fadeInDown
 }
 	</style>
 	<input type="hidden" id="active" value="1">
@@ -265,16 +206,19 @@ color: transparent;
 												<div class="col-md-12 " style="z-index: 0;display: flex;height: 55px;border: 1px solid rgb(212, 208, 208);padding: 0px;justify-content: space-around;">
 													<div class="form-sec-header" style="height: 50px;">
 														<label class="cal-icon" style="margin-top: 10px;margin-left: 10px;">Start Date
-															<input type="text" autocomplete="off" readonly placeholder="Date" name="start_date"  class="form-control datepicker" style="border: none;padding-right: 0px;padding-left: 5px;background-color: transparent;">
+															<input type="text" id="oosd" autocomplete="off" readonly placeholder="Date" name="start_date"  class="form-control datepicker" style="border: none;padding-right: 0px;padding-left: 5px;background-color: transparent;">
 														</label>
 													</div>
 													<div class="timepicker_div form-sec-headers" style="height: 50px;width: 90px;">
 														<label class="cal-icon" style="margin-left: 10px;font-size: 11px;color: #000;font-weight: bold;">START
 															TIME
-															<input type="text" autocomplete="off" readonly name="start_time" class="form-control timepicker" placeholder="Time" style="padding: 23px 0px;background-color: transparent;border: none;width: 84%;margin-top: -11px;">
+															<input type="text" id="oost" autocomplete="off" readonly name="start_time" class="form-control timepicker" placeholder="Time" style="padding: 23px 0px;background-color: transparent;border: none;width: 84%;margin-top: -11px;">
 														</label>
 													</div>
 												</div>
+											</div>
+											<div class="text-center col-md-12 col-12 p-2">
+												<h6 id="ot_duration"></h6>
 											</div>
 										</div>
 										<input type="hidden" name="city_id" class="city_id"  value=""/>

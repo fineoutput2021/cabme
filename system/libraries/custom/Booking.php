@@ -214,7 +214,8 @@ class CI_Booking
                   );
                   $this->CI->db->where('id', $user_id);
                   $zapak=$this->CI->db->update('tbl_users', $user_update);
-
+                  $data = $this->CI->db->get_where('tbl_booking', array('id'=> $id))->result();
+                  $final_amt=$data[0]->total_amount-$data[0]->promo_discount+$data[0]->rsda;
 //--------------------- update booking data -------------------
 $booking_update = array('pick_location'=>$pickup_location,
                   'aadhar_front'=>$aadhar_front,
@@ -224,9 +225,10 @@ $booking_update = array('pick_location'=>$pickup_location,
             );
             $this->CI->db->where('id', $id);
             $zapak=$this->CI->db->update('tbl_booking', $booking_update);
-            $data = $this->CI->db->get_where('tbl_booking', array('id'=> $id))->result();
 
-  return $data[0]->final_amount ;
+
+
+  return $final_amt;
     }
     //========= INTERCITY CALCUALTE ========
     public function intercityCalculate($cab_type, $start_date, $start_time, $end_date, $end_time, $city_id, $duration)

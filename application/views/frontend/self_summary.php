@@ -283,10 +283,12 @@
 	                <p>Base fare <span>₹ <?=$booking_data[0]->total_amount?></span></p>
 	                <p>Insurance & GST <span>Included</span></p>
 	                <p>Refundable Security Deposit <span>₹ <?=$booking_data[0]->rsda?></span></p>
-									<?if(!empty($booking_data[0]->promocode)){?>
+									<?if(!empty($booking_data[0]->promocode)){
+										$promo = $this->db->get_where('tbl_promocode', array('id'=> $booking_data[0]->promocode))->result();
+										?>
 										<div class="mt-3 d-flex">
-									<p style="color:red"><b>hii</b></p>
-										<a href="#" class="ml-5"><button type="button" class="close" >×</button></a>
+									<p style="color:red"><b><?=$promo[0]->promocode?></b></p>
+										<a href="<?=base_url()?>Home/remove_promo/<?=base64_encode($booking_data[0]->id)?>" class="ml-5"><button type="button" class="close" >×</button></a>
 								</div>
 									<?}?>
 	                <div class="row mt-2">
@@ -303,8 +305,11 @@
 	              </li>
 	              <li class="col-md-12">
 	                <h6 class="totallines">Total</h6>
-	                <p>Payment <span>₹ <?=$booking_data[0]->final_amount?></span></p>
-	                <!-- <p>Kms limit <span>131 kms</span></p> -->
+	                <p>Total <span>₹ <?=$booking_data[0]->final_amount?></span></p>
+									<?if(!empty($booking_data[0]->promocode)){?>
+	                <p>Promocode Discount <span>₹<?=$booking_data[0]->promo_discount?></span></p>
+	                <p>Subtotal <span><?=$booking_data[0]->final_amount-$booking_data[0]->promo_discount?></span></p>
+									<?}?>
 	                <p>Fuel <span>Excluded</span></p>
 	                <p>Tolls, Parking, Inter-State Taxes: <span>To be paid by you</span></p>
 	                <p>Extra kms charge <span>₹ <?=$car_data['extra_kilo']?>/km</span></p>

@@ -343,18 +343,19 @@ class Home extends CI_Controller
                 $id=base64_decode($this->input->post('id'));
                 $promocode=strtoupper($this->input->post('promocode'));
                 date_default_timezone_set("Asia/Calcutta");
-                  $cur_date=strtotime(date("Y-m-d"));
+                $cur_date=strtotime(date("Y-m-d"));
                 // echo $promocode;die();
                 //----check promocode----
                 $promocode_data = $this->db->get_where('tbl_promocode', array('is_active'=> 1,'promocode'=> $promocode))->result();
+                $booking_data = $this->db->get_where('tbl_booking', array('id'=> $id))->result();
                 if (!empty($promocode_data)) {
                     if (strtotime($promocode_data[0]->end_date) >= $cur_date && strtotime($promocode_data[0]->start_date) <= $cur_date) {
                         //---- one time promocode -------
                         if ($promocode_data[0]->ptype==1) {
                             $promocodeAlreadyUsed = $this->db->get_where('tbl_booking', array('user_id = ' => $user_id, 'promocode'=>$promocode_data[0]->id, 'payment_status'=>1))->result();
                             if (empty($promocodeAlreadyUsed)) {
-                                if ($order_data[0]->duration > $promocode_data[0]->mindays*24) { //----checking minorder for promocode
-                                    $discount_amt = $order_data[0]->total_amount * $promocode_data[0]->percentage_amount/100;
+                                if ($booking_data[0]->duration > $promocode_data[0]->mindays*24) { //----checking minorder for promocode
+                                    $discount_amt = $booking_data[0]->total_amount * $promocode_data[0]->percentage/100;
                                     if ($discount_amt > $promocode_data[0]->max) {
                                         // will get max amount
                                         $discount =  $promocode_data[0]->max;
@@ -380,7 +381,7 @@ class Home extends CI_Controller
                         }
                         //---- every time promocode -------
                         else {
-                            $discount_amt = $order_data[0]->total_amount * $promocode_data[0]->percentage_amount/100;
+                            $discount_amt = $booking_data[0]->total_amount * $promocode_data[0]->percentage/100;
                             if ($discount_amt > $promocode_data[0]->max) {
                                 // will get max amount
                                 $discount =  $promocode_data[0]->max;
@@ -412,7 +413,27 @@ class Home extends CI_Controller
             redirect($_SERVER['HTTP_REFERER']);
         }
     }
-
+    // ====================================== SELF DRIVE PROMOCODE REMOVE ==========================
+    public function remove_promo($idd)
+    {
+        if (empty(!$this->session->userdata('user_data'))) {
+            $id=base64_decode($idd);
+            $data['id']=$idd;
+            $user_id=$this->session->userdata('user_id');
+            $order1 = $this->db->get_where('tbl_booking', array('user_id'=> $user_id,'id'=> $id))->result();
+            if (!empty($order1)) {
+                $data_update = array('promocode'=>'',
+                'promo_discount'=>'',
+                );
+                $this->db->where('id', $id);
+                $zapak=$this->db->update('tbl_booking', $data_update);
+                $this->session->set_flashdata('smessage', 'Promocode Removed Successfully!');
+                redirect($_SERVER['HTTP_REFERER']);
+            }
+        } else {
+            redirect("Home", "refresh");
+        }
+    }
     public function self_payment($id, $amount)
     {
         $txnid = substr(hash('sha256', mt_rand() . microtime()), 0, 20);
@@ -604,6 +625,7 @@ class Home extends CI_Controller
         'online_paid'=>$amount,
         'payment_status'=>1,
         'order_status'=>1,
+        'final_amount'=>$amount,
             );
             $this->db->where('txnid', $txnid);
             $zapak=$this->db->update('tbl_booking', $data_update);
