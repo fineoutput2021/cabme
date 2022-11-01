@@ -321,44 +321,39 @@
 				</div>
 				<div class="col-xl-9 col-lg-9 col-md-9 col-sm-12 col-12">
 					<div class="row justify-content-end mobileheaderbtn" style="margin-top: 30px;">
+						<div class=" menu_button_end ml-2 text-center row mt-2">
+							 <a class="menu-button px-4" href="<?=base_url()?>">
+								<!-- <i class="fa fa-home" style="color: #fff;font-size: 20px;margin-top: 10px;"></i><br /> -->
+								<span class="underline"  style="color: #fff;">Home</span>
+							</a>
+							</a>
+							 <a class="menu-button px-4" href="<?=base_url()?>Home/about">
+								<!-- <i class="fa fa-clock-o" style="color: #fff;font-size: 20px;margin-top: 10px;"></i><br /> -->
+								<span class="underline" style="color: #fff;">About Us</span>
+							</a>
+							 <a class="menu-button px-4" href="<?=base_url()?>Home/contact">
+								<!-- <i class="fa fa-sign-out" style="color: #fff;font-size: 20px;margin-top: 10px;"></i><br /> -->
+								<span class="underline"  style="color: #fff;">Contact Us</span>
+							</a>
+						</div>
 					  <?if(empty($this->session->userdata('user_data'))){?>
-						<button class="btn bg-b mr-3" data-toggle="modal" data-target="#signupModal"> <span style="color: #fff;"> <i class="fa fa-user"></i> &nbsp;Sign Up </span></button>
-						<button class="btn bg-b mr-3" data-toggle="modal" data-target="#loginModal"> <span style="color: #fff;"> <i class="fa fa-power-off"></i> &nbsp;Login </span></button>
+						<button class="btn bg-b" style="margin: 0 20px 0 20px;"  data-toggle="modal" data-target="#signupModal"> <span style="color: #fff;"> <i class="fa fa-user"></i> &nbsp;Sign Up </span></button>
+						<button class="btn bg-b" style="margin: 0 20px 0 20px;"  data-toggle="modal" data-target="#loginModal"> <span style="color: #fff;"> <i class="fa fa-power-off"></i> &nbsp;Login </span></button>
 						<?}else{?>
-						<div class="dropdown-wrapper menu-button menu_button_end ml-2 text-center row">
+						<div class="dropdown-wrapper menu-button menu_button_end ml-2 text-center row mt-2">
 							<a class="menu-button px-4" href="<?=base_url()?>Home/my_profile">
-							 <i class="fa fa-user" style="color: #fff;font-size: 20px;margin-top: 10px;"></i><br />
+							 <!-- <i class="fa fa-user" style="color: #fff;font-size: 20px;margin-top: 10px;"></i><br /> -->
 							 <span  style="color: #fff;">Profile</span>
 						 </a>
 						 </a>
 							<a class="menu-button px-4" href="<?=base_url()?>Home/my_profile#booking">
-							 <i class="fa fa-clock-o" style="color: #fff;font-size: 20px;margin-top: 10px;"></i><br />
+							 <!-- <i class="fa fa-clock-o" style="color: #fff;font-size: 20px;margin-top: 10px;"></i><br /> -->
 							 <span  style="color: #fff;">Booking</span>
 						 </a>
 							<a class="menu-button px-4" href="<?=base_url()?>User/logout">
-							 <i class="fa fa-sign-out" style="color: #fff;font-size: 20px;margin-top: 10px;"></i><br />
+							 <!-- <i class="fa fa-sign-out" style="color: #fff;font-size: 20px;margin-top: 10px;"></i><br /> -->
 							 <span  style="color: #fff;">Logout</span>
 						 </a>
-							<!-- <div class="drop-menu" style="top: 90%;right: -100px;">
-								<div class="cc_cart_wrapper1">
-									<div class="cc_cart_img_wrapper">
-										<i class="fa fa-user"></i> &nbsp;
-										<a href="<?=base_url()?>Home/my_profile">My Profile</a>
-									</div>
-								</div>
-								<div class="cc_cart_wrapper1 cc_cart_wrapper2">
-									<div class="cc_cart_img_wrapper mt-3">
-										<i class="fa fa-car"></i> &nbsp;
-										<a href="my_profile.html#booking">My Booking</a>
-									</div>
-								</div>
-								<div class="cc_cart_wrapper1">
-									<div class="cc_cart_img_wrapper mt-3">
-										<i class="fa fa-power-off"></i> &nbsp;
-										<a href="<?=base_url()?>User/logout">Logout</a>
-									</div>
-								</div>
-							</div> -->
 						</div>
 						<?}?>
 					</div>
