@@ -160,15 +160,16 @@ color: transparent;
 	<div class="slider-area float_left desktopmainslider">
 		<div id="carousel-example-generic" class="carousel slide" data-interval="5000" data-ride="carousel">
 			<div class="carousel-inner" role="listbox">
-				<div class="col-xl-5 col-lg-6 col-md-12 col-sm-12 col-12 d-none d-sm-none d-md-none  d-lg-block d-xl-block" style="position: absolute;z-index: 99;top: 25%;left: 10%;">
+				<div class="col-xl-5 col-lg-6 col-md-12 col-sm-12 col-12 d-none d-sm-none d-md-none  d-lg-block d-xl-block" style="position: absolute;z-index: 99;top: 25%;left: 10%;background-color: white;
+    padding-top: 30px;border-radius: 20px;box-shadow: 0px 0 8px rgb(0 0 0 / 10%);">
 					<div class="content_tabs">
 						<div class="row">
 							<div class="x_offer_tabs_wrapper" style="border-radius: 15px;width: 90%;margin-left: 29px;">
-								<ul class="nav nav-tabs" style="width: 100%;border: 1px solid #d5d0d0;">
-									<li class="nav-item" style="width: 33%;border-right: 1px solid #d5d0d0;"  onclick="setActive(1)"> <a class="nav-link dnav active" data-toggle="tab" href="#first">
+								<ul class="nav nav-tabs" style="width: 100%;padding: 8px;box-shadow: 0px 0 8px rgb(0 0 0 / 10%);">
+									<li class="nav-item" style="width: 33%;"  onclick="setActive(1)"> <a class="nav-link dnav active" data-toggle="tab" href="#first">
 											Self-Drive Cars</a>
 									</li>
-									<li class="nav-item" style="width: 33%;border-right: 1px solid #d5d0d0;"  onclick="setActive(2)"> <a class="nav-link dnav" data-toggle="tab" href="#second" >Outstation Booking</a>
+									<li class="nav-item" style="width: 33%"  onclick="setActive(2)"> <a class="nav-link dnav" data-toggle="tab" href="#second" >Outstation Booking</a>
 									</li>
 									<li class="nav-item" style="width: 34%;"  onclick="setActive(3)"> <a class="nav-link dnav" data-toggle="tab" href="#third">Intercity Travel</a>
 									</li>
