@@ -71,6 +71,28 @@ class Home extends CI_Controller
         $id=base64_decode($idd);
         $data['id']=$idd;
         $search = $this->db->get_where('tbl_search', array('id'=> $id))->result();
+        if (isset($_GET['brand'])) {
+            $brand = $_GET["brand"];
+        }else{
+          $brand ='';
+        }
+        if (isset($_GET['fuel'])) {
+            $fuel = $_GET["fuel"];
+        }else{
+          $fuel ='';
+        }
+
+        if (isset($_GET['transmission'])) {
+            $transmission = $_GET["transmission"];
+        }else{
+          $transmission ='';
+        }
+        if (isset($_GET['seating'])) {
+            $seating = $_GET["seating"];
+        }else{
+          $seating ='';
+        }
+        // print_r($brand);die();
         $send= array(
         'city_id'=>$search[0]->city_id,
         'start_date'=>$search[0]->start_date,
@@ -78,6 +100,10 @@ class Home extends CI_Controller
         'end_date'=>$search[0]->end_date,
         'end_time'=>$search[0]->end_time,
         'duration'=>$search[0]->duration,
+        'brand'=>$brand,
+        'fuel'=>$fuel,
+        'transmission'=>$transmission,
+        'seating'=>$seating,
         // 'index'=>$index,
       );
         $car_data = $this->booking->ViewSelfDriveCars($send);

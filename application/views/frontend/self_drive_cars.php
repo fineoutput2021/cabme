@@ -56,7 +56,7 @@
                     <ul>
                       <li><a href="<?=base_url()?>">Home</a> <i class="fa fa-angle-right"></i>
                       </li>
-                      <li>Self_cars</li>
+                      <li>Self Drive Cars</li>
                     </ul>
                   </div>
                 </div>
@@ -70,57 +70,30 @@
             <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
               <!-- Filter Results -->
               <div class="car-filter accordion car_booking_onliy_side" style="margin-top: 46px;">
+                <form method="get" enctype="multipart/form-data" action="<?=base_url()?>Home/show_self_drive_cars/<?=base64_encode($search[0]->id)?>">
                 <div class="row">
                   <div class="col-md-6">
                     <h3 style="margin-top: 5px;">Filters</h3>
                   </div>
                   <div class="col-md-6">
-                    <a href="#" style="color: red;float: right;">Apply</a>
+                    <button type="submit" style="color: red;float: right;">Apply</button>
                   </div>
                 </div>
                 <hr>
-                <!-- Segment -->
-                <div class="panel panel-default">
-                  <div class="panel-heading">
-                    <h5 class="panel-title"> <a data-toggle="collapse" href="#collapseOne" class="collapse"> Segment</a> </h5>
-                  </div>
-                  <div id="collapseOne" class="collapse show">
-                    <div class="panel-body">
-                      <div class="x_slider_checkbox x_slider_checkbox_bottom_filter_use">
-                        <input type="checkbox" id="c3" name="cb" class="clearcheckbox">
-                        <label for="c3">Hatchback</label>
-                      </div>
-                      <div class="x_slider_checkbox x_slider_checkbox_bottom_filter_use">
-                        <input type="checkbox" id="c4" name="cb">
-                        <label for="c4">Sedan</label>
-                      </div>
-                      <div class="x_slider_checkbox x_slider_checkbox_bottom_filter_use">
-                        <input type="checkbox" id="c5" name="cb">
-                        <label for="c5">SUV</label>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <hr>
-                <!-- Segment End -->
                 <!-- Brand -->
                 <div class="panel panel-default">
                   <div class="panel-heading">
                     <h5 class="panel-title"> <a data-toggle="collapse" href="#collapseTwo" class="collapse">Brand</a> </h5>
                   </div>
-                  <div id="collapseTwo" class="collapse ">
+                  <div id="collapseTwo" class="collapse show">
                     <div class="panel-body">
                       <div class="x_slider_checkbox x_slider_checkbox_bottom_filter_use">
-                        <input type="checkbox" id="brand_1" name="cb">
-                        <label for="brand_1">Hyundai</label>
+                        <input type="checkbox" id="brand_1" name="brand[]" value="Audi">
+                        <label for="brand_1">Audi</label>
                       </div>
                       <div class="x_slider_checkbox x_slider_checkbox_bottom_filter_use">
-                        <input type="checkbox" id="brand_2" name="cb">
-                        <label for="brand_2">Maruti</label>
-                      </div>
-                      <div class="x_slider_checkbox x_slider_checkbox_bottom_filter_use">
-                        <input type="checkbox" id="brand_3" name="cb">
-                        <label for="brand_3">Mahindra</label>
+                        <input type="checkbox" id="brand_2" name="brand[]" value="Honda">
+                        <label for="brand_2">Honda</label>
                       </div>
                     </div>
                   </div>
@@ -135,15 +108,15 @@
                   <div id="collapseThree" class="collapse ">
                     <div class="panel-body">
                       <div class="x_slider_checkbox x_slider_checkbox_bottom_filter_use">
-                        <input type="checkbox" id="c10" name="cb">
-                        <label for="c10">Diesel</label>
+                        <input type="checkbox" id="c10" name="fuel[]" value="1">
+                        <label for="c10">Petrol</label>
                       </div>
                       <div class="x_slider_checkbox x_slider_checkbox_bottom_filter_use">
-                        <input type="checkbox" id="c11" name="cb">
-                        <label for="c11">Petrol</label>
+                        <input type="checkbox" id="c11" name="fuel[]" value="2">
+                        <label for="c11">Diesel</label>
                       </div>
                       <div class="x_slider_checkbox x_slider_checkbox_bottom_filter_use">
-                        <input type="checkbox" id="CNG" name="cb">
+                        <input type="checkbox" id="CNG" name="fuel[]" value="3">
                         <label for="CNG">CNG</label>
                       </div>
                     </div>
@@ -159,12 +132,12 @@
                   <div id="collapseFour" class="collapse ">
                     <div class="panel-body">
                       <div class="x_slider_checkbox x_slider_checkbox_bottom_filter_use">
-                        <input type="checkbox" id="Automatic" name="cb">
-                        <label for="Automatic">Automatic</label>
+                        <input type="checkbox" id="Manual" name="transmission[]" value="1">
+                        <label for="Manual">Manual</label>
                       </div>
                       <div class="x_slider_checkbox x_slider_checkbox_bottom_filter_use">
-                        <input type="checkbox" id="Manual" name="cb">
-                        <label for="Manual">Manual</label>
+                        <input type="checkbox" id="Automatic" name="transmission[]" value="2">
+                        <label for="Automatic">Automatic</label>
                       </div>
                     </div>
                   </div>
@@ -179,21 +152,22 @@
                   <div id="collapseFive" class="collapse ">
                     <div class="panel-body">
                       <div class="x_slider_checkbox x_slider_checkbox_bottom_filter_use">
-                        <input type="checkbox" id="5_Seats" name="cb">
+                        <input type="checkbox" id="5_Seats" name="seating[]" value="1">
                         <label for="5_Seats">5 Seats</label>
                       </div>
                       <div class="x_slider_checkbox x_slider_checkbox_bottom_filter_use">
-                        <input type="checkbox" id="7_Seats" name="cb">
+                        <input type="checkbox" id="7_Seats" name="seating[]" value="2">
                         <label for="7_Seats">7 Seats</label>
                       </div>
                       <div class="x_slider_checkbox x_slider_checkbox_bottom_filter_use">
-                        <input type="checkbox" id="9_Seatss" name="cb">
+                        <input type="checkbox" id="9_Seatss" name="seating[]" value="3">
                         <label for="9_Seatss">9 Seats</label>
                       </div>
                     </div>
                   </div>
                 </div>
                 <hr>
+              </form>
               </div>
             </div>
           </div>

@@ -2829,7 +2829,7 @@ width:100%;
 }
 .x_slider_checkbox input[type="checkbox"] + label:before {
   /* border: 2px solid #eeeeee; */
-  border: 2px solid #780d01;
+  border: 2px solid red;
   content: "\00a0";
   display: inline-block;
   font: 18px/1em sans-serif;
