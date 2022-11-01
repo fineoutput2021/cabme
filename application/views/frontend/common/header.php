@@ -10,6 +10,7 @@
 	<meta name="author" content="" />
 	<meta name="MobileOptimized" content="320" />
 	<!--Template style -->
+	<link rel="stylesheet" type="text/css" href="<?=base_url()?>assets/frontend/css/animate.min.css" />
 	<link rel="stylesheet" type="text/css" href="<?=base_url()?>assets/frontend/css/cabme.css" />
 	<!--favicon-->
 	<link rel="shortcut icon" type="image/png" href="<?=base_url()?>assets/frontend/images/cabmenewlogo.png" />
@@ -21,6 +22,29 @@
 			padding: 3px 10px !important;
 			padding-right: 16px;
 		}
+
+		.underline{
+	  position: relative;
+	}
+
+	.underline::before{
+	  content: '';
+	  position: absolute;
+	  bottom: 0;
+	  right: 0;
+	  width: 0;
+	  height: 2px;
+	  background-color: red;
+	  transition: width 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+	}
+
+	@media (hover: hover) and (pointer: fine) {
+	  .underline:hover::before{
+	    left: 0;
+	    right: auto;
+	    width: 100%;
+	  }
+	}
 	</style>
 </head>
 
@@ -286,43 +310,43 @@
 				</div>
 				<div class="col-xl-9 col-lg-9 col-md-9 col-sm-12 col-12">
 					<div class="row justify-content-end mobileheaderbtn" style="margin-top: 30px;">
-						<ul style="display: flex;align-items: center">
+						<!-- <ul style="display: flex;align-items: center">
 							<a href="<?=base_url()?>"><li style="margin: 0 20px 0 20px;color:white;font-weight: 500;"><span><i class="fa fa-user"></i>Home</span></li></a>
 							<a href="<?=base_url()?>Home/about"><li style="margin: 0 20px 0 20px;color:white;font-weight: 500;">About Us</li></a>
 							<a href="<?=base_url()?>Home/contact"><li style="margin: 0 20px 0 20px;color:white;font-weight: 500;">Contact Us</li></a>
-						</ul>
-						<!-- <div class=" menu_button_end ml-2 text-center row ">
+						</ul> -->
+						<div class=" menu_button_end ml-2 text-center row mt-2">
 							 <a class="menu-button px-4" href="<?=base_url()?>">
-								<i class="fa fa-home" style="color: #fff;font-size: 20px;margin-top: 10px;"></i><br />
-								<span  style="color: #fff;">Home</span>
+								<!-- <i class="fa fa-home" style="color: #fff;font-size: 20px;margin-top: 10px;"></i><br /> -->
+								<span class="underline"  style="color: #fff;">Home</span>
 							</a>
 							</a>
 							 <a class="menu-button px-4" href="<?=base_url()?>Home/about">
-								<i class="fa fa-clock-o" style="color: #fff;font-size: 20px;margin-top: 10px;"></i><br />
-								<span  style="color: #fff;">About Us</span>
+								<!-- <i class="fa fa-clock-o" style="color: #fff;font-size: 20px;margin-top: 10px;"></i><br /> -->
+								<span class="underline" style="color: #fff;">About Us</span>
 							</a>
 							 <a class="menu-button px-4" href="<?=base_url()?>Home/contact">
-								<i class="fa fa-sign-out" style="color: #fff;font-size: 20px;margin-top: 10px;"></i><br />
-								<span  style="color: #fff;">Contact Us</span>
+								<!-- <i class="fa fa-sign-out" style="color: #fff;font-size: 20px;margin-top: 10px;"></i><br /> -->
+								<span class="underline"  style="color: #fff;">Contact Us</span>
 							</a>
-						</div> -->
+						</div>
 					  <?if(empty($this->session->userdata('user_data'))){?>
 						<button class="btn bg-b" style="margin: 0 20px 0 20px;"  data-toggle="modal" data-target="#signupModal"> <span style="color: #fff;"> <i class="fa fa-user"></i> &nbsp;Sign Up </span></button>
 						<button class="btn bg-b" style="margin: 0 20px 0 20px;" data-toggle="modal" data-target="#loginModal"> <span style="color: #fff;"> <i class="fa fa-power-off"></i> &nbsp;Login </span></button>
 						<?}else{?>
-						<div class=" menu_button_end ml-2 text-center row ">
-							 <a class="menu-button px-4" href="<?=base_url()?>Home/my_profile">
-								<i class="fa fa-user" style="color: #fff;font-size: 20px;margin-top: 10px;"></i><br />
-								<span  style="color: #fff;">Profile</span>
+						<div class=" menu_button_end ml-2 text-center row mt-2">
+							 <a class="menu-button px-4 " href="<?=base_url()?>Home/my_profile">
+								<!-- <i class="fa fa-user" style="color: #fff;font-size: 20px;margin-top: 10px;"></i><br /> -->
+								<span  class="underline" style="color: #fff;">Profile</span>
 							</a>
 							</a>
 							 <a class="menu-button px-4" href="<?=base_url()?>Home/my_profile#booking">
-								<i class="fa fa-clock-o" style="color: #fff;font-size: 20px;margin-top: 10px;"></i><br />
-								<span  style="color: #fff;">Booking</span>
+								<!-- <i class="fa fa-clock-o" style="color: #fff;font-size: 20px;margin-top: 10px;"></i><br /> -->
+								<span class="underline" style="color: #fff;">Booking</span>
 							</a>
 							 <a class="menu-button px-4" href="<?=base_url()?>User/logout">
-								<i class="fa fa-sign-out" style="color: #fff;font-size: 20px;margin-top: 10px;"></i><br />
-								<span  style="color: #fff;">Logout</span>
+								<!-- <i class="fa fa-sign-out" style="color: #fff;font-size: 20px;margin-top: 10px;"></i><br /> -->
+								<span class="underline" style="color: #fff;">Logout</span>
 							</a>
 						</div>
 						<?}?>

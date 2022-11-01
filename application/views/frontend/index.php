@@ -15,7 +15,16 @@
   transition-property: left, top;
   transition-timing-function: cubic-bezier(.25,.1,.25,1), cubic-bezier(.25,.1,.25,1);
 }
-
+.reveal{
+  position: relative;
+  transform: translateY(150px);
+  opacity: 0;
+  transition: 2s all ease;
+}
+.reveal.active{
+  transform: translateY(0);
+  opacity: 1;
+}
  #txt{
   position: relative;
   margin: 0;
@@ -566,7 +575,7 @@ color: transparent;
 	<!-- ================================  Mobile Form End =========================================== -->
 
 		<!--================================= Why Cabme slider Start ======================================-->
-		<div class="x_ln_car_main_wrapper float_left  mb-5" style="z-index: 0;background-image: linear-gradient(0deg, rgb(12, 12, 15), rgb(41, 45, 69))">
+		<div class="x_ln_car_main_wrapper float_left  mb-5 reveal" style="z-index: 0;background-image: linear-gradient(0deg, rgb(12, 12, 15), rgb(41, 45, 69))">
 			<div class="container">
 				<div class="row">
 					<div class="col-md-12">
@@ -577,37 +586,37 @@ color: transparent;
 					<div class="col-md-12" style="">
 						<div class="btc_ln_slider_wrapper " style="margin-bottom: 80px;" >
 							<div class="row">
-							<div class="col-md-4 my-4 animateup" data-wow-duration="1s" data-wow-delay="0.3s">
+							<div class="col-md-4 my-4 ">
 								<div class="text-center">
 									<img  src="<?=base_url()?>assets/frontend/images/shield.png"/>
 									<h3 class="mt-3" style="font-weight: 500;color:white;font-family:Goldman">Secured Payment Guarantee</h3>
 								</div>
 							</div>
-							<div class="col-md-4 my-4 animateup" data-wow-duration="1s" data-wow-delay="0.3s">
+							<div class="col-md-4 my-4 ">
 								<div class="text-center">
 									<img  src="<?=base_url()?>assets/frontend/images/support.png"/>
 									<h3 class="mt-3" style="font-weight: 500;color:white; font-family:Goldman">Help Center & Support 24/7</h3>
 								</div>
 							</div>
-							<div class="col-md-4 my-4 animateup" data-wow-duration="1s" data-wow-delay="0.3s">
+							<div class="col-md-4 my-4 ">
 								<div class="text-center">
 									<img  src="<?=base_url()?>assets/frontend/images/car.png"/>
 									<h3 class="mt-3" style="font-weight: 500;color:white; font-family:Goldman">Booking any Class Vehicles</h3>
 								</div>
 							</div>
-							<div class="col-md-4 my-4 animatedown" data-wow-duration="1s" data-wow-delay="0.3s">
+							<div class="col-md-4 my-4 " >
 								<div class="text-center">
 									<img  src="<?=base_url()?>assets/frontend/images/safety.png"/>
 									<h3 class="mt-3" style="font-weight: 500;color:white; font-family:Goldman">Safety & Hygiene Best Practices</h3>
 								</div>
 							</div>
-							<div class="col-md-4 my-4 animatedown" data-wow-duration="1s" data-wow-delay="0.3s">
+							<div class="col-md-4 my-4 " >
 								<div class="text-center">
 									<img  src="<?=base_url()?>assets/frontend/images/sprey.png"/>
 									<h3 class="mt-3" style="font-weight: 500;color:white; font-family:Goldman">Internal & External Sanitization</h3>
 								</div>
 							</div>
-							<div class="col-md-4 my-4 animatedown" data-wow-duration="1s" data-wow-delay="0.3s">
+							<div class="col-md-4 my-4 ">
 								<div class="text-center">
 									<img  src="<?=base_url()?>assets/frontend/images/deal.png"/>
 									<h3 class="mt-3" style="font-weight: 500;color:white; font-family:Goldman">Contact-less Doorstep Delivery</h3>
@@ -621,12 +630,12 @@ color: transparent;
 		</div>
 		<!--================================= Why Cabme slider End ======================================-->
 		<!--================================= Featured Slider Start ======================================-->
-		<div class="container">
+		<div class="container reveal">
 			<div class="row">
 				<div class="col-md-12">
 					<div class="row">
 						<div class="col-md-6">
-							<img src="<?=base_url()?>/assets/frontend/images/scorpio.png" class="img-fluid" />
+							<img src="<?=base_url()?>assets/frontend/images/scorpio.png" class="img-fluid" />
 						</div>
 						<div class="col-md-6 text-justify">
 							<div>
@@ -714,7 +723,7 @@ color: transparent;
 </div>
 	<!--================================= Our journey End ======================================-->
 	<!-- =================== Testimonial ================================== -->
-	<div class="x_offer_car_main_wrapper float_left testimonial">
+	<div class="x_offer_car_main_wrapper float_left testimonial reveal">
 		<div class="container">
 			<div class="row">
 				<div class="col-md-12">
@@ -747,7 +756,7 @@ color: transparent;
 	</div>
 	<!-- =================== Testimonial End ================================== -->
 	<!--====== Content ======-->
-	<div class="container">
+	<div class="container reveal">
 		<div class="row">
 	<div class="container">
 		<div class="row p-3">
@@ -781,6 +790,23 @@ color: transparent;
 	</div>
 	</div>
 <script>
+function reveal() {
+  var reveals = document.querySelectorAll(".reveal");
+
+  for (var i = 0; i < reveals.length; i++) {
+    var windowHeight = window.innerHeight;
+    var elementTop = reveals[i].getBoundingClientRect().top;
+    var elementVisible = 150;
+
+    if (elementTop < windowHeight - elementVisible) {
+      reveals[i].classList.add("active");
+    } else {
+      reveals[i].classList.remove("active");
+    }
+  }
+}
+
+window.addEventListener("scroll", reveal);
 //---------- Counter code start ---------------------------
 $.fn.jQuerySimpleCounter = function( options ) {
 		var settings = $.extend({
