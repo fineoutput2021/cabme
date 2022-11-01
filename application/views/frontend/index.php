@@ -102,7 +102,7 @@ color: transparent;
 		<div id="carousel-example-generic" class="carousel slide" data-interval="5000" data-ride="carousel">
 			<div class="carousel-inner" role="listbox">
 				<div class="col-xl-5 col-lg-6 col-md-12 col-sm-12 col-12 d-none d-sm-none d-md-none  d-lg-block d-xl-block" style="position: absolute;z-index: 99;top: 25%;left: 10%;background-color: white;
-    padding-top: 30px;border-radius: 20px;box-shadow: 0px 0 8px rgb(0 0 0 / 10%);">
+    padding: 30px 0 30px 0;border-radius: 20px;box-shadow: 0px 0 8px rgb(0 0 0 / 10%);">
 					<div class="content_tabs">
 						<div class="row">
 							<div class="x_offer_tabs_wrapper" style="border-radius: 15px;width: 90%;margin-left: 29px;">
