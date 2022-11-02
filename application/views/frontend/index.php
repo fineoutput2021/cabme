@@ -702,7 +702,7 @@ color: transparent;
 	</div>
 	<!-- =================== Testimonial End ================================== -->
 	<!--====== Content ======-->
-	<div class="container reveal">
+	<!-- <div class="container reveal">
 		<div class="row">
 	<div class="container">
 		<div class="row p-3">
@@ -734,7 +734,7 @@ color: transparent;
 	</div>
 	<!--====== Content End ======-->
 	</div>
-	</div>
+	</div> -->
 <script>
 function reveal() {
   var reveals = document.querySelectorAll(".reveal");
