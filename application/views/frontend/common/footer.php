@@ -347,8 +347,29 @@ $("#micsd, #miced").change(function(){
 				}
 		}
 });
-//------ web outstation date change -------
-$("#oosd, #ooed").change(function(){
+//------ web outstation date and time change -------
+function one_way(){
+	var icsd=$('#oosd').val();
+	var icst=$('#oost').attr('data-time');
+	// start date covert ------
+	var sd    = new Date(icsd);
+	isDate = sd.getFullYear()+'-'+(sd.getMonth()+1)+'-'+sd.getDate();
+		if((isDate !='NaN-NaN-NaN')&& (typeof icst != "undefined")){
+					var today = new Date();
+					var date = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();
+					var time =  addZero(today.getHours()) + ":" +  addZero(today.getMinutes()) + ":" + today.getSeconds();
+					//---if current time is previous time -------
+					if(isDate==date && icst<time){
+						$('#ot_duration').html("<span style='color:red'>Plese Select Correct Date & Time</span>")
+						$('#outstation_btn').prop('disabled', true);
+						return;
+					}
+					$('#ot_duration').html("")
+					$('#outstation_btn').removeAttr('disabled');
+
+		}
+}
+function round_way(){
 	var icsd=$('#oosd').val();
 	var icst=$('#oost').attr('data-time');
 	var iced=$('#ooed').val();
@@ -397,7 +418,84 @@ $("#oosd, #ooed").change(function(){
 					$('#outstation_btn').prop('disabled', true);
 				}
 		}
-});
+}
+//------ mobile outstation date and time change -------
+function mone_way(){
+	// alert()
+	var icsd=$('#moosd').val();
+	var icst=$('#moost').attr('data-time');
+	// start date covert ------
+	var sd    = new Date(icsd);
+	isDate = sd.getFullYear()+'-'+(sd.getMonth()+1)+'-'+sd.getDate();
+		if((isDate !='NaN-NaN-NaN')&& (typeof icst != "undefined")){
+					var today = new Date();
+					var date = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();
+					var time =  addZero(today.getHours()) + ":" +  addZero(today.getMinutes()) + ":" + today.getSeconds();
+					//---if current time is previous time -------
+					if(isDate==date && icst<time){
+						$('#mot_duration').html("<span style='color:red'>Plese Select Correct Date & Time</span>")
+						$('#moutstation_btn').prop('disabled', true);
+						return;
+					}
+					$('#mot_duration').html("")
+					$('#moutstation_btn').removeAttr('disabled');
+
+		}else{
+			console.log('startdate= '+isDate);
+			console.log('starttime= '+icst);
+			// alert()
+		}
+}
+function mround_way(){
+	var icsd=$('#moosd').val();
+	var icst=$('#moost').attr('data-time');
+	var iced=$('#mooed').val();
+	var icet=$('#mooet').attr('data-time');
+	// start date covert ------
+	var sd    = new Date(icsd);
+	isDate = sd.getFullYear()+'-'+(sd.getMonth()+1)+'-'+sd.getDate();
+		// end date date covert ------
+	var ed    = new Date(iced);
+	ieDate = ed.getFullYear()+'-'+(ed.getMonth()+1)+'-'+ed.getDate();
+			// console.log('startdate= '+isDate);
+			// console.log('starttime= '+icst);
+			// console.log('enddate= '+ieDate);
+			// console.log('endtime= '+icet);
+			// console.log('check= '+$('#icst').val());
+			//----- calculate diffrence --------
+			if((isDate !='NaN-NaN-NaN')&& (typeof icst != "undefined")&& (ieDate !='NaN-NaN-NaN')&& (typeof icet != "undefined")){
+				var start = new Date(isDate);
+				 var end   = new Date(ieDate);
+					var diff= (( new Date(ieDate+" " +icet) - new Date(isDate+" " +icst) ) / 1000 / 60 / 60 );
+					var days =  parseInt(diff/24);
+					var hours =  diff%24;
+					if(diff>0){
+						var today = new Date();
+						var date = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();
+						var time =  addZero(today.getHours()) + ":" +  addZero(today.getMinutes()) + ":" + today.getSeconds();
+						//---if current time is previous time -------
+						if(isDate==date && icst<time){
+							$('#mot_duration').html("<span style='color:red'>Plese Select Correct Date & Time</span>")
+							$('#mo_duration').val(diff);
+							$('#moutstation_btn').prop('disabled', true);
+							return;
+						}
+					if(hours>0 && days >0){
+						$('#mot_duration').html("Duration: "+days+" day, "+hours+" hours")
+					}else if(hours==0 && days>0){
+							$('#mot_duration').html("Duration: "+days+" day")
+					}else{
+							$('#mot_duration').html("Duration: "+hours+" hours")
+					}
+						$('#mo_duration').val(diff);
+						$('#moutstation_btn').removeAttr('disabled');
+				}else{
+					$('#mot_duration').html("<span style='color:red'>Plese Select Correct Date & Time</span>")
+					$('#mo_duration').val(diff);
+					$('#moutstation_btn').prop('disabled', true);
+				}
+		}
+}
 //================== on time change ==============
 function time_change(){
 	// 1-self,2-out,3-inter
@@ -524,10 +622,10 @@ else if(active==3 && device==1){
 	var ed    = new Date(iced);
 	ieDate = ed.getFullYear()+'-'+(ed.getMonth()+1)+'-'+ed.getDate();
 			//----- calculate diffrence --------
-			console.log('startdate= '+isDate);
-			console.log('starttime= '+icst);
-			console.log('enddate= '+ieDate);
-			console.log('endtime= '+icet);
+			// console.log('startdate= '+isDate);
+			// console.log('starttime= '+icst);
+			// console.log('enddate= '+ieDate);
+			// console.log('endtime= '+icet);
 			if((isDate !='NaN-NaN-NaN')&& (typeof icst != "undefined")&& (ieDate !='NaN-NaN-NaN')&& (typeof iced != "undefined")){
 				var start = new Date(isDate);
 				 var end   = new Date(ieDate);
@@ -653,14 +751,14 @@ $('#ct_'+x).val(y);
 function change(x) {
 	if (x == 1) {
 		$('#change').html(
-			'<div class="col-md-12 col-12 mobileradius" style="z-index: 0;display: flex;height: 55px;padding: 0px;border-right: 1px solid rgb(226, 225, 225);justify-content: space-around;"><div class="form-sec-header" style="height: 50px;"><label class="cal-icon" style="top:11px;left: 10px;"> Start Date	<input type="text" autocomplete="off" readonly required placeholder="Date" name="start_date" id="oosd" class="form-control  datepicker clickshow" style="border: none;padding-right: 0px;padding-left: 1px;margin-top: -9px;"></label></div>	<div class="timepicker_div" style="height: 50px;margin-top: 2px;width: 80px;margin-left: 12px;"><div class="timepicker_div form-sec-header" style="height: 50px;margin-top: 2px;width: 80px;margin-left: 12px;"><label class="cal-icon" style="top:11px;left: 10px;"> Start Time<input type="text" autocomplete="off" readonly id="oost" required class="form-control timepicker" name="start_time" placeholder="Time" style="background-color: transparent;border: none;margin-left: 5px; margin-top: -10px; width: 84%;"></div></div></div>'
+			'<div class="col-md-12 col-12 mobileradius" style="z-index: 0;display: flex;height: 55px;padding: 0px;border-right: 1px solid rgb(226, 225, 225);justify-content: space-around;"><div class="form-sec-header" style="height: 50px;"><label class="cal-icon" style="top:11px;left: 10px;"> Start Date	<input type="text" autocomplete="off" onchange=one_way() readonly required placeholder="Date" name="start_date" id="oosd" class="form-control  datepicker clickshow" style="border: none;padding-right: 0px;padding-left: 1px;margin-top: -9px;"></label></div>	<div class="timepicker_div" style="height: 50px;margin-top: 2px;width: 80px;margin-left: 12px;"><div class="timepicker_div form-sec-header" style="height: 50px;margin-top: 2px;width: 80px;margin-left: 12px;"><label class="cal-icon" style="top:11px;left: 10px;"> Start Time<input type="text" autocomplete="off" readonly id="oost" onchange=one_way() required class="form-control timepicker" name="start_time" placeholder="Time" style="background-color: transparent;border: none;margin-left: 5px; margin-top: -10px; width: 84%;"></div></div></div>'
 		);
 		$(".datepicker").datepicker();
 		$('.timepicker').mdtimepicker();
 	}
 	if (x == 2) {
 		$('#change').html(
-			'<div class="col-md-3 col-6 mobileradius"style="z-index: 0;display: flex;height: 55px;padding: 0px;border-right: 1px solid rgb(226, 225, 225);"><div class="form-sec-header" style="height: 50px;"><label class="cal-icon" style="top:11px;left: 10px;"> Start Date <input type="text" id="oosd" placeholder="Date" name="start_date" autocomplete="off" readonly required class="form-control datepicker" style="border: none;padding-right: 0px;padding-left: 1px;margin-top: -9px;"></label></div><div class="timepicker_div form-sec-header"	style="height: 50px;margin-top: 2px;width: 80px;margin-left: 12px;"><label class="cal-icon" style="top:11px;left: 10px;">TIME<input type="text" class="form-control timepicker" id="oost"	name="start_time" autocomplete="off" readonly required placeholder="Time"	style="background-color: transparent;border: none;margin-left: -13px; margin-top: -10px; width: 122%;"></div></div><div class="col-md-3 col-6 mobileradius" style="z-index: 0;display: flex;height: 55px;padding: 0px;"><div class="form-sec-header" style="height: 50px;"><label class="cal-icon" style="top:11px;left: 10px;"> End Date<input type="text" name="end_date" id="ooed" autocomplete="off" readonly required placeholder="Date" class="form-control datepicker" style="border: none;padding-right: 0px;padding-left: 1px;margin-top: -9px;"></label></div><div class="timepicker_div form-sec-header"	style="height: 50px;margin-top: 2px;width: 80px;margin-left: 12px;">	<label class="cal-icon" style="top:11px;left: 10px;">TIME	<input type="text" id="ooet" class="form-control timepicker" name="end_time" autocomplete="off" readonly required	placeholder="Time" style="background-color: transparent;border: none;margin-left: -13px; margin-top: -10px; width: 122%;">	</div></div>'
+			'<div class="col-md-3 col-6 mobileradius"style="z-index: 0;display: flex;height: 55px;padding: 0px;border-right: 1px solid rgb(226, 225, 225);"><div class="form-sec-header" style="height: 50px;"><label class="cal-icon" style="top:11px;left: 10px;"> Start Date <input type="text" id="moosd" onchange=mround_way() placeholder="Date" name="start_date" autocomplete="off" readonly required class="form-control datepicker" style="border: none;padding-right: 0px;padding-left: 1px;margin-top: -9px;"></label></div><div class="timepicker_div form-sec-header"	style="height: 50px;margin-top: 2px;width: 80px;margin-left: 12px;"><label class="cal-icon" style="top:11px;left: 10px;">TIME<input type="text" class="form-control timepicker" id="moost" onchange=mround_way()	name="start_time" autocomplete="off" readonly required placeholder="Time"	style="background-color: transparent;border: none;margin-left: -13px; margin-top: -10px; width: 122%;"></div></div><div class="col-md-3 col-6 mobileradius" style="z-index: 0;display: flex;height: 55px;padding: 0px;"><div class="form-sec-header" style="height: 50px;"><label class="cal-icon" style="top:11px;left: 10px;"> End Date<input type="text" name="end_date" id="mooed"  onchange=mround_way() autocomplete="off" readonly required placeholder="Date" class="form-control datepicker" style="border: none;padding-right: 0px;padding-left: 1px;margin-top: -9px;"></label></div><div class="timepicker_div form-sec-header"	style="height: 50px;margin-top: 2px;width: 80px;margin-left: 12px;">	<label class="cal-icon" style="top:11px;left: 10px;">TIME	<input type="text" id="mooet" onchange=mround_way() class="form-control timepicker" name="end_time" autocomplete="off" readonly required	placeholder="Time" style="background-color: transparent;border: none;margin-left: -13px; margin-top: -10px; width: 122%;">	</div></div>'
 		)
 		$(".datepicker").datepicker();
 		$('.timepicker').mdtimepicker();
@@ -668,16 +766,18 @@ function change(x) {
 	}
 	if (x == 3) {
 		$("#change2").html(
-			'<div class="col-md-12" style="z-index: 0;display: flex;height: 55px;border: 1px solid rgb(212, 208, 208);padding: 0px;justify-content: space-around;"><div class="form-sec-header" style="height: 50px;">	<label class="cal-icon" style="margin-top: 10px;margin-left: 10px;">Start Date <input type="text" placeholder="Date" name="start_date" autocomplete="off" readonly id="oosd" required class="form-control datepicker" style="border: none;padding-right: 0px;padding-left: 5px;background-color: transparent;"></label></div><div class="timepicker_div form-sec-headers" style="height: 50px;width: 90px;"><label class="cal-icon"	style="margin-left: 10px;color: #000;font-size: 11px;font-weight: bold;">START TIME	<input type="text" id="oost" name="start_time" class="form-control timepicker" placeholder="Time" autocomplete="off" style="padding: 23px 0px;background-color: transparent;border: none;width: 84%;margin-top: -11px;"></label></div></div>'
+			'<div class="col-md-12" style="z-index: 0;display: flex;height: 55px;border: 1px solid rgb(212, 208, 208);padding: 0px;justify-content: space-around;"><div class="form-sec-header" style="height: 50px;">	<label class="cal-icon" style="margin-top: 10px;margin-left: 10px;">Start Date <input type="text" onchange=one_way() placeholder="Date" name="start_date" autocomplete="off" readonly id="oosd" required class="form-control datepicker" style="border: none;padding-right: 0px;padding-left: 5px;background-color: transparent;"></label></div><div class="timepicker_div form-sec-headers" style="height: 50px;width: 90px;"><label class="cal-icon"	style="margin-left: 10px;color: #000;font-size: 11px;font-weight: bold;">START TIME	<input type="text" onchange=one_way() id="oost" name="start_time" class="form-control timepicker" placeholder="Time" autocomplete="off" style="padding: 23px 0px;background-color: transparent;border: none;width: 84%;margin-top: -11px;"></label></div></div>'
 		);
+		$('#ot_duration').html("")
 		$(".datepicker").datepicker();
 		$('.timepicker').mdtimepicker();
 
 	}
 	if (x == 4) {
 		$("#change2").html(
-			'<div class="col-md-6 "	style="z-index: 0;display: flex;height: 55px;border: 1px solid rgb(212, 208, 208);padding: 0px;"><div class="form-sec-header" style="height: 50px;">	<label class="cal-icon"	style="margin-top: 10px;margin-left: 10px;">Start Date	<input type="text" placeholder="Date" name="start_date" autocomplete="off" readonly required  class="form-control datepicker" id="oosd" style="border: none;padding-right: 0px;padding-left: 5px;background-color: transparent;">	</label></div><div class="timepicker_div form-sec-headers"	style="height: 50px;width: 90px;"><label class="cal-icon"	style="margin-left: 10px;font-size: 11px;color: #000;font-weight: bold;">TIME	<input type="text" autocomplete="off" readonly required id="oost" name="start_time" class="form-control timepicker" placeholder="Time" style="padding: 23px 0px;background-color: transparent;border: none;width: 84%;margin-top: -11px;"></label></div></div><div class="col-md-6 "	style="z-index: 0;display: flex;height: 55px;border: 1px solid rgb(212, 208, 208);padding: 0px;">	<div class="form-sec-header" style="height: 50px;"><label class="cal-icon"	style="margin-top: 10px;margin-left: 10px;">End Date	<input type="text" id="ooed" autocomplete="off" readonly required placeholder="Date"	class="form-control datepicker" name="end_date"	style="border: none;padding-right: 0px;padding-left: 5px;background-color: transparent;"></label></div><div class="timepicker_div form-sec-headers" style="height: 50px;width: 90px;"><label class="cal-icon"	style="margin-left: 10px;font-size: 11px;color: #000;font-weight: bold;">TIME<input type="text" id="ooet" autocomplete="off" readonly required class="form-control timepicker" name="end_time"	placeholder="Time"	style="padding: 23px 0px;background-color: transparent;border: none;width: 84%;margin-top: -11px;"></label></div></div>'
+			'<div class="col-md-6 "	style="z-index: 0;display: flex;height: 55px;border: 1px solid rgb(212, 208, 208);padding: 0px;"><div class="form-sec-header" style="height: 50px;">	<label class="cal-icon"	style="margin-top: 10px;margin-left: 10px;">Start Date	<input type="text" onchange=round_way() placeholder="Date" name="start_date" autocomplete="off" readonly required  class="form-control datepicker" id="oosd" style="border: none;padding-right: 0px;padding-left: 5px;background-color: transparent;">	</label></div><div class="timepicker_div form-sec-headers"	style="height: 50px;width: 90px;"><label class="cal-icon"	style="margin-left: 10px;font-size: 11px;color: #000;font-weight: bold;">TIME	<input type="text" autocomplete="off" readonly required id="oost" onchange=round_way() name="start_time" class="form-control timepicker" placeholder="Time" style="padding: 23px 0px;background-color: transparent;border: none;width: 84%;margin-top: -11px;"></label></div></div><div class="col-md-6 "	style="z-index: 0;display: flex;height: 55px;border: 1px solid rgb(212, 208, 208);padding: 0px;">	<div class="form-sec-header" style="height: 50px;"><label class="cal-icon"	style="margin-top: 10px;margin-left: 10px;">End Date	<input type="text" id="ooed" onchange=round_way() autocomplete="off" readonly required placeholder="Date"	class="form-control datepicker" name="end_date"	style="border: none;padding-right: 0px;padding-left: 5px;background-color: transparent;"></label></div><div class="timepicker_div form-sec-headers" style="height: 50px;width: 90px;"><label class="cal-icon"	style="margin-left: 10px;font-size: 11px;color: #000;font-weight: bold;">TIME<input type="text" id="ooet" onchange=round_way() autocomplete="off" readonly required class="form-control timepicker" name="end_time"	placeholder="Time"	style="padding: 23px 0px;background-color: transparent;border: none;width: 84%;margin-top: -11px;"></label></div></div>'
 		);
+		$('#ot_duration').html("")
 		$(".datepicker").datepicker();
 		$('.timepicker').mdtimepicker();
 	}
@@ -699,6 +799,9 @@ function change(x) {
 		$('#location2').html('<div class="col-md-12 col-6 p-0"><div class="x_slider_select x_slider_select_2" style="margin-left: -14px;">	<input type="text" placeholder="Pickup Location"  name="pick_location" required class="form-control" style=""></div></div><div class="col-md-6 col-6 p-0">	<div class="x_slider_select x_slider_select_2" style="margin-left: 2px;"><input type="text" placeholder="Drop Location"  name="drop_location" required class="form-control" style=""></i></div></div>')
 	}
 }
+// function change2(){
+// 	alert()
+// }
 </script>
 <script>
 /* -- DO NOT REMOVE --

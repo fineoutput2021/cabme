@@ -207,13 +207,13 @@ color: transparent;
 												<div class="col-md-12 " style="z-index: 0;display: flex;height: 55px;border: 1px solid rgb(212, 208, 208);padding: 0px;justify-content: space-around;">
 													<div class="form-sec-header" style="height: 50px;">
 														<label class="cal-icon" style="margin-top: 10px;margin-left: 10px;">Start Date
-															<input type="text" id="oosd" autocomplete="off" readonly placeholder="Date" name="start_date"  class="form-control datepicker" style="border: none;padding-right: 0px;padding-left: 5px;background-color: transparent;">
+															<input type="text" id="oosd" onchange=one_way() autocomplete="off" readonly placeholder="Date" name="start_date"  class="form-control datepicker" style="border: none;padding-right: 0px;padding-left: 5px;background-color: transparent;">
 														</label>
 													</div>
 													<div class="timepicker_div form-sec-headers" style="height: 50px;width: 90px;">
 														<label class="cal-icon" style="margin-left: 10px;font-size: 11px;color: #000;font-weight: bold;">START
 															TIME
-															<input type="text" id="oost" autocomplete="off" readonly name="start_time" class="form-control timepicker" placeholder="Time" style="padding: 23px 0px;background-color: transparent;border: none;width: 84%;margin-top: -11px;">
+															<input type="text" id="oost" autocomplete="off" onchange=one_way() readonly name="start_time" class="form-control timepicker" placeholder="Time" style="padding: 23px 0px;background-color: transparent;border: none;width: 84%;margin-top: -11px;">
 														</label>
 													</div>
 												</div>
@@ -465,10 +465,10 @@ color: transparent;
 							<div class="x_slider_form_main_wrapper float_left">
 								<div class="row justify-content-center" style="flex-wrap: nowrap;width: 100%;">
 									<ul class="nav nav-tabs roundtab mobilenav-tabs justify-content-center" style="display: flex; flex-wrap: nowrap;">
-										<li class="nav-item" style="border-radius: 8px 0px 0px 8px;"> <a class="nav-link roundtab active" data-toggle="tab" href="#firstt" style="font-size: 13px;border-radius: 6px 0px 0px 6px;" onclick="change(1)">
+										<li class="nav-item" style="border-radius: 8px 0px 0px 8px;" onclick="change(1)"> <a class="nav-link roundtab active" data-toggle="tab" href="#firstt" style="font-size: 13px;border-radius: 6px 0px 0px 6px;" >
 												One Way </a>
 										</li>
-										<li class="nav-item" style="border-radius: 0px 8px 8px 0px;"> <a class="nav-link roundtab" data-toggle="tab" href="#thirdd" style="font-size: 13px;border-radius: 0px 6px 6px 0px;" onclick="change(2)">Round-Trip </a>
+										<li class="nav-item" style="border-radius: 0px 8px 8px 0px;" onclick="change(2)"> <a class="nav-link roundtab" data-toggle="tab" href="#thirdd" style="font-size: 13px;border-radius: 0px 6px 6px 0px;" >Round-Trip </a>
 										</li>
 									</ul>
 								</div>
@@ -491,14 +491,17 @@ color: transparent;
 											<div class="col-md-12 col-12 mobileradius" style="z-index: 0;display: flex;height: 55px;padding: 0px;border-right: 1px solid rgb(226, 225, 225);justify-content: space-around;">
 												<div class="form-sec-header" style="height: 50px;">
 													<label class="cal-icon" style="top:11px;left: 10px;"> Start Date
-														<input type="text" autocomplete="off" readonly required placeholder="Date" name="start_date"  class="form-control datepicker" style="border: none;padding-right: 0px;padding-left: 1px;margin-top: -9px;">
+														<input type="text" autocomplete="off" id="moosd" onchange=mone_way() readonly required placeholder="Date" name="start_date"  class="form-control datepicker" style="border: none;padding-right: 0px;padding-left: 1px;margin-top: -9px;">
 													</label>
 												</div>
 												<div class="timepicker_div form-sec-header" style="height: 50px;margin-top: 2px;width: 80px;margin-left: 12px;">
 													<label class="cal-icon" style="top:11px;left: 10px;"> Start Time
-														<input type="text" autocomplete="off" readonly required name="start_time" placeholder="Time" class="form-control timepicker" style="background-color: transparent;border: none;margin-left: 5px; margin-top: -10px; width: 84%;">
+														<input type="text" autocomplete="off" id="moost" onchange=mone_way() readonly required name="start_time" placeholder="Time" class="form-control timepicker" style="background-color: transparent;border: none;margin-left: 5px; margin-top: -10px; width: 84%;">
 												</div>
 											</div>
+										</div>
+										<div class="text-center col-md-12 col-12 p-2">
+											<h6 id="mot_duration"></h6>
 										</div>
 									</div>
 									<input type="hidden" name="city_id" class="city_id"  value=""/>
@@ -506,7 +509,7 @@ color: transparent;
 									<input type="hidden" name="duration" value="" id="mo_duration">
 									<div class="col-md-12 mt-3">
 										<div class="row mt-2 justify-content-center">
-												<button class="btn col-md-10 searchbtn shadowbtn" type="submit" id="outstation_btn" disabled> <i class="fa fa-search"></i> &nbsp;Search</button>
+												<button class="btn col-md-10 searchbtn shadowbtn" type="submit" id="moutstation_btn" disabled> <i class="fa fa-search"></i> &nbsp;Search</button>
 										</div>
 									</div>
 								</div>
@@ -736,23 +739,23 @@ color: transparent;
 	</div> -->
 	<!--====== Content End ======-->
 <script>
-function reveal() {
-  var reveals = document.querySelectorAll(".reveal");
-
-  for (var i = 0; i < reveals.length; i++) {
-    var windowHeight = window.innerHeight;
-    var elementTop = reveals[i].getBoundingClientRect().top;
-    var elementVisible = 150;
-
-    if (elementTop < windowHeight - elementVisible) {
-      reveals[i].classList.add("active");
-    } else {
-      reveals[i].classList.remove("active");
-    }
-  }
-}
-
-window.addEventListener("scroll", reveal);
+// function reveal() {
+//   var reveals = document.querySelectorAll(".reveal");
+//
+//   for (var i = 0; i < reveals.length; i++) {
+//     var windowHeight = window.innerHeight;
+//     var elementTop = reveals[i].getBoundingClientRect().top;
+//     var elementVisible = 150;
+//
+//     if (elementTop < windowHeight - elementVisible) {
+//       reveals[i].classList.add("active");
+//     } else {
+//       reveals[i].classList.remove("active");
+//     }
+//   }
+// }
+//
+// window.addEventListener("scroll", reveal);
 //---------- Counter code start ---------------------------
 $.fn.jQuerySimpleCounter = function( options ) {
 		var settings = $.extend({
