@@ -305,7 +305,7 @@ color: transparent;
 				<!-- =================== Start Slider ============================ -->
 				<?php $i=1; foreach($banner_data as $banner) { ?>
 				<div class="carousel-item <?if($i==1){echo 'active';}?>">
-					<img src="<?=base_url().$banner->photo1?>" alt="banner_<?=$i?>">
+					<img src="<?=base_url().$banner->photo1?>" alt="banner_<?=$i?>" class="img-fluid">
 				</div>
 				<?php $i++; } ?>
 				<ol class="carousel-indicators">
