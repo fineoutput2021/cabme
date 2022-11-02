@@ -732,9 +732,9 @@ color: transparent;
 				dolore incidunt modi pariatur sed?</p>
 		</div>
 	</div>
-	<!--====== Content End ======-->
 	</div>
 	</div> -->
+	<!--====== Content End ======-->
 <script>
 function reveal() {
   var reveals = document.querySelectorAll(".reveal");
