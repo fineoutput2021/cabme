@@ -18,7 +18,7 @@
   transition-property: left, top;
   transition-timing-function: cubic-bezier(.25,.1,.25,1), cubic-bezier(.25,.1,.25,1);
 }
-.reveal{
+/* .reveal{
   position: relative;
   transform: translateY(150px);
   opacity: 0;
@@ -27,7 +27,7 @@
 .reveal.active{
   transform: translateY(0);
   opacity: 1;
-}
+} */
  #txt{
   position: relative;
   margin: 0;
