@@ -506,7 +506,7 @@ color: transparent;
 									</div>
 									<input type="hidden" name="city_id" class="city_id"  value=""/>
 									<input type="hidden" name="round_type" id="mround_type"  value="1"/>
-									<input type="hidden" name="duration" value="" id="mo_duration" alue="1">
+									<input type="hidden" name="duration" value="1" id="mo_duration">
 									<div class="col-md-12 mt-3">
 										<div class="row mt-2 justify-content-center">
 												<button class="btn col-md-10 searchbtn shadowbtn" type="submit" id="moutstation_btn" disabled> <i class="fa fa-search"></i> &nbsp;Search</button>
