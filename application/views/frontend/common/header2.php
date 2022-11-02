@@ -494,9 +494,11 @@
     						style="height: 45px;font-weight: bold;letter-spacing: 1px;margin-left: 20px;" type="submit" id="self_btn" >Search</button>
     				</div>
 							</form>
+							<?if(!empty($search[0]->end_date)){?>
     				<div class="text-center col-md-12 col-12 pt-2">
     				<h6 id="s_duration"><?=$s_duration?></h6>
     					</div>
+							<?}?>
     			</div>
     			</div>
 	</div>
