@@ -88,9 +88,9 @@
                       <td>
                         <select name="seatting" class="form-control" required>
                           <option value="">Seating</option>
-                          <option value="1">4 Seater</option>
-                          <option value="2">5 Seater</option>
-                          <option value="3">7 Seater</option>
+                          <option value="1">5 Seater</option>
+                          <option value="2">7 Seater</option>
+                          <option value="3">9 Seater</option>
                         </select>
                       </td>
                     </tr>

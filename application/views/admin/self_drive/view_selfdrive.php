@@ -90,11 +90,11 @@ if (!empty($this->session->flashdata('emessage'))) { ?>
         echo 'Automatic';
     } ?></td>
                       <td><?php if ($data->seatting==1) {
-    echo '4 Seater';
-} else if($data->seatting==2){
     echo '5 Seater';
+} else if($data->seatting==2){
+    echo '7 Seater';
 }else if($data->seatting==3){
-echo '7 Seater';
+echo '9 Seater';
 } ?></td>
                       <td><?php echo $data->kilometer1?> </td>
                       <td>₹<?php echo $data->price1 ?> </td>

@@ -93,9 +93,9 @@ if (!empty($this->session->flashdata('emessage'))) { ?>
                       <td> <strong>Seating Capacity</strong> <span style="color:red;">*</span></strong> </td>
                       <td>
                         <select name="seatting" class="form-control" required>
-                          <option value="1" <?if($Self_drive->seatting==1){echo 'selected' ;}?>>4 Seater</option>
-                          <option value="2" <?if($Self_drive->seatting==2){echo 'selected' ;}?>>5 Seater</option>
-                          <option value="2" <?if($Self_drive->seatting==3){echo 'selected' ;}?>>7 Seater</option>
+                          <option value="1" <?if($Self_drive->seatting==1){echo 'selected' ;}?>>5 Seater</option>
+                          <option value="2" <?if($Self_drive->seatting==2){echo 'selected' ;}?>>7 Seater</option>
+                          <option value="2" <?if($Self_drive->seatting==3){echo 'selected' ;}?>>9 Seater</option>
                         </select>
                       </td>
                     </tr>
