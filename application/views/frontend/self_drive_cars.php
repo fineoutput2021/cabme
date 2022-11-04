@@ -22,6 +22,112 @@
   }
 </style>
 <!-- btc tittle Wrapper Start -->
+<!--====== Sort By Modal ======-->
+
+<div class="filterbyModal fade" id="filterbyModal" role="dialog" style="z-index: 99999;">
+  <div class="sortbyModal-dialog modal-dialog">
+
+    <!-- Modal content-->
+    <div class="sortbyModal-content modal-content" >
+      <div class="modal-header p-1">
+        <div class="col-md-11 col-11 text-center">
+          <h6 class="modal-title">Filters</h6>
+        </div>
+        <div class="col-md-1 col-1"> <button type="button" class="close"
+            data-dismiss="modal">&times;</button>
+        </div>
+      </div>
+      <!-- Segment -->
+      <div class="modal-body">
+        <form method="get" enctype="multipart/form-data" action="<?=base_url()?>Home/show_self_drive_cars/<?=base64_encode($search[0]->id)?>">
+          <button type="submit" class="btn  bg-b" style="color:white;float: right;box-shadow:none;">Apply</button>
+        <br>
+        <!-- Brand -->
+        <h5 class="mb-2" style="font-weight: bold;">Brand</h5>
+        <div class="doflex">
+          <div class="x_slider_checkbox x_slider_checkbox_bottom_filter_use">
+            <input type="checkbox" id="Hyu1" name="brand[]" value="Audi" <?if(!empty($brand)){foreach ($brand as $value) {
+              if($value=='Audi'){echo "checked";break;}
+            }}?>>
+            <label for="Hyu1">Audi</label>
+          </div> &nbsp; &nbsp;
+          <div class="x_slider_checkbox x_slider_checkbox_bottom_filter_use">
+            <input type="checkbox" id="Mar" name="brand[]" value="Honda"<?if(!empty($brand)){foreach ($brand as $value) {
+              if($value=='Honda'){echo "checked";break;}
+            }}?>>
+            <label for="Mar">Honda</label>
+          </div> &nbsp; &nbsp;
+        </div>
+
+        <!-- Fuel Type -->
+        <h5 class="mb-2" style="font-weight: bold;">Fuel Type</h5>
+        <div class="doflex">
+          <div class="x_slider_checkbox x_slider_checkbox_bottom_filter_use">
+            <input type="checkbox" id="Diesel" name="fuel[]" value="1"<?if(!empty($fuel)){foreach ($fuel as $value) {
+              if($value==1){echo "checked";break;}
+            }}?>>
+            <label for="Diesel">Petrol</label>
+          </div> &nbsp; &nbsp;
+          <div class="x_slider_checkbox x_slider_checkbox_bottom_filter_use">
+            <input type="checkbox" id="Petrol" name="fuel[]" value="2" <?if(!empty($fuel)){foreach ($fuel as $value) {
+              if($value==2){echo "checked";break;}
+            }}?>>
+            <label for="Petrol">Diesel</label>
+          </div> &nbsp; &nbsp;
+          <div class="x_slider_checkbox x_slider_checkbox_bottom_filter_use">
+            <input type="checkbox" id="CNG2" name="fuel[]" value="3" <?if(!empty($fuel)){foreach ($fuel as $value) {
+              if($value==3){echo "checked";break;}
+            }}?>>
+            <label for="CNG2">CNG</label>
+          </div> &nbsp; &nbsp;
+        </div>
+
+        <!-- Transmission Type -->
+        <h5 class="mb-2" style="font-weight: bold;">Transmission Type</h5>
+        <div class="doflex">
+          <div class="x_slider_checkbox x_slider_checkbox_bottom_filter_use">
+            <input type="checkbox" id="Automaticcc" name="transmission[]" value="1" <?if(!empty($transmission)){foreach ($transmission as $value) {
+              if($value==1){echo "checked";break;}
+            }}?>>
+            <label for="Automaticcc">Manual</label>
+          </div> &nbsp; &nbsp;
+          <div class="x_slider_checkbox x_slider_checkbox_bottom_filter_use">
+            <input type="checkbox" id="Manualll" name="transmission[]" value="2" <?if(!empty($transmission)){foreach ($transmission as $value) {
+              if($value==2){echo "checked";break;}
+            }}?>>
+            <label for="Manualll">Automatic</label>
+          </div> &nbsp; &nbsp;
+        </div>
+
+        <!-- Seating Capacity -->
+        <h5 class="mb-2" style="font-weight: bold;">Seating Capacity</h5>
+        <div class="doflex">
+          <div class="x_slider_checkbox x_slider_checkbox_bottom_filter_use">
+            <input type="checkbox" id="5-Seats" name="seating[]" value="1" <?if(!empty($seating)){foreach ($seating as $value) {
+              if($value==1){echo "checked";break;}
+            }}?>>
+            <label for="5-Seats"> 5 Seats </label>
+          </div> &nbsp; &nbsp;
+          <div class="x_slider_checkbox x_slider_checkbox_bottom_filter_use">
+            <input type="checkbox" id="7-Seats" name="seating[]" value="2" <?if(!empty($seating)){foreach ($seating as $value) {
+              if($value==2){echo "checked";break;}
+            }}?>>
+            <label for="7-Seats">7 Seats </label>
+          </div> &nbsp; &nbsp;
+          <div class="x_slider_checkbox x_slider_checkbox_bottom_filter_use">
+            <input type="checkbox" id="9-Seatsss"  name="seating[]" value="3" <?if(!empty($seating)){foreach ($seating as $value) {
+              if($value==3){echo "checked";break;}
+            }}?>>
+            <label for="9-Seatsss">9 Seats </label>
+          </div> &nbsp; &nbsp;
+        </div>
+  </form>
+      </div>
+      <!-- Segment End -->
+    </div>
+  </div>
+</div>
+
 <div class="btc_tittle_main_wrapper" style="margin-top: 100px;">
   <div class="container-fluid">
     <div class="row">
@@ -41,8 +147,8 @@
 </div>
 <!-- btc tittle Wrapper End -->
 <!-- x car book sidebar section Wrapper Start -->
-<div class="x_car_book_sider_main_Wrapper float_left mt-4">
-  <div class="container-fluid">
+<div class=" float_left mt-4">
+  <div class="container-fluid mb-5">
     <div class="row mt-5">
       <div class="col-xl-3 col-lg-4 col-md-12 col-sm-12 col-12 desktopfilterdiv">
         <!-- btc tittle Wrapper Start -->
@@ -202,9 +308,11 @@
                 <h5>Car Rental In: &nbsp; <span style="font-size: 20px;color: black;margin-top: -5px;" >Jaipur</span></h5>
               </div> -->
               <div class="x_carbook_right_select_box_wrapper float-right desktopsortbydiv"> <span style="font-size: 17px;color: #494848;font-weight: bold;">Sort By Price: &nbsp;</span>
-                <select class="myselect">
-                  <option>Price: Low To High</option>
-                  <option>Price: High To Low</option>
+                <select class="myselect" name="filter">
+                  <?=$actual_link = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "http") . "://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";?>
+                  <option>None</option>
+                  <option value="asc"><a href="<?=$actual_link?>">Price: Low To High</a></option>
+                  <a href="<?=$actual_link?>"><option value="desc">Price: High To Low</option>
                 </select>
               </div>
             </div>
@@ -314,10 +422,10 @@
       </div>
     </div>
     <!-- ======================================  Mobile Sort by & Filters Start   ====================================== -->
-    <div class="container-fluid" style="position: fixed;bottom: 0; background-color: #fff;z-index: 110000;">
+    <div class="container-fluid pl-0" style="position: fixed;bottom: 0; background-color: #fff;z-index: 110000;">
       <div class="row text-center mobiledown">
         <div class="col-6 p-3">
-          <a href="#" data-toggle="modal" data-target="#sortbyModal" id="sbymodal"> <img src="<?=base_url()?>assets/frontend/images/sortbyimg.png" alt="sortbyimg"> Sort By</a>
+          <a href="#"  data-toggle="modal" data-target="#sortbyModal" id="sbymodal"> <img src="<?=base_url()?>assets/frontend/images/sortbyimg.png" alt="sortbyimg"> Sort By</a>
         </div>
         <div class="col-6  p-3">
           <a href="#" data-toggle="modal" data-target="#filterbyModal" id="fbymodal"> <img src="<?=base_url()?>assets/frontend/images/filterimg.png" alt=""> Filters</a>
@@ -333,7 +441,7 @@
   </div>
   <!-- x car book sidebar section Wrapper End -->
   <!--====== Content ======-->
-  <div class="container">
+  <!-- <div class="container">
     <div class="row p-3">
       <h4 class="mt-5">Self-Drive Car Rentals in Delhi NCR</h4>
       <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Totam amet nihil, voluptatem incidunt tempore
@@ -352,5 +460,5 @@
         incidunt tempore praesentium. Explicabo, minus quaerat in illo obcaecati impedit repellat quae esse,
         dolore incidunt modi pariatur sed?</p>
     </div>
-  </div>
+  </div> -->
   <!--====== Content End ======-->

@@ -47,7 +47,7 @@
 				<div class="modal-body">
 					<ul class="sortul">
 						<li>
-							<a href="#">Popularity</a>
+							<a href="#">None</a>
 						</li>
 						<li>
 							<a href="#">Price: &nbsp; Low To High</a>
@@ -56,14 +56,7 @@
 						<li>
 							<a href="#">Price: &nbsp; High To Low</a>
 						</li>
-						<!-- <li>
-							<a href="#">Extra Km Charges: &nbsp; Low To High</a>
-						</li>
-						<li>
-							<a href="#">Extra Km Charges: &nbsp; High To Low</a>
-						</li> -->
 					</ul>
-
 				</div>
 			</div>
 		</div>
