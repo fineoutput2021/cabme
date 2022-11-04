@@ -109,6 +109,10 @@ class Home extends CI_Controller
         $car_data = $this->booking->ViewSelfDriveCars($send);
         $data['car_data']= $car_data['car_data'];
         $data['search']= $search;
+        $data['brand']= $brand;
+        $data['fuel']= $fuel;
+        $data['transmission']= $transmission;
+        $data['seating']= $seating;
         $this->load->view('frontend/common/header2', $data);
         $this->load->view('frontend/self_drive_cars');
         $this->load->view('frontend/common/footer');

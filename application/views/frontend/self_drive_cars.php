@@ -43,7 +43,6 @@
 <!-- x car book sidebar section Wrapper Start -->
 <div class="x_car_book_sider_main_Wrapper float_left mt-4">
   <div class="container-fluid">
-    <?if(!empty($car_data)){?>
     <div class="row mt-5">
       <div class="col-xl-3 col-lg-4 col-md-12 col-sm-12 col-12 desktopfilterdiv">
         <!-- btc tittle Wrapper Start -->
@@ -72,11 +71,11 @@
               <div class="car-filter accordion car_booking_onliy_side" style="margin-top: 46px;">
                 <form method="get" enctype="multipart/form-data" action="<?=base_url()?>Home/show_self_drive_cars/<?=base64_encode($search[0]->id)?>">
                 <div class="row">
-                  <div class="col-md-6">
+                  <div class="col-md-6" style="align-self: center">
                     <h3 style="margin-top: 5px;">Filters</h3>
                   </div>
                   <div class="col-md-6">
-                    <button type="submit" style="color: red;float: right;">Apply</button>
+                    <button type="submit" class="btn  bg-b" style="color:white;float: right;box-shadow:none;">Apply</button>
                   </div>
                 </div>
                 <hr>
@@ -88,11 +87,15 @@
                   <div id="collapseTwo" class="collapse show">
                     <div class="panel-body">
                       <div class="x_slider_checkbox x_slider_checkbox_bottom_filter_use">
-                        <input type="checkbox" id="brand_1" name="brand[]" value="Audi">
+                        <input type="checkbox" id="brand_1" name="brand[]" value="Audi" <?if(!empty($brand)){foreach ($brand as $value) {
+                          if($value=='Audi'){echo "checked";break;}
+                        }}?>>
                         <label for="brand_1">Audi</label>
                       </div>
                       <div class="x_slider_checkbox x_slider_checkbox_bottom_filter_use">
-                        <input type="checkbox" id="brand_2" name="brand[]" value="Honda">
+                        <input type="checkbox" id="brand_2" name="brand[]" value="Honda"<?if(!empty($brand)){foreach ($brand as $value) {
+                          if($value=='Honda'){echo "checked";break;}
+                        }}?>>
                         <label for="brand_2">Honda</label>
                       </div>
                     </div>
@@ -103,20 +106,26 @@
                 <!-- Fuel Type -->
                 <div class="panel panel-default">
                   <div class="panel-heading">
-                    <h5 class="panel-title"> <a data-toggle="collapse" href="#collapseThree" class="collapse"> Fuel Type</a> </h5>
+                    <h5 class="panel-title"> <a data-toggle="collapse" href="#collapseThree" class="collapsed"> Fuel Type</a> </h5>
                   </div>
                   <div id="collapseThree" class="collapse ">
                     <div class="panel-body">
                       <div class="x_slider_checkbox x_slider_checkbox_bottom_filter_use">
-                        <input type="checkbox" id="c10" name="fuel[]" value="1">
+                        <input type="checkbox" id="c10" name="fuel[]" value="1"<?if(!empty($fuel)){foreach ($fuel as $value) {
+                          if($value==1){echo "checked";break;}
+                        }}?>>
                         <label for="c10">Petrol</label>
                       </div>
                       <div class="x_slider_checkbox x_slider_checkbox_bottom_filter_use">
-                        <input type="checkbox" id="c11" name="fuel[]" value="2">
+                        <input type="checkbox" id="c11" name="fuel[]" value="2" <?if(!empty($fuel)){foreach ($fuel as $value) {
+                          if($value==2){echo "checked";break;}
+                        }}?>>
                         <label for="c11">Diesel</label>
                       </div>
                       <div class="x_slider_checkbox x_slider_checkbox_bottom_filter_use">
-                        <input type="checkbox" id="CNG" name="fuel[]" value="3">
+                        <input type="checkbox" id="CNG" name="fuel[]" value="3" <?if(!empty($fuel)){foreach ($fuel as $value) {
+                          if($value==3){echo "checked";break;}
+                        }}?>>
                         <label for="CNG">CNG</label>
                       </div>
                     </div>
@@ -127,16 +136,20 @@
                 <!-- Transmission Type -->
                 <div class="panel panel-default">
                   <div class="panel-heading">
-                    <h5 class="panel-title"> <a data-toggle="collapse" href="#collapseFour" class="collapse"> Transmission Type</a> </h5>
+                    <h5 class="panel-title"> <a data-toggle="collapse" href="#collapseFour" class="collapsed"> Transmission Type</a> </h5>
                   </div>
                   <div id="collapseFour" class="collapse ">
                     <div class="panel-body">
                       <div class="x_slider_checkbox x_slider_checkbox_bottom_filter_use">
-                        <input type="checkbox" id="Manual" name="transmission[]" value="1">
+                        <input type="checkbox" id="Manual" name="transmission[]" value="1" <?if(!empty($transmission)){foreach ($transmission as $value) {
+                          if($value==1){echo "checked";break;}
+                        }}?>>
                         <label for="Manual">Manual</label>
                       </div>
                       <div class="x_slider_checkbox x_slider_checkbox_bottom_filter_use">
-                        <input type="checkbox" id="Automatic" name="transmission[]" value="2">
+                        <input type="checkbox" id="Automatic" name="transmission[]" value="2" <?if(!empty($transmission)){foreach ($transmission as $value) {
+                          if($value==2){echo "checked";break;}
+                        }}?>>
                         <label for="Automatic">Automatic</label>
                       </div>
                     </div>
@@ -147,20 +160,26 @@
                 <!-- Seating Capacity -->
                 <div class="panel panel-default">
                   <div class="panel-heading">
-                    <h5 class="panel-title"> <a data-toggle="collapse" href="#collapseFive" class="collapse"> Seating Capacity</a> </h5>
+                    <h5 class="panel-title"> <a data-toggle="collapse" href="#collapseFive" class="collapsed"> Seating Capacity</a> </h5>
                   </div>
                   <div id="collapseFive" class="collapse ">
                     <div class="panel-body">
                       <div class="x_slider_checkbox x_slider_checkbox_bottom_filter_use">
-                        <input type="checkbox" id="5_Seats" name="seating[]" value="1">
+                        <input type="checkbox" id="5_Seats" name="seating[]" value="1" <?if(!empty($seating)){foreach ($seating as $value) {
+                          if($value==1){echo "checked";break;}
+                        }}?>>
                         <label for="5_Seats">5 Seats</label>
                       </div>
                       <div class="x_slider_checkbox x_slider_checkbox_bottom_filter_use">
-                        <input type="checkbox" id="7_Seats" name="seating[]" value="2">
+                        <input type="checkbox" id="7_Seats" name="seating[]" value="2" <?if(!empty($seating)){foreach ($seating as $value) {
+                          if($value==2){echo "checked";break;}
+                        }}?>>
                         <label for="7_Seats">7 Seats</label>
                       </div>
                       <div class="x_slider_checkbox x_slider_checkbox_bottom_filter_use">
-                        <input type="checkbox" id="9_Seatss" name="seating[]" value="3">
+                        <input type="checkbox" id="9_Seatss" name="seating[]" value="3" <?if(!empty($seating)){foreach ($seating as $value) {
+                          if($value==3){echo "checked";break;}
+                        }}?>>
                         <label for="9_Seatss">9 Seats</label>
                       </div>
                     </div>
@@ -173,6 +192,7 @@
           </div>
         </div>
       </div>
+      <?if(!empty($car_data)){?>
 
       <div class="col-xl-9 col-lg-8 col-md-12 col-sm-12 col-12">
         <div class="x_carbooking_right_section_wrapper float_left">
@@ -181,7 +201,7 @@
               <!-- <div class="float-left mt-3 col-md-6 col-12 mobilejustify">
                 <h5>Car Rental In: &nbsp; <span style="font-size: 20px;color: black;margin-top: -5px;" >Jaipur</span></h5>
               </div> -->
-              <div class="x_carbook_right_select_box_wrapper float-right desktopsortbydiv"> <span style="font-size: 17px;color: #494848;font-weight: bold;">Sort By: &nbsp;</span>
+              <div class="x_carbook_right_select_box_wrapper float-right desktopsortbydiv"> <span style="font-size: 17px;color: #494848;font-weight: bold;">Sort By Price: &nbsp;</span>
                 <select class="myselect">
                   <option>Price: Low To High</option>
                   <option>Price: High To Low</option>
@@ -305,7 +325,7 @@
       </div>
     </div>
     <?}else{?>
-<div class="container p-3 mt-5 text-center">
+<div class="container p-3 mt-5 text-center" style="align-self:center">
   <h4>No Car Available! </h4>
 </div>
       <?}?>

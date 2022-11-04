@@ -61,9 +61,21 @@ class CI_Booking
         $self_cars = $this->CI->db->get_where('tbl_selfdrive', array('city_id'=> $receive['city_id'],'is_available'=> 1,'is_active'=>1))->result();
         //     $links='';
         // }
-        // print_r($self_cars);die();
+
+        // print_r($receive['brand']);die();
         $car_data=[];
         foreach ($self_cars as $self) {
+          $b=0;
+          // ---brandwise filter -----
+          if(!empty($receive['brand'])){
+                foreach ($receive['brand'] as $brd) {
+                  if($brd==$self->brand_name){
+                    $b=1;
+                    break;
+                  }
+                }
+          }
+          if($b==1 || empty($receive['brand'])){
             //------ fuel type ---
             if ($self->fule_type==1) {
                 $fuel_type = 'Petrol';
@@ -80,11 +92,11 @@ class CI_Booking
             }
             //------ seating  ---
             if ($self->seatting==1) {
-                $seating = '4 Seates';
-            } elseif ($self->seatting==2) {
                 $seating = '5 Seates';
-            } else {
+            } elseif ($self->seatting==2) {
                 $seating = '7 Seates';
+            } else {
+                $seating = '9 Seates';
             }
             $days =$receive['duration']/24;
             $car_data[] = array('city_id'=>$self->city_id,
@@ -105,6 +117,79 @@ class CI_Booking
                     'rsda'=>$self->rsda,
                     );
         }
+      }
+
+          //----------- fule typewise sort -----
+          if(!empty($receive['fuel'])){
+            foreach ($car_data as $key=> $self) {
+              $b=0;
+                foreach ($receive['fuel'] as $f) {
+                  //------ fuel type ---
+                  if ($self['fuel_type']=='Petrol') {
+                      $fuel_type = 1;
+                  } elseif ($self['fuel_type']=='Diesel') {
+                      $fuel_type = 2;
+                  } else {
+                      $fuel_type = 3;
+                  }
+                  if($f==$fuel_type){
+                    $b=1;
+                    break;
+                  }
+                }
+                if($b==0){
+                  // echo $key;die();
+                  unset($car_data[$key]);
+                }
+              }
+          }
+          //----------- transmission typewise sort -----
+          if(!empty($receive['transmission'])){
+            foreach ($car_data as $key=> $self) {
+              $b=0;
+                foreach ($receive['transmission'] as $f) {
+                  //------ fuel type ---
+                  //------ Transmission  ---
+                  if ($self['transmission']=='Manual') {
+                      $transmission = 1;
+                  } elseif ($self['transmission']=='Automatic') {
+                      $transmission = 2;
+                  }
+                  if($f==$transmission){
+                    $b=1;
+                    break;
+                  }
+                }
+                if($b==0){
+                  // echo $key;die();
+                  unset($car_data[$key]);
+                }
+              }
+          }
+          //----------- seating typewise sort -----
+          if(!empty($receive['seating'])){
+            foreach ($car_data as $key=> $self) {
+              $b=0;
+                foreach ($receive['seating'] as $f) {
+                  //------ seating  ---
+                  if ($self['seating']=='5 Seates') {
+                      $seating = 1;
+                  } elseif ($self['seating']=='7 Seates') {
+                      $seating = 2;
+                  } else {
+                      $seating = 3;
+                  }
+                  if($f==$seating){
+                    $b=1;
+                    break;
+                  }
+                }
+                if($b==0){
+                  // echo $key;die();
+                  unset($car_data[$key]);
+                }
+              }
+          }
         $respone['status'] = true;
         $respone['message'] ="Success";
         $respone['car_data'] =$car_data;
