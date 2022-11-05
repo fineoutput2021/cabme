@@ -186,7 +186,7 @@
                       <div class="x_car_offer_heading float_left">
                         <ul class=" car_menual_lists" style="border:none;">
                           <li style="border:none;"> </li>
-                          <li  style="border:none;"> <span>💺</span> <span><?=$cars['seating']?></span>
+                          <li  style="border:none;"> <span><img src="<?=base_url()?>assets/frontend/images/seat.png" alt="seat" class="img-fluid"/></span> <span><?=$cars['seating']?></span>
                           </li>
                           <li style="border:none;"> </li>
                         </ul>
@@ -254,7 +254,7 @@
   </div>
   <!-- x car book sidebar section Wrapper End -->
   <!--====== Content ======-->
-  <div class="container">
+  <!-- <div class="container">
     <div class="row p-3">
       <h4 class="mt-5">Self-Drive Car Rentals in Delhi NCR</h4>
       <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Totam amet nihil, voluptatem incidunt tempore
@@ -273,5 +273,5 @@
         incidunt tempore praesentium. Explicabo, minus quaerat in illo obcaecati impedit repellat quae esse,
         dolore incidunt modi pariatur sed?</p>
     </div>
-  </div>
+  </div> -->
   <!--====== Content End ======-->

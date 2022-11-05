@@ -28,38 +28,35 @@
 						</label>
 					</div>
 					<div class="form-group mb-4">
-						<input type="text" name="aadhar_no" class="form-control modalinput" required="" placeholder="Aadhar Number*" value="<?=$user_data[0]->aadhar_no?>">
+						<input type="text" name="aadhar_no" minlength="12" maxlength="12" class="form-control modalinput" required="" placeholder="Aadhar Number*" value="<?=$user_data[0]->aadhar_no?>"   onkeypress="return isNumberKey(event)">
 					</div>
 					<div class="form-group mb-4">
-						<input type="text" name="driving_lience" class="form-control modalinput" required="" placeholder="Driving License*"  value="<?=$user_data[0]->driving_lience?>">
-					</div>
-					<div class="form-group mb-4">
-						<input type="text" name="pickup_location" class="form-control modalinput"  required="" placeholder="Pickup Location*"  value="">
+						<input type="text" name="driving_lience" minlength="16" maxlength="16" class="form-control modalinput" required="" placeholder="Driving License*"  value="<?=$user_data[0]->driving_lience?>">
 					</div>
 				</div>
 				<div class="row">
 					<div class="col-md-12">
 						<p class="mt-1 mb-1">Upload <b>Aadhar Front</b> Image</p>
-						<input type="file" name="aadhar_front" reqiured value="">
+						<input type="file" name="aadhar_front" required value="">
 					</div>
 					<div class="col-md-12">
 						<p class="mt-1  mb-1">Upload <b>Aadhar Back</b> Image</p>
-						<input type="file"  name="aadhar_back" reqiured value="">
+						<input type="file"  name="aadhar_back" required value="">
 					</div>
 				</div>
 				<div class="row">
 					<div class="col-md-12">
 						<p class="mt-1 mb-1">Upload <b>License Front</b> Image</p>
-						<input type="file" name="license_front" reqiured value="">
+						<input type="file" name="license_front" required value="">
 					</div>
 					<div class="col-md-12">
 						<p class="mt-1  mb-1">Upload <b>License Back</b> Image</p>
-						<input type="file" name="license_back" reqiured value="">
+						<input type="file" name="license_back" required value="">
 					</div>
 				</div>
 				<div class="row  mt-2">
 					<div class="x_slider_checkbox x_slider_checkbox_bottom_filter_use">
-						<input type="checkbox" id="agree" name="agree" reqiured>
+						<input type="checkbox" id="agree" name="agree" required>
 						<label for="agree">I Accept Terms & Conditions</label>
 					</div>
 				</div>
@@ -158,9 +155,9 @@
          <h4 style="margin-top: 3px;" class="mb-1"><?=$car_data['brand_name']?></h4>
 	    </div>
 	    <div class="col-md-12 col-xs-12 text-center">
-				<span>⚙️</span> <span><?=$car_data['transmission']?></span>
- 			 <span>⛽</span> <span><?=$car_data['fuel_type']?></span>
- 			 <span>💺</span> <span><?=$car_data['seating']?></span>
+				<span><img src="<?=base_url()?>assets/frontend/images/gear-shift.png" alt="Gear" class="img-fluid"/></span> <span><?=$car_data['transmission']?></span>&nbsp&nbsp
+ 			 <span><img src="<?=base_url()?>assets/frontend/images/gas.png" alt="Gas" class="img-fluid"/></span> <span><?=$car_data['fuel_type']?></span>&nbsp
+ 			 <span><img src="<?=base_url()?>assets/frontend/images/seat.png" alt="seat" class="img-fluid"/></span> <span><?=$car_data['seating']?></span>
 	    </div>
 	  </div>
 	  <div class="row text-center" style="flex-wrap: nowrap;margin-top: 10px;">
@@ -199,9 +196,9 @@
 	      <h5 style="margin-top: 5px;"><?=$car_data['brand_name']?></h5>
 	      <div class="row justify-content-center mt-2">
 	        <div class="col-md-12" class="carmanuals">
-	          <span>⚙️</span> <span><?=$car_data['transmission']?></span>
-	          <span>⛽</span> <span><?=$car_data['fuel_type']?></span>
-	          <span>💺</span> <span><?=$car_data['seating']?></span>
+	          <span><img src="<?=base_url()?>assets/frontend/images/gear-shift.png" alt="Gear" class="img-fluid"/></span> <span><?=$car_data['transmission']?></span>&nbsp&nbsp
+	          <span><img src="<?=base_url()?>assets/frontend/images/gas.png" alt="Gas" class="img-fluid"/></span> <span><?=$car_data['fuel_type']?></span>&nbsp
+	          <span><img src="<?=base_url()?>assets/frontend/images/seat.png" alt="seat" class="img-fluid"/></span> <span><?=$car_data['seating']?></span>
 	        </div>
 	      </div>
 	    </div>
@@ -228,7 +225,7 @@
 	      </div>
 	      <div class="row">
 	        <div class="col-md-4 p-0" style="margin-top: 10px;">
-	          <p style="margin-left: 85px;"> Includes <?=$booking_data[0]->kilometer?> kms </p>
+	          <p style="margin-left: 78px;"> Includes <?=$booking_data[0]->kilometer?> kms </p>
 	        </div>
 	        <div class="col-md-4" style="margin-top: 10px;"><span style="margin-left: 30px;"> <a href="#" style="color: red;" data-toggle="modal" data-target="#changeplan" data-dismiss="modal">Change plan</a> </span></div>
 	      </div>
@@ -353,3 +350,12 @@
 	  </div>
 	</div>
 	<!--====== Content End ======-->
+
+<script>
+function isNumberKey(evt){
+    var charCode = (evt.which) ? evt.which : evt.keyCode
+    if (charCode > 31 && (charCode < 48 || charCode > 57))
+        return false;
+    return true;
+}
+</script>

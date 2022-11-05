@@ -64,81 +64,6 @@
 
 	<!--======Sort By Modal End ======-->
 
-	<!--====== Info Modal ======-->
-	<div class="modal fade " id="searchbtn" role="dialog">
-		<div class="modal-dialog " style="width: auto;">
-			<!-- Modal content-->
-			<div class="modal-content ">
-				<div class="modal-header">
-					<h4 class="modal-title">Information</h4>
-					<button type="button" class="close" data-dismiss="modal">&times;</button>
-				</div>
-				<div class="modal-body" id="mobilefont">
-					<div class="row mb-2">
-						<div class="col-md-6 col-6">
-							<h5>City :</h5>
-						</div>
-						<div class="col-md-6 col-6">
-							<h6>Jaipur</h6>
-						</div>
-					</div>
-					<div class="row mb-2">
-						<div class="col-md-6 col-6">
-							<h5>Car Type :</h5>
-						</div>
-						<div class="col-md-6 col-6">
-							<h6>Sedan</h6>
-						</div>
-					</div>
-					<div class="row mb-2">
-						<div class="col-md-6 col-6">
-							<h5>Start Date & <span>Time</span> :</h5>
-						</div>
-						<div class="col-md-6 col-6">
-							<h6>12-10-2003 & <span>10:23</span> </h6>
-						</div>
-					</div>
-					<div class="row mb-2">
-						<div class="col-md-6 col-6">
-							<h5>End Date & <span>Time</span> :</h5>
-						</div>
-						<div class="col-md-6 col-6">
-							<h6>14-10-2003 & <span>12:23</span> </h6>
-						</div>
-					</div>
-					<div class="row mb-2">
-						<div class="col-md-6 col-6">
-							<h5>Price</h5>
-						</div>
-						<div class="col-md-6 col-6">
-							<h6>₹ 2000</h6>
-						</div>
-					</div>
-					<div class="row mb-2">
-						<div class="col-md-6 col-6">
-							<h5>Killometer Cab</h5>
-						</div>
-						<div class="col-md-6 col-6">
-							<h6>100 Kms</h6>
-						</div>
-					</div>
-					<div class="row mb-2">
-						<div class="col-md-6 col-6">
-							<h5>Minimum Booking Amt.</h5>
-						</div>
-						<div class="col-md-6 col-6">
-							<h6>₹ 1000</h6>
-						</div>
-					</div>
-					<div class="row justify-content-center">
-						<a href="summary.html" class="col-md-12 text-center">
-							<button class="btn col-md-10  searchbtn shadowbtn">Book</button>
-						</a>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
 	<!--====== Info Modal End ======-->
 	<!--====== Select City Modal ======-->
 	<?
@@ -190,37 +115,7 @@
 		</div>
 	</div>
 	<!--====== Select City2 Modal End ======-->
-	<!--======Promo Modal ======-->
-	<div class="modal fade" id="myModal" role="dialog">
-		<div class="modal-dialog">
-			<!-- Modal content-->
-			<div class="modal-content">
-				<div class="modal-header">
-					<h4 class="modal-title">Flat 5% off</h4>
-					<button type="button" class="close" data-dismiss="modal">&times;</button>
-				</div>
-				<div class="modal-body">
-					<p>Use code Demo4 and get flat 5% off</p>
-					<div class="row">
-						<div class="promopath">
-							<span class="span_1" id="textcopy">Demo4</span>
-							<span class="span_2 float-right">
-								<i class="fa fa-copy" style="cursor: pointer;" onclick="myFunction()"></i>
-							</span>
-						</div>
-					</div>
-				</div>
-				<div class="modal-footer">
-					<p> Terms & Conditions</p> <br>
-					<ul class="listdots">
-						<li>Applicable on booking with minimum duration 6 days</li>
-						<li>Not applicable on booking where fuel is included</li>
-					</ul>
-				</div>
-			</div>
-		</div>
-	</div>
-	<!--======Promo Modal End ======-->
+
 	<!--======login Modal ======-->
 	<div class="modal fade" id="loginModal" role="dialog" style="z-index: 999999;">
 		<div class="modal-dialog">
@@ -433,9 +328,9 @@
 			$days = (int)$search[0]->duration/24;
 			$hours =  $search[0]->duration%24;
 			if($hours>0 && $days >0){
-				$s_duration="Duration: ".$days." days, ".$hours." hours";
+				$s_duration="Duration: ".(int)$days." days, ".$hours." hours";
 			}else if($hours==0 && $days>0){
-				$s_duration="Duration: ".$days." days";
+				$s_duration="Duration: ".(int)$days." days";
 			}else{
 				$s_duration="Duration: ".$hours." hours";
 			}

@@ -46,16 +46,22 @@
         <h5 class="mb-2" style="font-weight: bold;">Brand</h5>
         <div class="doflex">
           <div class="x_slider_checkbox x_slider_checkbox_bottom_filter_use">
-            <input type="checkbox" id="Hyu1" name="brand[]" value="Audi" <?if(!empty($brand)){foreach ($brand as $value) {
-              if($value=='Audi'){echo "checked";break;}
+            <input type="checkbox" id="Hyu1" name="brand[]" value="Maruti Suzuki" <?if(!empty($brand)){foreach ($brand as $value) {
+              if($value=='Maruti Suzuki'){echo "checked";break;}
             }}?>>
-            <label for="Hyu1">Audi</label>
+            <label for="Hyu1">Maruti Suzuki</label>
           </div> &nbsp; &nbsp;
           <div class="x_slider_checkbox x_slider_checkbox_bottom_filter_use">
-            <input type="checkbox" id="Mar" name="brand[]" value="Honda"<?if(!empty($brand)){foreach ($brand as $value) {
-              if($value=='Honda'){echo "checked";break;}
+            <input type="checkbox" id="Mar" name="brand[]" value="Mahindra"<?if(!empty($brand)){foreach ($brand as $value) {
+              if($value=='Mahindra'){echo "checked";break;}
             }}?>>
-            <label for="Mar">Honda</label>
+            <label for="Mar">Mahindra</label>
+          </div> &nbsp; &nbsp;
+          <div class="x_slider_checkbox x_slider_checkbox_bottom_filter_use">
+            <input type="checkbox" id="Chervolet" name="brand[]" value="Chervolet"<?if(!empty($brand)){foreach ($brand as $value) {
+              if($value=='Chervolet'){echo "checked";break;}
+            }}?>>
+            <label for="Chervolet">Chervolet</label>
           </div> &nbsp; &nbsp;
         </div>
 
@@ -193,16 +199,22 @@
                   <div id="collapseTwo" class="collapse show">
                     <div class="panel-body">
                       <div class="x_slider_checkbox x_slider_checkbox_bottom_filter_use">
-                        <input type="checkbox" id="brand_1" name="brand[]" value="Audi" <?if(!empty($brand)){foreach ($brand as $value) {
-                          if($value=='Audi'){echo "checked";break;}
+                        <input type="checkbox" id="brand_1" name="brand[]" value="Maruti Suzuki" <?if(!empty($brand)){foreach ($brand as $value) {
+                          if($value=='Maruti Suzuki'){echo "checked";break;}
                         }}?>>
-                        <label for="brand_1">Audi</label>
+                        <label for="brand_1">Maruti Suzuki</label>
                       </div>
                       <div class="x_slider_checkbox x_slider_checkbox_bottom_filter_use">
-                        <input type="checkbox" id="brand_2" name="brand[]" value="Honda"<?if(!empty($brand)){foreach ($brand as $value) {
-                          if($value=='Honda'){echo "checked";break;}
+                        <input type="checkbox" id="brand_2" name="brand[]" value="Mahindra"<?if(!empty($brand)){foreach ($brand as $value) {
+                          if($value=='Mahindra'){echo "checked";break;}
                         }}?>>
-                        <label for="brand_2">Honda</label>
+                        <label for="brand_2">Mahindra</label>
+                      </div>
+                      <div class="x_slider_checkbox x_slider_checkbox_bottom_filter_use">
+                        <input type="checkbox" id="brand_3" name="brand[]" value="Chervolet"<?if(!empty($brand)){foreach ($brand as $value) {
+                          if($value=='Chervolet'){echo "checked";break;}
+                        }}?>>
+                        <label for="brand_3">Chervolet</label>
                       </div>
                     </div>
                   </div>
@@ -299,7 +311,6 @@
         </div>
       </div>
       <?if(!empty($car_data)){?>
-
       <div class="col-xl-9 col-lg-8 col-md-12 col-sm-12 col-12">
         <div class="x_carbooking_right_section_wrapper float_left">
           <div class="row mt-2">
@@ -307,12 +318,14 @@
               <!-- <div class="float-left mt-3 col-md-6 col-12 mobilejustify">
                 <h5>Car Rental In: &nbsp; <span style="font-size: 20px;color: black;margin-top: -5px;" >Jaipur</span></h5>
               </div> -->
+                <?$actual_link = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "http") . "://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
+                // echo $actual_link;die();
+                ?>
               <div class="x_carbook_right_select_box_wrapper float-right desktopsortbydiv"> <span style="font-size: 17px;color: #494848;font-weight: bold;">Sort By Price: &nbsp;</span>
-                <select class="myselect" name="filter">
-                  <?=$actual_link = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "http") . "://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";?>
+                <select class="myselect" name="filter" id="sort_by">
                   <option>None</option>
-                  <option value="asc"><a href="<?=$actual_link?>">Price: Low To High</a></option>
-                  <a href="<?=$actual_link?>"><option value="desc">Price: High To Low</option>
+                  <option value="asc">Price: Low To High</option>
+                  <option value="desc">Price: High To Low</option>
                 </select>
               </div>
             </div>
@@ -333,11 +346,11 @@
                       </div>
                       <div class="x_car_offer_heading float_left">
                         <ul class=" car_menual_lists">
-                          <li> <span>⚙️</span><span><?=$cars['transmission']?></span>
+                          <li> <span><img src="<?=base_url()?>assets/frontend/images/gear-shift.png" alt="Gear" class="img-fluid"/></span><span><?=$cars['transmission']?></span>
                           </li>
-                          <li> <span>⛽</span> <span><?=$cars['fuel_type']?></span>
+                          <li> <span><img src="<?=base_url()?>assets/frontend/images/gas.png" alt="Gas" class="img-fluid"/></span> <span><?=$cars['fuel_type']?></span>
                           </li>
-                          <li> <span>💺</span> <span><?=$cars['seating']?></span>
+                          <li><img src="<?=base_url()?>assets/frontend/images/seat.png" alt="seat" class="img-fluid"/></span> <span><?=$cars['seating']?></span>
                           </li>
                         </ul>
                       </div>
@@ -433,12 +446,17 @@
       </div>
     </div>
     <?}else{?>
-<div class="container p-3 mt-5 text-center" style="align-self:center">
+<div class="col-lg-8 col-md-12 p-3 mt-5 text-center" style="align-self:center">
   <h4>No Car Available! </h4>
 </div>
       <?}?>
     <!-- ======================================  Mobile Sort by & Filters End   ====================================== -->
   </div>
+  <script>
+  $(".myselect").change(function(){
+alert("The text has been changed.");
+});
+  </script>
   <!-- x car book sidebar section Wrapper End -->
   <!--====== Content ======-->
   <!-- <div class="container">
