@@ -63,6 +63,12 @@
             }}?>>
             <label for="Chervolet">Chervolet</label>
           </div> &nbsp; &nbsp;
+          <div class="x_slider_checkbox x_slider_checkbox_bottom_filter_use">
+            <input type="checkbox" id="Tata" name="brand[]" value="Tata"<?if(!empty($brand)){foreach ($brand as $value) {
+              if($value=='Tata'){echo "checked";break;}
+            }}?>>
+            <label for="Tata">Tata</label>
+          </div> &nbsp; &nbsp;
         </div>
 
         <!-- Fuel Type -->
@@ -215,6 +221,12 @@
                           if($value=='Chervolet'){echo "checked";break;}
                         }}?>>
                         <label for="brand_3">Chervolet</label>
+                      </div>
+                      <div class="x_slider_checkbox x_slider_checkbox_bottom_filter_use">
+                        <input type="checkbox" id="brand_4" name="brand[]" value="Tata"<?if(!empty($brand)){foreach ($brand as $value) {
+                          if($value=='Tata'){echo "checked";break;}
+                        }}?>>
+                        <label for="brand_4">Tata</label>
                       </div>
                     </div>
                   </div>
