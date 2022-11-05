@@ -55,7 +55,7 @@ class Home extends CI_Controller
                         );
                 $last_id=$this->base_model->insert_table("tbl_search", $data_insert, 1) ;
                 $id = base64_encode($last_id);
-                redirect("Home/show_self_drive_cars/$id");
+                redirect("Home/show_self_drive_cars/$id","refresh");
             } else {
                 $this->session->set_flashdata('emessage', validation_errors());
                 redirect($_SERVER['HTTP_REFERER']);
@@ -71,6 +71,11 @@ class Home extends CI_Controller
         $id=base64_decode($idd);
         $data['id']=$idd;
         $search = $this->db->get_where('tbl_search', array('id'=> $id))->result();
+        if (isset($_GET['sort'])) {
+            $sort = $_GET["sort"];
+        }else{
+          $sort ='';
+        }
         if (isset($_GET['brand'])) {
             $brand = $_GET["brand"];
         }else{
@@ -104,6 +109,7 @@ class Home extends CI_Controller
         'fuel'=>$fuel,
         'transmission'=>$transmission,
         'seating'=>$seating,
+        'sort'=>$sort,
         // 'index'=>$index,
       );
         $car_data = $this->booking->ViewSelfDriveCars($send);
@@ -113,6 +119,7 @@ class Home extends CI_Controller
         $data['fuel']= $fuel;
         $data['transmission']= $transmission;
         $data['seating']= $seating;
+        $data['sort']= $sort;
         $this->load->view('frontend/common/header2', $data);
         $this->load->view('frontend/self_drive_cars');
         $this->load->view('frontend/common/footer');
@@ -765,6 +772,11 @@ class Home extends CI_Controller
         }else{
           $seating ='';
         }
+        if (isset($_GET['sort'])) {
+          $sort = $_GET["sort"];
+        }else{
+          $sort ='';
+        }
         $search = $this->db->get_where('tbl_search', array('id'=> $id))->result();
         $send= array(
     'city_id'=>$search[0]->city_id,
@@ -775,13 +787,15 @@ class Home extends CI_Controller
     'duration'=>$search[0]->duration,
     'round_type'=>$search[0]->round_type,
       'seating'=>$seating,
+        'sort'=>$sort,
     // 'index'=>$index,
   );
         $car_data = $this->booking->ViewOutstationCars($send);
         $data['car_data']= $car_data['car_data'];
         $data['search']= $search;
         $data['seating']= $seating;
-        $this->load->view('frontend/common/header2', $data);
+        $data['sort']= $sort;
+        $this->load->view('frontend/common/header3', $data);
         $this->load->view('frontend/outstation_cars');
         $this->load->view('frontend/common/footer');
     }

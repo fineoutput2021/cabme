@@ -31,7 +31,7 @@
 	<!--====== Sort By Modal ======-->
 
 	<div class="sortbyModal fade" id="sortbyModal" role="dialog">
-		<div class="modal-dialog" style="margin-left: -1px;">
+		<div class="modal-dialog"  style="margin-left: -1px;">
 
 			<!-- Modal content-->
 			<div class=" sortbyModal-content modal-content" style="z-index: 999999;">
@@ -45,15 +45,15 @@
 				</div>
 				<div class="modal-body">
 					<ul class="sortul">
-						<li onclick ="mobile_sort('none')" style="color:<?if($sort=='none'||$sort==''){echo 'red';}?>">
-							None
-						</li>
-						<li onclick ="mobile_sort('asc')" style="color:<?if($sort=='asc'){echo 'red';}?>">
-						Price: &nbsp;	Low To High
-						</li>
-						<li onclick ="mobile_sort('desc')" style="color:<?if($sort=='desc'){echo 'red';}?>">
-							Price: &nbsp; High To Low
-						</li>
+            <li onclick ="mobile_sort('none')" style="color:<?if($sort=='none'||$sort==''){echo 'red';}?>">
+              None
+            </li>
+            <li onclick ="mobile_sort('asc')" style="color:<?if($sort=='asc'){echo 'red';}?>">
+            Price: &nbsp;	Low To High
+            </li>
+            <li onclick ="mobile_sort('desc')" style="color:<?if($sort=='desc'){echo 'red';}?>">
+              Price: &nbsp; High To Low
+            </li>
 					</ul>
 				</div>
 			</div>
@@ -65,8 +65,8 @@
 	<!--====== Info Modal End ======-->
 	<!--====== Select City Modal ======-->
 	<?
-	$top_data = $this->db->order_by('id', 'desc')->get_where('tbl_cities', array('is_active'=> 1,'top'=> 1,'city_type'=>1))->result();
-	$other_data = $this->db->order_by('id', 'desc')->get_where('tbl_cities', array('is_active'=> 1,'top'=> 0,'city_type'=>1))->result();
+	$top_data = $this->db->order_by('id', 'desc')->get_where('tbl_cities', array('is_active'=> 1,'top'=> 1,'city_type'=>2))->result();
+	$other_data = $this->db->order_by('id', 'desc')->get_where('tbl_cities', array('is_active'=> 1,'top'=> 0,'city_type'=>2))->result();
 	?>
 	<div class="modal fade" id="selectcity" role="dialog" style="z-index:99999">
 		<div class="modal-dialog " style="width: auto;">
@@ -335,7 +335,7 @@
 			$city = $this->db->get_where('tbl_cities', array('is_active'=> 1,'id'=> $search[0]->city_id))->result();
 			?>
     				<div class="container">
-						<form method="post" enctype="multipart/form-data" action="<?=base_url()?>Home/self_drive_cars">
+						<form method="post" enctype="multipart/form-data" action="<?=base_url()?>Home/outstaion_cars">
     				<div class="row mobileform" style="border-radius: 10px;display: flex;flex-wrap: nowrap;">
     					<div class="col-md-3 col-12 p-0" data-toggle="modal" data-target="#selectcity" data-dismiss="modal">
     						<div class="selectcity" style="border: 1px solid rgb(226, 225, 225);height: 55px;">
@@ -347,6 +347,7 @@
 									<?}?>
     						</div>
     					</div>
+							<?if(!empty($search[0]->end_date)){?>
     					<div class="col-md-3 col-6 mobileradius"
     						style="z-index: 0;display: flex;height: 54px;padding: 0px;border: 1px solid rgb(226, 225, 225);margin-top: 1px;">
     						<div class="form-sec-header" style="height: 50px;">
@@ -354,7 +355,6 @@
     								<input type="text" autocomplete="off" id="sdsd" name="start_date" placeholder="" value="<?=$search[0]->start_date?>" class="form-control datepicker"
     									style="border: none;padding-right: 0px;padding-left: 1px;margin-top: -5px;background: transparent;">
     							</label>
-
     						</div>
     						<div class="timepicker_div form-sec-header" style="height: 50px;width: 80px;margin-left: 12px;">
     							<label class="cal-icon" style="top:11px;left: 10px;">TIME
@@ -362,7 +362,6 @@
     									style="background-color: transparent;border: none;margin-left: -13px; margin-top: -5px; width: 122%;">
     						</div>
     					</div>
-							<?if(!empty($search[0]->end_date)){?>
     					<div class="col-md-3 col-6 mobileradius brright"
     						style="z-index: 0;display: flex;height: 54px;padding: 0px;border: 1px solid rgb(226, 225, 225);margin-top: 1px;">
     						<div class="form-sec-header" style="height: 50px;">
@@ -377,9 +376,24 @@
     									style="background-color: transparent;border: none;margin-left: -13px; margin-top: -5px; width: 122%;">
     						</div>
     					</div>
+							<?}else{?>
+								<div class="col-md-6 col-12 mobileradius justify-content-around"
+									style="z-index: 0;display: flex;height: 54px;padding: 0px;border: 1px solid rgb(226, 225, 225);margin-top: 1px;">
+									<div class="form-sec-header" style="height: 50px;">
+										<label class="cal-icon" style="top:11px;left: 10px;"> Start Date
+											<input type="text" autocomplete="off" id="sdsd" name="start_date" placeholder="" value="<?=$search[0]->start_date?>" class="form-control datepicker"
+												style="border: none;padding-right: 0px;padding-left: 1px;margin-top: -5px;background: transparent;">
+										</label>
+									</div>
+									<div class="timepicker_div form-sec-header" style="height: 50px;width: 80px;margin-left: 12px;">
+										<label class="cal-icon" style="top:11px;left: 10px;">TIME
+											<input type="text" autocomplete="off" id="sdst" name="start_time" class="form-control timepicker" placeholder="" value="<?=$search[0]->start_time?>"
+												style="background-color: transparent;border: none;margin-left: -13px; margin-top: -5px; width: 122%;">
+									</div>
+								</div>
 							<?}?>
 							<input type="hidden" name="city_id" class="city_id"  value="<?=$search[0]->city_id?>"/>
-							<input type="hidden" name="duration" value="" id="duration">
+							<input type="hidden" name="duration" value="1" id="duration">
 							<input type="hidden" name="index" value="1" id="index">
     					<button class="headerbtn mt-2 desktopbtn shadowbtn pdbtn"
     						style="height: 45px;font-weight: bold;letter-spacing: 1px;margin-left: 20px;" type="submit" id="self_btn" >Search</button>

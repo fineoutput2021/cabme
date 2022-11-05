@@ -60,7 +60,6 @@ var base_url = "<?=base_url()?>"
 <script src="<?=base_url()?>assets/frontend/customJS/mixed.js"></script>
 <script src="<?=base_url()?>assets/frontend/js/bootstrap.min.js"></script>
 <script src="<?=base_url()?>assets/frontend/js/modernizr.js"></script>
-<script src="<?=base_url()?>assets/frontend/js/select2.min.js"></script>
 <script src="<?=base_url()?>assets/frontend/js/jquery.menu-aim.js"></script>
 <script src="<?=base_url()?>assets/frontend/js/jquery-ui.js"></script>
 <script src="<?=base_url()?>assets/frontend/js/jquery.nice-select.min.js"></script>
@@ -72,6 +71,8 @@ var base_url = "<?=base_url()?>"
 <!-- scripts js -->
 <!-- <script src="<?=base_url()?>assets/frontend/js/scripts.js"></script> -->
 <script src="<?=base_url()?>assets/frontend/js/bootstrap-notify.min.js"></script>
+<script src="<?=base_url()?>assets/frontend/js/select2.min.js"></script>
+
 
 <!-- custom js-->
 <script>

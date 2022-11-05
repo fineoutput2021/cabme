@@ -20,6 +20,18 @@
       border-bottom-right-radius: 20px;
     }
   }
+  .custom{
+    background-color: #fff;
+    width: 220px !important;
+    padding: 0px 5px;
+    height: 50px;
+    border: 1px solid #eeeeee;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    border-radius: 10px;
+    box-shadow: 0px 0 8px rgb(0 0 0 / 10%);
+  }
+
 </style>
 <!--====== Sort By Modal ======-->
 
@@ -38,9 +50,11 @@
       </div>
       <!-- Segment -->
       <div class="modal-body">
-        <form method="get" enctype="multipart/form-data" action="<?=base_url()?>Home/show_outstation_cars/<?=base64_encode($search[0]->id)?>">
+        <form method="get" enctype="multipart/form-data" action="<?=base_url()?>Home/show_outstation_cars/<?=base64_encode($search[0]->id)?>" id="mobform">
           <button type="submit" class="btn  bg-b" style="color:white;float: right;box-shadow:none;">Apply</button>
         <br>
+        <input type="hidden" name="sort" value="<?=$sort?>" id="m_sort">
+
         <!-- Seating Capacity -->
         <h5 class="mb-2" style="font-weight: bold;">Seating Capacity</h5>
         <div class="doflex">
@@ -119,7 +133,8 @@
             <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
               <!-- Filter Results -->
               <div class="car-filter accordion car_booking_onliy_side" style="margin-top: 46px;">
-                  <form method="get" enctype="multipart/form-data" action="<?=base_url()?>Home/show_outstation_cars/<?=base64_encode($search[0]->id)?>">
+                  <form method="get" enctype="multipart/form-data" action="<?=base_url()?>Home/show_outstation_cars/<?=base64_encode($search[0]->id)?>" id="webform">
+                  <input type="hidden" name="sort" value="<?=$sort?>" id="w_sort">
                 <div class="row">
                   <div class="col-md-6">
                     <h3 style="margin-top: 5px;">Filters</h3>
@@ -170,10 +185,10 @@
           <div class="row mt-2">
             <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
               <div class="x_carbook_right_select_box_wrapper float-right desktopsortbydiv"> <span style="font-size: 17px;color: #494848;font-weight: bold;">Sort By: &nbsp;</span>
-                <select class="myselect">
-                  <option>None</option>
-                  <option>Price: Low To High</option>
-                  <option>Price: High To Low</option>
+                <select class="custom" name="filter" id="sort_by">
+                <option value="none" <?if($sort=='none'){echo 'selected';}?>>None</option>
+                <option value="asc"  <?if($sort=='asc'){echo 'selected';}?>>Low To High</option>
+                <option value="desc" <?if($sort=='desc'){echo 'selected';}?>>High To Low</option>
                 </select>
               </div>
             </div>
@@ -262,6 +277,24 @@
 
     <!-- ======================================  Mobile Sort by & Filters End   ====================================== -->
   </div>
+  <script>
+$(document).ready(function() {
+  var form = document.getElementById("webform");
+
+  $('#sort_by').on('change', function() {
+    var optionSelected = $("option:selected", this);
+       var valueSelected = this.value;
+       $('#w_sort').val(valueSelected);
+     form.submit();
+  });
+
+});
+function mobile_sort(x){
+  var form2 = document.getElementById("mobform");
+  $('#m_sort').val(x);
+  form2.submit();
+}
+  </script>
   <!-- x car book sidebar section Wrapper End -->
   <!--====== Content ======-->
   <!-- <div class="container">
