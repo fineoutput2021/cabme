@@ -163,6 +163,8 @@ class Booking extends CI_finecontrol
                 $this->form_validation->set_rules('location', 'location', 'required|xss_clean|trim');
                 $this->form_validation->set_rules('end_kilometer', 'end_kilometer', 'required|xss_clean|trim');
                 if ($this->form_validation->run()== true) {
+                             date_default_timezone_set("Asia/Calcutta");
+                             $cur_date=date("Y-m-d H:i:s");
                     $id=$this->input->post('id');
                     $location=$this->input->post('location');
                     $end_kilometer=$this->input->post('end_kilometer');
