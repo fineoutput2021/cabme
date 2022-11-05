@@ -760,6 +760,11 @@ class Home extends CI_Controller
     {
         $id=base64_decode($idd);
         $data['id']=$idd;
+        if (isset($_GET['seating'])) {
+          $seating = $_GET["seating"];
+        }else{
+          $seating ='';
+        }
         $search = $this->db->get_where('tbl_search', array('id'=> $id))->result();
         $send= array(
     'city_id'=>$search[0]->city_id,
@@ -769,11 +774,13 @@ class Home extends CI_Controller
     'end_time'=>$search[0]->end_time,
     'duration'=>$search[0]->duration,
     'round_type'=>$search[0]->round_type,
+      'seating'=>$seating,
     // 'index'=>$index,
   );
         $car_data = $this->booking->ViewOutstationCars($send);
         $data['car_data']= $car_data['car_data'];
         $data['search']= $search;
+        $data['seating']= $seating;
         $this->load->view('frontend/common/header2', $data);
         $this->load->view('frontend/outstation_cars');
         $this->load->view('frontend/common/footer');

@@ -446,6 +446,11 @@
         </div>
       </div>
     </div>
+    <?}else{?>
+<div class="col-lg-8 col-md-12 p-3 mt-5 text-center" style="align-self:center">
+  <h4>No Car Available! </h4>
+</div>
+      <?}?>
     <!-- ======================================  Mobile Sort by & Filters Start   ====================================== -->
     <div class="container-fluid pl-0" style="position: fixed;bottom: 0; background-color: #fff;z-index: 110000;">
       <div class="row text-center mobiledown">
@@ -457,11 +462,7 @@
         </div>
       </div>
     </div>
-    <?}else{?>
-<div class="col-lg-8 col-md-12 p-3 mt-5 text-center" style="align-self:center">
-  <h4>No Car Available! </h4>
-</div>
-      <?}?>
+
     <!-- ======================================  Mobile Sort by & Filters End   ====================================== -->
   </div>
   <script>

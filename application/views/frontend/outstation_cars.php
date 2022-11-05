@@ -21,6 +21,55 @@
     }
   }
 </style>
+<!--====== Sort By Modal ======-->
+
+<div class="filterbyModal fade" id="filterbyModal" role="dialog" style="z-index: 99999;">
+  <div class="sortbyModal-dialog modal-dialog">
+
+    <!-- Modal content-->
+    <div class="sortbyModal-content modal-content" >
+      <div class="modal-header p-1">
+        <div class="col-md-11 col-11 text-center">
+          <h6 class="modal-title">Filters</h6>
+        </div>
+        <div class="col-md-1 col-1"> <button type="button" class="close"
+            data-dismiss="modal">&times;</button>
+        </div>
+      </div>
+      <!-- Segment -->
+      <div class="modal-body">
+        <form method="get" enctype="multipart/form-data" action="<?=base_url()?>Home/show_outstation_cars/<?=base64_encode($search[0]->id)?>">
+          <button type="submit" class="btn  bg-b" style="color:white;float: right;box-shadow:none;">Apply</button>
+        <br>
+        <!-- Seating Capacity -->
+        <h5 class="mb-2" style="font-weight: bold;">Seating Capacity</h5>
+        <div class="doflex">
+          <div class="x_slider_checkbox x_slider_checkbox_bottom_filter_use">
+            <input type="checkbox" id="5-Seats" name="seating[]" value="1" <?if(!empty($seating)){foreach ($seating as $value) {
+              if($value==1){echo "checked";break;}
+            }}?>>
+            <label for="5-Seats"> 5 Seats </label>
+          </div> &nbsp; &nbsp;
+          <div class="x_slider_checkbox x_slider_checkbox_bottom_filter_use">
+            <input type="checkbox" id="7-Seats" name="seating[]" value="2" <?if(!empty($seating)){foreach ($seating as $value) {
+              if($value==2){echo "checked";break;}
+            }}?>>
+            <label for="7-Seats">7 Seats </label>
+          </div> &nbsp; &nbsp;
+          <div class="x_slider_checkbox x_slider_checkbox_bottom_filter_use">
+            <input type="checkbox" id="9-Seatsss"  name="seating[]" value="3" <?if(!empty($seating)){foreach ($seating as $value) {
+              if($value==3){echo "checked";break;}
+            }}?>>
+            <label for="9-Seatsss">9 Seats </label>
+          </div> &nbsp; &nbsp;
+        </div>
+  </form>
+      </div>
+      <!-- Segment End -->
+    </div>
+  </div>
+</div>
+
 <!-- btc tittle Wrapper Start -->
 <div class="btc_tittle_main_wrapper" style="margin-top: 100px;">
   <div class="container-fluid">
@@ -43,7 +92,7 @@
 <!-- x car book sidebar section Wrapper Start -->
 <div class="x_car_book_sider_main_Wrapper float_left mt-4">
   <div class="container-fluid">
-    <?if(!empty($car_data)){?>
+
     <div class="row mt-5">
       <div class="col-xl-3 col-lg-4 col-md-12 col-sm-12 col-12 desktopfilterdiv">
         <!-- btc tittle Wrapper Start -->
@@ -70,99 +119,59 @@
             <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
               <!-- Filter Results -->
               <div class="car-filter accordion car_booking_onliy_side" style="margin-top: 46px;">
+                  <form method="get" enctype="multipart/form-data" action="<?=base_url()?>Home/show_outstation_cars/<?=base64_encode($search[0]->id)?>">
                 <div class="row">
                   <div class="col-md-6">
                     <h3 style="margin-top: 5px;">Filters</h3>
                   </div>
                   <div class="col-md-6">
-                    <a href="#" style="color: red;float: right;">Reset
-                      All</a>
+                <button type="submit" class="btn  bg-b" style="color:white;float: right;box-shadow:none;">Apply</button>
                   </div>
                 </div>
                 <hr>
-                <!-- Segment -->
-                <div class="panel panel-default">
-                  <div class="panel-heading">
-                    <h5 class="panel-title"> <a data-toggle="collapse" href="#collapseOne" class="collapse"> Segment</a> </h5>
-                  </div>
-                  <div id="collapseOne" class="collapse show">
-                    <div class="panel-body">
-                      <div class="x_slider_checkbox x_slider_checkbox_bottom_filter_use">
-                        <input type="checkbox" id="c3" name="cb" class="clearcheckbox">
-                        <label for="c3">Hatchback</label>
-                      </div>
-                      <div class="x_slider_checkbox x_slider_checkbox_bottom_filter_use">
-                        <input type="checkbox" id="c4" name="cb">
-                        <label for="c4">Sedan</label>
-                      </div>
-                      <div class="x_slider_checkbox x_slider_checkbox_bottom_filter_use">
-                        <input type="checkbox" id="c5" name="cb">
-                        <label for="c5">SUV</label>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <hr>
-                <!-- Segment End -->
-                <!-- Brand -->
-                <div class="panel panel-default">
-                  <div class="panel-heading">
-                    <h5 class="panel-title"> <a data-toggle="collapse" href="#collapseTwo" class="collapse">Brand</a> </h5>
-                  </div>
-                  <div id="collapseTwo" class="collapse ">
-                    <div class="panel-body">
-                      <div class="x_slider_checkbox x_slider_checkbox_bottom_filter_use">
-                        <input type="checkbox" id="brand_1" name="cb">
-                        <label for="brand_1">Hyundai</label>
-                      </div>
-                      <div class="x_slider_checkbox x_slider_checkbox_bottom_filter_use">
-                        <input type="checkbox" id="brand_2" name="cb">
-                        <label for="brand_2">Maruti</label>
-                      </div>
-                      <div class="x_slider_checkbox x_slider_checkbox_bottom_filter_use">
-                        <input type="checkbox" id="brand_3" name="cb">
-                        <label for="brand_3">Mahindra</label>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <hr>
-                <!-- Brand End -->
                 <!-- Seating Capacity -->
                 <div class="panel panel-default">
                   <div class="panel-heading">
                     <h5 class="panel-title"> <a data-toggle="collapse" href="#collapseFive" class="collapse"> Seating Capacity</a> </h5>
                   </div>
-                  <div id="collapseFive" class="collapse ">
+                  <div id="collapseFive" class="collapse show ">
                     <div class="panel-body">
                       <div class="x_slider_checkbox x_slider_checkbox_bottom_filter_use">
-                        <input type="checkbox" id="5_Seats" name="cb">
+                        <input type="checkbox" id="5_Seats" name="seating[]" value="1" <?if(!empty($seating)){foreach ($seating as $value) {
+                          if($value==1){echo "checked";break;}
+                        }}?>>
                         <label for="5_Seats">5 Seats</label>
                       </div>
                       <div class="x_slider_checkbox x_slider_checkbox_bottom_filter_use">
-                        <input type="checkbox" id="7_Seats" name="cb">
+                        <input type="checkbox" id="7_Seats" name="seating[]" value="2" <?if(!empty($seating)){foreach ($seating as $value) {
+                          if($value==2){echo "checked";break;}
+                        }}?>>
                         <label for="7_Seats">7 Seats</label>
                       </div>
                       <div class="x_slider_checkbox x_slider_checkbox_bottom_filter_use">
-                        <input type="checkbox" id="9_Seatss" name="cb">
+                        <input type="checkbox" id="9_Seatss" name="seating[]" value="3" <?if(!empty($seating)){foreach ($seating as $value) {
+                          if($value==3){echo "checked";break;}
+                        }}?>>
                         <label for="9_Seatss">9 Seats</label>
                       </div>
                     </div>
                   </div>
                 </div>
                 <hr>
+                </form>
               </div>
             </div>
           </div>
         </div>
       </div>
+      <?if(!empty($car_data)){?>
       <div class="col-xl-9 col-lg-8 col-md-12 col-sm-12 col-12">
         <div class="x_carbooking_right_section_wrapper float_left">
           <div class="row mt-2">
             <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
               <div class="x_carbook_right_select_box_wrapper float-right desktopsortbydiv"> <span style="font-size: 17px;color: #494848;font-weight: bold;">Sort By: &nbsp;</span>
                 <select class="myselect">
-                  <option>Popularity</option>
+                  <option>None</option>
                   <option>Price: Low To High</option>
                   <option>Price: High To Low</option>
                 </select>
@@ -234,8 +243,13 @@
         </div>
       </div>
     </div>
+    <?}else{?>
+      <div class="col-lg-8 col-md-12 p-3 mt-5 text-center" style="align-self:center">
+        <h4>No Car Available! </h4>
+      </div>
+    <?}?>
     <!-- ======================================  Mobile Sort by & Filters Start   ====================================== -->
-    <div class="container-fluid" style="position: fixed;bottom: 0; background-color: #fff;z-index: 110000;">
+    <div class="container-fluid pl-0 " style="position: fixed;bottom: 0; background-color: #fff;z-index: 110000;">
       <div class="row text-center mobiledown">
         <div class="col-6 p-3">
           <a href="#" data-toggle="modal" data-target="#sortbyModal" id="sbymodal"> <img src="<?=base_url()?>assets/frontend/images/sortbyimg.png" alt="sortbyimg"> Sort By</a>
@@ -245,11 +259,7 @@
         </div>
       </div>
     </div>
-    <?}else{?>
-<div class="container p-3 mt-5 text-center">
-<h4>No Car Available! </h4>
-</div>
-    <?}?>
+
     <!-- ======================================  Mobile Sort by & Filters End   ====================================== -->
   </div>
   <!-- x car book sidebar section Wrapper End -->

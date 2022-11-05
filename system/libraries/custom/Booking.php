@@ -389,13 +389,24 @@ $booking_update = array('pick_location'=>$pickup_location,
 
         $car_data=[];
         foreach ($outstation_cars as $car) {
+          $b=0;
+          // ---brandwise filter -----
+          if(!empty($receive['seating'])){
+                foreach ($receive['seating'] as $brd) {
+                  if($brd==$car->seatting){
+                    $b=1;
+                    break;
+                  }
+                }
+          }
+          if($b==1 || empty($receive['seating'])){
             //------ seating  ---
             if ($car->seatting==1) {
-                $seating = '4 Seates';
-            } elseif ($car->seatting==2) {
                 $seating = '5 Seates';
-            } else {
+            } elseif ($car->seatting==2) {
                 $seating = '7 Seates';
+            } else {
+                $seating = '9 Seates';
             }
             // $days =$receive['duration']/24;
             $car_data[] = array('city_id'=>$car->city_id,
@@ -409,6 +420,7 @@ $booking_update = array('pick_location'=>$pickup_location,
                     'min_booking_amt'=>$car->min_booking_amt,
                     );
         }
+      }
         $respone['status'] = true;
         $respone['message'] ="Success";
         $respone['car_data'] =$car_data;
