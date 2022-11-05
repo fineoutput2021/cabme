@@ -62,19 +62,19 @@ if (!empty($this->session->flashdata('emessage'))) { ?>
                     <tr>
                       <td> <strong>Price</strong> <span style="color:red;">*</span></strong> </td>
                       <td>
-                        <input type="text" name="price" class="form-control" onkeypress="return isNumberKey(event)"  placeholder="car_name" required value="<?=$intercity->price?>" />
+                        <input type="text" name="price" class="form-control" onkeypress="return isNumberKey(event)"  placeholder="" required value="<?=$intercity->price?>" />
                       </td>
                     </tr>
                     <tr>
                       <td> <strong>Kilometer Cap</strong> <span style="color:red;">*</span></strong> </td>
                       <td>
-                        <input type="text" name="Kilomitere_cab" onkeypress="return isNumberKey(event)"  class="form-control" placeholder="name" required value="<?=$intercity->Kilomitere_cab?>" />
+                        <input type="text" name="Kilomitere_cab" onkeypress="return isNumberKey(event)"  class="form-control" placeholder="" required value="<?=$intercity->Kilomitere_cab?>" />
                       </td>
                     </tr>
                     <tr>
                       <td> <strong>Minimum Booking Amount</strong> <span style="color:red;">*</span></strong> </td>
                       <td>
-                        <input type="text" name="min_amount" onkeypress="return isNumberKey(event)"  class="form-control" placeholder="name" required value="<?=$intercity->min_amount?>" />
+                        <input type="text" name="min_amount" onkeypress="return isNumberKey(event)"  class="form-control" placeholder="" required value="<?=$intercity->min_amount?>" />
                       </td>
                     </tr>
                     <tr>

@@ -54,6 +54,8 @@
                       <?if ($booking_type==3) {?>
                       <th>Car Type</th>
                       <?}?>
+
+                      <th>Deposite</th>
                       <th>Pick Location</th>
                       <th>Drop Location</th>
                       <th>Start Kilometer</th>
@@ -74,6 +76,10 @@
                     <?php $i=1;
 foreach ($booking_data->result() as $data) {
     $user_data = $this->db->get_where('tbl_users', array('is_active'=> 1,'id'=> $data->user_id))->result();
+    $City_data = $this->db->get_where('tbl_cities', array('is_active'=> 1,'id'=> $data->city_id))->result();
+        $Self_drive_data = $this->db->get_where('tbl_selfdrive', array('is_active'=> 1,'id'=> $data->car_id))->result();
+        // print_r($data->car_id);die();
+
     $promo_data = $this->db->get_where('tbl_promocode', array('is_active'=> 1,'id'=> $data->promocode))->result();
     if(!empty($promo_data)){
       $promocode=$promo_data[0]->promocode ;
@@ -99,8 +105,8 @@ foreach ($booking_data->result() as $data) {
                       <td><?php echo $promocode ?></td>
                       <td>₹<?php echo $discount ?></td>
                       <td>₹<?php echo $data->final_amount ?></td>
-                      <td><?php echo $data->city_id ?></td>
-                      <td><?php echo $data->car_id ?></td>
+                      <td><?php echo $City_data[0]->name?></td>
+                      <td><?php echo $Self_drive_data[0]->car_name ?></td>
                       <td><?php echo $data->start_date ?></td>
                       <td><?php echo $data->end_date ?></td>
                       <td><?php echo $data->start_time ?></td>
@@ -127,6 +133,7 @@ foreach ($booking_data->result() as $data) {
     } ?>
                       </td>
                       <?} ?>
+                        <td><?php echo $data->rsda ?></td>
                       <td><?php echo $data->pick_location ?></td>
                       <td><?php echo $data->drop_location ?></td>
                       <td><?php echo $data->start_kilometer ?></td>
@@ -205,7 +212,7 @@ foreach ($booking_data->result() as $data) {
                       </ul>
                           </div>
                           </div>
-                          <?}echo "NA";?>
+                          <?}else{echo "NA";}?>
                       </td>
                     </tr>
                     <?php $i++;

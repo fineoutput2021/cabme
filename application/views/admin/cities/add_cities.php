@@ -51,8 +51,8 @@
                       <td>
                         <select name="top" class="form-control" required>
                           <option value="">---Select -----</option>
-                          <option value="yes">Yes</option>
-                          <option value="no">NO</option>
+                          <option value="Yes">Yes</option>
+                          <option value="NO">NO</option>
 
                         </select>
                       </td>

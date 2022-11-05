@@ -50,13 +50,13 @@ if (!empty($this->session->flashdata('emessage'))) { ?>
                     <tr>
                       <td> <strong>Brand-name</strong> <span style="color:red;">*</span></strong> </td>
                       <td>
-                        <input type="text" name="brand_name" class="form-control" placeholder="brand_name" required value="<?=$Self_drive->brand_name?>" />
+                        <input type="text" name="brand_name" class="form-control" placeholder="" required value="<?=$Self_drive->brand_name?>" />
                       </td>
                     </tr>
                     <tr>
                       <td> <strong>Car-name</strong> <span style="color:red;">*</span></strong> </td>
                       <td>
-                        <input type="text" name="car_name" class="form-control" placeholder="car_name" required value="<?=$Self_drive->car_name?>" />
+                        <input type="text" name="car_name" class="form-control" placeholder="" required value="<?=$Self_drive->car_name?>" />
                       </td>
                     </tr>
                     <tr>
@@ -102,49 +102,49 @@ if (!empty($this->session->flashdata('emessage'))) { ?>
                     <tr>
                       <td> <strong>kilometer1</strong> <span style="color:red;">*</span></strong> </td>
                       <td>
-                        <input type="text" name="kilometer1" onkeypress="return isNumberKey(event)" class="form-control" placeholder="name" required value="<?=$Self_drive->kilometer1?>" />
+                        <input type="text" name="kilometer1" onkeypress="return isNumberKey(event)" class="form-control" placeholder="" required value="<?=$Self_drive->kilometer1?>" />
                       </td>
                     </tr>
                     <tr>
                       <td> <strong>Price1</strong> <span style="color:red;">*</span></strong> </td>
                       <td>
-                        <input type="text" name="price1" onkeypress="return isNumberKey(event)" class="form-control" placeholder="name" required value="<?=$Self_drive->price1?>" />
+                        <input type="text" name="price1" onkeypress="return isNumberKey(event)" class="form-control" placeholder="" required value="<?=$Self_drive->price1?>" />
                       </td>
                     </tr>
                     <tr>
                       <td> <strong>Kilometer2</strong> <span style="color:red;">*</span></strong> </td>
                       <td>
-                        <input type="text" name="kilometer2" onkeypress="return isNumberKey(event)" class="form-control" placeholder="name" required value="<?=$Self_drive->kilometer2?>" />
+                        <input type="text" name="kilometer2" onkeypress="return isNumberKey(event)" class="form-control" placeholder="" required value="<?=$Self_drive->kilometer2?>" />
                       </td>
                     </tr>
                     <tr>
                       <td> <strong>price2</strong> <span style="color:red;">*</span></strong> </td>
                       <td>
-                        <input type="text" name="price2" onkeypress="return isNumberKey(event)" class="form-control" placeholder="name" required value="<?=$Self_drive->price2?>" />
+                        <input type="text" name="price2" onkeypress="return isNumberKey(event)" class="form-control" placeholder="" required value="<?=$Self_drive->price2?>" />
                       </td>
                     </tr>
                     <tr>
                       <td> <strong>Kilometre3</strong> <span style="color:red;">*</span></strong> </td>
                       <td>
-                        <input type="text" name="kilometer3" onkeypress="return isNumberKey(event)" class="form-control" placeholder="name" required value="<?=$Self_drive->kilometer3?>" />
+                        <input type="text" name="kilometer3" onkeypress="return isNumberKey(event)" class="form-control" placeholder="" required value="<?=$Self_drive->kilometer3?>" />
                       </td>
                     </tr>
                     <tr>
                       <td> <strong>price3</strong> <span style="color:red;">*</span></strong> </td>
                       <td>
-                        <input type="text" name="price3" onkeypress="return isNumberKey(event)" class="form-control" placeholder="name" required value="<?=$Self_drive->price3?>" />
+                        <input type="text" name="price3" onkeypress="return isNumberKey(event)" class="form-control" placeholder="" required value="<?=$Self_drive->price3?>" />
                       </td>
                     </tr>
                     <tr>
                       <td> <strong>Extra-kilomerter</strong> <span style="color:red;">*</span></strong> </td>
                       <td>
-                        <input type="text" name="extra_kilo" onkeypress="return isNumberKey(event)" class="form-control" placeholder="name" required value="<?=$Self_drive->extra_kilo?>" />
+                        <input type="text" name="extra_kilo" onkeypress="return isNumberKey(event)" class="form-control" placeholder="" required value="<?=$Self_drive->extra_kilo?>" />
                       </td>
                     </tr>
                     <tr>
                       <td> <strong>Refundable Security Deposit Amount</strong>*<span style="color:red;"></span></strong> </td>
                       <td>
-                        <input type="text" name="rsda" onkeypress="return isNumberKey(event)" class="form-control" placeholder="name" required value="<?=$Self_drive->rsda?>" />
+                        <input type="text" name="rsda" onkeypress="return isNumberKey(event)" class="form-control" placeholder="" required value="<?=$Self_drive->rsda?>" />
                       </td>
                     </tr>
                     <tr>

@@ -51,13 +51,13 @@ if (!empty($this->session->flashdata('emessage'))) { ?>
                     <tr>
                       <td> <strong>Brand Name</strong> <span style="color:red;">*</span></strong> </td>
                       <td>
-                        <input type="text" name="brand_name" class="form-control" placeholder="brand_name" required value="<?=$station->brand_name?>" />
+                        <input type="text" name="brand_name" class="form-control" placeholder="" required value="<?=$station->brand_name?>" />
                       </td>
                     </tr>
                     <tr>
                       <td> <strong>Car Name</strong> <span style="color:red;">*</span></strong> </td>
                       <td>
-                        <input type="text" name="car_name" class="form-control" placeholder="car_name" required value="<?=$station->car_name?>" />
+                        <input type="text" name="car_name" class="form-control" placeholder="" required value="<?=$station->car_name?>" />
                       </td>
                     </tr>
                     <tr>
@@ -84,19 +84,19 @@ if (!empty($this->session->flashdata('emessage'))) { ?>
                       </tr>
                       <td> <strong>Rate Per Kilometre</strong> <span style="color:red;">*</span></strong> </td>
                       <td>
-                        <input type="text" name="per_kilometre" onkeypress="return isNumberKey(event)" class="form-control" placeholder="name" required value="<?=$station->per_kilometre?>" />
+                        <input type="text" name="per_kilometre" onkeypress="return isNumberKey(event)" class="form-control" placeholder="" required value="<?=$station->per_kilometre?>" />
                       </td>
                     </tr>
                     <tr>
                       <td> <strong>Location</strong> <span style="color:red;">*</span></strong> </td>
                       <td>
-                        <input type="text" name="location" class="form-control" placeholder="name" required value="<?=$station->location?>" />
+                        <input type="text" name="location" class="form-control" placeholder="" required value="<?=$station->location?>" />
                       </td>
                     </tr>
                     <tr>
                       <td> <strong>Minimum Booking Amount</strong> <span style="color:red;">*</span></strong> </td>
                       <td>
-                        <input type="text" name="min_amount" onkeypress="return isNumberKey(event)"  class="form-control" placeholder="name" required value="<?=$station->min_booking_amt?>" />
+                        <input type="text" name="min_amount" onkeypress="return isNumberKey(event)"  class="form-control" placeholder="" required value="<?=$station->min_booking_amt?>" />
                       </td>
                     </tr>
                     <tr>

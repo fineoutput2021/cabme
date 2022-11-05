@@ -1,7 +1,7 @@
 <div class="content-wrapper">
   <section class="content-header">
     <h1>
-      View Outstation
+       Outstation
     </h1>
     <ol class="breadcrumb">
       <li><a href="<?php echo base_url() ?>dcadmin/Home"><i class="fa fa-dashboard"></i> Dashboard</a></li>

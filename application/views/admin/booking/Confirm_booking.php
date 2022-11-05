@@ -37,7 +37,7 @@
                   <table class="table table-hover">
                     <input type="hidden" name="heading" value="<?=$heading?>">
                     <tr>
-                      <td> <strong>Image</strong> <span style="color:red;">*</span></strong> </td>
+                      <td> <strong>Invoice</strong> <span style="color:red;">*</span></strong> </td>
                       <td>
                         <input type="file" name="invoice_image" class="form-control" placeholder="" required value="" />
                       </td>
@@ -61,7 +61,7 @@
                 background-color: red;
                 border-color: red;
               }
-            </style>0
+            </style>
           </div>
         </div>
       </div>

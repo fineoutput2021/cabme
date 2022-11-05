@@ -20,6 +20,8 @@ class City extends CI_finecontrol
             $this->db->select('*');
             $this->db->from('tbl_cities');
             //$this->db->where('id',$usr);
+              $this->db->order_by('id', 'desc');
+
             $data['City_data']= $this->db->get();
             $this->load->view('admin/common/header_view', $data);
             $this->load->view('admin/cities/view_cities');
