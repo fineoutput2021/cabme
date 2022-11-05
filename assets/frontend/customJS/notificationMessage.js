@@ -14,7 +14,7 @@
       // ----------------------------SUCCESS ALERT----------------------------------------
       function notifySuccess(message){
         $.notify({
-                  icon: 'bi-check-circle-fill',
+                  icon: 'fa fa-check-circle',
                   // title: 'Alert!',
                   message: message
               },{
@@ -37,8 +37,8 @@
                       exit: 'animated fadeOutUp'
                   },
                   icon_type: 'class',
-                  template: '<div data-notify="container" class=" mobalert col-xs-11 col-sm-3 alert alert-success  alert-dismissible fade show alert-{0} " role="alert">' +
-                  '<button type="button" class="btn-close xcross" data-dismiss="alert" aria-label="Close">&times;</button>' +
+                  template: '<div data-notify="container" class=" mobalert col-xs-11 col-sm-3 alert alert-success alert-dismissible fade show alert-{0} " role="alert">' +
+                  '<button type="button" class="close" data-dismiss="alert">&times;</button>' +
                   '<span data-notify="icon"></span> ' +
                   '<span data-notify="title">{1}</span> ' +
                   '<span data-notify="message">{2}</span>' +
@@ -50,7 +50,7 @@
       // -----------------------------FAILURE ALERT--------------------------------------
       function notifyError(message){
         $.notify({
-                    icon: 'bi-exclamation-octagon-fill',
+                    icon: 'fa fa-exclamation-circle',
                     // title: 'Alert!',
                     message: message
                 },{
@@ -74,7 +74,7 @@
                     },
                     icon_type: 'class',
                     template: '<div data-notify="container" class=" mobalert col-xs-11 col-sm-3 alert alert-danger  alert-dismissible fade show alert-{0}  " role="alert">' +
-                    '<button type="button" class="btn-close xcross" data-dismiss="alert" aria-label="Close">&times;</button>' +
+                    '<button type="button" class="close" data-dismiss="alert">&times;</button>' +
                     '<span data-notify="icon"></span> ' +
                     '<span data-notify="title">{1}</span> ' +
                     '<span data-notify="message">{2}</span>' +
