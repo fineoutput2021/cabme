@@ -86,14 +86,14 @@
 						<ul class="nav nav-tabs All_Car_tabs plantabs w-100 mt-3"
 							style="display: inline-flex; flex-wrap: nowrap;">
 							<li class="nav-item"> <a class="nav-link <?if($booking_data[0]->kilometer_type==1){echo'active';}?>"
-									data-toggle="tab" href="#first"> ₹ <?=$car_data['price1']?> <br> <?=$car_data['kilometer1']?> Kms</a>
+									data-toggle="tab" href="#first" id="tab_1" value="1" idd="<?=base64_encode($booking_data[0]->id)?>" onclick="change_plan(this)"> ₹ <?=$car_data['price1']?> <br> <?=$car_data['kilometer1']?> Kms</a>
 							</li>
 							<li class="nav-item borderright"> <a class="nav-link <?if($booking_data[0]->kilometer_type==2){echo'active';}?> " data-toggle="tab"
-									href="#second"> ₹ <?=$car_data['price2']?> <br> <?=$car_data['kilometer2']?> Kms
+									href="#second" id="tab_2" value="2" idd="<?=base64_encode($booking_data[0]->id)?>" onclick="change_plan(this)"> ₹ <?=$car_data['price2']?> <br> <?=$car_data['kilometer2']?> Kms
 								</a>
 							</li>
 							<li class="nav-item" style="width: 34%;"> <a class="nav-link <?if($booking_data[0]->kilometer_type==3){echo'active';}?>" data-toggle="tab"
-									href="#third" > ₹ <?=$car_data['price3']?> <br> <?=$car_data['kilometer3']?> Kms
+									href="#third" id="tab_3" value="3" idd="<?=base64_encode($booking_data[0]->id)?>" onclick="change_plan(this)"> ₹ <?=$car_data['price3']?> <br> <?=$car_data['kilometer3']?> Kms
 								</a>
 							</li>
 						</ul>
@@ -329,7 +329,7 @@
 	</div>
 	</div>
 	<!--====== Content ======-->
-	<div class="container">
+	<!-- <div class="container">
 	  <div class="row p-3">
 	    <h4 class="mt-5">Self-Drive Car Rentals in Delhi NCR</h4>
 	    <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Totam amet nihil, voluptatem incidunt tempore
@@ -348,9 +348,36 @@
 	      incidunt tempore praesentium. Explicabo, minus quaerat in illo obcaecati impedit repellat quae esse,
 	      dolore incidunt modi pariatur sed?</p>
 	  </div>
-	</div>
+	</div> -->
 	<!--====== Content End ======-->
 
+<script>
+function change_plan(obj) {
+  var booking_id = $(obj).attr("idd");
+  var km_type = $(obj).attr("value");
+  // alert(value);
+	// return;
+  var base_path = "<?=base_url();?>";
+  $.ajax({
+    url: '<?=base_url();?>Home/change_plan',
+    method: 'post',
+    data: {
+      booking_id: booking_id,
+      km_type: km_type
+    },
+    dataType: 'json',
+    success: function(response) {
+			// alert(response.status)
+      if (response.status == true) {
+      location.reload()
+
+      } else if (response.status == false) {
+      location.reload()
+      }
+    }
+  });
+}
+</script>
 <script>
 function isNumberKey(evt){
     var charCode = (evt.which) ? evt.which : evt.keyCode

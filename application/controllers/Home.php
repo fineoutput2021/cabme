@@ -1,5 +1,4 @@
 <?php
-
 if (! defined('BASEPATH')) {
     exit('No direct script access allowed');
 }
@@ -55,7 +54,7 @@ class Home extends CI_Controller
                         );
                 $last_id=$this->base_model->insert_table("tbl_search", $data_insert, 1) ;
                 $id = base64_encode($last_id);
-                redirect("Home/show_self_drive_cars/$id","refresh");
+                redirect("Home/show_self_drive_cars/$id", "refresh");
             } else {
                 $this->session->set_flashdata('emessage', validation_errors());
                 redirect($_SERVER['HTTP_REFERER']);
@@ -73,29 +72,28 @@ class Home extends CI_Controller
         $search = $this->db->get_where('tbl_search', array('id'=> $id))->result();
         if (isset($_GET['sort'])) {
             $sort = $_GET["sort"];
-        }else{
-          $sort ='';
+        } else {
+            $sort ='';
         }
         if (isset($_GET['brand'])) {
             $brand = $_GET["brand"];
-        }else{
-          $brand ='';
+        } else {
+            $brand ='';
         }
         if (isset($_GET['fuel'])) {
             $fuel = $_GET["fuel"];
-        }else{
-          $fuel ='';
+        } else {
+            $fuel ='';
         }
-
         if (isset($_GET['transmission'])) {
             $transmission = $_GET["transmission"];
-        }else{
-          $transmission ='';
+        } else {
+            $transmission ='';
         }
         if (isset($_GET['seating'])) {
             $seating = $_GET["seating"];
-        }else{
-          $seating ='';
+        } else {
+            $seating ='';
         }
         // print_r($brand);die();
         $send= array(
@@ -232,6 +230,66 @@ class Home extends CI_Controller
         $this->load->view('frontend/self_summary');
         $this->load->view('frontend/common/footer');
     }
+    //========= self drive change plane ==========
+    public function change_plan()
+    {
+        $this->load->helper(array('form', 'url'));
+        $this->load->library('form_validation');
+        $this->load->helper('security');
+        if ($this->input->post()) {
+            $this->form_validation->set_rules('booking_id', 'booking_id', 'required|xss_clean|trim');
+            $this->form_validation->set_rules('km_type', 'km_type', 'required|xss_clean|trim');
+            if ($this->form_validation->run()== true) {
+                $booking_id=base64_decode($this->input->post('booking_id'));
+                $km_type=$this->input->post('km_type');
+
+                $booking_data = $this->db->get_where('tbl_booking', array('id'=> $booking_id))->result();
+                $car_data = $this->db->get_where('tbl_selfdrive', array('id'=> $booking_data[0]->car_id))->result();
+                //----- check kilometer plan ------
+                $days =$booking_data[0]->duration/24;
+                if ($km_type==1) {
+                    $kilometer = $car_data[0]->kilometer1*$days;
+                    $kilometer_price = $car_data[0]->price1*$days;
+                } elseif ($km_type==2) {
+                    $kilometer = $car_data[0]->kilometer2*$days;
+                    $kilometer_price = $car_data[0]->price2*$days;
+                } else {
+                    $kilometer = $car_data[0]->kilometer3*$days;
+                    $kilometer_price = $car_data[0]->price3*$days;
+                }
+                //---- calculate total amount -------
+                $rsda = $car_data[0]->rsda;
+                $total = $kilometer_price;
+                $final_amount = $total + $rsda;
+                $user_id=$this->session->userdata('user_id');
+                //------- insert into booking table --------
+                $data_update = array(
+                   'rsda'=>$rsda,
+                   'kilometer'=>$kilometer,
+                   'kilometer_price'=>$kilometer_price,
+                   'total_amount'=>$total,
+                   'final_amount'=>$final_amount,
+                   'kilometer_type'=>$km_type,
+                       );
+                       $this->db->where('id', $booking_id);
+                       $zapak=$this->db->update('tbl_booking', $data_update);
+                       $respone['status'] = true;
+                       // $respone['message'] ='Plan Change Successfully!';
+                       $this->session->set_flashdata('smessage', 'Plan Change Successfully!');
+                       echo json_encode($respone);
+            } else {
+              $respone['status'] = false;
+              // $respone['message'] ='Plan Change Successfully!';
+              $this->session->set_flashdata('emessage', validation_errors());
+              echo json_encode($respone);
+            }
+        } else {
+          $respone['status'] = false;
+          // $respone['message'] ='Plan Change Successfully!';
+          $this->session->set_flashdata('emessage', 'Please insert some data, No data available');
+          echo json_encode($respone);
+        }
+    }
     // ====================================== SELF DRIVE CHECKOUT ==========================
     public function self_checkout()
     {
@@ -243,14 +301,14 @@ class Home extends CI_Controller
             $this->form_validation->set_rules('dob', 'dob', 'required|xss_clean|trim');
             $this->form_validation->set_rules('aadhar_no', 'aadhar_no', 'required|xss_clean|trim');
             $this->form_validation->set_rules('driving_lience', 'driving_lience', 'required|xss_clean|trim');
-            $this->form_validation->set_rules('pickup_location', 'pickup_location', 'required|xss_clean|trim');
+            // $this->form_validation->set_rules('pickup_location', 'pickup_location', 'required|xss_clean|trim');
             $this->form_validation->set_rules('agree', 'agree', 'required|xss_clean|trim');
             if ($this->form_validation->run()== true) {
                 $id=base64_decode($this->input->post('id'));
                 $dob=$this->input->post('dob');
                 $aadhar_no=$this->input->post('aadhar_no');
                 $driving_lience=$this->input->post('driving_lience');
-                $pickup_location=$this->input->post('pickup_location');
+                // $pickup_location=$this->input->post('pickup_location');
                 $agree=$this->input->post('agree');
                 date_default_timezone_set("Asia/Calcutta");
                 $cur_date=date("Y-m-d H:i:s");
@@ -355,8 +413,7 @@ class Home extends CI_Controller
                         $license_back = "assets/uploads/documents/".$new_file_name.$file_info['file_ext'];
                     }
                 }
-                $amount = $this->booking->selfCheckout($id, $dob, $aadhar_no, $driving_lience, $pickup_location, $aadhar_front, $aadhar_back, $license_front, $license_back);
-
+                $amount = $this->booking->selfCheckout($id, $dob, $aadhar_no, $driving_lience, $aadhar_front, $aadhar_back, $license_front, $license_back);
                 redirect("Home/self_payment/$id/$amount");
             } else {
                 $this->session->set_flashdata('emessage', validation_errors());
@@ -554,8 +611,6 @@ class Home extends CI_Controller
             echo json_encode($res);
         }
     }
-
-
     //====================================== Intercity calculate =====================================
     public function intercity_checkout()
     {
@@ -768,14 +823,14 @@ class Home extends CI_Controller
         $id=base64_decode($idd);
         $data['id']=$idd;
         if (isset($_GET['seating'])) {
-          $seating = $_GET["seating"];
-        }else{
-          $seating ='';
+            $seating = $_GET["seating"];
+        } else {
+            $seating ='';
         }
         if (isset($_GET['sort'])) {
-          $sort = $_GET["sort"];
-        }else{
-          $sort ='';
+            $sort = $_GET["sort"];
+        } else {
+            $sort ='';
         }
         $search = $this->db->get_where('tbl_search', array('id'=> $id))->result();
         $send= array(
@@ -937,7 +992,6 @@ class Home extends CI_Controller
         // print_r($data);die();
         $this->load->view('frontend/confirmation', $data);
     }
-
     // =========================================== MY PROFILE ===============================================
     public function my_profile()
     {

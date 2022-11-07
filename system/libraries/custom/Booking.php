@@ -293,7 +293,7 @@ class CI_Booking
         return $respone;
     }
     //========= selfdrive booking checkout========
-    public function selfCheckout($id,$dob,$aadhar_no,$driving_lience,$pickup_location,$aadhar_front,$aadhar_back,$license_front,$license_back)
+    public function selfCheckout($id,$dob,$aadhar_no,$driving_lience,$aadhar_front,$aadhar_back,$license_front,$license_back)
     {
     $user_id=$this->CI->session->userdata('user_id');
       //-------- update user data ------
@@ -306,7 +306,7 @@ class CI_Booking
                   $data = $this->CI->db->get_where('tbl_booking', array('id'=> $id))->result();
                   $final_amt=$data[0]->total_amount-$data[0]->promo_discount+$data[0]->rsda;
 //--------------------- update booking data -------------------
-$booking_update = array('pick_location'=>$pickup_location,
+$booking_update = array(
                   'aadhar_front'=>$aadhar_front,
                   'aadhar_back'=>$aadhar_back,
                   'license_front'=>$license_front,
