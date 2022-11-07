@@ -313,6 +313,14 @@ class Home extends CI_Controller
                 date_default_timezone_set("Asia/Calcutta");
                 $cur_date=date("Y-m-d H:i:s");
                 $this->load->library('upload');
+                //----- verify date -----
+                $bday = new DateTime($dob); // Your date of birth
+                $today = new Datetime(date('m.d.y'));
+                $diff = $today->diff($bday);
+                if($diff->y<18){
+                  $this->session->set_flashdata('emessage', 'Age is less than 18 years!');
+                  redirect($_SERVER['HTTP_REFERER']);
+                }
                 //----------------aadhar front ----------
                 $img1='aadhar_front';
                 $file_check=($_FILES['aadhar_front']['error']);
