@@ -109,6 +109,7 @@ class Outstation extends CI_finecontrol
 'min_booking_amt'=>$min_amount,
 'city_id'=>$city_id,
 'is_active' =>1,
+'is_available' =>1,
 'date'=>$cur_date
 );
                         $last_id=$this->base_model->insert_table("tbl_outstation", $data_insert, 1) ;
