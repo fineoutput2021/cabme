@@ -3,6 +3,12 @@
     .desktopbtn {
       display: none;
     }
+    .mobilebtn {
+      display: block!important;
+    }
+    .mob_r {
+      margin-top:  3rem!important;
+    }
   }
 
   .fa-user {

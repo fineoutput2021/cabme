@@ -353,6 +353,7 @@
     							<label class="cal-icon" style="top:11px;left: 10px;"> Start Date
     								<input type="text" autocomplete="off" id="sdsd" name="start_date" placeholder="" value="<?=$search[0]->start_date?>" class="form-control datepicker"
     									style="border: none;padding-right: 0px;padding-left: 1px;margin-top: -5px;background: transparent;">
+
     							</label>
 
     						</div>
@@ -383,6 +384,8 @@
 							<input type="hidden" name="index" value="1" id="index">
     					<button class="headerbtn mt-2 desktopbtn shadowbtn pdbtn"
     						style="height: 45px;font-weight: bold;letter-spacing: 1px;margin-left: 20px;" type="submit" id="self_btn" >Search</button>
+    					<button class="headerbtn mt-2 mobilebtn shadowbtn pdbtn d-none"
+    						style="height: 31px;font-weight: bold;letter-spacing: 1px;margin-left:30%;" type="submit" id="self_btn" >Search</button>
     				</div>
 							</form>
 							<?if(!empty($search[0]->end_date)){?>
@@ -394,3 +397,6 @@
     			</div>
 	</div>
 	<!-- HeaqderEnd -->
+	<script>
+			$(".datepicker").datepicker();
+	</script>

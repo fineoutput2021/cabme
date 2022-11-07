@@ -3,6 +3,12 @@
     .desktopbtn {
       display: none;
     }
+    .mobilebtn {
+      display: block!important;
+    }
+    .mob_r {
+      margin-top:  3rem!important;
+    }
   }
 
   .fa-user {
@@ -340,7 +346,7 @@
       <?if(!empty($car_data)){?>
       <div class="col-xl-9 col-lg-8 col-md-12 col-sm-12 col-12">
         <div class="x_carbooking_right_section_wrapper float_left">
-          <div class="row mt-2">
+          <div class="row mt-2 mob_r">
             <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
               <!-- <div class="float-left mt-3 col-md-6 col-12 mobilejustify">
                 <h5>Car Rental In: &nbsp; <span style="font-size: 20px;color: black;margin-top: -5px;" >Jaipur</span></h5>

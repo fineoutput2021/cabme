@@ -397,6 +397,8 @@
 							<input type="hidden" name="index" value="1" id="index">
     					<button class="headerbtn mt-2 desktopbtn shadowbtn pdbtn"
     						style="height: 45px;font-weight: bold;letter-spacing: 1px;margin-left: 20px;" type="submit" id="self_btn" >Search</button>
+								<button class="headerbtn mt-2 mobilebtn shadowbtn pdbtn d-none"
+									style="height: 31px;font-weight: bold;letter-spacing: 1px;margin-left:30%;" type="submit" id="self_btn" >Search</button>
     				</div>
 							</form>
 							<?if(!empty($search[0]->end_date)){?>

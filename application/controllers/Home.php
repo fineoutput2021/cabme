@@ -67,9 +67,24 @@ class Home extends CI_Controller
     //========================== self drive cars ============================
     public function show_self_drive_cars($idd)
     {
+
         $id=base64_decode($idd);
         $data['id']=$idd;
         $search = $this->db->get_where('tbl_search', array('id'=> $id))->result();
+        //----- start check date is past ----------
+        date_default_timezone_set('Asia/Kolkata');
+        $newdate = new DateTime($search[0]->start_date);
+        $date=$newdate->format('Y-m-d');
+        $newtime= new DateTime($search[0]->start_time);
+        $time=$newtime->format('H:i:s');
+        $myDate = date("Y-m-d H:i:s", strtotime("$date $time"));
+        $curDateTime = date("Y-m-d H:i:s");
+          if ($curDateTime > $myDate) {
+        $this->session->set_flashdata('emessage', 'Please select date and time agian!');
+          redirect("Home","refresh");
+        }
+        //----- end check date is past ----------
+
         if (isset($_GET['sort'])) {
             $sort = $_GET["sort"];
         } else {
@@ -182,6 +197,19 @@ class Home extends CI_Controller
         $id=base64_decode($idd);
         $data['id']=$idd;
         $data['booking_data'] = $this->db->get_where('tbl_booking', array('id'=> $id))->result();
+        //----- start check date is past ----------
+        date_default_timezone_set('Asia/Kolkata');
+        $newdate = new DateTime($data['booking_data'][0]->start_date);
+        $date=$newdate->format('Y-m-d');
+        $newtime= new DateTime($data['booking_data'][0]->start_time);
+        $time=$newtime->format('H:i:s');
+        $myDate = date("Y-m-d H:i:s", strtotime("$date $time"));
+        $curDateTime = date("Y-m-d H:i:s");
+          if ($curDateTime > $myDate) {
+        $this->session->set_flashdata('emessage', 'Please select date and time agian!');
+          redirect("Home","refresh");
+        }
+        //----- end check date is past ----------
         $self = $this->db->get_where('tbl_selfdrive', array('id'=> $data['booking_data'][0]->car_id))->result();
         $data['user_data'] = $this->db->get_where('tbl_users', array('id'=> $data['booking_data'][0]->user_id))->result();
         //-----========= city data =============
@@ -635,6 +663,20 @@ class Home extends CI_Controller
                 $customer_name=$this->session->userdata('name');
                 $customer_emial=$this->session->userdata('email');
                 $customer_mobile=$this->session->userdata('phone');
+                $booking = $this->db->get_where('tbl_booking', array('id'=> $id))->result();
+                //----- start check date is past ----------
+                date_default_timezone_set('Asia/Kolkata');
+                $newdate = new DateTime($booking[0]->start_date);
+                $date=$newdate->format('Y-m-d');
+                $newtime= new DateTime($booking[0]->start_time);
+                $time=$newtime->format('H:i:s');
+                $myDate = date("Y-m-d H:i:s", strtotime("$date $time"));
+                $curDateTime = date("Y-m-d H:i:s");
+                  if ($curDateTime > $myDate) {
+                $this->session->set_flashdata('emessage', 'Please select date and time agian!');
+                  redirect("Home","refresh");
+                }
+                //----- end check date is past ----------
                 $url = PAYU_BASE_URL.'/_payment';
                 $MERCHANT_KEY = MERCHANT_KEY; //change  merchant with yours
                     $SALT = SALT;  //change salt with yours
@@ -841,6 +883,19 @@ class Home extends CI_Controller
             $sort ='';
         }
         $search = $this->db->get_where('tbl_search', array('id'=> $id))->result();
+        //----- start check date is past ----------
+        date_default_timezone_set('Asia/Kolkata');
+        $newdate = new DateTime($search[0]->start_date);
+        $date=$newdate->format('Y-m-d');
+        $newtime= new DateTime($search[0]->start_time);
+        $time=$newtime->format('H:i:s');
+        $myDate = date("Y-m-d H:i:s", strtotime("$date $time"));
+        $curDateTime = date("Y-m-d H:i:s");
+          if ($curDateTime > $myDate) {
+        $this->session->set_flashdata('emessage', 'Please select date and time agian!');
+          redirect("Home","refresh");
+        }
+        //----- end check date is past ----------
         $send= array(
     'city_id'=>$search[0]->city_id,
     'start_date'=>$search[0]->start_date,
@@ -922,6 +977,19 @@ class Home extends CI_Controller
         $id=base64_decode($idd);
         $data['id']=$idd;
         $data['booking_data'] = $this->db->get_where('tbl_booking', array('id'=> $id))->result();
+          //----- start check date is past ----------
+        date_default_timezone_set('Asia/Kolkata');
+        $newdate = new DateTime($data['booking_data'][0]->start_date);
+        $date=$newdate->format('Y-m-d');
+        $newtime= new DateTime($data['booking_data'][0]->start_time);
+        $time=$newtime->format('H:i:s');
+        $myDate = date("Y-m-d H:i:s", strtotime("$date $time"));
+        $curDateTime = date("Y-m-d H:i:s");
+          if ($curDateTime > $myDate) {
+        $this->session->set_flashdata('emessage', 'Please select date and time agian!');
+          redirect("Home","refresh");
+        }
+        //----- end check date is past ----------
         $car = $this->db->get_where('tbl_outstation', array('id'=> $data['booking_data'][0]->car_id))->result();
         $data['user_data'] = $this->db->get_where('tbl_users', array('id'=> $data['booking_data'][0]->user_id))->result();
         //-----========= city data =============
