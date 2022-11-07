@@ -134,6 +134,7 @@
                   <th>Booknig Type</th>
                   <th>Booking Amount</th>
                   <th>Status</th>
+                  <th>Details</th>
                   <th>Invoice</th>
 								</tr>
 							</thead>
@@ -170,6 +171,7 @@
 									<th>Booknig Type</th>
 									<th>Booking Amount</th>
 									<th>Status</th>
+									<!-- <th>Details</th> -->
 									<th>Invoice</th>
 								</tr>
 							</thead>
@@ -192,6 +194,8 @@
                     <span class="activespan bg-danger">Rejected</span>
                     <?}?>
                   </td>
+                  <!-- <td></td> -->
+                  <td></td>
 								</tr>
                 <?php $i++; } ?>
 							</tbody>
