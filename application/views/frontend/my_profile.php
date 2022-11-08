@@ -171,7 +171,7 @@
 									<th>Booknig Type</th>
 									<th>Booking Amount</th>
 									<th>Status</th>
-									<!-- <th>Details</th> -->
+									<th>Details</th>
 									<th>Invoice</th>
 								</tr>
 							</thead>
@@ -194,8 +194,8 @@
                     <span class="activespan bg-danger">Rejected</span>
                     <?}?>
                   </td>
-                  <!-- <td></td> -->
-                  <td></td>
+                  <td><a href="<?=base_url()?>Home/booking_details/<?=base64_encode($booking->id)?>">View</a></td>
+                  <td><?if(!empty($booking->invoice)){?>Download<?}?></td>
 								</tr>
                 <?php $i++; } ?>
 							</tbody>

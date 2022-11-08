@@ -1,119 +1,4 @@
 
-<!--======proof Modal ======-->
-
-<div class="modal fade" id="proofModal" role="dialog">
-	<div class="modal-dialog proofModal">
-		<!-- Modal content-->
-		<div class="modal-content loginModal-content">
-			<div class="modal-header">
-				<div class="col-md-11 col-11 text-center">
-					<h4 class="modal-title">Eligibility & ID</h4>
-				</div>
-				<div class="col-md-1 col-1"> <button type="button" class="close"
-						data-dismiss="modal">&times;</button>
-				</div>
-			</div>
-			<div class="modal-body">
-				<form method="post" enctype="multipart/form-data" action="<?=base_url()?>Home/self_checkout" >
-				<div class="formsix-pos">
-					<div class="form-sec-header proofdateofbirth mb-4">
-						<label class="cal-icon">
-							  <td>
-							<?
-							  $newdate = new DateTime($user_data[0]->dob);
-							  $dob= $newdate->format('Y-m-d');   #d-m-Y  // March 10, 2001, 5:16 pm
-							  ?>
-							</td>
-							<input type="date" name="dob" placeholder="Date Of Birth" required class="form-control " value="<?=$dob?>">
-						</label>
-					</div>
-					<div class="form-group mb-4">
-						<input type="text" name="aadhar_no" minlength="12" maxlength="12" class="form-control modalinput" required="" placeholder="Aadhar Number*" value="<?=$user_data[0]->aadhar_no?>"   onkeypress="return isNumberKey(event)">
-					</div>
-					<div class="form-group mb-4">
-						<input type="text" name="driving_lience" minlength="16" maxlength="16" class="form-control modalinput" required="" placeholder="Driving License*"  value="<?=$user_data[0]->driving_lience?>">
-					</div>
-				</div>
-				<div class="row">
-					<div class="col-md-12">
-						<p class="mt-1 mb-1">Upload <b>Aadhar Front</b> Image</p>
-						<input type="file" name="aadhar_front" required value="">
-					</div>
-					<div class="col-md-12">
-						<p class="mt-1  mb-1">Upload <b>Aadhar Back</b> Image</p>
-						<input type="file"  name="aadhar_back" required value="">
-					</div>
-				</div>
-				<div class="row">
-					<div class="col-md-12">
-						<p class="mt-1 mb-1">Upload <b>License Front</b> Image</p>
-						<input type="file" name="license_front" required value="">
-					</div>
-					<div class="col-md-12">
-						<p class="mt-1  mb-1">Upload <b>License Back</b> Image</p>
-						<input type="file" name="license_back" required value="">
-					</div>
-				</div>
-				<div class="row  mt-2">
-					<div class="x_slider_checkbox x_slider_checkbox_bottom_filter_use">
-						<input type="checkbox" id="agree" name="agree" required>
-						<label for="agree">I Accept Terms & Conditions</label>
-					</div>
-				</div>
-				<input type="hidden" name="id" value="<?=base64_encode($booking_data[0]->id)?>">
-				<div class="row justify-content-center mt-2">
-					<button type="submit" class="btn loginbtn">Proceed To Pay</button>
-				</div>
-			</div>
-		</form>
-		</div>
-	</div>
-</div>
-
-<!--====== proof Modal End ======-->
-		<!--====== Change Plan Modal ======-->
-		<div class="modal fade " id="changeplan" role="dialog">
-			<div class="modal-dialog " style="width: auto;">
-
-				<!-- Modal content-->
-				<div class="modal-content ">
-					<div class="modal-header">
-						<h4 class="modal-title">Change Pricing Plan</h4>
-						<button type="button" class="close" data-dismiss="modal">&times;</button>
-					</div>
-					<p style="font-size: 18px;margin-top: 15px;">Change Plan</p>
-					<div class="x_offer_tabs_wrapper">
-						<ul class="nav nav-tabs All_Car_tabs plantabs w-100 mt-3"
-							style="display: inline-flex; flex-wrap: nowrap;">
-							<li class="nav-item"> <a class="nav-link <?if($booking_data[0]->kilometer_type==1){echo'active';}?>"
-									data-toggle="tab" href="#first" id="tab_1" value="1" idd="<?=base64_encode($booking_data[0]->id)?>" onclick="change_plan(this)"> ₹ <?=$car_data['price1']?> <br> <?=$car_data['kilometer1']?> Kms</a>
-							</li>
-							<li class="nav-item borderright"> <a class="nav-link <?if($booking_data[0]->kilometer_type==2){echo'active';}?> " data-toggle="tab"
-									href="#second" id="tab_2" value="2" idd="<?=base64_encode($booking_data[0]->id)?>" onclick="change_plan(this)"> ₹ <?=$car_data['price2']?> <br> <?=$car_data['kilometer2']?> Kms
-								</a>
-							</li>
-							<li class="nav-item" style="width: 34%;"> <a class="nav-link <?if($booking_data[0]->kilometer_type==3){echo'active';}?>" data-toggle="tab"
-									href="#third" id="tab_3" value="3" idd="<?=base64_encode($booking_data[0]->id)?>" onclick="change_plan(this)"> ₹ <?=$car_data['price3']?> <br> <?=$car_data['kilometer3']?> Kms
-								</a>
-							</li>
-						</ul>
-					</div>
-					<div class="modal-footer mt-2">
-						Please Note:
-						<ul>
-							<li style="font-size: 13px;">* Pricing plan cannot be changed after the creation of a booking
-								Extra Kms charge: Rs <?=$car_data['extra_kilo']?>/km</li>
-							<li style="font-size: 13px;">* We don not permit taking Cabme vehicles to Let/Ladakh region,
-								Kaza/Nako region and Spiti Valley</li>
-						</ul>
-					</div>
-				</div>
-
-			</div>
-		</div>
-
-		<!--====== Change Plan Modal End ======-->
-
 	<!-- btc tittle Wrapper Start -->
 	<div class="btc_tittle_main_wrapper" style="margin-top: 100px;">
 	  <div class="container-fluid">
@@ -124,9 +9,9 @@
 	            <ul>
 	              <li><a href="<?=base_url()?>">Home</a> <i class="fa fa-angle-right"></i>
 	              </li>
-	              <li><a href="<?=base_url()?>Home/show_self_drive_cars/<?=base64_encode($booking_data[0]->search_id)?>">Self Drive Car</a> <i class="fa fa-angle-right"></i>
+	              <li><a href="<?=base_url()?>Home/my_profile#booking">Booking</a> <i class="fa fa-angle-right"></i>
 	              </li>
-	              <li>Booking Summary</li>
+	              <li>Booking Details</li>
 	            </ul>
 	          </div>
 	        </div>
@@ -136,12 +21,12 @@
 	</div>
 	<!-- btc tittle Wrapper End -->
 	<?
-	$days =  (int)$booking_data[0]->duration/24;
+$days =  $booking_data[0]->duration/24;
 	$hours =  $booking_data[0]->duration%24;
 	if($hours>0 && $days >0){
-		$s_duration=$days." days, ".$hours." hours";
+		$s_duration=(int)$days." days, ".$hours." hours";
 	}else if($hours==0 && $days>0){
-		$s_duration=$days." days";
+		$s_duration=(int)$days." days";
 	}else{
 		$s_duration=$hours." hours";
 	}
@@ -176,13 +61,12 @@
 	  </div>
 	  <div class="row  text-center">
 	    <div class="col-md-12" style="margin-top: 10px;">
-	      <p><?=$city_data[0]->name?> <span style="margin-left: 30px;"> <a href="<?=base_url()?>Home/show_self_drive_cars/<?=base64_encode($booking_data[0]->search_id)?>"  style="color: red;" >Change City</a> </span> </p>
+	      <p><?=$city_data[0]->name?> </p>
 	    </div>
 	  </div>
 	  <div class="row text-center" style="flex-wrap: nowrap;margin-top: 10px;">
 	    <div class="col-md-12 col-xs-12">
-	      <p> Includes <?=$booking_data[0]->kilometer?> kms <span style="margin-left: 30px;"> <a href="#" style="color: red;" data-toggle="modal" data-target="#changeplan" data-dismiss="modal">Change plan</a> </span>
-	      </p>
+	      <p> Includes <?=$booking_data[0]->kilometer?> kms</p>
 	    </div>
 	  </div>
 	</div>
@@ -218,16 +102,14 @@
 	      <p style="margin-top: 10px;"><span style="color: #000;">Duration: </span> &nbsp; <span>
 					<?=$s_duration;?></span> </p>
 	      <div class="row">
-	        <div class="col-md-4" style="margin-top: 10px;">
-	          <p>Jaipur</p>
+	        <div class="col-md-12 text-center" style="margin-top: 10px;">
+	          <p><?=$city_data[0]->name?></p>
 	        </div>
-	        <div class="col-md-4" style="margin-top: 10px;"><span style="margin-left: 30px;"> <a href="<?=base_url()?>Home/show_self_drive_cars/<?=base64_encode($booking_data[0]->search_id)?>" style="color: red;">Change City</a> </span></div>
 	      </div>
 	      <div class="row">
-	        <div class="col-md-4 p-0" style="margin-top: 10px;">
+	        <div class="col-md-11 p-0 text-center" style="margin-top: 10px;">
 	          <p style="margin-left: 78px;"> Includes <?=$booking_data[0]->kilometer?> kms </p>
 	        </div>
-	        <div class="col-md-4" style="margin-top: 10px;"><span style="margin-left: 30px;"> <a href="#" style="color: red;" data-toggle="modal" data-target="#changeplan" data-dismiss="modal">Change plan</a> </span></div>
 	      </div>
 	    </div>
 	  </div>

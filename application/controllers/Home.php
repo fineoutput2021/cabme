@@ -1092,19 +1092,7 @@ class Home extends CI_Controller
         } else {
         }
     }
-    // ============================================ ORDER DETAILS ======================================================
-    public function order_details($idd)
-    {
-        if (!empty($this->session->userdata('user_data'))) {
-            $id=base64_decode($idd);
-            $data['order_detail'] = $this->db->get_where('tbl_order2', array('main_id = ' => $id));
-            $this->load->view('frontend/common/header', $data);
-            $this->load->view('frontend/order_details');
-            $this->load->view('frontend/common/footer');
-        } else {
-            redirect("/", "refresh");
-        }
-    }
+
     public function contact_form_submit()
     {
         $this->load->helper(array('form', 'url'));
@@ -1128,6 +1116,58 @@ class Home extends CI_Controller
             $this->session->set_flashdata('emessage', 'Please insert some data, No data available');
             redirect($_SERVER['HTTP_REFERER']);
         }
+    }
+    public function booking_details($idd)
+    {
+    if (!empty($this->session->userdata('user_data'))) {
+       $id=base64_decode($idd);
+      $data['id']=$idd;
+        $data['booking_data'] = $this->db->get_where('tbl_booking', array('id'=> $id))->result();
+      if(  $data['booking_data'][0]->booking_type){
+      $self = $this->db->get_where('tbl_selfdrive', array('id'=> $data['booking_data'][0]->car_id))->result();
+      $data['user_data'] = $this->db->get_where('tbl_users', array('id'=> $data['booking_data'][0]->user_id))->result();
+      $city = $this->db->get_where('tbl_cities', array('id'=> $data['booking_data'][0]->city_id))->result();
+            $data['city_data']=$city;
+      }
+
+      //------ fuel type ---
+        if ($self[0]->fule_type==1) {
+            $fuel_type = 'Petrol';
+        } elseif ($self[0]->fule_type==2) {
+            $fuel_type = 'Diesel';
+        } else {
+            $fuel_type = 'CNG';
+        }
+        //------ Transmission  ---
+        if ($self[0]->transmission==1) {
+            $transmission = 'Manual';
+        } elseif ($self[0]->transmission==2) {
+            $transmission = 'Automatic';
+        }
+        //------ seating  ---
+        if ($self[0]->seatting==1) {
+            $seating = '4 Seates';
+        } elseif ($self[0]->seatting==2) {
+            $seating = '5 Seates';
+        } else {
+            $seating = '7 Seates';
+        }
+        $car_data= array(
+                    'brand_name'=>$self[0]->brand_name,
+                    'car_name'=>$self[0]->car_name,
+                    'photo'=>$self[0]->photo,
+                    'fuel_type'=>$fuel_type,
+                    'transmission'=>$transmission,
+                    'seating'=>$seating,
+                    'extra_kilo'=>$self[0]->extra_kilo,
+                    );
+      $data['car_data']=$car_data;
+        $this->load->view('frontend/common/header',$data);
+        $this->load->view('frontend/booking_details');
+        $this->load->view('frontend/common/footer');
+      } else {
+          redirect("/", "refresh");
+      }
     }
     public function error404()
     {

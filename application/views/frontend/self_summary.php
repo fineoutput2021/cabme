@@ -219,7 +219,7 @@
 					<?=$s_duration;?></span> </p>
 	      <div class="row">
 	        <div class="col-md-4" style="margin-top: 10px;">
-	          <p>Jaipur</p>
+	          <p><?=$city_data[0]->name?></p>
 	        </div>
 	        <div class="col-md-4" style="margin-top: 10px;"><span style="margin-left: 30px;"> <a href="<?=base_url()?>Home/show_self_drive_cars/<?=base64_encode($booking_data[0]->search_id)?>" style="color: red;">Change City</a> </span></div>
 	      </div>

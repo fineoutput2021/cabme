@@ -31,7 +31,7 @@
 	    </div>
 	    <div class="col-md-12 col-xs-12 text-center">
         <span></span>
-        <span>💺</span> <span><?=$car_data['seating']?></span>
+        <span><img src="<?=base_url()?>assets/frontend/images/seat.png" alt="seat" class="img-fluid"/></span> <span><?=$car_data['seating']?></span>
         <span></span>
 	    </div>
 	  </div>
@@ -78,7 +78,7 @@
 	      <div class="row justify-content-center mt-2">
 	        <div class="col-md-12" class="carmanuals">
 	          <span></span>
-            <span>💺</span> <span><?=$car_data['seating']?></span>
+            <span><img src="<?=base_url()?>assets/frontend/images/seat.png" alt="seat" class="img-fluid"/></span> <span><?=$car_data['seating']?></span>
 	          <span></span>
 	        </div>
 	      </div>
