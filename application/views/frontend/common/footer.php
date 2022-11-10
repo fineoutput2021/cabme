@@ -727,7 +727,6 @@ $('#mc_'+id+'').addClass("city_active");
 $('.city_id').val(id);
 $('.city_title').html(name);
 }
-
 });
 //------ set city on click -------
 function set_city(obj){

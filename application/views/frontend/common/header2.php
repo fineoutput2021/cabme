@@ -222,9 +222,13 @@
 								<span class="underline"  style="color: #fff;">Contact Us</span>
 							</a>
 						</div>
+							<div>
 					  <?if(empty($this->session->userdata('user_data'))){?>
-						<button class="btn bg-b" style="margin: 0 20px 0 20px;"  data-toggle="modal" data-target="#signupModal"> <span style="color: #fff;"> <i class="fa fa-user"></i> &nbsp;Sign Up </span></button>
-						<button class="btn bg-b" style="margin: 0 20px 0 20px;"  data-toggle="modal" data-target="#loginModal"> <span style="color: #fff;"> <i class="fa fa-power-off"></i> &nbsp;Login </span></button>
+
+								<button class="btn bg-b" style="margin: 0 20px 0 20px;"  data-toggle="modal" data-target="#signupModal"> <span style="color: #fff;"> <i class="fa fa-user"></i> &nbsp;Sign Up </span></button>
+								<button class="btn bg-b" style="margin: 0 20px 0 20px;"  data-toggle="modal" data-target="#loginModal"> <span style="color: #fff;"> <i class="fa fa-power-off"></i> &nbsp;Login </span></button>
+
+
 						<?}else{?>
 						<div class="dropdown-wrapper menu-button menu_button_end ml-2 text-center row mt-2">
 							<a class="menu-button px-4" href="<?=base_url()?>Home/my_profile">
@@ -380,7 +384,7 @@
     					</div>
 							<?}?>
 							<input type="hidden" name="city_id" class="city_id"  value="<?=$search[0]->city_id?>"/>
-							<input type="hidden" name="duration" value="" id="duration">
+							<input type="hidden" name="duration" value="<?=$search[0]->duration?>" id="duration">
 							<input type="hidden" name="index" value="1" id="index">
     					<button class="headerbtn mt-2 desktopbtn shadowbtn pdbtn"
     						style="height: 45px;font-weight: bold;letter-spacing: 1px;margin-left: 20px;" type="submit" id="self_btn" >Search</button>

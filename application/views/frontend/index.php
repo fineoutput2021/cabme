@@ -47,6 +47,7 @@
 		background: url('<?=base_url()?>assets/frontend/images/test_bg.jpg') no-repeat fixed 0 0/cover;
 		z-index: 1;
 		padding-bottom: 50px;
+		display: none !important;
 }
 .color_liner{
 	background-image:linear-gradient(to right, #161616 0, #f50303 36%, #d93232 65%, #5e5e5e 100%);
@@ -326,6 +327,51 @@ color: transparent;
 	</div>
 	<!-- hs Slider End -->
 	<!-- ================================  Web Form slider End ======================================================= -->
+
+<!---- ===========================================new header======================== --->
+<header class="newheader">
+	<div class="container">
+		<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <a class="navbar-brand" href="#">Navbar</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Link</a>
+      </li>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-expanded="false">
+          Dropdown
+        </a>
+        <div class="dropdown-menu">
+          <a class="dropdown-item" href="#">Action</a>
+          <a class="dropdown-item" href="#">Another action</a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" href="#">Something else here</a>
+        </div>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link disabled">Disabled</a>
+      </li>
+    </ul>
+    <form class="form-inline my-2 my-lg-0">
+      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+    </form>
+  </div>
+</nav>
+	</div>
+</header>
+<!---- ===========================================End new header======================== --->
+
+
+
 	<!-- ================================  Mobile Form =========================================== -->
 	<div class="x_responsive_form_wrapper x_responsive_form_wrapper2 float_left d-block d-sm-block d-md-block  d-lg-none d-xl-none" style="margin-top: 100px;">
 		<div class="container">
@@ -703,6 +749,130 @@ color: transparent;
 			</div>
 		</div>
 	</div>
+
+
+	<!---------------------------------choose-------------------------->
+	<section class="section6">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-6 pv-4 pb-md-0">
+					<img src="../images/choose.webp" class="img-fluid" alt="img" />
+				</div>
+				<div class="col-md-6 pv-4 pb-md-0">
+					<p class="section6-title">
+						lorem lorem lorem
+					</p>
+					<h4>
+						why choose us
+					</h4>
+					<p class="section6-para">
+						Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source.
+					</p>
+					<button type="button" class="btn read-button">Read More</button>
+				</div>
+			</div>
+		</div>
+	</section>
+
+
+	<!---------------------------------why choose us-------------------------->
+	<section class="choose padding-50">
+		<div class="container">
+			<div class="choose-bg">
+				<h4>
+					why choose us
+				</h4>
+				<div class="choose-option">
+					<div class="row text-center justify-content-center">
+						<div class="col-md-3 pb-3 pb-md-0">
+							<div class="choose-section">
+								<div class="choose-img"><i class="fa fa-star" aria-hidden="true"></i></div>
+								<p>
+									420
+								</p>
+								<span>happy Customers</span>
+							</div>
+						</div>
+						<div class="col-md-3 pb-3 pb-md-0">
+							<div class="choose-section">
+								<div class="choose-img"><i class="fa fa-star" aria-hidden="true"></i></div>
+								<p>
+									115+
+								</p>
+								<span>cities across india</span>
+							</div>
+						</div>
+						<div class="col-md-3 pb-3 pb-md-0">
+							<div class="choose-section">
+								<div class="choose-img"><i class="fa fa-star" aria-hidden="true"></i></div>
+								<p>
+									2000
+								</p>
+								<span>km's travelled</span>
+							</div>
+						</div>
+						<div class="col-md-3 pb-3 pb-md-0">
+							<div class="choose-section">
+								<div class="choose-img"><i class="fa fa-star" aria-hidden="true"></i></div>
+								<p>
+								25+
+								</p>
+								<span>20k+ reviewers</span>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+
+	<!---------------------------------end why choose us-------------------------->
+
+<!------------------footer----------------------->
+	<footer class="newfooter">
+		<div class="container">
+			<div class="footersection">
+				<div class="row">
+
+					<div class="col-md-6 pb-4 pb-md-0">
+						<div class="footer-content">
+							<h2>your<br /> travel <br />partner</h2>
+						</div>
+					</div>
+					<div class="col-md-6 pb-4 pb-md-0">
+						<div class="newfooterlogo">
+
+							<img src="" alt="img" class="img-fluid" />
+							<div class="newfootersocial">
+								<ul>
+									<li class="newfooterlist">
+										<a href="#"><i class="fa fa-facebook"></i></a>
+									</li>
+									<li class="newfooterlist">
+										<a href="#"><i class="fa fa-instagram"></i></a>
+									</li>
+									<li class="newfooterlist">
+										<a href="#"><i class="fa fa-linkedin"></i></a>
+									</li>
+									<li class="newfooterlist">
+										<a href="#"><i class="fa fa-youtube"></i></a>
+									</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+				</div>
+
+
+
+			</div>
+
+		</div>
+
+	</footer>
+
+	<!---------------------------end footer----------------------------------->
 	<!-- =================== Testimonial End ================================== -->
 	<!--====== Content ======-->
 	<!-- <div class="container reveal">

@@ -8286,3 +8286,143 @@ input[type=number] {
 	    color: #fff;
 }
 /**********---------------- CAR LOGIN  END --------------****************/
+
+
+/*----------------------common css------------------------*/
+.padding-50 {
+    padding: 70px 0px;
+}
+
+
+
+/*---------------------------------new css-------------------------------*/
+.newfooter{
+	background-color:#fff6f5;
+	    padding: 80px 0px;
+}
+.newfooterlogo{
+	text-align: end;
+}
+.newfootersocial {
+    text-align: end;
+    display: flex;
+    justify-content: end;
+}
+.newfooterlogo img {
+    margin-bottom: 40px;
+}
+.newfootersocial ul li i{
+	background: #d62f30;
+    color: white;
+    font-size: 20px;
+    width: 40px;
+    height: 40px;
+    text-align: center;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    border-radius: 7px;
+}
+.footer-content h2{
+	text-transform: uppercase;
+    font-weight: 900;
+    font-size: 90px;
+    color: #f6cdcc;
+    line-height: 1;
+}
+/* .footersection{
+	display:flex;
+	justify-content: space-between;
+} */
+.newfootersocial ul{
+	padding:0px;
+}
+.newfootersocial ul li{
+	float:left;
+	padding-right:15px;
+}
+.newfootersocial ul li:last-child {
+    padding-right: 0px;
+}
+/*-----------------------------choose-------------------------*/
+.choose-bg {
+    background-color: #fff6f5;
+    padding: 50px 130px;
+}
+.choose-bg h4{
+    text-align: center;
+    text-transform: capitalize;
+    color: black;
+    font-weight: 800;
+    font-size:35px;
+}
+
+.choose-option {
+    padding-top: 40px;
+}
+
+.choose-img {
+    text-align: center;
+    margin: auto;
+    justify-content: center;
+    display: flex;
+}
+
+.choose-img i {
+    background: #ffeeee;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 40px;
+    border-radius: 100%;
+    width: 80px;
+    height: 80px;
+		color:#d52123;
+}
+
+.choose-section  p{
+	font-size: 30px;
+color: #d52123;
+padding: 18px 0px;
+margin-bottom: 0px;
+font-weight: 900;
+}
+
+
+.choose-section span{
+    color: black;
+    font-size: 18px;
+    font-weight: 500;
+    text-transform: capitalize;
+}
+/*----------------------------------section6------------------------------------*/
+.section6-title{
+	color: #d52123;
+text-transform: uppercase;
+padding-bottom: 11px;
+font-weight: 600;
+font-size: 16px;
+}
+
+.section6 h4 {
+    text-transform: capitalize;
+    color: black;
+    font-weight: 800;
+    font-size: 35px;
+		padding-bottom: 15px;
+}
+p.section6-para {
+    color: black;
+    font-size: 14px;
+    line-height: 1.4;
+}
+
+.read-button {
+    background-color: #d52123;
+    color: white;
+    font-size: 14px;
+    font-weight: 600;
+    padding: 8px 36px;
+    margin-top: 20px;
+    border-radius: 15px;
+}

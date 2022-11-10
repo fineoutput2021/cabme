@@ -135,7 +135,7 @@ class Home extends CI_Controller
         $data['sort']= $sort;
         $this->load->view('frontend/common/header2', $data);
         $this->load->view('frontend/self_drive_cars');
-        $this->load->view('frontend/common/footer');
+        $this->load->view('frontend/common/footer', "refresh");
     }
     //========================== self drive calculate ============================
     public function self_drive_calculate()
