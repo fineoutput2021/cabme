@@ -329,45 +329,7 @@ color: transparent;
 	<!-- ================================  Web Form slider End ======================================================= -->
 
 <!---- ===========================================new header======================== --->
-<header class="newheader">
-	<div class="container">
-		<nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <a class="navbar-brand" href="#">Navbar</a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
 
-  <div class="collapse navbar-collapse" id="navbarSupportedContent">
-    <ul class="navbar-nav mr-auto">
-      <li class="nav-item active">
-        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">Link</a>
-      </li>
-      <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-expanded="false">
-          Dropdown
-        </a>
-        <div class="dropdown-menu">
-          <a class="dropdown-item" href="#">Action</a>
-          <a class="dropdown-item" href="#">Another action</a>
-          <div class="dropdown-divider"></div>
-          <a class="dropdown-item" href="#">Something else here</a>
-        </div>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link disabled">Disabled</a>
-      </li>
-    </ul>
-    <form class="form-inline my-2 my-lg-0">
-      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-    </form>
-  </div>
-</nav>
-	</div>
-</header>
 <!---- ===========================================End new header======================== --->
 
 
@@ -570,51 +532,43 @@ color: transparent;
 	<!-- ================================  Mobile Form End =========================================== -->
 
 		<!--================================= Why Cabme slider Start ======================================-->
-		<div class="x_ln_car_main_wrapper float_left  mb-5 reveal" style="z-index: 0;background-image: linear-gradient(0deg, rgb(12, 12, 15), rgb(41, 45, 69))">
+		<div class="x_ln_car_main_wrapper float_left">
 			<div class="container">
 				<div class="row">
 					<div class="col-md-12">
-						<div class="text-center">
-							<h3 class="head mt-5" style="font-family:Goldman;color:white"><b>Why Cabme</b></h3>
+						<div class="text-center ">
+							<h4 class="heading">Why Cabme?</h4>
 						</div>
 					</div>
 					<div class="col-md-12" style="">
-						<div class="btc_ln_slider_wrapper " style="margin-bottom: 80px;" >
+						<div class="btc_ln_slider_wrapper" >
 							<div class="row">
-							<div class="col-md-4 my-4 ">
-								<div class="text-center">
-									<img  src="<?=base_url()?>assets/frontend/images/shield.png"/>
-									<h3 class="mt-3" style="font-weight: 500;color:white;font-family:Goldman">Secured Payment Guarantee</h3>
-								</div>
-							</div>
-							<div class="col-md-4 my-4 ">
-								<div class="text-center">
-									<img  src="<?=base_url()?>assets/frontend/images/support.png"/>
-									<h3 class="mt-3" style="font-weight: 500;color:white; font-family:Goldman">Help Center & Support 24/7</h3>
-								</div>
-							</div>
-							<div class="col-md-4 my-4 ">
-								<div class="text-center">
+							<div class="col-md-3 my-4 ">
+								<div class="text-center cabme-box">
 									<img  src="<?=base_url()?>assets/frontend/images/car.png"/>
-									<h3 class="mt-3" style="font-weight: 500;color:white; font-family:Goldman">Booking any Class Vehicles</h3>
+									<h3 class="my-3">Safe and Santised cars</h3>
+									<p>Cabme is the ONLY company that focuses on this innovative business model of allowing its customer to take the car </p>
 								</div>
 							</div>
-							<div class="col-md-4 my-4 " >
-								<div class="text-center">
-									<img  src="<?=base_url()?>assets/frontend/images/safety.png"/>
-									<h3 class="mt-3" style="font-weight: 500;color:white; font-family:Goldman">Safety & Hygiene Best Practices</h3>
+							<div class="col-md-3 my-4 ">
+								<div class="text-center cabme-box" >
+									<img  src="<?=base_url()?>assets/frontend/images/dollar-symbol.png"/>
+									<h3 class="my-3">No hidden charges</h3>
+									<p>Cabme is the ONLY company that focuses on this innovative business model of allowing its customer to take the car </p>
 								</div>
 							</div>
-							<div class="col-md-4 my-4 " >
-								<div class="text-center">
-									<img  src="<?=base_url()?>assets/frontend/images/sprey.png"/>
-									<h3 class="mt-3" style="font-weight: 500;color:white; font-family:Goldman">Internal & External Sanitization</h3>
+							<div class="col-md-3 my-4 ">
+								<div class="text-center cabme-box">
+									<img  src="<?=base_url()?>assets/frontend/images/fast-delivery.png"/>
+									<h3 class="my-3">Doorstep Delivery</h3>
+									<p>Cabme is the ONLY company that focuses on this innovative business model of allowing its customer to take the car </p>
 								</div>
 							</div>
-							<div class="col-md-4 my-4 ">
-								<div class="text-center">
-									<img  src="<?=base_url()?>assets/frontend/images/deal.png"/>
-									<h3 class="mt-3" style="font-weight: 500;color:white; font-family:Goldman">Contact-less Doorstep Delivery</h3>
+							<div class="col-md-3 my-4 " >
+								<div class="text-center cabme-box">
+									<img  src="<?=base_url()?>assets/frontend/images/24-hours.png"/>
+									<h3 class="my-3">24*7 customer support</h3>
+									<p>Cabme is the ONLY company that focuses on this innovative business model of allowing its customer to take the car </p>
 								</div>
 							</div>
 						</div>
@@ -625,7 +579,7 @@ color: transparent;
 		</div>
 		<!--================================= Why Cabme slider End ======================================-->
 		<!--================================= Featured Slider Start ======================================-->
-		<div class="container reveal">
+		<div class="container">
 			<div class="row">
 				<div class="col-md-12">
 					<div class="row">
@@ -644,13 +598,120 @@ color: transparent;
 					</div>
 				</div>
 
+
+
 	<!--================================= Mobile FAQ's ======================================-->
 	<div class="col-md-12">
 		<div class="text-center mb-5">
-			<h3 class="head mt-5" style="font-family:Goldman;"><b>FAQ's</b></h3>
+			<h4 class="heading">FAQs</h4>
 		</div>
 	</div>
-	<div class="container-fluid p-5" style="background-color: #fff;border-radius: 10px;box-shadow:0px 1px 10px rgb(209, 209, 209);">
+
+	<div class="container">
+		<div class="accordion">
+	        <div class="card">
+	            <div class="label">First</div>
+	            <div class="content">
+	                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Harum, quia! Itaque, illum autem, repudiandae error, ea dolorum inventore quae sequi vel dicta beatae consequatur ratione pariatur nihil eius! Quo, numquam.
+	            </div>
+	        </div>
+	        <div class="card">
+	            <div class="label">Second</div>
+	            <div class="content">
+	                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Harum, quia! Itaque, illum autem, repudiandae error, ea dolorum inventore quae sequi vel dicta beatae consequatur ratione pariatur nihil eius! Quo, numquam.
+	            </div>
+	        </div>
+	        <div class="card">
+	            <div class="label">Third</div>
+	            <div class="content">
+	                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Harum, quia! Itaque, illum autem, repudiandae error, ea dolorum inventore quae sequi vel dicta beatae consequatur ratione pariatur nihil eius! Quo, numquam.
+	            </div>
+	        </div>
+	        <div class="card">
+	            <div class="label">Fourth</div>
+	            <div class="content">
+	                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Harum, quia! Itaque, illum autem, repudiandae error, ea dolorum inventore quae sequi vel dicta beatae consequatur ratione pariatur nihil eius! Quo, numquam.
+	            </div>
+	        </div>
+	    </div>
+	</div>
+	<!-- <div class="container">
+		<div class="accordion" id="accordionExample">
+	<div class="card">
+		<div class="d-flex faq-content">
+			<div class="hide-show-eye" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+				<i class="fa fa-eye" aria-hidden="true"></i>
+			</div>
+			<div class="">
+				<div class="card-header" id="headingOne">
+					<h2 class="mb-0">
+						<button class="btn btn-link btn-block text-left" type="button" >
+							Collapsible Group Item #1
+						</button>
+					</h2>
+				</div>
+
+				<div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
+					<div class="card-body">
+						Some placeholder content for the first accordion panel. This panel is shown by default, thanks to the <code>.show</code> class.
+					</div>
+				</div>
+		</div>
+
+		</div>
+	</div>
+
+	<div class="card">
+		<div class="d-flex faq-content">
+			<div class="hide-show-eye"  data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+				<i class="fa fa-eye" aria-hidden="true"></i>
+			</div>
+			<div class="">
+				<div class="card-header" id="headingOne">
+					<h2 class="mb-0">
+						<button class="btn btn-link btn-block text-left" type="button" >
+							Collapsible Group Item #1
+						</button>
+					</h2>
+				</div>
+
+				<div  id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
+					<div class="card-body">
+						Some placeholder content for the first accordion panel. This panel is shown by default, thanks to the <code>.show</code> class.
+					</div>
+				</div>
+		</div>
+
+		</div>
+	</div>
+
+	<div class="card">
+		<div class="d-flex faq-content">
+			<div class="hide-show-eye" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+				<i class="fa fa-eye" aria-hidden="true"></i>
+			</div>
+			<div class="">
+				<div class="card-header" id="headingOne">
+					<h2 class="mb-0">
+						<button class="btn btn-link btn-block text-left" type="button" >
+							Collapsible Group Item #1
+						</button>
+					</h2>
+				</div>
+
+				<div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
+					<div class="card-body">
+						Some placeholder content for the first accordion panel. This panel is shown by default, thanks to the <code>.show</code> class.
+					</div>
+				</div>
+		</div>
+
+		</div>
+	</div>
+
+</div>
+	</div> -->
+	<!-- <div class="container-fluid p-5" style="background-color: #fff;border-radius: 10px;box-shadow:0px 1px 10px rgb(209, 209, 209);">
 		<div class="car-filter accordion ">
 			<div class="panel panel-default">
 				<div class="panel-heading" style="border-bottom: 1px solid rgb(173, 173, 173);">
@@ -680,15 +741,15 @@ color: transparent;
 				</div>
 			</div>
 		</div>
-	</div>
+	</div> -->
 	<!--================================= Mobile FAQ's End ======================================-->
 	<!--================================= Our journey Start ======================================-->
-	<div class="col-md-12">
+	<!-- <div class="col-md-12">
 		<div class="text-center mb-5">
 			<h3 class="head mt-5" style="font-family:Goldman;"><b>Our journey so far</b></h3>
 		</div>
-	</div>
-	<div class="container-fluid p-2 mb-5">
+	</div> -->
+	<!-- <div class="container-fluid p-2 mb-5">
 		<div class="container-fluid mt-3 p-3" style="background-color: #fff;box-shadow:0px 1px 10px rgb(209, 209, 209);">
 			<div class="row">
 				<div class="col-md-3 col-6 text-center imagewidth p-3">
@@ -713,12 +774,12 @@ color: transparent;
 				</div>
 			</div>
 		</div>
-	</div>
+	</div> -->
 </div>
 </div>
 	<!--================================= Our journey End ======================================-->
 	<!-- =================== Testimonial ================================== -->
-	<div class="x_offer_car_main_wrapper float_left testimonial reveal">
+	<div class="x_offer_car_main_wrapper float_left testimonial ">
 		<div class="container">
 			<div class="row">
 				<div class="col-md-12">
@@ -751,128 +812,6 @@ color: transparent;
 	</div>
 
 
-	<!---------------------------------choose-------------------------->
-	<section class="section6">
-		<div class="container">
-			<div class="row">
-				<div class="col-md-6 pv-4 pb-md-0">
-					<img src="../images/choose.webp" class="img-fluid" alt="img" />
-				</div>
-				<div class="col-md-6 pv-4 pb-md-0">
-					<p class="section6-title">
-						lorem lorem lorem
-					</p>
-					<h4>
-						why choose us
-					</h4>
-					<p class="section6-para">
-						Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source.
-					</p>
-					<button type="button" class="btn read-button">Read More</button>
-				</div>
-			</div>
-		</div>
-	</section>
-
-
-	<!---------------------------------why choose us-------------------------->
-	<section class="choose padding-50">
-		<div class="container">
-			<div class="choose-bg">
-				<h4>
-					why choose us
-				</h4>
-				<div class="choose-option">
-					<div class="row text-center justify-content-center">
-						<div class="col-md-3 pb-3 pb-md-0">
-							<div class="choose-section">
-								<div class="choose-img"><i class="fa fa-star" aria-hidden="true"></i></div>
-								<p>
-									420
-								</p>
-								<span>happy Customers</span>
-							</div>
-						</div>
-						<div class="col-md-3 pb-3 pb-md-0">
-							<div class="choose-section">
-								<div class="choose-img"><i class="fa fa-star" aria-hidden="true"></i></div>
-								<p>
-									115+
-								</p>
-								<span>cities across india</span>
-							</div>
-						</div>
-						<div class="col-md-3 pb-3 pb-md-0">
-							<div class="choose-section">
-								<div class="choose-img"><i class="fa fa-star" aria-hidden="true"></i></div>
-								<p>
-									2000
-								</p>
-								<span>km's travelled</span>
-							</div>
-						</div>
-						<div class="col-md-3 pb-3 pb-md-0">
-							<div class="choose-section">
-								<div class="choose-img"><i class="fa fa-star" aria-hidden="true"></i></div>
-								<p>
-								25+
-								</p>
-								<span>20k+ reviewers</span>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</section>
-
-
-	<!---------------------------------end why choose us-------------------------->
-
-<!------------------footer----------------------->
-	<footer class="newfooter">
-		<div class="container">
-			<div class="footersection">
-				<div class="row">
-
-					<div class="col-md-6 pb-4 pb-md-0">
-						<div class="footer-content">
-							<h2>your<br /> travel <br />partner</h2>
-						</div>
-					</div>
-					<div class="col-md-6 pb-4 pb-md-0">
-						<div class="newfooterlogo">
-
-							<img src="" alt="img" class="img-fluid" />
-							<div class="newfootersocial">
-								<ul>
-									<li class="newfooterlist">
-										<a href="#"><i class="fa fa-facebook"></i></a>
-									</li>
-									<li class="newfooterlist">
-										<a href="#"><i class="fa fa-instagram"></i></a>
-									</li>
-									<li class="newfooterlist">
-										<a href="#"><i class="fa fa-linkedin"></i></a>
-									</li>
-									<li class="newfooterlist">
-										<a href="#"><i class="fa fa-youtube"></i></a>
-									</li>
-								</ul>
-							</div>
-						</div>
-					</div>
-				</div>
-
-
-
-			</div>
-
-		</div>
-
-	</footer>
-
-	<!---------------------------end footer----------------------------------->
 	<!-- =================== Testimonial End ================================== -->
 	<!--====== Content ======-->
 	<!-- <div class="container reveal">
@@ -908,6 +847,119 @@ color: transparent;
 	</div>
 	</div> -->
 	<!--====== Content End ======-->
+
+	<!---------------------------------tstimonials-------------------------------->
+	<!-- <section class="newtestimonial padding-50">
+		<div class="container">
+			<h4 class="heading text-center">
+				Happy Customers
+			</h4>
+
+				<div class="newtestimonial-features">
+					<div class="owl-carousel owl-theme owl-testimonial">
+				    <div class="item">
+							<div class="testimonial-items">
+								<p>Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock </p>
+
+								<div class="testimonial-profile">
+										<img src="<?=base_url()?>assets/frontend/images/test1.jpg" alt="img" class="img-fluid">
+										<h6>lorem ipsum</h6>
+										<p>lorem ipsum belief</p>
+								</div>
+							</div>
+						</div>
+				</div>
+				</div>
+		</div>
+	</section> -->
+
+
+	<!---------------------------------choose-------------------------->
+	<section class="section6">
+		<div class="container">
+			<div class="row align-items-center">
+				<div class="col-md-6 pv-4 pb-md-0">
+					<img src="<?=base_url()?>assets/frontend/images/choose.png" class="img-fluid" alt="img" />
+				</div>
+				<div class="col-md-6 pv-4 pb-md-0">
+					<p class="section6-title">
+						lorem lorem lorem
+					</p>
+					<h4 class="heading">
+						why choose us
+					</h4>
+					<p class="section6-para">
+						Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source.
+					</p>
+					<button type="button" class="btn read-button">Read More</button>
+				</div>
+			</div>
+		</div>
+	</section>
+
+
+	<!---------------------------------why choose us-------------------------->
+	<section class="choose padding-50">
+		<div class="container">
+			<div class="choose-bg">
+				<h4>
+					why choose us
+				</h4>
+				<div class="choose-option">
+					<div class="row text-center justify-content-center">
+						<div class="col-md-3 pb-3 pb-md-0">
+							<div class="choose-section">
+								<div class="choose-img">
+									<img src="<?=base_url()?>assets/frontend/images/customer.png" alt="img" class="img-fluid">
+								</div>
+								<p>
+									420
+								</p>
+								<span>happy Customers</span>
+							</div>
+						</div>
+						<div class="col-md-3 pb-3 pb-md-0">
+							<div class="choose-section">
+								<div class="choose-img">
+								<img src="<?=base_url()?>assets/frontend/images/cities-location.png" alt="img" class="img-fluid"></div>
+								<p>
+									115+
+								</p>
+								<span>cities across india</span>
+							</div>
+						</div>
+						<div class="col-md-3 pb-3 pb-md-0">
+							<div class="choose-section">
+								<div class="choose-img">
+								<img src="<?=base_url()?>assets/frontend/images/travell.png" alt="img" class="img-fluid"></div>
+								<p>
+									2000
+								</p>
+								<span>km's travelled</span>
+							</div>
+						</div>
+						<div class="col-md-3 pb-3 pb-md-0">
+							<div class="choose-section">
+								<div class="choose-img">
+								<img src="<?=base_url()?>assets/frontend/images/review.png" alt="img" class="img-fluid">
+							</div>
+								<p>
+								25+
+								</p>
+								<span>20k+ reviewers</span>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+
+	<!---------------------------------end why choose us-------------------------->
+
+
+
 <script>
 // function reveal() {
 //   var reveals = document.querySelectorAll(".reveal");
@@ -1142,4 +1194,24 @@ $(document).ready(function() {
     bouncers.push(new Bouncer(element));
   });;
 });
+</script>
+
+
+<script>
+let label = document.querySelectorAll(".card")
+
+
+
+label.forEach((e)=>{
+	e.addEventListener("click", ()=>{
+			removeClass()
+			e.classList.toggle("active")
+	})
+})
+
+function removeClass(){
+	label.forEach((e)=>{
+			e.classList.remove("active")
+	})
+}
 </script>

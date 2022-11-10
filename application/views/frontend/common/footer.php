@@ -1,6 +1,50 @@
 <!--===========================  Footer Wrapper Start ===========================-->
+<!------------------footer----------------------->
+	<footer class="newfooter">
+		<div class="container">
+			<div class="footersection">
+				<div class="row">
 
-<div class="x_footer_bottom_main_wrapper float_left" style="box-shadow: 0px 1px 10px rgb(209 209 209);">
+					<div class="col-md-6 pb-4 pb-md-0">
+						<div class="footer-content">
+							<h2>your<br /> travel <br />partner</h2>
+						</div>
+					</div>
+					<div class="col-md-6 pb-4 pb-md-0">
+						<div class="newfooterlogo">
+
+							<img src="<?=base_url()?>assets/frontend/images/cabmenewlogo.png" alt="img" class="img-fluid" />
+							<div class="newfootersocial">
+								<ul>
+									<li class="newfooterlist">
+										<a href="#"><i class="fa fa-facebook"></i></a>
+									</li>
+									<li class="newfooterlist">
+										<a href="#"><i class="fa fa-instagram"></i></a>
+									</li>
+									<li class="newfooterlist">
+										<a href="#"><i class="fa fa-linkedin"></i></a>
+									</li>
+									<li class="newfooterlist">
+										<a href="#"><i class="fa fa-youtube"></i></a>
+									</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+				</div>
+
+
+
+			</div>
+
+		</div>
+
+	</footer>
+
+	<!---------------------------end footer----------------------------------->
+
+<!-- <div class="x_footer_bottom_main_wrapper float_left" style="box-shadow: 0px 1px 10px rgb(209 209 209);">
 	<div class="container">
 		<div class="row">
 			<div class="col-xl-4 col-lg-4 col-md-4 col-sm-12 col-12">
@@ -44,7 +88,7 @@
 
 		</div>
 	</div>
-</div>
+</div> -->
 <!--===========================  Footer Wrapper End ===========================-->
 
 </body>

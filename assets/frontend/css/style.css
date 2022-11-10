@@ -4319,7 +4319,7 @@ border-right: 1px solid red;
 .btc_ln_slider_wrapper{
 	float:left;
 	width:100%;
-	margin-top:60px;
+	/* margin-top:60px; */
 }
 .btc_ln_slider_wrapper .owl-carousel .owl-stage:after{
 	height:3px !important;
@@ -8310,6 +8310,7 @@ input[type=number] {
 }
 .newfooterlogo img {
     margin-bottom: 40px;
+		width: 30%;
 }
 .newfootersocial ul li i{
 	background: #d62f30;
@@ -8362,22 +8363,21 @@ input[type=number] {
 }
 
 .choose-img {
-    text-align: center;
-    margin: auto;
-    justify-content: center;
-    display: flex;
-}
-
-.choose-img i {
-    background: #ffeeee;
-    display: flex;
+    width: 80px;
+		height: 80px;
+		background: #ffeeee;
+		display: flex;
     justify-content: center;
     align-items: center;
+		border-radius: 100%;
+		margin:auto;
+}
+
+.choose-img img {
     font-size: 40px;
-    border-radius: 100%;
-    width: 80px;
-    height: 80px;
+
 		color:#d52123;
+		width: 50px;
 }
 
 .choose-section  p{
@@ -8404,7 +8404,7 @@ font-weight: 600;
 font-size: 16px;
 }
 
-.section6 h4 {
+.heading {
     text-transform: capitalize;
     color: black;
     font-weight: 800;
@@ -8425,4 +8425,141 @@ p.section6-para {
     padding: 8px 36px;
     margin-top: 20px;
     border-radius: 15px;
+}
+
+
+
+/*-----------------------------testimonial--------------------------------*/
+.testimonial-items {
+    text-align: center;
+}
+
+
+/* .accordion {
+    width: 82%;
+    margin: auto;
+}
+.accordion .card{
+	margin-bottom: 20px;
+
+    background: #d52123;
+    border-radius: 20px !important;
+}
+
+.accordion .card-header{
+	background: none !important;
+	border-bottom: 0px !important;
+	padding-bottom:10px !important;
+	padding-top:10px !important
+}
+
+.accordion .card-header button{
+	padding-left:0px;
+	padding-right:0px;
+	color: white;
+text-decoration: none;
+font-weight: 600;
+font-size: 16px;
+letter-spacing: 1px;
+}
+.accordion .card-body{
+	padding-top: 0px;
+	color: #e9e4e4;
+    font-size: 16px;
+}
+.faq-content{
+	align-items: baseline;
+	    padding: 0px 20px;
+}
+.hide-show-eye i{
+	color: white;
+    font-size: 26px;
+		cursor: pointer;
+} */
+
+.accordion {
+
+	font-size: 16px;
+	width: 82%;
+	display: flex;
+	flex-direction: column;
+	row-gap: 10px;
+	margin: auto;
+}
+
+.accordion .card{
+	margin-bottom: 10px;
+	padding: 20px 20px;
+    background: #d52123;
+    border-radius: 20px !important;
+}
+
+.label {
+    /* background-color: #222831; */
+    color: #fff;
+    width: 100%;
+    /* padding: 0px 20px; */
+    position: relative;
+		padding-left: 36px;
+}
+
+.label::before {
+    content: "\f06e";
+    position: absolute;
+    left: 0px;
+    top: 50%;
+		    font-family: 'FontAwesome';
+    transform: translateY(-50%);
+		    font-size: 25px;
+}
+
+
+.content {
+	font-size: 16px;
+	color: #cbc6c6;
+	/* background-color: #EEEEEE; */
+	overflow: hidden;
+	overflow-y: auto;
+	height: 0;
+	position: relative;
+	transition: all 1s ease;
+	padding-left: 36px;
+}
+.content::-webkit-scrollbar{
+    display: none;
+}
+
+.card.active .content{
+    height: fit-content;
+    /* padding: 10px 0px; */
+
+}
+
+.card.active .label::before{
+    content: "\f070";
+}
+
+
+/*-------------------------------why cabme-------------------------*/
+.cabme-box{
+	background: white;
+	border-radius: 10px;
+	padding:20px;
+}
+.cabme-box img{
+	background: #fff6f5;
+border: 6px solid #fceeee;
+border-radius: 10px;
+padding: 10px;
+width: 110px;
+height: 110px;
+}
+.cabme-box h3{
+	color: #d42628;
+    font-size: 18px;
+    font-weight: bold;
+}
+.cabme-box p{
+	font-size: 14px;
+    color: black;
 }
