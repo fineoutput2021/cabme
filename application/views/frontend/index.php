@@ -47,7 +47,7 @@
 		background: url('<?=base_url()?>assets/frontend/images/test_bg.jpg') no-repeat fixed 0 0/cover;
 		z-index: 1;
 		padding-bottom: 50px;
-		display: none !important;
+		/* display: none !important; */
 }
 .color_liner{
 	background-image:linear-gradient(to right, #161616 0, #f50303 36%, #d93232 65%, #5e5e5e 100%);
@@ -532,7 +532,8 @@ color: transparent;
 	<!-- ================================  Mobile Form End =========================================== -->
 
 		<!--================================= Why Cabme slider Start ======================================-->
-		<div class="x_ln_car_main_wrapper float_left">
+
+		<div class="x_ln_car_main_wrapper float_left mt-3">
 			<div class="container">
 				<div class="row">
 					<div class="col-md-12">
@@ -579,6 +580,7 @@ color: transparent;
 		</div>
 		<!--================================= Why Cabme slider End ======================================-->
 		<!--================================= Featured Slider Start ======================================-->
+		<div style="background-color: #ffffff">
 		<div class="container">
 			<div class="row">
 				<div class="col-md-12">
@@ -591,9 +593,9 @@ color: transparent;
 								<h3 id="txt" class="mt-5 bouncer" contenteditable style="font-family:Goldman;"><b>Your Travel Partner</b></h3>
 							</div>
 							<br />
-							<p>We are India's leading Car Rental Company with an innovative way of servicing the requirements of the ever growing car rental industry in India as compared to other such service provider</p>
+							<p style="color:black">We are India's leading Car Rental Company with an innovative way of servicing the requirements of the ever growing car rental industry in India as compared to other such service provider</p>
 							<br />
-							<p>Cabme is the ONLY company that focuses on this innovative business model of allowing its customer to take the car on a Short Term & Long Term Lease, Weekend Gateways for SELF DRIVE.</p>
+							<p style="color:black">Cabme is the ONLY company that focuses on this innovative business model of allowing its customer to take the car on a Short Term & Long Term Lease, Weekend Gateways for SELF DRIVE.</p>
 						</div>
 					</div>
 				</div>
@@ -601,13 +603,14 @@ color: transparent;
 
 
 	<!--================================= Mobile FAQ's ======================================-->
+
 	<div class="col-md-12">
 		<div class="text-center mb-5">
 			<h4 class="heading">FAQs</h4>
 		</div>
 	</div>
 
-	<div class="container">
+	<div class="container" >
 		<div class="accordion">
 	        <div class="card">
 	            <div class="label">First</div>
@@ -777,6 +780,7 @@ color: transparent;
 	</div> -->
 </div>
 </div>
+</div>
 	<!--================================= Our journey End ======================================-->
 	<!-- =================== Testimonial ================================== -->
 	<div class="x_offer_car_main_wrapper float_left testimonial ">
@@ -875,7 +879,7 @@ color: transparent;
 
 
 	<!---------------------------------choose-------------------------->
-	<section class="section6">
+	<section class="section6" style="background-color: #ffffff">
 		<div class="container">
 			<div class="row align-items-center">
 				<div class="col-md-6 pv-4 pb-md-0">
@@ -899,7 +903,7 @@ color: transparent;
 
 
 	<!---------------------------------why choose us-------------------------->
-	<section class="choose padding-50">
+	<section class="choose padding-50" style="background-color: #ffffff">
 		<div class="container">
 			<div class="choose-bg">
 				<h4>

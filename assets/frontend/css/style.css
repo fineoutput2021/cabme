@@ -22,8 +22,8 @@ body, html {
 	font-family: 'Lato', sans-serif;
 	font-size: 16px;
 	line-height: 23px;
-	color: #797979;
-	background:#f9f9f9;
+	color: #ffffff;
+	background-color:#ffffff;
 	overflow-x:hidden;
 	-webkit-transition: all 0.5s;
     -o-transition: all 0.5s;
@@ -4285,7 +4285,7 @@ border-right: 1px solid red;
     transform: translateY(0px); } }
 	/*-- xs offer car tabs Start --*/
 .x_ln_car_main_wrapper{
-	background:#f9f9f9;
+	background:#ffffff;
 }
 .x_ln_car_heading_wrapper h3{
 	font-size:30px;
@@ -8516,7 +8516,7 @@ letter-spacing: 1px;
 
 .content {
 	font-size: 16px;
-	color: #cbc6c6;
+	color: #ffffff;
 	/* background-color: #EEEEEE; */
 	overflow: hidden;
 	overflow-y: auto;
