@@ -4,13 +4,32 @@
 		<div class="container">
 			<div class="footersection">
 				<div class="row">
-
-					<div class="col-md-6 pb-4 pb-md-0">
+					<div class="col-md-6 col-12 pb-4 pb-md-0">
 						<div class="footer-content">
 							<h2>your<br /> travel <br />partner</h2>
 						</div>
 					</div>
-					<div class="col-md-6 pb-4 pb-md-0">
+					<div class=" col-md-3 col-12">
+						<div class="x_footer_bottom_box_wrapper_second ">
+							<h3 style="color: #797979;">Information</h3>
+							<ul class="footerlinks">
+								<li><a href="<?=base_url()?>"><i class="fa fa-long-arrow-right"></i> &nbsp; Home</a>
+								</li>
+								<li><a href="<?=base_url()?>Home/about"><i class="fa fa-long-arrow-right"></i> &nbsp; About Us</a>
+								</li>
+								<li><a href="<?=base_url()?>Home/privacy_policy"><i class="fa fa-long-arrow-right"></i> &nbsp; Privacy Policy</a>
+								</li>
+								<li><a href="<?=base_url()?>Home/term_and_condition"><i class="fa fa-long-arrow-right"></i> &nbsp; Terms & Conditions</a>
+								</li>
+								<li><a href="<?=base_url()?>Home/contact"><i class="fa fa-long-arrow-right"></i> &nbsp; Contact Us</a>
+								</li>
+								<li><a href="#"><i class="fa fa-long-arrow-right"></i> &nbsp; FAQ's</a>
+								</li>
+
+							</ul>
+						</div>
+					</div>
+					<div class="col-md-3 col-12 pb-4 pb-md-0">
 						<div class="newfooterlogo">
 
 							<img src="<?=base_url()?>assets/frontend/images/cabmenewlogo.png" alt="img" class="img-fluid" />
@@ -159,9 +178,25 @@ function show_promo_model(x){
 	 $('#m_info').html('Use code '+p_name+' and get Upto '+p_perc+' off')
 	 $('#textcopy').html(p_name)
 	 $('#m_min').html(p_min)
-	 $('#m_noti').html(p_min)
+	 $('#m_noti').html('')
 	 $('#myModal').modal('toggle');
 }
+// ==== about us read more -------
+$(".show-more  a").on("click", function() {
+	var $this = $(this);
+	var $content = $this.parent().prev("div.content");
+	var linkText = $this.text().toUpperCase();
+
+	if (linkText === "READ MORE") {
+		linkText = '<button type="button" class="btn read-button">Read Less</button>';
+		$content.switchClass("hideContent", "showContent", 400);
+	} else {
+		linkText = '<button type="button" class="btn read-button">Read More</button>';
+		$content.switchClass("showContent", "hideContent", 400);
+	};
+
+	$this.html(linkText);
+})
 // =========================================================== intercity ===========================================================
 $("#w_intercity_form,#m_intercity_form").on('submit',function(e){
   e.preventDefault();

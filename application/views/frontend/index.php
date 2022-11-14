@@ -137,9 +137,9 @@
 														</label>
 													</div>
 												</div>
-												<div class="text-center col-md-12 col-12 p-2">
-													<h6 id="s_duration"></h6>
-												</div>
+											</div>
+											<div class="text-center col-md-12 col-12 p-2">
+												<h6 id="s_duration"></h6>
 											</div>
 											<input type="hidden" name="city_id" class="city_id" value="" />
 											<input type="hidden" name="duration" value="" id="duration">
@@ -201,9 +201,9 @@
 														</div>
 													</div>
 												</div>
-												<div class="text-center col-md-12 col-12 p-2">
-													<h6 id="ot_duration"></h6>
-												</div>
+											</div>
+											<div class="text-center col-md-12 col-12 p-2">
+												<h6 id="ot_duration"></h6>
 											</div>
 											<input type="hidden" name="city_id" class="city_id" value="" />
 											<input type="hidden" name="round_type" id="round_type" value="1" />
@@ -269,9 +269,9 @@
 														</label>
 													</div>
 												</div>
-												<div class="text-center col-md-12 col-12 p-2">
-													<h6 id="ic_duration"></h6>
-												</div>
+											</div>
+											<div class="text-center col-md-12 col-12 p-2">
+												<h6 id="ic_duration"></h6>
 											</div>
 											<input type="hidden" name="city_id" class="city_id" value="" />
 											<input type="hidden" name="duration" value="" id="i_duration">
@@ -315,47 +315,6 @@
 	<!-- ================================  Web Form slider End ======================================================= -->
 
 	<!-- ================================  Mobile Form =========================================== -->
-	<div class="swiper-container gallery-top">
-		<div class="swiper-wrapper">
-			<div class="swiper-slide">
-				<div class="swiper-slide-container">Slide 1</div>
-			</div>
-			<div class="swiper-slide">
-				<div class="swiper-slide-container">Slide 2</div>
-			</div>
-			<div class="swiper-slide">
-				<div class="swiper-slide-container">Slide 3</div>
-			</div>
-			<div class="swiper-slide">
-				<div class="swiper-slide-container">Slide 4</div>
-			</div>
-			<div class="swiper-slide">
-				<div class="swiper-slide-container">Slide 5</div>
-			</div>
-		</div>
-		<!-- Add Arrows -->
-		<div class="swiper-button-next"></div>
-		<div class="swiper-button-prev"></div>
-	</div>
-	<div class="swiper-container gallery-thumbs">
-		<div class="swiper-wrapper">
-			<div class="swiper-slide">
-				<div class="swiper-slide-container">Slide 1</div>
-			</div>
-			<div class="swiper-slide">
-				<div class="swiper-slide-container">Slide 2</div>
-			</div>
-			<div class="swiper-slide">
-				<div class="swiper-slide-container">Slide 3</div>
-			</div>
-			<div class="swiper-slide">
-				<div class="swiper-slide-container">Slide 4</div>
-			</div>
-			<div class="swiper-slide">
-				<div class="swiper-slide-container">Slide 5</div>
-			</div>
-		</div>
-	</div>
 	<div class="x_responsive_form_wrapper x_responsive_form_wrapper2 float_left d-block d-sm-block d-md-block  d-lg-none d-xl-none" style="margin-top: 100px;">
 		<div class="container">
 			<div class="x_slider_form_main_wrapper float_left">
@@ -475,9 +434,9 @@
 															style="background-color: transparent;border: none;margin-left: -13px; margin-top: -10px; width: 122%;">
 												</div>
 											</div>
-											<div class="text-center col-md-12 col-12 p-2">
-												<h6 id="mic_duration"></h6>
-											</div>
+										</div>
+										<div class="text-center col-md-12 col-12 p-2">
+											<h6 id="mic_duration"></h6>
 										</div>
 										<input type="hidden" name="city_id" class="city_id" value="" />
 										<input type="hidden" name="duration" value="" id="mi_duration">
@@ -535,9 +494,9 @@
 													</div>
 												</div>
 											</div>
-											<div class="text-center col-md-12 col-12 p-2">
-												<h6 id="mot_duration"></h6>
-											</div>
+										</div>
+										<div class="text-center col-md-12 col-12 p-2">
+											<h6 id="mot_duration"></h6>
 										</div>
 										<input type="hidden" name="city_id" class="city_id" value="" />
 										<input type="hidden" name="round_type" id="mround_type" value="1" />
@@ -564,7 +523,7 @@
 				<div class="col-md-12 mt-5">
 					<div class="text-center">
 						<h4 class="heading mt-5">
-							Features
+							Featured
 						</h4>
 					</div>
 				</div>
@@ -576,7 +535,7 @@
 								$cur_date=strtotime(date("Y-m-d"));
 								  // if (strtotime($data->end_date) >= $cur_date && strtotime($data->start_date) <= $cur_date) {
 										?>
-							<div class="card valign-wrapper new" id="p_<?=$i?>" p_name="<?=$data->promocode?>"  p_perc="<?=$data->percentage?>" p_min="<?=$data->mindays?>" p_max="<?=$data->max?>" onclick="show_promo_model(<?=$i?>)">
+							<div style="cursor:pointer" class="card valign-wrapper new" id="p_<?=$i?>" p_name="<?=$data->promocode?>"  p_perc="<?=$data->percentage?>" p_min="<?=$data->mindays?>" p_max="<?=$data->max?>" onclick="show_promo_model(<?=$i?>)">
 								<img src="<?=base_url().$data->photo?>" />
 							</div>
 						<?php
@@ -645,27 +604,27 @@
 		<div class="container">
 			<div class="accordion">
 				<div class="card">
-					<div class="label">First</div>
+					<div class="label">Booking criteria & documents?</div>
 					<div class="content">
-						Lorem ipsum dolor sit amet, consectetur adipisicing elit. Harum, quia! Itaque, illum autem, repudiandae error, ea dolorum inventore quae sequi vel dicta beatae consequatur ratione pariatur nihil eius! Quo, numquam.
+					Min. 18 years old, have valid original government ID (Aadhar, Passport, or PAN only) and a valid driving license for “Light Motor Vehicles”, which is min. 1 year old at the time of starting the trip.
 					</div>
 				</div>
 				<div class="card">
-					<div class="label">Second</div>
+					<div class="label">How do I check-in for my booking?</div>
 					<div class="content">
-						Lorem ipsum dolor sit amet, consectetur adipisicing elit. Harum, quia! Itaque, illum autem, repudiandae error, ea dolorum inventore quae sequi vel dicta beatae consequatur ratione pariatur nihil eius! Quo, numquam.
+					Our delivery executive will deliver the car to your doorstep. Before he hands- over the car to you, he will share with you a pre-filled checklist that summarises the car’s condition at that time. Please confirm the details in the checklist, sign it and you are good to go. In case any information in the checklist is not correct, please notify the delivery executive or call us.
 					</div>
 				</div>
 				<div class="card">
-					<div class="label">Third</div>
+					<div class="label">What if I leave something in Cabme's car?</div>
 					<div class="content">
-						Lorem ipsum dolor sit amet, consectetur adipisicing elit. Harum, quia! Itaque, illum autem, repudiandae error, ea dolorum inventore quae sequi vel dicta beatae consequatur ratione pariatur nihil eius! Quo, numquam.
+					Well, we will do our best to help you find your belongings if you inform us soon enough. But as you can imagine, we cannot guarantee it since finding it back is not fully in our control. So, please check the car thoroughly before handing it back to us.
 					</div>
 				</div>
 				<div class="card">
-					<div class="label">Fourth</div>
+					<div class="label">What modes of payments are accepted?</div>
 					<div class="content">
-						Lorem ipsum dolor sit amet, consectetur adipisicing elit. Harum, quia! Itaque, illum autem, repudiandae error, ea dolorum inventore quae sequi vel dicta beatae consequatur ratione pariatur nihil eius! Quo, numquam.
+					We accept payments by credit cards, debit cards, net-banking, UPI and popular wallets. Payments need to be made in advance through our website or mobile app.
 					</div>
 				</div>
 			</div>
@@ -724,16 +683,22 @@
 				</div>
 				<div class="col-md-6 pv-4 pb-md-0">
 					<p class="section6-title">
-						lorem lorem lorem
+						About Us
 					</p>
 					<h4 class="heading">
-						why choose us
+						Cabme
 					</h4>
-					<p class="section6-para">
-						Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in
-						Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source.
+					<div class="content hideContent">
+					<p class="section6-para text-justify">
+						We are India's leading Car Rental Company with an innovative way of servicing the requirements of the ever growing car rental industry in India as compared to other such service providers.
 					</p>
-					<button type="button" class="btn read-button">Read More</button>
+					<p class="section6-para text-justify">The company was incorporated in year 2020 with a small fleet of 10 cars. Today with its strong determination and strong competition edge over other car rentals companies, it has managed to grab a large share in car rental industry. Over the years Cabme's fleet has exponentially grown. The ultra strong Unique Selling Proposition of Cabme has been its value system to delight the customer with its professional approach, passion to excel.</p>
+					<p class="section6-para text-justify">Cabme is the ONLY company that focuses on this innovative business model of allowing its customer to take the car on a Short Term & Long Term Lease, Weekend Gateways for SELF DRIVE.</p>
+					<p class="section6-para text-justify">Cabme, is an e-commerce portal which allows the clients to book a car online & pay directly via the payment gateway. An unique E- Commerce website which helped over 50000 people, traveling across various cities with a online spot booking, Car Conformation & making Payments.</p>
+				</div>
+				<div class="show-more">
+				  <a href="javascript:void(0);"><button type="button" class="btn read-button">Read More</button></a>
+					</div>
 				</div>
 			</div>
 		</div>

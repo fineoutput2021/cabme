@@ -305,12 +305,12 @@
 				<div class=" col-xl-3 col-lg-3 col-md-3 col-sm-12 col-12 mb-3 d-none d-sm-none d-xs-none d-md-block">
 					<div class="hs_logo_wrapper ">
 						<a href="<?=base_url()?>">
-							<img src="<?=base_url()?>assets/frontend/images/cabmenewlogo.png" alt="" width="80%">
+							<img src="<?=base_url()?>assets/frontend/images/cabmenewlogo.png" alt="" width="60%">
 						</a>
 					</div>
 				</div>
 				<div class="col-xl-9 col-lg-9 col-md-9 col-sm-12 col-12">
-					<div class="row justify-content-end mobileheaderbtn" style="margin-top: 30px;">
+					<div class="row justify-content-around mobileheaderbtn" style="margin-top: 20px;">
 						<!-- <ul style="display: flex;align-items: center">
 							<a href="<?=base_url()?>"><li style="margin: 0 20px 0 20px;color:white;font-weight: 500;"><span><i class="fa fa-user"></i>Home</span></li></a>
 							<a href="<?=base_url()?>Home/about"><li style="margin: 0 20px 0 20px;color:white;font-weight: 500;">About Us</li></a>
@@ -330,7 +330,13 @@
 								<!-- <i class="fa fa-sign-out" style="color: #fff;font-size: 20px;margin-top: 10px;"></i><br /> -->
 								<span class="underline"  style="color: #fff;">Contact Us</span>
 							</a>
+							 <a class="menu-button px-4" href="#">
+								<!-- <i class="fa fa-sign-out" style="color: #fff;font-size: 20px;margin-top: 10px;"></i><br /> -->
+								<span class="underline"  style="color: #fff;">FAQ</span>
+							</a>
 						</div>
+						<div>
+
 					  <?if(empty($this->session->userdata('user_data'))){?>
 						<button class="btn bg-b" style="margin: 0 20px 0 20px;"  data-toggle="modal" data-target="#signupModal"> <span style="color: #fff;"> <i class="fa fa-user"></i> &nbsp;Sign Up </span></button>
 						<button class="btn bg-b" style="margin: 0 20px 0 20px;" data-toggle="modal" data-target="#loginModal"> <span style="color: #fff;"> <i class="fa fa-power-off"></i> &nbsp;Login </span></button>
@@ -350,7 +356,9 @@
 								<span class="underline" style="color: #fff;">Logout</span>
 							</a>
 						</div>
+
 						<?}?>
+					</div>
 					</div>
 					<!--====================== Mobile Navigation Start ======================-->
 					<header class="mobail_menu d-none d-block d-xs-block d-sm-block d-md-none d-lg-none d-xl-none">
