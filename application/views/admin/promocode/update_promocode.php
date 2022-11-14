@@ -94,6 +94,17 @@ if (!empty($this->session->flashdata('emessage'))) { ?>
                       <?}?>
                     </tr>
                     <tr>
+                      <td> <strong>Image</strong> <span style="color:red;"><br />Size: 9920px * 992px</span></strong> </td>
+                      <td>
+                        <input type="file" name="photo" class="form-control" placeholder="" value="<?=$promocode->photo?>" />
+                        <?php if ($promocode->photo!="") {  ?>
+                        <img id="slide_img_path" height=50 width=100 src="<?php echo base_url().$promocode->photo ?>">
+                        <?php } else {  ?>
+                        Sorry No image Found
+                        <?php } ?>
+                      </td>
+                    </tr>
+                    <tr>
                       <td colspan="2">
                         <input type="submit" class="btn btn-success primary" value="save">
                       </td>

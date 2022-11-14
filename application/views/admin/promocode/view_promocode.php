@@ -47,6 +47,7 @@
                       <th>Maximum discount</th>
                       <th>Start Date</th>
                       <th>End Date</th>
+                      <th>Image</th>
                       <th>Status</th>
                       <?if ($this->session->userdata('position')!='Manager') {?>
                       <th>Action</th>
@@ -68,12 +69,20 @@
                       <td>₹<?php echo $data->max ?></td>
                       <td><?php echo $data->start_date ?></td>
                       <td><?php echo $data->end_date ?></td>
+                      <td>
+                        <?php if ($data->photo!="") {  ?>
+                        <img id="slide_img_path" height=50 width=100 src="<?php echo base_url().$data->photo ?>">
+                        <?php } else {  ?>
+                        Sorry No image Found
+                        <?php } ?>
+                      </td>
                       <td><?php if ($data->is_active==1) { ?>
                         <p class="label bg-green">Active</p>
                         <?php } else { ?>
                         <p class="label bg-yellow">Inactive</p>
                         <?php		}   ?>
                       </td>
+
                       <?if ($this->session->userdata('position')!='Manager') {?>
                       <td>
                         <div class="btn-group" id="btns<?php echo $i ?>">

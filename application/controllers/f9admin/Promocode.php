@@ -70,10 +70,41 @@ class Promocode extends CI_finecontrol
                     $cur_date=date("Y-m-d H:i:s");
                     $addedby=$this->session->userdata('admin_id');
                     $typ=base64_decode($t);
+                    $this->load->library('upload');
+                    $photo="";
+                    $image1='photo';
+                    $file_check=($_FILES['photo']['error']);
+                    if($file_check!=4){
+                    $image_upload_folder = FCPATH . "assets/uploads/promocode/";
+                      if (!file_exists($image_upload_folder))
+                      {
+                        mkdir($image_upload_folder, DIR_WRITE_MODE, true);
+                      }
+                      $new_file_name="promocode".date("Ymdhms");
+                      $this->upload_config = array(
+                          'upload_path'   => $image_upload_folder,
+                          'file_name' => $new_file_name,
+                          'allowed_types' =>'jpg|jpeg|png',
+                          'max_size'      => 25000
+                      );
+                      $this->upload->initialize($this->upload_config);
+                      if (!$this->upload->do_upload($image1))
+                      {
+                        $upload_error = $this->upload->display_errors();
+                        $this->session->set_flashdata('emessage', $upload_error);
+                        redirect($_SERVER['HTTP_REFERER']);
+                      }
+                      else
+                      {
+                        $file_info = $this->upload->data();
+                        $photo = "assets/uploads/promocode/".$new_file_name.$file_info['file_ext'];
+                      }
+                    }
                     if ($typ==1) {
                         $data_insert = array('promocode'=>$promocode,
                         'percentage'=>$percentage,
                         'ptype'=>$ptype,
+                        'photo'=>$photo,
                         'start_date'=>$start_date,
                               'end_date'=>$end_date,
                               'mindays'=>$mindays,
@@ -95,8 +126,13 @@ class Promocode extends CI_finecontrol
                     }
                     if ($typ==2) {
                         $idw=base64_decode($iw);
+                        if(empty($photo)){
+                          $promo_data = $this->db->get_where('tbl_promocode', array('id'=> $idw))->result();
+                          $photo = $promo_data[0]->photo;
+                        }
                         $data_insert = array('promocode'=>$promocode,
                         'percentage'=>$percentage,
+                        'photo'=>$photo,
                         'ptype'=>$ptype,
                         'start_date'=>$start_date,
                               'end_date'=>$end_date,

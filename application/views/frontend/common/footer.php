@@ -149,7 +149,19 @@ function loadSuccessNotify(succ_message){
     function loadErrorNotify(message){
        notifyError(message);
     }
-
+//---- show promocode model -------
+function show_promo_model(x){
+	var p_name=$('#p_'+x).attr('p_name');
+	var p_perc=$('#p_'+x).attr('p_perc');
+	var p_min=$('#p_'+x).attr('p_min');
+	var p_max=$('#p_'+x).attr('p_max');
+	 $('#m_dis').html('Upto '+p_perc+' off')
+	 $('#m_info').html('Use code '+p_name+' and get Upto '+p_perc+' off')
+	 $('#textcopy').html(p_name)
+	 $('#m_min').html(p_min)
+	 $('#m_noti').html(p_min)
+	 $('#myModal').modal('toggle');
+}
 // =========================================================== intercity ===========================================================
 $("#w_intercity_form,#m_intercity_form").on('submit',function(e){
   e.preventDefault();
@@ -1177,6 +1189,8 @@ function myFunction() {
 	var copyText = $('#textcopy').html();
 	/* Copy the text inside the text field */
 	navigator.clipboard.writeText(copyText);
+	$('#m_noti').html('Promocode Copied!')
+
 }
 </script>
 

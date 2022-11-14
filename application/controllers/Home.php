@@ -17,6 +17,7 @@ class Home extends CI_Controller
     {
         $data['banner_data'] = $this->db->order_by('id', 'desc')->get_where('tbl_banner', array('is_active'=> 1))->result();
         $data['testimonials_data'] = $this->db->order_by('id', 'desc')->get_where('tbl_testimonials', array('is_active'=> 1))->result();
+        $data['promocode_data'] = $this->db->order_by('id', 'desc')->get_where('tbl_promocode', array('is_active'=> 1))->result();
         $this->load->view('frontend/common/header', $data);
         $this->load->view('frontend/index');
         $this->load->view('frontend/common/footer');

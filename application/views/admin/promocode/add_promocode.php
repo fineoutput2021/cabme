@@ -92,6 +92,12 @@ if (!empty($this->session->flashdata('emessage'))) { ?>
                       </td>
                     </tr>
                     <tr>
+                      <td> <strong>Image</strong> <span style="color:red;">* <br />Size: 992px * 992px</span></strong> </td>
+                      <td>
+                        <input type="file" name="photo" class="form-control" placeholder="" required value="" />
+                      </td>
+                    </tr>
+                    <tr>
                       <td colspan="2">
                         <input type="submit" class="btn btn-success" value="save">
                       </td>

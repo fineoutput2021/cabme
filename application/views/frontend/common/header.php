@@ -192,24 +192,25 @@
 			<!-- Modal content-->
 			<div class="modal-content">
 				<div class="modal-header">
-					<h4 class="modal-title">Flat 5% off</h4>
+					<h4 class="modal-title" id='m_dis'></h4>
 					<button type="button" class="close" data-dismiss="modal">&times;</button>
 				</div>
 				<div class="modal-body">
-					<p>Use code Demo4 and get flat 5% off</p>
+					<p id='m_info' style="color:black"></p>
 					<div class="row">
 						<div class="promopath">
-							<span class="span_1" id="textcopy">Demo4</span>
+							<span class="span_1" id="textcopy"></span>
 							<span class="span_2 float-right">
 								<i class="fa fa-copy" style="cursor: pointer;" onclick="myFunction()"></i>
 							</span>
 						</div>
 					</div>
+					<span id="m_noti" style="color:red"></span>
 				</div>
 				<div class="modal-footer">
-					<p> Terms & Conditions</p> <br>
-					<ul class="listdots">
-						<li>Applicable on booking with minimum duration 6 days</li>
+					<p style="color:black"> Terms & Conditions</p> <br>
+					<ul class="listdots" style="color:black">
+						<li>Applicable on booking with minimum duration <span id="m_min"></span> days</li>
 						<li>Not applicable on booking where fuel is included</li>
 					</ul>
 				</div>

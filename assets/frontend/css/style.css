@@ -6207,21 +6207,25 @@ input[type=number] {
 	transition: .3s;
 	-webkit-transform: scale(.9);
 	transform: scale(.9);
-	opacity: .5;
+	/* opacity: .5; */
     padding: 20px 45px 20px 45px;
 	background:#ffffff;
+	padding: 0px;
+	border-radius: 15px;
+
 }
 .screenshot .owl-carousel .owl-item.active.center {
 	opacity: 1;
 	-webkit-transform: scale(1);
 	transform: scale(1);
-	box-shadow: 0 0 0 #000;
-	box-shadow: 0 0 30px rgba(0, 0, 0, .1);
+	/* box-shadow: 0 0 0 #000;
+	box-shadow: 0 0 30px rgba(0, 0, 0, .1); */
     background: #fff;
 	text-align:center;
-	-webkit-border-radius: 5px;
-    -moz-border-radius: 5px;
-    border-radius: 5px;
+	-webkit-border-radius: 15px;
+    -moz-border-radius: 15px;
+    border-radius: 15px;
+		padding: 0px;
 }
 .screen .owl-dots {
 	width: 200px;
@@ -6320,7 +6324,8 @@ input[type=number] {
 	float:left;
 	width:100%;
 	text-align:Center;
-    background: #fff;
+    /* background: #ffffff; */
+    background: none !important;
 	border:0;
 }
 .screenshot .owl-carousel .owl-stage:after{
@@ -8346,9 +8351,47 @@ input[type=number] {
     padding-right: 0px;
 }
 /*-----------------------------choose-------------------------*/
+.testimonial-image{
+	display: block;
+	 margin-left: auto;
+	 margin-right: auto;
+	 width: 25%;
+		margin-top:-50px;
+}
+.test-content{
+	border-top-left-radius: 15px;
+	border-top-right-radius: 15px;
+	padding:20px 20px 0px 20px;
+	background:#ffffff;
+}
+.test-bottom{
+border: 2px solid black;
+border-bottom-left-radius: 15px;
+border-bottom-right-radius: 15px;
+background-color: #fff6f5;
+margin-top:50px;
+}
+.test-wrapper{
+background-color: #fff6f5;
+}
+.test-avatar{
+border-radius: 50%;
+}
+@media only screen and (max-width: 768px) {
+  .choose-bg {
+		  padding: 50px 10px!important;
+	}
+	.why_pd{
+		padding:0px!important;
+	}
+}
+.why_pd{
+	padding:100px
+}
 .choose-bg {
     background-color: #fff6f5;
     padding: 50px 130px;
+		border-radius: 30px;
 }
 .choose-bg h4{
     text-align: center;
@@ -8381,6 +8424,13 @@ input[type=number] {
 }
 
 .choose-section  p{
+	font-size: 30px;
+color: #d52123;
+padding: 18px 0px;
+margin-bottom: 0px;
+font-weight: 900;
+}
+.choose-section  p span{
 	font-size: 30px;
 color: #d52123;
 padding: 18px 0px;
