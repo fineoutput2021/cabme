@@ -37,9 +37,12 @@
           </div>
 						<h3>CANCELLATION AND REFUND POLICY</h3>
             <p>
-              The Hirer can cancel the booking by logging into his/her CABME account through the CABME website/mobile application. The Hirer may send in the details of the booking he/she is willing to cancel by email on or call us on Cancellation charges will be applicable as per cancellation policy which is as follows:
+              The Hirer can cancel the booking by logging into his/her CABME account through the CABME website/mobile application. The Hirer may send in the details of the booking he/she is willing to cancel by email on or call us on Cancellation charges will be applicable as per cancellation policy which is as follows:-
             </p>
-          <div class="mt-3">
+          <div >
+						<p>
+							In case I choose to cancel My Subscription request after the Vehicle is handed over, then Subscription Fee paid by Me is liable to be forfeited at Your discretion.
+						</p>
             <ul>
               <!-- <li>Documents required:-</li> -->
             </ul>

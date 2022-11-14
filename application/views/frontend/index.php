@@ -659,7 +659,11 @@
 								<!-- Client's image -->
 								<div class="test-bottom">
 									<div class="testimonial-image">
-										<img class="test-avatar" src="https://www.w3schools.com/howto/img_avatar.png" alt="img">
+										<?if(!empty($testimonials->photo)){?>
+										<img class="test-avatar" src="<?=base_url().$testimonials->photo?>" alt="img">
+										<?}else{?>
+											<img class="test-avatar" src="<?=base_url()?>assets/frontend/images/avatar.png" alt="img">
+										<?}?>
 									</div>
 									<h4 class="card-title mt-2"><b><?=$testimonials->name?></b></h4>
 								</div>
