@@ -201,12 +201,12 @@
 				<div class=" col-xl-3 col-lg-3 col-md-3 col-sm-12 col-12 mb-3 d-none d-sm-none d-xs-none d-md-block">
 					<div class="hs_logo_wrapper ">
 						<a href="<?=base_url()?>">
-							<img src="<?=base_url()?>assets/frontend/images/cabmenewlogo.png" alt="" width="80%">
+							<img src="<?=base_url()?>assets/frontend/images/cabmenewlogo.png" alt="" width="60%">
 						</a>
 					</div>
 				</div>
 				<div class="col-xl-9 col-lg-9 col-md-9 col-sm-12 col-12">
-					<div class="row justify-content-end mobileheaderbtn" style="margin-top: 30px;">
+					<div class="row justify-content-around mobileheaderbtn" style="margin-top: 20px;">
 						<div class=" menu_button_end ml-2 text-center row mt-2">
 							 <a class="menu-button px-4" href="<?=base_url()?>">
 								<!-- <i class="fa fa-home" style="color: #fff;font-size: 20px;margin-top: 10px;"></i><br /> -->
@@ -220,6 +220,10 @@
 							 <a class="menu-button px-4" href="<?=base_url()?>Home/contact">
 								<!-- <i class="fa fa-sign-out" style="color: #fff;font-size: 20px;margin-top: 10px;"></i><br /> -->
 								<span class="underline"  style="color: #fff;">Contact Us</span>
+							</a>
+							 <a class="menu-button px-4" href="#">
+								<!-- <i class="fa fa-sign-out" style="color: #fff;font-size: 20px;margin-top: 10px;"></i><br /> -->
+								<span class="underline"  style="color: #fff;">FAQ</span>
 							</a>
 						</div>
 					  <?if(empty($this->session->userdata('user_data'))){?>

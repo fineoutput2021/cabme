@@ -6229,7 +6229,7 @@ input[type=number] {
 }
 .screen .owl-dots {
 	width: 200px;
-	margin: 25px auto 0;
+	margin: -30px auto 0;
 	text-align: center
 }
 .screen .owl-dot {
@@ -8393,6 +8393,9 @@ border-radius: 50%;
 .newfooterlogo{
 	padding-top:30px!important;
 	text-align:start!important;
+}
+.mt_c{
+	margin-top: 0 !important;
 }
 }
 .why_pd{

@@ -35,7 +35,7 @@
                 <div class="table-responsive">
                   <table class="table table-hover">
                     <tr>
-                      <td> <strong>Image</strong> <span style="color:red;"><br />Big: 1920px X 800px<br />Small: 1920px X 800px</span></strong> </td>
+                      <td> <strong>Image</strong> <span style="color:red;"><br />Size: 1600px X 800px</span></strong> </td>
                       <td>
                         <input type="file" name="photo1" class="form-control" placeholder="" value="<?=$banner->photo1?>" />
                         <?php if ($banner->photo1!="") {  ?>
@@ -46,7 +46,7 @@
                       </td>
                     </tr>
                     <tr>
-                      <td> <strong>Image2</strong> <span style="color:red;"><br />1665X400px</span></strong> </td>
+                      <td> <strong>Image2</strong> <span style="color:red;"><br />Size: 836px X 960px</span></strong> </td>
                       <td>
                         <input type="file" name="photo2" class="form-control" placeholder="" value="<?=$banner->photo2?>" />
                         <?php if ($banner->photo2!="") {  ?>

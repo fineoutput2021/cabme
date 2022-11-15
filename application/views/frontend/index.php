@@ -315,7 +315,7 @@
 	<!-- ================================  Web Form slider End ======================================================= -->
 
 	<!-- ================================  Mobile Form =========================================== -->
-	<div class="x_responsive_form_wrapper x_responsive_form_wrapper2 float_left d-block d-sm-block d-md-block  d-lg-none d-xl-none" style="margin-top: 100px;">
+	<div class="x_responsive_form_wrapper x_responsive_form_wrapper2 float_left d-block d-sm-block d-md-block  d-lg-none d-xl-none mt-0">
 		<!-- <div class="container">
 			<div class="x_slider_form_main_wrapper float_left">
 				<div class="content_tabs" style="margin-top: -8px;">
@@ -511,251 +511,286 @@
 			</div>
 		</div>
 	</div> -->
-	<style>
-	.swiper-container  {
-  width: 100%;
-}
-	.head_c {
-  width: 100%;
-  height: 3rem;
-  margin-bottom: 1em;
-  background-color: #ffeeee;
-}
-.text{
-	background-image: linear-gradient(to right, #DB0F07 0, #d42907 36%, #EF1700 65%, #D62A05 100%);
-	    text-decoration: none;
-	    color: #fff;
-	    -webkit-animation: hue 30s infinite linear;
-	    border-radius: 20px;
-			padding: 8px 54px;
-}
-.head_s {
-  text-align: center;
-  font-size: 1em;
-  line-height: 3.1rem;
-}
-.swiper-button-next, .swiper-button-prev {
-	height: 30px!important;
-	margin-top: -15px!important;
-	background-size: 20px 15px !important;
-	border: 1px solid #d73435 !important;
-	 border-radius: 5px !important;
-	 background-color: white !important;
-}
-.swiper-button-next, .swiper-container-rtl .swiper-button-prev {
-	   background-image: url( "data:image/svg+xml;charset=utf-8,<svg%20xmlns%3D'http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg'%20viewBox%3D'0%200%2027%2044'><path%20d%3D'M27%2C22L27%2C22L5%2C44l-2.1-2.1L22.8%2C22L2.9%2C2.1L5%2C0L27%2C22L27%2C22z'%20fill%3D'%23d73435'%2F><%2Fsvg>" );
-}
-.swiper-button-prev, .swiper-container-rtl .swiper-button-next {
-   background-image: url( "data:image/svg+xml;charset=utf-8,<svg%20xmlns%3D'http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg'%20viewBox%3D'0%200%2027%2044'><path%20d%3D'M0%2C22L22%2C0l2.1%2C2.1L4.2%2C22l19.9%2C19.9L22%2C44L0%2C22L0%2C22L0%2C22z'%20fill%3D'%23d73435'%2F><%2Fsvg>" );
-}
-	</style>
-	<!-- Slider #1 main container -->
-	<div class="x_slider_form_main_wrapper float_left">
-	<div class="swiper-container head_c">
-	    <!-- Additional required wrapper -->
-	    <div class="swiper-wrapper">
-	        <!-- Slides -->
+		<style>
+			.swiper-container {
+				width: 100%;
+			}
+
+			.head_c {
+				width: 100%;
+				height: 3rem;
+				margin-bottom: 1em;
+				background-color: #ffeeee;
+				border-radius: 10px;
+			}
+
+			.text {
+				background-image: linear-gradient(to right, #DB0F07 0, #d42907 36%, #EF1700 65%, #D62A05 100%);
+				text-decoration: none;
+				color: #fff;
+				-webkit-animation: hue 30s infinite linear;
+				border-radius: 20px;
+				padding: 8px 54px;
+			}
+
+			.head_s {
+				text-align: center;
+				font-size: 1em;
+				line-height: 3.1rem;
+			}
+
+			.swiper-button-next,
+			.swiper-button-prev {
+				height: 30px !important;
+				margin-top: -15px !important;
+				background-size: 20px 15px !important;
+				border: 1px solid #d73435 !important;
+				border-radius: 5px !important;
+				background-color: white !important;
+			}
+
+			.swiper-button-next,
+			.swiper-container-rtl .swiper-button-prev {
+				background-image: url("data:image/svg+xml;charset=utf-8,<svg%20xmlns%3D'http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg'%20viewBox%3D'0%200%2027%2044'><path%20d%3D'M27%2C22L27%2C22L5%2C44l-2.1-2.1L22.8%2C22L2.9%2C2.1L5%2C0L27%2C22L27%2C22z'%20fill%3D'%23d73435'%2F><%2Fsvg>");
+			}
+
+			.swiper-button-prev,
+			.swiper-container-rtl .swiper-button-next {
+				background-image: url("data:image/svg+xml;charset=utf-8,<svg%20xmlns%3D'http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg'%20viewBox%3D'0%200%2027%2044'><path%20d%3D'M0%2C22L22%2C0l2.1%2C2.1L4.2%2C22l19.9%2C19.9L22%2C44L0%2C22L0%2C22L0%2C22z'%20fill%3D'%23d73435'%2F><%2Fsvg>");
+			}
+		</style>
+		<!-- Slider #1 main container -->
+		<div class="col-md-12 p-0" style="z-index: 0;">
+			<div class="screenshot">
+				<div class="owl-carousel screen nplr screen-loop">
+					<?php $i=1; foreach($banner_data as $banner) {?>
+					<div style="cursor:pointer" class="card valign-wrapper new">
+						<img src="<?=base_url().$banner->photo2?>" />
+					</div>
+					<?php	$i++; } ?>
+				</div>
+			</div>
+		</div>
+		<div class="x_slider_form_main_wrapper float_left">
+
+			<div style="box-shadow: 0px 0 8px rgb(254 241 240);padding: 10px 5px;border-radius: 15px;">
+			<div class="swiper-container head_c">
+				<!-- Additional required wrapper -->
+				<div class="swiper-wrapper">
+					<!-- Slides -->
 					<!-- //================= first form ================= -->
-	      <div class="swiper-slide head_s"><div><span class="text">Self-Drive</span> </div></div>
-				<!-- //========= second form ======== -->
-	      <div class="swiper-slide head_s"><div><span class="text">Outstation</span></div></div>
-				<!-- //========= third form ========= -->
-	      <div class="swiper-slide head_s"><div><span class="text">Intercity</span></div></div>
-	    </div>
+					<div class="swiper-slide head_s">
+						<div><span class="text">Self-Drive</span> </div>
+					</div>
+					<!-- //========= second form ======== -->
+					<div class="swiper-slide head_s">
+						<div><span class="text">Outstation</span></div>
+					</div>
+					<!-- //========= third form ========= -->
+					<div class="swiper-slide head_s">
+						<div><span class="text">Intercity</span></div>
+					</div>
+				</div>
 
-	    <!-- If we need navigation buttons -->
-	    <div class="swiper-button-prev"></div>
-	    <div class="swiper-button-next"></div>
-	</div>
+				<!-- If we need navigation buttons -->
+				<div class="swiper-button-prev"></div>
+				<div class="swiper-button-next"></div>
+			</div>
 
-<!-- Slider #2 main container -->
-<div class="swiper-container ">
-    <!-- Additional required wrapper -->
-    <div class="swiper-wrapper" >
-        <!-- Slides -->
-			<!-- //================= first form ================= -->
-      <div class="swiper-slide"><div id="firsttt" class="tab-pane active">
-				<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
-					<div class="x_slider_form_main_wrapper float_left">
-						<form method="post" enctype="multipart/form-data" action="<?=base_url()?>Home/self_drive_cars">
-							<div class="row mr-0 ml-0" style="margin-top: 20px;">
-								<div class="row" style="border: 1px solid rgb(226, 225, 225);border-radius: 10px;">
-									<div class="col-md-12 p-0" data-toggle="modal" data-target="#selectcity" data-dismiss="modal" style="border-bottom:1px solid rgb(226, 225, 225);">
-										<div class="selectcity">
-											<i class="fa fa-map-marker"></i>
-											<h5 class="city_title">Select City</h5>
+			<!-- Slider #2 main container -->
+			<div class="swiper-container ">
+				<!-- Additional required wrapper -->
+				<div class="swiper-wrapper">
+					<!-- Slides -->
+					<!-- //================= first form ================= -->
+					<div class="swiper-slide">
+						<div id="firsttt" class="tab-pane active">
+							<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+								<div class="x_slider_form_main_wrapper float_left">
+									<form method="post" enctype="multipart/form-data" action="<?=base_url()?>Home/self_drive_cars">
+										<div class="row mr-0 ml-0" style="margin-top: 20px;">
+											<div class="row" style="border: 1px solid rgb(226, 225, 225);border-radius: 10px;">
+												<div class="col-md-12 p-0" data-toggle="modal" data-target="#selectcity" data-dismiss="modal" style="border-bottom:1px solid rgb(226, 225, 225);">
+													<div class="selectcity">
+														<i class="fa fa-map-marker"></i>
+														<h5 class="city_title">Select City</h5>
+													</div>
+												</div>
+												<div class="col-md-3 col-6 mobileradius" style="z-index: 0;display: flex;height: 55px;padding: 0px;border-right: 1px solid rgb(226, 225, 225);">
+													<div class="form-sec-header" style="height: 50px;">
+														<label class="cal-icon" style="top:11px;left: 17px;"> Start Date
+															<input type="text" autocomplete="off" readonly required id="msdsd" name="start_date" placeholder="Date" class="form-control datepicker" style="border: none;padding-right: 0px;padding-left: 1px;margin-top: -9px;">
+														</label>
+													</div>
+													<div class="timepicker_div form-sec-header" style="height: 50px;margin-top: 2px;width: 80px;margin-left: 12px;">
+														<label class="cal-icon" style="top:11px;left: 10px;">TIME
+															<input type="text" autocomplete="off" id="msdst" required name="start_time" class="form-control timepicker" placeholder="Time"
+																style="background-color: transparent;border: none;margin-left: -13px; margin-top: -10px; width: 122%;">
+													</div>
+												</div>
+												<div class="col-md-3 col-6 mobileradius" style="z-index: 0;display: flex;height: 55px;padding: 0px;">
+													<div class="form-sec-header" style="height: 50px;">
+														<label class="cal-icon" style="top:11px;left: 10px;"> End Date
+															<input type="text" autocomplete="off" readonly id="msded" required name="end_date" placeholder="Date" class="form-control datepicker" style="border: none;padding-right: 0px;padding-left: 1px;margin-top: -9px;">
+														</label>
+													</div>
+													<div class="timepicker_div form-sec-header" style="height: 50px;margin-top: 2px;width: 80px;margin-left: 12px;">
+														<label class="cal-icon" style="top:11px;left: 10px;">TIME
+															<input type="text" autocomplete="off" readonly id="msdet" required name="end_time" placeholder="Time" class="form-control timepicker"
+																style="background-color: transparent;border: none;margin-left: -13px; margin-top: -10px; width: 122%;">
+													</div>
+												</div>
+											</div>
+											<div class="text-center col-md-12 col-12 p-2">
+												<h6 id="ms_duration"></h6>
+											</div>
+											<input type="hidden" name="city_id" class="city_id" value="" />
+											<input type="hidden" name="duration" value="" id="mduration">
+											<input type="hidden" name="index" value="1" id="mindex">
+											<div class="col-md-12">
+												<div class="row mt-4 justify-content-center">
+													<button class="btn col-md-10 searchbtn shadowbtn" type="submit" id="mself_btn" disabled> <i class="fa fa-search"></i> &nbsp; Search</button>
+												</div>
+											</div>
 										</div>
-									</div>
-									<div class="col-md-3 col-6 mobileradius" style="z-index: 0;display: flex;height: 55px;padding: 0px;border-right: 1px solid rgb(226, 225, 225);">
-										<div class="form-sec-header" style="height: 50px;">
-											<label class="cal-icon" style="top:11px;left: 17px;"> Start Date
-												<input type="text" autocomplete="off" readonly required id="msdsd" name="start_date" placeholder="Date" class="form-control datepicker" style="border: none;padding-right: 0px;padding-left: 1px;margin-top: -9px;">
-											</label>
-										</div>
-										<div class="timepicker_div form-sec-header" style="height: 50px;margin-top: 2px;width: 80px;margin-left: 12px;">
-											<label class="cal-icon" style="top:11px;left: 10px;">TIME
-												<input type="text" autocomplete="off" id="msdst" required name="start_time" class="form-control timepicker" placeholder="Time"
-													style="background-color: transparent;border: none;margin-left: -13px; margin-top: -10px; width: 122%;">
-										</div>
-									</div>
-									<div class="col-md-3 col-6 mobileradius" style="z-index: 0;display: flex;height: 55px;padding: 0px;">
-										<div class="form-sec-header" style="height: 50px;">
-											<label class="cal-icon" style="top:11px;left: 10px;"> End Date
-												<input type="text" autocomplete="off" readonly id="msded" required name="end_date" placeholder="Date" class="form-control datepicker" style="border: none;padding-right: 0px;padding-left: 1px;margin-top: -9px;">
-											</label>
-										</div>
-										<div class="timepicker_div form-sec-header" style="height: 50px;margin-top: 2px;width: 80px;margin-left: 12px;">
-											<label class="cal-icon" style="top:11px;left: 10px;">TIME
-												<input type="text" autocomplete="off" readonly id="msdet" required name="end_time" placeholder="Time" class="form-control timepicker"
-													style="background-color: transparent;border: none;margin-left: -13px; margin-top: -10px; width: 122%;">
-										</div>
-									</div>
+									</form>
 								</div>
-								<div class="text-center col-md-12 col-12 p-2">
-									<h6 id="ms_duration"></h6>
-								</div>
-								<input type="hidden" name="city_id" class="city_id" value="" />
-								<input type="hidden" name="duration" value="" id="mduration">
-								<input type="hidden" name="index" value="1" id="mindex">
-								<div class="col-md-12">
-									<div class="row mt-4 justify-content-center">
-										<button class="btn col-md-10 searchbtn shadowbtn" type="submit" id="mself_btn" disabled> <i class="fa fa-search"></i> &nbsp; Search</button>
+							</div>
+						</div>
+					</div>
+
+					<!-- //========= second form ========= -->
+					<div class="swiper-slide">
+						<div id="thirddd" class="tab-pane">
+							<form method="post" enctype="multipart/form-data" action="<?=base_url()?>Home/outstaion_cars">
+								<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+									<div class="x_slider_form_main_wrapper float_left">
+										<div class="row justify-content-center mr-0 ml-0" style="flex-wrap: nowrap;width: 100%;">
+											<ul class="nav nav-tabs roundtab mobilenav-tabs justify-content-center" style="display: flex; flex-wrap: nowrap;">
+												<li class="nav-item" style="border-radius: 8px 0px 0px 8px;" onclick="change(1)"> <a class="nav-link roundtab active" data-toggle="tab" href="#firstt" style="font-size: 13px;border-radius: 6px 0px 0px 6px;">
+														One Way </a>
+												</li>
+												<li class="nav-item" style="border-radius: 0px 8px 8px 0px;" onclick="change(2)"> <a class="nav-link roundtab" data-toggle="tab" href="#thirdd" style="font-size: 13px;border-radius: 0px 6px 6px 0px;">Round-Trip </a>
+												</li>
+											</ul>
+										</div>
+										<div class="row">
+											<div id="location2" style="display: flex;width: 100%;">
+												<div class="col-md-12 col-12 p-0">
+													<div class="x_slider_select x_slider_select_2" style="">
+														<input type="text" placeholder="Pickup Location" name="pick_location" required class="form-control" style="">
+													</div>
+												</div>
+											</div>
+											<div class="row mr-0 ml-0" style="border: 1px solid rgb(226, 225, 225);margin-top: 10px;border-radius: 10px;">
+												<div class="col-md-12 p-0" data-toggle="modal" data-target="#selectcity" data-dismiss="modal" style="border-bottom:1px solid rgb(226, 225, 225);">
+													<div class="selectcity">
+														<i class="fa fa-map-marker"></i>
+														<h5 class="city_title">Select City</h5>
+													</div>
+												</div>
+												<div id="change" style="display: flex;" class="col-md-12 col-12 p-0">
+													<div class="col-md-12 col-12 mobileradius" style="z-index: 0;display: flex;height: 55px;padding: 0px;border-right: 1px solid rgb(226, 225, 225);justify-content: space-around;">
+														<div class="form-sec-header" style="height: 50px;">
+															<label class="cal-icon" style="top:11px;left: 17px;"> Start Date
+																<input type="text" autocomplete="off" id="moosd" onchange=mone_way() readonly required placeholder="Date" name="start_date" class="form-control datepicker"
+																	style="border: none;padding-right: 0px;padding-left: 1px;margin-top: -9px;">
+															</label>
+														</div>
+														<div class="timepicker_div form-sec-header" style="height: 50px;margin-top: 2px;width: 80px;margin-left: 12px;">
+															<label class="cal-icon" style="top:11px;left: 10px;"> Start Time
+																<input type="text" autocomplete="off" id="moost" onchange=mone_way() readonly required name="start_time" placeholder="Time" class="form-control timepicker"
+																	style="background-color: transparent;border: none;margin-left: 5px; margin-top: -10px; width: 84%;">
+														</div>
+													</div>
+												</div>
+											</div>
+											<div class="text-center col-md-12 col-12 p-2">
+												<h6 id="mot_duration"></h6>
+											</div>
+											<input type="hidden" name="city_id" class="city_id" value="" />
+											<input type="hidden" name="round_type" id="mround_type" value="1" />
+											<input type="hidden" name="duration" value="1" id="mo_duration">
+											<div class="col-md-12 mt-3">
+												<div class="row mt-2 justify-content-center">
+													<button class="btn col-md-10 searchbtn shadowbtn" type="submit" id="moutstation_btn" disabled> <i class="fa fa-search"></i> &nbsp;Search</button>
+												</div>
+											</div>
+										</div>
+									</div>
+							</form>
+						</div>
+					</div>
+				</div>
+				<!-- //========= third form ======== -->
+				<div class="swiper-slide">
+					<div id="seconddd" class="tab-pane">
+						<form method="post" enctype="multipart/form-data" action="javascript:void(0)" id="m_intercity_form">
+							<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+								<div class="x_slider_form_main_wrapper float_left">
+									<div class="row mr-0 ml-0">
+										<div class="col-md-12 p-0">
+											<div class="x_slider_select x_slider_select_22" style="margin-top: 0px;margin-left: -14px;">
+												<select class="myselect" name="cab_type" required>
+													<option value="Hatchback">Hatchback</option>
+													<option value="XUV">XUV</option>
+													<option value="Sedan">Sedan</option>
+												</select> &nbsp; <i class="fa fa-car"></i>
+											</div>
+										</div>
+										<div class="row mt-1" style="border: 1px solid rgb(226, 225, 225);border-radius: 10px;">
+											<div class="col-md-12 p-0 selectcity" data-toggle="modal" data-target="#selectcity" data-dismiss="modal" style="border-bottom:1px solid rgb(226, 225, 225);">
+												<div class="selectcity">
+													<i class="fa fa-map-marker"></i>
+													<h5 class="city_title">Select City</h5>
+												</div>
+											</div>
+											<div class="col-md-3 col-6 mobileradius" style="z-index: 0;display: flex;height: 55px;padding: 0px;border-right: 1px solid rgb(226, 225, 225);">
+												<div class="form-sec-header" style="height: 50px;">
+													<label class="cal-icon" style="top:11px;left: 17px;"> Start Date
+														<input type="text" autocomplete="off" readonly required id="micsd" name="start_date" placeholder="Date" class="form-control datepicker" style="border: none;padding-right: 0px;padding-left: 1px;margin-top: -9px;">
+													</label>
+												</div>
+												<div class="timepicker_div form-sec-header" style="height: 50px;margin-top: 2px;width: 80px;margin-left: 12px;">
+													<label class="cal-icon" style="top:11px;left: 10px;">Time
+														<input type="text" autocomplete="off" readonly required class="form-control timepicker" id="micst" name="start_time" placeholder="Time"
+															style="background-color: transparent;border: none;margin-left: -13px; margin-top: -10px; width: 122%;">
+												</div>
+											</div>
+											<div class="col-md-3 col-6 mobileradius" style="z-index: 0;display: flex;height: 55px;padding: 0px;">
+												<div class="form-sec-header" style="height: 50px;">
+													<label class="cal-icon" style="top:11px;left: 10px;"> End Date
+														<input type="text" autocomplete="off" readonly required id="miced" name="end_date" placeholder="Date" class="form-control datepicker" style="border: none;padding-right: 0px;padding-left: 1px;margin-top: -9px;">
+													</label>
+												</div>
+												<div class="timepicker_div form-sec-header" style="height: 50px;margin-top: 2px;width: 80px;margin-left: 12px;">
+													<label class="cal-icon" style="top:11px;left: 10px;">TIME
+														<input type="text" autocomplete="off" readonly required id="micet" name="end_time" class="form-control timepicker" placeholder="Time"
+															style="background-color: transparent;border: none;margin-left: -13px; margin-top: -10px; width: 122%;">
+												</div>
+											</div>
+										</div>
+										<div class="text-center col-md-12 col-12 p-2">
+											<h6 id="mic_duration"></h6>
+										</div>
+										<input type="hidden" name="city_id" class="city_id" value="" />
+										<input type="hidden" name="duration" value="" id="mi_duration">
+										<div class="col-md-12 mt-3">
+											<div class="row mt-2 justify-content-center">
+												<button class="btn col-md-10 searchbtn shadowbtn" type="submit" id="miter_btn" disabled> <i class="fa fa-search"></i> &nbsp;Search</button>
+											</div>
+										</div>
 									</div>
 								</div>
 							</div>
 						</form>
 					</div>
 				</div>
-			</div></div>
-			<!-- //========= second form ======== -->
-      <div class="swiper-slide"><div id="seconddd" class="tab-pane">
-				<form method="post" enctype="multipart/form-data" action="javascript:void(0)" id="m_intercity_form">
-					<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
-						<div class="x_slider_form_main_wrapper float_left">
-							<div class="row mr-0 ml-0">
-								<div class="col-md-12 p-0">
-									<div class="x_slider_select x_slider_select_22" style="margin-top: 0px;margin-left: -14px;">
-										<select class="myselect" name="cab_type" required>
-											<option value="Hatchback">Hatchback</option>
-											<option value="XUV">XUV</option>
-											<option value="Sedan">Sedan</option>
-										</select> &nbsp; <i class="fa fa-car"></i>
-									</div>
-								</div>
-								<div class="row mt-1" style="border: 1px solid rgb(226, 225, 225);border-radius: 10px;">
-									<div class="col-md-12 p-0 selectcity" data-toggle="modal" data-target="#selectcity" data-dismiss="modal" style="border-bottom:1px solid rgb(226, 225, 225);">
-										<div class="selectcity">
-											<i class="fa fa-map-marker"></i>
-											<h5 class="city_title">Select City</h5>
-										</div>
-									</div>
-									<div class="col-md-3 col-6 mobileradius" style="z-index: 0;display: flex;height: 55px;padding: 0px;border-right: 1px solid rgb(226, 225, 225);">
-										<div class="form-sec-header" style="height: 50px;">
-											<label class="cal-icon" style="top:11px;left: 17px;"> Start Date
-												<input type="text" autocomplete="off" readonly required id="micsd" name="start_date" placeholder="Date" class="form-control datepicker" style="border: none;padding-right: 0px;padding-left: 1px;margin-top: -9px;">
-											</label>
-										</div>
-										<div class="timepicker_div form-sec-header" style="height: 50px;margin-top: 2px;width: 80px;margin-left: 12px;">
-											<label class="cal-icon" style="top:11px;left: 10px;">Time
-												<input type="text" autocomplete="off" readonly required class="form-control timepicker" id="micst" name="start_time" placeholder="Time"
-													style="background-color: transparent;border: none;margin-left: -13px; margin-top: -10px; width: 122%;">
-										</div>
-									</div>
-									<div class="col-md-3 col-6 mobileradius" style="z-index: 0;display: flex;height: 55px;padding: 0px;">
-										<div class="form-sec-header" style="height: 50px;">
-											<label class="cal-icon" style="top:11px;left: 10px;"> End Date
-												<input type="text" autocomplete="off" readonly required id="miced" name="end_date" placeholder="Date" class="form-control datepicker" style="border: none;padding-right: 0px;padding-left: 1px;margin-top: -9px;">
-											</label>
-										</div>
-										<div class="timepicker_div form-sec-header" style="height: 50px;margin-top: 2px;width: 80px;margin-left: 12px;">
-											<label class="cal-icon" style="top:11px;left: 10px;">TIME
-												<input type="text" autocomplete="off" readonly required id="micet" name="end_time" class="form-control timepicker" placeholder="Time"
-													style="background-color: transparent;border: none;margin-left: -13px; margin-top: -10px; width: 122%;">
-										</div>
-									</div>
-								</div>
-								<div class="text-center col-md-12 col-12 p-2">
-									<h6 id="mic_duration"></h6>
-								</div>
-								<input type="hidden" name="city_id" class="city_id" value="" />
-								<input type="hidden" name="duration" value="" id="mi_duration">
-								<div class="col-md-12 mt-3">
-									<div class="row mt-2 justify-content-center">
-										<button class="btn col-md-10 searchbtn shadowbtn" type="submit" id="miter_btn" disabled> <i class="fa fa-search"></i> &nbsp;Search</button>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-				</form>
-			</div></div>
-			<!-- //========= third form ========= -->
-      <div class="swiper-slide">
-				<div id="thirddd" class="tab-pane">
-				<form method="post" enctype="multipart/form-data" action="<?=base_url()?>Home/outstaion_cars">
-					<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
-						<div class="x_slider_form_main_wrapper float_left">
-							<div class="row justify-content-center mr-0 ml-0" style="flex-wrap: nowrap;width: 100%;">
-								<ul class="nav nav-tabs roundtab mobilenav-tabs justify-content-center" style="display: flex; flex-wrap: nowrap;">
-									<li class="nav-item" style="border-radius: 8px 0px 0px 8px;" onclick="change(1)"> <a class="nav-link roundtab active" data-toggle="tab" href="#firstt" style="font-size: 13px;border-radius: 6px 0px 0px 6px;">
-											One Way </a>
-									</li>
-									<li class="nav-item" style="border-radius: 0px 8px 8px 0px;" onclick="change(2)"> <a class="nav-link roundtab" data-toggle="tab" href="#thirdd" style="font-size: 13px;border-radius: 0px 6px 6px 0px;">Round-Trip </a>
-									</li>
-								</ul>
-							</div>
-							<div class="row">
-								<div id="location2" style="display: flex;width: 100%;">
-									<div class="col-md-12 col-12 p-0">
-										<div class="x_slider_select x_slider_select_2" style="">
-											<input type="text" placeholder="Pickup Location" name="pick_location" required class="form-control" style="">
-										</div>
-									</div>
-								</div>
-								<div class="row mr-0 ml-0" style="border: 1px solid rgb(226, 225, 225);margin-top: 10px;border-radius: 10px;">
-									<div class="col-md-12 p-0" data-toggle="modal" data-target="#selectcity" data-dismiss="modal" style="border-bottom:1px solid rgb(226, 225, 225);">
-										<div class="selectcity">
-											<i class="fa fa-map-marker"></i>
-											<h5 class="city_title">Select City</h5>
-										</div>
-									</div>
-									<div id="change" style="display: flex;" class="col-md-12 col-12 p-0">
-										<div class="col-md-12 col-12 mobileradius" style="z-index: 0;display: flex;height: 55px;padding: 0px;border-right: 1px solid rgb(226, 225, 225);justify-content: space-around;">
-											<div class="form-sec-header" style="height: 50px;">
-												<label class="cal-icon" style="top:11px;left: 17px;"> Start Date
-													<input type="text" autocomplete="off" id="moosd" onchange=mone_way() readonly required placeholder="Date" name="start_date" class="form-control datepicker"
-														style="border: none;padding-right: 0px;padding-left: 1px;margin-top: -9px;">
-												</label>
-											</div>
-											<div class="timepicker_div form-sec-header" style="height: 50px;margin-top: 2px;width: 80px;margin-left: 12px;">
-												<label class="cal-icon" style="top:11px;left: 10px;"> Start Time
-													<input type="text" autocomplete="off" id="moost" onchange=mone_way() readonly required name="start_time" placeholder="Time" class="form-control timepicker"
-														style="background-color: transparent;border: none;margin-left: 5px; margin-top: -10px; width: 84%;">
-											</div>
-										</div>
-									</div>
-								</div>
-								<div class="text-center col-md-12 col-12 p-2">
-									<h6 id="mot_duration"></h6>
-								</div>
-								<input type="hidden" name="city_id" class="city_id" value="" />
-								<input type="hidden" name="round_type" id="mround_type" value="1" />
-								<input type="hidden" name="duration" value="1" id="mo_duration">
-								<div class="col-md-12 mt-3">
-									<div class="row mt-2 justify-content-center">
-										<button class="btn col-md-10 searchbtn shadowbtn" type="submit" id="moutstation_btn" disabled> <i class="fa fa-search"></i> &nbsp;Search</button>
-									</div>
-								</div>
-							</div>
-						</div>
-				</form>
 			</div>
-		</div></div>
 
-    </div>
-
-</div>
-</div>
+		</div>
+	</div>
+	</div>
 	</div>
 	<!-- ================================  Mobile Form End =========================================== -->
 
@@ -763,9 +798,9 @@
 	<div class="float_left ">
 		<div class="container">
 			<div class="row">
-				<div class="col-md-12 mt-5">
+				<div class="col-md-12 mt-5 mt_c">
 					<div class="text-center">
-						<h4 class="heading mt-5">
+						<h4 class="heading mt-5 ">
 							Featured
 						</h4>
 					</div>
@@ -778,10 +813,10 @@
 								$cur_date=strtotime(date("Y-m-d"));
 								  // if (strtotime($data->end_date) >= $cur_date && strtotime($data->start_date) <= $cur_date) {
 										?>
-							<div style="cursor:pointer" class="card valign-wrapper new" id="p_<?=$i?>" p_name="<?=$data->promocode?>"  p_perc="<?=$data->percentage?>" p_min="<?=$data->mindays?>" p_max="<?=$data->max?>" onclick="show_promo_model(<?=$i?>)">
+							<div style="cursor:pointer" class="card valign-wrapper new" id="p_<?=$i?>" p_name="<?=$data->promocode?>" p_perc="<?=$data->percentage?>" p_min="<?=$data->mindays?>" p_max="<?=$data->max?>" onclick="show_promo_model(<?=$i?>)">
 								<img src="<?=base_url().$data->photo?>" />
 							</div>
-						<?php
+							<?php
 					// }
 					$i++; } ?>
 						</div>
@@ -849,25 +884,27 @@
 				<div class="card">
 					<div class="label">Booking criteria & documents?</div>
 					<div class="content">
-					Min. 18 years old, have valid original government ID (Aadhar, Passport, or PAN only) and a valid driving license for “Light Motor Vehicles”, which is min. 1 year old at the time of starting the trip.
+						Min. 18 years old, have valid original government ID (Aadhar, Passport, or PAN only) and a valid driving license for “Light Motor Vehicles”, which is min. 1 year old at the time of starting the trip.
 					</div>
 				</div>
 				<div class="card">
 					<div class="label">How do I check-in for my booking?</div>
 					<div class="content">
-					Our delivery executive will deliver the car to your doorstep. Before he hands- over the car to you, he will share with you a pre-filled checklist that summarises the car’s condition at that time. Please confirm the details in the checklist, sign it and you are good to go. In case any information in the checklist is not correct, please notify the delivery executive or call us.
+						Our delivery executive will deliver the car to your doorstep. Before he hands- over the car to you, he will share with you a pre-filled checklist that summarises the car’s condition at that time. Please confirm the details in the
+						checklist, sign it and you are good to go. In case any information in the checklist is not correct, please notify the delivery executive or call us.
 					</div>
 				</div>
 				<div class="card">
 					<div class="label">What if I leave something in Cabme's car?</div>
 					<div class="content">
-					Well, we will do our best to help you find your belongings if you inform us soon enough. But as you can imagine, we cannot guarantee it since finding it back is not fully in our control. So, please check the car thoroughly before handing it back to us.
+						Well, we will do our best to help you find your belongings if you inform us soon enough. But as you can imagine, we cannot guarantee it since finding it back is not fully in our control. So, please check the car thoroughly before handing
+						it back to us.
 					</div>
 				</div>
 				<div class="card">
 					<div class="label">What modes of payments are accepted?</div>
 					<div class="content">
-					We accept payments by credit cards, debit cards, net-banking, UPI and popular wallets. Payments need to be made in advance through our website or mobile app.
+						We accept payments by credit cards, debit cards, net-banking, UPI and popular wallets. Payments need to be made in advance through our website or mobile app.
 					</div>
 				</div>
 			</div>
@@ -905,7 +942,7 @@
 										<?if(!empty($testimonials->photo)){?>
 										<img class="test-avatar" src="<?=base_url().$testimonials->photo?>" alt="img">
 										<?}else{?>
-											<img class="test-avatar" src="<?=base_url()?>assets/frontend/images/avatar.png" alt="img">
+										<img class="test-avatar" src="<?=base_url()?>assets/frontend/images/avatar.png" alt="img">
 										<?}?>
 									</div>
 									<h4 class="card-title mt-2"><b><?=$testimonials->name?></b></h4>
@@ -936,15 +973,18 @@
 						Cabme
 					</h4>
 					<div class="content hideContent">
-					<p class="section6-para text-justify">
-						We are India's leading Car Rental Company with an innovative way of servicing the requirements of the ever growing car rental industry in India as compared to other such service providers.
-					</p>
-					<p class="section6-para text-justify">The company was incorporated in year 2020 with a small fleet of 10 cars. Today with its strong determination and strong competition edge over other car rentals companies, it has managed to grab a large share in car rental industry. Over the years Cabme's fleet has exponentially grown. The ultra strong Unique Selling Proposition of Cabme has been its value system to delight the customer with its professional approach, passion to excel.</p>
-					<p class="section6-para text-justify">Cabme is the ONLY company that focuses on this innovative business model of allowing its customer to take the car on a Short Term & Long Term Lease, Weekend Gateways for SELF DRIVE.</p>
-					<p class="section6-para text-justify">Cabme, is an e-commerce portal which allows the clients to book a car online & pay directly via the payment gateway. An unique E- Commerce website which helped over 50000 people, traveling across various cities with a online spot booking, Car Conformation & making Payments.</p>
-				</div>
-				<div class="show-more">
-				  <a href="javascript:void(0);"><button type="button" class="btn read-button">Read More</button></a>
+						<p class="section6-para text-justify">
+							We are India's leading Car Rental Company with an innovative way of servicing the requirements of the ever growing car rental industry in India as compared to other such service providers.
+						</p>
+						<p class="section6-para text-justify">The company was incorporated in year 2020 with a small fleet of 10 cars. Today with its strong determination and strong competition edge over other car rentals companies, it has managed to grab a large
+							share in car rental industry. Over the years Cabme's fleet has exponentially grown. The ultra strong Unique Selling Proposition of Cabme has been its value system to delight the customer with its professional approach, passion to excel.
+						</p>
+						<p class="section6-para text-justify">Cabme is the ONLY company that focuses on this innovative business model of allowing its customer to take the car on a Short Term & Long Term Lease, Weekend Gateways for SELF DRIVE.</p>
+						<p class="section6-para text-justify">Cabme, is an e-commerce portal which allows the clients to book a car online & pay directly via the payment gateway. An unique E- Commerce website which helped over 50000 people, traveling across
+							various cities with a online spot booking, Car Conformation & making Payments.</p>
+					</div>
+					<div class="show-more">
+						<a href="javascript:void(0);"><button type="button" class="btn read-button">Read More</button></a>
 					</div>
 				</div>
 			</div>

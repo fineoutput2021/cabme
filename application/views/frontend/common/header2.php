@@ -201,12 +201,12 @@
 				<div class=" col-xl-3 col-lg-3 col-md-3 col-sm-12 col-12 mb-3 d-none d-sm-none d-xs-none d-md-block">
 					<div class="hs_logo_wrapper ">
 						<a href="<?=base_url()?>">
-							<img src="<?=base_url()?>assets/frontend/images/cabmenewlogo.png" alt="" width="80%">
+							<img src="<?=base_url()?>assets/frontend/images/cabmenewlogo.png" alt="" width="60%">
 						</a>
 					</div>
 				</div>
 				<div class="col-xl-9 col-lg-9 col-md-9 col-sm-12 col-12">
-					<div class="row justify-content-end mobileheaderbtn" style="margin-top: 30px;">
+				<div class="row justify-content-around mobileheaderbtn" style="margin-top: 20px;">
 						<div class=" menu_button_end ml-2 text-center row mt-2">
 							 <a class="menu-button px-4" href="<?=base_url()?>">
 								<!-- <i class="fa fa-home" style="color: #fff;font-size: 20px;margin-top: 10px;"></i><br /> -->
@@ -220,6 +220,10 @@
 							 <a class="menu-button px-4" href="<?=base_url()?>Home/contact">
 								<!-- <i class="fa fa-sign-out" style="color: #fff;font-size: 20px;margin-top: 10px;"></i><br /> -->
 								<span class="underline"  style="color: #fff;">Contact Us</span>
+							</a>
+							 <a class="menu-button px-4" href="#">
+								<!-- <i class="fa fa-sign-out" style="color: #fff;font-size: 20px;margin-top: 10px;"></i><br /> -->
+								<span class="underline"  style="color: #fff;">FAQ</span>
 							</a>
 						</div>
 							<div>
@@ -247,84 +251,86 @@
 						</div>
 						<?}?>
 					</div>
-					<!--====================== Mobile Navigation Start ======================-->
-					<header class="mobail_menu d-none d-block d-xs-block d-sm-block d-md-none d-lg-none d-xl-none">
-						<div class="container-fluid">
-							<div class="row">
-								<div class="col-xs-6 col-sm-6 col-4">
-									<div class="cd-dropdown-wrapper" style="float: left;">
-										<a class="house_toggle" href="#0">
-											<i class="fa fa-bars" id="Capa_1" style="font-size:25px;color :red;"></i>
-										</a>
-										<!-- .cd-dropdown -->
-									</div>
-									<nav class="cd-dropdown">
-										<div class="row mb-5">
-											<div class="col-10">
-												<?if(!empty($this->session->userdata('user_data'))){?>
-												<h5 class="ml-4 mt-3">Hello,<b><?=$this->session->userdata('name')?></b></h5>
-												<?}?>
-											</div>
-											<div class="col-2">
-												<a href="#0" class="cd-close" style="margin-right: 25px;">Close</a>
-											</div>
-											<ul class="cd-dropdown-content mobilelinks mt-3">
-												<?if(empty($this->session->userdata('user_data'))){?>
-												<li class="mb-3 mt-2">
-													<button class="btn ml-5 house_toggle" data-toggle="modal"  data-target="#loginModal" style="background-color:red;color: #fff;"><i class="fa fa-power-off"></i>
-														&nbsp;Login </button>
-													<button class="btn ml-5 house_toggle" data-toggle="modal"  data-target="#signupModal" style="background-color:red;color: #fff;"><i class="fa fa-user"></i> &nbsp;Sign
-														Up
-													</button>
-												</li>
-												<?}else{?>
-													<li>
-														<a href="<?=base_url()?>Home/my_profile">My Profile</a>
-													</li>
-													<?}?>
-												<li>
-													<a href="<?=base_url()?>Home/about">About Us</a>
-												</li>
-												<li>
-													<a href="<?=base_url()?>Home/privacy_policy">Privacy Policy</a>
-												</li>
-												<li>
-													<a href="<?=base_url()?>Home/term_and_condition">Terms & Conditions</a>
-												</li>
-												<li>
-													<a href="<?=base_url()?>Home/contact">Contact Us</a>
-												</li>
-												<li>
-													<a href="#">FAQ's</a>
-												</li>
-												</li>
-												<?if(!empty($this->session->userdata('user_data'))){?>
-												<li>
-													<a href="<?=base_url()?>User/logout">Log Out</a>
-												</li>
-												<?}?>
-												</li>
-												<h2><a href="<?=base_url()?>"><img src="<?=base_url()?>assets/frontend/images/cabme_logo.png" alt="cabme_logo" width="50%"></a></h2>
-											</ul>
-										</div>
-										<!-- .cd-dropdown-content -->
-									</nav>
+
+				</div>
+				<!--====================== Mobile Navigation Start ======================-->
+				<header class="mobail_menu d-none d-block d-xs-block d-sm-block d-md-none d-lg-none d-xl-none">
+					<div class="container-fluid">
+						<div class="row">
+							<div class="col-xs-6 col-sm-6 col-4">
+								<div class="cd-dropdown-wrapper" style="float: left;">
+									<a class="house_toggle" href="#0">
+										<i class="fa fa-bars" id="Capa_1" style="font-size:25px;color :red;"></i>
+									</a>
+									<!-- .cd-dropdown -->
 								</div>
-								<div class="col-xs-6 col-sm-6 col-8">
-									<div class="hs_logo mb-3">
-										<a href="<?=base_url()?>">
-											<img src="<?=base_url()?>assets/frontend/images/cabmenewlogo.png" alt="Logo" title="Logo" width="60%" style="margin-left:-15px;">
-										</a>
+								<nav class="cd-dropdown">
+									<div class="row mb-5">
+										<div class="col-10">
+											<?if(!empty($this->session->userdata('user_data'))){?>
+											<h5 class="ml-4 mt-3">Hello,<b><?=$this->session->userdata('name')?></b></h5>
+											<?}?>
+										</div>
+										<div class="col-2">
+											<a href="#0" class="cd-close" style="margin-right: 25px;">Close</a>
+										</div>
+										<ul class="cd-dropdown-content mobilelinks mt-3">
+											<?if(empty($this->session->userdata('user_data'))){?>
+											<li class="mb-3 mt-2">
+												<button class="btn ml-5 house_toggle" data-toggle="modal"  data-target="#loginModal" style="background-color:red;color: #fff;"><i class="fa fa-power-off"></i>
+													&nbsp;Login </button>
+												<button class="btn ml-5 house_toggle" data-toggle="modal"  data-target="#signupModal" style="background-color:red;color: #fff;"><i class="fa fa-user"></i> &nbsp;Sign
+													Up
+												</button>
+											</li>
+											<?}else{?>
+												<li>
+													<a href="<?=base_url()?>Home/my_profile">My Profile</a>
+												</li>
+												<?}?>
+											<li>
+												<a href="<?=base_url()?>Home/about">About Us</a>
+											</li>
+											<li>
+												<a href="<?=base_url()?>Home/privacy_policy">Privacy Policy</a>
+											</li>
+											<li>
+												<a href="<?=base_url()?>Home/term_and_condition">Terms & Conditions</a>
+											</li>
+											<li>
+												<a href="<?=base_url()?>Home/contact">Contact Us</a>
+											</li>
+											<li>
+												<a href="#">FAQ's</a>
+											</li>
+											</li>
+											<?if(!empty($this->session->userdata('user_data'))){?>
+											<li>
+												<a href="<?=base_url()?>User/logout">Log Out</a>
+											</li>
+											<?}?>
+											</li>
+											<h2><a href="<?=base_url()?>"><img src="<?=base_url()?>assets/frontend/images/cabme_logo.png" alt="cabme_logo" width="50%"></a></h2>
+										</ul>
 									</div>
+									<!-- .cd-dropdown-content -->
+								</nav>
+							</div>
+							<div class="col-xs-6 col-sm-6 col-8">
+								<div class="hs_logo mb-3">
+									<a href="<?=base_url()?>">
+										<img src="<?=base_url()?>assets/frontend/images/cabmenewlogo.png" alt="Logo" title="Logo" width="60%" style="margin-left:-15px;">
+									</a>
 								</div>
 							</div>
 						</div>
-						<!-- .cd-dropdown-wrapper -->
-					</header>
-					<!--====================== mobile Navigation End ======================-->
-				</div>
+					</div>
+					<!-- .cd-dropdown-wrapper -->
+				</header>
+				<!--====================== mobile Navigation End ======================-->
 			</div>
 		</div>
+			</div>
     <div class="container-fluid p-2" style="background-color: #fff;">
 			<?
 			$days = (int)$search[0]->duration/24;
@@ -399,6 +405,7 @@
 							<?}?>
     			</div>
     			</div>
+
 	</div>
 	<!-- HeaqderEnd -->
 	<script>

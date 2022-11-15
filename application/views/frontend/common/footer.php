@@ -1,5 +1,5 @@
 <!--===========================  Footer Wrapper Start ===========================-->
-<!------------------footer----------------------->
+<!--============= footer----------------------->
 	<footer class="newfooter">
 		<div class="container">
 			<div class="footersection">
@@ -61,7 +61,7 @@
 
 	</footer>
 
-	<!---------------------------end footer----------------------------------->
+	<!--============= -end footer----------------------------------->
 
 <!-- <div class="x_footer_bottom_main_wrapper float_left" style="box-shadow: 0px 1px 10px rgb(209 209 209);">
 	<div class="container">
@@ -169,19 +169,40 @@ function loadSuccessNotify(succ_message){
        notifyError(message);
     }
 //---- mobile form js --------
-
 		$(document).ready(function() {
 			 //initialize swiper when document ready
-		    var mySwiper = new Swiper ('.swiper-container', {
+		    var swiper = new Swiper ('.swiper-container', {
 		      // Optional parameters
 		      direction: 'horizontal',
-		      loop: true,
+		      loop: false,
+					allowTouchMove:false,
 		      navigation: {
 		        nextEl: '.swiper-button-next',
 		        prevEl: '.swiper-button-prev',
 		      },
+					on: {
+	slideChange: function() {
+		// console.log(this.activeIndex)
+		if (this.activeIndex == 0) {
+			setActive(1)
+			console.log("Slide 1");
+		}
+		if (this.activeIndex == 1) {
+			setActive(2)
+			console.log("Slide 2");
+		}
+		if (this.activeIndex == 2) {
+			setActive(3)
+			console.log("Slide 3");
+		}
+	}
+}
 		    });
+// 				swiper.on('slideChange', function () {
+//   console.log('slide changed');
+// });
 		});
+
 //---- show promocode model -------
 function show_promo_model(x){
 	var p_name=$('#p_'+x).attr('p_name');
@@ -898,10 +919,10 @@ function change(x) {
 	}
 	if(x == 1)
 	{
-		$('#location2').html('<div class="col-md-12 col-12 p-0"><div class="x_slider_select x_slider_select_2" style="margin-left: -14px;">	<input type="text" placeholder="Pickup Location"  name="pick_location" required class="form-control" style=""></div></div>')
+		$('#location2').html('<div class="col-md-12 col-12 p-0"><div class="x_slider_select x_slider_select_2" style="">	<input type="text" placeholder="Pickup Location"  name="pick_location" required class="form-control" style=""></div></div>')
 	}
 	else {
-		$('#location2').html('<div class="col-md-12 col-6 p-0"><div class="x_slider_select x_slider_select_2" style="margin-left: -14px;">	<input type="text" placeholder="Pickup Location"  name="pick_location" required class="form-control" style=""></div></div><div class="col-md-6 col-6 p-0">	<div class="x_slider_select x_slider_select_2" style="margin-left: 2px;"><input type="text" placeholder="Drop Location"  name="drop_location" required class="form-control" style=""></i></div></div>')
+		$('#location2').html('<div class="col-md-12 col-6 p-0"><div class="x_slider_select x_slider_select_2" style="">	<input type="text" placeholder="Pickup Location"  name="pick_location" required class="form-control" style=""></div></div><div class="col-md-6 col-6 p-0">	<div class="x_slider_select x_slider_select_2" style="margin-left: 2px;"><input type="text" placeholder="Drop Location"  name="drop_location" required class="form-control" style=""></i></div></div>')
 	}
 }
 // function change2(){
