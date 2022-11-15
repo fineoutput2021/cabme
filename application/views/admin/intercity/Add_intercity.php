@@ -63,7 +63,7 @@ if (!empty($this->session->flashdata('emessage'))) { ?>
                           <option value="">---Select Cab Type-----</option>
                           <option value="Hatchback">HATCHBACK</option>
                           <option value="Sedan">SEDAN</option>
-                          <option value="XUV">XUV</option>
+                          <option value="SUV">SUV</option>
                         </select>
                       </td>
                     </tr>
