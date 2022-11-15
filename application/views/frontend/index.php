@@ -229,7 +229,7 @@
 												<div class="x_slider_select x_slider_select_2" style="margin-top: 0px;">
 													<select class="myselect" name="cab_type" required id=>
 														<option value="Hatchback">Hatchback</option>
-														<option value="XUV">XUV</option>
+														<option value="XUV">SUV</option>
 														<option value="Sedan">Sedan</option>
 													</select> &nbsp; <i class="fa fa-car"></i>
 												</div>
@@ -733,7 +733,7 @@
 											<div class="x_slider_select x_slider_select_22" style="margin-top: 0px;margin-left: -14px;">
 												<select class="myselect" name="cab_type" required>
 													<option value="Hatchback">Hatchback</option>
-													<option value="XUV">XUV</option>
+													<option value="XUV">SUV</option>
 													<option value="Sedan">Sedan</option>
 												</select> &nbsp; <i class="fa fa-car"></i>
 											</div>
