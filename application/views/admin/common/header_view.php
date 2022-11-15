@@ -235,8 +235,12 @@
   .popup-close:hover:before {
     background: #fff;
   }
+.dropdown-toggle:focus {
+color:black !important;
+}
 .dropdown-toggle:hover {
-  background-color:#fff !important;
+  background-color:#d83636 !important;
+  color:white !important;
 }
 .skin-blue .main-header .navbar .nav>li>a:hover{
   color: #ff9b98 !important;
