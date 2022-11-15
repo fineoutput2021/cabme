@@ -178,10 +178,10 @@
 												</div>
 											</div>
 											<div class="row" style="border: 1px solid rgb(212, 208, 208);width: 99%;margin-left: 7px;border-radius: 10px;">
-												<div class="col-md-12" data-toggle="modal" data-target="#selectcity" data-dismiss="modal" id="ss">
+												<div class="col-md-12" data-toggle="modal" data-target="#selectcity3" data-dismiss="modal" id="ss">
 													<div class="selectcity">
 														<i class="fa fa-map-marker"></i>
-														<h5 style="margin-top: 3px;" class="city_title">Select City</h5>
+														<h5 style="margin-top: 3px;" class="city_title2">Select City</h5>
 													</div>
 												</div>
 												<div id="change2" style="display: flex;" class="col-md-12 col-12 p-0">
@@ -205,7 +205,7 @@
 											<div class="text-center col-md-12 col-12 p-2">
 												<h6 id="ot_duration"></h6>
 											</div>
-											<input type="hidden" name="city_id" class="city_id" value="" />
+											<input type="hidden" name="city_id" class="city_id2" value="" />
 											<input type="hidden" name="round_type" id="round_type" value="1" />
 											<input type="hidden" name="duration" id="o_duration" value="1">
 
@@ -683,10 +683,10 @@
 												</div>
 											</div>
 											<div class="row mr-0 ml-0" style="border: 1px solid rgb(226, 225, 225);margin-top: 10px;border-radius: 10px;">
-												<div class="col-md-12 p-0" data-toggle="modal" data-target="#selectcity" data-dismiss="modal" style="border-bottom:1px solid rgb(226, 225, 225);">
+												<div class="col-md-12 p-0" data-toggle="modal" data-target="#selectcity4" data-dismiss="modal" style="border-bottom:1px solid rgb(226, 225, 225);">
 													<div class="selectcity">
 														<i class="fa fa-map-marker"></i>
-														<h5 class="city_title">Select City</h5>
+														<h5 class="city_title2">Select City</h5>
 													</div>
 												</div>
 												<div id="change" style="display: flex;" class="col-md-12 col-12 p-0">
@@ -708,7 +708,7 @@
 											<div class="text-center col-md-12 col-12 p-2">
 												<h6 id="mot_duration"></h6>
 											</div>
-											<input type="hidden" name="city_id" class="city_id" value="" />
+											<input type="hidden" name="city_id" class="city_id2" value="" />
 											<input type="hidden" name="round_type" id="mround_type" value="1" />
 											<input type="hidden" name="duration" value="1" id="mo_duration">
 											<div class="col-md-12 mt-3">

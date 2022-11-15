@@ -65,33 +65,12 @@
 	<!--====== Info Modal End ======-->
 	<!--====== Select City Modal ======-->
 	<?
-	$top_data = $this->db->order_by('id', 'desc')->get_where('tbl_cities', array('is_active'=> 1,'top'=> 1,'city_type'=>2))->result();
-	$other_data = $this->db->order_by('id', 'desc')->get_where('tbl_cities', array('is_active'=> 1,'top'=> 0,'city_type'=>2))->result();
+	//--- outstation ----
+	$out_top_data = $this->db->order_by('id', 'desc')->get_where('tbl_cities', array('is_active'=> 1,'top'=> 1,'city_type'=>2))->result();
+	$out_other_data = $this->db->order_by('id', 'desc')->get_where('tbl_cities', array('is_active'=> 1,'top'=> 0,'city_type'=>2))->result();
 	?>
-	<div class="modal fade" id="selectcity" role="dialog" style="z-index:99999">
-		<div class="modal-dialog " style="width: auto;">
-			<!-- Modal content-->
-			<div class="modal-content ">
-				<div class="modal-header">
-					<h4 class="modal-title" >Select City</h4>
-					<button type="button" class="close" data-dismiss="modal">&times;</button>
-				</div>
-				<div class="modal-body">
-					<p style="font-size:18px;">Top Cities</p>
-					<?php $i=1; foreach($top_data as $data) {?>
-					<h5 class="citieslist" onclick="set_city(this)" city_id="<?=$data->id?>" name="<?=$data->name?>" id="wc_<?=$data->id?>"> <img src="<?=base_url().$data->photo?>" alt="<?=$data->name?>" width="10%" style="margin-top: -13px;"><?=$data->name?></h5>
-					<?php $i++; } ?>
-					<p style="font-size: 16px;">Other Cities</p>
-					<?php $i=1; foreach($other_data as $data) { ?>
-					<h5 class="citieslist" onclick="set_city(this)" city_id="<?=$data->id?>" name="<?=$data->name?>" id="wc_<?=$data->id?>"> <img src="<?=base_url().$data->photo?>" alt="<?=$data->name?>" width="10%" style="margin-top: -13px;"> <?=$data->name?></h5>
-					<?php $i++; } ?>
-				</div>
-			</div>
-		</div>
-	</div>
-	<!--====== Select City Modal End ======-->
-	<!--====== Select City2 Modal ======-->
-	<div class="modal fade " id="selectcity2" role="dialog" style="z-index:99999">
+	<!--====== out station Select City2 Modal End ======-->
+	<div class="modal fade " id="selectcity3" role="dialog">
 		<div class="modal-dialog " style="width: auto;">
 			<!-- Modal content-->
 			<div class="modal-content ">
@@ -101,12 +80,35 @@
 				</div>
 				<div class="modal-body">
 					<p style="font-size:18px;">Top Cities</p>
-					<?php $i=1; foreach($top_data as $data) { ?>
-					<h5 class="citieslist"  onclick="set_city(this)" city_id="<?=$data->id?>" name="<?=$data->name?>"id="mc_<?=$data->id?>"> <img src="<?=base_url().$data->photo?>" alt="<?=$data->name?>" width="10%" style="margin-top: -13px;"> <?=$data->name?></h5>
+					<?php $i=1; foreach($out_top_data as $data) {?>
+					<h5 class="citieslist2" onclick="out_set_city(this)" city_id="<?=$data->id?>" name="<?=$data->name?>" id="wc_2<?=$data->id?>"> <img src="<?=base_url().$data->photo?>" alt="<?=$data->name?>" width="10%" style="margin-top: -13px;"><?=$data->name?></h5>
 					<?php $i++; } ?>
 					<p style="font-size: 16px;">Other Cities</p>
-					<?php $i=1; foreach($other_data as $data) { ?>
-					<h5 class="citieslist"  onclick="set_city(this)" city_id="<?=$data->id?>" name="<?=$data->name?>" id="mc_<?=$data->id?>"> <img src="<?=base_url().$data->photo?>" alt="<?=$data->name?>" width="10%" style="margin-top: -13px;"> <?=$data->name?></h5>
+					<?php $i=1; foreach($out_other_data as $data) { ?>
+					<h5 class="citieslist2" onclick="out_set_city(this)" city_id="<?=$data->id?>" name="<?=$data->name?>" id="wc_2<?=$data->id?>"> <img src="<?=base_url().$data->photo?>" alt="<?=$data->name?>" width="10%" style="margin-top: -13px;"> <?=$data->name?></h5>
+					<?php $i++; } ?>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!--====== Select City Modal End ======-->
+	<!--======  out station Select City2 Modal ======-->
+	<div class="modal fade " id="selectcity4" role="dialog">
+		<div class="modal-dialog " style="width: auto;">
+			<!-- Modal content-->
+			<div class="modal-content ">
+				<div class="modal-header">
+					<h4 class="modal-title">Select City</h4>
+					<button type="button" class="close" data-dismiss="modal">&times;</button>
+				</div>
+				<div class="modal-body">
+					<p style="font-size:18px;">Top Cities</p>
+					<?php $i=1; foreach($out_top_data as $data) { ?>
+					<h5 class="citieslist"  onclick="out_set_city(this)" city_id="<?=$data->id?>" name="<?=$data->name?>"id="mc_2<?=$data->id?>"> <img src="<?=base_url().$data->photo?>" alt="<?=$data->name?>" width="10%" style="margin-top: -13px;"> <?=$data->name?></h5>
+					<?php $i++; } ?>
+					<p style="font-size: 16px;">Other Cities</p>
+					<?php $i=1; foreach($out_other_data as $data) { ?>
+					<h5 class="citieslist"  onclick="out_set_city(this)" city_id="<?=$data->id?>" name="<?=$data->name?>" id="mc_2<?=$data->id?>"> <img src="<?=base_url().$data->photo?>" alt="<?=$data->name?>" width="10%" style="margin-top: -13px;"> <?=$data->name?></h5>
 					<?php $i++; } ?>
 				</div>
 			</div>
@@ -341,13 +343,13 @@
     				<div class="container">
 						<form method="post" enctype="multipart/form-data" action="<?=base_url()?>Home/outstaion_cars">
     				<div class="row mobileform" style="border-radius: 10px;display: flex;flex-wrap: nowrap;">
-    					<div class="col-md-3 col-12 p-0" data-toggle="modal" data-target="#selectcity" data-dismiss="modal">
+    					<div class="col-md-3 col-12 p-0" data-toggle="modal" data-target="#selectcity3" data-dismiss="modal">
     						<div class="selectcity" style="border: 1px solid rgb(226, 225, 225);height: 55px;">
     							<i class="fa fa-map-marker"></i>
 									<?if(!empty($city)){?>
-    							<h5 class="city_title"><?=$city[0]->name?></h5>
+    							<h5 class="city_title2"><?=$city[0]->name?></h5>
 									<?}else{?>
-    							<h5 class="city_title">Select City</h5>
+    							<h5 class="city_title2">Select City</h5>
 									<?}?>
     						</div>
     					</div>
@@ -396,7 +398,7 @@
 									</div>
 								</div>
 							<?}?>
-							<input type="hidden" name="city_id" class="city_id"  value="<?=$search[0]->city_id?>"/>
+							<input type="hidden" name="city_id" class="city_id2"  value="<?=$search[0]->city_id?>"/>
 							<input type="hidden" name="duration" value="1" id="duration">
 							<input type="hidden" name="index" value="1" id="index">
     					<button class="headerbtn mt-2 desktopbtn shadowbtn pdbtn"

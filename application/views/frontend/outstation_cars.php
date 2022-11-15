@@ -110,7 +110,7 @@
 </div>
 <!-- btc tittle Wrapper End -->
 <!-- x car book sidebar section Wrapper Start -->
-<div class="x_car_book_sider_main_Wrapper float_left mt-4">
+<div class=" float_left mt-4">
   <div class="container-fluid">
 
     <div class="row mt-5">
@@ -136,7 +136,7 @@
         <!-- btc tittle Wrapper End -->
         <div class="x_car_book_left_siderbar_wrapper float_left">
           <div class="row">
-            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 mb-5">
               <!-- Filter Results -->
               <div class="car-filter accordion car_booking_onliy_side" style="margin-top: 46px;">
                   <form method="get" enctype="multipart/form-data" action="<?=base_url()?>Home/show_outstation_cars/<?=base64_encode($search[0]->id)?>" id="webform">

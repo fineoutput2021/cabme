@@ -170,7 +170,6 @@ function loadSuccessNotify(succ_message){
     }
 //---- mobile form js --------
 		$(document).ready(function() {
-			 //initialize swiper when document ready
 		    var swiper = new Swiper ('.swiper-container', {
 		      // Optional parameters
 		      direction: 'horizontal',
@@ -185,22 +184,16 @@ function loadSuccessNotify(succ_message){
 		// console.log(this.activeIndex)
 		if (this.activeIndex == 0) {
 			setActive(1)
-			console.log("Slide 1");
 		}
 		if (this.activeIndex == 1) {
 			setActive(2)
-			console.log("Slide 2");
 		}
 		if (this.activeIndex == 2) {
-			setActive(3)
-			console.log("Slide 3");
+			setActive(3);
 		}
 	}
 }
 		    });
-// 				swiper.on('slideChange', function () {
-//   console.log('slide changed');
-// });
 		});
 
 //---- show promocode model -------
@@ -846,12 +839,22 @@ $(document).ready(function () {
       	$('#device').val(1);
      }
 var id = localStorage.getItem("city_id");
-var name = localStorage.getItem("city_name");
+var name = localStorage.getItem("name");
 if(id != null){
 $('#wc_'+id+'').addClass("city_active");
 $('#mc_'+id+'').addClass("city_active");
 $('.city_id').val(id);
 $('.city_title').html(name);
+}
+//--- outstation city ----
+var id2 = localStorage.getItem("city_id2");
+var name2 = localStorage.getItem("name2");
+// alert(name2)
+if(id2 != null){
+$('#wc_2'+id+'').addClass("city_active");
+$('#mc_2'+id+'').addClass("city_active");
+$('.city_id2').val(id);
+$('.city_title2').html(name2);
 }
 });
 //------ set city on click -------
@@ -868,6 +871,21 @@ $('#selectcity').modal('hide');
 $('#selectcity2').modal('hide');
 $('.city_title').html(name);
 
+}
+//------ set city on click -------
+function out_set_city(obj){
+	var id = $(obj).attr('city_id');
+	var name = $(obj).attr('name');
+	// alert(name)
+localStorage.setItem("city_id2", id);
+localStorage.setItem("name2", name);
+$(".citieslist2").removeClass("city_active");
+$('#wc_2'+id+'').addClass("city_active");
+$('#mc_2'+id+'').addClass("city_active");
+$('.city_id2').val(id);
+$('#selectcity3').modal('hide');
+$('#selectcity4').modal('hide');
+$('.city_title2').html(name);
 }
 
 //------ plan change -----
