@@ -519,16 +519,35 @@
   width: 100%;
   height: 3rem;
   margin-bottom: 1em;
-  background-color: rgba(0,0,0,0.05);
+  background-color: #ffeeee;
+}
+.text{
+	background-image: linear-gradient(to right, #DB0F07 0, #d42907 36%, #EF1700 65%, #D62A05 100%);
+	    text-decoration: none;
+	    color: #fff;
+	    -webkit-animation: hue 30s infinite linear;
+	    border-radius: 20px;
+			padding: 8px 54px;
 }
 .head_s {
-  font-family: sans-serif;
   text-align: center;
-  font-size: 1.5em;
-  line-height: 4rem;
+  font-size: 1em;
+  line-height: 3.1rem;
 }
-
-
+.swiper-button-next, .swiper-button-prev {
+	height: 30px!important;
+	margin-top: -15px!important;
+	background-size: 20px 15px !important;
+	border: 1px solid #d73435 !important;
+	 border-radius: 5px !important;
+	 background-color: white !important;
+}
+.swiper-button-next, .swiper-container-rtl .swiper-button-prev {
+	   background-image: url( "data:image/svg+xml;charset=utf-8,<svg%20xmlns%3D'http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg'%20viewBox%3D'0%200%2027%2044'><path%20d%3D'M27%2C22L27%2C22L5%2C44l-2.1-2.1L22.8%2C22L2.9%2C2.1L5%2C0L27%2C22L27%2C22z'%20fill%3D'%23d73435'%2F><%2Fsvg>" );
+}
+.swiper-button-prev, .swiper-container-rtl .swiper-button-next {
+   background-image: url( "data:image/svg+xml;charset=utf-8,<svg%20xmlns%3D'http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg'%20viewBox%3D'0%200%2027%2044'><path%20d%3D'M0%2C22L22%2C0l2.1%2C2.1L4.2%2C22l19.9%2C19.9L22%2C44L0%2C22L0%2C22L0%2C22z'%20fill%3D'%23d73435'%2F><%2Fsvg>" );
+}
 	</style>
 	<!-- Slider #1 main container -->
 	<div class="x_slider_form_main_wrapper float_left">
@@ -537,11 +556,11 @@
 	    <div class="swiper-wrapper">
 	        <!-- Slides -->
 					<!-- //================= first form ================= -->
-	      <div class="swiper-slide head_s"><div class="text">Self-Drive </div></div>
+	      <div class="swiper-slide head_s"><div><span class="text">Self-Drive</span> </div></div>
 				<!-- //========= second form ======== -->
-	      <div class="swiper-slide head_s"><div class="text">Outstation</div></div>
+	      <div class="swiper-slide head_s"><div><span class="text">Outstation</span></div></div>
 				<!-- //========= third form ========= -->
-	      <div class="swiper-slide head_s"><div class="text">Intercity</div></div>
+	      <div class="swiper-slide head_s"><div><span class="text">Intercity</span></div></div>
 	    </div>
 
 	    <!-- If we need navigation buttons -->
@@ -559,7 +578,7 @@
 				<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
 					<div class="x_slider_form_main_wrapper float_left">
 						<form method="post" enctype="multipart/form-data" action="<?=base_url()?>Home/self_drive_cars">
-							<div class="row" style="margin-top: 20px;">
+							<div class="row mr-0 ml-0" style="margin-top: 20px;">
 								<div class="row" style="border: 1px solid rgb(226, 225, 225);border-radius: 10px;">
 									<div class="col-md-12 p-0" data-toggle="modal" data-target="#selectcity" data-dismiss="modal" style="border-bottom:1px solid rgb(226, 225, 225);">
 										<div class="selectcity">
@@ -613,9 +632,9 @@
 				<form method="post" enctype="multipart/form-data" action="javascript:void(0)" id="m_intercity_form">
 					<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
 						<div class="x_slider_form_main_wrapper float_left">
-							<div class="row">
+							<div class="row mr-0 ml-0">
 								<div class="col-md-12 p-0">
-									<div class="x_slider_select x_slider_select_2" style="margin-top: 0px;">
+									<div class="x_slider_select x_slider_select_22" style="margin-top: 0px;margin-left: -14px;">
 										<select class="myselect" name="cab_type" required>
 											<option value="Hatchback">Hatchback</option>
 											<option value="XUV">XUV</option>
@@ -676,7 +695,7 @@
 				<form method="post" enctype="multipart/form-data" action="<?=base_url()?>Home/outstaion_cars">
 					<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
 						<div class="x_slider_form_main_wrapper float_left">
-							<div class="row justify-content-center" style="flex-wrap: nowrap;width: 100%;">
+							<div class="row justify-content-center mr-0 ml-0" style="flex-wrap: nowrap;width: 100%;">
 								<ul class="nav nav-tabs roundtab mobilenav-tabs justify-content-center" style="display: flex; flex-wrap: nowrap;">
 									<li class="nav-item" style="border-radius: 8px 0px 0px 8px;" onclick="change(1)"> <a class="nav-link roundtab active" data-toggle="tab" href="#firstt" style="font-size: 13px;border-radius: 6px 0px 0px 6px;">
 											One Way </a>
@@ -693,7 +712,7 @@
 										</div>
 									</div>
 								</div>
-								<div class="row" style="border: 1px solid rgb(226, 225, 225);margin-top: 10px;border-radius: 10px;">
+								<div class="row mr-0 ml-0" style="border: 1px solid rgb(226, 225, 225);margin-top: 10px;border-radius: 10px;">
 									<div class="col-md-12 p-0" data-toggle="modal" data-target="#selectcity" data-dismiss="modal" style="border-bottom:1px solid rgb(226, 225, 225);">
 										<div class="selectcity">
 											<i class="fa fa-map-marker"></i>
