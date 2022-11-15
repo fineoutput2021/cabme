@@ -168,6 +168,20 @@ function loadSuccessNotify(succ_message){
     function loadErrorNotify(message){
        notifyError(message);
     }
+//---- mobile form js --------
+
+		$(document).ready(function() {
+			 //initialize swiper when document ready
+		    var mySwiper = new Swiper ('.swiper-container', {
+		      // Optional parameters
+		      direction: 'horizontal',
+		      loop: true,
+		      navigation: {
+		        nextEl: '.swiper-button-next',
+		        prevEl: '.swiper-button-prev',
+		      },
+		    });
+		});
 //---- show promocode model -------
 function show_promo_model(x){
 	var p_name=$('#p_'+x).attr('p_name');

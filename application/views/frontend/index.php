@@ -316,7 +316,7 @@
 
 	<!-- ================================  Mobile Form =========================================== -->
 	<div class="x_responsive_form_wrapper x_responsive_form_wrapper2 float_left d-block d-sm-block d-md-block  d-lg-none d-xl-none" style="margin-top: 100px;">
-		<div class="container">
+		<!-- <div class="container">
 			<div class="x_slider_form_main_wrapper float_left">
 				<div class="content_tabs" style="margin-top: -8px;">
 					<div class="row">
@@ -334,7 +334,6 @@
 					</div>
 				</div>
 				<div class="tab-content">
-					<!-- self drive Form Tab -->
 					<div id="firsttt" class="tab-pane active">
 						<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
 							<div class="x_slider_form_main_wrapper float_left">
@@ -388,7 +387,6 @@
 							</div>
 						</div>
 					</div>
-					<!-- second Form Tab -->
 					<div id="seconddd" class="tab-pane">
 						<form method="post" enctype="multipart/form-data" action="javascript:void(0)" id="m_intercity_form">
 							<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
@@ -450,7 +448,6 @@
 							</div>
 						</form>
 					</div>
-					<!-- Third Form Tab -->
 					<div id="thirddd" class="tab-pane">
 						<form method="post" enctype="multipart/form-data" action="<?=base_url()?>Home/outstaion_cars">
 							<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
@@ -513,10 +510,237 @@
 				</div>
 			</div>
 		</div>
+	</div> -->
+	<style>
+	.swiper-container  {
+  width: 100%;
+}
+	.head_c {
+  width: 100%;
+  height: 3rem;
+  margin-bottom: 1em;
+  background-color: rgba(0,0,0,0.05);
+}
+.head_s {
+  font-family: sans-serif;
+  text-align: center;
+  font-size: 1.5em;
+  line-height: 4rem;
+}
+
+
+	</style>
+	<!-- Slider #1 main container -->
+	<div class="x_slider_form_main_wrapper float_left">
+	<div class="swiper-container head_c">
+	    <!-- Additional required wrapper -->
+	    <div class="swiper-wrapper">
+	        <!-- Slides -->
+					<!-- //================= first form ================= -->
+	      <div class="swiper-slide head_s"><div class="text">Self-Drive </div></div>
+				<!-- //========= second form ======== -->
+	      <div class="swiper-slide head_s"><div class="text">Outstation</div></div>
+				<!-- //========= third form ========= -->
+	      <div class="swiper-slide head_s"><div class="text">Intercity</div></div>
+	    </div>
+
+	    <!-- If we need navigation buttons -->
+	    <div class="swiper-button-prev"></div>
+	    <div class="swiper-button-next"></div>
 	</div>
+
+<!-- Slider #2 main container -->
+<div class="swiper-container ">
+    <!-- Additional required wrapper -->
+    <div class="swiper-wrapper" >
+        <!-- Slides -->
+			<!-- //================= first form ================= -->
+      <div class="swiper-slide"><div id="firsttt" class="tab-pane active">
+				<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+					<div class="x_slider_form_main_wrapper float_left">
+						<form method="post" enctype="multipart/form-data" action="<?=base_url()?>Home/self_drive_cars">
+							<div class="row" style="margin-top: 20px;">
+								<div class="row" style="border: 1px solid rgb(226, 225, 225);border-radius: 10px;">
+									<div class="col-md-12 p-0" data-toggle="modal" data-target="#selectcity" data-dismiss="modal" style="border-bottom:1px solid rgb(226, 225, 225);">
+										<div class="selectcity">
+											<i class="fa fa-map-marker"></i>
+											<h5 class="city_title">Select City</h5>
+										</div>
+									</div>
+									<div class="col-md-3 col-6 mobileradius" style="z-index: 0;display: flex;height: 55px;padding: 0px;border-right: 1px solid rgb(226, 225, 225);">
+										<div class="form-sec-header" style="height: 50px;">
+											<label class="cal-icon" style="top:11px;left: 17px;"> Start Date
+												<input type="text" autocomplete="off" readonly required id="msdsd" name="start_date" placeholder="Date" class="form-control datepicker" style="border: none;padding-right: 0px;padding-left: 1px;margin-top: -9px;">
+											</label>
+										</div>
+										<div class="timepicker_div form-sec-header" style="height: 50px;margin-top: 2px;width: 80px;margin-left: 12px;">
+											<label class="cal-icon" style="top:11px;left: 10px;">TIME
+												<input type="text" autocomplete="off" id="msdst" required name="start_time" class="form-control timepicker" placeholder="Time"
+													style="background-color: transparent;border: none;margin-left: -13px; margin-top: -10px; width: 122%;">
+										</div>
+									</div>
+									<div class="col-md-3 col-6 mobileradius" style="z-index: 0;display: flex;height: 55px;padding: 0px;">
+										<div class="form-sec-header" style="height: 50px;">
+											<label class="cal-icon" style="top:11px;left: 10px;"> End Date
+												<input type="text" autocomplete="off" readonly id="msded" required name="end_date" placeholder="Date" class="form-control datepicker" style="border: none;padding-right: 0px;padding-left: 1px;margin-top: -9px;">
+											</label>
+										</div>
+										<div class="timepicker_div form-sec-header" style="height: 50px;margin-top: 2px;width: 80px;margin-left: 12px;">
+											<label class="cal-icon" style="top:11px;left: 10px;">TIME
+												<input type="text" autocomplete="off" readonly id="msdet" required name="end_time" placeholder="Time" class="form-control timepicker"
+													style="background-color: transparent;border: none;margin-left: -13px; margin-top: -10px; width: 122%;">
+										</div>
+									</div>
+								</div>
+								<div class="text-center col-md-12 col-12 p-2">
+									<h6 id="ms_duration"></h6>
+								</div>
+								<input type="hidden" name="city_id" class="city_id" value="" />
+								<input type="hidden" name="duration" value="" id="mduration">
+								<input type="hidden" name="index" value="1" id="mindex">
+								<div class="col-md-12">
+									<div class="row mt-4 justify-content-center">
+										<button class="btn col-md-10 searchbtn shadowbtn" type="submit" id="mself_btn" disabled> <i class="fa fa-search"></i> &nbsp; Search</button>
+									</div>
+								</div>
+							</div>
+						</form>
+					</div>
+				</div>
+			</div></div>
+			<!-- //========= second form ======== -->
+      <div class="swiper-slide"><div id="seconddd" class="tab-pane">
+				<form method="post" enctype="multipart/form-data" action="javascript:void(0)" id="m_intercity_form">
+					<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+						<div class="x_slider_form_main_wrapper float_left">
+							<div class="row">
+								<div class="col-md-12 p-0">
+									<div class="x_slider_select x_slider_select_2" style="margin-top: 0px;">
+										<select class="myselect" name="cab_type" required>
+											<option value="Hatchback">Hatchback</option>
+											<option value="XUV">XUV</option>
+											<option value="Sedan">Sedan</option>
+										</select> &nbsp; <i class="fa fa-car"></i>
+									</div>
+								</div>
+								<div class="row mt-1" style="border: 1px solid rgb(226, 225, 225);border-radius: 10px;">
+									<div class="col-md-12 p-0 selectcity" data-toggle="modal" data-target="#selectcity" data-dismiss="modal" style="border-bottom:1px solid rgb(226, 225, 225);">
+										<div class="selectcity">
+											<i class="fa fa-map-marker"></i>
+											<h5 class="city_title">Select City</h5>
+										</div>
+									</div>
+									<div class="col-md-3 col-6 mobileradius" style="z-index: 0;display: flex;height: 55px;padding: 0px;border-right: 1px solid rgb(226, 225, 225);">
+										<div class="form-sec-header" style="height: 50px;">
+											<label class="cal-icon" style="top:11px;left: 17px;"> Start Date
+												<input type="text" autocomplete="off" readonly required id="micsd" name="start_date" placeholder="Date" class="form-control datepicker" style="border: none;padding-right: 0px;padding-left: 1px;margin-top: -9px;">
+											</label>
+										</div>
+										<div class="timepicker_div form-sec-header" style="height: 50px;margin-top: 2px;width: 80px;margin-left: 12px;">
+											<label class="cal-icon" style="top:11px;left: 10px;">Time
+												<input type="text" autocomplete="off" readonly required class="form-control timepicker" id="micst" name="start_time" placeholder="Time"
+													style="background-color: transparent;border: none;margin-left: -13px; margin-top: -10px; width: 122%;">
+										</div>
+									</div>
+									<div class="col-md-3 col-6 mobileradius" style="z-index: 0;display: flex;height: 55px;padding: 0px;">
+										<div class="form-sec-header" style="height: 50px;">
+											<label class="cal-icon" style="top:11px;left: 10px;"> End Date
+												<input type="text" autocomplete="off" readonly required id="miced" name="end_date" placeholder="Date" class="form-control datepicker" style="border: none;padding-right: 0px;padding-left: 1px;margin-top: -9px;">
+											</label>
+										</div>
+										<div class="timepicker_div form-sec-header" style="height: 50px;margin-top: 2px;width: 80px;margin-left: 12px;">
+											<label class="cal-icon" style="top:11px;left: 10px;">TIME
+												<input type="text" autocomplete="off" readonly required id="micet" name="end_time" class="form-control timepicker" placeholder="Time"
+													style="background-color: transparent;border: none;margin-left: -13px; margin-top: -10px; width: 122%;">
+										</div>
+									</div>
+								</div>
+								<div class="text-center col-md-12 col-12 p-2">
+									<h6 id="mic_duration"></h6>
+								</div>
+								<input type="hidden" name="city_id" class="city_id" value="" />
+								<input type="hidden" name="duration" value="" id="mi_duration">
+								<div class="col-md-12 mt-3">
+									<div class="row mt-2 justify-content-center">
+										<button class="btn col-md-10 searchbtn shadowbtn" type="submit" id="miter_btn" disabled> <i class="fa fa-search"></i> &nbsp;Search</button>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</form>
+			</div></div>
+			<!-- //========= third form ========= -->
+      <div class="swiper-slide">
+				<div id="thirddd" class="tab-pane">
+				<form method="post" enctype="multipart/form-data" action="<?=base_url()?>Home/outstaion_cars">
+					<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+						<div class="x_slider_form_main_wrapper float_left">
+							<div class="row justify-content-center" style="flex-wrap: nowrap;width: 100%;">
+								<ul class="nav nav-tabs roundtab mobilenav-tabs justify-content-center" style="display: flex; flex-wrap: nowrap;">
+									<li class="nav-item" style="border-radius: 8px 0px 0px 8px;" onclick="change(1)"> <a class="nav-link roundtab active" data-toggle="tab" href="#firstt" style="font-size: 13px;border-radius: 6px 0px 0px 6px;">
+											One Way </a>
+									</li>
+									<li class="nav-item" style="border-radius: 0px 8px 8px 0px;" onclick="change(2)"> <a class="nav-link roundtab" data-toggle="tab" href="#thirdd" style="font-size: 13px;border-radius: 0px 6px 6px 0px;">Round-Trip </a>
+									</li>
+								</ul>
+							</div>
+							<div class="row">
+								<div id="location2" style="display: flex;width: 100%;">
+									<div class="col-md-12 col-12 p-0">
+										<div class="x_slider_select x_slider_select_2" style="">
+											<input type="text" placeholder="Pickup Location" name="pick_location" required class="form-control" style="">
+										</div>
+									</div>
+								</div>
+								<div class="row" style="border: 1px solid rgb(226, 225, 225);margin-top: 10px;border-radius: 10px;">
+									<div class="col-md-12 p-0" data-toggle="modal" data-target="#selectcity" data-dismiss="modal" style="border-bottom:1px solid rgb(226, 225, 225);">
+										<div class="selectcity">
+											<i class="fa fa-map-marker"></i>
+											<h5 class="city_title">Select City</h5>
+										</div>
+									</div>
+									<div id="change" style="display: flex;" class="col-md-12 col-12 p-0">
+										<div class="col-md-12 col-12 mobileradius" style="z-index: 0;display: flex;height: 55px;padding: 0px;border-right: 1px solid rgb(226, 225, 225);justify-content: space-around;">
+											<div class="form-sec-header" style="height: 50px;">
+												<label class="cal-icon" style="top:11px;left: 17px;"> Start Date
+													<input type="text" autocomplete="off" id="moosd" onchange=mone_way() readonly required placeholder="Date" name="start_date" class="form-control datepicker"
+														style="border: none;padding-right: 0px;padding-left: 1px;margin-top: -9px;">
+												</label>
+											</div>
+											<div class="timepicker_div form-sec-header" style="height: 50px;margin-top: 2px;width: 80px;margin-left: 12px;">
+												<label class="cal-icon" style="top:11px;left: 10px;"> Start Time
+													<input type="text" autocomplete="off" id="moost" onchange=mone_way() readonly required name="start_time" placeholder="Time" class="form-control timepicker"
+														style="background-color: transparent;border: none;margin-left: 5px; margin-top: -10px; width: 84%;">
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="text-center col-md-12 col-12 p-2">
+									<h6 id="mot_duration"></h6>
+								</div>
+								<input type="hidden" name="city_id" class="city_id" value="" />
+								<input type="hidden" name="round_type" id="mround_type" value="1" />
+								<input type="hidden" name="duration" value="1" id="mo_duration">
+								<div class="col-md-12 mt-3">
+									<div class="row mt-2 justify-content-center">
+										<button class="btn col-md-10 searchbtn shadowbtn" type="submit" id="moutstation_btn" disabled> <i class="fa fa-search"></i> &nbsp;Search</button>
+									</div>
+								</div>
+							</div>
+						</div>
+				</form>
+			</div>
+		</div></div>
+
+    </div>
+
+</div>
+</div>
 	</div>
 	<!-- ================================  Mobile Form End =========================================== -->
-	<!-- =================== Testimonial ================================== -->
+
+	<!-- =================== Featured ================================== -->
 	<div class="float_left ">
 		<div class="container">
 			<div class="row">
