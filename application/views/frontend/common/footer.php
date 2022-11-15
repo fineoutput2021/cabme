@@ -839,7 +839,7 @@ $(document).ready(function () {
       	$('#device').val(1);
      }
 var id = localStorage.getItem("city_id");
-var name = localStorage.getItem("name");
+var name = localStorage.getItem("city_name");
 if(id != null){
 $('#wc_'+id+'').addClass("city_active");
 $('#mc_'+id+'').addClass("city_active");
@@ -848,7 +848,7 @@ $('.city_title').html(name);
 }
 //--- outstation city ----
 var id2 = localStorage.getItem("city_id2");
-var name2 = localStorage.getItem("name2");
+var name2 = localStorage.getItem("city_name2");
 // alert(name2)
 if(id2 != null){
 $('#wc_2'+id+'').addClass("city_active");
@@ -878,7 +878,7 @@ function out_set_city(obj){
 	var name = $(obj).attr('name');
 	// alert(name)
 localStorage.setItem("city_id2", id);
-localStorage.setItem("name2", name);
+localStorage.setItem("city_name2", name);
 $(".citieslist2").removeClass("city_active");
 $('#wc_2'+id+'').addClass("city_active");
 $('#mc_2'+id+'').addClass("city_active");
