@@ -300,12 +300,12 @@
 					</li>
 					<?php $i++; } ?>
 				</ol>
-				<div class="carousel-nevigation">
+				<!-- <div class="carousel-nevigation">
 					<a class="prev" href="#carousel-example-generic" role="button" data-slide="prev"> <i class="fa fa-angle-left"></i>
 					</a>
 					<a class="next" href="#carousel-example-generic" role="button" data-slide="next"> <i class="fa fa-angle-right"></i>
 					</a>
-				</div>
+				</div> -->
 				<!-- =================== End Slider ============================ -->
 			</div>
 		</div>
@@ -559,6 +559,7 @@
 			}
 		</style>
 		<!-- Slider #1 main container -->
+		<!-- =================== Start Slider ============================ -->
 		<div class="col-md-12 p-0" style="z-index: 0;">
 			<div class="screenshot">
 				<div class="owl-carousel screen nplr screen-loop">
@@ -570,6 +571,7 @@
 				</div>
 			</div>
 		</div>
+		<!-- =================== End Slider ============================ -->
 		<div class="x_slider_form_main_wrapper float_left">
 
 			<div style="box-shadow: 0px 0 8px rgb(254 241 240);padding: 10px 5px;border-radius: 15px;">
