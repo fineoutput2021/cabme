@@ -35,23 +35,35 @@
 					</div>
 				</div>
 				<div class="row">
-					<div class="col-md-12">
-						<p class="mt-1 mb-1">Upload <b>Aadhar Front</b> Image</p>
-						<input type="file" name="aadhar_front" required value="">
+					<div class="col-md-12 mt-3">
+						<!-- <p class="mt-1 mb-1">Upload <b>Aadhar Front</b> Image</p> -->
+						<div class="row">
+							<label style="padding-right: 0.5rem "><b>Aadhar Front<span style="color:red">*</span></b></label>
+							<input type="file" name="aadhar_front" required value="" style="width: 64%;">
+						</div>
 					</div>
-					<div class="col-md-12">
-						<p class="mt-1  mb-1">Upload <b>Aadhar Back</b> Image</p>
-						<input type="file"  name="aadhar_back" required value="">
+					<div class="col-md-12 mt-3">
+						<div class="row">
+							<label style="padding-right: 0.8rem "><b>Aadhar Back<span style="color:red">*</span></b></label>
+						<!-- <p class="mt-1  mb-1">Upload <b>Aadhar Back</b> Image</p> -->
+						<input type="file"  name="aadhar_back" required value=""  style="width: 64%;">
+						</div>
 					</div>
 				</div>
 				<div class="row">
-					<div class="col-md-12">
-						<p class="mt-1 mb-1">Upload <b>License Front</b> Image</p>
-						<input type="file" name="license_front" required value="">
+					<div class="col-md-12 mt-3">
+						<div class="row">
+							<label style="padding-right: 0.5rem "><b>License Front<span style="color:red">*</span></b></label>
+						<!-- <p class="mt-1 mb-1">Upload <b>License Front</b> Image</p> -->
+						<input type="file" name="license_front" required value=""  style="width: 64%;">
 					</div>
-					<div class="col-md-12">
-						<p class="mt-1  mb-1">Upload <b>License Back</b> Image</p>
-						<input type="file" name="license_back" required value="">
+					</div>
+					<div class="col-md-12 mt-3">
+						<div class="row">
+						<label style="padding-right: 0.8rem "><b>License Back<span style="color:red">*</span></b></label>
+						<!-- <p class="mt-1  mb-1">Upload <b>License Back</b> Image</p> -->
+						<input type="file" name="license_back" required value=""  style="width: 64%;">
+					</div>
 					</div>
 				</div>
 				<div class="row  mt-2">

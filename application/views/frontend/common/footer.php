@@ -851,9 +851,9 @@ var id2 = localStorage.getItem("city_id2");
 var name2 = localStorage.getItem("city_name2");
 // alert(name2)
 if(id2 != null){
-$('#wc_2'+id+'').addClass("city_active");
-$('#mc_2'+id+'').addClass("city_active");
-$('.city_id2').val(id);
+$('#wc_2'+id2+'').addClass("city_active");
+$('#mc_2'+id2+'').addClass("city_active");
+$('.city_id2').val(id2);
 $('.city_title2').html(name2);
 }
 });
