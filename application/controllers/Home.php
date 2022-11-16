@@ -1213,25 +1213,9 @@ class Home extends CI_Controller
         $data['user_data'] = $this->db->get_where('tbl_users', array('id'=> $data['booking_data'][0]->user_id))->result();
         $city = $this->db->get_where('tbl_cities', array('id'=> $data['booking_data'][0]->city_id))->result();
         $data['city_data']=$city;
-          //------ seating  ---
-          if ($car[0]->seatting==1) {
-              $seating = '4 Seates';
-          } elseif ($car[0]->seatting==2) {
-              $seating = '5 Seates';
-          } else {
-              $seating = '7 Seates';
-          }
-
-          $car_data= array(
-                      'brand_name'=>$car[0]->brand_name,
-                      'car_name'=>$car[0]->car_name,
-                      'photo'=>$car[0]->photo,
-                      'seating'=>$seating,
-                      );
-
-        $data['car_data']=$car_data;
+    
         $this->load->view('frontend/common/header',$data);
-        $this->load->view('frontend/outstation_booking_details');
+        $this->load->view('frontend/intercity_booking_details');
         $this->load->view('frontend/common/footer');
       } else {
           redirect("/", "refresh");

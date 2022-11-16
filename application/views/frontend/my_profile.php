@@ -44,7 +44,7 @@
 									<h4>Hi, <?=$name?></h4>
 								</li>
 								<li class="nav-item"> <a class="nav-link active" data-toggle="tab" href="#profile" id="profile_tab">
-										<i class="fa fa-user"></i> &nbsp; My profile </a>
+										<i class="fa fa-user"></i> &nbsp; My Profile </a>
 								</li>
 								<li class="nav-item desktoplist"> <a class="nav-link " data-toggle="tab" href="#booking" id="booking_tab">
 										<i class="fa fa-car"></i> My Booking
@@ -200,7 +200,7 @@
                     <a href="<?=base_url()?>Home/self_booking_details/<?=base64_encode($booking->id)?>">View</a>
                     <?}else if($booking->booking_type==2){?>
                       <!-- //-intercity -->
-
+<a href="<?=base_url()?>Home/intercity_booking_details/<?=base64_encode($booking->id)?>">View</a>
                       <?}else if($booking->booking_type==3){?>
                         <!-- //-oustation -->
   <a href="<?=base_url()?>Home/outstation_booking_details/<?=base64_encode($booking->id)?>">View</a>
@@ -230,7 +230,7 @@
 
 
 	<!--====== Content ======-->
-	<div class="container">
+	<!-- <div class="container">
 		<div class="row p-3">
 			<h4 class="mt-5">Self-Drive Car Rentals in Delhi NCR</h4>
 			<p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Totam amet nihil, voluptatem incidunt tempore
@@ -249,7 +249,7 @@
 				incidunt tempore praesentium. Explicabo, minus quaerat in illo obcaecati impedit repellat quae esse,
 				dolore incidunt modi pariatur sed?</p>
 		</div>
-	</div>
+	</div> -->
 	<!--====== Content End ======-->
   <script type="text/javascript">
       $(window).on('load',function(){

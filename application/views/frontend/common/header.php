@@ -307,7 +307,7 @@
 								<input type="email" name="email" id="signupEmail" class="form-control modalinput" required="" placeholder="E-mail*">
 							</div>
 							<div class="form-group mb-4 col-md-6 col-12">
-								<input type="text" name="phone" id="signupPhone" class="form-control modalinput" required="" placeholder="Enter mobile Number*" onkeypress="return isNumberKey(event)" maxlength="10" minlength="10">
+								<input type="text" name="phone" id="signupPhone" class="form-control modalinput" required="" placeholder="Enter Mobile Number*" onkeypress="return isNumberKey(event)" maxlength="10" minlength="10">
 							</div>
 							<input type="hidden" id="signupverify" value="0" name="signupverify" />
 							<div class="form-group col-md-12 col-12" style="display:none" id="otp_div">
