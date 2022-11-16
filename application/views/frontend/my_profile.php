@@ -50,7 +50,7 @@
 										<i class="fa fa-car"></i> My Booking
 									</a>
 								</li>
-								<li class="nav-item mobilelist"> <a class="nav-link " data-toggle="tab" href="#booking_2">
+								<li class="nav-item mobilelist"> <a class="nav-link " data-toggle="tab" href="#booking_2 " id="booking_tab2">
 										<i class="fa fa-car"></i> My Booking
 									</a>
 								</li>
@@ -127,40 +127,45 @@
 
 					<div id="booking_2" class="tab-pane">
 
-						<table class="profiletable" style="height: auto;">
-							<thead>
-								<tr class="tr1">
-                  <th>Booking ID</th>
-                  <th>Booknig Type</th>
-                  <th>Booking Amount</th>
-                  <th>Status</th>
-                  <th>Details</th>
-                  <th>Invoice</th>
-								</tr>
-							</thead>
-							<tbody>
                 <?php $i=1; foreach($booking_data as $booking) {?>
-								<tr>
-									<td>#<?=$booking->id?></td>
-									<td><?if($booking->booking_type==1){echo'Self Drive';}else if($booking->booking_type==2){echo'Inertcity';}else if($booking->booking_type==3){echo'Outstation';}?></td>
-									<td>₹<?=$booking->final_amount?></td>
-									<td>
-                    <?if($booking->order_status==1){?>
-                    <span class="activespan bg-warning">Pending</span>
-                    <?}else if($booking->order_status==2){?>
-                      <span class="activespan bg-info">Accepted</span>
-                    <?}else if($booking->order_status==3){?>
-                      <span class="activespan bg-primarys">On Going</span>
-                    <?}else if($booking->order_status==4){?>
-                      <span class="activespan bg-success">Completed</span>
-                    <?}else{?>
-                    <span class="activespan bg-danger">Rejected</span>
-                    <?}?>
-                  </td>
-								</tr>
+                  <div class="profiletable mt-4">
+                    <div class="row justify-content-between px-3">
+                    <ul>
+                      <li><b>Booking ID</b></li>
+                      <li><b>Booking Type</b></li>
+                      <li><b>Booking Amount</b></li>
+                      <li><b>Status</b></li>
+                      <li><b>Details</b></li>
+                      <li><b>Invoice</b></li>
+                    </ul>
+                    <ul>
+                      <li>#<?=$booking->id?></li>
+                      <li><?if($booking->booking_type==1){echo'Self Drive';}else if($booking->booking_type==2){echo'Inertcity';}else if($booking->booking_type==3){echo'Outstation';}?></li>
+                      <li>₹<?=$booking->final_amount?></li>
+                      <li><?if($booking->order_status==1){?>
+                      <span class="activespan bg-warning">Pending</span>
+                      <?}else if($booking->order_status==2){?>
+                        <span class="activespan bg-info">Accepted</span>
+                        <?}else if($booking->order_status==3){?>
+                          <span class="activespan bg-success">Completed</span>
+                        <?}else{?>
+                        <span class="activespan bg-danger">Rejected</span>
+                      <?}?></li>
+                      <li><?if($booking->booking_type==1){?>
+                        <!-- //-selfdrive -->
+                      <a href="<?=base_url()?>Home/self_booking_details/<?=base64_encode($booking->id)?>">View</a>
+                      <?}else if($booking->booking_type==2){?>
+                        <!-- //-intercity -->
+  <a href="<?=base_url()?>Home/intercity_booking_details/<?=base64_encode($booking->id)?>">View</a>
+                        <?}else if($booking->booking_type==3){?>
+                          <!-- //-oustation -->
+    <a href="<?=base_url()?>Home/outstation_booking_details/<?=base64_encode($booking->id)?>">View</a>
+                          <?}?></li>
+                      <li>  <?if(!empty($booking->invoice_image)){?><a download="Order_<?=$booking->id?>_Invoice.png" href="<?=base_url().$booking->invoice_image?>" title="invoice">Download</a><?}?></li>
+                    </ul>
+                  </div>
+                  </div>
                 <?php $i++; } ?>
-							</tbody>
-						</table>
 					</div>
 
 					<div id="booking" class="tab-pane">
@@ -168,7 +173,7 @@
 							<thead>
 								<tr class="tr1">
                   <th>Booking ID</th>
-									<th>Booknig Type</th>
+									<th>Booking Type</th>
 									<th>Booking Amount</th>
 									<th>Status</th>
 									<th>Details</th>
@@ -187,8 +192,6 @@
                     <?}else if($booking->order_status==2){?>
                       <span class="activespan bg-info">Accepted</span>
                     <?}else if($booking->order_status==3){?>
-                      <span class="activespan bg-primarys">On Going</span>
-                    <?}else if($booking->order_status==4){?>
                       <span class="activespan bg-success">Completed</span>
                     <?}else{?>
                     <span class="activespan bg-danger">Rejected</span>
@@ -206,7 +209,8 @@
   <a href="<?=base_url()?>Home/outstation_booking_details/<?=base64_encode($booking->id)?>">View</a>
                         <?}?>
                   </td>
-                  <td><?if(!empty($booking->invoice)){?>Download<?}?></td>
+                  <td>
+                    <?if(!empty($booking->invoice_image)){?><a download="Order_<?=$booking->id?>_Invoice.png" href="<?=base_url().$booking->invoice_image?>" title="invoice">Download</a><?}?></td>
 								</tr>
                 <?php $i++; } ?>
 							</tbody>
@@ -255,10 +259,19 @@
       $(window).on('load',function(){
         var pageURL = $(location).attr("href");
         if(pageURL.includes('booking')){
-        $('#profile_tab').removeClass('active');
-        $('#booking_tab').addClass('active');
-        $('#profile').removeClass('active show');
-        $('#booking').addClass('active show');
+          if (window.matchMedia('(max-width: 767px)').matches) {
+            $('#profile_tab').removeClass('active');
+            $('#booking_tab2').addClass('active');
+            $('#profile').removeClass('active show');
+            $('#booking_2').addClass('active show');
+            } else {
+              $('#profile_tab').removeClass('active');
+              $('#booking_tab').addClass('active');
+              $('#profile').removeClass('active show');
+              $('#booking').addClass('active show');
+            }
+
+
       }
       });
   </script>
