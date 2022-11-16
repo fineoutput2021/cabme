@@ -838,36 +838,56 @@
 						<h4 class="heading">Why Cabme?</h4>
 					</div>
 				</div>
-				<div class="col-md-12" style="">
+				<!-- //======= web div ====== -->
+				<div class="col-md-12 d-none d-sm-none d-md-none  d-lg-block d-xl-block" style="">
 					<div class="btc_ln_slider_wrapper">
 						<div class="row">
 							<div class="col-md-3 my-4 ">
-								<div class="text-center cabme-box">
-									<img src="<?=base_url()?>assets/frontend/images/car.png" />
-									<h3 class="my-3">Safe and Santised cars</h3>
+								<!-- <div class="text-center cabme-box"> -->
+									<img src="<?=base_url()?>assets/frontend/images/safe.png" class="img-fluid" />
+									<!-- <h3 class="my-3">Safe and Santised cars</h3> -->
 									<!-- <p>Cabme is the ONLY company that focuses on this innovative business model of allowing its customer to take the car </p> -->
-								</div>
+								<!-- </div> -->
 							</div>
 							<div class="col-md-3 my-4 ">
-								<div class="text-center cabme-box">
-									<img src="<?=base_url()?>assets/frontend/images/dollar-symbol.png" />
-									<h3 class="my-3">No hidden charges</h3>
+								<!-- <div class="text-center cabme-box"> -->
+									<img src="<?=base_url()?>assets/frontend/images/charges.png" class="img-fluid"/>
+									<!-- <h3 class="my-3">No hidden charges</h3> -->
 									<!-- <p>Cabme is the ONLY company that focuses on this innovative business model of allowing its customer to take the car </p> -->
-								</div>
+								<!-- </div> -->
 							</div>
 							<div class="col-md-3 my-4 ">
-								<div class="text-center cabme-box">
-									<img src="<?=base_url()?>assets/frontend/images/fast-delivery.png" />
-									<h3 class="my-3">Doorstep Delivery</h3>
+								<!-- <div class="text-center cabme-box"> -->
+									<img src="<?=base_url()?>assets/frontend/images/door.png" class="img-fluid"/>
+									<!-- <h3 class="my-3">Doorstep Delivery</h3> -->
 									<!-- <p>Cabme is the ONLY company that focuses on this innovative business model of allowing its customer to take the car </p> -->
-								</div>
+								<!-- </div> -->
 							</div>
 							<div class="col-md-3 my-4 ">
-								<div class="text-center cabme-box">
-									<img src="<?=base_url()?>assets/frontend/images/24-hours.png" />
-									<h3 class="my-3">24*7 customer support</h3>
+								<!-- <div class="text-center cabme-box"> -->
+									<img src="<?=base_url()?>assets/frontend/images/customer_support.png" class="img-fluid" />
+									<!-- <h3 class="my-3">24*7 customer support</h3> -->
 									<!-- <p>Cabme is the ONLY company that focuses on this innovative business model of allowing its customer to take the car </p> -->
-								</div>
+								<!-- </div> -->
+							</div>
+						</div>
+					</div>
+				</div>
+				<!-- //=========== mobile div =========== -->
+				<div class="col-md-12 d-block d-sm-block d-md-block  d-lg-none d-xl-none" style="z-index: 0;">
+					<div class="screenshot2">
+						<div class="owl-carousel screen nplr screen-loop">
+							<div>
+								<img src="<?=base_url()?>assets/frontend/images/safe.png" class="img-fluid" />
+							</div>
+							<div>
+								<img src="<?=base_url()?>assets/frontend/images/charges.png" class="img-fluid" />
+							</div>
+							<div>
+								<img src="<?=base_url()?>assets/frontend/images/door.png" class="img-fluid" />
+							</div>
+							<div>
+								<img src="<?=base_url()?>assets/frontend/images/customer_support.png" class="img-fluid" />
 							</div>
 						</div>
 					</div>
@@ -968,10 +988,10 @@
 					<img src="<?=base_url()?>assets/frontend/images/choose.png" class="img-fluid" alt="img" />
 				</div>
 				<div class="col-md-6 pv-4 pb-md-0">
-					<p class="section6-title">
+					<p class="section6-title" style="padding-left: 36px;">
 						About Us
 					</p>
-					<h4 class="heading">
+					<h4 class="heading" style="padding-left: 36px;">
 						Cabme
 					</h4>
 					<div class="content hideContent">
@@ -985,7 +1005,7 @@
 						<p class="section6-para text-justify">Cabme, is an e-commerce portal which allows the clients to book a car online & pay directly via the payment gateway. An unique E- Commerce website which helped over 50000 people, traveling across
 							various cities with a online spot booking, Car Conformation & making Payments.</p>
 					</div>
-					<div class="show-more">
+					<div class="show-more" style="padding-left: 36px;">
 						<a href="javascript:void(0);"><button type="button" class="btn read-button">Read More</button></a>
 					</div>
 				</div>

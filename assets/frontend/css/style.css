@@ -6267,7 +6267,7 @@ input[type=number] {
 }
 .screen .owl-dots {
 	width: 200px;
-	margin: -30px auto 0;
+	margin: -10px auto 0;
 	text-align: center
 }
 .screen .owl-dot {
@@ -8402,6 +8402,9 @@ input[type=number] {
 	padding:20px 20px 0px 20px;
 	background:#ffffff;
 }
+.screenshot2 .owl-carousel .owl-item.active.center {
+	background-color:none;
+}
 .test-bottom{
 border: 2px solid black;
 border-bottom-left-radius: 15px;
@@ -8416,6 +8419,9 @@ background-color: #fff6f5;
 border-radius: 50%;
 }
 @media only screen and (max-width: 768px) {
+	.accordion .card {
+    padding: 10px 10px!important;
+}
   .choose-bg {
 		  padding: 50px 10px!important;
 	}
@@ -8437,7 +8443,7 @@ border-radius: 50%;
 }
 }
 .why_pd{
-	padding:147px 147px 194px 147px;
+	padding:147px 0px 194px 0px;
 }
 .choose-bg {
     background-color: #fff6f5;
