@@ -35,6 +35,7 @@ $days =  $booking_data[0]->duration/24;
 	<div class="coontainer-fluid" id="mobilecardetail" style="background-color: #fff;margin-top: 20px;padding: 20px;">
 	  <div class="row">
 	    <div class="col-md-12 col-xs-12 text-center">
+			  <h2 class="mb-3"><b>Order ID :-</b> #<?=$booking_data[0]->id?></h2>
 	      <img src="<?=base_url().$car_data['photo']?>" alt="c1" style="width: 50%;">
 	      <h3 style="margin-top: 10px;"><b><?=$car_data['car_name']?></b></h3>
          <h4 style="margin-top: 3px;" class="mb-1"><?=$car_data['brand_name']?></h4>
@@ -71,88 +72,59 @@ $days =  $booking_data[0]->duration/24;
 	  </div>
 	</div>
 	<!--============================== Mobile Car Detail End =======================================-->
-	<!--============================== Desktop Car Detail =======================================-->
-	<div class="container-fluid desktopcardetail" style="background-color: #fff;margin-top: 10px;padding: 20px;">
-	  <div class="row" style="text-align: center;">
-	    <div class="col-md-6">
-	      <img src="<?=base_url().$car_data['photo']?>" alt="<?=$car_data['car_name']?>">
-	      <h4 style="margin-top: 30px;"><b><?=$car_data['car_name']?></b></h4>
-	      <h5 style="margin-top: 5px;"><?=$car_data['brand_name']?></h5>
-	      <div class="row justify-content-center mt-2">
-	        <div class="col-md-12" class="carmanuals">
-	          <span><img src="<?=base_url()?>assets/frontend/images/gear-shift.png" alt="Gear" class="img-fluid"/></span> <span><?=$car_data['transmission']?></span>&nbsp&nbsp
-	          <span><img src="<?=base_url()?>assets/frontend/images/gas.png" alt="Gas" class="img-fluid"/></span> <span><?=$car_data['fuel_type']?></span>&nbsp
-	          <span><img src="<?=base_url()?>assets/frontend/images/seat.png" alt="seat" class="img-fluid"/></span> <span><?=$car_data['seating']?></span>
-	        </div>
-	      </div>
-	    </div>
-	    <div class="col-md-6">
-	      <h2 class="bookingline">Booking Details</h2>
-	      <div class="col-md-12" style="margin-top: 20px;">
-	        <div class="row justify-content-center">
-	          <div class="col-md-5">
-	            <p> <?=$booking_data[0]->start_date?> @ <?=$booking_data[0]->start_time?>
-	          </div>
-	          <div class="col-md-1 tolines">To</div>
-	          <div class="col-md-5">
-	            <p> <?=$booking_data[0]->end_date?> @ <?=$booking_data[0]->end_time?>
-	          </div>
-	        </div>
-	      </div>
-	      <p style="margin-top: 10px;"><span style="color: #000;">Duration: </span> &nbsp; <span>
-					<?=$s_duration;?></span> </p>
-	      <div class="row">
-	        <div class="col-md-12 text-center" style="margin-top: 10px;">
-	          <p><?=$city_data[0]->name?></p>
-	        </div>
-	      </div>
-	      <div class="row">
-	        <div class="col-md-11 p-0 text-center" style="margin-top: 10px;">
-	          <p style="margin-left: 78px;"> Includes <?=$booking_data[0]->kilometer?> kms </p>
-	        </div>
-	      </div>
-	    </div>
-	  </div>
-	</div>
+
 	</div>
 	<!--============================== Desktop Car DetailEnd  =======================================-->
 	<div class="container-fluid">
-	  <div class="row" id="reversedivs">
-	    <div class="col-md-8">
+	  <div class="row" >
+	    <div class="col-md-7 d-none d-sm-none d-md-none  d-lg-block d-xl-block">
 	      <div class="x_car_donr_main_box_wrapper float_left mt-3">
 	        <div class="x_car_donr_main_box_wrapper_inner">
 	          <div class="order-done">
-	            <ul class="row list-unstyled">
-	              <li class="col-md-12">
-	                <h6 class="implines">IMPORTANT POINTS TO REMEMBER</h6>
-	                <div class="row">
-	                  <div class="col-md-6" style="color: #000;">CHANGE IN PRICING PLAN:</div>
-	                  <div class="col-md-6"> The pricing plan (7 kms/hr, without fuel) cannot be
-	                    changed after
-	                    the booking is made
-	                  </div>
-	                </div>
-	                <div class="row mt-2">
-	                  <div class="col-md-6" style="color: #000;">FUEL:</div>
-	                  <div class="col-md-6"> In case you are returning the car at a lower fuel level
-	                    than what
-	                    was received, we will charge a flat Rs 500 refuelling service charge +
-	                    actual fuel
-	                    cost to get the tank to the same level as what was received
-	                  </div>
-	                </div>
-	                <div class="row mt-2">
-	                  <div class="col-md-6" style="color: #000;">TOLLS, PARKING, INTER-STATE TAXES:
-	                  </div>
-	                  <div class="col-md-6"> To be paid by you.</div>
-	                </div>
-	              </li>
-	            </ul>
+							<div class="col-md-12">
+								  <h2 class="mb-4">Order ID :- #<?=$booking_data[0]->id?></h2>
+								<img src="<?=base_url().$car_data['photo']?>" alt="<?=$car_data['car_name']?>">
+								<h4 style="margin-top: 30px;"><b><?=$car_data['car_name']?></b></h4>
+								<h5 style="margin-top: 5px;"><?=$car_data['brand_name']?></h5>
+								<div class="row justify-content-center mt-2">
+									<div class="col-md-12" class="carmanuals">
+										<span><img src="<?=base_url()?>assets/frontend/images/gear-shift.png" alt="Gear" class="img-fluid"/></span> <span><?=$car_data['transmission']?></span>&nbsp&nbsp
+										<span><img src="<?=base_url()?>assets/frontend/images/gas.png" alt="Gas" class="img-fluid"/></span> <span><?=$car_data['fuel_type']?></span>&nbsp
+										<span><img src="<?=base_url()?>assets/frontend/images/seat.png" alt="seat" class="img-fluid"/></span> <span><?=$car_data['seating']?></span>
+									</div>
+								</div>
+							</div>
+							<div class="col-md-12">
+
+					      <div class="col-md-12" style="margin-top: 20px;">
+					        <div class="row">
+					          <div class="col-md-5">
+					            <p> <?=$booking_data[0]->start_date?> @ <?=$booking_data[0]->start_time?>
+					          </div>
+					          <div class="col-md-1 tolines">To</div>
+					          <div class="col-md-5">
+					            <p> <?=$booking_data[0]->end_date?> @ <?=$booking_data[0]->end_time?>
+					          </div>
+					        </div>
+					      </div>
+					      <p style="margin-top: 10px;"><span style="color: #000;">Duration: </span> &nbsp; <span>
+									<?=$s_duration;?></span> </p>
+					      <div class="row">
+					        <div class="col-md-12 text-center" style="margin-top: 10px;">
+					          <p><?=$city_data[0]->name?></p>
+					        </div>
+					      </div>
+					      <div class="row">
+					        <div class="col-md-12 p-0 text-center" style="margin-top: 10px;">
+					          <p style=""> Includes <?=$booking_data[0]->kilometer?> kms </p>
+					        </div>
+					      </div>
+					    </div>
 	          </div>
 	        </div>
 	      </div>
 	    </div>
-	    <div class="col-md-4">
+	    <div class="col-md-5">
 	      <div class="x_car_donr_main_box_wrapper float_left mt-3">
 	        <div class="x_car_donr_main_box_wrapper_inner">
 	          <div class="order-done">

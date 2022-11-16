@@ -1091,6 +1091,7 @@ class Home extends CI_Controller
                 redirect("/", "refresh");
             }
         } else {
+            redirect("/", "refresh");
         }
     }
 
@@ -1213,7 +1214,7 @@ class Home extends CI_Controller
         $data['user_data'] = $this->db->get_where('tbl_users', array('id'=> $data['booking_data'][0]->user_id))->result();
         $city = $this->db->get_where('tbl_cities', array('id'=> $data['booking_data'][0]->city_id))->result();
         $data['city_data']=$city;
-    
+
         $this->load->view('frontend/common/header',$data);
         $this->load->view('frontend/intercity_booking_details');
         $this->load->view('frontend/common/footer');
