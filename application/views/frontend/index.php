@@ -314,7 +314,7 @@
 	<!-- ================================  Web Form slider End ======================================================= -->
 
 	<!-- ================================  Mobile Form =========================================== -->
-	<div class="x_responsive_form_wrapper x_responsive_form_wrapper2 float_left d-block d-sm-block d-md-block  d-lg-none d-xl-none mt-0">
+	<div class="x_responsive_form_wrapper x_responsive_form_wrapper2 float_left d-block d-sm-block d-md-block  d-lg-none d-xl-none mt-0 container-fluid pb-4" style="background-color:#ffeeee;">
 		<!-- <div class="container">
 			<div class="x_slider_form_main_wrapper float_left">
 				<div class="content_tabs" style="margin-top: -8px;">
@@ -560,6 +560,7 @@
 		</style>
 		<!-- Slider #1 main container -->
 		<!-- =================== Start Slider ============================ -->
+
 		<div class="col-md-12 p-0" style="z-index: 0;">
 			<div class="screenshot">
 				<div class="owl-carousel screen nplr screen-loop">
@@ -572,7 +573,7 @@
 			</div>
 		</div>
 		<!-- =================== End Slider ============================ -->
-		<div class="x_slider_form_main_wrapper float_left">
+		<div class="x_slider_form_main_wrapper" >
 
 			<div style="box-shadow: 0px 0 8px rgb(254 241 240);padding: 10px 5px;border-radius: 15px;">
 			<div class="swiper-container head_c">
@@ -844,28 +845,28 @@
 								<div class="text-center cabme-box">
 									<img src="<?=base_url()?>assets/frontend/images/car.png" />
 									<h3 class="my-3">Safe and Santised cars</h3>
-									<p>Cabme is the ONLY company that focuses on this innovative business model of allowing its customer to take the car </p>
+									<!-- <p>Cabme is the ONLY company that focuses on this innovative business model of allowing its customer to take the car </p> -->
 								</div>
 							</div>
 							<div class="col-md-3 my-4 ">
 								<div class="text-center cabme-box">
 									<img src="<?=base_url()?>assets/frontend/images/dollar-symbol.png" />
 									<h3 class="my-3">No hidden charges</h3>
-									<p>Cabme is the ONLY company that focuses on this innovative business model of allowing its customer to take the car </p>
+									<!-- <p>Cabme is the ONLY company that focuses on this innovative business model of allowing its customer to take the car </p> -->
 								</div>
 							</div>
 							<div class="col-md-3 my-4 ">
 								<div class="text-center cabme-box">
 									<img src="<?=base_url()?>assets/frontend/images/fast-delivery.png" />
 									<h3 class="my-3">Doorstep Delivery</h3>
-									<p>Cabme is the ONLY company that focuses on this innovative business model of allowing its customer to take the car </p>
+									<!-- <p>Cabme is the ONLY company that focuses on this innovative business model of allowing its customer to take the car </p> -->
 								</div>
 							</div>
 							<div class="col-md-3 my-4 ">
 								<div class="text-center cabme-box">
 									<img src="<?=base_url()?>assets/frontend/images/24-hours.png" />
 									<h3 class="my-3">24*7 customer support</h3>
-									<p>Cabme is the ONLY company that focuses on this innovative business model of allowing its customer to take the car </p>
+									<!-- <p>Cabme is the ONLY company that focuses on this innovative business model of allowing its customer to take the car </p> -->
 								</div>
 							</div>
 						</div>
@@ -925,7 +926,7 @@
 						</h4>
 					</div>
 				</div>
-				<div class="col-md-12" style="z-index: 0;">
+				<div class="col-md-12" style="z-index: 0;padding-bottom: 83px;">
 					<div class="screenshot">
 						<div class="owl-carousel screen nplr screen-loop">
 							<?php $i=1; foreach($testimonials_data as $testimonials) { ?>

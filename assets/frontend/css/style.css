@@ -3330,6 +3330,7 @@ width:100%;
 	 	text-decoration: none;
 	border-color:transparent;
 	font-size:13px;
+	letter-spacing: 1px;
 	/* font-weight:700; */
 	/* text-shadow: 0px 1px, 1px 0px, 1px 1px; */
 
@@ -3398,7 +3399,8 @@ border-right: 1px solid red;
 	color:#000000;
 	font-size:13px;
 	/* font-weight:900; */
-	text-shadow: 0px 1px, 1px 0px, 1px 1px;
+text-shadow: 0px 0.5px, 0.5px 0px, 0.5px 0.5px;
+letter-spacing: 1px;
  /* text-shadow: 1px 0 #000000; */
 	/* text-transform:uppercase; */
 	    padding: 12px 0px;
@@ -8435,7 +8437,7 @@ border-radius: 50%;
 }
 }
 .why_pd{
-	padding:100px
+	padding:147px 147px 194px 147px;
 }
 .choose-bg {
     background-color: #fff6f5;
