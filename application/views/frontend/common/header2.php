@@ -229,8 +229,8 @@
 							<div>
 					  <?if(empty($this->session->userdata('user_data'))){?>
 
-								<button class="btn bg-b" style="margin: 0 20px 0 20px;"  data-toggle="modal" data-target="#signupModal"> <span style="color: #fff;"> <i class="fa fa-user"></i> &nbsp;Sign Up </span></button>
-								<button class="btn bg-b" style="margin: 0 20px 0 20px;"  data-toggle="modal" data-target="#loginModal"> <span style="color: #fff;"> <i class="fa fa-power-off"></i> &nbsp;Login </span></button>
+								<button class="btn bg-b fnt" style="margin: 0 20px 0 20px;"  data-toggle="modal" data-target="#signupModal"> <span style="color: #fff;" class="size"> &nbsp;Sign Up </span></button>
+								<button class="btn bg-b fnt" style="margin: 0 20px 0 20px;"  data-toggle="modal" data-target="#loginModal"> <span style="color: #fff;" class="size"> &nbsp;Login </span></button>
 
 
 						<?}else{?>

@@ -1118,13 +1118,12 @@ class Home extends CI_Controller
             redirect($_SERVER['HTTP_REFERER']);
         }
     }
-    public function booking_details($idd)
+    public function self_booking_details($idd)
     {
     if (!empty($this->session->userdata('user_data'))) {
        $id=base64_decode($idd);
       $data['id']=$idd;
         $data['booking_data'] = $this->db->get_where('tbl_booking', array('id'=> $id))->result();
-      if($data['booking_data'][0]->booking_type==1){
       $car = $this->db->get_where('tbl_selfdrive', array('id'=> $data['booking_data'][0]->car_id))->result();
       $data['user_data'] = $this->db->get_where('tbl_users', array('id'=> $data['booking_data'][0]->user_id))->result();
       $city = $this->db->get_where('tbl_cities', array('id'=> $data['booking_data'][0]->city_id))->result();
@@ -1161,29 +1160,25 @@ class Home extends CI_Controller
                           'seating'=>$seating,
                           'extra_kilo'=>$extra_kilo,
                           );
-      }else if($data['booking_data'][0]->booking_type==2){
-        $car = $this->db->get_where('tbl_intercity', array('id'=> $data['booking_data'][0]->car_id))->result();
-        $data['user_data'] = $this->db->get_where('tbl_users', array('id'=> $data['booking_data'][0]->user_id))->result();
-        $city = $this->db->get_where('tbl_cities', array('id'=> $data['booking_data'][0]->city_id))->result();
-        $fuel_type='';
-        $transmission = '';
-        $extra_kilo = '';
-        $seating = '';
-        $car_data= array(
-                    'brand_name'=>$car[0]->brand_name,
-                    'car_name'=>$car[0]->car_name,
-                    'photo'=>$car[0]->photo,
-                    'fuel_type'=>$fuel_type,
-                    'transmission'=>$transmission,
-                    'seating'=>$seating,
-                    );
-      }else{
+
+        $data['car_data']=$car_data;
+        $this->load->view('frontend/common/header',$data);
+        $this->load->view('frontend/self_booking_details');
+        $this->load->view('frontend/common/footer');
+      } else {
+          redirect("/", "refresh");
+      }
+    }
+    public function outstation_booking_details($idd)
+    {
+    if (!empty($this->session->userdata('user_data'))) {
+       $id=base64_decode($idd);
+      $data['id']=$idd;
+        $data['booking_data'] = $this->db->get_where('tbl_booking', array('id'=> $id))->result();
         $car = $this->db->get_where('tbl_outstation', array('id'=> $data['booking_data'][0]->car_id))->result();
         $data['user_data'] = $this->db->get_where('tbl_users', array('id'=> $data['booking_data'][0]->user_id))->result();
         $city = $this->db->get_where('tbl_cities', array('id'=> $data['booking_data'][0]->city_id))->result();
-        $fuel_type='';
-          $extra_kilo = '';
-            $transmission = '';
+        $data['city_data']=$city;
           //------ seating  ---
           if ($car[0]->seatting==1) {
               $seating = '4 Seates';
@@ -1192,25 +1187,51 @@ class Home extends CI_Controller
           } else {
               $seating = '7 Seates';
           }
-        
+
           $car_data= array(
                       'brand_name'=>$car[0]->brand_name,
                       'car_name'=>$car[0]->car_name,
                       'photo'=>$car[0]->photo,
-                      'fuel_type'=>$fuel_type,
-                      'transmission'=>$transmission,
                       'seating'=>$seating,
-                      'extra_kilo'=>$extra_kilo,
                       );
-      }
-
-
-
-
 
         $data['car_data']=$car_data;
         $this->load->view('frontend/common/header',$data);
-        $this->load->view('frontend/booking_details');
+        $this->load->view('frontend/outstation_booking_details');
+        $this->load->view('frontend/common/footer');
+      } else {
+          redirect("/", "refresh");
+      }
+    }
+    public function intercity_booking_details($idd)
+    {
+    if (!empty($this->session->userdata('user_data'))) {
+       $id=base64_decode($idd);
+      $data['id']=$idd;
+        $data['booking_data'] = $this->db->get_where('tbl_booking', array('id'=> $id))->result();
+        $car = $this->db->get_where('tbl_intercity', array('id'=> $data['booking_data'][0]->car_id))->result();
+        $data['user_data'] = $this->db->get_where('tbl_users', array('id'=> $data['booking_data'][0]->user_id))->result();
+        $city = $this->db->get_where('tbl_cities', array('id'=> $data['booking_data'][0]->city_id))->result();
+        $data['city_data']=$city;
+          //------ seating  ---
+          if ($car[0]->seatting==1) {
+              $seating = '4 Seates';
+          } elseif ($car[0]->seatting==2) {
+              $seating = '5 Seates';
+          } else {
+              $seating = '7 Seates';
+          }
+
+          $car_data= array(
+                      'brand_name'=>$car[0]->brand_name,
+                      'car_name'=>$car[0]->car_name,
+                      'photo'=>$car[0]->photo,
+                      'seating'=>$seating,
+                      );
+
+        $data['car_data']=$car_data;
+        $this->load->view('frontend/common/header',$data);
+        $this->load->view('frontend/outstation_booking_details');
         $this->load->view('frontend/common/footer');
       } else {
           redirect("/", "refresh");

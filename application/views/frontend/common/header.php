@@ -18,6 +18,7 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="<?=base_url()?>assets/frontend/js/bootstrap-notify.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.5.0/js/swiper.min.js"></script>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
 	<style>
 		.mobilenav-tabs .nav-item .nav-link {
 			padding-left: 16px;
@@ -25,28 +26,6 @@
 			padding-right: 16px;
 		}
 
-		.underline{
-	  position: relative;
-	}
-
-	.underline::before{
-	  content: '';
-	  position: absolute;
-	  bottom: 0;
-	  right: 0;
-	  width: 0;
-	  height: 2px;
-	  background-color: red;
-	  transition: width 0.6s cubic-bezier(0.25, 1, 0.5, 1);
-	}
-
-	@media (hover: hover) and (pointer: fine) {
-	  .underline:hover::before{
-	    left: 0;
-	    right: auto;
-	    width: 100%;
-	  }
-	}
 	</style>
 </head>
 
@@ -388,8 +367,8 @@
 						<div>
 
 					  <?if(empty($this->session->userdata('user_data'))){?>
-						<button class="btn bg-b" style="margin: 0 20px 0 20px;"  data-toggle="modal" data-target="#signupModal"> <span style="color: #fff;"> <i class="fa fa-user"></i> &nbsp;Sign Up </span></button>
-						<button class="btn bg-b" style="margin: 0 20px 0 20px;" data-toggle="modal" data-target="#loginModal"> <span style="color: #fff;"> <i class="fa fa-power-off"></i> &nbsp;Login </span></button>
+						<button class="btn bg-b fnt" style="margin: 0 20px 0 20px;"  data-toggle="modal" data-target="#signupModal"> <span style="color: #fff;" class="size">&nbsp;Sign Up </span></button>
+						<button class="btn bg-b fnt" style="margin: 0 20px 0 20px;" data-toggle="modal" data-target="#loginModal"> <span style="color: #fff;" class="size"> &nbsp;Login </span></button>
 						<?}else{?>
 						<div class=" menu_button_end ml-2 text-center row mt-2">
 							 <a class="menu-button px-4 " href="<?=base_url()?>Home/my_profile">

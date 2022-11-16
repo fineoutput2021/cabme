@@ -10,9 +10,9 @@
 	            <ul>
 	              <li><a href="<?=base_url()?>">Home</a> <i class="fa fa-angle-right"></i>
 	              </li>
-	              <li><a href="<?=base_url()?>Home/show_outstation_cars/<?=base64_encode($booking_data[0]->search_id)?>">Outstation Car</a> <i class="fa fa-angle-right"></i>
-	              </li>
-	              <li>Booking Summary</li>
+                <li><a href="<?=base_url()?>Home/my_profile#booking">Booking</a> <i class="fa fa-angle-right"></i>
+               </li>
+	              <li>Outstation Booking Details</li>
 	            </ul>
 	          </div>
 	        </div>
@@ -111,41 +111,7 @@
 	<!--============================== Desktop Car DetailEnd  =======================================-->
 	<div class="container-fluid">
 	  <div class="row" id="reversedivs">
-	    <div class="col-md-8">
-	      <div class="x_car_donr_main_box_wrapper float_left mt-3">
-	        <div class="x_car_donr_main_box_wrapper_inner">
-	          <div class="order-done">
-	            <ul class="row list-unstyled">
-	              <li class="col-md-12">
-	                <h6 class="implines">IMPORTANT POINTS TO REMEMBER</h6>
-	                <div class="row">
-	                  <div class="col-md-6" style="color: #000;">CHANGE IN PRICING PLAN:</div>
-	                  <div class="col-md-6"> The pricing plan (7 kms/hr, without fuel) cannot be
-	                    changed after
-	                    the booking is made
-	                  </div>
-	                </div>
-	                <div class="row mt-2">
-	                  <div class="col-md-6" style="color: #000;">FUEL:</div>
-	                  <div class="col-md-6"> In case you are returning the car at a lower fuel level
-	                    than what
-	                    was received, we will charge a flat Rs 500 refuelling service charge +
-	                    actual fuel
-	                    cost to get the tank to the same level as what was received
-	                  </div>
-	                </div>
-	                <div class="row mt-2">
-	                  <div class="col-md-6" style="color: #000;">TOLLS, PARKING, INTER-STATE TAXES:
-	                  </div>
-	                  <div class="col-md-6"> To be paid by you.</div>
-	                </div>
-	              </li>
-	            </ul>
-	          </div>
-	        </div>
-	      </div>
-	    </div>
-	    <div class="col-md-4">
+	    <div class="col-md-12">
 	      <div class="x_car_donr_main_box_wrapper float_left mt-3">
 	        <div class="x_car_donr_main_box_wrapper_inner">
 	          <div class="order-done">
@@ -160,9 +126,11 @@
 	                <p>Min Booking Amount <span>₹ <?=$booking_data[0]->mini_booking?></span></p>
 	                <p>Fuel <span>Excluded</span></p>
 	                <p>Tolls, Parking, Inter-State Taxes: <span>To be paid by you</span></p>
+
+	                </div>
 	              </li>
 	            </ul>
-	            <a href="<?=base_url()?>Home/outstation_checkout/<?=base64_encode($booking_data[0]->id)?>"><button class="bookbtn col-md-4">Pay</button></a>
+
 	          </div>
 	        </div>
 	      </div>

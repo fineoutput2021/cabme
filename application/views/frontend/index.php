@@ -1,7 +1,6 @@
 	<!-- ================================ web Form slider start ======================================================= -->
 	<!-- hs Slider Start -->
-	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Goldman">
-	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Prompt">
+
 	<style>
 		.btn.disabled,
 		.btn:disabled {
@@ -84,12 +83,12 @@
 						<div class="row">
 							<div class="x_offer_tabs_wrapper" style="border-radius: 15px;width: 90%;margin-left: 29px;">
 								<ul class="nav nav-tabs" style="width: 100%;padding: 8px;box-shadow: 0px 0 8px rgb(0 0 0 / 10%);">
-									<li class="nav-item" style="width: 33%;" onclick="setActive(1)"> <a class="nav-link dnav active" data-toggle="tab" href="#first">
+									<li class="nav-item fnt" style="width: 33%;" onclick="setActive(1)"> <a class="nav-link dnav active" data-toggle="tab" href="#first">
 											Self-Drive Cars</a>
 									</li>
-									<li class="nav-item" style="width: 33%" onclick="setActive(2)"> <a class="nav-link dnav" data-toggle="tab" href="#second">Outstation Booking</a>
+									<li class="nav-item fnt" style="width: 33%" onclick="setActive(2)"> <a class="nav-link dnav" data-toggle="tab" href="#second">Outstation Booking</a>
 									</li>
-									<li class="nav-item" style="width: 34%;" onclick="setActive(3)"> <a class="nav-link dnav" data-toggle="tab" href="#third">Intercity Travel</a>
+									<li class="nav-item fnt" style="width: 34%;" onclick="setActive(3)"> <a class="nav-link dnav" data-toggle="tab" href="#third">Intercity Travel</a>
 									</li>
 								</ul>
 							</div>
@@ -145,8 +144,8 @@
 											<input type="hidden" name="duration" value="" id="duration">
 											<input type="hidden" name="index" value="1" id="index">
 
-											<div class="col-md-12 my-3">
-												<div class="row mt-4 justify-content-center">
+											<div class="col-md-12 my-3" style="text-align: -webkit-center;">
+												<div class="col-md-9 mt-4 justify-content-center">
 													<button class="btn col-md-10 searchbtn shadowbtn" type="submit" id="self_btn" disabled> <i class="fa fa-search"></i> &nbsp; Search</button>
 												</div>
 											</div>
@@ -209,8 +208,8 @@
 											<input type="hidden" name="round_type" id="round_type" value="1" />
 											<input type="hidden" name="duration" id="o_duration" value="1">
 
-											<div class="col-md-12 mt-3">
-												<div class="row mt-2 justify-content-center">
+											<div class="col-md-12 mt-3" style="text-align: -webkit-center;">
+												<div class="col-md-9 mt-2 justify-content-center">
 													<button class="btn col-md-10 searchbtn shadowbtn" type="submit" id="outstation_btn" disabled> <i class="fa fa-search"></i> &nbsp;Search</button>
 												</div>
 											</div>
@@ -275,8 +274,8 @@
 											</div>
 											<input type="hidden" name="city_id" class="city_id" value="" />
 											<input type="hidden" name="duration" value="" id="i_duration">
-											<div class="col-md-12 mt-3">
-												<div class="row mt-2 justify-content-center">
+											<div class="col-md-12 mt-3" style="text-align: -webkit-center;">
+												<div class="col-md-9 mt-2 justify-content-center">
 													<button class="btn col-md-10 searchbtn shadowbtn" type="submit" id="iter_btn" disabled> <i class="fa fa-search"></i> &nbsp;Search</button>
 												</div>
 											</div>
@@ -647,8 +646,8 @@
 											<input type="hidden" name="city_id" class="city_id" value="" />
 											<input type="hidden" name="duration" value="" id="mduration">
 											<input type="hidden" name="index" value="1" id="mindex">
-											<div class="col-md-12">
-												<div class="row mt-4 justify-content-center">
+											<div class="col-md-12" style="text-align: -webkit-center;">
+												<div class="col-md-9 mt-4 justify-content-center">
 													<button class="btn col-md-10 searchbtn shadowbtn" type="submit" id="mself_btn" disabled> <i class="fa fa-search"></i> &nbsp; Search</button>
 												</div>
 											</div>
@@ -711,8 +710,8 @@
 											<input type="hidden" name="city_id" class="city_id2" value="" />
 											<input type="hidden" name="round_type" id="mround_type" value="1" />
 											<input type="hidden" name="duration" value="1" id="mo_duration">
-											<div class="col-md-12 mt-3">
-												<div class="row mt-2 justify-content-center">
+											<div class="col-md-12 mt-3" style="text-align: -webkit-center;">
+												<div class="col-md-9 mt-2 justify-content-center">
 													<button class="btn col-md-10 searchbtn shadowbtn" type="submit" id="moutstation_btn" disabled> <i class="fa fa-search"></i> &nbsp;Search</button>
 												</div>
 											</div>
@@ -775,8 +774,8 @@
 										</div>
 										<input type="hidden" name="city_id" class="city_id" value="" />
 										<input type="hidden" name="duration" value="" id="mi_duration">
-										<div class="col-md-12 mt-3">
-											<div class="row mt-2 justify-content-center">
+										<div class="col-md-12 mt-3" style="text-align: -webkit-center;">
+											<div class="col-md-9 mt-2 justify-content-center">
 												<button class="btn col-md-10 searchbtn shadowbtn" type="submit" id="miter_btn" disabled> <i class="fa fa-search"></i> &nbsp;Search</button>
 											</div>
 										</div>

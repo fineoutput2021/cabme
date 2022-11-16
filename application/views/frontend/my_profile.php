@@ -194,7 +194,18 @@
                     <span class="activespan bg-danger">Rejected</span>
                     <?}?>
                   </td>
-                  <td><a href="<?=base_url()?>Home/booking_details/<?=base64_encode($booking->id)?>">View</a></td>
+                  <td>
+                    <?if($booking->booking_type==1){?>
+                      <!-- //-selfdrive -->
+                    <a href="<?=base_url()?>Home/self_booking_details/<?=base64_encode($booking->id)?>">View</a>
+                    <?}else if($booking->booking_type==2){?>
+                      <!-- //-intercity -->
+
+                      <?}else if($booking->booking_type==3){?>
+                        <!-- //-oustation -->
+  <a href="<?=base_url()?>Home/outstation_booking_details/<?=base64_encode($booking->id)?>">View</a>
+                        <?}?>
+                  </td>
                   <td><?if(!empty($booking->invoice)){?>Download<?}?></td>
 								</tr>
                 <?php $i++; } ?>

@@ -189,8 +189,16 @@ ul{
      background-image: linear-gradient(to right, #DB0F07 0, #d42907 36%, #EF1700 65%, #D62A05 100%);
 	 box-shadow: 0px 0px 20px rgb(24, 24, 24);
 	-webkit-animation: hue 30s infinite linear;
+	padding: 4px 30px;
+    border-radius: 10px;
 }
-
+.fnt{
+	font-family:'Montserrat';
+}
+.size{
+	font-size: 12px;
+	font-weight: 600;
+}
 
 @keyframes hue {
     from {
@@ -1417,7 +1425,7 @@ width:100%;
 	text-decoration: none;
 	color: #fff;
 	-webkit-animation: hue 30s infinite linear;
-	border-radius: 20px;
+	border-radius: 10px;
 }
 .searchbtn_2
 {
@@ -1438,6 +1446,29 @@ width:100%;
 
 }
 
+		.underline{
+	  position: relative;
+		font-size:13px;
+	}
+
+	.underline::before{
+	  content: '';
+	  position: absolute;
+	  bottom: 0;
+	  right: 0;
+	  width: 0;
+	  height: 2px;
+	  background-color: red;
+	  transition: width 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+	}
+
+	@media (hover: hover) and (pointer: fine) {
+	  .underline:hover::before{
+	    left: 0;
+	    right: auto;
+	    width: 100%;
+	  }
+	}
 .selectcitycars
 {
 
@@ -3298,8 +3329,10 @@ width:100%;
 	 	text-decoration: none;
 	border-color:transparent;
 	font-size:13px;
-	font-weight:700;
-	text-transform:uppercase;
+	/* font-weight:700; */
+	/* text-shadow: 0px 1px, 1px 0px, 1px 1px; */
+
+	/* text-transform:uppercase; */
 	/* font-family: 'Raleway', sans-serif; */
 
 }
@@ -3363,8 +3396,10 @@ border-right: 1px solid red;
 	border-radius:0;
 	color:#000000;
 	font-size:13px;
-	font-weight:900;
-	text-transform:uppercase;
+	/* font-weight:900; */
+	text-shadow: 0px 1px, 1px 0px, 1px 1px;
+ /* text-shadow: 1px 0 #000000; */
+	/* text-transform:uppercase; */
 	    padding: 12px 0px;
 	/* font-family: 'Raleway', sans-serif; */
 }
