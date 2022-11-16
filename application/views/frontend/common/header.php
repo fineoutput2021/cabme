@@ -396,7 +396,7 @@
 								<div class="col-xs-6 col-sm-6 col-4">
 									<div class="cd-dropdown-wrapper" style="float: left;">
 										<a class="house_toggle" href="#0">
-											<i class="fa fa-bars" id="Capa_1" style="font-size:25px;color :red;"></i>
+											<i class="fa fa-th" id="Capa_1" style="font-size:25px;color :red;"></i>
 										</a>
 										<!-- .cd-dropdown -->
 									</div>
