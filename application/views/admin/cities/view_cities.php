@@ -58,9 +58,9 @@ if (!empty($this->session->flashdata('emessage'))) { ?>
                       <td><?php echo $data->name ?> </td>
                       <td><?php
                       if($data->city_type==1){
-                      echo 'With Return Fair';
+                      echo 'Self Drive City';
                     }else{
-                      echo 'Without Return Fair';
+                      echo 'Outstation City';
 
                     }?> </td>
                       <td><?php echo $data->top ?> </td>

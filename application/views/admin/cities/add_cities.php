@@ -61,9 +61,9 @@
                       <td> <strong>City Type</strong> <span style="color:red;">*</span></strong> </td>
                       <td>
                         <input type="radio" id="with_fair" name="city_type" value="1" checked>
-                        <label for="with_fair">With Return Fair</label>
+                        <label for="with_fair">Self Drive City</label></label>
                         <input type="radio" id="without_fair" name="city_type" value="2">
-                        <label for="without_fair">Without Return Fair</label>
+                        <label for="without_fair">Outstation City</label>
                       </td>
                     </tr>
                     <tr>

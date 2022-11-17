@@ -63,9 +63,9 @@ if (!empty($this->session->flashdata('emessage'))) { ?>
                         <td> <strong>City Type</strong> <span style="color:red;">*</span></strong> </td>
                         <td>
                           <input type="radio" id="with_fair" name="city_type" value="1" <?if($City->city_type==1){echo 'checked';}?>>
-                          <label for="with_fair">With Return Fair</label>
+                          <label for="with_fair">Self Drive City</label>
                           <input type="radio" id="without_fair" name="city_type" value="2" <?if($City->city_type==2){echo 'checked';}?>>
-                          <label for="without_fair">Without Return Fair</label>
+                          <label for="without_fair">Outstation City</label>
                         </td>
                       </tr>
                     </tr>
