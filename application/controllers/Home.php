@@ -582,34 +582,54 @@ class Home extends CI_Controller
                       );
         $this->db->where('id', $id);
         $zapak=$this->db->update('tbl_booking', $data_update);
+        // --- start temp code ------
+        $data_update = array(
+        'online_paid'=>$amount,
+        'payment_status'=>1,
+        'order_status'=>1,
+        'final_amount'=>$amount,
+            );
+            $this->db->where('txnid', $txnid);
+            $zapak=$this->db->update('tbl_booking', $data_update);
+            $bookingdata = $this->db->get_where('tbl_booking', array('txnid'=> $txnid))->result();
+            //---- car status update ----
+            $data_update2 = array('is_available'=>0,);
+            $this->db->where('id', $bookingdata[0]->car_id);
+            $zapak=$this->db->update('tbl_selfdrive', $data_update2);
+            $data['booking_id']=$bookingdata[0]->id;
+            $data['amount']=$bookingdata[0]->final_amount;
+            $this->load->view('frontend/common/header', $data);
+            $this->load->view('frontend/booking_success');
+            $this->load->view('frontend/common/footer');
+            // --- end temp code ------
+
         //optional udf values
-        $udf1 = '';
-        $udf2 = '';
-        $udf3 = '';
-        $udf4 = '';
-        $udf5 = '';
-        $hashstring = $MERCHANT_KEY . '|' . $txnid . '|' . $amount . '|' . $product_info . '|' . $customer_name . '|' . $customer_emial . '|' . $udf1 . '|' . $udf2 . '|' . $udf3 . '|' . $udf4 . '|' . $udf5 . '||||||' . $SALT;
-        $hash = strtolower(hash('sha512', $hashstring));
-        $success = base_url() . 'Home/sbooking_succssful';
-        $fail = base_url() . 'Home/booking_fail';
-        $cancel = base_url() . 'Home/booking_fail';
-        $data = array(
-      'mkey' => $MERCHANT_KEY,
-      'tid' => $txnid,
-      'hash' => $hash,
-      'amount' => $amount,
-      'name' => $customer_name,
-      'productinfo' => $product_info,
-      'mailid' => $customer_emial,
-      'phoneno' => $customer_mobile,
-      'address' => $customer_address,
-      'action' => PAYU_BASE_URL, //for live change action  https://secure.payu.in
-      'sucess' => $success,
-      'failure' => $fail,
-      'cancel' => $cancel
-      );
-        // print_r($data);die();
-        $this->load->view('frontend/confirmation', $data);
+      //   $udf1 = '';
+      //   $udf2 = '';
+      //   $udf3 = '';
+      //   $udf4 = '';
+      //   $udf5 = '';
+      //   $hashstring = $MERCHANT_KEY . '|' . $txnid . '|' . $amount . '|' . $product_info . '|' . $customer_name . '|' . $customer_emial . '|' . $udf1 . '|' . $udf2 . '|' . $udf3 . '|' . $udf4 . '|' . $udf5 . '||||||' . $SALT;
+      //   $hash = strtolower(hash('sha512', $hashstring));
+      //   $success = base_url() . 'Home/sbooking_succssful';
+      //   $fail = base_url() . 'Home/booking_fail';
+      //   $cancel = base_url() . 'Home/booking_fail';
+      //   $data = array(
+      // 'mkey' => $MERCHANT_KEY,
+      // 'tid' => $txnid,
+      // 'hash' => $hash,
+      // 'amount' => $amount,
+      // 'name' => $customer_name,
+      // 'productinfo' => $product_info,
+      // 'mailid' => $customer_emial,
+      // 'phoneno' => $customer_mobile,
+      // 'address' => $customer_address,
+      // 'action' => PAYU_BASE_URL, //for live change action  https://secure.payu.in
+      // 'sucess' => $success,
+      // 'failure' => $fail,
+      // 'cancel' => $cancel
+      // );
+      //   $this->load->view('frontend/confirmation', $data);
     }
     //====================================== Intercity calculate ======================
     public function intercity_calculate()
@@ -689,33 +709,49 @@ class Home extends CI_Controller
                                 );
                 $this->db->where('id', $id);
                 $zapak=$this->db->update('tbl_booking', $data_update);
+                //-----start temp code ------
+                $data_update = array(
+            'online_paid'=>$amount,
+            'payment_status'=>1,
+            'order_status'=>1,
+                );
+                $this->db->where('txnid', $txnid);
+                $zapak=$this->db->update('tbl_booking', $data_update);
+                $bookingdata = $this->db->get_where('tbl_booking', array('txnid'=> $txnid))->result();
+                $data['booking_id']=$bookingdata[0]->id;
+                $data['amount']=$bookingdata[0]->final_amount;
+                $this->load->view('frontend/common/header', $data);
+                $this->load->view('frontend/booking_success');
+                $this->load->view('frontend/common/footer');
+                // die();
+                  //-----end temp code ------
                 //optional udf values
-                $udf1 = '';
-                $udf2 = '';
-                $udf3 = '';
-                $udf4 = '';
-                $udf5 = '';
-                $hashstring = $MERCHANT_KEY . '|' . $txnid . '|' . $amount . '|' . $product_info . '|' . $customer_name . '|' . $customer_emial . '|' . $udf1 . '|' . $udf2 . '|' . $udf3 . '|' . $udf4 . '|' . $udf5 . '||||||' . $SALT;
-                $hash = strtolower(hash('sha512', $hashstring));
-                $success = base_url() . 'Home/booking_succss';
-                $fail = base_url() . 'Home/booking_fail';
-                $cancel = base_url() . 'Home/booking_fail';
-                $data = array(
-             'mkey' => $MERCHANT_KEY,
-             'tid' => $txnid,
-             'hash' => $hash,
-             'amount' => $amount,
-             'name' => $customer_name,
-             'productinfo' => $product_info,
-             'mailid' => $customer_emial,
-             'phoneno' => $customer_mobile,
-             'address' => $customer_address,
-             'action' => PAYU_BASE_URL, //for live change action  https://secure.payu.in
-             'sucess' => $success,
-             'failure' => $fail,
-             'cancel' => $cancel
-         );
-                $this->load->view('frontend/confirmation', $data);
+         //        $udf1 = '';
+         //        $udf2 = '';
+         //        $udf3 = '';
+         //        $udf4 = '';
+         //        $udf5 = '';
+         //        $hashstring = $MERCHANT_KEY . '|' . $txnid . '|' . $amount . '|' . $product_info . '|' . $customer_name . '|' . $customer_emial . '|' . $udf1 . '|' . $udf2 . '|' . $udf3 . '|' . $udf4 . '|' . $udf5 . '||||||' . $SALT;
+         //        $hash = strtolower(hash('sha512', $hashstring));
+         //        $success = base_url() . 'Home/booking_succss';
+         //        $fail = base_url() . 'Home/booking_fail';
+         //        $cancel = base_url() . 'Home/booking_fail';
+         //        $data = array(
+         //     'mkey' => $MERCHANT_KEY,
+         //     'tid' => $txnid,
+         //     'hash' => $hash,
+         //     'amount' => $amount,
+         //     'name' => $customer_name,
+         //     'productinfo' => $product_info,
+         //     'mailid' => $customer_emial,
+         //     'phoneno' => $customer_mobile,
+         //     'address' => $customer_address,
+         //     'action' => PAYU_BASE_URL, //for live change action  https://secure.payu.in
+         //     'sucess' => $success,
+         //     'failure' => $fail,
+         //     'cancel' => $cancel
+         // );
+         //        $this->load->view('frontend/confirmation', $data);
             } else {
                 $res = array('message'=>validation_errors(),
                     'status'=>201
@@ -1040,34 +1076,53 @@ class Home extends CI_Controller
                       );
         $this->db->where('id', $id);
         $zapak=$this->db->update('tbl_booking', $data_update);
+        // --- start temp code -------
+
+            $data_update = array(
+        'online_paid'=>$amount,
+        'payment_status'=>1,
+        'order_status'=>1,
+            );
+            $this->db->where('txnid', $txnid);
+            $zapak=$this->db->update('tbl_booking', $data_update);
+            $bookingdata = $this->db->get_where('tbl_booking', array('txnid'=> $txnid))->result();
+            //---- car status update ----
+            $data_update2 = array('is_available'=>0,);
+            $this->db->where('id', $bookingdata[0]->car_id);
+            $zapak=$this->db->update('tbl_outstation', $data_update2);
+            $data['booking_id']=$bookingdata[0]->id;
+            $data['amount']=$bookingdata[0]->mini_booking;
+            $this->load->view('frontend/common/header', $data);
+            $this->load->view('frontend/booking_success');
+            $this->load->view('frontend/common/footer');
+        // --- end temp code -------
         //optional udf values
-        $udf1 = '';
-        $udf2 = '';
-        $udf3 = '';
-        $udf4 = '';
-        $udf5 = '';
-        $hashstring = $MERCHANT_KEY . '|' . $txnid . '|' . $amount . '|' . $product_info . '|' . $customer_name . '|' . $customer_emial . '|' . $udf1 . '|' . $udf2 . '|' . $udf3 . '|' . $udf4 . '|' . $udf5 . '||||||' . $SALT;
-        $hash = strtolower(hash('sha512', $hashstring));
-        $success = base_url() . 'Home/obooking_succssful';
-        $fail = base_url() . 'Home/booking_fail';
-        $cancel = base_url() . 'Home/booking_fail';
-        $data = array(
-      'mkey' => $MERCHANT_KEY,
-      'tid' => $txnid,
-      'hash' => $hash,
-      'amount' => $amount,
-      'name' => $customer_name,
-      'productinfo' => $product_info,
-      'mailid' => $customer_emial,
-      'phoneno' => $customer_mobile,
-      'address' => $customer_address,
-      'action' => PAYU_BASE_URL, //for live change action  https://secure.payu.in
-      'sucess' => $success,
-      'failure' => $fail,
-      'cancel' => $cancel
-      );
-        // print_r($data);die();
-        $this->load->view('frontend/confirmation', $data);
+      //   $udf1 = '';
+      //   $udf2 = '';
+      //   $udf3 = '';
+      //   $udf4 = '';
+      //   $udf5 = '';
+      //   $hashstring = $MERCHANT_KEY . '|' . $txnid . '|' . $amount . '|' . $product_info . '|' . $customer_name . '|' . $customer_emial . '|' . $udf1 . '|' . $udf2 . '|' . $udf3 . '|' . $udf4 . '|' . $udf5 . '||||||' . $SALT;
+      //   $hash = strtolower(hash('sha512', $hashstring));
+      //   $success = base_url() . 'Home/obooking_succssful';
+      //   $fail = base_url() . 'Home/booking_fail';
+      //   $cancel = base_url() . 'Home/booking_fail';
+      //   $data = array(
+      // 'mkey' => $MERCHANT_KEY,
+      // 'tid' => $txnid,
+      // 'hash' => $hash,
+      // 'amount' => $amount,
+      // 'name' => $customer_name,
+      // 'productinfo' => $product_info,
+      // 'mailid' => $customer_emial,
+      // 'phoneno' => $customer_mobile,
+      // 'address' => $customer_address,
+      // 'action' => PAYU_BASE_URL, //for live change action  https://secure.payu.in
+      // 'sucess' => $success,
+      // 'failure' => $fail,
+      // 'cancel' => $cancel
+      // );
+      //   $this->load->view('frontend/confirmation', $data);
     }
     // =========================================== MY PROFILE ===============================================
     public function my_profile()
