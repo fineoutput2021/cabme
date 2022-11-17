@@ -78,7 +78,15 @@
 foreach ($booking_data->result() as $data) {
     $user_data = $this->db->get_where('tbl_users', array('is_active'=> 1,'id'=> $data->user_id))->result();
     $City_data = $this->db->get_where('tbl_cities', array('is_active'=> 1,'id'=> $data->city_id))->result();
+    if($data->booking_type==1){
         $Self_drive_data = $this->db->get_where('tbl_selfdrive', array('is_active'=> 1,'id'=> $data->car_id))->result();
+        $car_name=$Self_drive_data[0]->car_name;
+      }else if($data->booking_type==3){
+        $Self_drive_data = $this->db->get_where('tbl_outstation', array('is_active'=> 1,'id'=> $data->car_id))->result();
+        $car_name=$Self_drive_data[0]->car_name;
+      }else{
+        $car_name='';
+      }
         // print_r($data->car_id);die();
 
     $promo_data = $this->db->get_where('tbl_promocode', array('is_active'=> 1,'id'=> $data->promocode))->result();
@@ -102,13 +110,13 @@ foreach ($booking_data->result() as $data) {
         echo "outstation";
     } ?></td>
                       </td>
-                      <td><?php echo $user_data[0]->f_name." ".$user_data[0]->l_name ?></td>
+                      <td><?php if(!empty($user_data[0]->f_name)){ echo $user_data[0]->f_name." ".$user_data[0]->l_name;}else{echo 'User Not Found';} ?></td>
                       <td>₹<?php echo $data->total_amount ?></td>
                       <td><?php echo $promocode ?></td>
                       <td>₹<?php echo $discount ?></td>
                       <td>₹<?php echo $data->final_amount ?></td>
                       <td><?php echo $City_data[0]->name?></td>
-                      <td><?php echo $Self_drive_data[0]->car_name ?></td>
+                      <td><?php echo $car_name ?></td>
                       <td><?php echo $data->start_date ?></td>
                       <td><?php echo $data->end_date ?></td>
                       <td><?php echo $data->start_time ?></td>
