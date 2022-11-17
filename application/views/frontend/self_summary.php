@@ -17,6 +17,7 @@
 				<form method="post" enctype="multipart/form-data" action="<?=base_url()?>Home/self_checkout" >
 				<div class="formsix-pos">
 					<div class="form-sec-header proofdateofbirth mb-4">
+						<label style="padding-left: 0.8rem;text-transform: none;font-size: 14px;"><b>DOB<span style="color:red">*</span></b></label>
 						<label class="cal-icon">
 							  <td>
 							<?
@@ -27,10 +28,12 @@
 							<input type="date" name="dob" placeholder="Date Of Birth" required class="form-control " value="<?=$dob?>">
 						</label>
 					</div>
-					<div class="form-group mb-4">
+					<div class="form-sec-header proofdateofbirth form-group mb-4">
+							<label style="padding-left: 0.8rem;text-transform: none;font-size: 14px;"><b>Aadhar Card<span style="color:red">*</span></b></label>
 						<input type="text" name="aadhar_no" minlength="12" maxlength="12" class="form-control modalinput" required="" placeholder="Aadhar Number*" value="<?=$user_data[0]->aadhar_no?>"   onkeypress="return isNumberKey(event)">
 					</div>
-					<div class="form-group mb-4">
+					<div class="form-sec-header proofdateofbirth form-group mb-4">
+							<label style="padding-left: 0.8rem;text-transform: none;font-size: 14px;"><b>Driving License<span style="color:red">*</span></b></label>
 						<input type="text" name="driving_lience" minlength="16" maxlength="16" class="form-control modalinput" required="" placeholder="Driving License*"  value="<?=$user_data[0]->driving_lience?>">
 					</div>
 				</div>
@@ -79,7 +82,7 @@
 					</div> -->
 				</div>
 				<div class="row  mt-2">
-					<div class="x_slider_checkbox x_slider_checkbox_bottom_filter_use">
+					<div class=" x_slider_checkbox_bottom_filter_use">
 						<input type="checkbox" id="agree" name="agree" required>
 						<label for="agree">I Accept Terms & Conditions</label>
 					</div>

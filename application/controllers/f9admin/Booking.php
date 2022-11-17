@@ -273,6 +273,16 @@ class Booking extends CI_finecontrol
                         );
                     $this->db->where('id', $id);
                     $last_id=$this->db->update('tbl_booking', $data_insert);
+                    $booking_data = $this->db->get_where('tbl_booking', array('id'=> $id))->result();
+                    if($booking_data[0]->booking_type==1 || $booking_data[0]->booking_type==3){
+                    $data_update = array('is_available'=>1);
+                    $this->db->where('id', $booking_data[0]->car_id);
+                    if($booking_data[0]->booking_type==1){
+                      $zapak=$this->db->update('tbl_selfdrive', $data_update);
+                    }else{
+                      $zapak=$this->db->update('tbl_outstation', $data_update);
+                    }
+                    }
                     if ($last_id!=0) {
                         $this->session->set_flashdata('smessage', 'Data updates successfully');
                         if($heading =="Self Drive"){
@@ -415,11 +425,10 @@ class Booking extends CI_finecontrol
                 }
             }
             if ($t=="completed") {
-                $data_update = array(
-                                           'order_status'=>3
-                                           );
+                $data_update = array('order_status'=>3);
                 $this->db->where('id', $id);
                 $zapak=$this->db->update('tbl_booking', $data_update);
+                $booking_data = $this->db->get_where('tbl_booking', array('id'=> $id))->result();
                 if ($zapak!=0) {
                     $this->session->set_flashdata('smessage', 'Status updated successfully');
                     redirect($_SERVER['HTTP_REFERER']);
@@ -429,11 +438,21 @@ class Booking extends CI_finecontrol
                 }
             }
             if ($t=="reject") {
-                $data_update = array(
-                                           'order_status'=>4
+                $data_update = array('order_status'=>4
                                            );
                 $this->db->where('id', $id);
                 $zapak=$this->db->update('tbl_booking', $data_update);
+                $booking_data = $this->db->get_where('tbl_booking', array('id'=> $id))->result();
+                if($booking_data[0]->booking_type==1 || $booking_data[0]->booking_type==3){
+                $data_update = array('is_available'=>1);
+                $this->db->where('id', $booking_data[0]->car_id);
+                if($booking_data[0]->booking_type==1){
+                  $zapak=$this->db->update('tbl_selfdrive', $data_update);
+                }else{
+                  $zapak=$this->db->update('tbl_outstation', $data_update);
+                }
+                }
+
                 if ($zapak!=0) {
                     $this->session->set_flashdata('smessage', 'Status updated successfully');
                     redirect($_SERVER['HTTP_REFERER']);

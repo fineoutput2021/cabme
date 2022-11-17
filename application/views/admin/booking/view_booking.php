@@ -36,6 +36,7 @@
                   <thead>
                     <tr>
                       <th>#</th>
+                      <th>Booking ID</th>
                       <th>Booking</th>
                       <th>User</th>
                       <th>Total Amount</th>
@@ -91,6 +92,7 @@ foreach ($booking_data->result() as $data) {
     // $Self_drive_data = $this->db->get_where('tbl_selfdrive', array('is_active'=> 1,'id'=> $data->car_id))->result();?>
                     <tr>
                       <td><?=$i?></td>
+                      <td><?=$data->id?></td>
                       <td>
                         <?php if ($data->booking_type== 1) {
         echo "self-drive";
