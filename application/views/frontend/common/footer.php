@@ -930,7 +930,7 @@ function change(x) {
 		$('#change').html(
 			'<div class="col-md-12 col-12 mobileradius" style="z-index: 0;display: flex;height: 55px;padding: 0px;border-right: 1px solid rgb(226, 225, 225);justify-content: space-around;"><div class="form-sec-header" style="height: 50px;"><label class="cal-icon" style="top:11px;left: 10px;"> Start Date	<input type="text" autocomplete="off" onchange=one_way() readonly required placeholder="Date" name="start_date" id="oosd" class="form-control  datepicker clickshow" style="border: none;padding-right: 0px;padding-left: 1px;margin-top: -9px;"></label></div>	<div class="timepicker_div" style="height: 50px;margin-top: 2px;width: 80px;margin-left: 12px;"><div class="timepicker_div form-sec-header" style="height: 50px;margin-top: 2px;width: 80px;margin-left: 12px;"><label class="cal-icon" style="top:11px;left: 10px;"> Start Time<input type="text" autocomplete="off" readonly id="oost" onchange=one_way() required class="form-control timepicker" name="start_time" placeholder="Time" style="background-color: transparent;border: none;margin-left: 5px; margin-top: -10px; width: 84%;"></div></div></div>'
 		);
-		$('#mot_location').show();
+		// $('#mot_location').show();
 		$(".datepicker").datepicker();
 		$('.timepicker').mdtimepicker();
 	}
@@ -938,7 +938,7 @@ function change(x) {
 		$('#change').html(
 			'<div class="col-md-3 col-6 mobileradius"style="z-index: 0;display: flex;height: 55px;padding: 0px;border-right: 1px solid rgb(226, 225, 225);"><div class="form-sec-header" style="height: 50px;"><label class="cal-icon" style="top:11px;left: 10px;"> Start Date <input type="text" id="moosd" onchange=mround_way() placeholder="Date" name="start_date" autocomplete="off" readonly required class="form-control datepicker" style="border: none;padding-right: 0px;padding-left: 1px;margin-top: -9px;"></label></div><div class="timepicker_div form-sec-header"	style="height: 50px;margin-top: 2px;width: 80px;margin-left: 12px;"><label class="cal-icon" style="top:11px;left: 10px;">TIME<input type="text" class="form-control timepicker" id="moost" onchange=mround_way()	name="start_time" autocomplete="off" readonly required placeholder="Time"	style="background-color: transparent;border: none;margin-left: -13px; margin-top: -10px; width: 122%;"></div></div><div class="col-md-3 col-6 mobileradius" style="z-index: 0;display: flex;height: 55px;padding: 0px;"><div class="form-sec-header" style="height: 50px;"><label class="cal-icon" style="top:11px;left: 10px;"> End Date<input type="text" name="end_date" id="mooed"  onchange=mround_way() autocomplete="off" readonly required placeholder="Date" class="form-control datepicker" style="border: none;padding-right: 0px;padding-left: 1px;margin-top: -9px;"></label></div><div class="timepicker_div form-sec-header"	style="height: 50px;margin-top: 2px;width: 80px;margin-left: 12px;">	<label class="cal-icon" style="top:11px;left: 10px;">TIME	<input type="text" id="mooet" onchange=mround_way() class="form-control timepicker" name="end_time" autocomplete="off" readonly required	placeholder="Time" style="background-color: transparent;border: none;margin-left: -13px; margin-top: -10px; width: 122%;">	</div></div>'
 		)
-			$('#mot_location').hide();
+			// $('#mot_location').hide();
 		$(".datepicker").datepicker();
 		$('.timepicker').mdtimepicker();
 
@@ -947,7 +947,7 @@ function change(x) {
 		$("#change2").html(
 			'<div class="col-md-12" style="z-index: 0;display: flex;height: 55px;border: 1px solid rgb(212, 208, 208);padding: 0px;justify-content: space-around;"><div class="form-sec-header" style="height: 50px;">	<label class="cal-icon" style="margin-top: 10px;margin-left: 10px;">Start Date <input type="text" onchange=one_way() placeholder="Date" name="start_date" autocomplete="off" readonly id="oosd" required class="form-control datepicker" style="border: none;padding-right: 0px;padding-left: 5px;background-color: transparent;"></label></div><div class="timepicker_div form-sec-headers" style="height: 50px;width: 90px;"><label class="cal-icon"	style="margin-left: 10px;color: #000;font-size: 11px;font-weight: bold;">START TIME	<input type="text" onchange=one_way() id="oost" name="start_time" class="form-control timepicker" placeholder="Time" autocomplete="off" style="padding: 23px 0px;background-color: transparent;border: none;width: 84%;margin-top: -11px;"></label></div></div>'
 		);
-		$('#ot_location').show();
+		// $('#ot_location').show();
 		$('#ot_duration').html("")
 		$(".datepicker").datepicker();
 		$('.timepicker').mdtimepicker();
@@ -957,7 +957,7 @@ function change(x) {
 		$("#change2").html(
 			'<div class="col-md-6 "	style="z-index: 0;display: flex;height: 55px;border: 1px solid rgb(212, 208, 208);padding: 0px;"><div class="form-sec-header" style="height: 50px;">	<label class="cal-icon"	style="margin-top: 10px;margin-left: 10px;">Start Date	<input type="text" onchange=round_way() placeholder="Date" name="start_date" autocomplete="off" readonly required  class="form-control datepicker" id="oosd" style="border: none;padding-right: 0px;padding-left: 5px;background-color: transparent;">	</label></div><div class="timepicker_div form-sec-headers"	style="height: 50px;width: 90px;"><label class="cal-icon"	style="margin-left: 10px;font-size: 11px;color: #000;font-weight: bold;">TIME	<input type="text" autocomplete="off" readonly required id="oost" onchange=round_way() name="start_time" class="form-control timepicker" placeholder="Time" style="padding: 23px 0px;background-color: transparent;border: none;width: 84%;margin-top: -11px;"></label></div></div><div class="col-md-6 "	style="z-index: 0;display: flex;height: 55px;border: 1px solid rgb(212, 208, 208);padding: 0px;">	<div class="form-sec-header" style="height: 50px;"><label class="cal-icon"	style="margin-top: 10px;margin-left: 10px;">End Date	<input type="text" id="ooed" onchange=round_way() autocomplete="off" readonly required placeholder="Date"	class="form-control datepicker" name="end_date"	style="border: none;padding-right: 0px;padding-left: 5px;background-color: transparent;"></label></div><div class="timepicker_div form-sec-headers" style="height: 50px;width: 90px;"><label class="cal-icon"	style="margin-left: 10px;font-size: 11px;color: #000;font-weight: bold;">TIME<input type="text" id="ooet" onchange=round_way() autocomplete="off" readonly required class="form-control timepicker" name="end_time"	placeholder="Time"	style="padding: 23px 0px;background-color: transparent;border: none;width: 84%;margin-top: -11px;"></label></div></div>'
 		);
-		$('#ot_location').hide();
+		// $('#ot_location').hide();
 		// $("#ot_location").css("display", "none!important");
 		$('#ot_duration').html("")
 		$(".datepicker").datepicker();
