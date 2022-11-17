@@ -177,7 +177,7 @@
 												</div>
 											</div>
 											<div class="row" style="border: 1px solid rgb(212, 208, 208);width: 99%;margin-left: 7px;border-radius: 10px;">
-												<div class="col-md-12" data-toggle="modal" data-target="#selectcity3" data-dismiss="modal" id="ss">
+												<div class="col-md-12" data-toggle="modal" data-target="#selectcity3" data-dismiss="modal" id="ot_location">
 													<div class="selectcity">
 														<i class="fa fa-map-marker"></i>
 														<h5 style="margin-top: 3px;" class="city_title2">Select City</h5>
@@ -685,7 +685,7 @@
 												</div>
 											</div>
 											<div class="row mr-0 ml-0" style="border: 1px solid rgb(226, 225, 225);margin-top: 10px;border-radius: 10px;">
-												<div class="col-md-12 p-0" data-toggle="modal" data-target="#selectcity4" data-dismiss="modal" style="border-bottom:1px solid rgb(226, 225, 225);">
+												<div class="col-md-12 p-0" data-toggle="modal" data-target="#selectcity4" data-dismiss="modal" style="border-bottom:1px solid rgb(226, 225, 225);" id="mot_location">
 													<div class="selectcity">
 														<i class="fa fa-map-marker"></i>
 														<h5 class="city_title2">Select City</h5>

@@ -42,8 +42,8 @@
                       <th>First Name</th>
                       <th>Last Name</th>
                       <th>Phone</th>
+                      <th>Email</th>
                       <th>Aadhar No.</th>
-                      <th>Passport No.</th>
                         <th>Driving Licence</th>
                         <th>Aadhar Image</th>
                         <th>Licence Image</th>
@@ -62,7 +62,7 @@
                       <td><?php echo $data->l_name ?></td>
                       <td><?php echo $data->phone ?></td>
                       <td><?php echo $data->aadhar_no ?></td>
-                      <td><?php echo $data->passport ?></td>
+                      <td><?php echo $data->email ?></td>
                       <td><?php echo $data->driving_lience?></td>
                       <td><?php echo $data->aadhar_image ?></td>
                       <td><?php echo $data->lience_image?></td>

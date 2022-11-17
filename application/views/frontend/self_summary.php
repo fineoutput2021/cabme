@@ -36,35 +36,47 @@
 				</div>
 				<div class="row">
 					<div class="col-md-12 mt-3">
-						<!-- <p class="mt-1 mb-1">Upload <b>Aadhar Front</b> Image</p> -->
-						<div class="row">
-							<label style="padding-right: 0.5rem "><b>Aadhar Front<span style="color:red">*</span></b></label>
-							<input type="file" name="aadhar_front" required value="" style="width: 64%;">
+						<p class="mt-1 mb-3 text-center"><b>Upload Aadhar<span style="color:red">*</span> Image</b></p>
+						<div class="row " style="justify-content: space-evenly">
+							<!-- <label style="padding-right: 0.5rem "><b>Aadhar Front<span style="color:red">*</span></b></label> -->
+
+							<input type="file" name="aadhar_front" required value="" style="width: 40%; color: transparent;">
+							<input type="file"  name="aadhar_back" required value=""  style="width: 40%;color: transparent;">
+						</div>
+						<div class="row " style="justify-content: space-evenly">
+						<label><b>Aadhar Front<span style="color:red">* &nbsp &nbsp &nbsp &nbsp  &nbsp</span></b></label>
+				<label><b>Aadhar Back<span style="color:red">* &nbsp &nbsp &nbsp &nbsp &nbsp </span></b></label>
 						</div>
 					</div>
-					<div class="col-md-12 mt-3">
+					<!-- <div class="col-md-12 mt-3">
 						<div class="row">
 							<label style="padding-right: 0.8rem "><b>Aadhar Back<span style="color:red">*</span></b></label>
-						<!-- <p class="mt-1  mb-1">Upload <b>Aadhar Back</b> Image</p> -->
+						<p class="mt-1  mb-1">Upload <b>Aadhar Back</b> Image</p>
 						<input type="file"  name="aadhar_back" required value=""  style="width: 64%;">
 						</div>
-					</div>
+					</div> -->
 				</div>
 				<div class="row">
 					<div class="col-md-12 mt-3">
-						<div class="row">
-							<label style="padding-right: 0.5rem "><b>License Front<span style="color:red">*</span></b></label>
+						<p class="mt-1 mb-3 text-center"><b>Upload License<span style="color:red">*</span> Image</b></p>
+						<div class="row"  style="justify-content: space-evenly">
+							<!-- <label style="padding-right: 0.5rem "><b>License Front<span style="color:red">*</span></b></label> -->
 						<!-- <p class="mt-1 mb-1">Upload <b>License Front</b> Image</p> -->
-						<input type="file" name="license_front" required value=""  style="width: 64%;">
+						<input type="file" name="license_front" required value=""  style="width: 40%; color: transparent;">
+						<input type="file" name="license_back" required value=""  style="width: 40%; color: transparent;">
+					</div>
+					<div class="row " style="justify-content: space-evenly">
+					<label><b>License Front<span style="color:red">* &nbsp &nbsp &nbsp  &nbsp &nbsp</span></b></label>
+			<label><b>License Back<span style="color:red">* &nbsp &nbsp &nbsp &nbsp  &nbsp</span></b></label>
 					</div>
 					</div>
-					<div class="col-md-12 mt-3">
+					<!-- <div class="col-md-12 mt-3">
 						<div class="row">
 						<label style="padding-right: 0.8rem "><b>License Back<span style="color:red">*</span></b></label>
-						<!-- <p class="mt-1  mb-1">Upload <b>License Back</b> Image</p> -->
+						<p class="mt-1  mb-1">Upload <b>License Back</b> Image</p>
 						<input type="file" name="license_back" required value=""  style="width: 64%;">
 					</div>
-					</div>
+					</div> -->
 				</div>
 				<div class="row  mt-2">
 					<div class="x_slider_checkbox x_slider_checkbox_bottom_filter_use">
@@ -151,9 +163,9 @@
 	$days =  (int)$booking_data[0]->duration/24;
 	$hours =  $booking_data[0]->duration%24;
 	if($hours>0 && $days >0){
-		$s_duration=$days." days, ".$hours." hours";
+		$s_duration=(int)$days." days, ".$hours." hours";
 	}else if($hours==0 && $days>0){
-		$s_duration=$days." days";
+		$s_duration=(int)$days." days";
 	}else{
 		$s_duration=$hours." hours";
 	}
