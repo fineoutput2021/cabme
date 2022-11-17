@@ -61,7 +61,7 @@ class Outstation extends CI_finecontrol
                 $this->form_validation->set_rules('city_id', 'city_id', 'required|xss_clean|trim');
                 $this->form_validation->set_rules('min_amount', 'min_amount', 'required|xss_clean|trim');
                 if ($this->form_validation->run()== true) {
-                    $brand_name=$this->input->post('brand_name');
+                    $brand_name=ucfirst($this->input->post('brand_name'));
                     $car_name=$this->input->post('car_name');
                     $seatting=$this->input->post('seatting');
                     $per_kilometre=$this->input->post('per_kilometre');

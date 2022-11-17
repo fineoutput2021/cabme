@@ -69,7 +69,7 @@ class Self_drive extends CI_finecontrol
                 $this->form_validation->set_rules('rsda', 'rsda', 'required|xss_clean|trim');
                 if ($this->form_validation->run()== true) {
                     $city_id=$this->input->post('city_id');
-                    $brand_name=$this->input->post('brand_name');
+                    $brand_name=ucfirst($this->input->post('brand_name'));
                     $car_name=$this->input->post('car_name');
                     $fule_type=$this->input->post('fule_type');
                     $transmission=$this->input->post('transmission');
