@@ -1,6 +1,14 @@
 
 <!--======proof Modal ======-->
-
+<style>
+input::file-selector-button {
+    font-weight: bold;
+    padding: 0.2em;
+    border: thin solid grey;
+    border-radius: 3px;
+  	font-size:10px;
+}
+</style>
 <div class="modal fade" id="proofModal" role="dialog">
 	<div class="modal-dialog proofModal">
 		<!-- Modal content-->
@@ -43,12 +51,12 @@
 						<div class="row " style="justify-content: space-evenly">
 							<!-- <label style="padding-right: 0.5rem "><b>Aadhar Front<span style="color:red">*</span></b></label> -->
 
-							<input type="file" name="aadhar_front" required value="" style="width: 40%; color: transparent;">
-							<input type="file"  name="aadhar_back" required value=""  style="width: 40%;color: transparent;">
+							<input type="file" name="aadhar_front" required value="" style="width: 40%; ">
+							<input type="file"  name="aadhar_back" required value=""  style="width: 40%;">
 						</div>
 						<div class="row " style="justify-content: space-evenly">
-						<label><b>Aadhar Front<span style="color:red">* &nbsp &nbsp &nbsp &nbsp  &nbsp</span></b></label>
-				<label><b>Aadhar Back<span style="color:red">* &nbsp &nbsp &nbsp &nbsp &nbsp </span></b></label>
+						<label style="font-size: 13px;"><b>Aadhar Front<span style="color:red">* &nbsp &nbsp &nbsp &nbsp  &nbsp &nbsp &nbsp &nbsp &nbsp  &nbsp  </span></b></label>
+				<label style="font-size: 13px;"><b>Aadhar Back<span style="color:red">* &nbsp &nbsp &nbsp &nbsp  &nbsp &nbsp &nbsp &nbsp &nbsp  &nbsp   </span></b></label>
 						</div>
 					</div>
 					<!-- <div class="col-md-12 mt-3">
@@ -65,12 +73,12 @@
 						<div class="row"  style="justify-content: space-evenly">
 							<!-- <label style="padding-right: 0.5rem "><b>License Front<span style="color:red">*</span></b></label> -->
 						<!-- <p class="mt-1 mb-1">Upload <b>License Front</b> Image</p> -->
-						<input type="file" name="license_front" required value=""  style="width: 40%; color: transparent;">
-						<input type="file" name="license_back" required value=""  style="width: 40%; color: transparent;">
+						<input type="file" name="license_front" required value=""  style="width: 40%;">
+						<input type="file" name="license_back" required value=""  style="width: 40%; ">
 					</div>
 					<div class="row " style="justify-content: space-evenly">
-					<label><b>License Front<span style="color:red">* &nbsp &nbsp &nbsp  &nbsp &nbsp</span></b></label>
-			<label><b>License Back<span style="color:red">* &nbsp &nbsp &nbsp &nbsp  &nbsp</span></b></label>
+					<label style="font-size: 13px;"><b>License Front<span style="color:red">* &nbsp &nbsp &nbsp &nbsp  &nbsp &nbsp &nbsp &nbsp &nbsp  &nbsp</span></b></label>
+			<label style="font-size: 13px;"><b>License Back<span style="color:red">* &nbsp &nbsp &nbsp &nbsp  &nbsp &nbsp &nbsp &nbsp &nbsp  &nbsp</span></b></label>
 					</div>
 					</div>
 					<!-- <div class="col-md-12 mt-3">
