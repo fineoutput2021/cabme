@@ -198,6 +198,7 @@ class Home extends CI_Controller
         $id=base64_decode($idd);
         $data['id']=$idd;
         $data['booking_data'] = $this->db->get_where('tbl_booking', array('id'=> $id))->result();
+        if($data['booking_data'][0]->payment_status!=1){
         //----- start check date is past ----------
         date_default_timezone_set('Asia/Kolkata');
         $newdate = new DateTime($data['booking_data'][0]->start_date);
@@ -258,6 +259,9 @@ class Home extends CI_Controller
         $this->load->view('frontend/common/header', $data);
         $this->load->view('frontend/self_summary');
         $this->load->view('frontend/common/footer');
+      }else{
+        redirect("/","refresh");
+      }
     }
     //========= self drive change plane ==========
     public function change_plan()
@@ -451,7 +455,9 @@ class Home extends CI_Controller
                     }
                 }
                 $amount = $this->booking->selfCheckout($id, $dob, $aadhar_no, $driving_lience, $aadhar_front, $aadhar_back, $license_front, $license_back);
-                redirect("Home/self_payment/$id/$amount");
+                $this->session->set_userdata('order_id',$id);
+                $this->session->set_userdata('amount',$amount);
+                redirect("Home/self_payment");
             } else {
                 $this->session->set_flashdata('emessage', validation_errors());
                 redirect($_SERVER['HTTP_REFERER']);
@@ -565,8 +571,14 @@ class Home extends CI_Controller
             redirect("Home", "refresh");
         }
     }
-    public function self_payment($id, $amount)
+    public function self_payment()
     {
+        $id=$this->session->userdata('order_id');
+        $amount=$this->session->userdata('amount');
+        if(!empty($id) && !empty($amount)){
+        $this->session->unset_userdata('order_id');
+        $this->session->unset_userdata('amount');
+        $this->session->userdata('user_data');
         $txnid = substr(hash('sha256', mt_rand() . microtime()), 0, 20);
         $customer_name=$this->session->userdata('name');
         $customer_emial=$this->session->userdata('email');
@@ -630,6 +642,9 @@ class Home extends CI_Controller
       // 'cancel' => $cancel
       // );
       //   $this->load->view('frontend/confirmation', $data);
+    }else{
+      redirect("/","refresh");
+    }
     }
     //====================================== Intercity calculate ======================
     public function intercity_calculate()
@@ -759,10 +774,11 @@ class Home extends CI_Controller
                 echo json_encode($res);
             }
         } else {
-            $res = array('message'=>"Please insert some data, No data available",
-                'status'=>201
-                );
-            echo json_encode($res);
+            // $res = array('message'=>"Please insert some data, No data available",
+            //     'status'=>201
+            //     );
+            // echo json_encode($res);
+            redirect("/","refresh");
         }
     }
     public function booking_succss()
@@ -1014,6 +1030,7 @@ class Home extends CI_Controller
         $id=base64_decode($idd);
         $data['id']=$idd;
         $data['booking_data'] = $this->db->get_where('tbl_booking', array('id'=> $id))->result();
+        if($data['booking_data'][0]->payment_status!=1){
           //----- start check date is past ----------
         date_default_timezone_set('Asia/Kolkata');
         $newdate = new DateTime($data['booking_data'][0]->start_date);
@@ -1054,6 +1071,9 @@ class Home extends CI_Controller
         $this->load->view('frontend/common/header', $data);
         $this->load->view('frontend/outstation_summary');
         $this->load->view('frontend/common/footer');
+      }else{
+        redirect("/","refresh");
+      }
     }
     //============================ outstation cehckout =================
     public function outstation_checkout($idd)
