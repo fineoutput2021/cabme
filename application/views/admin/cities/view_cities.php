@@ -42,7 +42,8 @@ if (!empty($this->session->flashdata('emessage'))) { ?>
                       <th>#</th>
                       <th>Name</th>
                       <th>City Type</th>
-                        <th>Top</th>
+                      <th>Outstation City Type</th>
+                      <th>Top</th>
                       <th>Image</th>
                       <th>Date</th>
                       <th>Status</th>
@@ -62,6 +63,14 @@ if (!empty($this->session->flashdata('emessage'))) { ?>
                     }else{
                       echo 'Outstation City';
 
+                    }?> </td>
+                      <td><?php
+                      if($data->ot_city_type==0){
+                      echo 'None';
+                    }else if($data->ot_city_type==1){
+                      echo 'One Way';
+                    }else if($data->ot_city_type==2){
+                      echo 'Round Trip';
                     }?> </td>
                       <td><?php echo $data->top ?> </td>
                       <td>

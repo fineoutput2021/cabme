@@ -177,12 +177,14 @@
 												</div>
 											</div>
 											<div class="row" style="border: 1px solid rgb(212, 208, 208);width: 99%;margin-left: 7px;border-radius: 10px;">
+												<div id="ot_location_div">
 												<div class="col-md-12" data-toggle="modal" data-target="#selectcity3" data-dismiss="modal" id="ot_location">
 													<div class="selectcity">
 														<i class="fa fa-map-marker"></i>
 														<h5 style="margin-top: 3px;" class="city_title2">Select City</h5>
 													</div>
 												</div>
+											</div>
 												<div id="change2" style="display: flex;" class="col-md-12 col-12 p-0">
 													<div class="col-md-12 " style="z-index: 0;display: flex;height: 55px;border: 1px solid rgb(212, 208, 208);padding: 0px;justify-content: space-around;">
 														<div class="form-sec-header" style="height: 50px;">
@@ -685,11 +687,13 @@
 												</div>
 											</div>
 											<div class="row mr-0 ml-0" style="border: 1px solid rgb(226, 225, 225);margin-top: 10px;border-radius: 10px;">
+												<div id="mot_location_div">
 												<div class="col-md-12 p-0" data-toggle="modal" data-target="#selectcity4" data-dismiss="modal" style="border-bottom:1px solid rgb(226, 225, 225);" id="mot_location">
 													<div class="selectcity">
 														<i class="fa fa-map-marker"></i>
 														<h5 class="city_title2">Select City</h5>
 													</div>
+												</div>
 												</div>
 												<div id="change" style="display: flex;" class="col-md-12 col-12 p-0">
 													<div class="col-md-12 col-12 mobileradius" style="z-index: 0;display: flex;height: 55px;padding: 0px;border-right: 1px solid rgb(226, 225, 225);justify-content: space-around;">

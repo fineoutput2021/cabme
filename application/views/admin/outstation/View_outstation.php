@@ -79,7 +79,14 @@ echo '7 Seater';
                       <td>₹<?php echo $data->per_kilometre?> </td>
                       <td><?php echo $data->location ?> </td>
                       <td><?php
-                      echo $city_data[0]->name; ?>
+                      if($city_data[0]->ot_city_type==0){
+                          $type= 'None';
+                        }else if($city_data[0]->ot_city_type==1){
+                        $type= 'One Way';
+                        }else if($city_data[0]->ot_city_type==2){
+                          $type= 'Round Trip';
+                        }
+                      echo $city_data[0]->name; ?> (<?=$type?>)
                       </td>
                       <td>₹<?php echo $data->min_booking_amt ?> </td>
                       <td><?php echo $data->date ?> </td>

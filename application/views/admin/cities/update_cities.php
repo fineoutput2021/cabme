@@ -68,6 +68,17 @@ if (!empty($this->session->flashdata('emessage'))) { ?>
                           <label for="without_fair">Outstation City</label>
                         </td>
                       </tr>
+                      <tr>
+                        <td> <strong>Outstation City Type</strong> <span style="color:red;">*</span></strong> </td>
+                        <td>
+                          <input type="radio" id="none" name="ot_city_type" value="0" <?if($City->ot_city_type==0){echo 'checked';}?>>
+                          <label for="none">None</label></label>
+                          <input type="radio" id="one_way" name="ot_city_type" value="1" <?if($City->ot_city_type==1){echo 'checked';}?>>
+                          <label for="one_way">One Way</label></label>
+                          <input type="radio" id="round_trip" name="ot_city_type" value="2" <?if($City->ot_city_type==2){echo 'checked';}?>>
+                          <label for="round_trip">Round Trip</label>
+                        </td>
+                      </tr>
                     </tr>
                     <tr>
                       <td colspan="2">

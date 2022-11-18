@@ -59,11 +59,12 @@ class City extends CI_finecontrol
                 $this->form_validation->set_rules('name', 'name', 'required|xss_clean|trim');
                   $this->form_validation->set_rules('top', 'top', 'required|xss_clean|trim');
                 $this->form_validation->set_rules('city_type', 'city_type', 'required|xss_clean|trim');
-                // $this->form_validation->set_rules('address', 'address ','|xss_clean|trim');
+                $this->form_validation->set_rules('ot_city_type', 'ot_city_type ','required|xss_clean|trim');
                 if ($this->form_validation->run()== true) {
                     $name=$this->input->post('name');
                       $top=$this->input->post('top');
                     $city_type=$this->input->post('city_type');
+                    $ot_city_type=$this->input->post('ot_city_type');
                     $ip = $this->input->ip_address();
                     date_default_timezone_set("Asia/Calcutta");
                     $cur_date=date("Y-m-d H:i:s");
@@ -100,6 +101,7 @@ class City extends CI_finecontrol
 'photo'=>$image,
 'top'=>$top,
 'city_type'=>$city_type,
+'ot_city_type'=>$ot_city_type,
 'is_active' =>1,
 'date'=>$cur_date
 );
@@ -130,6 +132,7 @@ class City extends CI_finecontrol
 'photo'=>$image,
 'top'=>$top,
 'city_type'=>$city_type,
+'ot_city_type'=>$ot_city_type,
 );
                         $this->db->where('id', $idw);
                         $last_id=$this->db->update('tbl_cities', $data_insert);

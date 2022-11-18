@@ -67,6 +67,18 @@
                       </td>
                     </tr>
                     <tr>
+                      <td> <strong>Outstation City Type</strong> <span style="color:red;">*</span></strong> </td>
+                      <td>
+                        <input type="radio" id="none" name="ot_city_type" value="0" checked>
+                        <label for="none">None</label></label>
+                        <input type="radio" id="one_way" name="ot_city_type" value="1">
+                        <label for="one_way">One Way</label></label>
+                        <input type="radio" id="round_trip" name="ot_city_type" value="2">
+                        <label for="round_trip">Round Trip</label>
+                      </td>
+                    </tr>
+
+                    <tr>
 
                       <tr>
                       <td colspan="2">

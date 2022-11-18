@@ -39,8 +39,16 @@
                       <td>
                         <select name="city_id" class="form-control" required>
                           <option value="">--- Select City -----</option>
-                          <?php $i=1; foreach ($city_data->result() as $city) { ?>
-                          <option value="<?=$city->id?>"><?=$city->name?></option>
+                          <?php $i=1; foreach ($city_data->result() as $city) {
+                            if($city->ot_city_type==0){
+                            $type= 'None';
+                          }else if($city->ot_city_type==1){
+                          $type= 'One Way';
+                          }else if($city->ot_city_type==2){
+                            $type= 'Round Trip';
+                          }
+                             ?>
+                          <option value="<?=$city->id?>"><?=$city->name?> (<?=$type?>)</option>
                           <?php $i++; } ?>
                         </select>
                       </td>
