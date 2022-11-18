@@ -89,6 +89,11 @@ class Booking extends CI_finecontrol
     {
         if (!empty($this->session->userdata('admin_data'))) {
             $data['id'] = $id;
+            $booking_data = $this->db->get_where('tbl_booking', array('id'=> base64_decode($id)))->result();
+            $city = $this->db->get_where('tbl_cities', array('id'=> $booking_data[0]->city_id))->result();
+            $data['city_data'] = $this->db->get_where('tbl_cities', array('ot_city_type'=> $city[0]->ot_city_type))->result();
+            $data['booking_data'] = $booking_data;
+
             $this->load->view('admin/common/header_view', $data);
             $this->load->view('admin/booking/end_outstation_booking');
             $this->load->view('admin/common/footer_view');
@@ -162,12 +167,14 @@ class Booking extends CI_finecontrol
                 $this->form_validation->set_rules('id', 'id', 'required|xss_clean|trim');
                 $this->form_validation->set_rules('location', 'location', 'required|xss_clean|trim');
                 $this->form_validation->set_rules('end_kilometer', 'end_kilometer', 'required|xss_clean|trim');
+                $this->form_validation->set_rules('city_id', 'city_id', 'required|xss_clean|trim');
                 if ($this->form_validation->run()== true) {
                              date_default_timezone_set("Asia/Calcutta");
                              $cur_date=date("Y-m-d H:i:s");
                     $id=$this->input->post('id');
                     $location=$this->input->post('location');
                     $end_kilometer=$this->input->post('end_kilometer');
+                    $city_id=$this->input->post('city_id');
                     $image="";
                     $img1='invoice_image';
                     $file_check=($_FILES['invoice_image']['error']);
@@ -198,6 +205,7 @@ class Booking extends CI_finecontrol
                     $this->db->where('id', $id);//new orders
                     $booking_data= $this->db->get()->row();
                     $data_insert1 = array(
+                        'city_id'=>$city_id,
                         'location'=>$location,
                         'is_available'=>1,
                         );

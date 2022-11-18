@@ -302,7 +302,7 @@
 					<p style="color:black"> Terms & Conditions</p> <br>
 					<ul class="listdots" style="color:black">
 						<li>Applicable on booking with minimum duration <span id="m_min"></span> days</li>
-						<li>Not applicable on booking where fuel is included</li>
+						<li id="m_type"></li>
 					</ul>
 				</div>
 			</div>

@@ -202,8 +202,10 @@ function show_promo_model(x){
 	var p_perc=$('#p_'+x).attr('p_perc');
 	var p_min=$('#p_'+x).attr('p_min');
 	var p_max=$('#p_'+x).attr('p_max');
-	 $('#m_dis').html('Upto '+p_perc+' off')
-	 $('#m_info').html('Use code '+p_name+' and get Upto '+p_perc+' off')
+	var p_type=$('#p_'+x).attr('p_type');
+	 $('#m_dis').html('Upto '+p_perc+'% off')
+	 $('#m_info').html('Use code '+p_name+' and get Upto '+p_perc+'% off')
+	 $('#m_type').html('Promocode applicable '+p_type)
 	 $('#textcopy').html(p_name)
 	 $('#m_min').html(p_min)
 	 $('#m_noti').html('')

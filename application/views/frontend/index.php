@@ -819,7 +819,7 @@
 								$cur_date=strtotime(date("Y-m-d"));
 								  // if (strtotime($data->end_date) >= $cur_date && strtotime($data->start_date) <= $cur_date) {
 										?>
-							<div style="cursor:pointer" class="card valign-wrapper new" id="p_<?=$i?>" p_name="<?=$data->promocode?>" p_perc="<?=$data->percentage?>" p_min="<?=$data->mindays?>" p_max="<?=$data->max?>" onclick="show_promo_model(<?=$i?>)">
+							<div style="cursor:pointer" class="card valign-wrapper new" id="p_<?=$i?>" p_name="<?=$data->promocode?>" p_perc="<?=$data->percentage?>" p_type="<?if($data->ptype==1){echo 'one time';}else{echo 'every time';}?>" p_min="<?=$data->mindays?>" p_max="<?=$data->max?>" onclick="show_promo_model(<?=$i?>)">
 								<img src="<?=base_url().$data->photo?>" />
 							</div>
 							<?php

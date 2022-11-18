@@ -36,6 +36,27 @@
                 <div class="table-responsive">
                   <table class="table table-hover">
                     <tr>
+                        <td> <strong>Current City</strong> <span style="color:red;">*</span></strong> </td>
+                        <td>
+                          <select name="city_id" class="form-control" required>
+                            <?php $i=1; foreach ($city_data as $city) {
+                              if($city->ot_city_type==0){
+                                  $type= 'None';
+                                }else if($city->ot_city_type==1){
+                                $type= 'One Way';
+                                }else if($city->ot_city_type==2){
+                                  $type= 'Round Trip';
+                                }
+                               ?>
+                            <option value="<?=$city->id?>" <?if ($city->id==$booking_data[0]->city_id) {
+                              echo 'selected'
+                              ;
+                              }?>><?=$city->name?> (<?=$type?>)</option>
+                            <?php $i++; } ?>
+                          </select>
+                        </td>
+                      </tr>
+                    <tr>
                       <td> <strong>End Kilometer</strong> <span style="color:red;">*</span></strong> </td>
                       <td>
                         <input type="text" onkeypress="return isNumberKey(event)" name="end_kilometer" class="form-control" placeholder="" required value="" />
@@ -53,6 +74,7 @@
                         <input type="file" name="invoice_image" class="form-control" placeholder="" required value="" />
                       </td>
                     </tr>
+
                     <tr>
                       <td colspan="2">
                         <input type="submit" class="btn btn-success" value="save">
