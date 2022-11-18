@@ -203,7 +203,7 @@ function show_promo_model(x){
 	var p_min=$('#p_'+x).attr('p_min');
 	var p_max=$('#p_'+x).attr('p_max');
 	var p_type=$('#p_'+x).attr('p_type');
-	 $('#m_dis').html('Upto '+p_perc+'% off')
+	 $('#m_dis').html('Get Upto '+p_perc+'% Off')
 	 $('#m_info').html('Use code '+p_name+' and get Upto '+p_perc+'% off')
 	 $('#m_type').html('Promocode applicable '+p_type)
 	 $('#textcopy').html(p_name)
