@@ -134,14 +134,16 @@
 					<button type="button" class="close" data-dismiss="modal">&times;</button>
 				</div>
 				<div class="modal-body">
+					<?if(!empty($top_data)){?>
 					<p style="font-size:18px;">Top Cities</p>
 					<?php $i=1; foreach($top_data as $data) {?>
 					<h5 class="citieslist" onclick="set_city(this)" city_id="<?=$data->id?>" name="<?=$data->name?>" id="wc_<?=$data->id?>"> <img src="<?=base_url().$data->photo?>" alt="<?=$data->name?>" width="10%" style="margin-top: -13px;"><?=$data->name?></h5>
-					<?php $i++; } ?>
+					<?php $i++; } }?>
+						<?if(!empty($other_data)){?>
 					<p style="font-size: 16px;">Other Cities</p>
 					<?php $i=1; foreach($other_data as $data) { ?>
 					<h5 class="citieslist" onclick="set_city(this)" city_id="<?=$data->id?>" name="<?=$data->name?>" id="wc_<?=$data->id?>"> <img src="<?=base_url().$data->photo?>" alt="<?=$data->name?>" width="10%" style="margin-top: -13px;"> <?=$data->name?></h5>
-					<?php $i++; } ?>
+					<?php $i++; }} ?>
 				</div>
 			</div>
 		</div>
@@ -157,14 +159,16 @@
 					<button type="button" class="close" data-dismiss="modal">&times;</button>
 				</div>
 				<div class="modal-body">
+						<?if(!empty($top_data)){?>
 					<p style="font-size:18px;">Top Cities</p>
 					<?php $i=1; foreach($top_data as $data) { ?>
 					<h5 class="citieslist"  onclick="set_city(this)" city_id="<?=$data->id?>" name="<?=$data->name?>"id="mc_<?=$data->id?>"> <img src="<?=base_url().$data->photo?>" alt="<?=$data->name?>" width="10%" style="margin-top: -13px;"> <?=$data->name?></h5>
-					<?php $i++; } ?>
+					<?php $i++; }} ?>
+						<?if(!empty($other_data)){?>
 					<p style="font-size: 16px;">Other Cities</p>
 					<?php $i=1; foreach($other_data as $data) { ?>
 					<h5 class="citieslist"  onclick="set_city(this)" city_id="<?=$data->id?>" name="<?=$data->name?>" id="mc_<?=$data->id?>"> <img src="<?=base_url().$data->photo?>" alt="<?=$data->name?>" width="10%" style="margin-top: -13px;"> <?=$data->name?></h5>
-					<?php $i++; } ?>
+					<?php $i++; }} ?>
 				</div>
 			</div>
 		</div>
@@ -179,14 +183,16 @@
 					<button type="button" class="close" data-dismiss="modal">&times;</button>
 				</div>
 				<div class="modal-body">
+						<?if(!empty($out_top_data)){?>
 					<p style="font-size:18px;">Top Cities</p>
 					<?php $i=1; foreach($out_top_data as $data) {?>
 					<h5 class="citieslist2" onclick="out_set_city(this)" city_id="<?=$data->id?>" name="<?=$data->name?>" id="wc_2<?=$data->id?>"> <img src="<?=base_url().$data->photo?>" alt="<?=$data->name?>" width="10%" style="margin-top: -13px;"><?=$data->name?></h5>
-					<?php $i++; } ?>
+					<?php $i++; }} ?>
+						<?if(!empty($out_other_data)){?>
 					<p style="font-size: 16px;">Other Cities</p>
 					<?php $i=1; foreach($out_other_data as $data) { ?>
 					<h5 class="citieslist2" onclick="out_set_city(this)" city_id="<?=$data->id?>" name="<?=$data->name?>" id="wc_2<?=$data->id?>"> <img src="<?=base_url().$data->photo?>" alt="<?=$data->name?>" width="10%" style="margin-top: -13px;"> <?=$data->name?></h5>
-					<?php $i++; } ?>
+					<?php $i++; }} ?>
 				</div>
 			</div>
 		</div>
@@ -202,20 +208,23 @@
 					<button type="button" class="close" data-dismiss="modal">&times;</button>
 				</div>
 				<div class="modal-body">
+						<?if(!empty($out_top_data)){?>
 					<p style="font-size:18px;">Top Cities</p>
 					<?php $i=1; foreach($out_top_data as $data) { ?>
 					<h5 class="citieslist"  onclick="out_set_city(this)" city_id="<?=$data->id?>" name="<?=$data->name?>"id="mc_2<?=$data->id?>"> <img src="<?=base_url().$data->photo?>" alt="<?=$data->name?>" width="10%" style="margin-top: -13px;"> <?=$data->name?></h5>
-					<?php $i++; } ?>
+					<?php $i++; } }?>
+						<?if(!empty($out_other_data)){?>
 					<p style="font-size: 16px;">Other Cities</p>
 					<?php $i=1; foreach($out_other_data as $data) { ?>
 					<h5 class="citieslist"  onclick="out_set_city(this)" city_id="<?=$data->id?>" name="<?=$data->name?>" id="mc_2<?=$data->id?>"> <img src="<?=base_url().$data->photo?>" alt="<?=$data->name?>" width="10%" style="margin-top: -13px;"> <?=$data->name?></h5>
-					<?php $i++; } ?>
+					<?php $i++; }} ?>
 				</div>
 			</div>
 		</div>
 	</div>
 	<!--====== Select City2 Modal End ======-->
 	<!--======Promo Modal ======-->
+	
 	<div class="modal fade" id="myModal" role="dialog">
 		<div class="modal-dialog">
 			<!-- Modal content-->
