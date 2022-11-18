@@ -199,9 +199,11 @@ class Booking extends CI_finecontrol
                     $booking_data= $this->db->get()->row();
                     $data_insert1 = array(
                         'location'=>$location,
+                        'is_available'=>1,
                         );
                     $this->db->where('id', $booking_data->car_id);
                     $last_id=$this->db->update('tbl_outstation', $data_insert1);
+
                     $data_insert = array(
                         'end_kilometer'=>$end_kilometer,
                         'invoice_image'=>$image,
