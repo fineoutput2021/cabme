@@ -41,7 +41,7 @@
                     <tr>
                       <th>#</th>
                       <th>Name</th>
-                      <th> content</th>
+                      <th>Content</th>
                       <th>Image</th>
                       <th>Status</th>
                       <?if ($this->session->userdata('position')!='Manager') {?>
@@ -56,7 +56,7 @@
                       <td><?php echo $data->name ?></td>
 
 
-                      <td><?php echo $data->content ?>%</td>
+                      <td><?php echo $data->content ?></td>
                       <td>
                         <?php if ($data->photo!="") {  ?>
                         <img id="slide_img_path" height=50 width=100 src="<?php echo base_url().$data->photo ?>">

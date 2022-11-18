@@ -49,7 +49,8 @@
                     <tr>
                       <td> <strong>Content</strong> <span style="color:red;">*</span></strong> </td>
                       <td>
-                        <input type="text" name="content" class="form-control" placeholder="" required value="<?=$testimonials_data->content?>" />
+                            <textarea  type="text" class="form-control" required name="content" rows="8" cols="80"><?=$testimonials_data->content?></textarea>
+                        <!-- <input type="text" name="content" class="form-control" placeholder="" required value="<?=$testimonials_data->content?>" /> -->
                       </td>
                     </tr>
                     <tr>

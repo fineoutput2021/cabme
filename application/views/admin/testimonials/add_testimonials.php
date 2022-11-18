@@ -49,7 +49,7 @@
                     <tr>
                       <td> <strong>Content</strong> <span style="color:red;">*</span></strong> </td>
                       <td>
-                        <textarea name="content" rows="8" cols="80"></textarea>
+                        <textarea  class="form-control" required name="content" rows="8" cols="80"></textarea>
                         <!-- <input type="textarea " name="content"  class="form-control" placeholder="" required value="" /> -->
                       </td>
                     </tr>
