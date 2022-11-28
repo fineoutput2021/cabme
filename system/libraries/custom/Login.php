@@ -142,7 +142,7 @@ class CI_Login
     //============================================= LOGIN WITH OTP ==============================================
     public function LoginWithOtp($phone)
     {
-        if (empty($this->CI->session->userdata('user_data'))) {
+        // if (empty($this->CI->session->userdata('user_data'))) {
             $ip = $this->CI->input->ip_address();
             date_default_timezone_set("Asia/Calcutta");
             $cur_date=date("Y-m-d H:i:s");
@@ -190,15 +190,15 @@ class CI_Login
                     // $this->CI->session->set_flashdata('emessage', 'Your Account is blocked! Please contact to admin');
                     return json_encode($respone);
                 }
-        } else {
-            $respone['status'] = false;
-            return json_encode($respone);
-        }
+        // } else {
+        //     $respone['status'] = false;
+        //     return json_encode($respone);
+        // }
     }
     //============================================== LOGIN OTP VERIFY =============================================
     public function LoginOtpVerify($phone, $input_otp)
     {
-        if (empty($this->CI->session->userdata('user_data'))) {
+        // if (empty($this->CI->session->userdata('user_data'))) {
             $otpData = $this->CI->db->order_by('id', 'desc')->get_where('tbl_otp', array('phone'=> $phone))->result();
             $ip = $this->CI->input->ip_address();
             date_default_timezone_set("Asia/Calcutta");
@@ -253,10 +253,10 @@ class CI_Login
                 // $this->CI->session->set_flashdata('emessage', 'Invalid OTP!');
                 return json_encode($respone);
             }
-        } else {
-            $respone['status'] = false;
-            return json_encode($respone);
-        }
+        // } else {
+        //     $respone['status'] = false;
+        //     return json_encode($respone);
+        // }
     }
     //============================= USER OTP LOGOUT ==========================================
     public function UserOtpLogout()

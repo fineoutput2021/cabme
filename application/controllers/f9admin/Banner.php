@@ -19,6 +19,7 @@ class Banner extends CI_finecontrol
             $data['user_name']=$this->load->get_var('user_name');
             $this->db->select('*');
             $this->db->from('tbl_banner');
+              // $this->db->order_by('id', 'desc');
             $data['banner_data']= $this->db->get();
             $this->load->view('admin/common/header_view', $data);
             $this->load->view('admin/banner/view_banner');
@@ -118,6 +119,7 @@ class Banner extends CI_finecontrol
           'photo1'=>$photo1,
           'photo2'=>$photo2,
           'is_active' =>1,
+          'date'=>$cur_date
         );
         $last_id=$this->base_model->insert_table("tbl_banner", $data_insert, 1) ;
         }
