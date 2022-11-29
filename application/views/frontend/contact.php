@@ -13,7 +13,7 @@
                     </div>
                     <div class="row">
               <div class="col-md-6 mb-3"><h4><i class="fa fa-envelope" aria-hidden="true"></i> Cancellation by e-mail on : support@cabme.in</h4></div>
-              <div class="col-md-6 mb-3"><h4><i class="fa fa-envelope" aria-hidden="true" ></i> Call us on : 18001216162</h4></div>
+              <div class="col-md-6 mb-3"><h4><i class="fa fa-phone" aria-hidden="true" ></i> Call us on : 18001216162</h4></div>
             <div class="row">
                 <div class="col-lg-12">
                     <div class="p-4">
