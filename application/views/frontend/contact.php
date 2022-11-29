@@ -7,10 +7,13 @@
 
 				<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
 					<div class="x_about_seg_img_cont_wrapper float_left">
-            <div class="row">
-              <div class="col-md-6"><h4><i class="fa fa-envelope" aria-hidden="true"></i> Cancellation by e-mail on : support@cabme.in</h4></div>
-              <div class="col-md-6"><h4><i class="fa fa-envelope" aria-hidden="true"></i> Call us on : 18001216162</h4></div>
-            </div>
+                    <div class="row">
+                        <div class="col-md-12 mb-4"><h4><i class="fa fa-map-marker" aria-hidden="true" style="font-size:28px"></i> Address : 1/3 Army Welfare Housing Organization Pocket-B Sector-2, Vidyadhar Nagar, Jaipur-302039</h4></div>
+                    </div>
+                    </div>
+                    <div class="row">
+              <div class="col-md-6 mb-3"><h4><i class="fa fa-envelope" aria-hidden="true"></i> Cancellation by e-mail on : support@cabme.in</h4></div>
+              <div class="col-md-6 mb-3"><h4><i class="fa fa-envelope" aria-hidden="true" ></i> Call us on : 18001216162</h4></div>
             <div class="row">
                 <div class="col-lg-12">
                     <div class="p-4">
