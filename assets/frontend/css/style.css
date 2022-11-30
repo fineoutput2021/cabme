@@ -2423,6 +2423,11 @@ width:100%;
   .mdtp__wrapper[data-theme="green"] .mdtp__button {
 	color: #2e7d32;
   }
+  @media only screen and (min-device-width: 780px) and (max-device-width: 1260px)  {
+	.x_slider_form_main_wrapper{
+		padding: 7px!important;;
+	}
+  }
   @media (max-height: 360px) {
 	.mdtp__wrapper {
 	  flex-direction: row;
