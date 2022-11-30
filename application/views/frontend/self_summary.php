@@ -51,8 +51,8 @@ input::file-selector-button {
 						<div class="row " style="justify-content: space-evenly">
 							<!-- <label style="padding-right: 0.5rem "><b>Aadhar Front<span style="color:red">*</span></b></label> -->
 
-							<input type="file" name="aadhar_front" required value="" style="width: 40%; ">
-							<input type="file"  name="aadhar_back" required value=""  style="width: 40%;">
+							<input type="file" name="aadhar_front" required value="" style="width: 40%; " accept="image/*">
+							<input type="file"  name="aadhar_back" required value=""  style="width: 40%;" accept="image/*">
 						</div>
 						<div class="row " style="justify-content: space-evenly">
 						<label style="font-size: 13px;"><b>Aadhar Front<span style="color:red">* &nbsp &nbsp &nbsp &nbsp  &nbsp &nbsp &nbsp &nbsp &nbsp  &nbsp  </span></b></label>
@@ -73,8 +73,8 @@ input::file-selector-button {
 						<div class="row"  style="justify-content: space-evenly">
 							<!-- <label style="padding-right: 0.5rem "><b>License Front<span style="color:red">*</span></b></label> -->
 						<!-- <p class="mt-1 mb-1">Upload <b>License Front</b> Image</p> -->
-						<input type="file" name="license_front" required value=""  style="width: 40%;">
-						<input type="file" name="license_back" required value=""  style="width: 40%; ">
+						<input type="file" name="license_front" required value=""  style="width: 40%;" accept="image/*">
+						<input type="file" name="license_back" required value=""  style="width: 40%; " accept="image/*">
 					</div>
 					<div class="row " style="justify-content: space-evenly">
 					<label style="font-size: 13px;"><b>License Front<span style="color:red">* &nbsp &nbsp &nbsp &nbsp  &nbsp &nbsp &nbsp &nbsp &nbsp  &nbsp</span></b></label>

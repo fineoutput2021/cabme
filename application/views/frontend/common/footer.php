@@ -248,7 +248,7 @@ $("#w_intercity_form,#m_intercity_form").on('submit',function(e){
         $('#i_prc').html('₹'+response.data.final_amount)
         $('#i_mini').html('₹'+response.data.mini_booking)
         $('#ic_id').val(response.data.id)
-        $('#ic_amount').val(response.data.final_amount)
+        $('#ic_amount').val(response.data.mini_booking)
 				$('#searchbtn').modal('show');
       }else{
         notifyError(response.message)
@@ -284,9 +284,11 @@ $("#sdsd, #sded").change(function(){
 			// console.log('enddate= '+edDate);
 			// console.log('endtime= '+sdet);
 			if((sdDate !='NaN-NaN-NaN')&& (typeof sdst != "undefined")&& (edDate !='NaN-NaN-NaN')&& (typeof sdet != "undefined")){
-				var start = new Date(sdDate);
-				 var end   = new Date(edDate);
-				  var diff= (( new Date(edDate+" " +sdet) - new Date(sdDate+" " +sdst) ) / 1000 / 60 / 60 );
+				 var start = new Date(sdDate.replace(/-/g,"/"));
+				var end   = new Date(edDate.replace(/-/g,"/"));
+				var d1 = edDate+" " +sdet;
+				var d2 = sdDate+" " +sdst;
+ 		var diff= (( new Date(d1.replace(/-/g,"/")) - new Date(d2.replace(/-/g,"/")) ) / 1000 / 60 / 60 );
 					var days =  parseInt(diff/24);
 					var hours =  diff%24;
 					if(diff>0){
@@ -335,9 +337,11 @@ $("#msdsd, #msded").change(function(){
 			// console.log('enddate= '+edDate);
 			// console.log('endtime= '+sdet);
 			if((sdDate !='NaN-NaN-NaN')&& (typeof sdst != "undefined")&& (edDate !='NaN-NaN-NaN')&& (typeof sdet != "undefined")){
-				var start = new Date(sdDate);
-				 var end   = new Date(edDate);
-				  var diff= (( new Date(edDate+" " +sdet) - new Date(sdDate+" " +sdst) ) / 1000 / 60 / 60 );
+				var start = new Date(sdDate.replace(/-/g,"/"));
+				var end   = new Date(edDate.replace(/-/g,"/"));
+				var d1 = edDate+" " +sdet;
+				var d2 = sdDate+" " +sdst;
+ 		var diff= (( new Date(d1.replace(/-/g,"/")) - new Date(d2.replace(/-/g,"/")) ) / 1000 / 60 / 60 );
 					var days =  parseInt(diff/24);
 					var hours =  diff%24;
 					if(diff>0){
@@ -387,12 +391,16 @@ $("#icsd, #iced").change(function(){
 
 			//----- calculate diffrence --------
 			if((isDate !='NaN-NaN-NaN')&& (typeof icst != "undefined")&& (ieDate !='NaN-NaN-NaN')&& (typeof icet != "undefined")){
-				var start = new Date(isDate);
-				 var end   = new Date(ieDate);
+				 var start = new Date(isDate.replace(/-/g,"/"));
+				var end   = new Date(ieDate.replace(/-/g,"/"));
+				
 				 if(sd.getFullYear() === ed.getFullYear() && sd.getMonth() === ed.getMonth() &&
 				 sd.getDate() === ed.getDate())
 				 {
-					var diff= (( new Date(ieDate+" " +icet) - new Date(isDate+" " +icst) ) / 1000 / 60 / 60 );
+					var d1 = ieDate+" " +icet;
+					var d2 = isDate+" " +icst;
+ 		var diff= (( new Date(d1.replace(/-/g,"/")) - new Date(d2.replace(/-/g,"/")) ) / 1000 / 60 / 60 );
+
 					var days =  parseInt(diff/24);
 					var hours =  diff%24;
 					if(diff>0){
@@ -446,12 +454,14 @@ $("#micsd, #miced").change(function(){
 			// console.log('check= '+$('#micst').val());
 			//----- calculate diffrence --------
 			if((isDate !='NaN-NaN-NaN')&& (typeof icst != "undefined")&& (ieDate !='NaN-NaN-NaN')&& (typeof icet != "undefined")){
-				var start = new Date(isDate);
-				 var end   = new Date(ieDate);
+				 var start = new Date(isDate.replace(/-/g,"/"));
+				var end   = new Date(ieDate.replace(/-/g,"/"));
 				 if(sd.getFullYear() === ed.getFullYear() && sd.getMonth() === ed.getMonth() &&
 				  sd.getDate() === ed.getDate())
 					{
-					var diff= (( new Date(ieDate+" " +icet) - new Date(isDate+" " +icst) ) / 1000 / 60 / 60 );
+					var d1 = ieDate+" " +icet;
+					var d2 = isDate+" " +icst;
+ 		var diff= (( new Date(d1.replace(/-/g,"/")) - new Date(d2.replace(/-/g,"/")) ) / 1000 / 60 / 60 );
 					var days =  parseInt(diff/24);
 					var hours =  diff%24;
 					if(diff>0){
@@ -526,9 +536,11 @@ function round_way(){
 			// console.log('check= '+$('#icst').val());
 			//----- calculate diffrence --------
 			if((isDate !='NaN-NaN-NaN')&& (typeof icst != "undefined")&& (ieDate !='NaN-NaN-NaN')&& (typeof icet != "undefined")){
-				var start = new Date(isDate);
-				 var end   = new Date(ieDate);
-					var diff= (( new Date(ieDate+" " +icet) - new Date(isDate+" " +icst) ) / 1000 / 60 / 60 );
+				var start = new Date(isDate.replace(/-/g,"/"));
+				var end   = new Date(ieDate.replace(/-/g,"/"));
+				var d1 = ieDate+" " +icet;
+					var d2 = isDate+" " +icst;
+ 		var diff= (( new Date(d1.replace(/-/g,"/")) - new Date(d2.replace(/-/g,"/")) ) / 1000 / 60 / 60 );
 					var days =  parseInt(diff/24);
 					var hours =  diff%24;
 					if(diff>0){
@@ -603,9 +615,11 @@ function mround_way(){
 			// console.log('check= '+$('#icst').val());
 			//----- calculate diffrence --------
 			if((isDate !='NaN-NaN-NaN')&& (typeof icst != "undefined")&& (ieDate !='NaN-NaN-NaN')&& (typeof icet != "undefined")){
-				var start = new Date(isDate);
-				 var end   = new Date(ieDate);
-					var diff= (( new Date(ieDate+" " +icet) - new Date(isDate+" " +icst) ) / 1000 / 60 / 60 );
+				var start = new Date(isDate.replace(/-/g,"/"));
+				var end   = new Date(ieDate.replace(/-/g,"/"));
+				var d1 = ieDate+" " +icet;
+				var d2 = isDate+" " +icst;
+ 		var diff= (( new Date(d1.replace(/-/g,"/")) - new Date(d2.replace(/-/g,"/")) ) / 1000 / 60 / 60 );
 					var days =  parseInt(diff/24);
 					var hours =  diff%24;
 					if(diff>0){
@@ -653,15 +667,17 @@ function time_change(){
 	var ed    = new Date(sded);
 	edDate =  ed.getFullYear()+'-'+(ed.getMonth()+1)+'-'+ed.getDate();
 
-			console.log('startdate= '+sdDate);
-			console.log('starttime= '+sdst);
-			console.log('enddate= '+edDate);
-			console.log('endtime= '+sdet);
+			// console.log('startdate= '+sdDate);
+			// console.log('starttime= '+sdst);
+			// console.log('enddate= '+edDate);
+			// console.log('endtime= '+sdet);
 			//----- calculate diffrence --------
 	if((sdDate !='NaN-NaN-NaN')&& (typeof sdst !== "undefined")&& (edDate !='NaN-NaN-NaN')&& (typeof sded !== "undefined")){
-		var start = new Date(sdDate);
-		 var end   = new Date(edDate);
-		  var diff= (( new Date(edDate+" " +sdet) - new Date(sdDate+" " +sdst) ) / 1000 / 60 / 60 );
+		var start = new Date(sdDate.replace(/-/g,"/"));
+				var end   = new Date(edDate.replace(/-/g,"/"));
+				var d1 = edDate+" " +sdet;
+				var d2 = sdDate+" " +sdst;
+ 		var diff= (( new Date(d1.replace(/-/g,"/")) - new Date(d2.replace(/-/g,"/")) ) / 1000 / 60 / 60 );
 			var days =  parseInt(diff/24);
 			var hours =  diff%24;
 			if(diff>0){
@@ -716,9 +732,11 @@ else if(active==1 && device==2){
 			// console.log('endtime= '+sdet);
 
 	if((sdDate !='NaN-NaN-NaN')&& (typeof sdst !== "undefined")&& (edDate !='NaN-NaN-NaN')&& (typeof sded !== "undefined")){
-		var start = new Date(sdDate);
-		 var end   = new Date(edDate);
-		  var diff= (( new Date(edDate+" " +sdet) - new Date(sdDate+" " +sdst) ) / 1000 / 60 / 60 );
+		var start = new Date(sdDate.replace(/-/g,"/"));
+				var end   = new Date(edDate.replace(/-/g,"/"));
+				var d1 = edDate+" " +sdet;
+				var d2 = sdDate+" " +sdst;
+ 		var diff= (( new Date(d1.replace(/-/g,"/")) - new Date(d2.replace(/-/g,"/")) ) / 1000 / 60 / 60 );
 			var days =  parseInt(diff/24);
 			var hours =  diff%24;
 			if(diff>0){
@@ -761,17 +779,20 @@ else if(active==3 && device==1){
 	var ed    = new Date(iced);
 	ieDate = ed.getFullYear()+'-'+(ed.getMonth()+1)+'-'+ed.getDate();
 			//----- calculate diffrence --------
-			console.log('startdate= '+isDate);
+			// console.log('startdate= '+isDate);
 			// console.log('starttime= '+icst);
-			console.log('enddate= '+ieDate);
+			// console.log('enddate= '+ieDate);
 			// console.log('endtime= '+icet);
 			if((isDate !='NaN-NaN-NaN')&& (typeof icst != "undefined")&& (ieDate !='NaN-NaN-NaN')&& (typeof iced != "undefined")){
-				var start = new Date(isDate);
-				 var end   = new Date(ieDate);
+				
+		 var start = new Date(isDate.replace(/-/g,"/"));
+				var end   = new Date(ieDate.replace(/-/g,"/"));
 				 if(sd.getFullYear() === ed.getFullYear() && sd.getMonth() === ed.getMonth() &&
 				  sd.getDate() === ed.getDate())
 					{
-				  var diff= (( new Date(ieDate+" " +icet) - new Date(isDate+" " +icst) ) / 1000 / 60 / 60 );
+					var d1 = ieDate+" " +icet;
+					var d2 = isDate+" " +icst;
+ 		var diff= (( new Date(d1.replace(/-/g,"/")) - new Date(d2.replace(/-/g,"/")) ) / 1000 / 60 / 60 );
 					var days =  parseInt(diff/24);
 					var hours =  diff%24;
 					if(diff>0){
@@ -824,12 +845,14 @@ else if(active==3 && device==2){
 			// console.log('endtime= '+icet);
 			//----- calculate diffrence --------
 			if((isDate !='NaN-NaN-NaN')&& (typeof icst != "undefined")&& (ieDate !='NaN-NaN-NaN')&& (typeof iced != "undefined")){
-				var start = new Date(isDate);
-				 var end   = new Date(ieDate);
+				var start = new Date(isDate.replace(/-/g,"/"));
+				var end   = new Date(ieDate.replace(/-/g,"/"));
 				 if(sd.getFullYear() === ed.getFullYear() && sd.getMonth() === ed.getMonth() &&
 					  sd.getDate() === ed.getDate())
 						{
-				  var diff= (( new Date(ieDate+" " +icet) - new Date(isDate+" " +icst) ) / 1000 / 60 / 60 );
+					var d1 = ieDate+" " +icet;
+					var d2 = isDate+" " +icst;
+ 		var diff= (( new Date(d1.replace(/-/g,"/")) - new Date(d2.replace(/-/g,"/")) ) / 1000 / 60 / 60 );
 					var days =  parseInt(diff/24);
 					var hours =  diff%24;
 					if(diff>0){
