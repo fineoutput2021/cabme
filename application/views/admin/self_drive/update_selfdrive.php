@@ -57,9 +57,9 @@ if (!empty($this->session->flashdata('emessage'))) { ?>
                           <option value="Mahindra" <?if ($Self_drive->brand_name=="Mahindra") {
                             echo 'selected';
                             }?>>Mahindra</option>
-                          <option value="Chervolet" <?if ($Self_drive->brand_name=="Chervolet") {
+                          <option value="Chevrolet" <?if ($Self_drive->brand_name=="Chevrolet") {
                             echo 'selected';
-                            }?>>Chervolet</option>
+                            }?>>Chevrolet</option>
                           <option value="Tata" <?if ($Self_drive->brand_name=="Tata") {
                             echo 'selected';
                             }?>>Tata</option>

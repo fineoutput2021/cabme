@@ -238,10 +238,10 @@
                         <label for="brand_2">Mahindra</label>
                       </div>
                       <div class="x_slider_checkbox x_slider_checkbox_bottom_filter_use">
-                        <input type="checkbox" id="brand_3" name="brand[]" value="Chervolet"<?if(!empty($brand)){foreach ($brand as $value) {
-                          if($value=='Chervolet'){echo "checked";break;}
+                        <input type="checkbox" id="brand_3" name="brand[]" value="Chevrolet"<?if(!empty($brand)){foreach ($brand as $value) {
+                          if($value=='Chevrolet'){echo "checked";break;}
                         }}?>>
-                        <label for="brand_3">Chervolet</label>
+                        <label for="brand_3">Chevrolet</label>
                       </div>
                       <div class="x_slider_checkbox x_slider_checkbox_bottom_filter_use">
                         <input type="checkbox" id="brand_4" name="brand[]" value="Tata"<?if(!empty($brand)){foreach ($brand as $value) {

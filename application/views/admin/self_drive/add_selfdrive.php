@@ -51,7 +51,7 @@
                       <select name="brand_name" class="form-control" required>
                           <option value="Maruti Suzuki">Maruti Suzuki</option>
                           <option value="Mahindra">Mahindra</option>
-                          <option value="Chervolet">Chervolet</option>
+                          <option value="Chevrolet">Chevrolet</option>
                           <option value="Tata">Tata</option>
                         </select>
                         <!-- <input type="text" name="brand_name" class="form-control" placeholder="" required value="" /> -->
