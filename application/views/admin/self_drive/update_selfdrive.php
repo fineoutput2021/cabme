@@ -50,7 +50,21 @@ if (!empty($this->session->flashdata('emessage'))) { ?>
                     <tr>
                       <td> <strong>Brand-name</strong> <span style="color:red;">*</span></strong> </td>
                       <td>
-                        <input type="text" name="brand_name" class="form-control" placeholder="" required value="<?=$Self_drive->brand_name?>" />
+                      <select name="brand_name" class="form-control" required>
+                          <option value="Maruti Suzuki" <?if ($Self_drive->brand_name=="Maruti Suzuki") {
+                            echo 'selected';
+                            }?>>Maruti Suzuki</option>
+                          <option value="Mahindra" <?if ($Self_drive->brand_name=="Mahindra") {
+                            echo 'selected';
+                            }?>>Mahindra</option>
+                          <option value="Chervolet" <?if ($Self_drive->brand_name=="Chervolet") {
+                            echo 'selected';
+                            }?>>Chervolet</option>
+                          <option value="Tata" <?if ($Self_drive->brand_name=="Tata") {
+                            echo 'selected';
+                            }?>>Tata</option>
+                        </select>
+                        <!-- <input type="text" name="brand_name" class="form-control" placeholder="" required value="<?=$Self_drive->brand_name?>" /> -->
                       </td>
                     </tr>
                     <tr>

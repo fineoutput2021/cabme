@@ -48,7 +48,13 @@
                     <tr>
                       <td> <strong>Brand name</strong> <span style="color:red;">*</span></strong> </td>
                       <td>
-                        <input type="text" name="brand_name" class="form-control" placeholder="" required value="" />
+                      <select name="brand_name" class="form-control" required>
+                          <option value="Maruti Suzuki">Maruti Suzuki</option>
+                          <option value="Mahindra">Mahindra</option>
+                          <option value="Chervolet">Chervolet</option>
+                          <option value="Tata">Tata</option>
+                        </select>
+                        <!-- <input type="text" name="brand_name" class="form-control" placeholder="" required value="" /> -->
                       </td>
                     </tr>
                     <tr>

@@ -4,7 +4,7 @@ if (! defined('BASEPATH')) {
     exit('No direct script access allowed');
 }
 class CI_Booking
-{6
+{
     protected $CI;
     public function __construct()
     {
