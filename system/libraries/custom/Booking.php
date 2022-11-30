@@ -4,7 +4,7 @@ if (! defined('BASEPATH')) {
     exit('No direct script access allowed');
 }
 class CI_Booking
-{
+{6
     protected $CI;
     public function __construct()
     {
@@ -263,7 +263,7 @@ class CI_Booking
         //------ Transmission  ---
         if ($self[0]->transmission==1) {
             $transmission = 'Manual';
-        } elseif ($self->transmission==2) {
+        } elseif ($self[0]->transmission==2) {
             $transmission = 'Automatic';
         }
         //------ seating  ---
