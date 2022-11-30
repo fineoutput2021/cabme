@@ -14,7 +14,7 @@
           <!-- Info boxes -->
           <div class="row">
             <div class="col-md-3 col-sm-6 col-xs-12">
-              <a href="<?=base_url()?>dcadmin/Employee/view_employee">
+              <!-- <a href="<?=base_url()?>dcadmin/Employee/view_employee"> -->
                 <div class="info-box">
                   <span class="info-box-icon bg-yellow"><i class="ion ion-ios-people-outline"></i></span>
                   <div class="info-box-content">
@@ -24,10 +24,10 @@
                     </span>
                   </div>
                 </div>
-              </a>
+              <!-- </a> -->
             </div>
             <div class="col-md-3 col-sm-6 col-xs-12">
-              <a href="<?=base_url()?>dcadmin/Farmer_details/view_details">
+              <a href="<?=base_url()?>dcadmin/Booking/view_self_booking">
                 <div class="info-box">
                   <span class="info-box-icon bg-aqua"><i class="ion ion-ios-people-outline"></i></span>
                   <div class="info-box-content">
@@ -42,7 +42,7 @@
             <!-- fix for small devices only -->
             <div class="clearfix visible-sm-block"></div>
             <div class="col-md-3 col-sm-6 col-xs-12">
-              <a href="<?=base_url()?>dcadmin/Orders/view_orders">
+              <a href="<?=base_url()?>dcadmin/Booking/view_intercity_booking">
                 <div class="info-box">
                   <span class="info-box-icon bg-green"><i class="ion ion-ios-cart-outline"></i></span>
                   <div class="info-box-content">
@@ -55,7 +55,7 @@
               </a>
             </div>
             <div class="col-md-3 col-sm-6 col-xs-12">
-              <a href="<?=base_url()?>dcadmin/Products/view_products">
+              <a href="<?=base_url()?>dcadmin/Booking/view_outstation_booking">
                 <div class="info-box">
                   <span class="info-box-icon bg-red"><i class="ion ion-ios-pricetags-outline"></i></span>
                   <div class="info-box-content">
