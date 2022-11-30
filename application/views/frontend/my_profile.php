@@ -91,7 +91,7 @@
                 <div class="form-sec-header">
                   <p>Date of birth</p>
                   <label class="cal-icon">
-                    <input type="text" placeholder="Tue 16 Jan 2018" value="<?=$user_data[0]->dob?>" class="form-control datepicker" style="border: none;border-bottom: 1px solid rgb(226, 223, 223);border-radius: 0px;">
+                    <input type="date" placeholder="Tue 16 Jan 2018" value="<?=$user_data[0]->dob?>" class="form-control " style="border: none;border-bottom: 1px solid rgb(226, 223, 223);border-radius: 0px;">
                   </label>
                 </div>
               </div>
