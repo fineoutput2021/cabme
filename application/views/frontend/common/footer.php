@@ -36,16 +36,16 @@
 							<div class="newfootersocial">
 								<ul>
 									<li class="newfooterlist">
-										<a href="#"><i class="fa fa-facebook"></i></a>
+										<a href="https://facebook.com/cabmeindia" target="_blank" rel="noopener noreferrer"><i class="fa fa-facebook"></i></a>
 									</li>
 									<li class="newfooterlist">
-										<a href="#"><i class="fa fa-instagram"></i></a>
+										<a href="https://instagram.com/cabme_india?igshid=YmMyMTA2M2Y=" target="_blank" rel="noopener noreferrer"><i class="fa fa-instagram"></i></a>
 									</li>
 									<li class="newfooterlist">
-										<a href="#"><i class="fa fa-linkedin"></i></a>
+										<a href="https://www.linkedin.com/company/cabmeindia/" target="_blank" rel="noopener noreferrer"><i class="fa fa-linkedin"></i></a>
 									</li>
 									<li class="newfooterlist">
-										<a href="#"><i class="fa fa-youtube"></i></a>
+										<a href="https://youtube.com/@cabmeindia" target="_blank" rel="noopener noreferrer"><i class="fa fa-youtube"></i></a>
 									</li>
 								</ul>
 							</div>
