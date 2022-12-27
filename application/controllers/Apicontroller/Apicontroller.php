@@ -1,5 +1,5 @@
 <?php
-if (! defined('BASEPATH')) {
+if (!defined('BASEPATH')) {
     exit('No direct script access allowed');
 }
 class Apicontroller extends CI_Controller
@@ -11,29 +11,44 @@ class Apicontroller extends CI_Controller
         $this->load->model("admin/base_model");
         $this->load->library('pagination');
     }
-    
-    //================================= GET CITY =================================//
-    public function get_city()
+
+    //================================= GET SELF CITY =================================//
+    public function get_self_city()
     {
-        $City_data = $this->db->get_where('tbl_cities', array('is_active'=> 1))->result();
-        $data=[];
-        foreach ($City_data as $cities) {
+        $top_data = $this->db->order_by('id', 'desc')->get_where('tbl_cities', array('is_active' => 1, 'top' => 1, 'city_type' => 1))->result();
+        $other_data = $this->db->order_by('id', 'desc')->get_where('tbl_cities', array('is_active' => 1, 'top' => 0, 'city_type' => 1))->result();
+        $top = [];
+        $other = [];
+        foreach ($top_data as $cities) {
             if (!empty($cities->image)) {
-                $image=base_url().$cities->image;
+                $image = base_url() . $cities->image;
             } else {
-                $image='';
+                $image = '';
             }
-            $data[]=array('name'=>$cities->name,
-                       'image'=>$image,
-                     );
+            $top[] = array(
+                'id' => $cities->id,
+                'name' => $cities->name,
+                'image' => $image,
+            );
         }
-        $res=array(
-                    'message'=>"success",
-                    'status'=>200,
-                    'data'=>$data
-                    );
+        foreach ($other_data as $cities2) {
+            if (!empty($cities2->image)) {
+                $image = base_url() . $cities2->image;
+            } else {
+                $image = '';
+            }
+            $other[] = array(
+                'id' => $cities2->id,
+                'name' => $cities2->name,
+                'image' => $image,
+            );
+        }
+    $data =array('top'=>$top,'other'=>$other,);
+        $res = array(
+            'message' => "success",
+            'status' => 200,
+            'data' => $data
+        );
         echo json_encode($res);
     }
-    
-    
 }
