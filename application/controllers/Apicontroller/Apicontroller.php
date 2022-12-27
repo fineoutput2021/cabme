@@ -20,8 +20,8 @@ class Apicontroller extends CI_Controller
         $top = [];
         $other = [];
         foreach ($top_data as $cities) {
-            if (!empty($cities->image)) {
-                $image = base_url() . $cities->image;
+            if (!empty($cities->photo)) {
+                $image = base_url() . $cities->photo;
             } else {
                 $image = '';
             }
@@ -32,8 +32,8 @@ class Apicontroller extends CI_Controller
             );
         }
         foreach ($other_data as $cities2) {
-            if (!empty($cities2->image)) {
-                $image = base_url() . $cities2->image;
+            if (!empty($cities2->photo)) {
+                $image = base_url() . $cities2->photo;
             } else {
                 $image = '';
             }
