@@ -52,7 +52,7 @@ class Apicontroller extends CI_Controller
         );
         echo json_encode($res);
     }
-    public function get_outtaion1_city()
+    public function get_outstaion1_city()
     {
         $top_data = $this->db->order_by('id', 'desc')->get_where('tbl_cities', array('is_active'=> 1,'top'=> 1,'city_type'=>2,'ot_city_type'=>1))->result();
         $other_data = $this->db->order_by('id', 'desc')->get_where('tbl_cities', array('is_active'=> 1,'top'=> 0,'city_type'=>2,'ot_city_type'=>1))->result();
@@ -90,7 +90,7 @@ class Apicontroller extends CI_Controller
         );
         echo json_encode($res);
     }
-    public function get_outtaion2_city()
+    public function get_outstaion2_city()
     {
         $top_data = $this->db->order_by('id', 'desc')->get_where('tbl_cities', array('is_active'=> 1,'top'=> 1,'city_type'=>2,'ot_city_type'=>2))->result();
         $other_data = $this->db->order_by('id', 'desc')->get_where('tbl_cities', array('is_active'=> 1,'top'=> 0,'city_type'=>2,'ot_city_type'=>2))->result();
