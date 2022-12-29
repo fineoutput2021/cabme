@@ -107,7 +107,7 @@ class CI_Booking
                     'car_id'=>$self->id,
                     'brand_name'=>$self->brand_name,
                     'car_name'=>$self->car_name,
-                    'photo'=>$self->photo,
+                    'photo'=>base_url().$self->photo,
                     'fuel_type'=>$fuel_type,
                     'transmission'=>$transmission,
                     'seating'=>$seating,

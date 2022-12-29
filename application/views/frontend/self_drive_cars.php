@@ -372,7 +372,7 @@
                         <h5><?=$cars['brand_name']?></h5>
                       </div>
                       <div class="x_car_offer_img float_left">
-                        <img src="<?=base_url().$cars['photo']?>" alt="<?=$cars['car_name']?>">
+                        <img src="<?=$cars['photo']?>" alt="<?=$cars['car_name']?>">
                       </div>
                       <div class="x_car_offer_heading float_left">
                         <ul class=" car_menual_lists">
