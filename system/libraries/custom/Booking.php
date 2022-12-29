@@ -226,9 +226,9 @@ class CI_Booking
         $rsda = $car_data[0]->rsda;
         $total = $kilometer_price;
         $final_amount = $total + $rsda;
-        $user_id=$this->CI->session->userdata('user_id');
+       
         //------- insert into booking table --------
-        $data_insert = array('user_id'=>$user_id,
+        $data_insert = array('user_id'=>$receive['user_id'],
               'booking_type'=>1,
               'rsda'=>$rsda,
               'kilometer'=>$kilometer,
@@ -278,7 +278,7 @@ class CI_Booking
                               'car_id'=>$self[0]->id,
                               'brand_name'=>$self[0]->brand_name,
                               'car_name'=>$self[0]->car_name,
-                              'photo'=>$self[0]->photo,
+                              'photo'=>base_url().$self[0]->photo,
                               'fuel_type'=>$fuel_type,
                               'transmission'=>$transmission,
                               'seating'=>$seating,
@@ -320,7 +320,7 @@ $booking_update = array(
   return $final_amt;
     }
     //========= INTERCITY CALCUALTE ========
-    public function intercityCalculate($cab_type, $start_date, $start_time, $end_date, $end_time, $city_id, $duration)
+    public function intercityCalculate($cab_type, $start_date, $start_time, $end_date, $end_time, $city_id, $duration,$user_id)
     {
 // echo $cab_type;die();
         $inter_data = $this->CI->db->get_where('tbl_intercity', array('is_active'=> 1,'city_id'=> $city_id,'cab_type'=> $cab_type))->result();
@@ -333,7 +333,7 @@ $booking_update = array(
         $city_data = $this->CI->db->get_where('tbl_cities', array('is_active'=> 1,'id'=> $city_id))->result();
         $hours=$duration;
         // echo $hours;die();
-        $user_id=$this->CI->session->userdata('user_id');
+      
         $kilometer = $inter_data[0]->Kilomitere_cab;
         if ($duration<6) {
             $kilometer_price = $inter_data[0]->price*6;

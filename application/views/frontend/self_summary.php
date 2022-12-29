@@ -185,7 +185,7 @@ input::file-selector-button {
 	<div class="coontainer-fluid" id="mobilecardetail" style="background-color: #fff;margin-top: 20px;padding: 20px;">
 	  <div class="row">
 	    <div class="col-md-12 col-xs-12 text-center">
-	      <img src="<?=base_url().$car_data['photo']?>" alt="c1" style="width: 50%;">
+	      <img src="<?=$car_data['photo']?>" alt="c1" style="width: 50%;">
 	      <h3 style="margin-top: 10px;"><b><?=$car_data['car_name']?></b></h3>
          <h4 style="margin-top: 3px;" class="mb-1"><?=$car_data['brand_name']?></h4>
 	    </div>

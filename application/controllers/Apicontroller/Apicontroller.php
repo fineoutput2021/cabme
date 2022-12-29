@@ -135,7 +135,7 @@ class Apicontroller extends CI_Controller
             } else {
                 $res = array(
                     'message' => validation_errors(),
-                    'status' => 201
+                    'status' => fa
                 );
                 echo json_encode($res);
             }

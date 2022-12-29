@@ -151,7 +151,6 @@ class Home extends CI_Controller
             $this->form_validation->set_rules('end_date', 'end_date', 'required|xss_clean|trim');
             $this->form_validation->set_rules('end_time', 'end_time', 'required|xss_clean|trim');
             $this->form_validation->set_rules('duration', 'duration', 'required|xss_clean|trim');
-            $this->form_validation->set_rules('city_id', 'city_id', 'required|xss_clean|trim');
             $this->form_validation->set_rules('car_id', 'car_id', 'required|xss_clean|trim');
             $this->form_validation->set_rules('type_id', 'type_id', 'required|xss_clean|trim');
             $this->form_validation->set_rules('search_id', 'search_id', 'required|xss_clean|trim');
@@ -162,13 +161,14 @@ class Home extends CI_Controller
                 $end_date=$this->input->post('end_date');
                 $end_time=$this->input->post('end_time');
                 $duration=$this->input->post('duration');
-                $city_id=$this->input->post('city_id');
                 $car_id=$this->input->post('car_id');
                 $type_id=$this->input->post('type_id');
                 $search_id=$this->input->post('search_id');
                 date_default_timezone_set("Asia/Calcutta");
                 $cur_date=date("Y-m-d H:i:s");
+                $user_id=$this->session->userdata('user_id');
                 $send = array(
+              'user_id'=>$user_id,
               'city_id'=>$city_id,
               'start_date'=>$start_date,
               'start_time'=>$start_time,
@@ -668,7 +668,8 @@ class Home extends CI_Controller
                 $end_time=$this->input->post('end_time');
                 $city_id=$this->input->post('city_id');
                 $duration=$this->input->post('duration');
-                $response = $this->booking->intercityCalculate($cab_type, $start_date, $start_time, $end_date, $end_time, $city_id, $duration);
+                $user_id=$this->session->userdata('user_id');
+                $response = $this->booking->intercityCalculate($cab_type, $start_date, $start_time, $end_date, $end_time, $city_id, $duration,$user_id);
                 echo json_encode($response);
             } else {
                 $res = array('message'=>validation_errors(),
