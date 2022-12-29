@@ -52,6 +52,82 @@ class Apicontroller extends CI_Controller
         );
         echo json_encode($res);
     }
+    public function get_outtaion1_city()
+    {
+        $top_data = $this->db->order_by('id', 'desc')->get_where('tbl_cities', array('is_active'=> 1,'top'=> 1,'city_type'=>2,'ot_city_type'=>1))->result();
+        $other_data = $this->db->order_by('id', 'desc')->get_where('tbl_cities', array('is_active'=> 1,'top'=> 0,'city_type'=>2,'ot_city_type'=>1))->result();
+        $top = [];
+        $other = [];
+        foreach ($top_data as $cities) {
+            if (!empty($cities->photo)) {
+                $image = base_url() . $cities->photo;
+            } else {
+                $image = '';
+            }
+            $top[] = array(
+                'id' => $cities->id,
+                'name' => $cities->name,
+                'image' => $image,
+            );
+        }
+        foreach ($other_data as $cities2) {
+            if (!empty($cities2->photo)) {
+                $image = base_url() . $cities2->photo;
+            } else {
+                $image = '';
+            }
+            $other[] = array(
+                'id' => $cities2->id,
+                'name' => $cities2->name,
+                'image' => $image,
+            );
+        }
+        $data = array('top' => $top, 'other' => $other,);
+        $res = array(
+            'message' => "success",
+            'status' => 200,
+            'data' => $data
+        );
+        echo json_encode($res);
+    }
+    public function get_outtaion2_city()
+    {
+        $top_data = $this->db->order_by('id', 'desc')->get_where('tbl_cities', array('is_active'=> 1,'top'=> 1,'city_type'=>2,'ot_city_type'=>2))->result();
+        $other_data = $this->db->order_by('id', 'desc')->get_where('tbl_cities', array('is_active'=> 1,'top'=> 0,'city_type'=>2,'ot_city_type'=>2))->result();
+        $top = [];
+        $other = [];
+        foreach ($top_data as $cities) {
+            if (!empty($cities->photo)) {
+                $image = base_url() . $cities->photo;
+            } else {
+                $image = '';
+            }
+            $top[] = array(
+                'id' => $cities->id,
+                'name' => $cities->name,
+                'image' => $image,
+            );
+        }
+        foreach ($other_data as $cities2) {
+            if (!empty($cities2->photo)) {
+                $image = base_url() . $cities2->photo;
+            } else {
+                $image = '';
+            }
+            $other[] = array(
+                'id' => $cities2->id,
+                'name' => $cities2->name,
+                'image' => $image,
+            );
+        }
+        $data = array('top' => $top, 'other' => $other,);
+        $res = array(
+            'message' => "success",
+            'status' => 200,
+            'data' => $data
+        );
+        echo json_encode($res);
+    }
     //==============================SELF DRIVE CARS========================\\
     public function get_self_drive_cars()
     {
@@ -135,7 +211,7 @@ class Apicontroller extends CI_Controller
             } else {
                 $res = array(
                     'message' => validation_errors(),
-                    'status' => fa
+                    'status' => 201
                 );
                 echo json_encode($res);
             }
