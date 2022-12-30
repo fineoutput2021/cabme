@@ -12,7 +12,6 @@ class Apicontroller extends CI_Controller
         $this->load->library('pagination');
         $this->load->library("custom/Booking");
     }
-
     //================================= GET SELF CITY =================================//
     public function get_self_city()
     {
@@ -52,10 +51,11 @@ class Apicontroller extends CI_Controller
         );
         echo json_encode($res);
     }
-    public function get_outstaion1_city()
+    //================================= GET OUTSTATION1 CITY =================================//
+    public function get_outstation1_city()
     {
-        $top_data = $this->db->order_by('id', 'desc')->get_where('tbl_cities', array('is_active'=> 1,'top'=> 1,'city_type'=>2,'ot_city_type'=>1))->result();
-        $other_data = $this->db->order_by('id', 'desc')->get_where('tbl_cities', array('is_active'=> 1,'top'=> 0,'city_type'=>2,'ot_city_type'=>1))->result();
+        $top_data = $this->db->order_by('id', 'desc')->get_where('tbl_cities', array('is_active' => 1, 'top' => 1, 'city_type' => 2, 'ot_city_type' => 1))->result();
+        $other_data = $this->db->order_by('id', 'desc')->get_where('tbl_cities', array('is_active' => 1, 'top' => 0, 'city_type' => 2, 'ot_city_type' => 1))->result();
         $top = [];
         $other = [];
         foreach ($top_data as $cities) {
@@ -90,10 +90,11 @@ class Apicontroller extends CI_Controller
         );
         echo json_encode($res);
     }
-    public function get_outstaion2_city()
+    //================================= GET OUTSTATION2 CITY =================================//
+    public function get_outstation2_city()
     {
-        $top_data = $this->db->order_by('id', 'desc')->get_where('tbl_cities', array('is_active'=> 1,'top'=> 1,'city_type'=>2,'ot_city_type'=>2))->result();
-        $other_data = $this->db->order_by('id', 'desc')->get_where('tbl_cities', array('is_active'=> 1,'top'=> 0,'city_type'=>2,'ot_city_type'=>2))->result();
+        $top_data = $this->db->order_by('id', 'desc')->get_where('tbl_cities', array('is_active' => 1, 'top' => 1, 'city_type' => 2, 'ot_city_type' => 2))->result();
+        $other_data = $this->db->order_by('id', 'desc')->get_where('tbl_cities', array('is_active' => 1, 'top' => 0, 'city_type' => 2, 'ot_city_type' => 2))->result();
         $top = [];
         $other = [];
         foreach ($top_data as $cities) {
@@ -128,7 +129,7 @@ class Apicontroller extends CI_Controller
         );
         echo json_encode($res);
     }
-    //==============================SELF DRIVE CARS========================\\
+    //============================== SELF DRIVE CARS ========================\\
     public function get_self_drive_cars()
     {
         $this->load->helper(array('form', 'url'));
@@ -169,8 +170,6 @@ class Apicontroller extends CI_Controller
                     echo json_encode($res);
                     return;
                 }
-
-
                 if (!empty($filter["brand"])) {
                     $brand = $filter["brand"];
                 } else {
@@ -223,6 +222,7 @@ class Apicontroller extends CI_Controller
             echo json_encode($res);
         }
     }
+    //============================== OUTSTATION  CARS ========================\\
     public function get_outstation_cars()
     {
         $this->load->helper(array('form', 'url'));
@@ -265,7 +265,6 @@ class Apicontroller extends CI_Controller
                     echo json_encode($res);
                     return;
                 }
-
                 if (!empty($filter["seating"])) {
                     $seating = $filter["seating"];
                 } else {
@@ -284,9 +283,9 @@ class Apicontroller extends CI_Controller
                     'sort' => $sort,
                 );
                 $car_data = $this->booking->ViewOutstationCars($send);
-                $data['car_data']= $car_data['car_data'];
-                $data['seating']= $seating;
-                $data['sort']= $sort;
+                $data['car_data'] = $car_data['car_data'];
+                $data['seating'] = $seating;
+                $data['sort'] = $sort;
                 echo json_encode($car_data);
             } else {
                 $res = array(
@@ -298,6 +297,66 @@ class Apicontroller extends CI_Controller
         } else {
             $res = array(
                 'message' => 'please insert data',
+                'status' => 201
+            );
+            echo json_encode($res);
+        }
+    }
+    //========================== outstation SUMMARY =============================
+    public function outstation_summary($idd)
+    {
+        $id = base64_decode($idd);
+        $data['id'] = $idd;
+        $data['booking_data'] = $this->db->get_where('tbl_booking', array('id' => $id))->result();
+        if ($data['booking_data'][0]->payment_status != 1) {
+            //----- start check date is past ----------
+            date_default_timezone_set('Asia/Kolkata');
+            $newdate = new DateTime($data['booking_data'][0]->start_date);
+            $date = $newdate->format('Y-m-d');
+            $newtime = new DateTime($data['booking_data'][0]->start_time);
+            $time = $newtime->format('H:i:s');
+            $myDate = date("Y-m-d H:i:s", strtotime("$date $time"));
+            $curDateTime = date("Y-m-d H:i:s");
+            if ($curDateTime > $myDate) {
+                $res = array(
+                    'message' => "Please Select date and time again!",
+                    'status' => 201
+                );
+                echo json_encode($res);
+            }
+            //----- end check date is past ----------
+            $car = $this->db->get_where('tbl_outstation', array('id' => $data['booking_data'][0]->car_id))->result();
+            $data['user_data'] = $this->db->get_where('tbl_users', array('id' => $data['booking_data'][0]->user_id))->result();
+            //-----========= city data =============
+            $city = $this->db->get_where('tbl_cities', array('id' => $data['booking_data'][0]->city_id))->result();
+            $data['city_data'] = $city;
+            //------ seating  ---
+            if ($car[0]->seatting == 1) {
+                $seating = '4 Seates';
+            } elseif ($car[0]->seatting == 2) {
+                $seating = '5 Seates';
+            } else {
+                $seating = '7 Seates';
+            }
+            $car_data = array(
+                'brand_name' => $car[0]->brand_name,
+                'car_name' => $car[0]->car_name,
+                'photo' => base_url().$car[0]->photo,
+                'seating' => $seating,
+                'per_kilometer' => $car[0]->per_kilometre,
+                'location' => $car[0]->location,
+                'min_booking_amt' => $car[0]->min_booking_amt,
+            );
+            $data['car_data'] = $car_data;
+            $res = array(
+                'message' => "Please Select date and time again!",
+                'status' => 200,
+                'data' => $data
+            );
+            echo json_encode($res);
+        } else {
+            $res = array(
+                'message' => "Please Select date and time again!",
                 'status' => 201
             );
             echo json_encode($res);

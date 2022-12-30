@@ -68,7 +68,6 @@ class Home extends CI_Controller
     //========================== self drive cars ============================
     public function show_self_drive_cars($idd)
     {
-
         $id=base64_decode($idd);
         $data['id']=$idd;
         $search = $this->db->get_where('tbl_search', array('id'=> $id))->result();
@@ -85,7 +84,6 @@ class Home extends CI_Controller
           redirect("Home","refresh");
         }
         //----- end check date is past ----------
-
         if (isset($_GET['sort'])) {
             $sort = $_GET["sort"];
         } else {
@@ -275,7 +273,6 @@ class Home extends CI_Controller
             if ($this->form_validation->run()== true) {
                 $booking_id=base64_decode($this->input->post('booking_id'));
                 $km_type=$this->input->post('km_type');
-
                 $booking_data = $this->db->get_where('tbl_booking', array('id'=> $booking_id))->result();
                 $car_data = $this->db->get_where('tbl_selfdrive', array('id'=> $booking_data[0]->car_id))->result();
                 //----- check kilometer plan ------
@@ -489,7 +486,7 @@ class Home extends CI_Controller
                     if (strtotime($promocode_data[0]->end_date) >= $cur_date && strtotime($promocode_data[0]->start_date) <= $cur_date) {
                         //---- one time promocode -------
                         if ($promocode_data[0]->ptype==1) {
-                            $promocodeAlreadyUsed = $this->db->get_where('tbl_booking', array('user_id = ' => $user_id, 'promocode'=>$promocode_data[0]->id, 'payment_status'=>1))->result();
+                            $promocodeAlreadyUsed = $this->db->get_where('tbl_booking', array('user_id = ' => $booking_data[0]->user_id, 'promocode'=>$promocode_data[0]->id, 'payment_status'=>1))->result();
                             if (empty($promocodeAlreadyUsed)) {
                                 if ($booking_data[0]->duration > $promocode_data[0]->mindays*24) { //----checking minorder for promocode
                                     $discount_amt = $booking_data[0]->total_amount * $promocode_data[0]->percentage/100;
@@ -614,7 +611,6 @@ class Home extends CI_Controller
         //     $this->load->view('frontend/booking_success');
         //     $this->load->view('frontend/common/footer');
             // --- end temp code ------
-
         //optional udf values
         $udf1 = '';
         $udf2 = '';
@@ -1001,7 +997,9 @@ class Home extends CI_Controller
                 $search_id=$this->input->post('search_id');
                 date_default_timezone_set("Asia/Calcutta");
                 $cur_date=date("Y-m-d H:i:s");
+                $user_id=$this->session->userdata('user_id');
                 $send = array(
+          'user_id'=>$user_id,
           'city_id'=>$city_id,
           'start_date'=>$start_date,
           'start_time'=>$start_time,
@@ -1170,7 +1168,6 @@ class Home extends CI_Controller
             redirect("/", "refresh");
         }
     }
-
     public function contact_form_submit()
     {
         $this->load->helper(array('form', 'url'));
@@ -1237,7 +1234,6 @@ class Home extends CI_Controller
                           'seating'=>$seating,
                           'extra_kilo'=>$extra_kilo,
                           );
-
         $data['car_data']=$car_data;
         $this->load->view('frontend/common/header',$data);
         $this->load->view('frontend/self_booking_details');
@@ -1264,14 +1260,12 @@ class Home extends CI_Controller
           } else {
               $seating = '7 Seates';
           }
-
           $car_data= array(
                       'brand_name'=>$car[0]->brand_name,
                       'car_name'=>$car[0]->car_name,
                       'photo'=>$car[0]->photo,
                       'seating'=>$seating,
                       );
-
         $data['car_data']=$car_data;
         $this->load->view('frontend/common/header',$data);
         $this->load->view('frontend/outstation_booking_details');
@@ -1290,7 +1284,6 @@ class Home extends CI_Controller
         $data['user_data'] = $this->db->get_where('tbl_users', array('id'=> $data['booking_data'][0]->user_id))->result();
         $city = $this->db->get_where('tbl_cities', array('id'=> $data['booking_data'][0]->city_id))->result();
         $data['city_data']=$city;
-
         $this->load->view('frontend/common/header',$data);
         $this->load->view('frontend/intercity_booking_details');
         $this->load->view('frontend/common/footer');
