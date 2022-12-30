@@ -397,7 +397,7 @@ $booking_update = array(
         $car_data=[];
         foreach ($outstation_cars as $car) {
           $b=0;
-          // ---brandwise filter -----
+          // --- seating wise filter -----
           if(!empty($receive['seating'])){
                 foreach ($receive['seating'] as $brd) {
                   if($brd==$car->seatting){
@@ -420,7 +420,7 @@ $booking_update = array(
                     'car_id'=>$car->id,
                     'brand_name'=>$car->brand_name,
                     'car_name'=>$car->car_name,
-                    'photo'=>$car->photo,
+                    'photo'=>base_url().$car->photo,
                     'seating'=>$seating,
                     'per_kilometer'=>$car->per_kilometre,
                     'location'=>$car->location,
