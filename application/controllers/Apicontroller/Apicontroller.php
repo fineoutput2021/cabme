@@ -223,7 +223,7 @@ class Apicontroller extends CI_Controller
             echo json_encode($res);
         }
     }
-    public function get_outstaion_cars()
+    public function get_outstation_cars()
     {
         $this->load->helper(array('form', 'url'));
         $this->load->library('form_validation');
