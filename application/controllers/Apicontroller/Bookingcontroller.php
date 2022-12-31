@@ -12,7 +12,6 @@ class Bookingcontroller extends CI_Controller
         $this->load->library('pagination');
         $this->load->library("custom/Booking");
     }
-   
     //============================= SELF CARS CALCULATE =================================//
     public function self_calculate()
     {
@@ -204,7 +203,7 @@ class Bookingcontroller extends CI_Controller
         $this->load->helper('security');
         if ($this->input->post()) {
             $this->form_validation->set_rules('city_id', 'city_id', 'required|xss_clean|trim');
-            $this->form_validation->set_rules('pickup_location', 'pickup_location', 'required|xss_clean|trim'); 
+            $this->form_validation->set_rules('pickup_location', 'pickup_location', 'required|xss_clean|trim');
             $this->form_validation->set_rules('drop_location', 'drop_location', 'required|xss_clean|trim');
             $this->form_validation->set_rules('trip_status', 'trip_status', 'required|xss_clean|trim');
             $this->form_validation->set_rules('start_date', 'start_date', 'required|xss_clean|trim');
@@ -265,6 +264,8 @@ class Bookingcontroller extends CI_Controller
         $this->load->helper(array('form', 'url'));
         $this->load->library('form_validation');
         $this->load->helper('security');
+        $header = $this->input->request_headers();
+        $auth = $header['Authorization'];
         if ($this->input->post()) {
             $this->form_validation->set_rules('cab_type', 'cab_type', 'required|xss_clean|trim');
             $this->form_validation->set_rules('start_date', 'start_date', 'required|xss_clean|trim');
@@ -281,8 +282,17 @@ class Bookingcontroller extends CI_Controller
                 $end_time = $this->input->post('end_time');
                 $city_id = $this->input->post('city_id');
                 $duration = $this->input->post('duration');
-                $response = $this->booking->intercityCalculate($cab_type, $start_date, $start_time, $end_date, $end_time, $city_id, $duration, 4);
-                echo json_encode($response);
+                $user_data = $this->db->get_where('tbl_users', array('is_active' => 1, 'auth' => $auth))->result();
+                if (!empty($user_data)) {
+                    $response = $this->booking->intercityCalculate($cab_type, $start_date, $start_time, $end_date, $end_time, $city_id, $duration, $user_data[0]->id);
+                    echo json_encode($response);
+                } else {
+                    $res = array(
+                        'message' => 'Permission Denied!',
+                        'status' => 201
+                    );
+                    echo json_encode($res);
+                }
             } else {
                 $res = array(
                     'message' => validation_errors(),
@@ -298,48 +308,42 @@ class Bookingcontroller extends CI_Controller
             echo json_encode($res);
         }
     }
-    
     //======================  INTERCITY CARS CHECKOUT ============================//
     public function intercity_checkout()
     {
         $this->load->helper(array('form', 'url'));
         $this->load->library('form_validation');
         $this->load->helper('security');
+        $header = $this->input->request_headers();
+        $auth = $header['Authorization'];
         if ($this->input->post()) {
-            $this->form_validation->set_rules('city_id', 'city_id', 'required|xss_clean|trim');
-            $this->form_validation->set_rules('pickup_location', 'pickup_location', 'required|xss_clean|trim');
-            $this->form_validation->set_rules('drop_location', 'drop_location', 'required|xss_clean|trim');
-            $this->form_validation->set_rules('trip_status', 'trip_status', 'required|xss_clean|trim');
-            $this->form_validation->set_rules('start_date', 'start_date', 'required|xss_clean|trim');
-            $this->form_validation->set_rules('start_time', 'start_time', 'required|xss_clean|trim');
-            $this->form_validation->set_rules('end_date', 'end_date', 'required|xss_clean|trim');
-            $this->form_validation->set_rules('end_time', 'end_time', 'required|xss_clean|trim');
+            $this->form_validation->set_rules('id', 'id', 'required|xss_clean|trim');
             if ($this->form_validation->run() == true) {
-                $city_id = $this->input->post('city_id');
-                $pickup_location = $this->input->post('pickup_location');
-                $drop_location = $this->input->post('drop_location');
-                $trip_status = $this->input->post('trip_status');
-                $start_date = $this->input->post('start_date');
-                $start_time = $this->input->post('start_time');
-                $end_date = $this->input->post('end_date');
-                $end_time = $this->input->post('end_time');
-                $intercity_data = $this->db->get_where('tbl_intercity', array('is_active' => 1,))->result();
-                $data = [];
-                foreach ($intercity_data as $intercity) {
-                    $data[] = array(
-                        'city_id' => $intercity->city_id,
-                        'cab_type' => $intercity->cab_type,
-                        'cab_type' => $intercity->cab_type,
-                        'Kilomitere_cab' => $intercity->Kilomitere_cab,
-                        'min_amount' => $intercity->min_amount,
+                $id = $this->input->post('id');
+                $user_data = $this->db->get_where('tbl_users', array('is_active' => 1, 'auth' => $auth))->result();
+                if (!empty($user_data)) {
+                    $data_update = array(
+                        'payment_status' => 1,
+                        'order_status' => 1,
                     );
+                    $this->db->where('id', base64_decode($id));
+                    $zapak = $this->db->update('tbl_booking', $data_update);
+                    $bookingdata = $this->db->get_where('tbl_booking', array('id' => base64_decode($id)))->result();
+                    $data['booking_id'] = $bookingdata[0]->id;
+                    $data['amount'] = $bookingdata[0]->final_amount;
+                    $res = array(
+                        'message' => 'Permission Denied!',
+                        'status' => 200,
+                        'data' => $data
+                    );
+                    echo json_encode($res);
+                } else {
+                    $res = array(
+                        'message' => 'Permission Denied!',
+                        'status' => 201
+                    );
+                    echo json_encode($res);
                 }
-                $res = array(
-                    'message' => "success",
-                    'status' => 200,
-                    'data' => $data
-                );
-                echo json_encode($res);
             } else {
                 $res = array(
                     'message' => validation_errors(),
