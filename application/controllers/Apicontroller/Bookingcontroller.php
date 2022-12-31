@@ -321,8 +321,6 @@ class Bookingcontroller extends CI_Controller
             if ($this->form_validation->run() == true) {
                 $id = $this->input->post('id');
                 $user_data = $this->db->get_where('tbl_users', array('is_active' => 1, 'auth' => $auth))->result();
-                print_r($auth);
-                print_r($user_data);die();
                 if (!empty($user_data)) {
                     $data_update = array(
                         'payment_status' => 1,
@@ -334,7 +332,7 @@ class Bookingcontroller extends CI_Controller
                     $data['booking_id'] = $bookingdata[0]->id;
                     $data['amount'] = $bookingdata[0]->final_amount;
                     $res = array(
-                        'message' => 'Permission Denied!',
+                        'message' => 'Booking Success!',
                         'status' => 200,
                         'data' => $data
                     );
