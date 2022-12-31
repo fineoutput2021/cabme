@@ -178,8 +178,7 @@ class Bookingcontroller extends CI_Controller
                     'drop_location' => $drop_location,
                 );
                 $response = $this->booking->outstationCalculate($send);
-                $id = base64_encode($response['id']);
-                redirect("Home/outstation_summary/$id");
+                echo json_encode($response);
             } else {
                 $res = array(
                     'message' => validation_errors(),

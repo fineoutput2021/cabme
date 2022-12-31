@@ -1,5 +1,4 @@
 <?php
-
 if (!defined('BASEPATH')) {
   exit('No direct script access allowed');
 }
@@ -65,7 +64,6 @@ class CI_Booking
     }
     //     $links='';
     // }
-
     // print_r($receive['brand']);die();
     $car_data = [];
     foreach ($self_cars as $self) {
@@ -123,7 +121,6 @@ class CI_Booking
         );
       }
     }
-
     //----------- fule typewise sort -----
     if (!empty($receive['fuel'])) {
       foreach ($car_data as $key => $self) {
@@ -227,7 +224,6 @@ class CI_Booking
     $rsda = $car_data[0]->rsda;
     $total = $kilometer_price;
     $final_amount = $total + $rsda;
-
     //------- insert into booking table --------
     $data_insert = array(
       'user_id' => $receive['user_id'],
@@ -285,7 +281,6 @@ class CI_Booking
       'transmission' => $transmission,
       'seating' => $seating,
       'extra_kilo' => $self[0]->extra_kilo,
-
     );
     $respone['status'] = true;
     $respone['message'] = "Success";
@@ -317,9 +312,6 @@ class CI_Booking
     );
     $this->CI->db->where('id', $id);
     $zapak = $this->CI->db->update('tbl_booking', $booking_update);
-
-
-
     return $final_amt;
   }
   //========= INTERCITY CALCULATE ========
@@ -336,7 +328,6 @@ class CI_Booking
     $city_data = $this->CI->db->get_where('tbl_cities', array('is_active' => 1, 'id' => $city_id))->result();
     $hours = $duration;
     // echo $hours;die();
-
     $kilometer = $inter_data[0]->Kilomitere_cab;
     if ($duration < 6) {
       $kilometer_price = $inter_data[0]->price * 6;
@@ -383,7 +374,6 @@ class CI_Booking
       'final_amount' => $final_amount,
       'mini_booking' => $inter_data[0]->min_amount,
       'id' => base64_encode($last_id),
-
     );
     $respone['status'] = true;
     $respone['message'] = "Success";
@@ -398,7 +388,6 @@ class CI_Booking
     } else {
       $outstation_cars = $this->CI->db->get_where('tbl_outstation', array('city_id' => $receive['city_id'], 'is_available' => 1, 'is_active' => 1))->result();
     }
-
     $car_data = [];
     foreach ($outstation_cars as $car) {
       $b = 0;
@@ -450,13 +439,11 @@ class CI_Booking
     // echo $receive['type_id'];die();
     //------ get car data --------
     $car_data = $this->CI->db->get_where('tbl_outstation', array('id' => $receive['car_id']))->result();
-
     //---- calculate total amount -------
     $mini_booking = $car_data[0]->min_booking_amt;
     $kilometer_price = $car_data[0]->per_kilometre;
     $total = $car_data[0]->min_booking_amt;
     $final_amount = $mini_booking;
-
     //------- insert into booking table --------
     $data_insert = array(
       'user_id' => $receive['user_id'],
@@ -473,6 +460,8 @@ class CI_Booking
       'duration' => $receive['duration'],
       'round_type' => $receive['round_type'],
       'car_id' => $receive['car_id'],
+      'pick_location' => $receive['pick_location'],
+      'drop_location' => $receive['drop_location'],
       'search_id' => base64_decode($receive['search_id']),
       'order_status' => 0,
       'payment_status' => 0,
@@ -481,7 +470,6 @@ class CI_Booking
     );
     $last_id = $this->CI->base_model->insert_table("tbl_booking", $data_insert, 1);
     $car = $this->CI->db->get_where('tbl_outstation', array('id' => $receive['car_id']))->result();
-
     //------ seating  ---
     if ($car[0]->seatting == 1) {
       $seating = '4 Seates';
@@ -500,7 +488,6 @@ class CI_Booking
       'per_kilometer' => $car[0]->per_kilometre,
       'location' => $car[0]->location,
       'min_booking_amt' => $car[0]->min_booking_amt,
-
     );
     $respone['status'] = true;
     $respone['message'] = "Success";
