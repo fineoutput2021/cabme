@@ -444,6 +444,11 @@ class CI_Booking
     $kilometer_price = $car_data[0]->per_kilometre;
     $total = $car_data[0]->min_booking_amt;
     $final_amount = $mini_booking;
+    if(!empty($receive['search_id'])){
+    $search_id=$receive['search_id'];
+    }else{
+    $search_id='';
+    }
     //------- insert into booking table --------
     $data_insert = array(
       'user_id' => $receive['user_id'],
@@ -462,7 +467,7 @@ class CI_Booking
       'car_id' => $receive['car_id'],
       'pick_location' => $receive['pick_location'],
       'drop_location' => $receive['drop_location'],
-      'search_id' => base64_decode($receive['search_id']),
+      'search_id' => base64_decode($search_id),
       'order_status' => 0,
       'payment_status' => 0,
       'ip' => $ip,
