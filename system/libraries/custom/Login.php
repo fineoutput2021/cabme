@@ -103,8 +103,8 @@ class CI_Login
                         $this->CI->session->set_userdata('email', $temp_data[0]->email);
                         $this->CI->session->set_userdata('user_id', $last_id2);
                         $data =array(
-                            'f_name' => $temp_data[0]->fname,
-                            'l_name' => $temp_data[0]->lname,
+                            'fname' => $temp_data[0]->fname,
+                            'lname' => $temp_data[0]->lname,
                             'email' => $temp_data[0]->email,
                             'phone' => $temp_data[0]->phone,
                             'auth' => $auth,
@@ -220,8 +220,8 @@ class CI_Login
                             $this->CI->session->set_userdata('email', $user_data[0]->email);
                             $this->CI->session->set_userdata('user_id', $user_data[0]->id);
                             $data =array(
-                                'f_name' => $user_data[0]->fname,
-                                'l_name' => $user_data[0]->lname,
+                                'fname' => $user_data[0]->f_name,
+                                'lname' => $user_data[0]->l_name,
                                 'email' => $user_data[0]->email,
                                 'phone' => $user_data[0]->phone,
                                 'auth' => $user_data[0]->auth,
