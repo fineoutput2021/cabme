@@ -329,8 +329,10 @@ class Bookingcontroller extends CI_Controller
                     $this->db->where('id', base64_decode($id));
                     $zapak = $this->db->update('tbl_booking', $data_update);
                     $bookingdata = $this->db->get_where('tbl_booking', array('id' => base64_decode($id)))->result();
-                    $data['booking_id'] = $bookingdata[0]->id;
-                    $data['amount'] = $bookingdata[0]->final_amount;
+                    $data = array(
+                        'booking_id' => $bookingdata[0]->id,
+                        'amount' => $bookingdata[0]->final_amount,
+                    );
                     $res = array(
                         'message' => 'Booking Success!',
                         'status' => 200,
