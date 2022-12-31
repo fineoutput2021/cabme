@@ -18,7 +18,7 @@ class CI_Login
     //============================================= REGISTER  WITH OTP ==============================================
     public function RegisterWithOtp($fname, $lname, $phone,$email)
     {
-        if (empty($this->CI->session->userdata('user_data'))) {
+    
             $ip = $this->CI->input->ip_address();
             date_default_timezone_set("Asia/Calcutta");
             $cur_date=date("Y-m-d H:i:s");
@@ -68,10 +68,7 @@ class CI_Login
                 // $this->CI->session->set_flashdata('emessage', 'User Already Exist!');
                 return json_encode($respone);
             }
-        } else {
-            $respone['status'] = false;
-            return json_encode($respone);
-        }
+        
     }
     //=================================================== REGISTER OTP VERIFY ======================================
     public function RegisterOtpVerify($phone, $input_otp)
