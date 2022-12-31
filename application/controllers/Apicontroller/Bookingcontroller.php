@@ -151,8 +151,8 @@ class Bookingcontroller extends CI_Controller
             $this->form_validation->set_rules('duration', 'duration', 'xss_clean|trim');
             $this->form_validation->set_rules('car_id', 'car_id', 'required|xss_clean|trim');
             $this->form_validation->set_rules('round_type', 'round_type', 'required|xss_clean|trim');
-            $this->form_validation->set_rules('pickup_location', 'pickup_location', 'required|xss_clean|trim');
-            $this->form_validation->set_rules('drop_location', 'pickup_location', 'xss_clean|trim');
+            $this->form_validation->set_rules('pick_location', 'pick_location', 'required|xss_clean|trim');
+            $this->form_validation->set_rules('drop_location', 'drop_location', 'xss_clean|trim');
             if ($this->form_validation->run() == true) {
                 $city_id = $this->input->post('city_id');
                 $start_date = $this->input->post('start_date');
@@ -162,7 +162,7 @@ class Bookingcontroller extends CI_Controller
                 $duration = $this->input->post('duration');
                 $car_id = $this->input->post('car_id');
                 $round_type = $this->input->post('round_type');
-                $pickup_location = $this->input->post('pickup_location');
+                $pick_location = $this->input->post('pick_location');
                 $drop_location = $this->input->post('drop_location');
                 date_default_timezone_set("Asia/Calcutta");
                 $cur_date = date("Y-m-d H:i:s");
@@ -176,10 +176,9 @@ class Bookingcontroller extends CI_Controller
                         'end_date' => $end_date,
                         'end_time' => $end_time,
                         'duration' => $duration,
-                        'city_id' => $city_id,
                         'car_id' => $car_id,
                         'round_type' => $round_type,
-                        'pickup_location' => $pickup_location,
+                        'pick_location' => $pick_location,
                         'drop_location' => $drop_location,
                     );
                     $response = $this->booking->outstationCalculate($send);
