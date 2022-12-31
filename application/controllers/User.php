@@ -48,6 +48,8 @@ class User extends CI_Controller
     //=============================================== USER REGISTER OTP VERIFY =============================================================
     public function register_otp_verify()
     {
+        if (empty($this->session->userdata('user_data'))) {
+
         $this->load->helper(array('form', 'url'));
         $this->load->library('form_validation');
         $this->load->helper('security');
@@ -69,6 +71,9 @@ class User extends CI_Controller
             $this->session->set_flashdata('emessage', 'Please insert some data');
             redirect($_SERVER['HTTP_REFERER']);
         }
+    } else {
+        redirect("/", "refresh");
+    }
     }
     //============================================ USER LOGIN PROCESS ===========================================================
     public function login_process()
