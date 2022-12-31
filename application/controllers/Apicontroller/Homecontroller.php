@@ -1,5 +1,5 @@
 <?php
-if (! defined('BASEPATH')) {
+if (!defined('BASEPATH')) {
     exit('No direct script access allowed');
 }
 class Homecontroller extends CI_Controller
@@ -14,48 +14,58 @@ class Homecontroller extends CI_Controller
     //===============================================GET PROMOCODE =======================================//
     public function get_promocode()
     {
-        $prmocode_data = $this->db->get_where('tbl_promocode', array('is_active'=> 1))->result();
-        $data=[];
-        foreach ($prmocode_data as $promcode) {
-            if (!empty($promcode->photo)) {
-                $photo=base_url().$promcode->photo;
+        $promocode_data = $this->db->order_by('id', 'desc')->get_where('tbl_promocode', array('is_active' => 1))->result();
+        $data = [];
+        foreach ($promocode_data as $promo) {
+            if ($promo->ptype == 1) {
+                $type = "one time";
             } else {
-                $photo='';
+                $type = "every time";
             }
-            $data[]=array('promocode'=>$promcode->promocode,
-                       'percentage'=>$promcode->percentage,
-                       'ptype'=>$promcode->ptype,
-                       'start_date'=>$promcode->start_date,
-                       'end_date'=>$promcode->end_date,
-                       'mindays'=>$promcode->mindays,
-                      
-                       'max'=>$promcode->max,
-                       'photo'=>$photo,
-                      
-                     );
+            if (!empty($promo->photo)) {
+                $image = base_url() . $promo->photo;
+            } else {
+                $image = '';
+            }
+            $data[] = array(
+                'id' => $promo->id,
+                'promocode' => $promo->promocode,
+                'percentage' => $promo->percentage,
+                'type' => $type,
+                'mindays' => $promo->mindays,
+                'max' => $promo->max,
+                'image' => $image,
+            );
         }
-        $res=array(
-                    'message'=>"success",
-                    'status'=>200,
-                    'data'=>$data
-                    );
+        $res = array(
+            'message' => "Success",
+            'status' => 200,
+            'data' => $data
+        );
         echo json_encode($res);
     }
     //=================================== GET TESTIMONIALS ============================//
     public function get_testimonials()
     {
-        $testimonial_data = $this->db->get_where('tbl_testimonials', array('is_active'=> 1))->result();
-        $data=[];
-        foreach ($testimonial_data as $testimonials) {
-            $data[]=array('name'=>$testimonials->name,
-                       'content'=>$testimonials->content,
-                     );
+        $testimonials_data = $this->db->order_by('id', 'desc')->get_where('tbl_testimonials', array('is_active' => 1))->result();
+        foreach ($testimonials_data as $test) {
+            if (!empty($test->photo)) {
+                $image = base_url() . $test->photo;
+            } else {
+                $image = '';
+            }
+            $data[] = array(
+                'id' => $test->id,
+                'name' => $test->name,
+                'content' => $test->content,
+                'image' => $image,
+            );
         }
-        $res=array(
-                    'message'=>"success",
-                    'status'=>200,
-                    'data'=>$data
-                    );
+        $res = array(
+            'message' => "success",
+            'status' => 200,
+            'data' => $data
+        );
         echo json_encode($res);
     }
 }
