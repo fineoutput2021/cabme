@@ -1,5 +1,4 @@
 <?php
-
 if (!defined('BASEPATH')) {
     exit('No direct script access allowed');
 }
@@ -18,7 +17,6 @@ class CI_Login
     //============================================= REGISTER  WITH OTP ==============================================
     public function RegisterWithOtp($fname, $lname, $phone, $email)
     {
-
         $ip = $this->CI->input->ip_address();
         date_default_timezone_set("Asia/Calcutta");
         $cur_date = date("Y-m-d H:i:s");
@@ -86,11 +84,13 @@ class CI_Login
                     if (!empty($last_id)) { // check status is updated or not
                         $temp_data = $this->CI->db->get_where('tbl_user_temp', array('phone' => $otpData[0]->phone))->result();
                         //------ insert user data from temp to user table -----------
+                        $auth =bin2hex(random_bytes(18));
                         $data_insert = array(
                             'f_name' => $temp_data[0]->fname,
                             'l_name' => $temp_data[0]->lname,
                             'email' => $temp_data[0]->email,
                             'phone' => $temp_data[0]->phone,
+                            'auth' => $auth,
                             'ip' => $ip,
                             'is_active' => 1,
                             'date' => $cur_date
@@ -102,8 +102,16 @@ class CI_Login
                         $this->CI->session->set_userdata('phone', $phone);
                         $this->CI->session->set_userdata('email', $temp_data[0]->email);
                         $this->CI->session->set_userdata('user_id', $last_id2);
+                        $data =array(
+                            'f_name' => $temp_data[0]->fname,
+                            'l_name' => $temp_data[0]->lname,
+                            'email' => $temp_data[0]->email,
+                            'phone' => $temp_data[0]->phone,
+                            'auth' => $auth,
+                        );
                         $respone['status'] = true;
                         $respone['message'] = 'Successfully Registered!';
+                        $respone['data'] = $data;
                         // $this->CI->session->set_flashdata('smessage', 'Successfully Registered!');
                         return json_encode($respone);
                     } else {
@@ -205,15 +213,22 @@ class CI_Login
                     if (!empty($last_id)) { // check status is updated or not
                         $user_data = $this->CI->db->get_where('tbl_users', array('phone' => $phone))->result();
                         if ($user_data[0]->is_active == 1) {
-
                             //---------- set login session -------------------
                             $this->CI->session->set_userdata('user_data', 1);
                             $this->CI->session->set_userdata('name', $user_data[0]->f_name);
                             $this->CI->session->set_userdata('phone', $phone);
                             $this->CI->session->set_userdata('email', $user_data[0]->email);
                             $this->CI->session->set_userdata('user_id', $user_data[0]->id);
+                            $data =array(
+                                'f_name' => $user_data[0]->fname,
+                                'l_name' => $user_data[0]->lname,
+                                'email' => $user_data[0]->email,
+                                'phone' => $user_data[0]->phone,
+                                'auth' => $user_data[0]->auth,
+                            );
                             $respone['status'] = true;
                             $respone['message'] = 'Login Successfully';
+                            $respone['data'] = $data;
                             $this->CI->session->set_flashdata('smessage', 'Login Successfully');
                             return json_encode($respone);
                         } else {
