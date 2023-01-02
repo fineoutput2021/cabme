@@ -211,48 +211,38 @@ class Bookingcontroller extends CI_Controller
         $this->load->helper(array('form', 'url'));
         $this->load->library('form_validation');
         $this->load->helper('security');
+        $header = $this->input->request_headers();
+        $auth = $header['Authorization'];
         if ($this->input->post()) {
-            $this->form_validation->set_rules('city_id', 'city_id', 'required|xss_clean|trim');
-            $this->form_validation->set_rules('pickup_location', 'pickup_location', 'required|xss_clean|trim');
-            $this->form_validation->set_rules('drop_location', 'drop_location', 'required|xss_clean|trim');
-            $this->form_validation->set_rules('trip_status', 'trip_status', 'required|xss_clean|trim');
-            $this->form_validation->set_rules('start_date', 'start_date', 'required|xss_clean|trim');
-            $this->form_validation->set_rules('start_time', 'start_time', 'required|xss_clean|trim');
-            $this->form_validation->set_rules('end_date', 'end_date', 'required|xss_clean|trim');
-            $this->form_validation->set_rules('end_time', 'end_date', 'required|xss_clean|trim');
+            $this->form_validation->set_rules('id', 'id', 'required|xss_clean|trim');
             if ($this->form_validation->run() == true) {
-                $city_id = $this->input->post('city_id');
-                $pickup_location = $this->input->post('pickup_location');
-                $drop_location = $this->input->post('drop_location');
-                $trip_status = $this->input->post('trip_status');
-                $start_date = $this->input->post('start_date');
-                $start_time = $this->input->post('start_time');
-                $end_date = $this->input->post('end_date');
-                $end_time = $this->input->post('end_time');
-                $outstation_data = $this->db->get_where('tbl_outstation', array('is_active' => 1, 'city_id' => $city_id, 'is_available' => 1))->result();
-                $data = [];
-                foreach ($outstation_data as $outstation) {
-                    if (!empty($outstation->photo)) {
-                        $photo = base_url() . $outstation->photo;
-                    } else {
-                        $photo = '';
-                    }
-                    $data[] = array(
-                        'city_id' => $outstation->city_id,
-                        'brand_name' => $outstation->brand_name,
-                        'car_name' => $outstation->car_name,
-                        'seatting' => $outstation->seatting,
-                        'photo' => $photo,
-                        'per_kilometre' => $outstation->per_kilometre,
-                        'location' => $outstation->location
+                $id = $this->input->post('id');
+                $user_data = $this->db->get_where('tbl_users', array('is_active' => 1, 'auth' => $auth))->result();
+                if (!empty($user_data)) {
+                    $data_update = array(
+                        'payment_status' => 1,
+                        'order_status' => 1,
                     );
+                    $this->db->where('id', base64_decode($id));
+                    $zapak = $this->db->update('tbl_booking', $data_update);
+                    $bookingdata = $this->db->get_where('tbl_booking', array('id' => base64_decode($id)))->result();
+                    $data = array(
+                        'booking_id' => $bookingdata[0]->id,
+                        'amount' => $bookingdata[0]->final_amount,
+                    );
+                    $res = array(
+                        'message' => 'Booking Success!',
+                        'status' => 200,
+                        'data' => $data
+                    );
+                    echo json_encode($res);
+                } else {
+                    $res = array(
+                        'message' => 'Permission Denied!',
+                        'status' => 201
+                    );
+                    echo json_encode($res);
                 }
-                $res = array(
-                    'message' => "success",
-                    'status' => 200,
-                    'data' => $data
-                );
-                echo json_encode($res);
             } else {
                 $res = array(
                     'message' => validation_errors(),

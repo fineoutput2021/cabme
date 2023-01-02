@@ -488,7 +488,7 @@ class CI_Booking
       'car_id' => $car[0]->id,
       'brand_name' => $car[0]->brand_name,
       'car_name' => $car[0]->car_name,
-      'photo' => $car[0]->photo,
+      'photo' => base_url().$car[0]->photo,
       'seating' => $seating,
       'per_kilometer' => $car[0]->per_kilometre,
       'location' => $car[0]->location,
