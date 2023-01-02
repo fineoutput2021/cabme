@@ -18,6 +18,8 @@ class Bookingcontroller extends CI_Controller
         $this->load->helper(array('form', 'url'));
         $this->load->library('form_validation');
         $this->load->helper('security');
+        $header = $this->input->request_headers();
+        $auth = $header['Authorization'];
         if ($this->input->post()) {
             $this->form_validation->set_rules('city_id', 'city_id', 'required|xss_clean|trim');
             $this->form_validation->set_rules('start_date', 'start_date', 'required|xss_clean|trim');
@@ -38,22 +40,29 @@ class Bookingcontroller extends CI_Controller
                 $type_id = $this->input->post('type_id');
                 date_default_timezone_set("Asia/Calcutta");
                 $cur_date = date("Y-m-d H:i:s");
-                $user_id = $this->session->userdata('user_id');
-                $send = array(
-                    'user_id' => $user_id,
-                    'city_id' => $city_id,
-                    'start_date' => $start_date,
-                    'start_time' => $start_time,
-                    'end_date' => $end_date,
-                    'end_time' => $end_time,
-                    'duration' => $duration,
-                    'city_id' => $city_id,
-                    'car_id' => $car_id,
-                    'type_id' => $type_id,
-                );
-                $response = $this->booking->selfDriveCarCalculate($send);
-                $id = base64_encode($response['id']);
-                redirect("Home/self_drive_summary/$id");
+                $user_data = $this->db->get_where('tbl_users', array('is_active' => 1, 'auth' => $auth))->result();
+                if (!empty($user_data)) {
+                    $send = array(
+                        'user_id' => $user_data[0]->id,
+                        'city_id' => $city_id,
+                        'start_date' => $start_date,
+                        'start_time' => $start_time,
+                        'end_date' => $end_date,
+                        'end_time' => $end_time,
+                        'duration' => $duration,
+                        'city_id' => $city_id,
+                        'car_id' => $car_id,
+                        'type_id' => $type_id,
+                    );
+                    $response = $this->booking->selfDriveCarCalculate($send);
+                    echo json_encode($response);
+                } else {
+                    $res = array(
+                        'message' => 'Permission Denied!',
+                        'status' => 201
+                    );
+                    echo json_encode($res);
+                }
             } else {
                 $res = array(
                     'message' => validation_errors(),
