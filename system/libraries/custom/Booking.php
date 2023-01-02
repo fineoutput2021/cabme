@@ -227,6 +227,11 @@ class CI_Booking
     $total = $kilometer_price;
     $final_amount = $total + $rsda;
     //------- insert into booking table --------
+    if(!empty($receive['search_id'])){
+      $search_id=$receive['search_id'];
+      }else{
+      $search_id='';
+      }
     $data_insert = array(
       'user_id' => $receive['user_id'],
       'booking_type' => 1,
@@ -243,7 +248,7 @@ class CI_Booking
       'duration' => $receive['duration'],
       'car_id' => $receive['car_id'],
       'kilometer_type' => $receive['type_id'],
-      'search_id' => base64_decode($receive['search_id']),
+      'search_id' => base64_decode($search_id),
       'order_status' => 0,
       'payment_status' => 0,
       'ip' => $ip,
