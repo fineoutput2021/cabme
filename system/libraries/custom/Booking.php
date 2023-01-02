@@ -294,6 +294,7 @@ class CI_Booking
       'kilometer3'=>$self[0]->kilometer3*$days,
       'price3'=>$self[0]->price3*$days,
       'extra_kilo' => $self[0]->extra_kilo,
+      'kilometer' => $kilometer,
       'total_amount' => $total,
       'final_amount' => $final_amount,
       'rsda' => $rsda,
