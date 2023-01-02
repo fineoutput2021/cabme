@@ -118,7 +118,8 @@ class CI_Booking
           'price3' => round($self->price3 * $days,2),
           'extra_kilo' => $self->extra_kilo,
           'rsda' => $self->rsda,
-          'active'=>1
+          'active'=>1,
+          'price'=>round($self->price1 * $days,2)
         );
       }
     }
