@@ -493,6 +493,7 @@ class CI_Booking
       'per_kilometer' => $car[0]->per_kilometre,
       'location' => $car[0]->location,
       'min_booking_amt' => $car[0]->min_booking_amt,
+      'id'=>$last_id
     );
     $respone['status'] = true;
     $respone['message'] = "Success";
