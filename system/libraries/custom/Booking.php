@@ -298,6 +298,7 @@ class CI_Booking
       'total_amount' => $total,
       'final_amount' => $final_amount,
       'rsda' => $rsda,
+      'kilometer_type' => $receive['type_id'],
     );
     $respone['status'] = true;
     $respone['message'] = "Success";
