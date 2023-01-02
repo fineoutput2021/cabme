@@ -287,7 +287,16 @@ class CI_Booking
       'fuel_type' => $fuel_type,
       'transmission' => $transmission,
       'seating' => $seating,
+      'kilometer1'=>$self[0]->kilometer1*$days,
+      'price1'=>$self[0]->price1*$days,
+      'kilometer2'=>$self[0]->kilometer2*$days,
+      'price2'=>$self[0]->price2*$days,
+      'kilometer3'=>$self[0]->kilometer3*$days,
+      'price3'=>$self[0]->price3*$days,
       'extra_kilo' => $self[0]->extra_kilo,
+      'total_amount' => $total,
+      'final_amount' => $final_amount,
+      'rsda' => $rsda,
     );
     $respone['status'] = true;
     $respone['message'] = "Success";
