@@ -299,6 +299,7 @@ class CI_Booking
       'final_amount' => $final_amount,
       'rsda' => $rsda,
       'kilometer_type' => $receive['type_id'],
+      'id' => $last_id
     );
     $respone['status'] = true;
     $respone['message'] = "Success";
@@ -308,9 +309,9 @@ class CI_Booking
     return $respone;
   }
   //========= selfdrive booking checkout========
-  public function selfCheckout($id, $dob, $aadhar_no, $driving_lience, $aadhar_front, $aadhar_back, $license_front, $license_back)
+  public function selfCheckout($id, $dob, $aadhar_no, $driving_lience, $aadhar_front, $aadhar_back, $license_front, $license_back,$user_id)
   {
-    $user_id = $this->CI->session->userdata('user_id');
+    
     //-------- update user data ------
     $user_update = array(
       'dob' => $dob,

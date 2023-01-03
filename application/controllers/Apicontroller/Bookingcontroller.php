@@ -85,49 +85,153 @@ class Bookingcontroller extends CI_Controller
         $this->load->library('form_validation');
         $this->load->helper('security');
         if ($this->input->post()) {
-            $this->form_validation->set_rules('city_id', 'city_id', 'required|xss_clean|trim');
-            $this->form_validation->set_rules('start_date', 'start_date', 'required|xss_clean|trim');
-            $this->form_validation->set_rules('start_time', 'start_time', 'required|xss_clean|trim');
-            $this->form_validation->set_rules('end_date', 'end_date', 'required|xss_clean|trim');
-            $this->form_validation->set_rules('end_time', 'end_time', 'required|xss_clean|trim');
+            $this->form_validation->set_rules('id', 'id', 'required|xss_clean|trim');
+            $this->form_validation->set_rules('dob', 'dob', 'required|xss_clean|trim');
+            $this->form_validation->set_rules('aadhar_no', 'aadhar_no', 'required|xss_clean|trim');
+            $this->form_validation->set_rules('driving_lience', 'driving_lience', 'required|xss_clean|trim');
+        
+            $this->form_validation->set_rules('agree', 'agree', 'required|xss_clean|trim');
             if ($this->form_validation->run() == true) {
-                $city_id = $this->input->post('city_id');
-                $start_date = $this->input->post('start_date');
-                $start_time = $this->input->post('start_time');
-                $end_date = $this->input->post('end_date');
-                $end_time = $this->input->post('end_time');
-                $self_drive_data = $this->db->get_where('tbl_selfdrive', array('is_active' => 1, 'city_id' => $city_id, 'is_available' => 1))->result();
-                $data = [];
-                foreach ($self_drive_data as $self_drive) {
-                    if (!empty($self_drive->photo)) {
-                        $photo = base_url() . $self_drive->photo;
-                    } else {
-                        $photo = '';
-                    }
-                    $data[] = array(
-                        'city_id' => $self_drive->city_id,
-                        'brand_name' => $self_drive->brand_name,
-                        'car_name' => $self_drive->car_name,
-                        'photo' => $photo,
-                        'fule_type' => $self_drive->fule_type,
-                        'transmission' => $self_drive->transmission,
-                        'seatting' => $self_drive->seatting,
-                        'kilometer1' => $self_drive->kilometer1,
-                        'price1' => $self_drive->price1,
-                        'kilometer2' => $self_drive->kilometer2,
-                        'price2' => $self_drive->price2,
-                        'kilometer3' => $self_drive->kilometer3,
-                        'price3' => $self_drive->price3,
-                        'extra_kilo' => $self_drive->extra_kilo,
-                        'rsda' => $self_drive->rsda
+                $id = base64_decode($this->input->post('id'));
+                $dob = $this->input->post('dob');
+                $aadhar_no = $this->input->post('aadhar_no');
+                $driving_lience = $this->input->post('driving_lience');
+                $agree = $this->input->post('agree');
+                date_default_timezone_set("Asia/Calcutta");
+                $cur_date = date("Y-m-d H:i:s");
+                $this->load->library('upload');
+                //----- verify date -----
+                $bday = new DateTime($dob); // Your date of birth
+                $today = new Datetime(date('m.d.y'));
+                $diff = $today->diff($bday);
+                if ($diff->y < 18) {
+                    $res = array(
+                        'message' => 'Age is less than 18 years!',
+                        'status' => 201
                     );
+                    echo json_encode($res);
                 }
-                $res = array(
-                    'message' => "success",
-                    'status' => 200,
-                    'data' => $data
-                );
-                echo json_encode($res);
+                //----------------aadhar front ----------
+                $img1 = 'aadhar_front';
+                $file_check = ($_FILES['aadhar_front']['error']);
+                if ($file_check != 4) {
+                    $image_upload_folder = FCPATH . "assets/uploads/documents/";
+                    if (!file_exists($image_upload_folder)) {
+                        mkdir($image_upload_folder, DIR_WRITE_MODE, true);
+                    }
+                    $new_file_name = "aadhar_front" . date("Ymdhms");
+                    $this->upload_config = array(
+                        'upload_path'   => $image_upload_folder,
+                        'file_name' => $new_file_name,
+                        'allowed_types' => 'jpg|jpeg|png',
+                        'max_size'      => 25000
+                    );
+                    $this->upload->initialize($this->upload_config);
+                    if (!$this->upload->do_upload($img1)) {
+                        $upload_error = $this->upload->display_errors();
+                        // echo json_encode($upload_error);
+                        echo $upload_error;
+                    } else {
+                        $file_info = $this->upload->data();
+                        $aadhar_front = "assets/uploads/documents/" . $new_file_name . $file_info['file_ext'];
+                    }
+                }
+                //----------------aadhar back ----------
+                $img2 = 'aadhar_back';
+                $file_check = ($_FILES['aadhar_front']['error']);
+                if ($file_check != 4) {
+                    $image_upload_folder = FCPATH . "assets/uploads/documents/";
+                    if (!file_exists($image_upload_folder)) {
+                        mkdir($image_upload_folder, DIR_WRITE_MODE, true);
+                    }
+                    $new_file_name = "aadhar_back" . date("Ymdhms");
+                    $this->upload_config = array(
+                        'upload_path'   => $image_upload_folder,
+                        'file_name' => $new_file_name,
+                        'allowed_types' => 'jpg|jpeg|png',
+                        'max_size'      => 25000
+                    );
+                    $this->upload->initialize($this->upload_config);
+                    if (!$this->upload->do_upload($img2)) {
+                        $upload_error = $this->upload->display_errors();
+                        // echo json_encode($upload_error);
+                        echo $upload_error;
+                    } else {
+                        $file_info = $this->upload->data();
+                        $aadhar_back = "assets/uploads/documents/" . $new_file_name . $file_info['file_ext'];
+                    }
+                }
+                //----------------license_front ----------
+                $img3 = 'license_front';
+                $file_check = ($_FILES['aadhar_front']['error']);
+                if ($file_check != 4) {
+                    $image_upload_folder = FCPATH . "assets/uploads/documents/";
+                    if (!file_exists($image_upload_folder)) {
+                        mkdir($image_upload_folder, DIR_WRITE_MODE, true);
+                    }
+                    $new_file_name = "license_front" . date("Ymdhms");
+                    $this->upload_config = array(
+                        'upload_path'   => $image_upload_folder,
+                        'file_name' => $new_file_name,
+                        'allowed_types' => 'jpg|jpeg|png',
+                        'max_size'      => 25000
+                    );
+                    $this->upload->initialize($this->upload_config);
+                    if (!$this->upload->do_upload($img3)) {
+                        $upload_error = $this->upload->display_errors();
+                        // echo json_encode($upload_error);
+                        echo $upload_error;
+                    } else {
+                        $file_info = $this->upload->data();
+                        $license_front = "assets/uploads/documents/" . $new_file_name . $file_info['file_ext'];
+                    }
+                }
+                //----------------license_back ----------
+                $img4 = 'license_back';
+                $file_check = ($_FILES['aadhar_front']['error']);
+                if ($file_check != 4) {
+                    $image_upload_folder = FCPATH . "assets/uploads/documents/";
+                    if (!file_exists($image_upload_folder)) {
+                        mkdir($image_upload_folder, DIR_WRITE_MODE, true);
+                    }
+                    $new_file_name = "license_back" . date("Ymdhms");
+                    $this->upload_config = array(
+                        'upload_path'   => $image_upload_folder,
+                        'file_name' => $new_file_name,
+                        'allowed_types' => 'jpg|jpeg|png',
+                        'max_size'      => 25000
+                    );
+                    $this->upload->initialize($this->upload_config);
+                    if (!$this->upload->do_upload($img4)) {
+                        $upload_error = $this->upload->display_errors();
+                        // echo json_encode($upload_error);
+                        echo $upload_error;
+                    } else {
+                        $file_info = $this->upload->data();
+                        $license_back = "assets/uploads/documents/" . $new_file_name . $file_info['file_ext'];
+                    }
+                }
+                $amount = $this->booking->selfCheckout($id, $dob, $aadhar_no, $driving_lience, $aadhar_front, $aadhar_back, $license_front, $license_back);
+                $data_update = array(
+                'payment_status'=>1,
+                'order_status'=>1,
+                'final_amount'=>$amount,
+                    );
+                    $this->db->where('id', $id);
+                    $zapak=$this->db->update('tbl_booking', $data_update);
+                    $bookingdata = $this->db->get_where('tbl_booking', array('id'=> $id))->result();
+                    //---- car status update ----
+                    $data_update2 = array('is_available'=>0,);
+                    $this->db->where('id', $bookingdata[0]->car_id);
+                    $zapak=$this->db->update('tbl_selfdrive', $data_update2);
+                    $data=[];
+                    $data = array('booking_id'=>$bookingdata[0]->id,'amount'=>$bookingdata[0]->final_amount);
+                    $res = array(
+                        'message' => 'Booking Success!',
+                        'status' => 201,
+                        'data'=>$data
+                    );
+                    echo json_encode($res);
             } else {
                 $res = array(
                     'message' => validation_errors(),

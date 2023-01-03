@@ -339,6 +339,7 @@ class Home extends CI_Controller
                 $aadhar_no=$this->input->post('aadhar_no');
                 $driving_lience=$this->input->post('driving_lience');
                 // $pickup_location=$this->input->post('pickup_location');
+                $user_id = $this->CI->session->userdata('user_id');
                 $agree=$this->input->post('agree');
                 date_default_timezone_set("Asia/Calcutta");
                 $cur_date=date("Y-m-d H:i:s");
@@ -451,7 +452,7 @@ class Home extends CI_Controller
                         $license_back = "assets/uploads/documents/".$new_file_name.$file_info['file_ext'];
                     }
                 }
-                $amount = $this->booking->selfCheckout($id, $dob, $aadhar_no, $driving_lience, $aadhar_front, $aadhar_back, $license_front, $license_back);
+                $amount = $this->booking->selfCheckout($id, $dob, $aadhar_no, $driving_lience, $aadhar_front, $aadhar_back, $license_front, $license_back,$user_id);
                 $this->session->set_userdata('order_id',$id);
                 $this->session->set_userdata('amount',$amount);
                 redirect("Home/self_payment");
