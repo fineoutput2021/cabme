@@ -523,7 +523,6 @@ class Apicontroller extends CI_Controller
             $booking_data = $this->db->get_where('tbl_booking', array('id' => $id))->result();
             $car = $this->db->get_where('tbl_selfdrive', array('id' => $data['booking_data'][0]->car_id))->result();
             $city = $this->db->get_where('tbl_cities', array('id' => $data['booking_data'][0]->city_id))->result();
-            $data['city_data'] = $city;
             //------ fuel type ---
             if ($car[0]->fule_type == 1) {
                 $fuel_type = 'Petrol';
@@ -563,12 +562,18 @@ class Apicontroller extends CI_Controller
                 'final_amount' => $booking_data[0]->final_amount,
                 'rsda' => $booking_data[0]->rsda,
                 'kilometer_type' => $booking_data[0]->type_id,
+                'start_date' => $booking_data[0]->start_date,
+                'start_time' => $booking_data[0]->start_time,
+                'end_date' => $booking_data[0]->end_date,
+                'end_time' => $booking_data[0]->end_time,
+                'duration' => $booking_data[0]->duration,
+                'city_name' => $city[0]->name,
                 'id' => $id
             );
             $res = array(
                 'message' => 'Success!',
                 'status' => 201,
-                'car_data' =>$car_data
+                'car_data' => $car_data
             );
             echo json_encode($res);
         } else {
