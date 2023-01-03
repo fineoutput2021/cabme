@@ -557,7 +557,7 @@ class Apicontroller extends CI_Controller
                 'transmission' => $transmission,
                 'seating' => $seating,
                 'extra_kilo' => $car[0]->extra_kilo,
-                'kilometer' => $$booking_data[0]->kilometer,
+                'kilometer' => $booking_data[0]->kilometer,
                 'total_amount' => $booking_data[0]->total,
                 'final_amount' => $booking_data[0]->final_amount,
                 'rsda' => $booking_data[0]->rsda,
