@@ -362,4 +362,125 @@ class Apicontroller extends CI_Controller
             echo json_encode($res);
         }
     }
+    // ====================================== SELF DRIVE PROMOCODE ==========================
+    public function self_promocode()
+    {
+        $this->load->helper(array('form', 'url'));
+        $this->load->library('form_validation');
+        $this->load->helper('security');
+        if ($this->input->post()) {
+            $this->form_validation->set_rules('id', 'id', 'required|xss_clean|trim');
+            $this->form_validation->set_rules('promocode', 'promocode', 'required|xss_clean|trim');
+            if ($this->form_validation->run() == true) {
+                $id = base64_decode($this->input->post('id'));
+                $promocode = strtoupper($this->input->post('promocode'));
+                date_default_timezone_set("Asia/Calcutta");
+                $cur_date = strtotime(date("Y-m-d"));
+                // echo $promocode;die();
+                //----check promocode----
+                $promocode_data = $this->db->get_where('tbl_promocode', array('is_active' => 1, 'promocode' => $promocode))->result();
+                $booking_data = $this->db->get_where('tbl_booking', array('id' => $id))->result();
+                if (!empty($promocode_data)) {
+                    if (strtotime($promocode_data[0]->end_date) >= $cur_date && strtotime($promocode_data[0]->start_date) <= $cur_date) {
+                        //---- one time promocode -------
+                        if ($promocode_data[0]->ptype == 1) {
+                            $promocodeAlreadyUsed = $this->db->get_where('tbl_booking', array('user_id = ' => $booking_data[0]->user_id, 'promocode' => $promocode_data[0]->id, 'payment_status' => 1))->result();
+                            if (empty($promocodeAlreadyUsed)) {
+                                if ($booking_data[0]->duration > $promocode_data[0]->mindays * 24) { //----checking minorder for promocode
+                                    $discount_amt = $booking_data[0]->total_amount * $promocode_data[0]->percentage / 100;
+                                    if ($discount_amt > $promocode_data[0]->max) {
+                                        // will get max amount
+                                        $discount =  $promocode_data[0]->max;
+                                    } else {
+                                        $discount =  round($discount_amt, 2);
+                                    }
+                                    //---- booking entry update -----
+                                    $data_update = array(
+                                        'promocode' => $promocode_data[0]->id,
+                                        'promo_discount' => $discount,
+                                    );
+                                    $this->db->where('id', $id);
+                                    $zapak = $this->db->update('tbl_booking', $data_update);
+                                    $data = [];
+                                    $data = array(
+                                        'promocode' => $promocode_data[0]->promocode,
+                                        'promo_discount' => $discount,
+                                    );
+                                    $res = array(
+                                        'message' => 'Promocode Applied Successfully!',
+                                        'status' => 200,
+                                        'data' => $data,
+                                    );
+                                    echo json_encode($res);
+                                } else {
+                                    $res = array(
+                                        'message' => 'Minimum ' . $promocode_data[0]->mindays . ' days booking required for this promocode!',
+                                        'status' => 201
+                                    );
+                                    echo json_encode($res);
+                                }
+                            } else {
+                                $res = array(
+                                    'message' => 'Promocode is already used!',
+                                    'status' => 201
+                                );
+                                echo json_encode($res);
+                            }
+                        }
+                        //---- every time promocode -------
+                        else {
+                            $discount_amt = $booking_data[0]->total_amount * $promocode_data[0]->percentage / 100;
+                            if ($discount_amt > $promocode_data[0]->max) {
+                                // will get max amount
+                                $discount =  $promocode_data[0]->max;
+                            } else {
+                                $discount =  round($discount_amt, 2);
+                            }
+                            $data_update = array(
+                                'promocode' => $promocode_data[0]->id,
+                                'promo_discount' => $discount,
+                            );
+                            $this->db->where('id', $id);
+                            $zapak = $this->db->update('tbl_booking', $data_update);
+                            $data = [];
+                            $data = array(
+                                'promocode' => $promocode_data[0]->promocode,
+                                'promo_discount' => $discount,
+                            );
+                            $res = array(
+                                'message' => 'Promocode Applied Successfully!',
+                                'status' => 200,
+                                'data' => $data,
+                            );
+                            echo json_encode($res);
+                        }
+                    } else {
+                        $res = array(
+                            'message' => 'Invalid Promocode Used!',
+                            'status' => 201
+                        );
+                        echo json_encode($res);
+                    }
+                } else {
+                    $res = array(
+                        'message' => 'Invalid Promocode Used!',
+                        'status' => 201
+                    );
+                    echo json_encode($res);
+                }
+            } else {
+                $res = array(
+                    'message' => validation_errors(),
+                    'status' => 201
+                );
+                echo json_encode($res);
+            }
+        } else {
+            $res = array(
+                'message' => 'please insert data',
+                'status' => 201
+            );
+            echo json_encode($res);
+        }
+    }
 }
