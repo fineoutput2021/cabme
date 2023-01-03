@@ -233,7 +233,7 @@ class Bookingcontroller extends CI_Controller
                     $data = array('booking_id' => $bookingdata[0]->id, 'amount' => $bookingdata[0]->final_amount);
                     $res = array(
                         'message' => 'Booking Success!',
-                        'status' => 201,
+                        'status' => 200,
                         'data' => $data
                     );
                     echo json_encode($res);
