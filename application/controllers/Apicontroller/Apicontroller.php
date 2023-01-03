@@ -521,8 +521,8 @@ class Apicontroller extends CI_Controller
         $user_data = $this->db->get_where('tbl_users', array('is_active' => 1, 'auth' => $auth))->result();
         if (!empty($user_data)) {
             $booking_data = $this->db->get_where('tbl_booking', array('id' => $id))->result();
-            $car = $this->db->get_where('tbl_selfdrive', array('id' => $data['booking_data'][0]->car_id))->result();
-            $city = $this->db->get_where('tbl_cities', array('id' => $data['booking_data'][0]->city_id))->result();
+            $car = $this->db->get_where('tbl_selfdrive', array('id' => $booking_data[0]->car_id))->result();
+            $city = $this->db->get_where('tbl_cities', array('id' => $booking_data[0]->city_id))->result();
             //------ fuel type ---
             if ($car[0]->fule_type == 1) {
                 $fuel_type = 'Petrol';
@@ -546,8 +546,8 @@ class Apicontroller extends CI_Controller
             } else {
                 $seating = '7 Seates';
             }
-            $car_data = [];
-            $car_data = array(
+            $data = [];
+            $data = array(
                 'city_id' => $self[0]->city_id,
                 'car_id' => $car[0]->id,
                 'brand_name' => $car[0]->brand_name,
@@ -573,7 +573,7 @@ class Apicontroller extends CI_Controller
             $res = array(
                 'message' => 'Success!',
                 'status' => 201,
-                'car_data' => $car_data
+                'data' => $data
             );
             echo json_encode($res);
         } else {
