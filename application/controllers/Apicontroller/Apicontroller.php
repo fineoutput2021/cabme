@@ -514,4 +514,69 @@ class Apicontroller extends CI_Controller
             echo json_encode($res);
         }
     }
+    public function self_booking_details($id)
+    {
+        $header = $this->input->request_headers();
+        $auth = $header['Authorization'];
+        $user_data = $this->db->get_where('tbl_users', array('is_active' => 1, 'auth' => $auth))->result();
+        if (!empty($user_data)) {
+            $booking_data = $this->db->get_where('tbl_booking', array('id' => $id))->result();
+            $car = $this->db->get_where('tbl_selfdrive', array('id' => $data['booking_data'][0]->car_id))->result();
+            $city = $this->db->get_where('tbl_cities', array('id' => $data['booking_data'][0]->city_id))->result();
+            $data['city_data'] = $city;
+            //------ fuel type ---
+            if ($car[0]->fule_type == 1) {
+                $fuel_type = 'Petrol';
+            } elseif ($car[0]->fule_type == 2) {
+                $fuel_type = 'Diesel';
+            } else {
+                $fuel_type = 'CNG';
+            }
+            //------ Transmission  ---
+            if ($car[0]->transmission == 1) {
+                $transmission = 'Manual';
+            } elseif ($car[0]->transmission == 2) {
+                $transmission = 'Automatic';
+            }
+            $extra_kilo = $car[0]->extra_kilo;
+            //------ seating  ---
+            if ($car[0]->seatting == 1) {
+                $seating = '4 Seates';
+            } elseif ($car[0]->seatting == 2) {
+                $seating = '5 Seates';
+            } else {
+                $seating = '7 Seates';
+            }
+            $car_data = [];
+            $car_data = array(
+                'city_id' => $self[0]->city_id,
+                'car_id' => $car[0]->id,
+                'brand_name' => $car[0]->brand_name,
+                'car_name' => $car[0]->car_name,
+                'photo' => base_url() . $car[0]->photo,
+                'fuel_type' => $fuel_type,
+                'transmission' => $transmission,
+                'seating' => $seating,
+                'extra_kilo' => $car[0]->extra_kilo,
+                'kilometer' => $$booking_data[0]->kilometer,
+                'total_amount' => $booking_data[0]->total,
+                'final_amount' => $booking_data[0]->final_amount,
+                'rsda' => $booking_data[0]->rsda,
+                'kilometer_type' => $booking_data[0]->type_id,
+                'id' => $id
+            );
+            $res = array(
+                'message' => 'Success!',
+                'status' => 201,
+                'car_data' =>$car_data
+            );
+            echo json_encode($res);
+        } else {
+            $res = array(
+                'message' => 'Permission Denied!',
+                'status' => 201
+            );
+            echo json_encode($res);
+        }
+    }
 }
