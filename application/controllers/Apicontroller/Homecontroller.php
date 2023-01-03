@@ -74,7 +74,7 @@ class Homecontroller extends CI_Controller
         $auth = $header['Authorization'];
         $user_data = $this->db->get_where('tbl_users', array('is_active' => 1, 'auth' => $auth))->result();
         if (!empty($user_data)) {
-            $booking_data = $this->db->get_where('tbl_booking', array('order_status' => $type, 'user_id' => $user_data[0]->id, 'order_status!=' => 0))->result();
+            $booking_data = $this->db->order_by('id','desc')->get_where('tbl_booking', array('order_status' => $type, 'user_id' => $user_data[0]->id, 'order_status!=' => 0))->result();
             $data = [];
             foreach ($booking_data as $booking) {
                 if ($booking->booking_type == 1) {
