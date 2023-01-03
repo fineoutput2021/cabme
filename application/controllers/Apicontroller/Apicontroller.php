@@ -638,4 +638,41 @@ class Apicontroller extends CI_Controller
             echo json_encode($res);
         }
     }
+    public function intercity_booking_details($id)
+    {
+        $header = $this->input->request_headers();
+        $auth = $header['Authorization'];
+        $user_data = $this->db->get_where('tbl_users', array('is_active' => 1, 'auth' => $auth))->result();
+        if (!empty($user_data)) {
+            $booking_data = $this->db->get_where('tbl_booking', array('id' => $id))->result();
+            $car = $this->db->get_where('tbl_intercity', array('id' => $booking_data[0]->car_id))->result();
+            $city_data = $this->db->get_where('tbl_cities', array('id' => $booking_data[0]->city_id))->result();
+            $data = [];
+            $data = array(
+                'city' => $city_data[0]->name,
+                'cab_type' => $booking_data[0]->cab_type,
+                'start_date' => $booking_data[0]->start_date,
+                'start_time' => $booking_data[0]->start_time,
+                'end_date' => $booking_data[0]->end_date,
+                'end_time' => $booking_data[0]->end_time,
+                'duration' => $booking_data[0]->duration,
+                'kilometer_cap' => $booking_data[0]->kilometer,
+                'final_amount' => $booking_data[0]->final_amount,
+                'mini_booking' => $booking_data[0]->mini_booking,
+                'id' => "Booking Id: #" . $id
+            );
+            $res = array(
+                'message' => 'Success!',
+                'status' => 201,
+                'data' => $data
+            );
+            echo json_encode($res);
+        } else {
+            $res = array(
+                'message' => 'Permission Denied!',
+                'status' => 201
+            );
+            echo json_encode($res);
+        }
+    }
 }
