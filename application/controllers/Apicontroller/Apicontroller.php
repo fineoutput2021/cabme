@@ -569,7 +569,61 @@ class Apicontroller extends CI_Controller
                 'duration' => $booking_data[0]->duration,
                 'promo_discount' => $booking_data[0]->promo_discount,
                 'city_name' => $city[0]->name,
-                'id' => "Booking Id: ".$id
+                'id' => "Booking Id: #" . $id
+            );
+            $res = array(
+                'message' => 'Success!',
+                'status' => 201,
+                'data' => $data
+            );
+            echo json_encode($res);
+        } else {
+            $res = array(
+                'message' => 'Permission Denied!',
+                'status' => 201
+            );
+            echo json_encode($res);
+        }
+    }
+    public function outstation_booking_details($id)
+    {
+        $header = $this->input->request_headers();
+        $auth = $header['Authorization'];
+        $user_data = $this->db->get_where('tbl_users', array('is_active' => 1, 'auth' => $auth))->result();
+        if (!empty($user_data)) {
+            $booking_data = $this->db->get_where('tbl_booking', array('id' => $id))->result();
+            $car = $this->db->get_where('tbl_outstation', array('id' => $booking_data[0]->car_id))->result();
+            $city = $this->db->get_where('tbl_cities', array('id' => $booking_data[0][0]->city_id))->result();
+            //------ seating  ---
+            if ($car[0]->seatting == 1) {
+                $seating = '4 Seates';
+            } elseif ($car[0]->seatting == 2) {
+                $seating = '5 Seates';
+            } else {
+                $seating = '7 Seates';
+            }
+            $data = [];
+            $data = array(
+                'city_id' => $car[0]->city_id,
+                'car_id' => $car[0]->id,
+                'brand_name' => $car[0]->brand_name,
+                'car_name' => $car[0]->car_name,
+                'photo' => base_url() . $car[0]->photo,
+                'seating' => $seating,
+                'extra_kilo' => $car[0]->extra_kilo,
+                'kilometer' => $booking_data[0]->kilometer,
+                'total_amount' => $booking_data[0]->total_amount,
+                'final_amount' => $booking_data[0]->final_amount,
+                'rsda' => $booking_data[0]->rsda,
+                'kilometer_type' => $booking_data[0]->kilometer_type,
+                'start_date' => $booking_data[0]->start_date,
+                'start_time' => $booking_data[0]->start_time,
+                'end_date' => $booking_data[0]->end_date,
+                'end_time' => $booking_data[0]->end_time,
+                'duration' => $booking_data[0]->duration,
+                'round_type' => $booking_data[0]->round_type,
+                'city_name' => $city[0]->name,
+                'id' => "Booking Id: #" . $id
             );
             $res = array(
                 'message' => 'Success!',
