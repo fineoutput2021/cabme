@@ -561,7 +561,7 @@ class Apicontroller extends CI_Controller
                 'total_amount' => $booking_data[0]->total_amount,
                 'final_amount' => $booking_data[0]->final_amount,
                 'rsda' => $booking_data[0]->rsda,
-                'kilometer_type' => $booking_data[0]->type_id,
+                'kilometer_type' => $booking_data[0]->kilometer_type,
                 'start_date' => $booking_data[0]->start_date,
                 'start_time' => $booking_data[0]->start_time,
                 'end_date' => $booking_data[0]->end_date,
