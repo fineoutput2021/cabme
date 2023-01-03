@@ -483,4 +483,35 @@ class Apicontroller extends CI_Controller
             echo json_encode($res);
         }
     }
+    public function remove_promo($idd)
+    {
+        $header = $this->input->request_headers();
+        $auth = $header['Authorization'];
+        $user_data = $this->db->get_where('tbl_users', array('is_active' => 1, 'auth' => $auth))->result();
+        if (!empty($user_data)) {
+            $id = base64_decode($idd);
+            $data['id'] = $idd;
+            $user_id = $this->session->userdata('user_id');
+            $order1 = $this->db->get_where('tbl_booking', array('user_id' => $user_data[0]->id, 'id' => $id))->result();
+            if (!empty($order1)) {
+                $data_update = array(
+                    'promocode' => '',
+                    'promo_discount' => '',
+                );
+                $this->db->where('id', $id);
+                $zapak = $this->db->update('tbl_booking', $data_update);
+                $res = array(
+                    'message' => 'Promocode Removed Successfully!',
+                    'status' => 200
+                );
+                echo json_encode($res);
+            }
+        } else {
+            $res = array(
+                'message' => 'Permission Denied!',
+                'status' => 201
+            );
+            echo json_encode($res);
+        }
+    }
 }
