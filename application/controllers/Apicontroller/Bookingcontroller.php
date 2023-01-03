@@ -84,154 +84,165 @@ class Bookingcontroller extends CI_Controller
         $this->load->helper(array('form', 'url'));
         $this->load->library('form_validation');
         $this->load->helper('security');
+        $header = $this->input->request_headers();
+        $auth = $header['Authorization'];
         if ($this->input->post()) {
             $this->form_validation->set_rules('id', 'id', 'required|xss_clean|trim');
             $this->form_validation->set_rules('dob', 'dob', 'required|xss_clean|trim');
             $this->form_validation->set_rules('aadhar_no', 'aadhar_no', 'required|xss_clean|trim');
             $this->form_validation->set_rules('driving_lience', 'driving_lience', 'required|xss_clean|trim');
-        
-            $this->form_validation->set_rules('agree', 'agree', 'required|xss_clean|trim');
+            // $this->form_validation->set_rules('agree', 'agree', 'required|xss_clean|trim');
             if ($this->form_validation->run() == true) {
                 $id = base64_decode($this->input->post('id'));
                 $dob = $this->input->post('dob');
                 $aadhar_no = $this->input->post('aadhar_no');
                 $driving_lience = $this->input->post('driving_lience');
-                $agree = $this->input->post('agree');
+                // $agree = $this->input->post('agree');
                 date_default_timezone_set("Asia/Calcutta");
                 $cur_date = date("Y-m-d H:i:s");
                 $this->load->library('upload');
-                //----- verify date -----
-                $bday = new DateTime($dob); // Your date of birth
-                $today = new Datetime(date('m.d.y'));
-                $diff = $today->diff($bday);
-                if ($diff->y < 18) {
+                $user_data = $this->db->get_where('tbl_users', array('is_active' => 1, 'auth' => $auth))->result();
+                if (!empty($user_data)) {
+                    //----- verify date -----
+                    $bday = new DateTime($dob); // Your date of birth
+                    $today = new Datetime(date('m.d.y'));
+                    $diff = $today->diff($bday);
+                    if ($diff->y < 18) {
+                        $res = array(
+                            'message' => 'Age is less than 18 years!',
+                            'status' => 201
+                        );
+                        echo json_encode($res);
+                    }
+                    //----------------aadhar front ----------
+                    $img1 = 'aadhar_front';
+                    $file_check = ($_FILES['aadhar_front']['error']);
+                    if ($file_check != 4) {
+                        $image_upload_folder = FCPATH . "assets/uploads/documents/";
+                        if (!file_exists($image_upload_folder)) {
+                            mkdir($image_upload_folder, DIR_WRITE_MODE, true);
+                        }
+                        $new_file_name = "aadhar_front" . date("Ymdhms");
+                        $this->upload_config = array(
+                            'upload_path'   => $image_upload_folder,
+                            'file_name' => $new_file_name,
+                            'allowed_types' => 'jpg|jpeg|png',
+                            'max_size'      => 25000
+                        );
+                        $this->upload->initialize($this->upload_config);
+                        if (!$this->upload->do_upload($img1)) {
+                            $upload_error = $this->upload->display_errors();
+                            // echo json_encode($upload_error);
+                            echo $upload_error;
+                        } else {
+                            $file_info = $this->upload->data();
+                            $aadhar_front = "assets/uploads/documents/" . $new_file_name . $file_info['file_ext'];
+                        }
+                    }
+                    //----------------aadhar back ----------
+                    $img2 = 'aadhar_back';
+                    $file_check = ($_FILES['aadhar_back']['error']);
+                    if ($file_check != 4) {
+                        $image_upload_folder = FCPATH . "assets/uploads/documents/";
+                        if (!file_exists($image_upload_folder)) {
+                            mkdir($image_upload_folder, DIR_WRITE_MODE, true);
+                        }
+                        $new_file_name = "aadhar_back" . date("Ymdhms");
+                        $this->upload_config = array(
+                            'upload_path'   => $image_upload_folder,
+                            'file_name' => $new_file_name,
+                            'allowed_types' => 'jpg|jpeg|png',
+                            'max_size'      => 25000
+                        );
+                        $this->upload->initialize($this->upload_config);
+                        if (!$this->upload->do_upload($img2)) {
+                            $upload_error = $this->upload->display_errors();
+                            // echo json_encode($upload_error);
+                            echo $upload_error;
+                        } else {
+                            $file_info = $this->upload->data();
+                            $aadhar_back = "assets/uploads/documents/" . $new_file_name . $file_info['file_ext'];
+                        }
+                    }
+                    //----------------license_front ----------
+                    $img3 = 'license_front';
+                    $file_check = ($_FILES['license_front']['error']);
+                    if ($file_check != 4) {
+                        $image_upload_folder = FCPATH . "assets/uploads/documents/";
+                        if (!file_exists($image_upload_folder)) {
+                            mkdir($image_upload_folder, DIR_WRITE_MODE, true);
+                        }
+                        $new_file_name = "license_front" . date("Ymdhms");
+                        $this->upload_config = array(
+                            'upload_path'   => $image_upload_folder,
+                            'file_name' => $new_file_name,
+                            'allowed_types' => 'jpg|jpeg|png',
+                            'max_size'      => 25000
+                        );
+                        $this->upload->initialize($this->upload_config);
+                        if (!$this->upload->do_upload($img3)) {
+                            $upload_error = $this->upload->display_errors();
+                            // echo json_encode($upload_error);
+                            echo $upload_error;
+                        } else {
+                            $file_info = $this->upload->data();
+                            $license_front = "assets/uploads/documents/" . $new_file_name . $file_info['file_ext'];
+                        }
+                    }
+                    //----------------license_back ----------
+                    $img4 = 'license_back';
+                    $file_check = ($_FILES['license_back']['error']);
+                    if ($file_check != 4) {
+                        $image_upload_folder = FCPATH . "assets/uploads/documents/";
+                        if (!file_exists($image_upload_folder)) {
+                            mkdir($image_upload_folder, DIR_WRITE_MODE, true);
+                        }
+                        $new_file_name = "license_back" . date("Ymdhms");
+                        $this->upload_config = array(
+                            'upload_path'   => $image_upload_folder,
+                            'file_name' => $new_file_name,
+                            'allowed_types' => 'jpg|jpeg|png',
+                            'max_size'      => 25000
+                        );
+                        $this->upload->initialize($this->upload_config);
+                        if (!$this->upload->do_upload($img4)) {
+                            $upload_error = $this->upload->display_errors();
+                            // echo json_encode($upload_error);
+                            echo $upload_error;
+                        } else {
+                            $file_info = $this->upload->data();
+                            $license_back = "assets/uploads/documents/" . $new_file_name . $file_info['file_ext'];
+                        }
+                    }
+
+                    $amount = $this->booking->selfCheckout($id, $dob, $aadhar_no, $driving_lience, $aadhar_front, $aadhar_back, $license_front, $license_back,$user_data[0]->id);
+                    $data_update = array(
+                        'payment_status' => 1,
+                        'order_status' => 1,
+                        'final_amount' => $amount,
+                    );
+                    $this->db->where('id', $id);
+                    $zapak = $this->db->update('tbl_booking', $data_update);
+                    $bookingdata = $this->db->get_where('tbl_booking', array('id' => $id))->result();
+                    //---- car status update ----
+                    $data_update2 = array('is_available' => 0,);
+                    $this->db->where('id', $bookingdata[0]->car_id);
+                    $zapak = $this->db->update('tbl_selfdrive', $data_update2);
+                    $data = [];
+                    $data = array('booking_id' => $bookingdata[0]->id, 'amount' => $bookingdata[0]->final_amount);
                     $res = array(
-                        'message' => 'Age is less than 18 years!',
+                        'message' => 'Booking Success!',
+                        'status' => 201,
+                        'data' => $data
+                    );
+                    echo json_encode($res);
+                } else {
+                    $res = array(
+                        'message' => 'Permission Denied!',
                         'status' => 201
                     );
                     echo json_encode($res);
                 }
-                //----------------aadhar front ----------
-                $img1 = 'aadhar_front';
-                $file_check = ($_FILES['aadhar_front']['error']);
-                if ($file_check != 4) {
-                    $image_upload_folder = FCPATH . "assets/uploads/documents/";
-                    if (!file_exists($image_upload_folder)) {
-                        mkdir($image_upload_folder, DIR_WRITE_MODE, true);
-                    }
-                    $new_file_name = "aadhar_front" . date("Ymdhms");
-                    $this->upload_config = array(
-                        'upload_path'   => $image_upload_folder,
-                        'file_name' => $new_file_name,
-                        'allowed_types' => 'jpg|jpeg|png',
-                        'max_size'      => 25000
-                    );
-                    $this->upload->initialize($this->upload_config);
-                    if (!$this->upload->do_upload($img1)) {
-                        $upload_error = $this->upload->display_errors();
-                        // echo json_encode($upload_error);
-                        echo $upload_error;
-                    } else {
-                        $file_info = $this->upload->data();
-                        $aadhar_front = "assets/uploads/documents/" . $new_file_name . $file_info['file_ext'];
-                    }
-                }
-                //----------------aadhar back ----------
-                $img2 = 'aadhar_back';
-                $file_check = ($_FILES['aadhar_front']['error']);
-                if ($file_check != 4) {
-                    $image_upload_folder = FCPATH . "assets/uploads/documents/";
-                    if (!file_exists($image_upload_folder)) {
-                        mkdir($image_upload_folder, DIR_WRITE_MODE, true);
-                    }
-                    $new_file_name = "aadhar_back" . date("Ymdhms");
-                    $this->upload_config = array(
-                        'upload_path'   => $image_upload_folder,
-                        'file_name' => $new_file_name,
-                        'allowed_types' => 'jpg|jpeg|png',
-                        'max_size'      => 25000
-                    );
-                    $this->upload->initialize($this->upload_config);
-                    if (!$this->upload->do_upload($img2)) {
-                        $upload_error = $this->upload->display_errors();
-                        // echo json_encode($upload_error);
-                        echo $upload_error;
-                    } else {
-                        $file_info = $this->upload->data();
-                        $aadhar_back = "assets/uploads/documents/" . $new_file_name . $file_info['file_ext'];
-                    }
-                }
-                //----------------license_front ----------
-                $img3 = 'license_front';
-                $file_check = ($_FILES['aadhar_front']['error']);
-                if ($file_check != 4) {
-                    $image_upload_folder = FCPATH . "assets/uploads/documents/";
-                    if (!file_exists($image_upload_folder)) {
-                        mkdir($image_upload_folder, DIR_WRITE_MODE, true);
-                    }
-                    $new_file_name = "license_front" . date("Ymdhms");
-                    $this->upload_config = array(
-                        'upload_path'   => $image_upload_folder,
-                        'file_name' => $new_file_name,
-                        'allowed_types' => 'jpg|jpeg|png',
-                        'max_size'      => 25000
-                    );
-                    $this->upload->initialize($this->upload_config);
-                    if (!$this->upload->do_upload($img3)) {
-                        $upload_error = $this->upload->display_errors();
-                        // echo json_encode($upload_error);
-                        echo $upload_error;
-                    } else {
-                        $file_info = $this->upload->data();
-                        $license_front = "assets/uploads/documents/" . $new_file_name . $file_info['file_ext'];
-                    }
-                }
-                //----------------license_back ----------
-                $img4 = 'license_back';
-                $file_check = ($_FILES['aadhar_front']['error']);
-                if ($file_check != 4) {
-                    $image_upload_folder = FCPATH . "assets/uploads/documents/";
-                    if (!file_exists($image_upload_folder)) {
-                        mkdir($image_upload_folder, DIR_WRITE_MODE, true);
-                    }
-                    $new_file_name = "license_back" . date("Ymdhms");
-                    $this->upload_config = array(
-                        'upload_path'   => $image_upload_folder,
-                        'file_name' => $new_file_name,
-                        'allowed_types' => 'jpg|jpeg|png',
-                        'max_size'      => 25000
-                    );
-                    $this->upload->initialize($this->upload_config);
-                    if (!$this->upload->do_upload($img4)) {
-                        $upload_error = $this->upload->display_errors();
-                        // echo json_encode($upload_error);
-                        echo $upload_error;
-                    } else {
-                        $file_info = $this->upload->data();
-                        $license_back = "assets/uploads/documents/" . $new_file_name . $file_info['file_ext'];
-                    }
-                }
-                $amount = $this->booking->selfCheckout($id, $dob, $aadhar_no, $driving_lience, $aadhar_front, $aadhar_back, $license_front, $license_back);
-                $data_update = array(
-                'payment_status'=>1,
-                'order_status'=>1,
-                'final_amount'=>$amount,
-                    );
-                    $this->db->where('id', $id);
-                    $zapak=$this->db->update('tbl_booking', $data_update);
-                    $bookingdata = $this->db->get_where('tbl_booking', array('id'=> $id))->result();
-                    //---- car status update ----
-                    $data_update2 = array('is_available'=>0,);
-                    $this->db->where('id', $bookingdata[0]->car_id);
-                    $zapak=$this->db->update('tbl_selfdrive', $data_update2);
-                    $data=[];
-                    $data = array('booking_id'=>$bookingdata[0]->id,'amount'=>$bookingdata[0]->final_amount);
-                    $res = array(
-                        'message' => 'Booking Success!',
-                        'status' => 201,
-                        'data'=>$data
-                    );
-                    echo json_encode($res);
             } else {
                 $res = array(
                     'message' => validation_errors(),
