@@ -548,7 +548,7 @@ class Apicontroller extends CI_Controller
             }
             $data = [];
             $data = array(
-                'city_id' => $self[0]->city_id,
+                'city_id' => $car[0]->city_id,
                 'car_id' => $car[0]->id,
                 'brand_name' => $car[0]->brand_name,
                 'car_name' => $car[0]->car_name,
