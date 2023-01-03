@@ -593,7 +593,7 @@ class Apicontroller extends CI_Controller
         if (!empty($user_data)) {
             $booking_data = $this->db->get_where('tbl_booking', array('id' => $id))->result();
             $car = $this->db->get_where('tbl_outstation', array('id' => $booking_data[0]->car_id))->result();
-            $city = $this->db->get_where('tbl_cities', array('id' => $booking_data[0][0]->city_id))->result();
+            $city = $this->db->get_where('tbl_cities', array('id' => $booking_data[0]->city_id))->result();
             //------ seating  ---
             if ($car[0]->seatting == 1) {
                 $seating = '4 Seates';
