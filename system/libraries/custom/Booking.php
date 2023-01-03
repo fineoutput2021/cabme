@@ -299,7 +299,7 @@ class CI_Booking
       'final_amount' => $final_amount,
       'rsda' => $rsda,
       'kilometer_type' => $receive['type_id'],
-      'id' => $last_id
+      'id' => base64_encode($last_id)
     );
     $respone['status'] = true;
     $respone['message'] = "Success";

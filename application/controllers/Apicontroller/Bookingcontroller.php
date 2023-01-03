@@ -113,6 +113,7 @@ class Bookingcontroller extends CI_Controller
                             'status' => 201
                         );
                         echo json_encode($res);
+                        return;
                     }
                     //----------------aadhar front ----------
                     $img1 = 'aadhar_front';
