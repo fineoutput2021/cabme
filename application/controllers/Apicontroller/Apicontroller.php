@@ -567,8 +567,9 @@ class Apicontroller extends CI_Controller
                 'end_date' => $booking_data[0]->end_date,
                 'end_time' => $booking_data[0]->end_time,
                 'duration' => $booking_data[0]->duration,
+                'promo_discount' => $booking_data[0]->promo_discount,
                 'city_name' => $city[0]->name,
-                'id' => $id
+                'id' => "Booking Id: ".$id
             );
             $res = array(
                 'message' => 'Success!',
