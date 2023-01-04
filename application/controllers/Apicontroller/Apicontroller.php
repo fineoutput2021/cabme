@@ -173,7 +173,6 @@ class Apicontroller extends CI_Controller
                 if (empty($brand)) {
                     $brand = '';
                 }
-                print_r($brand);die();
                 if (!empty($filter["fuel"])) {
                     $fuel = $filter["fuel"];
                 } else {
@@ -677,63 +676,64 @@ class Apicontroller extends CI_Controller
     public function  Filter_content()
     {
         $brand = [];
-        $brand =array('Maruti Suzuki','Mahindra','Chevrolet','Tata' );
-        print_r($brand);die();
+        $brand = array('Maruti Suzuki', 'Mahindra', 'Chevrolet', 'Tata');
+        print_r($brand);
+        die();
         // $data2 =array('brand'=>$data);
         //------ brand ------
         $this->db->select('*');
         $this->db->group_by('brand_name');
         $this->db->from(' tbl_selfdrive');
-        $this->db->where('is_active',1);
+        $this->db->where('is_active', 1);
         $sb_data = $this->db->get();
-        foreach($sb_data->result() as $s){
-        $brand[] =array('name' => $s->brand_name,'active'=>0);
+        foreach ($sb_data->result() as $s) {
+            $brand[] = array('name' => $s->brand_name, 'active' => 0);
         }
         //------- fuel type --------
         $this->db->select('*');
         $this->db->group_by('fule_type');
         $this->db->from(' tbl_selfdrive');
-        $this->db->where('is_active',1);
+        $this->db->where('is_active', 1);
         $sft_data = $this->db->get();
-        foreach($sft_data->result() as $ft){
-            if($ft->fule_type==1){
-                $f='Petrol';
-            }else{
-                $f='Diesel';
+        foreach ($sft_data->result() as $ft) {
+            if ($ft->fule_type == 1) {
+                $f = 'Petrol';
+            } else {
+                $f = 'Diesel';
             }
-        $fuel_type[] =array('name' => $f,'active'=>0);
+            $fuel_type[] = array('name' => $f, 'active' => 0);
         }
         //------- transmission --------
         $this->db->select('*');
         $this->db->group_by('transmission');
         $this->db->from(' tbl_selfdrive');
-        $this->db->where('is_active',1);
+        $this->db->where('is_active', 1);
         $st_data = $this->db->get();
-        foreach($st_data->result() as $st){
-            if($st->transmission==1){
-                $f='Manual';
-            }else{
-                $f='Automatic';
+        foreach ($st_data->result() as $st) {
+            if ($st->transmission == 1) {
+                $f = 'Manual';
+            } else {
+                $f = 'Automatic';
             }
-        $transmission[] =array('name' => $f,'active'=>0);
+            $transmission[] = array('name' => $f, 'active' => 0);
         }
         //------- seating --------
         $this->db->select('*');
         $this->db->group_by('seatting');
         $this->db->from(' tbl_selfdrive');
-        $this->db->where('is_active',1);
+        $this->db->where('is_active', 1);
         $ss_data = $this->db->get();
-        foreach($ss_data->result() as $ss){
-            if($ss->seatting==1){
-                $f='5 Seater';
-            }else if($ss->seatting==2){
-                $f='7 Seater';
-            }else{
-                $f='9 Seater';
+        foreach ($ss_data->result() as $ss) {
+            if ($ss->seatting == 1) {
+                $f = '5 Seater';
+            } else if ($ss->seatting == 2) {
+                $f = '7 Seater';
+            } else {
+                $f = '9 Seater';
             }
-        $seating[] =array('name' => $f,'active'=>0);
+            $seating[] = array('name' => $f, 'active' => 0);
         }
-        $filter=array('brand'=>$brand,'fuel_type'=>$fuel_type,'transmission'=>$transmission,'seating'=>$seating);
+        $filter = array('brand' => $brand, 'fuel_type' => $fuel_type, 'transmission' => $transmission, 'seating' => $seating);
         $res = array(
             'message' => 'Success!',
             'status' => 201,
