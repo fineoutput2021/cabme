@@ -216,7 +216,7 @@ class Bookingcontroller extends CI_Controller
                         }
                     }
 
-                    $amount = $this->booking->selfCheckout($id, $dob, $aadhar_no, $driving_lience, $aadhar_front, $aadhar_back, $license_front, $license_back,$user_data[0]->id);
+                    $amount = $this->booking->selfCheckout($id, $dob, $aadhar_no, $driving_lience, $aadhar_front, $aadhar_back, $license_front, $license_back, $user_data[0]->id);
                     $data_update = array(
                         'payment_status' => 1,
                         'order_status' => 1,
@@ -351,6 +351,10 @@ class Bookingcontroller extends CI_Controller
                     $this->db->where('id', base64_decode($id));
                     $zapak = $this->db->update('tbl_booking', $data_update);
                     $bookingdata = $this->db->get_where('tbl_booking', array('id' => base64_decode($id)))->result();
+                    //---- car status update ----
+                    $data_update2 = array('is_available' => 0,);
+                    $this->db->where('id', $bookingdata[0]->car_id);
+                    $zapak = $this->db->update('tbl_outstation', $data_update2);
                     $data = array(
                         'booking_id' => $bookingdata[0]->id,
                         'amount' => $bookingdata[0]->final_amount,

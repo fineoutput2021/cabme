@@ -110,16 +110,16 @@ class CI_Booking
           'fuel_type' => $fuel_type,
           'transmission' => $transmission,
           'seating' => $seating,
-          'kilometer1' => round($self->kilometer1 * $days,2),
-          'price1' => round($self->price1 * $days,2),
-          'kilometer2' => round($self->kilometer2 * $days,2),
-          'price2' => round($self->price2 * $days,2),
-          'kilometer3' => round($self->kilometer3 * $days,2),
-          'price3' => round($self->price3 * $days,2),
+          'kilometer1' => round($self->kilometer1 * $days, 2),
+          'price1' => round($self->price1 * $days, 2),
+          'kilometer2' => round($self->kilometer2 * $days, 2),
+          'price2' => round($self->price2 * $days, 2),
+          'kilometer3' => round($self->kilometer3 * $days, 2),
+          'price3' => round($self->price3 * $days, 2),
           'extra_kilo' => $self->extra_kilo,
           'rsda' => $self->rsda,
-          'active'=>1,
-          'price'=>round($self->price1 * $days,2)
+          'active' => 1,
+          'price' => round($self->price1 * $days, 2)
         );
       }
     }
@@ -213,25 +213,25 @@ class CI_Booking
     //----- check kilometer plan ------
     $days = $receive['duration'] / 24;
     if ($receive['type_id'] == 1) {
-      $kilometer = $car_data[0]->kilometer1 * $days;
-      $kilometer_price = $car_data[0]->price1 * $days;
+      $kilometer = round($car_data[0]->kilometer1 * $days, 2);
+      $kilometer_price = round($car_data[0]->price1 * $days, 2);
     } elseif ($receive['type_id'] == 2) {
-      $kilometer = $car_data[0]->kilometer2 * $days;
-      $kilometer_price = $car_data[0]->price2 * $days;
+      $kilometer = round($car_data[0]->kilometer2 * $days, 2);
+      $kilometer_price = round($car_data[0]->price2 * $days, 2);
     } else {
-      $kilometer = $car_data[0]->kilometer3 * $days;
-      $kilometer_price = $car_data[0]->price3 * $days;
+      $kilometer = round($car_data[0]->kilometer3 * $days, 2);
+      $kilometer_price = round($car_data[0]->price3 * $days, 2);
     }
     //---- calculate total amount -------
     $rsda = $car_data[0]->rsda;
     $total = $kilometer_price;
     $final_amount = $total + $rsda;
     //------- insert into booking table --------
-    if(!empty($receive['search_id'])){
-      $search_id=$receive['search_id'];
-      }else{
-      $search_id='';
-      }
+    if (!empty($receive['search_id'])) {
+      $search_id = $receive['search_id'];
+    } else {
+      $search_id = '';
+    }
     $data_insert = array(
       'user_id' => $receive['user_id'],
       'booking_type' => 1,
@@ -287,12 +287,12 @@ class CI_Booking
       'fuel_type' => $fuel_type,
       'transmission' => $transmission,
       'seating' => $seating,
-      'kilometer1'=>$self[0]->kilometer1*$days,
-      'price1'=>$self[0]->price1*$days,
-      'kilometer2'=>$self[0]->kilometer2*$days,
-      'price2'=>$self[0]->price2*$days,
-      'kilometer3'=>$self[0]->kilometer3*$days,
-      'price3'=>$self[0]->price3*$days,
+      'kilometer1' => round($self[0]->kilometer1 * $days, 2),
+      'price1' => round($self[0]->price1 * $days, 2),
+      'kilometer2' => round($self[0]->kilometer2 * $days, 2),
+      'price2' => round($self[0]->price2 * $days, 2),
+      'kilometer3' => round($self[0]->kilometer3 * $days, 2),
+      'price3' => round($self[0]->price3 * $days, 2),
       'extra_kilo' => $self[0]->extra_kilo,
       'kilometer' => $kilometer,
       'total_amount' => $total,
@@ -309,9 +309,8 @@ class CI_Booking
     return $respone;
   }
   //========= selfdrive booking checkout========
-  public function selfCheckout($id, $dob, $aadhar_no, $driving_lience, $aadhar_front, $aadhar_back, $license_front, $license_back,$user_id)
+  public function selfCheckout($id, $dob, $aadhar_no, $driving_lience, $aadhar_front, $aadhar_back, $license_front, $license_back, $user_id)
   {
-    
     //-------- update user data ------
     $user_update = array(
       'dob' => $dob,
@@ -463,10 +462,10 @@ class CI_Booking
     $kilometer_price = $car_data[0]->per_kilometre;
     $total = $car_data[0]->min_booking_amt;
     $final_amount = $mini_booking;
-    if(!empty($receive['search_id'])){
-    $search_id=$receive['search_id'];
-    }else{
-    $search_id='';
+    if (!empty($receive['search_id'])) {
+      $search_id = $receive['search_id'];
+    } else {
+      $search_id = '';
     }
     //------- insert into booking table --------
     $data_insert = array(
@@ -507,12 +506,12 @@ class CI_Booking
       'car_id' => $car[0]->id,
       'brand_name' => $car[0]->brand_name,
       'car_name' => $car[0]->car_name,
-      'photo' => base_url().$car[0]->photo,
+      'photo' => base_url() . $car[0]->photo,
       'seating' => $seating,
       'per_kilometer' => $car[0]->per_kilometre,
       'location' => $car[0]->location,
       'min_booking_amt' => $car[0]->min_booking_amt,
-      'id'=>base64_encode($last_id)
+      'id' => base64_encode($last_id)
     );
     $respone['status'] = true;
     $respone['message'] = "Success";
