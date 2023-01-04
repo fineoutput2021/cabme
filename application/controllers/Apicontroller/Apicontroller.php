@@ -143,7 +143,7 @@ class Apicontroller extends CI_Controller
             $this->form_validation->set_rules('end_time', 'end_time', 'required|xss_clean|trim');
             $this->form_validation->set_rules('duration', 'duration', 'required|xss_clean|trim');
             $this->form_validation->set_rules('sort', 'sort', 'xss_clean|trim');
-            $this->form_validation->set_rules('filter[]', 'filter', 'xss_clean|trim');
+            $this->form_validation->set_rules('brand[]', 'brand', 'xss_clean|trim');
             if ($this->form_validation->run() == true) {
                 $city_id = $this->input->post('city_id');
                 $start_date = $this->input->post('start_date');
@@ -152,7 +152,7 @@ class Apicontroller extends CI_Controller
                 $end_time = $this->input->post('end_time');
                 $duration = $this->input->post('duration');
                 $sort = $this->input->post('sort');
-                $filter = $this->input->post('filter[]');
+                $brand = $this->input->post('brand[]');
                 //----- start check date is past ----------
                 date_default_timezone_set('Asia/Kolkata');
                 $newdate = new DateTime($start_date);
@@ -170,11 +170,10 @@ class Apicontroller extends CI_Controller
                     echo json_encode($res);
                     return;
                 }
-                if (!empty($filter["brand"])) {
-                    $brand = $filter["brand"];
-                } else {
+                if (empty($brand)) {
                     $brand = '';
                 }
+                print_r($brand);die();
                 if (!empty($filter["fuel"])) {
                     $fuel = $filter["fuel"];
                 } else {
@@ -677,7 +676,10 @@ class Apicontroller extends CI_Controller
     }
     public function  Filter_content()
     {
-        $filter = [];
+        $brand = [];
+        $brand =array('Maruti Suzuki','Mahindra','Chevrolet','Tata' );
+        print_r($brand);die();
+        // $data2 =array('brand'=>$data);
         //------ brand ------
         $this->db->select('*');
         $this->db->group_by('brand_name');
