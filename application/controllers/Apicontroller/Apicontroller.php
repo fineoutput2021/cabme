@@ -173,6 +173,10 @@ class Apicontroller extends CI_Controller
                 if (empty($brand)) {
                     $brand = '';
                 }
+                foreach ($brand as $brd) {
+                  echo $brd;echo "hi";
+                  }
+                  die();
                 if (!empty($filter["fuel"])) {
                     $fuel = $filter["fuel"];
                 } else {
