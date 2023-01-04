@@ -224,7 +224,10 @@ class CI_Login
                                 'lname' => $user_data[0]->l_name,
                                 'email' => $user_data[0]->email,
                                 'phone' => $user_data[0]->phone,
-                                'auth' => $user_data[0]->auth,
+                                'dob' => $user_data[0]->dob,
+                                'phone' => $user_data[0]->phone,
+                                'aadhar_no' => $user_data[0]->aadhar_no,
+                                'driving_lience' => $user_data[0]->driving_lience,
                             );
                             $respone['status'] = true;
                             $respone['message'] = 'Login Successfully';
