@@ -173,6 +173,7 @@ class Apicontroller extends CI_Controller
                 if (empty($brand)) {
                     $brand = '';
                 }
+                print_r($brand);die();
                 foreach ($brand as $brd) {
                   echo $brd;echo "hi";
                   }
