@@ -244,7 +244,7 @@ class Apicontroller extends CI_Controller
             $this->form_validation->set_rules('duration', 'duration', 'required|xss_clean|trim');
             $this->form_validation->set_rules('round_type', 'round_type', 'required|xss_clean|trim');
             $this->form_validation->set_rules('sort', 'sort', 'xss_clean|trim');
-            $this->form_validation->set_rules('filter[]', 'filter', 'xss_clean|trim');
+            $this->form_validation->set_rules('seating', 'seating', 'xss_clean|trim');
             if ($this->form_validation->run() == true) {
                 $city_id = $this->input->post('city_id');
                 $start_date = $this->input->post('start_date');
@@ -254,7 +254,7 @@ class Apicontroller extends CI_Controller
                 $duration = $this->input->post('duration');
                 $round_type = $this->input->post('round_type');
                 $sort = $this->input->post('sort');
-                $filter = $this->input->post('filter[]');
+                $seating = $this->input->post('seating');
                 //----- start check date is past ----------
                 date_default_timezone_set('Asia/Kolkata');
                 $newdate = new DateTime($start_date);
@@ -272,10 +272,10 @@ class Apicontroller extends CI_Controller
                     echo json_encode($res);
                     return;
                 }
-                if (!empty($filter["seating"])) {
-                    $seating = $filter["seating"];
-                } else {
+                if (empty($seating)) {
                     $seating = '';
+                } else {
+                    $seating = explode(",", $seating);
                 }
                 // print_r($filter['brand']);die();
                 $send = array(
