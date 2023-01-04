@@ -143,7 +143,7 @@ class Apicontroller extends CI_Controller
             $this->form_validation->set_rules('end_time', 'end_time', 'required|xss_clean|trim');
             $this->form_validation->set_rules('duration', 'duration', 'required|xss_clean|trim');
             $this->form_validation->set_rules('sort', 'sort', 'xss_clean|trim');
-            $this->form_validation->set_rules('brand[]', 'brand', 'xss_clean|trim');
+            $this->form_validation->set_rules('brand', 'brand', 'xss_clean|trim');
             if ($this->form_validation->run() == true) {
                 $city_id = $this->input->post('city_id');
                 $start_date = $this->input->post('start_date');
@@ -152,7 +152,7 @@ class Apicontroller extends CI_Controller
                 $end_time = $this->input->post('end_time');
                 $duration = $this->input->post('duration');
                 $sort = $this->input->post('sort');
-                $brand = $this->input->post('brand[]');
+                $brand = $this->input->post('brand');
                 //----- start check date is past ----------
                 date_default_timezone_set('Asia/Kolkata');
                 $newdate = new DateTime($start_date);
