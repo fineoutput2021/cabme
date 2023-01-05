@@ -84,7 +84,7 @@ class CI_Login
                     if (!empty($last_id)) { // check status is updated or not
                         $temp_data = $this->CI->db->get_where('tbl_user_temp', array('phone' => $otpData[0]->phone))->result();
                         //------ insert user data from temp to user table -----------
-                        $auth =bin2hex(random_bytes(18));
+                        $auth = bin2hex(random_bytes(18));
                         $data_insert = array(
                             'f_name' => $temp_data[0]->fname,
                             'l_name' => $temp_data[0]->lname,
@@ -102,7 +102,7 @@ class CI_Login
                         $this->CI->session->set_userdata('phone', $phone);
                         $this->CI->session->set_userdata('email', $temp_data[0]->email);
                         $this->CI->session->set_userdata('user_id', $last_id2);
-                        $data =array(
+                        $data = array(
                             'fname' => $temp_data[0]->fname,
                             'lname' => $temp_data[0]->lname,
                             'email' => $temp_data[0]->email,
@@ -219,11 +219,22 @@ class CI_Login
                             $this->CI->session->set_userdata('phone', $phone);
                             $this->CI->session->set_userdata('email', $user_data[0]->email);
                             $this->CI->session->set_userdata('user_id', $user_data[0]->id);
-                            $data =array(
+                            if (empty($user_data[0]->auth)) {
+                                $auth = bin2hex(random_bytes(18));
+                                $data_update = array(
+                                    'auth' => $auth,
+                                );
+                                $this->db->where('id', $user_data[0]->id);
+                                $zapak = $this->db->update('tbl_users$', $data_update);
+                            } else {
+                                $auth = $user_data[0]->auth;
+                            }
+                            $data = array(
                                 'fname' => $user_data[0]->f_name,
                                 'lname' => $user_data[0]->l_name,
                                 'email' => $user_data[0]->email,
                                 'phone' => $user_data[0]->phone,
+                                'auth' => $auth,
                                 'dob' => $user_data[0]->dob,
                                 'phone' => $user_data[0]->phone,
                                 'aadhar_no' => $user_data[0]->aadhar_no,
