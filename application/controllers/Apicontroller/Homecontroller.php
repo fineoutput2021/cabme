@@ -173,7 +173,6 @@ class Homecontroller extends CI_Controller
                     $res = array(
                         'message' => "Profile updated successfully!",
                         'status' => 200,
-                        'data' => $data
                     );
                     echo json_encode($res);
                 } else {
