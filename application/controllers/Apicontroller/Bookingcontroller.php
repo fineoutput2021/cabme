@@ -475,7 +475,7 @@ class Bookingcontroller extends CI_Controller
 
             if ($this->form_validation->run() == true) {
                 $id = $this->input->post('id');
-                $response = $this->input->post('response');
+                $response = json_decode($this->input->post('response'));
                 $user_data = $this->db->get_where('tbl_users', array('is_active' => 1, 'auth' => $auth))->result();
                 if (!empty($user_data)) {
                     $mihpayid = $response['id'];
