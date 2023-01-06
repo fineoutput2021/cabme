@@ -339,10 +339,10 @@ class Bookingcontroller extends CI_Controller
         $auth = $header['Authorization'];
         if ($this->input->post()) {
             $this->form_validation->set_rules('id', 'id', 'required|xss_clean|trim');
-            $this->form_validation->set_rules('response', 'response', 'required|xss_clean|trim');
+            $this->form_validation->set_rules('response[]', 'response', 'required|xss_clean|trim');
             if ($this->form_validation->run() == true) {
                 $id = $this->input->post('id');
-                $response = $this->input->post('response');
+                $response = $this->input->post('response[]');
                 $user_data = $this->db->get_where('tbl_users', array('is_active' => 1, 'auth' => $auth))->result();
                 if (!empty($user_data)) {
                     $mihpayid = $response['mihpayid'];
