@@ -478,10 +478,10 @@ class Bookingcontroller extends CI_Controller
                 $response = json_decode($this->input->post('response'));
                 $user_data = $this->db->get_where('tbl_users', array('is_active' => 1, 'auth' => $auth))->result();
                 if (!empty($user_data)) {
-                    $mihpayid = $response['id'];
-                    $status = $response['status'];
-                    $amount = $response['amount'];
-                    $txnid = $response['txnid'];
+                    $mihpayid = $response->id;
+                    $status = $response->status;
+                    $amount = $response->amount;
+                    $txnid = $response->txnid;
                     if ($status == 'success') {
                         $data_update = array(
                             'mihpayid' => $mihpayid,
