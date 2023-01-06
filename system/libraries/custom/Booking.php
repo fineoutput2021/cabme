@@ -225,7 +225,7 @@ class CI_Booking
     //---- calculate total amount -------
     $rsda = $car_data[0]->rsda;
     $total = $kilometer_price;
-    $final_amount = $total + $rsda;
+    $final_amount = round($total + $rsda);
     //------- insert into booking table --------
     if (!empty($receive['search_id'])) {
       $search_id = $receive['search_id'];
