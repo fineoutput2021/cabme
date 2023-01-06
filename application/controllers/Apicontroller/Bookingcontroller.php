@@ -353,6 +353,7 @@ class Bookingcontroller extends CI_Controller
                         $data_update = array(
                             'mihpayid' => $mihpayid,
                             'online_paid' => $amount,
+                            'txnid' => $txnid,
                             'payment_status' => 1,
                             'order_status' => 1,
                             'booking_from' => 'Application',
@@ -470,27 +471,54 @@ class Bookingcontroller extends CI_Controller
         $auth = $header['Authorization'];
         if ($this->input->post()) {
             $this->form_validation->set_rules('id', 'id', 'required|xss_clean|trim');
+            $this->form_validation->set_rules('response[]', 'response', 'required|xss_clean|trim');
+
             if ($this->form_validation->run() == true) {
                 $id = $this->input->post('id');
+                $response = $this->input->post('response[]');
                 $user_data = $this->db->get_where('tbl_users', array('is_active' => 1, 'auth' => $auth))->result();
                 if (!empty($user_data)) {
-                    $data_update = array(
-                        'payment_status' => 1,
-                        'order_status' => 1,
-                    );
-                    $this->db->where('id', base64_decode($id));
-                    $zapak = $this->db->update('tbl_booking', $data_update);
-                    $bookingdata = $this->db->get_where('tbl_booking', array('id' => base64_decode($id)))->result();
-                    $data = array(
-                        'booking_id' => $bookingdata[0]->id,
-                        'amount' => $bookingdata[0]->final_amount,
-                    );
-                    $res = array(
-                        'message' => 'Booking Success!',
-                        'status' => 200,
-                        'data' => $data
-                    );
-                    echo json_encode($res);
+                    $mihpayid = $response['mihpayid'];
+                    $status = $response['status'];
+                    $amount = $response['amount'];
+                    $txnid = $response['txnid'];
+                    if ($status == 'success') {
+                        $data_update = array(
+                            'mihpayid' => $mihpayid,
+                            'online_paid' => $amount,
+                            'txnid' => $txnid,
+                            'payment_status' => 1,
+                            'order_status' => 1,
+                            'booking_from' => 'Application',
+                            'payu_response' => json_encode($response),
+                        );
+                        $this->db->where('id', base64_decode($id));
+                        $zapak = $this->db->update('tbl_booking', $data_update);
+                        $bookingdata = $this->db->get_where('tbl_booking', array('id' => base64_decode($id)))->result();
+                        $bookingdata = $this->db->get_where('tbl_booking', array('id' => base64_decode($id)))->result();
+                        $data = array(
+                            'booking_id' => $bookingdata[0]->id,
+                            'amount' => $bookingdata[0]->final_amount,
+                        );
+                        $res = array(
+                            'message' => 'Booking Success!',
+                            'status' => 200,
+                            'data' => $data
+                        );
+                        echo json_encode($res);
+                    } else {
+                        $data_update = array(
+                            'booking_from' => 'Application',
+                            'payu_response' => json_encode($response),
+                        );
+                        $this->db->where('id', base64_decode($id));
+                        $zapak = $this->db->update('tbl_booking', $data_update);
+                        $res = array(
+                            'message' => 'Payment Failed!',
+                            'status' => 201
+                        );
+                        echo json_encode($res);
+                    }
                 } else {
                     $res = array(
                         'message' => 'Permission Denied!',
