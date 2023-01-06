@@ -218,19 +218,19 @@ class Bookingcontroller extends CI_Controller
                     $amount = $this->booking->selfCheckout($id, $dob, $aadhar_no, $driving_lience, $aadhar_front, $aadhar_back, $license_front, $license_back, $user_data[0]->id);
                     $mihpayid = $response->id;
                     $status = $response->status;
-                    $amount = $response->amount;
+                    $online_amount = $response->amount;
                     $txnid = $response->txnid;
                     if ($status == 'success') {
                         $data_update = array(
                             'mihpayid' => $mihpayid,
-                            'online_paid' => $amount,
+                            'online_paid' => $online_amount,
                             'txnid' => $txnid,
                             'payment_status' => 1,
                             'order_status' => 1,
                             'booking_from' => 'Application',
                             'payu_response' => json_encode($response),
                         );
-                        $this->db->where('id', base64_decode($id));
+                        $this->db->where('id', $id);
                         $zapak = $this->db->update('tbl_booking', $data_update);
                         $bookingdata = $this->db->get_where('tbl_booking', array('id' => $id))->result();
                         //---- car status update ----
