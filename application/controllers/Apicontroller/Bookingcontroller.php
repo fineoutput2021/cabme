@@ -91,13 +91,13 @@ class Bookingcontroller extends CI_Controller
             $this->form_validation->set_rules('dob', 'dob', 'required|xss_clean|trim');
             $this->form_validation->set_rules('aadhar_no', 'aadhar_no', 'required|xss_clean|trim');
             $this->form_validation->set_rules('driving_lience', 'driving_lience', 'required|xss_clean|trim');
-            // $this->form_validation->set_rules('agree', 'agree', 'required|xss_clean|trim');
+            $this->form_validation->set_rules('response', 'response', 'required|xss_clean|trim');
             if ($this->form_validation->run() == true) {
                 $id = base64_decode($this->input->post('id'));
                 $dob = $this->input->post('dob');
                 $aadhar_no = $this->input->post('aadhar_no');
                 $driving_lience = $this->input->post('driving_lience');
-                // $agree = $this->input->post('agree');
+                $response = json_decode($this->input->post('response'));
                 date_default_timezone_set("Asia/Calcutta");
                 $cur_date = date("Y-m-d H:i:s");
                 $this->load->library('upload');
@@ -216,26 +216,48 @@ class Bookingcontroller extends CI_Controller
                         }
                     }
                     $amount = $this->booking->selfCheckout($id, $dob, $aadhar_no, $driving_lience, $aadhar_front, $aadhar_back, $license_front, $license_back, $user_data[0]->id);
-                    $data_update = array(
-                        'payment_status' => 1,
-                        'order_status' => 1,
-                        'final_amount' => $amount,
-                    );
-                    $this->db->where('id', $id);
-                    $zapak = $this->db->update('tbl_booking', $data_update);
-                    $bookingdata = $this->db->get_where('tbl_booking', array('id' => $id))->result();
-                    //---- car status update ----
-                    $data_update2 = array('is_available' => 0,);
-                    $this->db->where('id', $bookingdata[0]->car_id);
-                    $zapak = $this->db->update('tbl_selfdrive', $data_update2);
-                    $data = [];
-                    $data = array('booking_id' => $bookingdata[0]->id, 'amount' => $bookingdata[0]->final_amount);
-                    $res = array(
-                        'message' => 'Booking Success!',
-                        'status' => 200,
-                        'data' => $data
-                    );
-                    echo json_encode($res);
+                    $mihpayid = $response->id;
+                    $status = $response->status;
+                    $amount = $response->amount;
+                    $txnid = $response->txnid;
+                    if ($status == 'success') {
+                        $data_update = array(
+                            'mihpayid' => $mihpayid,
+                            'online_paid' => $amount,
+                            'txnid' => $txnid,
+                            'payment_status' => 1,
+                            'order_status' => 1,
+                            'booking_from' => 'Application',
+                            'payu_response' => json_encode($response),
+                        );
+                        $this->db->where('id', base64_decode($id));
+                        $zapak = $this->db->update('tbl_booking', $data_update);
+                        $bookingdata = $this->db->get_where('tbl_booking', array('id' => $id))->result();
+                        //---- car status update ----
+                        $data_update2 = array('is_available' => 0,);
+                        $this->db->where('id', $bookingdata[0]->car_id);
+                        $zapak = $this->db->update('tbl_selfdrive', $data_update2);
+                        $data = [];
+                        $data = array('booking_id' => $bookingdata[0]->id, 'amount' => $bookingdata[0]->final_amount);
+                        $res = array(
+                            'message' => 'Booking Success!',
+                            'status' => 200,
+                            'data' => $data
+                        );
+                        echo json_encode($res);
+                    } else {
+                        $data_update = array(
+                            'booking_from' => 'Application',
+                            'payu_response' => json_encode($response),
+                        );
+                        $this->db->where('id', base64_decode($id));
+                        $zapak = $this->db->update('tbl_booking', $data_update);
+                        $res = array(
+                            'message' => 'Payment Failed!',
+                            'status' => 201
+                        );
+                        echo json_encode($res);
+                    }
                 } else {
                     $res = array(
                         'message' => 'Permission Denied!',
@@ -339,16 +361,16 @@ class Bookingcontroller extends CI_Controller
         $auth = $header['Authorization'];
         if ($this->input->post()) {
             $this->form_validation->set_rules('id', 'id', 'required|xss_clean|trim');
-            $this->form_validation->set_rules('response[]', 'response', 'required|xss_clean|trim');
+            $this->form_validation->set_rules('response', 'response', 'required|xss_clean|trim');
             if ($this->form_validation->run() == true) {
                 $id = $this->input->post('id');
-                $response = $this->input->post('response[]');
+                $response = json_decode($this->input->post('response'));
                 $user_data = $this->db->get_where('tbl_users', array('is_active' => 1, 'auth' => $auth))->result();
                 if (!empty($user_data)) {
-                    $mihpayid = $response['mihpayid'];
-                    $status = $response['status'];
-                    $amount = $response['amount'];
-                    $txnid = $response['txnid'];
+                    $mihpayid = $response->id;
+                    $status = $response->status;
+                    $amount = $response->amount;
+                    $txnid = $response->txnid;
                     if ($status == 'success') {
                         $data_update = array(
                             'mihpayid' => $mihpayid,
@@ -472,7 +494,6 @@ class Bookingcontroller extends CI_Controller
         if ($this->input->post()) {
             $this->form_validation->set_rules('id', 'id', 'required|xss_clean|trim');
             $this->form_validation->set_rules('response', 'response', 'required|xss_clean|trim');
-
             if ($this->form_validation->run() == true) {
                 $id = $this->input->post('id');
                 $response = json_decode($this->input->post('response'));
