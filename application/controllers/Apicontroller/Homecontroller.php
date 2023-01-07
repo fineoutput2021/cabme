@@ -171,7 +171,7 @@ class Homecontroller extends CI_Controller
                     $this->db->where('id', $user_data[0]->id);
                     $zapak2 = $this->db->update('tbl_users', $update);
                     $res = array(
-                        'message' => "Profile updated successfully!",
+                        'message' => "Profile Updated Successfully!",
                         'status' => 200,
                     );
                     echo json_encode($res);

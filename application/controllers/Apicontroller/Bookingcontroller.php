@@ -116,6 +116,7 @@ class Bookingcontroller extends CI_Controller
                         return;
                     }
                     //----------------aadhar front ----------
+                    $aadhar_front='';
                     $img1 = 'aadhar_front';
                     $file_check = ($_FILES['aadhar_front']['error']);
                     if ($file_check != 4) {
@@ -127,20 +128,21 @@ class Bookingcontroller extends CI_Controller
                         $this->upload_config = array(
                             'upload_path'   => $image_upload_folder,
                             'file_name' => $new_file_name,
-                            'allowed_types' => 'jpg|jpeg|png',
+                            'allowed_types' => '*',
                             'max_size'      => 25000
                         );
                         $this->upload->initialize($this->upload_config);
                         if (!$this->upload->do_upload($img1)) {
                             $upload_error = $this->upload->display_errors();
                             // echo json_encode($upload_error);
-                            echo $upload_error;
+                            // echo $upload_error;
                         } else {
                             $file_info = $this->upload->data();
                             $aadhar_front = "assets/uploads/documents/" . $new_file_name . $file_info['file_ext'];
                         }
                     }
                     //----------------aadhar back ----------
+                    $aadhar_back='';
                     $img2 = 'aadhar_back';
                     $file_check = ($_FILES['aadhar_back']['error']);
                     if ($file_check != 4) {
@@ -152,21 +154,22 @@ class Bookingcontroller extends CI_Controller
                         $this->upload_config = array(
                             'upload_path'   => $image_upload_folder,
                             'file_name' => $new_file_name,
-                            'allowed_types' => 'jpg|jpeg|png',
+                            'allowed_types' => '*',
                             'max_size'      => 25000
                         );
                         $this->upload->initialize($this->upload_config);
                         if (!$this->upload->do_upload($img2)) {
                             $upload_error = $this->upload->display_errors();
                             // echo json_encode($upload_error);
-                            echo $upload_error;
+                            // echo $upload_error;
                         } else {
                             $file_info = $this->upload->data();
                             $aadhar_back = "assets/uploads/documents/" . $new_file_name . $file_info['file_ext'];
                         }
                     }
                     //----------------license_front ----------
-                    $img3 = 'license_front';
+                    $license_front='';
+                    $img3 = 'license_front';                   
                     $file_check = ($_FILES['license_front']['error']);
                     if ($file_check != 4) {
                         $image_upload_folder = FCPATH . "assets/uploads/documents/";
@@ -177,20 +180,21 @@ class Bookingcontroller extends CI_Controller
                         $this->upload_config = array(
                             'upload_path'   => $image_upload_folder,
                             'file_name' => $new_file_name,
-                            'allowed_types' => 'jpg|jpeg|png',
+                            'allowed_types' => '*',
                             'max_size'      => 25000
                         );
                         $this->upload->initialize($this->upload_config);
                         if (!$this->upload->do_upload($img3)) {
                             $upload_error = $this->upload->display_errors();
                             // echo json_encode($upload_error);
-                            echo $upload_error;
+                            // echo $upload_error;
                         } else {
                             $file_info = $this->upload->data();
                             $license_front = "assets/uploads/documents/" . $new_file_name . $file_info['file_ext'];
                         }
                     }
                     //----------------license_back ----------
+                    $license_back='';
                     $img4 = 'license_back';
                     $file_check = ($_FILES['license_back']['error']);
                     if ($file_check != 4) {
@@ -202,14 +206,14 @@ class Bookingcontroller extends CI_Controller
                         $this->upload_config = array(
                             'upload_path'   => $image_upload_folder,
                             'file_name' => $new_file_name,
-                            'allowed_types' => 'jpg|jpeg|png',
+                            'allowed_types' => '*',
                             'max_size'      => 25000
                         );
                         $this->upload->initialize($this->upload_config);
                         if (!$this->upload->do_upload($img4)) {
                             $upload_error = $this->upload->display_errors();
                             // echo json_encode($upload_error);
-                            echo $upload_error;
+                            // echo $upload_error;
                         } else {
                             $file_info = $this->upload->data();
                             $license_back = "assets/uploads/documents/" . $new_file_name . $file_info['file_ext'];

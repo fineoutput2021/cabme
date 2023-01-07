@@ -225,7 +225,7 @@ class CI_Booking
     //---- calculate total amount -------
     $rsda = $car_data[0]->rsda;
     $total = $kilometer_price;
-    $final_amount = round($total + $rsda,2);
+    $final_amount = round($total + $rsda, 2);
     //------- insert into booking table --------
     if (!empty($receive['search_id'])) {
       $search_id = $receive['search_id'];
@@ -464,8 +464,13 @@ class CI_Booking
     $final_amount = $mini_booking;
     if (!empty($receive['search_id'])) {
       $search_id = $receive['search_id'];
+      $search_data = $this->CI->db->get_where('tbl_search', array('id' => $receive['search_id']))->result();
+      $pick_location = $search_data[0]->pick_location;
+      $drop_location = $search_data[0]->drop_location;
     } else {
       $search_id = '';
+      $pick_location = $receive['pick_location'];
+      $drop_location = $receive['drop_location'];
     }
     //------- insert into booking table --------
     $data_insert = array(
@@ -483,8 +488,8 @@ class CI_Booking
       'duration' => $receive['duration'],
       'round_type' => $receive['round_type'],
       'car_id' => $receive['car_id'],
-      'pick_location' => $receive['pick_location'],
-      'drop_location' => $receive['drop_location'],
+      'pick_location' => $pick_location,
+      'drop_location' => $drop_location,
       'search_id' => base64_decode($search_id),
       'order_status' => 0,
       'payment_status' => 0,

@@ -339,7 +339,7 @@ class Home extends CI_Controller
                 $aadhar_no=$this->input->post('aadhar_no');
                 $driving_lience=$this->input->post('driving_lience');
                 // $pickup_location=$this->input->post('pickup_location');
-                $user_id = $this->CI->session->userdata('user_id');
+                $user_id = $this->session->userdata('user_id');
                 $agree=$this->input->post('agree');
                 date_default_timezone_set("Asia/Calcutta");
                 $cur_date=date("Y-m-d H:i:s");
@@ -883,6 +883,8 @@ class Home extends CI_Controller
             $this->form_validation->set_rules('start_date', 'start_date', 'required|xss_clean|trim');
             $this->form_validation->set_rules('start_time', 'start_time', 'required|xss_clean|trim');
             $this->form_validation->set_rules('round_type', 'round_type', 'required|xss_clean|trim');
+            $this->form_validation->set_rules('pick_location', 'pick_location', 'required|xss_clean|trim');
+            $this->form_validation->set_rules('drop_location', 'drop_location', 'xss_clean|trim');
             $this->form_validation->set_rules('end_date', 'end_date', 'xss_clean|trim');
             $this->form_validation->set_rules('end_time', 'end_time', 'xss_clean|trim');
             $this->form_validation->set_rules('duration', 'duration', 'xss_clean|trim');
@@ -894,6 +896,8 @@ class Home extends CI_Controller
                 $end_date=$this->input->post('end_date');
                 $end_time=$this->input->post('end_time');
                 $duration=$this->input->post('duration');
+                $pick_location=$this->input->post('pick_location');
+                $drop_location=$this->input->post('drop_location');
                 date_default_timezone_set("Asia/Calcutta");
                 $cur_date=date("Y-m-d H:i:s");
                 $data_insert = array(
@@ -904,6 +908,8 @@ class Home extends CI_Controller
           'end_date'=>$end_date,
           'end_time'=>$end_time,
           'duration'=>$duration,
+          'pick_location'=>$pick_location,
+          'drop_location'=>$drop_location,
           'date'=>$cur_date,
                     );
                 $last_id=$this->base_model->insert_table("tbl_search", $data_insert, 1) ;
