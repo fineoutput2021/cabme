@@ -468,7 +468,7 @@ class CI_Booking
     $final_amount = $mini_booking;
     if (!empty($receive['search_id'])) {
       $search_id = $receive['search_id'];
-      $search_data = $this->CI->db->get_where('tbl_search', array('id' => $receive['search_id']))->result();
+      $search_data = $this->CI->db->get_where('tbl_search', array('id' =>  base64_decode($receive['search_id'])))->result();
       $pick_location = $search_data[0]->pick_location;
       $drop_location = $search_data[0]->drop_location;
     } else {
