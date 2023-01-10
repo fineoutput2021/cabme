@@ -58,9 +58,10 @@ class CI_Booking
     //     print_r($links);die();
     // }else{
     if ($receive['sort'] != 'none') {
-      $self_cars = $this->CI->db->order_by('price1', $receive['sort'])->get_where('tbl_selfdrive', array('city_id' => $receive['city_id'], 'is_available' => 1, 'is_active' => 1))->result();
+      $self_cars = $this->CI->db->order_by('price1', $receive['sort'])->get_where('tbl_selfdrive', array('city_id' => $receive['city_id'], 'is_active' => 1))->result();
     } else {
-      $self_cars = $this->CI->db->get_where('tbl_selfdrive', array('city_id' => $receive['city_id'], 'is_available' => 1, 'is_active' => 1))->result();
+      $self_cars = $this->CI->db->get_where('tbl_selfdrive', array('city_id' => $receive['city_id'], 
+       'is_active' => 1))->result();
     }
     //     $links='';
     // }
@@ -119,6 +120,7 @@ class CI_Booking
           'extra_kilo' => $self->extra_kilo,
           'rsda' => $self->rsda,
           'active' => 1,
+          'is_available' => $self->is_available,
           'price' => round($self->price1 * $days, 2)
         );
       }
@@ -438,6 +440,7 @@ class CI_Booking
           'per_kilometer' => $car->per_kilometre,
           'location' => $car->location,
           'min_booking_amt' => $car->min_booking_amt,
+          'is_available' => $car->is_available,
         );
       }
     }
