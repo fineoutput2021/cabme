@@ -225,7 +225,7 @@ class CI_Login
                                     'auth' => $auth,
                                 );
                                 $this->CI->db->where('id', $user_data[0]->id);
-                                $zapak = $this->CI->db->update('tbl_users$', $data_update);
+                                $zapak = $this->CI->db->update('tbl_users', $data_update);
                             } else {
                                 $auth = $user_data[0]->auth;
                             }
