@@ -10,17 +10,14 @@
       margin-top:  3rem!important;
     }
   }
-
   .fa-user {
     color: #fff !important;
   }
-
   @media(min-width:767px) {
     .selectcity {
       border-top-left-radius: 20px;
       border-bottom-left-radius: 20px;
     }
-
     .brright {
       border-top-right-radius: 20px;
       border-bottom-right-radius: 20px;
@@ -37,14 +34,11 @@
     border-radius: 10px;
     box-shadow: 0px 0 8px rgb(0 0 0 / 10%);
   }
-
 </style>
 <!-- btc tittle Wrapper Start -->
 <!--====== Sort By Modal ======-->
-
 <div class="filterbyModal fade" id="filterbyModal" role="dialog" style="z-index: 99999;">
   <div class="sortbyModal-dialog modal-dialog">
-
     <!-- Modal content-->
     <div class="sortbyModal-content modal-content" >
       <div class="modal-header p-1">
@@ -61,7 +55,6 @@
           <button type="submit" class="btn  bg-b" style="color:white;float: right;box-shadow:none;">Apply</button>
         <br>
         <input type="hidden" name="sort" value="<?=$sort?>" id="m_sort">
-
         <!-- Brand -->
         <h5 class="mb-2" style="font-weight: bold;">Brand</h5>
         <div class="doflex">
@@ -90,7 +83,6 @@
             <label for="Tata">Tata</label>
           </div> &nbsp; &nbsp;
         </div>
-
         <!-- Fuel Type -->
         <h5 class="mb-2" style="font-weight: bold;">Fuel Type</h5>
         <div class="doflex">
@@ -113,7 +105,6 @@
             <label for="CNG2">CNG</label>
           </div> &nbsp; &nbsp;
         </div>
-
         <!-- Transmission Type -->
         <h5 class="mb-2" style="font-weight: bold;">Transmission Type</h5>
         <div class="doflex">
@@ -130,7 +121,6 @@
             <label for="Manualll">Automatic</label>
           </div> &nbsp; &nbsp;
         </div>
-
         <!-- Seating Capacity -->
         <h5 class="mb-2" style="font-weight: bold;">Seating Capacity</h5>
         <div class="doflex">
@@ -159,7 +149,6 @@
     </div>
   </div>
 </div>
-
 <div class="btc_tittle_main_wrapper" style="margin-top: 100px;">
   <div class="container-fluid">
     <div class="row">
@@ -402,8 +391,9 @@
                             <div class="col-md-8 col-8 p-0 mt-2">
                               Extra charge @ <?=$cars['extra_kilo']?>/Kms
                             </div>
-                            <div class="col-md-4 col-4 p-0">
-                              <?if(!empty($this->session->userdata('user_data'))){?>
+                            <div class="col-md-4 col-4 p-0" >
+                            <? if($cars['is_available']==1){
+                              if(!empty($this->session->userdata('user_data'))){?>
                               <form method="post" enctype="multipart/form-data" action="<?=base_url()?>Home/self_drive_calculate">
                               <input type="hidden" name="start_date" value="<?=$search[0]->start_date?>">
                               <input type="hidden" name="start_time" value="<?=$search[0]->start_time?>">
@@ -416,11 +406,14 @@
                               <input type="hidden" name="search_id" id="search_id" value="<?=$id?>">
                               <button class="bookbtn shadowbtn">Book
                               &nbsp; <i class="fa fa-angle-double-right"></i></button>
-                            </form>
-                            <?}else{?>
+                              </form>
+                          <?}else{?>
                             <button class="bookbtn shadowbtn" data-toggle="modal" data-target="#loginModal">Book
                             &nbsp; <i class="fa fa-angle-double-right"></i></button>
                               <?}?>
+                              <?}else{?>
+                              <h5 style="color:red;margin-top:12px;font-weight: 600;">Unavailable</h5>
+                           <?}?>
                             </div>
                           </div>
                         </ul>
@@ -480,21 +473,17 @@
         </div>
       </div>
     </div>
-
     <!-- ======================================  Mobile Sort by & Filters End   ====================================== -->
   </div>
-
   <script>
 $(document).ready(function() {
   var form = document.getElementById("webform");
-
   $('#sort_by').on('change', function() {
     var optionSelected = $("option:selected", this);
        var valueSelected = this.value;
        $('#w_sort').val(valueSelected);
      form.submit();
   });
-
 });
 function mobile_sort(x){
   var form2 = document.getElementById("mobform");
