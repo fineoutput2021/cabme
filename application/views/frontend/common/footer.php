@@ -25,13 +25,11 @@
 								</li>
 								<li><a href="#"><i class="fa fa-long-arrow-right"></i> &nbsp; FAQ's</a>
 								</li>
-
 							</ul>
 						</div>
 					</div>
 					<div class="col-md-3 col-12 pb-4 pb-md-0">
 						<div class="newfooterlogo">
-
 							<img src="<?=base_url()?>assets/frontend/images/cabmenewlogo.png" alt="img" class="img-fluid" />
 							<div class="newfootersocial">
 								<ul>
@@ -52,17 +50,10 @@
 						</div>
 					</div>
 				</div>
-
-
-
 			</div>
-
 		</div>
-
 	</footer>
-
 	<!--============= -end footer----------------------------------->
-
 <!-- <div class="x_footer_bottom_main_wrapper float_left" style="box-shadow: 0px 1px 10px rgb(209 209 209);">
 	<div class="container">
 		<div class="row">
@@ -88,7 +79,6 @@
 						</li>
 						<li><a href="#"><i class="fa fa-long-arrow-right"></i> &nbsp; FAQ's</a>
 						</li>
-
 					</ul>
 				</div>
 			</div>
@@ -104,12 +94,10 @@
 					<a href="#"><i class="fa fa-linkedin" style="font-size: 25px;"></i></a>
 				</div>
 			</div>
-
 		</div>
 	</div>
 </div> -->
 <!--===========================  Footer Wrapper End ===========================-->
-
 </body>
 <script src="<?=base_url()?>assets/frontend/js/jquery-3.3.1.min.js"></script>
 <script type="text/javascript">
@@ -135,8 +123,6 @@ var base_url = "<?=base_url()?>"
 <!-- <script src="<?=base_url()?>assets/frontend/js/scripts.js"></script> -->
 <script src="<?=base_url()?>assets/frontend/js/bootstrap-notify.min.js"></script>
 <script src="<?=base_url()?>assets/frontend/js/select2.min.js"></script>
-
-
 <!-- custom js-->
 <script>
 //================================== NOTIFY  ======================================
@@ -145,22 +131,18 @@ $(document).ready(function() {
  var fail_message = '<?php echo $this->session->flashdata('emessage')?>';
  loadErrorNotify(fail_message);
 <?php  } ?>
-
 <?php  if (!empty($this->session->flashdata('validationemessage'))) {
         $valid_errors = $this->session->flashdata('validationemessage');
         $valid_errors = substr($valid_errors, 0, -1); ?>
 loadErrorNotify("<?=$valid_errors?>");
 <?php
     } ?>
-
 <?php if (!empty($this->session->flashdata('smessage'))) { ?>
   var succ_message = '<?php echo $this->session->flashdata('smessage');?>';
   loadSuccessNotify(succ_message);
  <?php  } ?>
-
 });
 //================================== SUCCESS NOTIFY  ======================================
-
 function loadSuccessNotify(succ_message){
   notifySuccess(succ_message);
 }
@@ -169,33 +151,6 @@ function loadSuccessNotify(succ_message){
        notifyError(message);
     }
 //---- mobile form js --------
-		$(document).ready(function() {
-		    var swiper = new Swiper ('.swiper-container', {
-		      // Optional parameters
-		      direction: 'horizontal',
-		      loop: false,
-					allowTouchMove:false,
-		      navigation: {
-		        nextEl: '.swiper-button-next',
-		        prevEl: '.swiper-button-prev',
-		      },
-					on: {
-	slideChange: function() {
-		// console.log(this.activeIndex)
-		if (this.activeIndex == 0) {
-			setActive(1)
-		}
-		if (this.activeIndex == 1) {
-			setActive(2)
-		}
-		if (this.activeIndex == 2) {
-			setActive(3);
-		}
-	}
-}
-		    });
-		});
-
 //---- show promocode model -------
 function show_promo_model(x){
 	var p_name=$('#p_'+x).attr('p_name');
@@ -216,7 +171,6 @@ $(".show-more  a").on("click", function() {
 	var $this = $(this);
 	var $content = $this.parent().prev("div.content");
 	var linkText = $this.text().toUpperCase();
-
 	if (linkText === "READ MORE") {
 		linkText = '<button type="button" class="btn read-button">Read Less</button>';
 		$content.switchClass("hideContent", "showContent", 400);
@@ -224,7 +178,6 @@ $(".show-more  a").on("click", function() {
 		linkText = '<button type="button" class="btn read-button">Read More</button>';
 		$content.switchClass("showContent", "hideContent", 400);
 	};
-
 	$this.html(linkText);
 })
 // =========================================================== intercity ===========================================================
@@ -316,7 +269,6 @@ $("#sdsd, #sded").change(function(){
 						$('#duration').val(diff);
 						$('#self_btn').prop('disabled', true);
 					}
-
 		}
 });
 //------- Mobile self drive date change --------
@@ -388,19 +340,16 @@ $("#icsd, #iced").change(function(){
 			// console.log('enddate= '+ieDate);
 			// console.log('endtime= '+icet);
 			// console.log('check= '+$('#icst').val());
-
 			//----- calculate diffrence --------
 			if((isDate !='NaN-NaN-NaN')&& (typeof icst != "undefined")&& (ieDate !='NaN-NaN-NaN')&& (typeof icet != "undefined")){
 				 var start = new Date(isDate.replace(/-/g,"/"));
 				var end   = new Date(ieDate.replace(/-/g,"/"));
-				
 				 if(sd.getFullYear() === ed.getFullYear() && sd.getMonth() === ed.getMonth() &&
 				 sd.getDate() === ed.getDate())
 				 {
 					var d1 = ieDate+" " +icet;
 					var d2 = isDate+" " +icst;
  		var diff= (( new Date(d1.replace(/-/g,"/")) - new Date(d2.replace(/-/g,"/")) ) / 1000 / 60 / 60 );
-
 					var days =  parseInt(diff/24);
 					var hours =  diff%24;
 					if(diff>0){
@@ -515,7 +464,6 @@ function one_way(){
 					}
 					$('#ot_duration').html("")
 					$('#outstation_btn').removeAttr('disabled');
-
 		}
 }
 function round_way(){
@@ -590,7 +538,6 @@ function mone_way(){
 					}
 					$('#mot_duration').html("")
 					$('#moutstation_btn').removeAttr('disabled');
-
 		}else{
 			console.log('startdate= '+isDate);
 			console.log('starttime= '+icst);
@@ -666,7 +613,6 @@ function time_change(){
 	// end date date covert ------
 	var ed    = new Date(sded);
 	edDate =  ed.getFullYear()+'-'+(ed.getMonth()+1)+'-'+ed.getDate();
-
 			// console.log('startdate= '+sdDate);
 			// console.log('starttime= '+sdst);
 			// console.log('enddate= '+edDate);
@@ -720,17 +666,14 @@ else if(active==1 && device==2){
 	// start date covert ------
 	var sd    = new Date(sdsd);
 	sdDate = sd.getFullYear()+'-'+(sd.getMonth()+1)+'-'+sd.getDate();
-
 		// end date date covert ------
 		var ed    = new Date(sded);
 		edDate =  ed.getFullYear()+'-'+(ed.getMonth()+1)+'-'+ed.getDate();
-
 			//----- calculate diffrence --------
 			// console.log('startdate= '+sdDate);
 			// console.log('starttime= '+sdst);
 			// console.log('enddate= '+edDate);
 			// console.log('endtime= '+sdet);
-
 	if((sdDate !='NaN-NaN-NaN')&& (typeof sdst !== "undefined")&& (edDate !='NaN-NaN-NaN')&& (typeof sded !== "undefined")){
 		var start = new Date(sdDate.replace(/-/g,"/"));
 				var end   = new Date(edDate.replace(/-/g,"/"));
@@ -784,7 +727,6 @@ else if(active==3 && device==1){
 			// console.log('enddate= '+ieDate);
 			// console.log('endtime= '+icet);
 			if((isDate !='NaN-NaN-NaN')&& (typeof icst != "undefined")&& (ieDate !='NaN-NaN-NaN')&& (typeof iced != "undefined")){
-				
 		 var start = new Date(isDate.replace(/-/g,"/"));
 				var end   = new Date(ieDate.replace(/-/g,"/"));
 				 if(sd.getFullYear() === ed.getFullYear() && sd.getMonth() === ed.getMonth() &&
@@ -888,7 +830,6 @@ else if(active==3 && device==2){
 		}
 }
 }
-
 //------ set city on load -------
 $(document).ready(function () {
 	if (window.matchMedia('(max-width: 767px)').matches) {
@@ -896,7 +837,6 @@ $(document).ready(function () {
      } else {
       	$('#device').val(1);
      }
-
 var id = localStorage.getItem("city_id");
 var name = localStorage.getItem("city_name");
 if(id != null){
@@ -905,7 +845,6 @@ $('#mc_'+id+'').addClass("city_active");
 $('.city_id').val(id);
 $('.city_title').html(name);
 }
-
 //--- outstation city ----
 var id2 = localStorage.getItem("city_id2");
 var name2 = localStorage.getItem("city_name2");
@@ -926,7 +865,6 @@ $('#rmc_2'+id3+'').addClass("city_active");
 $('.city_id2').val(id2);
 $('.city_title3').html(name3);
 }
-
 });
 function set_cities(){
 	// alert()
@@ -964,7 +902,6 @@ $('.city_id').val(id);
 $('#selectcity').modal('hide');
 $('#selectcity2').modal('hide');
 $('.city_title').html(name);
-
 }
 //------ set city on click -------
 function out_set_city(obj){
@@ -985,7 +922,7 @@ $('.city_title2').html(name);
 function r_out_set_city(obj){
 	var id = $(obj).attr('city_id');
 	var name = $(obj).attr('name');
-	// alert(name)
+	// alert(id)
 localStorage.setItem("rcity_id2", id);
 localStorage.setItem("rcity_name2", name);
 $(".rcitieslist2").removeClass("city_active");
@@ -996,7 +933,6 @@ $('#selectcity5').modal('hide');
 $('#selectcity6').modal('hide');
 $('.city_title3').html(name);
 }
-
 //------ plan change -----
 function planChange(x,y){
 $('#ct_'+x).val(y);
@@ -1010,7 +946,7 @@ function change(x) {
 		)
 		// $('#mot_location').show();
 		set_cities();
-
+		$('#mround_type').val(1)
 		$(".datepicker").datepicker();
 		$('.timepicker').mdtimepicker();
 	}
@@ -1022,10 +958,9 @@ function change(x) {
 				)
 			// $('#mot_location').hide();
 			set_cities();
-
+			$('#mround_type').val(2)
 		$(".datepicker").datepicker();
 		$('.timepicker').mdtimepicker();
-
 	}
 	if (x == 3) {
 		$("#change2").html(
@@ -1036,11 +971,10 @@ function change(x) {
 		);
 		// $('#ot_location').show();
 		$('#ot_duration').html("")
+		$('#round_type').val(1)
 		$(".datepicker").datepicker();
 		$('.timepicker').mdtimepicker();
 		set_cities();
-
-
 	}
 	if (x == 4) {
 		$("#change2").html(
@@ -1052,6 +986,7 @@ function change(x) {
 		// $('#ot_location').hide();
 		// $("#ot_location").css("display", "none!important");
 		$('#ot_duration').html("")
+		$('#round_type').val(2)
 		$(".datepicker").datepicker();
 		$('.timepicker').mdtimepicker();
 		set_cities();
@@ -1060,7 +995,6 @@ function change(x) {
 		$("#location").html(
 			'<div class="col-md-12 mb-3"><div class="x_slider_select x_slider_select_2"><input type="text" placeholder="Pickup Location"  name="pick_location" required class="form-control" style=""></div></div>'
 			)
-
 	} if(x == 4) {
 		$('#location').html(
 			'<div class="col-md-6 mb-3"><div class="x_slider_select x_slider_select_2"><input type="text" placeholder="Pickup Location"  name="pick_location" required class="form-control" style=""></div></div><div class="col-md-6  mb-3"><div class="x_slider_select x_slider_select_2" style="margin-left: 12px;"><input type="text" placeholder="Drop Location"  name="drop_location" required class="form-control" style=""></div></div>'
@@ -1402,18 +1336,39 @@ if ("undefined" == typeof jQuery) throw new Error("MDTimePicker: This plugin req
 $(document).ready(function () {
 	$('.timepicker').mdtimepicker();
 });
-
 function myFunction() {
 	/* Get the text field */
 	var copyText = $('#textcopy').html();
 	/* Copy the text inside the text field */
 	navigator.clipboard.writeText(copyText);
 	$('#m_noti').html('Promocode Copied!')
-
 }
+$(document).ready(function() {
+			var check =$('.swiper-container');
+		    var swiper = new Swiper ('.swiper-container', {
+		      // Optional parameters
+		      direction: 'horizontal',
+		      loop: false,
+					allowTouchMove:false,
+		      navigation: {
+		        nextEl: '.swiper-button-next',
+		        prevEl: '.swiper-button-prev',
+		      },
+					on: {
+	slideChange: function() {
+		// console.log(this.activeIndex)
+		if (this.activeIndex == 0) {
+			setActive(1)
+		}
+		if (this.activeIndex == 1) {
+			setActive(2)
+		}
+		if (this.activeIndex == 2) {
+			setActive(3);
+		}
+	}
+}
+		    });
+		});
 </script>
-
-
-
-
 </html>

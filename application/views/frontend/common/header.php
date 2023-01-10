@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="zxx">
-
 <head>
 	<meta charset="utf-8" />
 	<title>Cabme</title>
@@ -25,13 +24,9 @@
 			padding: 3px 10px !important;
 			padding-right: 16px;
 		}
-
 	</style>
 </head>
-
 <body>
-
-
 	<!--====== Info Modal ======-->
 	<div class="modal fade " id="searchbtn" role="dialog">
 		<div class="modal-dialog " style="width: auto;">
@@ -116,7 +111,6 @@
 		</div>
 	</div>
 	<!--====== Info Modal End ======-->
-
 	<!--====== Select City Modal ======-->
 	<?
 	$top_data = $this->db->order_by('id', 'desc')->get_where('tbl_cities', array('is_active'=> 1,'top'=> 1,'city_type'=>1))->result();
@@ -214,12 +208,12 @@
 						<?if(!empty($one_out_top_data)){?>
 					<p style="font-size:18px;">Top Cities</p>
 					<?php $i=1; foreach($one_out_top_data as $data) { ?>
-					<h5 class="citieslist2"  style="padding: 15px 17px;font-weight: bold;" onclick="out_set_city(this)" city_id="<?=$data->id?>" name="<?=$data->name?>"id="mc_2<?=$data->id?>"> <img src="<?=base_url().$data->photo?>" alt="<?=$data->name?>" width="10%" style="margin-top: -13px;"> <?=$data->name?></h5>
+					<h5 class="citieslist2"  style="padding: 15px 17px;font-weight: bold;" onclick="r_out_set_city(this)" city_id="<?=$data->id?>" name="<?=$data->name?>"id="mc_2<?=$data->id?>"> <img src="<?=base_url().$data->photo?>" alt="<?=$data->name?>" width="10%" style="margin-top: -13px;"> <?=$data->name?></h5>
 					<?php $i++; } }?>
 						<?if(!empty($one_out_other_data)){?>
 					<p style="font-size: 16px;">Other Cities</p>
 					<?php $i=1; foreach($one_out_other_data as $data) { ?>
-					<h5 class="citieslist2" style="padding: 15px 17px;font-weight: bold;"  onclick="out_set_city(this)" city_id="<?=$data->id?>" name="<?=$data->name?>" id="mc_2<?=$data->id?>"> <img src="<?=base_url().$data->photo?>" alt="<?=$data->name?>" width="10%" style="margin-top: -13px;"> <?=$data->name?></h5>
+					<h5 class="citieslist2" style="padding: 15px 17px;font-weight: bold;"  onclick="r_out_set_city(this)" city_id="<?=$data->id?>" name="<?=$data->name?>" id="mc_2<?=$data->id?>"> <img src="<?=base_url().$data->photo?>" alt="<?=$data->name?>" width="10%" style="margin-top: -13px;"> <?=$data->name?></h5>
 					<?php $i++; }} ?>
 				</div>
 			</div>
@@ -277,7 +271,6 @@
 	</div>
 	<!--====== Select City2 Modal End ======-->
 	<!--======Promo Modal ======-->
-
 	<div class="modal fade" id="myModal" role="dialog">
 		<div class="modal-dialog">
 			<!-- Modal content-->
@@ -427,7 +420,6 @@
 							</a>
 						</div>
 						<div>
-
 					  <?if(empty($this->session->userdata('user_data'))){?>
 						<button class="btn bg-b fnt" style="margin: 0 20px 0 20px;"  data-toggle="modal" data-target="#signupModal"> <span style="color: #fff;" class="size">&nbsp;Sign Up </span></button>
 						<button class="btn bg-b fnt" style="margin: 0 20px 0 20px;" data-toggle="modal" data-target="#loginModal"> <span style="color: #fff;" class="size"> &nbsp;Login </span></button>
@@ -447,7 +439,6 @@
 								<span class="underline" style="color: #fff;">Logout</span>
 							</a>
 						</div>
-
 						<?}?>
 					</div>
 					</div>
@@ -529,6 +520,5 @@
 				</div>
 			</div>
 		</div>
-
 	</div>
 	<!-- HeaqderEnd -->
