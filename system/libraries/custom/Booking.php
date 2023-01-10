@@ -466,7 +466,7 @@ class CI_Booking
     $kilometer_price = $car_data[0]->per_kilometre;
     $total = $car_data[0]->min_booking_amt;
     $final_amount = $mini_booking;
-    if (!empty($receive['search_id'])) {
+    if (empty($receive['search_id'])) {
       $search_id = $receive['search_id'];
       $search_data = $this->CI->db->get_where('tbl_search', array('id' => $receive['search_id']))->result();
       $pick_location = $search_data[0]->pick_location;
