@@ -60,7 +60,7 @@ class CI_Booking
     if ($receive['sort'] != 'none') {
       $self_cars = $this->CI->db->order_by('price1', $receive['sort'])->get_where('tbl_selfdrive', array('city_id' => $receive['city_id'], 'is_active' => 1))->result();
     } else {
-      $self_cars = $this->CI->db->get_where('tbl_selfdrive', array('city_id' => $receive['city_id'], 
+      $self_cars = $this->CI->db->order_by('is_available', 'asc')->get_where('tbl_selfdrive', array('city_id' => $receive['city_id'], 
        'is_active' => 1))->result();
     }
     //     $links='';
@@ -406,7 +406,7 @@ class CI_Booking
     if ($receive['sort'] != 'none') {
       $outstation_cars = $this->CI->db->order_by('per_kilometre', $receive['sort'])->get_where('tbl_outstation', array('city_id' => $receive['city_id'],  'is_active' => 1))->result();
     } else {
-      $outstation_cars = $this->CI->db->get_where('tbl_outstation', array('city_id' => $receive['city_id'],  'is_active' => 1))->result();
+      $outstation_cars = $this->CI->db->order_by('is_available', 'asc')->get_where('tbl_outstation', array('city_id' => $receive['city_id'],  'is_active' => 1))->result();
     }
     $car_data = [];
     foreach ($outstation_cars as $car) {
