@@ -552,6 +552,11 @@ class Apicontroller extends CI_Controller
             } else {
                 $seating = '7 Seates';
             }
+            if(!empty($booking_data[0]->invoice_image)){
+                $invoice = base_url().$booking_data[0]->invoice_image;
+            }else{
+                $invoice='';
+            }
             $data = [];
             $data = array(
                 'city_id' => $car[0]->city_id,
@@ -575,6 +580,7 @@ class Apicontroller extends CI_Controller
                 'duration' => $booking_data[0]->duration,
                 'promo_discount' => $booking_data[0]->promo_discount,
                 'city_name' => $city[0]->name,
+                'invoice' => $invoice,
                 'id' => "Booking Id: #" . $id
             );
             $res = array(
@@ -609,6 +615,11 @@ class Apicontroller extends CI_Controller
                 $seating = '7 Seates';
             }
             $data = [];
+            if(!empty($booking_data[0]->invoice_image)){
+                $invoice = base_url().$booking_data[0]->invoice_image;
+            }else{
+                $invoice='';
+            }
             $data = array(
                 'city_id' => $car[0]->city_id,
                 'car_id' => $car[0]->id,
@@ -628,6 +639,7 @@ class Apicontroller extends CI_Controller
                 'duration' => $booking_data[0]->duration,
                 'round_type' => $booking_data[0]->round_type,
                 'city_name' => $city[0]->name,
+                'invoice' => $invoice,
                 'id' => "Booking Id: #" . $id
             );
             $res = array(
@@ -654,6 +666,11 @@ class Apicontroller extends CI_Controller
             $car = $this->db->get_where('tbl_intercity', array('id' => $booking_data[0]->car_id))->result();
             $city_data = $this->db->get_where('tbl_cities', array('id' => $booking_data[0]->city_id))->result();
             $data = [];
+            if(!empty($booking_data[0]->invoice_image)){
+                $invoice = base_url().$booking_data[0]->invoice_image;
+            }else{
+                $invoice='';
+            }
             $data = array(
                 'city' => $city_data[0]->name,
                 'cab_type' => $booking_data[0]->cab_type,
@@ -665,6 +682,7 @@ class Apicontroller extends CI_Controller
                 'kilometer_cap' => $booking_data[0]->kilometer,
                 'final_amount' => $booking_data[0]->final_amount,
                 'mini_booking' => $booking_data[0]->mini_booking,
+                'invoice' => $invoice,
                 'id' => "Booking Id: #" . $id
             );
             $res = array(
@@ -752,7 +770,7 @@ class Apicontroller extends CI_Controller
     public function get_duration (){
         $res = array(
             'message' => 'Success!',
-            'status' => 201,
+            'status' => 200,
             'duration' => 5
         );
         echo json_encode($res);
