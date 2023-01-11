@@ -196,7 +196,6 @@ class Apicontroller extends CI_Controller
                 } else {
                     $seating = explode(",", $seating);
                 }
-
                 // print_r($filter['brand']);die();
                 $send = array(
                     'city_id' => $city_id,
@@ -670,7 +669,7 @@ class Apicontroller extends CI_Controller
             );
             $res = array(
                 'message' => 'Success!',
-                'status' => 201,
+                'status' => 200,
                 'data' => $data
             );
             echo json_encode($res);
@@ -747,6 +746,14 @@ class Apicontroller extends CI_Controller
             'message' => 'Success!',
             'status' => 201,
             'data' => $filter
+        );
+        echo json_encode($res);
+    }
+    public function get_duration (){
+        $res = array(
+            'message' => 'Success!',
+            'status' => 201,
+            'duration' => 5
         );
         echo json_encode($res);
     }
