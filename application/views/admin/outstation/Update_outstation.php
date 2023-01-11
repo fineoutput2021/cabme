@@ -37,7 +37,7 @@ if (!empty($this->session->flashdata('emessage'))) { ?>
                     <tr>
                       <td> <strong>City</strong> <span style="color:red;">*</span></strong> </td>
                       <td>
-                        <select name="city_id" class="form-control" required>
+                        <select name="city_id" id="city_id" onchange="changeName(this)"  class="form-control" required>
                           <option value="">--- Select City -----</option>
                           <?php $i=1; foreach ($city_data->result() as $city) {
                             if($city->ot_city_type==0){
@@ -48,7 +48,7 @@ if (!empty($this->session->flashdata('emessage'))) { ?>
                           $type= 'Round Trip';
                         }
                              ?>
-                          <option value="<?=$city->id?>" <?if ($city->id==$station->city_id) {
+                          <option type="<?=$city->ot_city_type?>" value="<?=$city->id?>" <?if ($city->id==$station->city_id) {
                             echo 'selected'
                             ;
                             }?>><?=$city->name?> (<?=$type?>)</option>
@@ -90,7 +90,7 @@ if (!empty($this->session->flashdata('emessage'))) { ?>
                           <?php } ?>
                         </td>
                       </tr>
-                      <td> <strong>Rate Per Kilometre</strong> <span style="color:red;">*</span></strong> </td>
+                      <td> <strong id="change">Rate Per Kilometre</strong> <span style="color:red;">*</span></strong> </td>
                       <td>
                         <input type="text" name="per_kilometre" onkeypress="return isNumberKey(event)" class="form-control" placeholder="" required value="<?=$station->per_kilometre?>" />
                       </td>
@@ -118,7 +118,6 @@ if (!empty($this->session->flashdata('emessage'))) { ?>
                   .primary {
                     background-color: #ff0000;
                   }
-
                   .primary:hover {
                     background-color: #ff0000 !important;
                   }
@@ -138,6 +137,28 @@ if (!empty($this->session->flashdata('emessage'))) { ?>
       return false;
     return true;
   }
+  $( document ).ready(function() {
+    var x = $('#city_id').find(":selected").attr('type');
+    if(x==1){
+      $("#change").html('Rate Per Kilometer');
+    }else if(x==2){
+      $("#change").html('Total Amount');  
+      }else{
+        $("#change").html('Rate Per Kilometer');
+      }
+  });
+  function changeName(select) {
+    var selectedOption = select.options[select.selectedIndex];
+    // alert(selectedOption)
+  var x = selectedOption.getAttribute('type');
+    if(x==1){
+      $("#change").html('Rate Per Kilometer');
+    }else if(x==2){
+      $("#change").html('Total Amount');  
+      }else{
+        $("#change").html('Rate Per Kilometer');
+      }
+    };
 </script>
 <script type="text/javascript" src="<?php echo base_url() ?>assets/slider/ajaxupload.3.5.js"></script>
 <link href="<?php echo base_url() ?>assets/cowadmin/css/jqvmap.css" rel='stylesheet' type='text/css' />

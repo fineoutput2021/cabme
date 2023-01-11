@@ -37,7 +37,7 @@
                     <tr>
                       <td> <strong>City</strong> <span style="color:red;">*</span></strong> </td>
                       <td>
-                        <select name="city_id" class="form-control" required>
+                        <select name="city_id" onchange="changeName(this)" id="city" class="form-control" required>
                           <option value="">--- Select City -----</option>
                           <?php $i=1; foreach ($city_data->result() as $city) {
                             if($city->ot_city_type==0){
@@ -48,7 +48,7 @@
                             $type= 'Round Trip';
                           }
                              ?>
-                          <option value="<?=$city->id?>"><?=$city->name?> (<?=$type?>)</option>
+                          <option type="<?=$city->ot_city_type?>" value="<?=$city->id?>"><?=$city->name?> (<?=$type?>)</option> 
                           <?php $i++; } ?>
                         </select>
                       </td>
@@ -84,7 +84,7 @@
                       </td>
                     </tr>
                     <tr>
-                      <td> <strong>Rate Per Kilometer</strong> <span style="color:red;">*</span></strong> </td>
+                      <td> <strong id="change">Rate Per Kilometer</strong> <span style="color:red;">*</span></strong> </td>
                       <td>
                         <input type="text" name="per_kilometre" onkeypress="return isNumberKey(event)" class="form-control" placeholder="" required value="" />
                       </td>
@@ -135,4 +135,15 @@
       return false;
     return true;
   }
+  function changeName(select) {
+    var selectedOption = select.options[select.selectedIndex];
+  var x = selectedOption.getAttribute('type');
+    if(x==1){
+      $("#change").html('Rate Per Kilometer');
+    }else if(x==2){
+      $("#change").html('Total Amount');  
+      }else{
+        $("#change").html('Rate Per Kilometer');
+      }
+    };
 </script>
