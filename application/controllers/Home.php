@@ -489,13 +489,13 @@ class Home extends CI_Controller
                         if ($promocode_data[0]->ptype==1) {
                             $promocodeAlreadyUsed = $this->db->get_where('tbl_booking', array('user_id = ' => $booking_data[0]->user_id, 'promocode'=>$promocode_data[0]->id, 'payment_status'=>1))->result();
                             if (empty($promocodeAlreadyUsed)) {
-                                if ($booking_data[0]->duration > $promocode_data[0]->mindays*24) { //----checking minorder for promocode
+                                if ($booking_data[0]->duration >= $promocode_data[0]->mindays*24) { //----checking minorder for promocode
                                     $discount_amt = $booking_data[0]->total_amount * $promocode_data[0]->percentage/100;
                                     if ($discount_amt > $promocode_data[0]->max) {
                                         // will get max amount
                                         $discount =  $promocode_data[0]->max;
                                     } else {
-                                        $discount =  round($discount_amt, 2);
+                                        $discount =  round($discount_amt);
                                     }
                                     //---- booking entry update -----
                                     $data_update = array('promocode'=>$promocode_data[0]->id,
@@ -521,7 +521,7 @@ class Home extends CI_Controller
                                 // will get max amount
                                 $discount =  $promocode_data[0]->max;
                             } else {
-                                $discount =  round($discount_amt, 2);
+                                $discount =  round($discount_amt);
                             }
                             $data_update = array('promocode'=>$promocode_data[0]->id,
                             'promo_discount'=>$discount,
