@@ -55,7 +55,6 @@
                       <?if ($booking_type==3) {?>
                       <th>Car Type</th>
                       <?}?>
-
                       <th>Deposite</th>
                       <th>Pick Location</th>
                       <th>Drop Location</th>
@@ -80,15 +79,22 @@ foreach ($booking_data->result() as $data) {
     $City_data = $this->db->get_where('tbl_cities', array('is_active'=> 1,'id'=> $data->city_id))->result();
     if($data->booking_type==1){
         $Self_drive_data = $this->db->get_where('tbl_selfdrive', array('is_active'=> 1,'id'=> $data->car_id))->result();
+        if(!empty($Self_drive_data[0]->car_name)){
         $car_name=$Self_drive_data[0]->car_name;
+        }else{
+          $Self_drive_data[0]->car_name;
+        }
       }else if($data->booking_type==3){
         $Self_drive_data = $this->db->get_where('tbl_outstation', array('is_active'=> 1,'id'=> $data->car_id))->result();
-        $car_name=$Self_drive_data[0]->car_name;
+        if(!empty($Self_drive_data[0]->car_name)){
+          $car_name=$Self_drive_data[0]->car_name;
+          }else{
+            $Self_drive_data[0]->car_name;
+          }
       }else{
         $car_name='';
       }
         // print_r($data->car_id);die();
-
     $promo_data = $this->db->get_where('tbl_promocode', array('is_active'=> 1,'id'=> $data->promocode))->result();
     if(!empty($promo_data)){
       $promocode=$promo_data[0]->promocode ;
@@ -186,7 +192,6 @@ foreach ($booking_data->result() as $data) {
                       </td>
                       <?} ?>
                       <td><?php echo $data->date?></td>
-
                       <td><?php if ($data->order_status==1) {?>
                         <p class="label bg-yellow">Pending</p>
                         <?} elseif ($data->order_status==2) {?>

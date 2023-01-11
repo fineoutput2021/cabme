@@ -115,7 +115,7 @@ echo '7 Seater';
                               <?php		}   ?>
                               <li><a href="<?php echo base_url() ?>dcadmin/Outstation/Update_outstation/<?php echo base64_encode($data->id) ?>">Edit</a></li>
                               <?if ($this->session->userdata('position')=='Super Admin') {?>
-                              <li><a href="javascript:;" class="dCnf" mydata="<?php echo $i ?>">Delete</a></li>
+                              <!-- <li><a href="javascript:;" class="dCnf" mydata="<?php echo $i ?>">Delete</a></li> -->
                               <?}?>
                             </ul>
                           </div>
