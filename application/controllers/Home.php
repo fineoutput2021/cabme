@@ -914,7 +914,7 @@ class Home extends CI_Controller
                     );
                 $last_id=$this->base_model->insert_table("tbl_search", $data_insert, 1) ;
                 $id = base64_encode($last_id);
-                redirect("Home/show_outstation_cars/$id");
+                redirect("Home/show_outstation_cars/$id",'refresh');
             } else {
                 $this->session->set_flashdata('emessage', validation_errors());
                 redirect($_SERVER['HTTP_REFERER']);
@@ -970,7 +970,7 @@ class Home extends CI_Controller
         $data['search']= $search;
         $data['seating']= $seating;
         $data['sort']= $sort;
-        $this->load->view('frontend/common/header3', $data);
+        $this->load->view('frontend/common/header3', $data,'refresh');
         $this->load->view('frontend/outstation_cars');
         $this->load->view('frontend/common/footer');
     }

@@ -831,7 +831,8 @@ else if(active==3 && device==2){
 }
 }
 //------ set city on load -------
-$(document).ready(function () {
+window.onload = (event) => {
+	// alert()
 	if (window.matchMedia('(max-width: 767px)').matches) {
 		$('#device').val(2);
      } else {
@@ -865,8 +866,8 @@ $('#rmc_2'+id3+'').addClass("city_active");
 $('.city_id2').val(id2);
 $('.city_title3').html(name3);
 }
-});
-function set_cities(){
+};
+function set_cities(x){
 	// alert()
 //--- outstation city ----
 var id2 = localStorage.getItem("city_id2");
@@ -875,17 +876,21 @@ var name2 = localStorage.getItem("city_name2");
 if(id2 != null){
 $('#wc_2'+id2+'').addClass("city_active");
 $('#mc_2'+id2+'').addClass("city_active");
+if(x==1){
 $('.city_id2').val(id2);
+}
 $('.city_title2').html(name2);
 }
 //--- routstation city ----
 var id3 = localStorage.getItem("rcity_id2");
 var name3 = localStorage.getItem("rcity_name2");
-// alert(name2)
+// alert(name3)
 if(id3 != null){
 $('#rwc_2'+id3+'').addClass("city_active");
 $('#rmc_2'+id3+'').addClass("city_active");
-$('.city_id2').val(id2);
+if(x==2){
+$('.city_id2').val(id3);
+}
 $('.city_title3').html(name3);
 }
 }
@@ -945,7 +950,7 @@ function change(x) {
 		$("#mot_location_div").html('<div class="col-md-12 p-0" data-toggle="modal" data-target="#selectcity4" data-dismiss="modal" style="border-bottom:1px solid rgb(226, 225, 225);" id="mot_location"><div class="selectcity"><i class="fa fa-map-marker"></i><h5 class="city_title2">Select City</h5></div></div>'
 		)
 		// $('#mot_location').show();
-		set_cities();
+		set_cities(1);
 		$('#mround_type').val(1)
 		$(".datepicker").datepicker();
 		$('.timepicker').mdtimepicker();
@@ -957,7 +962,7 @@ function change(x) {
 				$("#mot_location_div").html('<div class="col-md-12 p-0" data-toggle="modal" data-target="#selectcity6" data-dismiss="modal" style="border-bottom:1px solid rgb(226, 225, 225);" id="mot_location"><div class="selectcity"><i class="fa fa-map-marker"></i><h5 class="city_title3">Select City</h5></div></div>'
 				)
 			// $('#mot_location').hide();
-			set_cities();
+			set_cities(2);
 			$('#mround_type').val(2)
 		$(".datepicker").datepicker();
 		$('.timepicker').mdtimepicker();
@@ -974,7 +979,7 @@ function change(x) {
 		$('#round_type').val(1)
 		$(".datepicker").datepicker();
 		$('.timepicker').mdtimepicker();
-		set_cities();
+		set_cities(1);
 	}
 	if (x == 4) {
 		$("#change2").html(
@@ -989,7 +994,7 @@ function change(x) {
 		$('#round_type').val(2)
 		$(".datepicker").datepicker();
 		$('.timepicker').mdtimepicker();
-		set_cities();
+		set_cities(2);
 	}
 	if (x == 3) {
 		$("#location").html(
